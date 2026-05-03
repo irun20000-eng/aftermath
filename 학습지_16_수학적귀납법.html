@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 수학적 귀납법</title>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => { return MathJax.startup.defaultPageReady().then(() => { document.body.classList.add('mathjax-ready'); }); } }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+        .reveal-box { display: inline-flex; align-items: center; justify-content: center; min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1; border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden; transition: all 0.2s; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .domino { display: flex; justify-content: center; align-items: flex-end; gap: 8px; padding: 24px; background: #f8fafc; border-radius: 1rem; border: 1px solid #e2e8f0; }
+        .domino .piece { width: 18px; height: 60px; background: linear-gradient(180deg, #3b82f6, #1e40af); border-radius: 3px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15); position: relative; }
+        .domino .piece::after { content: attr(data-n); position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #475569; }
+        .proof-step { background: #f0f9ff; border-left: 6px solid #0284c7; padding: 1.25rem 1.5rem; border-radius: 0 1rem 1rem 0; margin-bottom: 1rem; }
+        .square-vis { display: flex; justify-content: center; align-items: flex-end; gap: 28px; padding: 24px; background: #ffffff; border-radius: 0.75rem; border: 1px solid #e2e8f0; flex-wrap: wrap; }
+        .square-vis .stage { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .square-vis .grid { display: grid; gap: 4px; }
+        .square-vis .cell { width: 18px; height: 18px; border-radius: 50%; }
+        .square-vis .cell.old { background: #cbd5e1; }
+        .square-vis .cell.new { background: #f59e0b; box-shadow: 0 0 0 2px #fde68a; }
+        .square-vis .label { margin-top: 6px; font-size: 0.85rem; font-weight: 700; color: #475569; text-align: center; }
+        @media print { .no-print { display: none !important; } body { opacity: 1; background: white; } .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; } .thinking-space { min-height: 100px; } }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "16차시 수학적 귀납법";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME);
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-3. 수학적 귀납법</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">16차시: 수학적 귀납법</span>
+            </div>
+        </header>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4"><strong>[복습 연결]</strong> 지난 시간 우리는 <strong>점화식</strong>으로 수열을 정의했다. 첫째항과 이웃 항 관계만 있으면 모든 항이 결정되었다. 그렇다면 <strong>"모든 자연수 \(n\) 에 대해 어떤 식이 성립한다"</strong>는 것을 어떻게 증명할 수 있을까?</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6">
+                    <p class="font-bold mb-3">다음 그림은 단계별로 점의 개수를 늘리며 정사각형 모양으로 배열한 것이다.</p>
+                    <div class="square-vis">
+                        <div class="stage">
+                            <div class="grid" style="grid-template-columns: repeat(1, 18px);">
+                                <div class="cell new"></div>
+                            </div>
+                            <div class="label">[1단계]<br>\(1=1^2\)</div>
+                        </div>
+                        <div class="stage">
+                            <div class="grid" style="grid-template-columns: repeat(2, 18px);">
+                                <div class="cell old"></div><div class="cell new"></div>
+                                <div class="cell new"></div><div class="cell new"></div>
+                            </div>
+                            <div class="label">[2단계]<br>\(1+3=2^2\)</div>
+                        </div>
+                        <div class="stage">
+                            <div class="grid" style="grid-template-columns: repeat(3, 18px);">
+                                <div class="cell old"></div><div class="cell old"></div><div class="cell new"></div>
+                                <div class="cell old"></div><div class="cell old"></div><div class="cell new"></div>
+                                <div class="cell new"></div><div class="cell new"></div><div class="cell new"></div>
+                            </div>
+                            <div class="label">[3단계]<br>\(1+3+5=3^2\)</div>
+                        </div>
+                        <div class="stage">
+                            <div class="grid" style="grid-template-columns: repeat(4, 18px);">
+                                <div class="cell old"></div><div class="cell old"></div><div class="cell old"></div><div class="cell new"></div>
+                                <div class="cell old"></div><div class="cell old"></div><div class="cell old"></div><div class="cell new"></div>
+                                <div class="cell old"></div><div class="cell old"></div><div class="cell old"></div><div class="cell new"></div>
+                                <div class="cell new"></div><div class="cell new"></div><div class="cell new"></div><div class="cell new"></div>
+                            </div>
+                            <div class="label">[4단계]<br>\(1+3+5+7=4^2\)</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-2 text-center"><span class="inline-block w-3 h-3 rounded-full bg-amber-500 align-middle"></span> 새로 추가된 홀수 \((2n-1)\) 개의 점이 L자 모양으로 붙어 정사각형을 완성한다.</p>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center text-lg mt-3 space-y-1">
+                        <div>\(1=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1^2\)</span></span> &nbsp;|&nbsp; \(1+3=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(2^2\)</span></span> &nbsp;|&nbsp; \(1+3+5=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(3^2\)</span></span> &nbsp;|&nbsp; \(1+3+5+7=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(4^2\)</span></span></div>
+                        <div>\(\therefore\ 1+3+5+\dots+(2n-1)=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(n^2\)</span></span> 으로 추측 가능</div>
+                    </div>
+                    <p class="mt-4"><strong>[개방형 발문]</strong> \(n=1, 2, 3, 4\) 에 대해서는 위 식이 성립함을 직접 확인할 수 있다. 그런데 <strong>\(n=100\), \(n=10000\)</strong> 일 때도 성립한다고 어떻게 확신할 수 있는가? 무수히 많은 자연수를 일일이 확인할 수는 없다.</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100">
+                    <p class="font-bold mb-3 text-indigo-900">🚂 도미노/기차의 비유</p>
+                    <div class="domino flex-wrap mb-3">
+                        <div class="piece" data-n="1"></div>
+                        <div class="piece" data-n="2"></div>
+                        <div class="piece" data-n="3"></div>
+                        <div class="piece" data-n="4"></div>
+                        <div class="piece" data-n="5"></div>
+                        <div class="piece" data-n="..."></div>
+                        <div class="piece" data-n="k"></div>
+                        <div class="piece" data-n="k+1"></div>
+                        <div class="piece" data-n="..."></div>
+                    </div>
+                    <p>도미노가 무한히 늘어서 있을 때, <strong>모든 도미노가 쓰러진다</strong>는 것을 보장하려면 두 가지만 확인하면 된다.</p>
+                    <ul class="list-disc list-inside mt-3 space-y-1">
+                        <li><strong>① 첫 번째 도미노가 실제로 쓰러진다</strong> (출발 보장)</li>
+                        <li><strong>② "어떤 도미노가 쓰러지면 그 다음 도미노도 쓰러진다"</strong> (연쇄 보장)</li>
+                    </ul>
+                    <p class="mt-3"><strong>[연결]</strong> 이 원리가 자연수에 대한 명제 증명에 그대로 쓰인다. 이것이 오늘 배울 <strong>수학적 귀납법(Mathematical Induction)</strong>이다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 개념 1: 수학적 귀납법의 정의 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        수학적 귀납법
+                    </h3>
+                    <p class="mb-4 text-slate-700">자연수 \(n\) 에 대한 명제 \(p(n)\) 이 <strong>모든 자연수에 대하여 성립함</strong>을 증명하려면 다음 두 가지를 보이면 된다.</p>
+                    <div class="bg-white p-6 rounded-xl border-2 border-blue-200 font-bold text-lg text-slate-800 space-y-4">
+                        <div class="proof-step">
+                            <p class="font-black text-blue-700 mb-1">(ⅰ) 출발 단계 (Base Case)</p>
+                            <p>\(n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1\)</span></span> 일 때, 명제 \(p(n)\) 이 성립한다.</p>
+                        </div>
+                        <div class="proof-step">
+                            <p class="font-black text-blue-700 mb-1">(ⅱ) 귀납 단계 (Inductive Step)</p>
+                            <p>\(n=k\) 일 때 명제 \(p(n)\) 이 성립한다고 <strong>가정</strong>하면, \(n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(k+1\)</span></span> 일 때도 명제 \(p(n)\) 이 성립한다.</p>
+                        </div>
+                        <p class="text-sm text-slate-500 font-normal text-center mt-2 border-t border-slate-100 pt-4">
+                            (ⅰ)에 의해 \(n=1\) 성립 → (ⅱ)에 의해 \(n=2\) 성립 → \(n=3\) 성립 → \(\dots\) → 모든 자연수에 대해 성립
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 개념 2: 등식의 증명 모범 풀이 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        등식 증명의 표준 절차 (모범 풀이)
+                    </h3>
+                    <p class="mb-3 text-slate-700">모든 자연수 \(n\) 에 대하여 \(1+3+5+\dots+(2n-1)=n^2\) 임을 증명해 보자.</p>
+                    <div class="bg-white p-6 rounded-xl border border-blue-100 text-slate-800 space-y-3">
+                        <div class="proof-step">
+                            <p class="font-black text-blue-700">(ⅰ) \(n=1\) 일 때</p>
+                            <p>(좌변) \(=1\), (우변) \(=1^2=1\). 따라서 \(n=1\) 일 때 등식이 성립한다.</p>
+                        </div>
+                        <div class="proof-step">
+                            <p class="font-black text-blue-700">(ⅱ) \(n=k\) 일 때 등식이 성립한다고 가정하면</p>
+                            <p class="font-mono text-base">\(1+3+5+\dots+(2k-1)=k^2\)</p>
+                            <p class="mt-2">양변에 \(2k+1\) 을 더하면, \(n=k+1\) 일 때</p>
+                            <p>좌변 \(= \{1+3+\dots+(2k-1)\} + (2k+1) = k^2 + (2k+1) = \) <span class="reveal-box min-w-[100px]" onclick="toggleReveal(this)"><span class="ans">\((k+1)^2\)</span></span></p>
+                            <p>따라서 \(n=k+1\) 일 때도 등식이 성립한다.</p>
+                        </div>
+                        <p class="text-sm text-slate-600 font-medium text-center">(ⅰ)과 (ⅱ)에 의하여 모든 자연수 \(n\) 에 대하여 등식이 성립한다. ∎</p>
+                    </div>
+                </div>
+
+                <!-- 개념 3: m이상 자연수 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        \(m\) 이상의 모든 자연수에 대한 증명
+                    </h3>
+                    <p class="mb-4 text-slate-700">명제 \(p(n)\) 이 <strong>\(m\) 이상의 모든 자연수</strong>에 대해 성립함을 증명할 때는 출발점을 \(n=1\) 대신 <strong>\(n=m\)</strong> 으로 옮긴다.</p>
+                    <div class="bg-white p-6 rounded-xl border border-blue-100 text-slate-800 space-y-2">
+                        <p>(ⅰ) \(n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(m\)</span></span> 일 때 명제 \(p(n)\) 이 성립한다.</p>
+                        <p>(ⅱ) \(n=k\,(k \geq m)\) 일 때 \(p(n)\) 이 성립한다고 가정하면, \(n=k+1\) 일 때도 \(p(n)\) 이 성립한다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">기초 등식 증명</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-거듭제곱 합</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2 overflow-x-auto">1. 모든 자연수 \(n\) 에 대하여 다음 등식이 성립함을 수학적 귀납법으로 증명하시오.<br>
+                            \[1^2+2^2+3^2+\dots+n^2=\dfrac{n(n+1)(2n+1)}{6}\]</div>
+                        <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-400 bg-green-50">
+                            <strong>💡 풀이 절차:</strong> ① \(n=1\) 일 때 좌변·우변 비교 → ② \(n=k\) 가정식 적기 → ③ 양변에 \((k+1)^2\) 더하기 → ④ \(\dfrac{(k+1)(k+2)(2k+3)}{6}\) 형태로 정리.
+                        </div>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-곱의 합</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2 overflow-x-auto">2. 모든 자연수 \(n\) 에 대하여 다음 등식이 성립함을 수학적 귀납법으로 증명하시오.<br>
+                            \[1\cdot 2+2\cdot 3+3\cdot 4+\dots+n(n+1)=\dfrac{n(n+1)(n+2)}{3}\]</div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">부등식 증명 / 배수 증명</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-부등식 증명</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2 overflow-x-auto">3. \(h&gt;0\) 일 때, \(n \geq 2\) 인 모든 자연수 \(n\) 에 대하여 다음 부등식이 성립함을 수학적 귀납법으로 증명하시오. <strong>(베르누이 부등식)</strong><br>
+                            \[(1+h)^n &gt; 1+nh\]</div>
+                        <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                            <strong>💡 힌트:</strong> 출발점은 \(n=2\). 귀납 단계에서 \((1+h)^{k+1}=(1+h)\,(1+h)^k\) 로 분해한 뒤 가정식을 적용. \(kh^2 &gt; 0\) 임을 이용해 마지막 항을 버리면서 부등호를 유지하라.
+                        </div>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-배수 증명</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2 overflow-x-auto">4. 모든 자연수 \(n\) 에 대하여 \(3^{2n}-1\) 이 \(8\) 의 배수임을 수학적 귀납법으로 증명하시오.</div>
+                        <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                            <strong>💡 힌트:</strong> \(n=k\) 일 때 \(3^{2k}-1=8m\) (단, \(m\) 은 자연수) 으로 두고, \(3^{2(k+1)}=3^{2k}\cdot 9\) 임을 이용해 \(3^{2(k+1)}-1\) 을 \(8 \times (\dots)\) 의 형태로 변형하라.
+                        </div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 가정의 위치를 잘못 잡는 함정</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1순위!</div>
+                        <span class="badge badge-l3">심화-조화수 부등식</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">5. \(n \geq 2\) 인 모든 자연수 \(n\) 에 대하여 다음 부등식이 성립함을 수학적 귀납법으로 증명하시오.<br>
+                            \[1+\dfrac{1}{2}+\dfrac{1}{3}+\dots+\dfrac{1}{n} &gt; \dfrac{2n}{n+1}\]</div>
+                        <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
+                            <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
+                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                ① 출발점은 \(n=1\) 이 아니라 <strong>\(n=2\)</strong> 다. 좌변에 적어도 두 항이 있어야 한다.<br>
+                                ② 귀납 단계에서 양변에 더하는 것은 <strong>\(\dfrac{1}{k+1}\)</strong> 이다. (헷갈려서 \(\dfrac{1}{k}\) 를 더하면 다음 항으로 넘어가지 못한다.)<br>
+                                ③ 핵심 계산: \(\dfrac{2k}{k+1}+\dfrac{1}{k+1}\) 과 \(\dfrac{2(k+1)}{k+2}\) 의 대소를 비교하라. 통분 후 분자를 빼서 부호를 살펴야 한다.<br>
+                                ④ "\(\dfrac{2k+1}{k+1} &gt; \dfrac{2(k+1)}{k+2}\) 가 정말 성립하는가?" 를 의심하지 말고 직접 \((2k+1)(k+2) - 2(k+1)^2\) 를 계산하라.
+                            </p>
+                        </div>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto">
+                6. 수열 \(\{a_n\}\) 이 \(a_1=1,\ a_{n+1}=2a_n+1\,(n=1,2,3,\dots)\) 을 만족시킨다. 이때 \(a_n=2^n-1\) 임을 수학적 귀납법으로 증명하시오.
+            </div>
+            <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50">
+                <strong>💡 힌트:</strong> ① \(n=1\): \(a_1=2^1-1=1\) ✓ ② \(n=k\) 일 때 \(a_k=2^k-1\) 가정 → 점화식 \(a_{k+1}=2a_k+1\) 에 대입하여 \(a_{k+1}=2(2^k-1)+1=2^{k+1}-1\) 을 유도하라.
+            </div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (논리의 도미노)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"무한히 많은 자연수에 대해 성립한다"는 것을 단 두 단계만으로 증명할 수 있는 수학적 귀납법의 논리적 구조를 자기만의 언어로 정리해 보자. (도미노·기차 등 비유 환영)</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"수학적 귀납법은 무한 개의 명제를 단 두 단계 증명으로 한꺼번에 처리하는 강력한 논리적 도구임을 이해함. 출발 보장과 연쇄 보장이라는 두 조건이 동시에 충족될 때만 결론이 성립한다는 점에서, 한 조건이라도 빠지면 무너지는 도미노 체계와 동일함을 깨닫고 논리의 엄밀성에 대한 인식을 확장함."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">증명 과정에서 발생했던 실수(예: 가정식을 적지 않고 진행, \(n=k+1\) 식을 \(n=k\) 가정식과 연결하지 못함, 부등식의 양변에 더하는 항을 잘못 선택)와 이를 예방하기 위한 자신만의 점검 루틴을 적어보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"부등식의 귀납 단계에서 \(\dfrac{1}{k}\) 와 \(\dfrac{1}{k+1}\) 중 어느 쪽을 양변에 더해야 하는지 혼동하여 결합점을 놓치는 실수를 경험함. 이후 '가정식 좌변의 마지막 항 + 1번째 항을 양변에 더한다'는 원칙을 명시적으로 정리하고, 통분 후 분자 차이를 인수분해하는 검토 절차를 정착시킴."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (확장적 사고)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"출발 단계는 보였는데 귀납 단계가 거짓"이거나 "귀납 단계는 성립하지만 출발 단계가 거짓"인 경우, 명제 전체는 어떻게 되는가? 한 단계라도 빠지면 결론이 성립하지 않는 반례를 직접 만들어 추론해 보자.</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-sm py-12 font-bold opacity-50">
+            <p>© 2026 Mathematics Education Engineering. Designed for Digital Classrooms.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">QR 링크가 설정되지 않았습니다.</span>`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 1학기 대수 중간고사 — 자기평가 &amp; 성찰지</title>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => { return MathJax.startup.defaultPageReady().then(() => { document.body.classList.add('mathjax-ready'); }); } }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+        .thinking-space { min-height: 100px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 0.75rem; left: 1.25rem; color: #94a3b8; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        /* 문항 채점표 */
+        .item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+        .item-cell { border: 2px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem; transition: all 0.2s; background: white; }
+        .item-cell.correct { border-color: #10b981; background: #ecfdf5; }
+        .item-cell.wrong { border-color: #ef4444; background: #fef2f2; }
+        .item-cell.partial { border-color: #f59e0b; background: #fffbeb; }
+        .item-cell .qno { font-weight: 900; font-size: 1.05rem; color: #1e293b; }
+        .item-cell .meta { font-size: 0.7rem; color: #64748b; line-height: 1.3; margin-top: 2px; }
+        .item-cell .score { float: right; font-weight: 700; color: #475569; font-size: 0.85rem; }
+        .item-cell .btn-row { display: flex; gap: 4px; margin-top: 8px; }
+        .item-cell .grade-btn { flex: 1; padding: 4px 0; font-size: 0.75rem; font-weight: 700; border-radius: 0.4rem; border: 1.5px solid #cbd5e1; background: #f8fafc; cursor: pointer; transition: all 0.15s; }
+        .item-cell .grade-btn:hover { background: #e2e8f0; }
+        .item-cell .grade-btn.active-o { background: #10b981; color: white; border-color: #10b981; }
+        .item-cell .grade-btn.active-t { background: #f59e0b; color: white; border-color: #f59e0b; }
+        .item-cell .grade-btn.active-x { background: #ef4444; color: white; border-color: #ef4444; }
+
+        /* 단원 분석 */
+        .unit-bar { background: #e2e8f0; border-radius: 0.5rem; height: 28px; position: relative; overflow: hidden; }
+        .unit-bar .fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #1d4ed8); transition: width 0.4s; border-radius: 0.5rem 0 0 0.5rem; }
+        .unit-bar .label { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #1e293b; font-weight: 800; font-size: 0.85rem; }
+        .unit-bar .pct { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #fff; font-weight: 800; font-size: 0.85rem; mix-blend-mode: difference; }
+
+        /* 점수 디스플레이 */
+        .score-card { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; border-radius: 1.5rem; padding: 2rem; }
+        .score-num { font-size: 3.5rem; font-weight: 900; line-height: 1; }
+
+        /* 오답 유형 */
+        .err-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: #f1f5f9; border: 2px solid #e2e8f0; cursor: pointer; transition: all 0.15s; font-weight: 700; font-size: 0.9rem; }
+        .err-chip input { width: 16px; height: 16px; cursor: pointer; }
+        .err-chip:hover { background: #e2e8f0; }
+        .err-chip.checked { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: 1px solid #cbd5e1; padding: 1rem; margin-bottom: 1rem; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfdnB91RIgyTDPLlSZv-0xlIRqvWEx5DuSl1yfDYX9BPVMBBg/viewform";
+    </script>
+
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-12 border-b-4 border-slate-800 pb-8">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">중간고사 자기평가 &amp; 성찰지</h1>
+            <p class="text-slate-600 font-medium">"틀려야 는다" — 시험 결과는 끝이 아니라, 다음 학습의 출발점이다.</p>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 max-w-2xl mx-auto text-base">
+                <div class="bg-slate-100 p-3 rounded-lg border border-slate-200">학번/이름: <input type="text" class="ml-1 px-2 py-1 border border-slate-300 rounded bg-white w-32" placeholder="20101 홍길동"></div>
+                <div class="bg-slate-100 p-3 rounded-lg border border-slate-200">시험일: <input type="text" class="ml-1 px-2 py-1 border border-slate-300 rounded bg-white w-28"></div>
+                <div class="bg-slate-100 p-3 rounded-lg border border-slate-200">작성일: <input type="text" class="ml-1 px-2 py-1 border border-slate-300 rounded bg-white w-28"></div>
+            </div>
+        </header>
+
+        <!-- 00. 시험 개관 -->
+        <section class="card bg-gradient-to-br from-slate-50 to-blue-50 border-blue-100">
+            <h2 class="section-title text-blue-900 border-blue-200">00. 시험 개관 (Overview)</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-xl border border-blue-100 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">총 문항</p>
+                    <p class="text-3xl font-black text-blue-900 mt-1">23</p>
+                    <p class="text-xs text-slate-500">객19 + 서4</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-blue-100 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">총 배점</p>
+                    <p class="text-3xl font-black text-blue-900 mt-1">100</p>
+                    <p class="text-xs text-slate-500">점</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-blue-100 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">I. 지수·로그</p>
+                    <p class="text-3xl font-black text-emerald-700 mt-1">15</p>
+                    <p class="text-xs text-slate-500">문항 / ~66점</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-blue-100 text-center">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">II. 삼각함수</p>
+                    <p class="text-3xl font-black text-purple-700 mt-1">8</p>
+                    <p class="text-xs text-slate-500">문항 / ~34점</p>
+                </div>
+            </div>
+            <p class="text-sm text-slate-600">아래 단계를 순서대로 채워가며, 시험 결과를 객관적으로 진단하고 다음 학습의 방향을 스스로 설계한다.</p>
+
+            <!-- 작성 흐름 안내 -->
+            <div class="mt-6 bg-white border-2 border-blue-300 rounded-2xl p-5">
+                <p class="font-black text-blue-900 mb-3 text-lg">📌 작성 흐름 안내</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-3 rounded-r-xl">
+                        <p class="font-black text-emerald-900 mb-1">[01 · 02 섹션] — 선생님 자동 분석</p>
+                        <p class="text-slate-700">선생님이 채점 데이터를 엑셀로 분석하여 학생별 결과지를 별도 제공한다. 이 화면에서 직접 채점하며 본인 결과를 미리 확인하는 용도로 활용해도 좋다.</p>
+                    </div>
+                    <div class="bg-orange-50 border-l-4 border-orange-500 p-3 rounded-r-xl">
+                        <p class="font-black text-orange-900 mb-1">[03 ~ 06 섹션] — 학생이 폼으로 제출 ✍️</p>
+                        <p class="text-slate-700">아래 화면에서 먼저 사고를 정리한 뒤, 마지막의 QR코드(또는 클래스룸 과제)로 이동하여 폼에 입력·제출한다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01. 문항별 자기 채점 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 문항별 자기 채점 (Item Self-Assessment)</h2>
+            <p class="mb-4 text-slate-600">각 문항의 단원·유형·배점을 확인하고, 자신의 결과를 <strong>O(맞음) / △(부분/불확실) / X(틀림)</strong> 으로 표시한다. 화면 클릭 시 자동으로 점수가 합산된다.</p>
+
+            <div class="mb-6 grid grid-cols-3 gap-3 text-center text-sm font-bold no-print">
+                <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-3"><span class="text-emerald-700">O</span> = 정답 (전체 점수 획득)</div>
+                <div class="bg-amber-50 border-2 border-amber-200 rounded-xl p-3"><span class="text-amber-700">△</span> = 부분점수 / 찍어 맞음</div>
+                <div class="bg-red-50 border-2 border-red-200 rounded-xl p-3"><span class="text-red-700">X</span> = 오답 / 풀지 못함</div>
+            </div>
+
+            <h3 class="text-xl font-black text-slate-700 mt-6 mb-3">▣ 객관식 (19문항)</h3>
+            <div class="item-grid" id="grid-mc"></div>
+
+            <h3 class="text-xl font-black text-slate-700 mt-8 mb-3">▣ 서답형 (4문항)</h3>
+            <div class="item-grid" id="grid-sa"></div>
+
+            <!-- 점수 요약 -->
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="score-card text-center">
+                    <p class="text-blue-100 text-sm font-bold uppercase tracking-wider">예상 점수</p>
+                    <p class="score-num"><span id="total-score">0</span><span class="text-2xl">/100</span></p>
+                </div>
+                <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 text-center">
+                    <p class="text-emerald-700 text-sm font-bold uppercase tracking-wider">맞은 문항</p>
+                    <p class="text-4xl font-black text-emerald-800 mt-1"><span id="cnt-o">0</span><span class="text-xl">/23</span></p>
+                </div>
+                <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-6 text-center">
+                    <p class="text-red-700 text-sm font-bold uppercase tracking-wider">틀린 문항</p>
+                    <p class="text-4xl font-black text-red-800 mt-1"><span id="cnt-x">0</span><span class="text-xl">/23</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 단원별 성취도 -->
+        <section class="card border-l-[8px] border-emerald-500">
+            <h2 class="section-title">02. 단원별 성취도 분석</h2>
+            <p class="mb-6 text-slate-600">각 단원에서 자신이 획득한 점수의 비율을 한눈에 확인. 보완 우선순위는 막대가 짧은 단원부터.</p>
+
+            <div class="space-y-4" id="unit-bars"></div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-5">
+                    <p class="font-black text-emerald-900 mb-2">💪 자신 있는 단원 (Top 1)</p>
+                    <input type="text" class="w-full px-3 py-2 border border-emerald-300 rounded-lg bg-white" placeholder="예: I-2 로그함수">
+                    <p class="text-xs text-emerald-700 mt-2">→ 이 단원의 학습 전략을 다른 단원에도 어떻게 적용할 수 있을지 메모.</p>
+                    <div class="thinking-space mt-2" style="min-height: 70px;"></div>
+                </div>
+                <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-5">
+                    <p class="font-black text-red-900 mb-2">⚠️ 보완이 필요한 단원 (Top 1)</p>
+                    <input type="text" class="w-full px-3 py-2 border border-red-300 rounded-lg bg-white" placeholder="예: II-1 삼각방정식">
+                    <p class="text-xs text-red-700 mt-2">→ 왜 이 단원이 약한가? 개념·연습·실수 중 무엇이 원인인가?</p>
+                    <div class="thinking-space mt-2" style="min-height: 70px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             여기부터 학생 폼 제출 영역 (03 ~ 06)
+             ═══════════════════════════════════════════════ -->
+        <div class="my-12 relative">
+            <div class="border-t-4 border-dashed border-orange-400"></div>
+            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 text-white font-black px-6 py-2 rounded-full shadow-lg">
+                ✍️ 여기부터 폼에서 작성·제출
+            </div>
+        </div>
+
+        <!-- 03. 오답 유형 분석 -->
+        <section class="card border-l-[8px] border-orange-500">
+            <h2 class="section-title">03. 오답 유형 분석 (Error Pattern)</h2>
+            <p class="mb-6 text-slate-600">틀린 문항들이 어떤 오류 패턴에 해당하는지 모두 체크하고, 가장 빈번했던 유형을 파악한다.</p>
+
+            <div class="flex flex-wrap gap-3 mb-6">
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ① 개념 미숙 (정의·공식 자체를 몰랐음)</label>
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ② 계산 실수 (부호·약분·이항 오류)</label>
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ③ 시간 부족 (풀이 못 끝냄)</label>
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ④ 문제 해석 오류 (조건을 놓침/오해)</label>
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ⑤ 그래프 활용 미흡</label>
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ⑥ 치환·변형 발상 부재</label>
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ⑦ 도형·기하 사고 부족</label>
+                <label class="err-chip"><input type="checkbox" onchange="this.parentElement.classList.toggle('checked', this.checked)"> ⑧ 검산 부족 (답 확인 안함)</label>
+            </div>
+
+            <div class="bg-orange-50 border-2 border-orange-200 rounded-2xl p-5">
+                <p class="font-black text-orange-900 mb-2">📌 나의 가장 빈번한 오답 유형은?</p>
+                <input type="text" class="w-full px-3 py-2 border border-orange-300 rounded-lg bg-white" placeholder="예: ② 계산 실수 + ⑤ 그래프 활용 미흡">
+                <p class="text-xs text-orange-700 mt-2">→ 이 유형을 다음 시험에서 줄이기 위해 어떤 구체적 행동을 바꿀 것인가?</p>
+                <div class="thinking-space mt-2" style="min-height: 80px;"></div>
+            </div>
+        </section>
+
+        <!-- 04. 결정적 한 문항 심층 분석 -->
+        <section class="card border-l-[8px] border-red-500">
+            <h2 class="section-title">04. "결정적 한 문항" 심층 분석</h2>
+            <p class="mb-6 text-slate-600">틀린 문항 중 <strong>가장 아쉬운 1문항</strong>을 골라, 풀이 과정을 재구성하며 깊이 분석한다. (수업 시간 답지 배포 후 작성)</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="text-sm font-bold text-slate-600">문항 번호</label>
+                    <input type="text" class="w-full mt-1 px-3 py-2 border border-slate-300 rounded-lg" placeholder="예: 12번">
+                </div>
+                <div>
+                    <label class="text-sm font-bold text-slate-600">단원·유형</label>
+                    <input type="text" class="w-full mt-1 px-3 py-2 border border-slate-300 rounded-lg" placeholder="예: II-1 삼각방정식, 실근 개수 조건">
+                </div>
+            </div>
+
+            <div class="space-y-5">
+                <div>
+                    <p class="font-bold text-slate-700 mb-2">🔴 시험 당시 내 풀이 (어디까지 갔고, 어디서 막혔는가?)</p>
+                    <div class="thinking-space"></div>
+                </div>
+                <div>
+                    <p class="font-bold text-slate-700 mb-2">🟡 정답 풀이의 핵심 (답지/해설을 보고 새로 알게 된 것)</p>
+                    <div class="thinking-space"></div>
+                </div>
+                <div>
+                    <p class="font-bold text-slate-700 mb-2">🟢 오답 원인 한 줄 요약</p>
+                    <input type="text" class="w-full px-3 py-2 border border-slate-300 rounded-lg" placeholder="예: cos²θ → 1-sin²θ 치환을 떠올리지 못함">
+                </div>
+                <div>
+                    <p class="font-bold text-slate-700 mb-2">🔵 다음에 같은 유형을 만나면, 어떤 절차로 풀 것인가? (개인 SOP 한 줄)</p>
+                    <div class="thinking-space" style="min-height: 80px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05. 중간고사 이후 학습 계획 -->
+        <section class="card border-l-[8px] border-purple-500">
+            <h2 class="section-title">05. 중간고사 이후 학습 계획 (Action Plan)</h2>
+            <p class="mb-6 text-slate-600">진단 결과를 바탕으로 <strong>다음 2주간</strong>의 구체적 학습 계획을 수립한다.</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-purple-100 text-purple-900">
+                        <tr>
+                            <th class="p-3 text-left font-black">우선순위</th>
+                            <th class="p-3 text-left font-black">대상 단원·유형</th>
+                            <th class="p-3 text-left font-black">구체적 학습 행동</th>
+                            <th class="p-3 text-left font-black">완료 목표일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-purple-100">
+                            <td class="p-3 font-black text-red-600 text-center">1</td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded" placeholder="가장 약한 단원"></td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded" placeholder="예: 거듭제곱근 실수개수 표 작성 후 유형별 5문항 반복"></td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded" placeholder="2026-MM-DD"></td>
+                        </tr>
+                        <tr class="border-b border-purple-100">
+                            <td class="p-3 font-black text-orange-600 text-center">2</td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded"></td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded"></td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded"></td>
+                        </tr>
+                        <tr class="border-b border-purple-100">
+                            <td class="p-3 font-black text-yellow-600 text-center">3</td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded"></td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded"></td>
+                            <td class="p-2"><input type="text" class="w-full px-2 py-1 border border-slate-300 rounded"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 bg-purple-50 border-2 border-purple-200 rounded-2xl p-5">
+                <p class="font-black text-purple-900 mb-2">🎯 기말고사를 향한 나의 한 줄 다짐</p>
+                <input type="text" class="w-full px-3 py-2 border border-purple-300 rounded-lg bg-white text-base" placeholder="예: 매일 30분, 그래프를 직접 그려가며 푸는 습관을 정착시킨다.">
+            </div>
+        </section>
+
+        <!-- 06. 메타인지 성찰 + 제출 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-6 text-blue-400 border-b border-slate-700 pb-4">06. 메타인지 성찰 (Exit Ticket)</h2>
+            <p class="text-slate-300 font-bold mb-6">시험 결과 자체보다 <span class="text-yellow-400">"무엇을 깨달았는가"</span> 가 중요하다. 아래 3가지 차원 중 하나 이상을 골라 통합 서술하고, 폼으로 제출한다.</p>
+
+            <div class="space-y-3">
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                    <p class="text-blue-400 font-bold mb-1">🧠 인지(Cognitive) 차원</p>
+                    <p class="text-slate-300 text-sm">시험을 통해 "내가 알고 있다고 착각했지만 사실은 모르고 있던 개념"이 무엇이었는가? 그 개념을 어떻게 다시 학습할 것인가?</p>
+                </div>
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                    <p class="text-orange-400 font-bold mb-1">💭 정서(Affective) 차원</p>
+                    <p class="text-slate-300 text-sm">시험 직후 가장 강했던 감정(좌절·안도·자신감·불안)은 무엇이며, 그 감정을 다음 학습에 어떻게 건강하게 활용할 수 있을까?</p>
+                </div>
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                    <p class="text-green-400 font-bold mb-1">🔁 행동(Behavioral) 차원</p>
+                    <p class="text-slate-300 text-sm">시험 준비 과정의 학습 습관(시간 분배·문제 풀이 양·복습 빈도) 중 <strong>버려야 할 한 가지</strong>와 <strong>새로 시작할 한 가지</strong>는?</p>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col lg:flex-row gap-8 items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-slate-300 font-bold mb-3">📝 통합 서술 (작성 후 폼 제출)</p>
+                    <textarea class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 placeholder-slate-500" rows="6" placeholder="위 3가지 차원 중 하나 이상을 골라, 자신의 시험 경험을 통합적으로 서술한다. (200자 이상 권장)"></textarea>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white rounded-3xl shadow-2xl shrink-0">
+                    <div id="qr-container" class="w-44 h-44 bg-slate-100 rounded-xl flex items-center justify-center mb-3 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-sm py-10 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 중간고사 자기평가 &amp; 성찰지</p>
+            <p class="text-xs mt-1">"시험은 진단이고, 성찰은 처방이다."</p>
+        </footer>
+    </div>
+
+    <script>
+        // ─────────────────────────────────────────────
+        // 문항 데이터 (단원·유형·배점)
+        // ─────────────────────────────────────────────
+        const ITEMS = [
+            // 객관식
+            {n:1,  type:'mc', score:3.6, unit:'I-2', unitName:'로그',         topic:'로그 계산'},
+            {n:2,  type:'mc', score:3.6, unit:'II-1', unitName:'삼각함수',    topic:'사분면별 부호 (tan)'},
+            {n:3,  type:'mc', score:3.7, unit:'I-1', unitName:'지수',         topic:'거듭제곱근 자연수 조건'},
+            {n:4,  type:'mc', score:3.7, unit:'I-2', unitName:'로그',         topic:'지수→로그 치환'},
+            {n:5,  type:'mc', score:3.8, unit:'I-1', unitName:'지수',         topic:'n제곱근 실수 개수'},
+            {n:6,  type:'mc', score:3.8, unit:'I-3', unitName:'지수·로그 부등식', topic:'연립부등식'},
+            {n:7,  type:'mc', score:4.1, unit:'I-3', unitName:'지수·로그 방정식', topic:'2^x 치환 (이차)'},
+            {n:8,  type:'mc', score:4.1, unit:'II-1', unitName:'삼각방정식',   topic:'sin/cos 변환 + 치환'},
+            {n:9,  type:'mc', score:4.2, unit:'I-4', unitName:'지수·로그함수 그래프', topic:'두 곡선과 직선'},
+            {n:10, type:'mc', score:4.2, unit:'I-2', unitName:'로그 활용',     topic:'실생활 (감산·증산)'},
+            {n:11, type:'mc', score:4.3, unit:'II-2', unitName:'삼각함수 그래프', topic:'y=sin ax 주기'},
+            {n:12, type:'mc', score:4.3, unit:'II-1', unitName:'삼각방정식',   topic:'실근 개수 조건'},
+            {n:13, type:'mc', score:4.3, unit:'I-4', unitName:'로그함수',     topic:'두 로그함수 교점 범위'},
+            {n:14, type:'mc', score:4.4, unit:'I-4', unitName:'지수·로그함수', topic:'대칭성 + 점과 직선 거리'},
+            {n:15, type:'mc', score:4.4, unit:'I-4', unitName:'로그함수',     topic:'그래프 + 선분 길이'},
+            {n:16, type:'mc', score:4.7, unit:'II-1', unitName:'삼각방정식',   topic:'sin·cos 합성/변형'},
+            {n:17, type:'mc', score:4.8, unit:'II-2', unitName:'삼각함수 응용', topic:'직사각형 내접'},
+            {n:18, type:'mc', score:4.9, unit:'I-2', unitName:'로그',         topic:'식의 정수값 조건'},
+            {n:19, type:'mc', score:5.1, unit:'I-3', unitName:'로그 부등식',   topic:'절댓값 + 진수 조건'},
+            // 서답형
+            {n:1,  type:'sa', score:4.7, unit:'I-1', unitName:'지수',         topic:'지수법칙 계산'},
+            {n:2,  type:'sa', score:4.9, unit:'II-1', unitName:'삼각함수 종합', topic:'이차부등식 + 합성'},
+            {n:3,  type:'sa', score:5.1, unit:'II-2', unitName:'삼각함수 활용', topic:'삼각형 내심 각'},
+            {n:4,  type:'sa', score:5.3, unit:'I-4', unitName:'지수함수',     topic:'절댓값 그래프 교점'}
+        ];
+
+        // 단원 그룹화 (대단원·중단원 묶기)
+        const UNIT_GROUPS = [
+            {key:'I-1', name:'I-1. 지수 (거듭제곱근)',      color:'#10b981'},
+            {key:'I-2', name:'I-2. 로그',                  color:'#10b981'},
+            {key:'I-3', name:'I-3. 지수·로그 방정식·부등식', color:'#10b981'},
+            {key:'I-4', name:'I-4. 지수·로그 함수 그래프',   color:'#10b981'},
+            {key:'II-1', name:'II-1. 삼각함수·삼각방정식',   color:'#a855f7'},
+            {key:'II-2', name:'II-2. 삼각함수 그래프·활용',  color:'#a855f7'}
+        ];
+
+        // ─────────────────────────────────────────────
+        // 문항 셀 렌더링
+        // ─────────────────────────────────────────────
+        function renderItems() {
+            const mc = document.getElementById('grid-mc');
+            const sa = document.getElementById('grid-sa');
+            ITEMS.forEach((it, idx) => {
+                const cell = document.createElement('div');
+                cell.className = 'item-cell';
+                cell.dataset.idx = idx;
+                cell.dataset.grade = '';
+                cell.innerHTML = `
+                    <div>
+                        <span class="qno">${it.type === 'sa' ? '서답' : ''}${it.n}번</span>
+                        <span class="score">${it.score}점</span>
+                    </div>
+                    <div class="meta">${it.unit} · ${it.unitName}<br>${it.topic}</div>
+                    <div class="btn-row">
+                        <button class="grade-btn" onclick="setGrade(${idx},'O')">O</button>
+                        <button class="grade-btn" onclick="setGrade(${idx},'T')">△</button>
+                        <button class="grade-btn" onclick="setGrade(${idx},'X')">X</button>
+                    </div>
+                `;
+                (it.type === 'mc' ? mc : sa).appendChild(cell);
+            });
+        }
+
+        // ─────────────────────────────────────────────
+        // 채점·합산
+        // ─────────────────────────────────────────────
+        function setGrade(idx, grade) {
+            const cell = document.querySelector(`.item-cell[data-idx="${idx}"]`);
+            const oldGrade = cell.dataset.grade;
+            const newGrade = (oldGrade === grade) ? '' : grade;
+            cell.dataset.grade = newGrade;
+            cell.classList.remove('correct', 'partial', 'wrong');
+            if (newGrade === 'O') cell.classList.add('correct');
+            else if (newGrade === 'T') cell.classList.add('partial');
+            else if (newGrade === 'X') cell.classList.add('wrong');
+            // 버튼 활성 상태
+            const btns = cell.querySelectorAll('.grade-btn');
+            btns.forEach(b => b.classList.remove('active-o','active-t','active-x'));
+            if (newGrade === 'O') btns[0].classList.add('active-o');
+            else if (newGrade === 'T') btns[1].classList.add('active-t');
+            else if (newGrade === 'X') btns[2].classList.add('active-x');
+            recompute();
+        }
+
+        function recompute() {
+            let total = 0, oCnt = 0, xCnt = 0;
+            const unitMap = {};
+            UNIT_GROUPS.forEach(u => unitMap[u.key] = {got:0, max:0});
+
+            ITEMS.forEach((it, idx) => {
+                const grade = document.querySelector(`.item-cell[data-idx="${idx}"]`).dataset.grade;
+                unitMap[it.unit].max += it.score;
+                if (grade === 'O') { total += it.score; oCnt++; unitMap[it.unit].got += it.score; }
+                else if (grade === 'T') { total += it.score * 0.5; unitMap[it.unit].got += it.score * 0.5; }
+                else if (grade === 'X') { xCnt++; }
+            });
+
+            document.getElementById('total-score').textContent = total.toFixed(1);
+            document.getElementById('cnt-o').textContent = oCnt;
+            document.getElementById('cnt-x').textContent = xCnt;
+
+            // 단원 막대 갱신
+            const ub = document.getElementById('unit-bars');
+            ub.innerHTML = '';
+            UNIT_GROUPS.forEach(u => {
+                const data = unitMap[u.key];
+                const pct = data.max > 0 ? (data.got / data.max * 100) : 0;
+                const row = document.createElement('div');
+                row.innerHTML = `
+                    <div class="flex justify-between mb-1 text-sm font-bold text-slate-700">
+                        <span>${u.name}</span>
+                        <span>${data.got.toFixed(1)} / ${data.max.toFixed(1)} 점 (${pct.toFixed(0)}%)</span>
+                    </div>
+                    <div class="unit-bar"><div class="fill" style="width:${pct}%; background:${u.color}"></div></div>
+                `;
+                ub.appendChild(row);
+            });
+        }
+
+        // 초기 렌더
+        renderItems();
+        recompute();
+
+        // QR 코드
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http') && !GOOGLE_FORM_URL.includes('PLACEHOLDER')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-xs text-center font-bold px-2">QR 링크 미설정<br>(클래스룸 과제 링크 입력 후 활성화)</span>`;
+            }
+        });
+    </script>
+</body>
+</html>

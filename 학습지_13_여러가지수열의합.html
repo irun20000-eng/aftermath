@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 여러 가지 수열의 합</title>
+    <!-- MathJax 최적화 설정 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'mathjax-process'
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady().then(() => {
+                        document.body.classList.add('mathjax-ready');
+                    });
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+        
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+        
+        .reveal-box { 
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+        
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+        
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        
+        @media print { 
+            .no-print { display: none !important; } 
+            body { opacity: 1; background: white; } 
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "13차시 여러 가지 수열의 합";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME);
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-2. 수열의 합</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">13차시: 여러 가지 수열의 합 (부분분수)</span>
+            </div>
+        </header>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up & Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">다음을 모두 더하라는 문제를 만났다고 가정해 보자.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4 text-center text-xl font-bold">
+                    \(\frac{1}{1 \times 2} + \frac{1}{2 \times 3} + \frac{1}{3 \times 4} + \dots + \frac{1}{9 \times 10}\)
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 이 분수들을 모두 통분해서 더하려면 분모가 무려 \(1 \times 2 \times 3 \times \dots \times 10\) 이 되어버린다. 상상만 해도 끔찍하다. 만약 이 항들이 서로서로 상쇄되어 지워지게 만들 수 있다면 어떨까? 덧셈을 <strong>'뺄셈'</strong>으로 바꾸는 방법은 없을까?</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 분모가 두 수의 곱으로 이루어진 분수를 두 개의 분수의 '뺄셈'으로 쪼개는 마법, 바로 <strong>부분분수 분해</strong>가 해결책이다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 부분분수 변형 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        부분분수로의 변형 (소거의 마법)
+                    </h3>
+                    <p class="mb-4 text-slate-700">두 식 \(A\), \(B\) (\(A \neq B\))에 대하여 다음이 성립한다. 이 식은 우변을 통분해보면 쉽게 좌변과 같아짐을 확인할 수 있다.</p>
+                    <div class="bg-white p-6 rounded-xl border border-blue-100 font-bold text-lg text-slate-800 flex flex-col items-center gap-4">
+                        <div class="text-2xl text-blue-600 mb-2">
+                            \(\frac{1}{AB} =\) <span class="reveal-box min-w-[200px]" onclick="toggleReveal(this)"><span class="ans">\(\frac{1}{B-A} \left( \frac{1}{A} - \frac{1}{B} \right)\)</span></span>
+                        </div>
+                        <p class="text-sm text-slate-500 font-normal w-full text-center mt-2 border-t border-slate-100 pt-4">
+                            대부분의 수열 문제에서는 \(B-A\) 가 <strong>일정한 상수</strong>가 되도록 \(A\)와 \(B\)를 잡는다. (보통 작은 수를 \(A\), 큰 수를 \(B\)로 둔다.)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 무리식을 포함한 수열의 합 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        무리식을 포함한 수열의 합
+                    </h3>
+                    <p class="mb-4 text-slate-700">분모에 무리식(\(\sqrt{\ \ }\))이 포함된 수열의 합은 <strong>분모의 유리화</strong>를 통해 뺄셈 꼴로 바꾼 뒤 연쇄적으로 소거한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-blue-100 font-bold text-lg text-slate-800 flex items-center justify-center flex-wrap gap-4">
+                        \(\frac{1}{\sqrt{k+1} + \sqrt{k}} =\) <span class="reveal-box min-w-[200px]" onclick="toggleReveal(this)"><span class="ans">\(\sqrt{k+1} - \sqrt{k}\)</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">기본 형태의 변형과 연쇄 소거</p>
+                    </div>
+                    
+                    <div>
+                        <span class="badge badge-l1">기초-부분분수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2 overflow-x-auto">1. 다음 수열의 첫째항부터 제\(n\)항까지의 합을 구하시오. <br>\(\sum_{k=1}^{n} \frac{1}{k(k+1)}\)</div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">유리화와 변형 적용 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-무리식 유리화</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2 overflow-x-auto">2. \(\sum_{k=1}^{15} \frac{1}{\sqrt{k+1} + \sqrt{k}}\) 의 값을 구하시오.</div>
+                        <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                            <strong>💡 힌트:</strong> 분모의 켤레무리수를 분모와 분자에 각각 곱하여 유리화하면 뺄셈 꼴이 나온다. \(k=1, 2, 3\) 을 대입하며 어떻게 지워지는지 관찰하자.
+                        </div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 오개념을 바로잡는 심화 단계</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-대칭성의 착각</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">3. 다음 합을 구하시오. <br>\(\sum_{k=1}^{10} \frac{1}{(2k-1)(2k+1)}\)</div>
+                        <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
+                            <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
+                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                \(\frac{1}{B-A}\) 에서 상수 \(\frac{1}{2}\) 이 튀어나오는 것을 자주 까먹는다. 반드시 앞에 묶어두자.<br>
+                                또한, 연쇄적으로 지워질 때 <strong>앞에서 몇 번째 항이 살아남는지</strong> 정확히 확인해야 한다.<br>
+                                "앞에서 첫 번째가 남으면, 뒤에서도 첫 번째가 남는다"는 대칭성을 명심하라. 함부로 눈대중으로 지우다간 남아야 할 항을 지우게 된다.
+                            </p>
+                        </div>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto">4. 수열 \(\{a_n\}\)의 일반항이 \(a_n = n^2 + 2n\) 일 때, \(\sum_{k=1}^{8} \frac{1}{a_k}\) 의 값을 구하시오.</div>
+            <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50">
+                <strong>💡 힌트:</strong> 먼저 분모 \(n^2+2n\)을 인수분해하여 \(n(n+2)\) 로 만든다. 부분분수로 쪼갤 때 바로 이웃한 항이 지워지지 않고 한 칸 건너뛰어서 지워짐을 주의하여 남는 항들을 꼼꼼히 챙기자.
+            </div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (소거의 원리)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">부분분수나 무리식 유리화를 통해 거대한 덧셈이 연쇄적인 뺄셈으로 바뀌며 소거되는 현상을 보면서 수학 식의 변형이 문제 해결에 어떤 힘을 발휘하는지 느낀 점을 서술해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"복잡해 보이는 수열의 덧셈도 부분분수 변형을 통해 항 사이의 뺄셈 구조로 바꾸면 도미노처럼 소거됨을 확인함. 겉보기엔 어려운 문제라도 적절한 식 변형을 통해 규칙성을 찾아내는 수학적 사고의 묘미를 경험함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">연쇄 소거를 할 때, 항들이 지워지고 남는 부분을 파악하는 과정에서 발생했던 실수(예: 괄호 앞 상수를 빼먹음, 남는 항의 대칭성 착각)와 이를 예방하는 자신만의 체크리스트를 적어보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"한 칸 건너뛰어 소거되는 수열 합에서, 살아남는 항을 착각하여 오답을 도출함. 이후 지워지는 패턴의 대칭성(앞에서 남는 항의 개수와 뒤에서 남는 항의 개수가 같음)을 먼저 시각적으로 확인하고 식을 정리하는 검토 단계를 추가함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (확장적 사고)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">\(\frac{1}{A B C}\) 처럼 세 수의 곱으로 이루어진 분수도 두 개의 부분분수로 쪼갤 수 있을까? 만약 가능하다면 어떤 형태(\(\frac{1}{A B} - \frac{1}{B C}\))를 이용해 유도할 수 있을지 추론해 보자.</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-sm py-12 font-bold opacity-50">
+            <p>© 2026 Mathematics Education Engineering. Designed for Digital Classrooms.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">QR 링크가 설정되지 않았습니다.</span>`;
+            }
+        });
+    </script>
+</body>
+</html>

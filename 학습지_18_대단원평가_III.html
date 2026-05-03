@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 대단원 평가 (수열)</title>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => { return MathJax.startup.defaultPageReady().then(() => { document.body.classList.add('mathjax-ready'); }); } }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+        .reveal-box { display: inline-flex; align-items: center; justify-content: center; min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1; border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden; transition: all 0.2s; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .map-card { background: white; border-radius: 1rem; border: 2px solid #e2e8f0; padding: 1rem; transition: all 0.2s; }
+        .map-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+        @media print { .no-print { display: none !important; } body { opacity: 1; background: white; } .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; } .thinking-space { min-height: 100px; } }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "18차시 대단원 평가 (III 수열)";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME);
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">대단원: III. 수열</span>
+                <span class="bg-purple-100 text-purple-800 px-5 py-2 rounded-lg border border-purple-200 shadow-sm">18차시: 대단원 평가</span>
+            </div>
+        </header>
+
+        <!-- 00. 단원 개념 구조화 -->
+        <section class="card bg-gradient-to-br from-purple-50 to-indigo-50 border-purple-100">
+            <h2 class="section-title text-purple-900 border-purple-200">00. 대단원 개념 구조화 (Concept Mapping)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-6">대단원 III(수열) 전체를 한 판으로 정리한다. 빈칸을 클릭하여 핵심 공식을 백지 복습하라.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="map-card">
+                        <div class="font-bold text-purple-800 text-lg border-b border-purple-100 pb-2 mb-3">III-1. 등차·등비수열</div>
+                        <ul class="space-y-2 text-base">
+                            <li>등차 일반항: \(a_n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a+(n-1)d\)</span></span></li>
+                            <li>등차 합: \(S_n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{n(a+l)}{2}\)</span></span></li>
+                            <li>등비 일반항: \(a_n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a r^{n-1}\)</span></span></li>
+                            <li>등비 합 (\(r \neq 1\)): \(S_n=\) <span class="reveal-box min-w-[120px]" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{a(r^n-1)}{r-1}\)</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="map-card">
+                        <div class="font-bold text-purple-800 text-lg border-b border-purple-100 pb-2 mb-3">III-2. 수열의 합 (Σ)</div>
+                        <ul class="space-y-2 text-base">
+                            <li>\(\displaystyle\sum_{k=1}^{n} c=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(cn\)</span></span></li>
+                            <li>\(\displaystyle\sum_{k=1}^{n} k=\) <span class="reveal-box min-w-[100px]" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{n(n+1)}{2}\)</span></span></li>
+                            <li>\(\displaystyle\sum_{k=1}^{n} k^2=\) <span class="reveal-box min-w-[140px]" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{n(n+1)(2n+1)}{6}\)</span></span></li>
+                            <li>부분분수: \(\dfrac{1}{AB}=\) <span class="reveal-box min-w-[140px]" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{1}{B-A}\!\left(\dfrac{1}{A}-\dfrac{1}{B}\right)\)</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="map-card">
+                        <div class="font-bold text-purple-800 text-lg border-b border-purple-100 pb-2 mb-3">III-3. 수학적 귀납법</div>
+                        <ul class="space-y-2 text-base">
+                            <li>귀납적 정의: 첫째항 + <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">관계식</span></span></li>
+                            <li>등차: \(a_{n+1}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a_n+d\)</span></span></li>
+                            <li>등비: \(a_{n+1}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(r\,a_n\)</span></span></li>
+                            <li>증명: (ⅰ) \(n=1\) (ⅱ) \(n=k \Rightarrow\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(n=k+1\)</span></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01. 실전 훈련 (하/중) -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 실전 훈련 — 하·중 (Textbook Training)</h2>
+            <p class="mb-8 text-slate-600 font-bold">미래엔 교과서 대단원 평가 문항 (난이도순). 시간 기준 약 25분.</p>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- 01 -->
+                <div>
+                    <span class="badge badge-l1">[Type: 일반항 항 결정] 하</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">1. 수열 \(\{a_n\}\) 의 일반항이 \(a_n=3^n-3\) 일 때, \(78\) 은 이 수열의 제몇 항인지 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.166 대단원 01번)</span></div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 02 -->
+                <div>
+                    <span class="badge badge-l1">[Type: 등차 연립조건] 하</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">2. 등차수열 \(\{a_n\}\) 에 대하여 \(a_1=4a_3,\ a_2+a_{10}=14\) 일 때, \(a_5\) 는? <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.166 대단원 02번)</span></div>
+                    <div class="pl-6 text-base">① \(4\) &nbsp;&nbsp; ② \(5\) &nbsp;&nbsp; ③ \(6\) &nbsp;&nbsp; ④ \(7\) &nbsp;&nbsp; ⑤ \(8\)</div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 03 -->
+                <div>
+                    <span class="badge badge-l1">[Type: 등차중항 + 곱조건] 하</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">3. 세 수 \(a, b, c\) 가 이 순서대로 등차수열을 이루고 다음을 모두 만족시킬 때, \(a^2+b^2+c^2\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.166 대단원 03번)</span></div>
+                    <div class="pl-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-base">
+                        <p>(가) \(a+b+c=6\)</p>
+                        <p>(나) \(abc=-10\)</p>
+                    </div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 04 -->
+                <div>
+                    <span class="badge badge-l2">[Type: 등차 합의 최댓값] 중</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">4. 첫째항이 \(30\) 인 등차수열 \(\{a_n\}\) 의 첫째항부터 제\(n\)항까지의 합 \(S_n\) 에 대하여 \(S_5=S_{11}\) 이다. 이때 \(S_n\) 의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.166 대단원 04번)</span></div>
+                    <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                        <strong>💡 힌트:</strong> \(S_5=S_{11}\) 이면 \(a_6+a_7+\dots+a_{11}=0\). 이를 이용해 공차 \(d\) 를 결정한 뒤, \(a_n \geq 0\) 인 마지막 \(n\) 에서 \(S_n\) 이 최대가 됨을 활용하라.
+                    </div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 05 -->
+                <div>
+                    <span class="badge badge-l2">[Type: 합 → 일반항 역추적] 중</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">5. 공차가 \(d\) 인 등차수열 \(\{a_n\}\) 의 첫째항부터 제\(n\)항까지의 합 \(S_n\) 이 \(S_n=n^2-4n\) 일 때, \(a_1+d\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.166 대단원 05번)</span></div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 06 -->
+                <div>
+                    <span class="badge badge-l2">[Type: 등비 비율 조건] 중</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">6. 모든 항이 양수인 등비수열 \(\{a_n\}\) 에 대하여 \(a_2=27,\ a_7=\dfrac{1}{3}a_5\) 일 때, \(a_6\) 을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.166 대단원 06번)</span></div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 07 -->
+                <div>
+                    <span class="badge badge-l2">[Type: 등비 합 비율] 중</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">7. 등비수열 \(\{a_n\}\) 의 첫째항부터 제\(n\)항까지의 합 \(S_n\) 에 대하여 \(\dfrac{S_6}{S_3}=17\) 일 때, \(\dfrac{a_6}{a_3}\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.166 대단원 07번)</span></div>
+                    <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                        <strong>💡 힌트:</strong> \(\dfrac{S_6}{S_3}=\dfrac{r^6-1}{r^3-1}=r^3+1\) 임을 이용. \(\dfrac{a_6}{a_3}=r^3\).
+                    </div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 08 -->
+                <div>
+                    <span class="badge badge-l2">[Type: Σ 망원합] 중</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">8. 수열 \(\{a_n\}\) 은 \(a_1=2\) 이고, 모든 자연수 \(n\) 에 대하여 \(\displaystyle\sum_{k=1}^{n}(a_k-a_{k+1})=-n^2+n\) 을 만족시킨다. \(a_{11}\) 을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 08번)</span></div>
+                    <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                        <strong>💡 힌트:</strong> \(\sum(a_k-a_{k+1})=a_1-a_{n+1}\) (망원합). \(n=10\) 대입하여 \(a_{11}\) 도출.
+                    </div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 09 -->
+                <div>
+                    <span class="badge badge-l2">[Type: Σ 성질] 중</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">9. 수열 \(\{a_n\}\) 에 대하여 \(\displaystyle\sum_{k=1}^{5}(3a_k+2)=40\) 일 때, \(\displaystyle\sum_{k=1}^{5}a_k\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 09번)</span></div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 10 -->
+                <div>
+                    <span class="badge badge-l2">[Type: 다항식 나머지 + Σ] 중</span>
+                    <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">10. 자연수 \(n\) 에 대하여 다항식 \(x^2+2x-3\) 을 \(x-n\) 으로 나누었을 때의 나머지를 \(a_n\) 이라 할 때, \(\displaystyle\sum_{k=1}^{7}(a_k-2k^2+k)\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 10번)</span></div>
+                    <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                        <strong>💡 힌트:</strong> 나머지정리에 의해 \(a_n=n^2+2n-3\). 대입 후 \(\sum k^2,\ \sum k\) 공식 활용.
+                    </div>
+                    <div class="thinking-space"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 고난도 도전 -->
+        <section class="card border-l-[8px] border-red-500">
+            <h2 class="section-title">02. 고난도 도전 (Advanced Challenge &amp; Trap Analysis)</h2>
+            <p class="mb-8 text-slate-600 font-bold">교과서 발전·서술형 심화 문항 + 함정 분석.</p>
+            <div class="grid grid-cols-1 gap-12">
+
+                <!-- 11 -->
+                <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
+                    <span class="badge badge-l3">[Type: Σ-항 연립] 상</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">11. 수열 \(\{a_n\}\) 이 모든 자연수 \(n\) 에 대하여 \(\displaystyle\sum_{k=1}^{n}\dfrac{1}{(2k-1)a_k}=n^2-2n\) 을 만족시킬 때, \(\displaystyle\sum_{k=1}^{10}a_k\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 11번)</span></div>
+                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
+                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
+                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                            \(S_n - S_{n-1}\) 으로 \(\dfrac{1}{(2n-1)a_n}\) 을 추출 (단 \(n \geq 2\)). 이로부터 \(a_n\) 의 일반항을 구한 뒤 \(\sum a_k\) 계산. \(n=1\) 항은 별도로 직접 대입해 검증해야 한다.
+                        </p>
+                    </div>
+                    <div class="thinking-space bg-white"></div>
+                </div>
+
+                <!-- 12 -->
+                <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
+                    <span class="badge badge-l3">[Type: 조건 분기 점화식] 상</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">12. 수열 \(\{a_n\}\) 이 모든 자연수 \(n\) 에 대하여 \(a_{n+1}=\begin{cases}\dfrac{a_n+2}{2} & (a_n \text{이 짝수}) \\ \dfrac{a_n-1}{2} & (a_n \text{이 홀수})\end{cases}\) 을 만족시킨다. \(a_1=20\) 일 때, \(\displaystyle\sum_{k=1}^{8}a_k\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 12번)</span></div>
+                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
+                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
+                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                            매 단계 \(a_n\) 의 짝/홀을 정확히 판별. 직접 \(a_1, a_2, \dots, a_8\) 을 표로 추적하라. (\(20 \to 11 \to 5 \to 2 \to 2 \to 2 \to \dots\)) — 일정 시점에 항이 고정되는지 관찰.
+                        </p>
+                    </div>
+                    <div class="thinking-space bg-white"></div>
+                </div>
+
+                <!-- 13 -->
+                <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
+                    <span class="badge badge-l3">[Type: 귀납법 빈칸 추론] 상</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">13. 다음은 모든 자연수 \(n\) 에 대하여 \(4^n-1\) 이 \(3\) 의 배수임을 수학적 귀납법으로 증명한 것이다. (가)와 (나)에 알맞은 수의 합은? <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 13번)</span></div>
+                    <div class="pl-6 bg-slate-50 p-5 rounded-xl border border-slate-200 text-base space-y-2">
+                        <p>(ⅰ) \(n=1\) 일 때 \(4^1-1=3\) 은 \(3\) 의 배수.</p>
+                        <p>(ⅱ) \(n=k\) 일 때 \(4^k-1\) 이 \(3\) 의 배수라 가정. 즉 \(4^k-1=3m\) (단, \(m\) 자연수) 이므로 \(4^k=3m+1\).</p>
+                        <p>\(n=k+1\) 일 때<br>
+                            \(\quad 4^{k+1}-1=\) <strong class="text-blue-700">(가)</strong> \(\times 4^k - 1 =\) <strong class="text-blue-700">(나)</strong> \((4m+1)\)</p>
+                    </div>
+                    <div class="pl-6 mt-3 text-base">① \(6\) &nbsp;&nbsp; ② \(7\) &nbsp;&nbsp; ③ \(8\) &nbsp;&nbsp; ④ \(9\) &nbsp;&nbsp; ⑤ \(10\)</div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 14 (서술형) -->
+                <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
+                    <span class="badge badge-l3">[Type: 등차·등비 동시] 상 (서술형)</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">14. 두 실수 \(a\) 와 \(b\) 가 다음을 모두 만족시킬 때, \(a+b\) 의 값을 구하시오. (단, \(a&gt;0\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.168 대단원 14번 서술형)</span></div>
+                    <div class="pl-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-base">
+                        <p>(가) 세 수 \(a, b, 24\) 가 이 순서대로 등차수열을 이룬다.</p>
+                        <p>(나) 세 수 \(4, a, b\) 가 이 순서대로 등비수열을 이룬다.</p>
+                    </div>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 15 (서술형) -->
+                <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
+                    <span class="badge badge-l3">[Type: 무리식 + Σ + 부분분수] 상 (서술형)</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">15. \(n\) 이 자연수일 때, \(x\) 에 대한 이차방정식 \(x^2-(4n+1)x+4n^2+2n=0\) 의 두 근을 \(\alpha_n,\ \beta_n\,(\alpha_n &gt; \beta_n)\) 이라 하자. \(\displaystyle\sum_{n=1}^{24}\dfrac{1}{\sqrt{\alpha_n}-\sqrt{\beta_n}}=\displaystyle\sum_{k=l}^{m}\sqrt{k}\) 를 만족시키는 두 자연수 \(l\) 과 \(m\) 에 대하여 \(l+m\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.168 대단원 15번 서술형)</span></div>
+                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
+                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
+                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                            ① 근의 공식 또는 인수분해로 \(\alpha_n=2n+1,\ \beta_n=2n\) 도출. ② 분모 유리화 후 \(\sqrt{2n+1}+\sqrt{2n}\) 형태 → ③ \(n=1\) 부터 \(24\) 까지 합하면 \(\sqrt{2}, \sqrt{3}, \dots, \sqrt{49}\) 가 모두 나옴. \(l, m\) 의 범위를 정확히 결정.
+                        </p>
+                    </div>
+                    <div class="thinking-space bg-white"></div>
+                </div>
+
+                <!-- 16 (서술형) -->
+                <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
+                    <span class="badge badge-l3">[Type: 일반항 추론 + 귀납법] 상 (서술형)</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">16. 수열 \(\{a_n\}\) 이 \(a_1=1,\ a_{n+1}=2a_n+1\,(n=1,2,3,\dots)\) 을 만족시킨다. 이때 \(a_n=2^n-1\) 임을 수학적 귀납법으로 증명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.168 대단원 16번 서술형)</span></div>
+                    <div class="thinking-space"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 자기 평가 + 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-purple-400 border-b border-slate-700 pb-4">03. 자기 평가 + 오답 분석 (Error Analysis)</h2>
+
+            <!-- 자기평가 표 -->
+            <div class="mb-10 bg-slate-800/60 p-5 rounded-xl border border-slate-700">
+                <p class="text-slate-300 font-bold mb-3">📊 성취 자기 평가 — 정답 문항에 ○, 아쉬운 문항에 △, 못 푼 문항에 ✗ 표시</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs uppercase bg-slate-700 text-slate-200">
+                            <tr>
+                                <th class="px-3 py-2">성취기준</th>
+                                <th class="px-3 py-2 text-center">문항</th>
+                                <th class="px-3 py-2 text-center">자평</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-300">
+                            <tr class="border-b border-slate-700"><td class="px-3 py-2">수열의 뜻</td><td class="text-center">01</td><td class="text-center">__</td></tr>
+                            <tr class="border-b border-slate-700"><td class="px-3 py-2">등차수열 (일반항·합)</td><td class="text-center">02, 03, 04, 05</td><td class="text-center">__</td></tr>
+                            <tr class="border-b border-slate-700"><td class="px-3 py-2">등비수열 (일반항·합)</td><td class="text-center">06, 07, 14</td><td class="text-center">__</td></tr>
+                            <tr class="border-b border-slate-700"><td class="px-3 py-2">Σ의 뜻과 성질</td><td class="text-center">08, 09</td><td class="text-center">__</td></tr>
+                            <tr class="border-b border-slate-700"><td class="px-3 py-2">여러 가지 수열의 합</td><td class="text-center">10, 11, 15</td><td class="text-center">__</td></tr>
+                            <tr class="border-b border-slate-700"><td class="px-3 py-2">수열의 귀납적 정의</td><td class="text-center">12</td><td class="text-center">__</td></tr>
+                            <tr><td class="px-3 py-2">수학적 귀납법</td><td class="text-center">13, 16</td><td class="text-center">__</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다. (특히 <span class="text-orange-400">유형 2</span> 중심 작성 권장)</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-purple-500 focus:ring-purple-500 pointer-events-none">
+                                <span class="text-purple-400 font-bold text-lg">유형 1: 지식의 내면화 (대단원 통합)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">대단원 III(수열) 전체를 관통하는 핵심 사고 — "유한한 규칙으로 무한한 항을 다루는 방법" — 을 자기만의 언어로 통합하여 정리하시오.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-purple-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"수열 단원 전체를 통해, 일반항·합·점화식·귀납법이 모두 '유한한 규칙으로 무한한 항을 통제한다'는 동일한 사고에 뿌리를 두고 있음을 깨달음. 이러한 통합적 관점은 향후 미적분의 극한·급수 개념 학습에서 결정적 토대가 될 것임을 인식함."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border-2 border-orange-500/40 hover:border-orange-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">⭐ 유형 2: 결정적 실수와 극복 (중점 작성)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">대단원 평가 16문항 중 <strong>가장 막혔던 한 문항</strong>을 골라, 어디서 어떻게 막혔고, 무엇을 깨달았는지, 다음에 같은 유형을 만나면 어떻게 풀 것인지 자신의 언어로 정리하시오.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"15번에서 \(\alpha_n-\beta_n\) 의 분모를 유리화하지 못해 망원합 구조를 발견하지 못함. 이후 무리식이 분모에 있을 때는 켤레무리수를 곱해 차의 형태로 분리하는 절차를 자동화하고, 인덱스 \(n\) 의 범위를 \(k\) 의 범위로 변환하는 변수 치환을 명시적으로 정리하는 검토 루틴을 정착시킴."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (대학·진로 연결)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">수열 단원에서 배운 개념(등비수열·합·귀납법)이 자신의 진로 분야(예: 공학, 경제, 컴퓨터, 의약학 등)에서 어떻게 활용될 수 있을지 한 가지 사례를 조사하여 서술하시오. (예: 복리, 알고리즘 복잡도, 약물 농도 변화, 감가상각 등)</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-sm py-12 font-bold opacity-50">
+            <p>© 2026 Mathematics Education Engineering. Designed for Digital Classrooms.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">QR 링크가 설정되지 않았습니다.</span>`;
+            }
+        });
+    </script>
+</body>
+</html>

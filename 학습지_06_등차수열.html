@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 등차수열</title>
+    <!-- MathJax 최적화 설정 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'mathjax-process'
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady().then(() => {
+                        document.body.classList.add('mathjax-ready');
+                    });
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+        
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+        
+        .reveal-box { 
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+        
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+        
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        
+        @media print { 
+            .no-print { display: none !important; } 
+            body { opacity: 1; background: white; } 
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "06차시 등차수열";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME);
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-1. 등차수열과 등비수열</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">06차시: 등차수열</span>
+            </div>
+        </header>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up & Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">최근 하계 올림픽은 2016년 리우데자네이루, 2020년 도쿄, 2024년 파리에서 개최되었다.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 이 연도들의 나열에서 발견할 수 있는 <strong>'규칙'</strong>을 일상적인 언어로 표현해 보자.</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 우리는 초등학교 때부터 "일정한 수가 커지는 규칙"을 직관적으로 찾아왔다. 오늘은 이 직관을 **'문자(\(n\))'**를 사용해 수학적으로 우아하게 일반화하는 방법을 배운다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 수열과 항 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        수열과 항 (Sequence & Term)
+                    </h3>
+                    <p class="mb-3 text-slate-700">어떤 규칙에 따라 차례로 나열된 수의 열을 <strong>수열</strong>이라고 한다.</p>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2 ml-2 font-medium">
+                        <li>나열된 각 수를 수열의 <strong>항</strong>이라 부르며, 앞에서부터 첫째항, 둘째항, ..., 제 \(n\)항이라 한다.</li>
+                        <li>제 \(n\)항을 수열의 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">일반항</span></span>이라 하고, 기호로 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a_n\)</span></span>과 같이 나타낸다.</li>
+                    </ul>
+                </div>
+
+                <!-- 등차수열 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        등차수열과 일반항 (Arithmetic Sequence)
+                    </h3>
+                    <p class="mb-3 text-slate-700">첫째항부터 <strong>일정한 수를 더하여</strong> 얻어지는 수열을 등차수열이라 하고, 그 더하는 일정한 수를 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">공차 (Common Difference, \(d\))</span></span>라고 한다.</p>
+                    
+                    <div class="bg-white p-5 rounded-xl border border-blue-100 mb-4 font-mono text-center text-lg">
+                        \(a_2 = a_1 + d\) <br>
+                        \(a_3 = a_2 + d = a_1 + 2d\) <br>
+                        \(a_4 = a_3 + d = a_1 + 3d\) <br>
+                        \(\dots\)
+                    </div>
+                    
+                    <div class="flex items-center justify-center gap-4 bg-blue-50 p-5 rounded-xl border border-blue-200 font-bold text-lg text-slate-800">
+                        첫째항이 \(a\), 공차가 \(d\)인 등차수열의 일반항 \(a_n\) = 
+                        <span class="reveal-box min-w-[150px]" onclick="toggleReveal(this)"><span class="ans">\(a + (n-1)d\)</span></span>
+                    </div>
+                </div>
+
+                <!-- 등차중항 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-blue-200 text-blue-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        등차중항
+                    </h3>
+                    <p class="mb-4 text-slate-700">세 수 \(a, b, c\)가 이 순서대로 등차수열을 이룰 때, 가운데 있는 수 \(b\)를 \(a\)와 \(c\)의 등차중항이라고 한다.</p>
+                    <div class="flex items-center justify-center gap-4 font-bold text-xl text-slate-800">
+                        \(b =\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\frac{a+c}{2}\)</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">공식의 구조와 기호에 익숙해지는 단계</p>
+                    </div>
+                    
+                    <div>
+                        <span class="badge badge-l1">기초-일반항 구하기</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 첫째항이 \(3\), 공차가 \(4\)인 등차수열의 일반항 \(a_n\)을 구하고, 제\(10\)항을 구하시오.</div>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-공차 분석</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 수열 \(10, 7, 4, 1, \dots\) 의 첫째항, 공차, 그리고 일반항 \(a_n\)을 구하시오.</div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">조건을 연립하고 등차중항의 성질을 활용하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-항의 조건 연립</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 제\(3\)항이 \(11\), 제\(7\)항이 \(23\)인 등차수열의 첫째항과 공차를 구하시오.</div>
+                        <div class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50">
+                            <strong>💡 힌트:</strong> \(a_3 = a + 2d\), \(a_7 = a + 6d\) 임을 이용해 두 식을 연립해 보세요.
+                        </div>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-등차중항</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 세 수 \(x-1\), \(2x+1\), \(5x+3\)이 이 순서대로 등차수열을 이룰 때, \(x\)의 값을 구하시오.</div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 오개념을 바로잡는 심화 단계</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-부등식과 자연수 조건</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">5. 제\(4\)항이 \(23\), 제\(8\)항이 \(11\)인 등차수열에서 <strong>처음으로 음수가 되는 항</strong>은 제 몇 항인지 구하시오.</div>
+                        <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
+                            <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
+                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                일반항 \(a_n\)을 세운 뒤, **"\(a_n < 0\)"** 이라는 부등식을 풀게 된다.<br>
+                                부등식을 풀면 \(n\)의 범위가 소수점으로 떨어질 텐데, 답을 실수하는 학생이 정말 많다.<br>
+                                **수열에서 '항의 번호 \(n\)'은 반드시 어떤 수열이어야 하는가? (힌트: 1번째, 2번째..)**
+                            </p>
+                        </div>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">6. 어느 극장의 \(1\)열은 좌석이 \(20\)개이고, 그 다음 열부터는 앞 열보다 좌석이 \(2\)개씩 늘어난다고 한다. 이 극장의 \(15\)열의 좌석 수를 구하시오.</div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 우리는 수를 하나하나 나열하는 것을 넘어, \(n\)이라는 문자를 사용해 일반항(\(a_n\))을 구했다. 이처럼 '대수적 일반화' 과정이 갖는 힘은 무엇인가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"단순히 15번째 극장 좌석을 일일이 더해서 구할 수도 있지만, 등차수열의 일반항 식을 세워 둠으로써 좌석 배치가 확장되어도 단 번에 예측할 수 있는 수학적 모델링의 효율성을 깊이 이해함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 치명적 실수(논리적 오류)와 그것을 바로잡은 사고 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"음수 항을 구하는 부등식 문제에서 항 번호가 자연수라는 조건을 간과하여 실수를 범했으나, 오답 분석을 통해 수열의 정의역 특성을 스스로 재정립하는 성장을 보임."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심이나 나만의 문제 풀이 Tip이 있다면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"등차중항의 성질을 단순 수식이 아닌 대칭성 관점에서 해석하는 아이디어를 도출하고, 이를 다변수 연립 문제 해결에 적극적으로 활용함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-sm py-12 font-bold opacity-50">
+            <p>© 2026 Mathematics Education Engineering. Designed for Digital Classrooms.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">QR 링크가 설정되지 않았습니다.</span>`;
+            }
+        });
+    </script>
+</body>
+</html>
