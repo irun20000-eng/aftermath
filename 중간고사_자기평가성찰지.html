@@ -78,6 +78,14 @@
             </div>
         </header>
 
+        <!-- 네비게이션 (no-print) -->
+        <nav class="no-print -mt-12 mb-8 flex justify-start items-center gap-2 flex-wrap">
+            <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+        </nav>
+
         <!-- 00. 시험 개관 -->
         <section class="card bg-gradient-to-br from-slate-50 to-blue-50 border-blue-100">
             <h2 class="section-title text-blue-900 border-blue-200">00. 시험 개관 (Overview)</h2>
@@ -472,6 +480,18 @@
                 formLinkBtn.href = GOOGLE_FORM_URL;
             } else {
                 qrContainer.innerHTML = `<span class="text-slate-400 text-xs text-center font-bold px-2">QR 링크 미설정<br>(클래스룸 과제 링크 입력 후 활성화)</span>`;
+            }
+        });
+    </script>
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                location.href = 'index.html';
             }
         });
     </script>

@@ -83,6 +83,22 @@
             </div>
         </header>
 
+        <!-- 네비게이션 (no-print) -->
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_11_합의기호.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                    <span>←</span><span>이전 차시</span>
+                </a>
+                <a href="학습지_13_여러가지수열의합.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm">
+                    <span>다음 차시</span><span>→</span>
+                </a>
+            </div>
+        </nav>
+
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
             <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up & Connection)</h2>
@@ -283,6 +299,18 @@
                 formLinkBtn.href = GOOGLE_FORM_URL;
             } else {
                 qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">QR 링크가 설정되지 않았습니다.</span>`;
+            }
+        });
+    </script>
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                location.href = 'index.html';
             }
         });
     </script>

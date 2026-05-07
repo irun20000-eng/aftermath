@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대수 모둠 활동 진행 도구</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Pretendard', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    color: #1a2840;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #1a3a6e;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a3a6e;
+    letter-spacing: -0.5px;
+  }
+  h1 .accent { color: #5a6c87; font-weight: 400; font-size: 20px; margin-left: 8px; }
+
+  .header-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+  /* 메인 이동 버튼 */
+  .home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: linear-gradient(135deg, #1a3a6e 0%, #2c5599 100%);
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #1a3a6e;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .home-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(26, 58, 110, 0.3); }
+  .home-btn kbd {
+    margin-left: 4px;
+    padding: 1px 5px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: monospace;
+    color: #fff;
+  }
+
+  .toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    background: #fff;
+    border: 1px solid #c9d3e0;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    color: #1a2840;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .toggle-wrapper:hover { background: #f0f4f9; }
+  .toggle-switch {
+    width: 32px; height: 18px;
+    background: #cbd4e0;
+    border-radius: 9px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    top: 2px; left: 2px;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .toggle-switch.on { background: #1a3a6e; }
+  .toggle-switch.on::after { transform: translateX(14px); }
+
+  .icon-btn {
+    padding: 7px 12px;
+    background: #fff;
+    border: 1px solid #c9d3e0;
+    color: #1a2840;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .icon-btn:hover { background: #f0f4f9; }
+
+  .reset-btn {
+    padding: 7px 12px;
+    background: #fff;
+    border: 1px solid #e6a5a5;
+    color: #c0392b;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .reset-btn:hover { background: #fdf0f0; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .tab {
+    padding: 11px 26px;
+    background: #fff;
+    border: 1px solid #c9d3e0;
+    color: #5a6c87;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .tab:hover { background: #f0f4f9; color: #1a2840; }
+  .tab.active {
+    background: linear-gradient(135deg, #1a3a6e 0%, #2c5599 100%);
+    border-color: #1a3a6e;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(26, 58, 110, 0.25);
+  }
+
+  /* Timer bar */
+  .timer-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #c9d3e0;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .timer-display {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a3a6e;
+    font-variant-numeric: tabular-nums;
+    min-width: 100px;
+    letter-spacing: 1px;
+  }
+  .timer-display.warning { color: #e67e22; }
+  .timer-display.danger { color: #c0392b; animation: blink 0.5s infinite; }
+  @keyframes blink { 50% { opacity: 0.3; } }
+
+  .timer-controls { display: flex; gap: 6px; align-items: center; }
+  .timer-input {
+    width: 60px;
+    padding: 6px 8px;
+    background: #f5f7fa;
+    border: 1px solid #c9d3e0;
+    color: #1a2840;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+  }
+  .timer-btn {
+    padding: 6px 14px;
+    background: #1a3a6e;
+    border: 1px solid #1a3a6e;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .timer-btn:hover { background: #2c5599; }
+  .timer-preset {
+    padding: 4px 10px;
+    background: #f0f4f9;
+    border: 1px solid #c9d3e0;
+    color: #5a6c87;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.2s;
+  }
+  .timer-preset:hover { background: #1a3a6e; color: #fff; border-color: #1a3a6e; }
+
+  /* Action buttons */
+  .action-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .action-btn {
+    padding: 18px;
+    background: #fff;
+    border: 2px solid #c9d3e0;
+    border-radius: 14px;
+    color: #1a2840;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .action-btn .step-num {
+    display: inline-block;
+    width: 26px; height: 26px;
+    background: #1a3a6e;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-size: 13px;
+    margin-right: 8px;
+    font-weight: 700;
+  }
+  .action-btn .shortcut {
+    position: absolute;
+    top: 6px; right: 8px;
+    font-size: 10px;
+    color: #8b9bb4;
+    background: #f0f4f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .action-btn:not(:disabled):hover {
+    background: #f0f4f9;
+    border-color: #1a3a6e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26, 58, 110, 0.15);
+  }
+  .action-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .action-btn.done {
+    background: #e8f5e9;
+    border-color: #66bb6a;
+    color: #2e7d32;
+  }
+  .action-btn.done .step-num { background: #66bb6a; color: #fff; }
+  .action-btn.done::after {
+    content: '🔄 다시 뽑기';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #2e7d32;
+    opacity: 0.85;
+  }
+  .action-btn.active {
+    background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
+    border-color: #c9a227;
+    box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.15);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.15); }
+    50% { box-shadow: 0 0 0 8px rgba(201, 162, 39, 0.25); }
+  }
+
+  /* Groups grid */
+  .groups-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .group-card {
+    background: #fff;
+    border: 1px solid #c9d3e0;
+    border-radius: 14px;
+    padding: 16px;
+    transition: all 0.3s;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .group-card.highlighted {
+    background: #fff8e1;
+    border-color: #c9a227;
+    box-shadow: 0 8px 24px rgba(201, 162, 39, 0.2);
+  }
+  .group-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a3a6e;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e7ef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .group-count {
+    font-size: 11px;
+    color: #5a6c87;
+    font-weight: 400;
+  }
+  .group-redraw {
+    background: #fff8e1;
+    border: 1px solid #d4af37;
+    color: #8a7423;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+  .group-redraw:hover { background: #d4af37; color: #fff; }
+
+  /* Student items */
+  .student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .student-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 11px;
+    background: #f5f7fa;
+    border-radius: 7px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    position: relative;
+    color: #1a2840;
+  }
+  .student-item:hover { background: #e8edf3; }
+  .student-item.absent {
+    opacity: 0.4;
+    text-decoration: line-through;
+    background: #f0f0f0;
+  }
+  .student-item.leader {
+    background: #fff8e1;
+    border-color: #d4af37;
+  }
+  .student-item.leader::before {
+    content: '★';
+    color: #c9a227;
+    margin-right: 4px;
+  }
+  .student-item.role-1 {
+    background: #e3f2fd;
+    border-color: #1976d2;
+    color: #0d47a1;
+    font-weight: 600;
+  }
+  .student-item.role-2 {
+    background: #e8f5e9;
+    border-color: #388e3c;
+    color: #1b5e20;
+    font-weight: 600;
+  }
+  .student-item.role-3 {
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    border-color: #c2185b;
+    color: #880e4f;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(194, 24, 91, 0.25);
+  }
+  .role-tag {
+    margin-left: auto;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .role-tag.r1 { background: #1976d2; color: #fff; }
+  .role-tag.r2 { background: #388e3c; color: #fff; }
+  .role-tag.r3 { background: #c2185b; color: #fff; }
+
+  .student-id { font-weight: 600; }
+  .pick-count {
+    margin-left: auto;
+    font-size: 10px;
+    color: #5a6c87;
+    background: #e0e7ef;
+    padding: 2px 6px;
+    border-radius: 10px;
+  }
+  .student-item.role-1 .pick-count,
+  .student-item.role-2 .pick-count,
+  .student-item.role-3 .pick-count { display: none; }
+
+  /* Result modal */
+  .result-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26, 58, 110, 0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+  }
+  .result-overlay.active { display: flex; }
+  .result-modal {
+    background: #fff;
+    border: 2px solid #1a3a6e;
+    border-radius: 20px;
+    padding: 36px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+  .result-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a3a6e;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    min-width: 700px;
+  }
+  .result-card {
+    background: #f5f7fa;
+    border: 2px solid #c9d3e0;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: border-color 0.3s, background 0.3s;
+    position: relative;
+  }
+  .result-card.spinning {
+    background: #fff8e1;
+    border-color: #d4af37;
+  }
+  .result-card.spinning .result-student-id {
+    color: #8a7423;
+  }
+  .result-card.locked {
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+    border-color: #2e7d32;
+    animation: lockIn 0.5s ease-out;
+  }
+  .result-card.locked .result-student-id {
+    color: #1b5e20;
+  }
+  @keyframes lockIn {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.12); box-shadow: 0 0 40px rgba(46, 125, 50, 0.5); }
+    60% { transform: scale(0.98); }
+    100% { transform: scale(1); box-shadow: 0 0 20px rgba(46, 125, 50, 0.3); }
+  }
+  .result-card.spotlight {
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    border-color: #c2185b;
+    box-shadow: 0 0 40px rgba(194, 24, 91, 0.4);
+    transform: scale(1.05);
+  }
+  .result-card.spotlight .result-student-id {
+    color: #880e4f;
+  }
+  .result-card.spotlight-final {
+    animation: finalSpotlight 0.6s ease-out;
+  }
+  @keyframes finalSpotlight {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.18); box-shadow: 0 0 60px rgba(194, 24, 91, 0.6); }
+    100% { transform: scale(1.08); box-shadow: 0 0 40px rgba(194, 24, 91, 0.4); }
+  }
+  .result-group-name {
+    font-size: 13px;
+    color: #5a6c87;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .result-student-id {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1a2840;
+    letter-spacing: 1px;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.2s;
+  }
+  .result-card.spinning .result-student-id {
+    animation: shake 0.06s infinite;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+
+  .result-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .close-btn {
+    flex: 1;
+    padding: 14px;
+    background: linear-gradient(135deg, #1a3a6e 0%, #2c5599 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .close-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26, 58, 110, 0.4); }
+  .close-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Help text */
+  .help-text {
+    text-align: center;
+    color: #5a6c87;
+    font-size: 12px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e0e7ef;
+    border-radius: 8px;
+    margin-bottom: 14px;
+  }
+  .help-text kbd {
+    background: #1a3a6e;
+    border: 1px solid #1a3a6e;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin: 0 2px;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1a3a6e;
+    border: 1px solid #1a3a6e;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 200;
+    transition: transform 0.3s;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 1100px) {
+    .groups-grid { grid-template-columns: repeat(2, 1fr); }
+    .result-grid { grid-template-columns: repeat(2, 1fr); min-width: auto; }
+  }
+  @media (max-width: 700px) {
+    .groups-grid, .action-bar, .result-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>대수 모둠 활동<span class="accent">진행 도구</span></h1>
+    <div class="header-controls">
+      <a href="index.html" class="home-btn" title="메인 페이지로 (단축키 H)">
+        <span>🏠</span><span>메인</span><kbd>H</kbd>
+      </a>
+      <div class="toggle-wrapper" id="fairnessToggle" title="적게 뽑힌 학생에게 가중치">
+        <span>공정 추첨</span>
+        <div class="toggle-switch on" id="fairnessSwitch"></div>
+      </div>
+      <div class="toggle-wrapper" id="soundToggle" title="효과음 on/off">
+        <span>🔊 효과음</span>
+        <div class="toggle-switch on" id="soundSwitch"></div>
+      </div>
+      <button class="icon-btn" id="exportBtn" title="누적 통계 CSV 다운로드">📊 통계 CSV</button>
+      <button class="reset-btn" id="resetCurrentBtn">현재 라운드 초기화</button>
+      <button class="reset-btn" id="resetAllBtn">누적 초기화</button>
+    </div>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="timer-bar">
+    <div class="timer-display" id="timerDisplay">00:00</div>
+    <div class="timer-controls">
+      <button class="timer-preset" data-sec="60">1분</button>
+      <button class="timer-preset" data-sec="180">3분</button>
+      <button class="timer-preset" data-sec="300">5분</button>
+      <button class="timer-preset" data-sec="600">10분</button>
+      <input type="number" class="timer-input" id="timerInput" placeholder="초" min="1">
+      <button class="timer-btn" id="timerStartBtn">시작</button>
+      <button class="timer-btn" id="timerPauseBtn">일시정지</button>
+      <button class="timer-btn" id="timerResetBtn">리셋</button>
+    </div>
+    <div style="margin-left:auto; font-size:12px; color:#6b7a94;">
+      모둠 활동 타이머
+    </div>
+  </div>
+
+  <div class="help-text">
+    👆 학번 클릭=결석 토글 · 단계 버튼 다시 클릭=재추첨 · 모둠별 🔄로 부분 재추첨 · 단축키 <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> · 타이머 <kbd>스페이스</kbd> · 메인 <kbd>H</kbd>
+  </div>
+
+  <div class="action-bar">
+    <button class="action-btn" data-step="1">
+      <span class="shortcut">1</span>
+      <span class="step-num">1</span>해설 담당 뽑기
+    </button>
+    <button class="action-btn" data-step="2" disabled>
+      <span class="shortcut">2</span>
+      <span class="step-num">2</span>풀이 담당 뽑기
+    </button>
+    <button class="action-btn" data-step="3" disabled>
+      <span class="shortcut">3</span>
+      <span class="step-num">3</span>칠판 풀이 뽑기
+    </button>
+  </div>
+
+  <div class="groups-grid" id="groupsGrid"></div>
+</div>
+
+<div class="result-overlay" id="resultOverlay">
+  <div class="result-modal">
+    <div class="result-title" id="resultTitle"></div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div class="result-actions">
+      <button class="close-btn" id="closeResultBtn" disabled>확인</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================
+// 학생 데이터 (PDF 기반)
+// ============================================
+const CLASS_DATA = {
+  '1반': [
+    { name: '모둠 1', students: [{id:20101,leader:false},{id:20103,leader:false},{id:20106,leader:true},{id:20107,leader:false}] },
+    { name: '모둠 2', students: [{id:20105,leader:false},{id:20108,leader:false},{id:20109,leader:true},{id:20110,leader:false}] },
+    { name: '모둠 3', students: [{id:20114,leader:true},{id:20117,leader:false},{id:20119,leader:false},{id:20121,leader:false}] },
+    { name: '모둠 4', students: [{id:20112,leader:false},{id:20115,leader:true},{id:20116,leader:false},{id:20118,leader:false}] },
+    { name: '모둠 5', students: [{id:20102,leader:false},{id:20120,leader:false},{id:20122,leader:false},{id:20124,leader:true}] },
+    { name: '모둠 6', students: [{id:20111,leader:false},{id:20113,leader:false},{id:20123,leader:false},{id:20125,leader:true}] },
+  ],
+  '4반': [
+    { name: '모둠 1', students: [{id:20403,leader:true},{id:20411,leader:false},{id:20421,leader:false},{id:20425,leader:false}] },
+    { name: '모둠 2', students: [{id:20405,leader:true},{id:20416,leader:false},{id:20418,leader:false},{id:20423,leader:false}] },
+    { name: '모둠 3', students: [{id:20404,leader:false},{id:20406,leader:true},{id:20407,leader:false},{id:20420,leader:false}] },
+    { name: '모둠 4', students: [{id:20402,leader:false},{id:20408,leader:true},{id:20414,leader:false},{id:20422,leader:false}] },
+    { name: '모둠 5', students: [{id:20410,leader:true},{id:20415,leader:false},{id:20417,leader:false},{id:20419,leader:false}] },
+    { name: '모둠 6', students: [{id:20401,leader:false},{id:20409,leader:false},{id:20412,leader:false},{id:20413,leader:true}] },
+  ],
+  '7반': [
+    { name: '모둠 1', students: [{id:20702,leader:false},{id:20709,leader:true},{id:20715,leader:false},{id:20719,leader:false}] },
+    { name: '모둠 2', students: [{id:20708,leader:false},{id:20712,leader:false},{id:20713,leader:true},{id:20717,leader:false}] },
+    { name: '모둠 3', students: [{id:20701,leader:false},{id:20704,leader:false},{id:20718,leader:true},{id:20722,leader:false}] },
+    { name: '모둠 4', students: [{id:20703,leader:false},{id:20711,leader:false},{id:20714,leader:false},{id:20721,leader:true}] },
+    { name: '모둠 5', students: [{id:20706,leader:false},{id:20710,leader:false},{id:20723,leader:false},{id:20724,leader:true}] },
+    { name: '모둠 6', students: [{id:20705,leader:false},{id:20707,leader:false},{id:20716,leader:false},{id:20720,leader:false},{id:20725,leader:true}] },
+  ],
+  '10반': [
+    { name: '모둠 1', students: [{id:21001,leader:true},{id:21006,leader:false},{id:21010,leader:false},{id:21018,leader:false},{id:21024,leader:false}] },
+    { name: '모둠 2', students: [{id:21002,leader:true},{id:21009,leader:false},{id:21012,leader:false},{id:21013,leader:false},{id:21014,leader:false}] },
+    { name: '모둠 3', students: [{id:21005,leader:true},{id:21016,leader:false},{id:21020,leader:false},{id:21021,leader:false}] },
+    { name: '모둠 4', students: [{id:21007,leader:false},{id:21008,leader:true},{id:21019,leader:false},{id:21026,leader:false}] },
+    { name: '모둠 5', students: [{id:21004,leader:false},{id:21011,leader:false},{id:21015,leader:true},{id:21025,leader:false}] },
+    { name: '모둠 6', students: [{id:21003,leader:false},{id:21017,leader:true},{id:21022,leader:false},{id:21023,leader:false}] },
+  ],
+};
+
+const ROLE_NAMES = { 1: '해설 담당', 2: '풀이 담당', 3: '칠판 풀이' };
+
+// ============================================
+// 상태 관리
+// ============================================
+let state = {
+  currentClass: '1반',
+  absent: {},
+  pickHistory: {},
+  currentRound: {},
+  fairness: true,
+  sound: true,
+};
+
+let isRunning = false; // 룰렛 진행 중 잠금
+
+// 타이머 상태
+let timer = {
+  total: 0,
+  remaining: 0,
+  running: false,
+  intervalId: null,
+};
+
+// ============================================
+// 사운드 (Web Audio API - 효과음)
+// ============================================
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) {
+    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch(e) { return null; }
+  }
+  return audioCtx;
+}
+function playTick(freq = 800, duration = 0.04) {
+  if (!state.sound) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'square';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.08, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + duration);
+}
+function playLockIn() {
+  if (!state.sound) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  [523, 659, 784].forEach((f, i) => {
+    setTimeout(() => playTick(f, 0.12), i * 60);
+  });
+}
+function playFanfare() {
+  if (!state.sound) return;
+  [523, 659, 784, 1047].forEach((f, i) => {
+    setTimeout(() => playTick(f, 0.18), i * 100);
+  });
+}
+function playTimerEnd() {
+  if (!state.sound) return;
+  [880, 660, 880, 660].forEach((f, i) => {
+    setTimeout(() => playTick(f, 0.2), i * 200);
+  });
+}
+
+// ============================================
+// 저장/로드
+// ============================================
+async function loadStateAsync() {
+  // window.storage 가 사용 가능한지 먼저 확인
+  if (typeof window.storage !== 'undefined' && window.storage.get) {
+    try {
+      const saved = await window.storage.get('classroom_state_v2');
+      if (saved && saved.value) {
+        const parsed = JSON.parse(saved.value);
+        state.pickHistory = parsed.pickHistory || {};
+        state.fairness = parsed.fairness !== undefined ? parsed.fairness : true;
+        state.sound = parsed.sound !== undefined ? parsed.sound : true;
+        const absentData = parsed.absent || {};
+        for (const cls in absentData) {
+          state.absent[cls] = new Set(absentData[cls]);
+        }
+      }
+      // 저장된 게 없어도 정상 - 첫 실행이거나 초기화된 상태
+    } catch(e) {
+      // 키가 존재하지 않을 때도 throw하므로 정상 케이스
+    }
+  }
+  // storage가 없어도 in-memory 상태로 작동
+  Object.keys(CLASS_DATA).forEach(cls => {
+    if (!state.absent[cls]) state.absent[cls] = new Set();
+    if (!state.pickHistory[cls]) state.pickHistory[cls] = {};
+    if (!state.currentRound[cls]) state.currentRound[cls] = { 1:{}, 2:{}, 3:null };
+  });
+}
+
+async function saveState() {
+  if (typeof window.storage === 'undefined' || !window.storage.set) return;
+  const toSave = {
+    absent: {},
+    pickHistory: state.pickHistory,
+    fairness: state.fairness,
+    sound: state.sound,
+  };
+  for (const cls in state.absent) {
+    toSave.absent[cls] = Array.from(state.absent[cls]);
+  }
+  try {
+    await window.storage.set('classroom_state_v2', JSON.stringify(toSave));
+  } catch(e) {
+    // 저장 실패해도 메모리 상태로는 작동하므로 조용히 처리
+  }
+}
+
+// ============================================
+// 해시 라우팅: index.html에서 #class=1, #class=4 등으로 진입 시 해당 반 자동 선택
+// ============================================
+function applyHashRouting() {
+  const hash = location.hash;
+  if (!hash) return;
+  const m = hash.match(/class=(\d+)/);
+  if (!m) return;
+  const target = m[1] + '반';
+  if (CLASS_DATA[target]) {
+    state.currentClass = target;
+  }
+}
+
+// ============================================
+// 렌더링
+// ============================================
+function renderTabs() {
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = '';
+  Object.keys(CLASS_DATA).forEach(cls => {
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (cls === state.currentClass ? ' active' : '');
+    btn.textContent = cls;
+    btn.onclick = () => {
+      if (isRunning) return;
+      state.currentClass = cls;
+      // 해시 동기화 (선생님이 새로고침 후에도 같은 반 유지)
+      const num = cls.replace('반', '');
+      history.replaceState(null, '', '#class=' + num);
+      renderTabs();
+      render();
+    };
+    tabsEl.appendChild(btn);
+  });
+}
+
+function render() {
+  const cls = state.currentClass;
+  const groups = CLASS_DATA[cls];
+  const round = state.currentRound[cls];
+  const grid = document.getElementById('groupsGrid');
+  grid.innerHTML = '';
+
+  groups.forEach((group, gIdx) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+
+    const presentCount = group.students.filter(s => !state.absent[cls].has(s.id)).length;
+
+    // 모둠별 재추첨 버튼: 현재 활성 단계가 있을 때 표시
+    const step1Done = Object.keys(round[1]).length > 0;
+    const step2Done = Object.keys(round[2]).length > 0;
+    let redrawBtn = '';
+    if (step2Done && round[2][gIdx] !== undefined) {
+      redrawBtn = `<button class="group-redraw" data-redraw="2" data-gidx="${gIdx}" title="이 모둠만 풀이 담당 재추첨">🔄 풀이</button>`;
+    } else if (step1Done && round[1][gIdx] !== undefined) {
+      redrawBtn = `<button class="group-redraw" data-redraw="1" data-gidx="${gIdx}" title="이 모둠만 해설 담당 재추첨">🔄 해설</button>`;
+    }
+
+    card.innerHTML = `
+      <div class="group-title">
+        <span>${group.name}</span>
+        <span style="display:flex;align-items:center;">
+          <span class="group-count">출석 ${presentCount}/${group.students.length}</span>
+          ${redrawBtn}
+        </span>
+      </div>
+      <div class="student-list" id="list-${gIdx}"></div>
+    `;
+
+    const list = card.querySelector(`#list-${gIdx}`);
+    group.students.forEach(s => {
+      const item = document.createElement('div');
+      item.className = 'student-item';
+      if (s.leader) item.classList.add('leader');
+      if (state.absent[cls].has(s.id)) item.classList.add('absent');
+
+      let roleTag = '';
+      if (round[1][gIdx] === s.id) {
+        item.classList.add('role-1');
+        roleTag = `<span class="role-tag r1">${ROLE_NAMES[1]}</span>`;
+      } else if (round[2][gIdx] === s.id) {
+        item.classList.add('role-2');
+        roleTag = `<span class="role-tag r2">${ROLE_NAMES[2]}</span>`;
+      }
+      if (round[3] === s.id) {
+        item.classList.add('role-3');
+        roleTag = `<span class="role-tag r3">${ROLE_NAMES[3]} ⭐</span>`;
+      }
+
+      const pickCnt = state.pickHistory[cls][s.id] || 0;
+      const cntDisplay = pickCnt > 0 ? `<span class="pick-count">${pickCnt}회</span>` : '';
+
+      item.innerHTML = `
+        <span class="student-id">${s.id}</span>
+        ${roleTag || cntDisplay}
+      `;
+
+      item.onclick = (e) => {
+        e.stopPropagation();
+        if (isRunning) return;
+        toggleAbsent(s.id);
+      };
+      list.appendChild(item);
+    });
+
+    grid.appendChild(card);
+  });
+
+  // 재추첨 버튼 이벤트
+  grid.querySelectorAll('.group-redraw').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      if (isRunning) return;
+      const step = parseInt(btn.dataset.redraw);
+      const gIdx = parseInt(btn.dataset.gidx);
+      runStepForGroup(step, gIdx);
+    };
+  });
+
+  updateButtons();
+}
+
+function updateButtons() {
+  const cls = state.currentClass;
+  const round = state.currentRound[cls];
+  const btns = document.querySelectorAll('.action-btn');
+
+  const step1Done = Object.keys(round[1]).length > 0;
+  const step2Done = Object.keys(round[2]).length > 0;
+  const step3Done = round[3] !== null;
+
+  btns.forEach(btn => {
+    const step = parseInt(btn.dataset.step);
+    btn.classList.remove('done', 'active');
+    btn.disabled = false;
+
+    if (step === 1) {
+      if (step1Done) btn.classList.add('done');
+      else btn.classList.add('active');
+    } else if (step === 2) {
+      if (!step1Done) btn.disabled = true;
+      else if (step2Done) btn.classList.add('done');
+      else btn.classList.add('active');
+    } else if (step === 3) {
+      if (!step2Done) btn.disabled = true;
+      else if (step3Done) btn.classList.add('done');
+      else btn.classList.add('active');
+    }
+  });
+}
+
+// ============================================
+// 결석 토글
+// ============================================
+function toggleAbsent(id) {
+  const cls = state.currentClass;
+  if (state.absent[cls].has(id)) {
+    state.absent[cls].delete(id);
+  } else {
+    state.absent[cls].add(id);
+  }
+  saveState();
+  render();
+}
+
+// ============================================
+// 가중치 기반 랜덤 선택
+// ============================================
+function weightedPick(candidates, cls) {
+  if (candidates.length === 0) return null;
+  if (candidates.length === 1) return candidates[0];
+
+  if (!state.fairness) {
+    return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
+  const counts = candidates.map(id => state.pickHistory[cls][id] || 0);
+  const minCount = Math.min(...counts);
+  // 가장 적게 뽑힌 사람과의 차이만큼 가중치 차이 부여
+  const weights = counts.map(c => 1 / (1 + (c - minCount)));
+  const total = weights.reduce((a,b) => a+b, 0);
+
+  let r = Math.random() * total;
+  for (let i = 0; i < candidates.length; i++) {
+    r -= weights[i];
+    if (r <= 0) return candidates[i];
+  }
+  return candidates[candidates.length - 1];
+}
+
+// ============================================
+// 단계별 뽑기 (전체)
+// ============================================
+async function runStep(step) {
+  if (isRunning) return;
+  const cls = state.currentClass;
+  const groups = CLASS_DATA[cls];
+  const round = state.currentRound[cls];
+
+  // 재추첨인 경우 이전 단계 결과의 카운트를 되돌림
+  const isRedraw = (step === 1 && Object.keys(round[1]).length > 0) ||
+                   (step === 2 && Object.keys(round[2]).length > 0) ||
+                   (step === 3 && round[3] !== null);
+
+  if (isRedraw) {
+    if (!confirm(`${ROLE_NAMES[step]}을(를) 다시 뽑을까요?\n이후 단계도 초기화됩니다.`)) return;
+
+    // 이후 단계 결과들 + 누적 카운트 롤백
+    for (let s = step; s <= 3; s++) {
+      if (s === 3 && round[3] !== null) {
+        state.pickHistory[cls][round[3]] = Math.max(0, (state.pickHistory[cls][round[3]] || 0) - 1);
+        round[3] = null;
+      } else if (s !== 3) {
+        Object.values(round[s] || {}).forEach(id => {
+          state.pickHistory[cls][id] = Math.max(0, (state.pickHistory[cls][id] || 0) - 1);
+        });
+        round[s] = {};
+      }
+    }
+  }
+
+  isRunning = true;
+
+  if (step === 1) {
+    const picks = {};
+    groups.forEach((group, gIdx) => {
+      const candidates = group.students
+        .filter(s => !s.leader && !state.absent[cls].has(s.id))
+        .map(s => s.id);
+      const pick = weightedPick(candidates, cls);
+      if (pick !== null) picks[gIdx] = pick;
+    });
+    await showRouletteResult(step, picks, groups, null);
+    Object.assign(round[1], picks);
+    Object.values(picks).forEach(id => {
+      state.pickHistory[cls][id] = (state.pickHistory[cls][id] || 0) + 1;
+    });
+  } else if (step === 2) {
+    const picks = {};
+    groups.forEach((group, gIdx) => {
+      const exclude = new Set([round[1][gIdx]]);
+      const candidates = group.students
+        .filter(s => !s.leader && !state.absent[cls].has(s.id) && !exclude.has(s.id))
+        .map(s => s.id);
+      const pick = weightedPick(candidates, cls);
+      if (pick !== null) picks[gIdx] = pick;
+    });
+    await showRouletteResult(step, picks, groups, null);
+    Object.assign(round[2], picks);
+    Object.values(picks).forEach(id => {
+      state.pickHistory[cls][id] = (state.pickHistory[cls][id] || 0) + 1;
+    });
+  } else if (step === 3) {
+    const candidates = Object.values(round[2]);
+    if (candidates.length === 0) { isRunning = false; return; }
+    const pick = candidates[Math.floor(Math.random() * candidates.length)];
+    await showSpotlightResult(pick, round[2], groups);
+    round[3] = pick;
+    state.pickHistory[cls][pick] = (state.pickHistory[cls][pick] || 0) + 1;
+  }
+
+  await saveState();
+  isRunning = false;
+  render();
+}
+
+// ============================================
+// 단계별 뽑기 (특정 모둠만)
+// ============================================
+async function runStepForGroup(step, gIdx) {
+  if (isRunning) return;
+  const cls = state.currentClass;
+  const groups = CLASS_DATA[cls];
+  const round = state.currentRound[cls];
+  const group = groups[gIdx];
+
+  if (!confirm(`${group.name}의 ${ROLE_NAMES[step]}을(를) 다시 뽑을까요?\n이 모둠의 이후 단계도 초기화됩니다.`)) return;
+
+  isRunning = true;
+
+  // 이전 결과 롤백 (해당 모둠 + 이후 단계들)
+  for (let s = step; s <= 2; s++) {
+    if (round[s] && round[s][gIdx] !== undefined) {
+      state.pickHistory[cls][round[s][gIdx]] = Math.max(0, (state.pickHistory[cls][round[s][gIdx]] || 0) - 1);
+      delete round[s][gIdx];
+    }
+  }
+  // 칠판 풀이가 이 모둠 학생이었으면 초기화
+  if (round[3] !== null) {
+    state.pickHistory[cls][round[3]] = Math.max(0, (state.pickHistory[cls][round[3]] || 0) - 1);
+    round[3] = null;
+  }
+
+  // 새로 뽑기
+  const exclude = new Set();
+  if (step === 2 && round[1][gIdx] !== undefined) exclude.add(round[1][gIdx]);
+
+  const candidates = group.students
+    .filter(s => !s.leader && !state.absent[cls].has(s.id) && !exclude.has(s.id))
+    .map(s => s.id);
+  const pick = weightedPick(candidates, cls);
+
+  if (pick !== null) {
+    const picks = { [gIdx]: pick };
+    await showRouletteResult(step, picks, groups, gIdx);
+    round[step][gIdx] = pick;
+    state.pickHistory[cls][pick] = (state.pickHistory[cls][pick] || 0) + 1;
+  } else {
+    showToast('뽑을 수 있는 학생이 없습니다');
+  }
+
+  await saveState();
+  isRunning = false;
+  render();
+}
+
+// ============================================
+// 룰렛 애니메이션 (개선판: 순차 정지 + 슬로우다운)
+// ============================================
+async function showRouletteResult(step, picks, groups, singleGIdx) {
+  const overlay = document.getElementById('resultOverlay');
+  const titleEl = document.getElementById('resultTitle');
+  const gridEl = document.getElementById('resultGrid');
+  const closeBtn = document.getElementById('closeResultBtn');
+
+  const isSingle = singleGIdx !== null && singleGIdx !== undefined;
+  titleEl.textContent = isSingle
+    ? `🔄 ${groups[singleGIdx].name} ${ROLE_NAMES[step]} 재추첨`
+    : `${ROLE_NAMES[step]} 선정`;
+  closeBtn.disabled = true;
+  closeBtn.textContent = '추첨 중...';
+  gridEl.innerHTML = '';
+
+  const cards = [];
+  const targetGroups = isSingle ? [singleGIdx] : groups.map((_, i) => i);
+
+  targetGroups.forEach((gIdx) => {
+    const group = groups[gIdx];
+    const card = document.createElement('div');
+    card.className = 'result-card spinning';
+    const allIds = group.students.filter(s => !s.leader && !state.absent[state.currentClass].has(s.id)).map(s => s.id);
+    card.innerHTML = `
+      <div class="result-group-name">${group.name}</div>
+      <div class="result-student-id">${allIds[0] || '---'}</div>
+    `;
+    gridEl.appendChild(card);
+    cards.push({
+      el: card,
+      gIdx,
+      candidates: allIds,
+      finalPick: picks[gIdx],
+      stopped: false,
+      stopAt: 0,
+    });
+  });
+
+  overlay.classList.add('active');
+  await new Promise(r => setTimeout(r, 250));
+
+  // 각 카드별 정지 시각 설정 (순차적으로 멈춤)
+  // 1초 동안 다 같이 돌고, 그 후 0.25초 간격으로 하나씩 정지
+  const baseDuration = 1000;
+  const stopInterval = 280;
+  cards.forEach((c, i) => {
+    c.stopAt = baseDuration + i * stopInterval;
+  });
+  const totalDuration = baseDuration + cards.length * stopInterval + 200;
+
+  const startTime = performance.now();
+  let lastTickTime = 0;
+
+  await new Promise(resolve => {
+    function frame(now) {
+      const elapsed = now - startTime;
+
+      cards.forEach(c => {
+        if (c.stopped) return;
+
+        if (elapsed >= c.stopAt) {
+          // 정지!
+          c.stopped = true;
+          c.el.classList.remove('spinning');
+          c.el.classList.add('locked');
+          const idEl = c.el.querySelector('.result-student-id');
+          idEl.textContent = c.finalPick !== undefined ? c.finalPick : '없음';
+          playLockIn();
+          return;
+        }
+
+        // 회전 속도 계산: 정지 시간이 가까워질수록 느려짐
+        const remaining = c.stopAt - elapsed;
+        const slowdownStart = 500; // 마지막 0.5초부터 슬로우다운
+        let speed; // ms per tick
+        if (remaining > slowdownStart) {
+          speed = 50;
+        } else {
+          // remaining 500ms -> 50ms, remaining 0ms -> 200ms (점점 느려짐)
+          const t = 1 - (remaining / slowdownStart);
+          speed = 50 + t * 200;
+        }
+
+        if (now - (c.lastTick || 0) >= speed) {
+          c.lastTick = now;
+          if (c.candidates.length > 0) {
+            const rand = c.candidates[Math.floor(Math.random() * c.candidates.length)];
+            c.el.querySelector('.result-student-id').textContent = rand;
+            // 슬로우다운 구간에서만 틱 효과음
+            if (remaining < slowdownStart) {
+              playTick(400 + Math.random() * 200, 0.02);
+            }
+          }
+        }
+      });
+
+      if (cards.every(c => c.stopped)) {
+        resolve();
+        return;
+      }
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  });
+
+  // 모든 카드 lock-in 후 잠시 대기
+  await new Promise(r => setTimeout(r, 300));
+
+  closeBtn.disabled = false;
+  closeBtn.textContent = '확인';
+
+  await new Promise(resolve => {
+    const done = () => {
+      overlay.classList.remove('active');
+      document.removeEventListener('keydown', keyHandler);
+      resolve();
+    };
+    closeBtn.onclick = done;
+    const keyHandler = (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+        e.preventDefault();
+        done();
+      }
+    };
+    document.addEventListener('keydown', keyHandler);
+  });
+}
+
+// ============================================
+// 칠판 풀이 - 스포트라이트 (개선판: 점점 느려짐 + 팡파레)
+// ============================================
+async function showSpotlightResult(winnerId, step2Picks, groups) {
+  const overlay = document.getElementById('resultOverlay');
+  const titleEl = document.getElementById('resultTitle');
+  const gridEl = document.getElementById('resultGrid');
+  const closeBtn = document.getElementById('closeResultBtn');
+
+  titleEl.textContent = `🎯 칠판 풀이 선정`;
+  closeBtn.disabled = true;
+  closeBtn.textContent = '추첨 중...';
+  gridEl.innerHTML = '';
+
+  const cards = [];
+  groups.forEach((group, gIdx) => {
+    const studentId = step2Picks[gIdx];
+    if (!studentId) return;
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.innerHTML = `
+      <div class="result-group-name">${group.name}</div>
+      <div class="result-student-id">${studentId}</div>
+    `;
+    gridEl.appendChild(card);
+    cards.push({ el: card, studentId });
+  });
+
+  overlay.classList.add('active');
+  await new Promise(r => setTimeout(r, 300));
+
+  const winnerIdx = cards.findIndex(c => c.studentId === winnerId);
+
+  // 점점 느려지면서 winner에서 멈추도록 계산
+  // 총 회전 수 + winner 위치까지 정확히 도달
+  const totalRevolutions = 3;
+  const totalSteps = totalRevolutions * cards.length + winnerIdx + cards.length;
+  const startTime = performance.now();
+  const totalDuration = 2800;
+
+  await new Promise(resolve => {
+    let currentStep = -1;
+
+    function frame(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / totalDuration, 1);
+
+      // ease-out 곡선: 빠르게 시작해서 점점 느려짐
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const targetStep = Math.floor(easedProgress * totalSteps);
+
+      if (targetStep !== currentStep) {
+        currentStep = targetStep;
+        cards.forEach(c => c.el.classList.remove('spotlight'));
+        const idx = targetStep % cards.length;
+        if (cards[idx]) {
+          cards[idx].el.classList.add('spotlight');
+          playTick(500 + (idx * 80), 0.04);
+        }
+      }
+
+      if (progress >= 1) {
+        // 최종 정착
+        cards.forEach(c => c.el.classList.remove('spotlight', 'spotlight-final'));
+        if (cards[winnerIdx]) {
+          cards[winnerIdx].el.classList.add('spotlight', 'spotlight-final');
+        }
+        playFanfare();
+        resolve();
+        return;
+      }
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  });
+
+  await new Promise(r => setTimeout(r, 600));
+
+  closeBtn.disabled = false;
+  closeBtn.textContent = '확인';
+
+  await new Promise(resolve => {
+    const done = () => {
+      overlay.classList.remove('active');
+      document.removeEventListener('keydown', keyHandler);
+      resolve();
+    };
+    closeBtn.onclick = done;
+    const keyHandler = (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+        e.preventDefault();
+        done();
+      }
+    };
+    document.addEventListener('keydown', keyHandler);
+  });
+}
+
+// ============================================
+// 타이머
+// ============================================
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('timerDisplay');
+  el.textContent = formatTime(timer.remaining);
+  el.classList.remove('warning', 'danger');
+  if (timer.remaining <= 10 && timer.remaining > 0) el.classList.add('danger');
+  else if (timer.remaining <= 30 && timer.remaining > 0) el.classList.add('warning');
+}
+
+function startTimer(seconds) {
+  if (seconds !== undefined) {
+    timer.total = seconds;
+    timer.remaining = seconds;
+  }
+  if (timer.remaining <= 0) {
+    showToast('시간을 먼저 입력하세요');
+    return;
+  }
+  if (timer.intervalId) clearInterval(timer.intervalId);
+  timer.running = true;
+  updateTimerDisplay();
+  timer.intervalId = setInterval(() => {
+    timer.remaining--;
+    updateTimerDisplay();
+    if (timer.remaining <= 5 && timer.remaining > 0) playTick(880, 0.1);
+    if (timer.remaining <= 0) {
+      clearInterval(timer.intervalId);
+      timer.running = false;
+      playTimerEnd();
+      showToast('⏰ 시간 종료!');
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  if (timer.intervalId) {
+    clearInterval(timer.intervalId);
+    timer.intervalId = null;
+  }
+  timer.running = false;
+}
+
+function resetTimer() {
+  pauseTimer();
+  timer.remaining = timer.total;
+  updateTimerDisplay();
+}
+
+// ============================================
+// CSV 내보내기
+// ============================================
+function exportCSV() {
+  const lines = ['반,학번,학습리더,누적선택수,결석'];
+  Object.keys(CLASS_DATA).forEach(cls => {
+    CLASS_DATA[cls].forEach(group => {
+      group.students.forEach(s => {
+        const cnt = state.pickHistory[cls][s.id] || 0;
+        const absent = state.absent[cls].has(s.id) ? 'O' : '';
+        const leader = s.leader ? 'O' : '';
+        lines.push(`${cls},${s.id},${leader},${cnt},${absent}`);
+      });
+    });
+  });
+  const csv = '﻿' + lines.join('\n'); // BOM for Excel
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const today = new Date().toISOString().slice(0,10);
+  a.download = `대수_모둠활동_통계_${today}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('📊 통계 CSV 다운로드 완료');
+}
+
+// ============================================
+// 토스트
+// ============================================
+function showToast(msg, duration = 2000) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+// ============================================
+// 이벤트 리스너
+// ============================================
+function attachEventListeners() {
+  document.querySelectorAll('.action-btn').forEach(btn => {
+    btn.onclick = () => {
+      const step = parseInt(btn.dataset.step);
+      if (!btn.disabled) runStep(step);
+    };
+  });
+
+  document.getElementById('fairnessToggle').onclick = () => {
+    state.fairness = !state.fairness;
+    document.getElementById('fairnessSwitch').classList.toggle('on', state.fairness);
+    saveState();
+    showToast(state.fairness ? '공정 추첨 ON' : '완전 랜덤 모드');
+  };
+
+  document.getElementById('soundToggle').onclick = () => {
+    state.sound = !state.sound;
+    document.getElementById('soundSwitch').classList.toggle('on', state.sound);
+    saveState();
+    if (state.sound) playLockIn();
+    showToast(state.sound ? '🔊 효과음 ON' : '🔇 효과음 OFF');
+  };
+
+  document.getElementById('exportBtn').onclick = exportCSV;
+
+  document.getElementById('resetCurrentBtn').onclick = () => {
+    if (isRunning) return;
+    if (confirm('현재 라운드 선택을 초기화할까요?\n(누적 기록은 유지됩니다)')) {
+      const cls = state.currentClass;
+      // 누적 카운트 롤백
+      Object.values(state.currentRound[cls][1] || {}).forEach(id => {
+        state.pickHistory[cls][id] = Math.max(0, (state.pickHistory[cls][id] || 0) - 1);
+      });
+      Object.values(state.currentRound[cls][2] || {}).forEach(id => {
+        state.pickHistory[cls][id] = Math.max(0, (state.pickHistory[cls][id] || 0) - 1);
+      });
+      if (state.currentRound[cls][3] !== null) {
+        state.pickHistory[cls][state.currentRound[cls][3]] = Math.max(0, (state.pickHistory[cls][state.currentRound[cls][3]] || 0) - 1);
+      }
+      state.currentRound[cls] = { 1:{}, 2:{}, 3:null };
+      saveState();
+      render();
+      showToast('현재 라운드 초기화 완료');
+    }
+  };
+
+  document.getElementById('resetAllBtn').onclick = () => {
+    if (isRunning) return;
+    if (confirm(`'${state.currentClass}'의 누적 선택 기록을 전부 초기화할까요?\n(결석 정보는 유지)`)) {
+      state.pickHistory[state.currentClass] = {};
+      state.currentRound[state.currentClass] = { 1:{}, 2:{}, 3:null };
+      saveState();
+      render();
+      showToast('누적 기록 초기화 완료');
+    }
+  };
+
+  // 타이머 컨트롤
+  document.querySelectorAll('.timer-preset').forEach(btn => {
+    btn.onclick = () => {
+      const sec = parseInt(btn.dataset.sec);
+      document.getElementById('timerInput').value = sec;
+      startTimer(sec);
+    };
+  });
+
+  document.getElementById('timerStartBtn').onclick = () => {
+    const input = document.getElementById('timerInput');
+    if (timer.running) return;
+    if (timer.remaining > 0 && !timer.running) {
+      // 일시정지 후 재개
+      startTimer();
+    } else {
+      const sec = parseInt(input.value);
+      if (sec > 0) startTimer(sec);
+      else showToast('초 단위로 시간을 입력하세요');
+    }
+  };
+
+  document.getElementById('timerPauseBtn').onclick = () => {
+    pauseTimer();
+    showToast('⏸ 타이머 일시정지');
+  };
+
+  document.getElementById('timerResetBtn').onclick = resetTimer;
+
+  // 단축키
+  document.addEventListener('keydown', (e) => {
+    // 모달이 열려있으면 무시 (모달 자체 핸들러가 처리)
+    if (document.getElementById('resultOverlay').classList.contains('active')) return;
+    // 입력란에 포커스가 있으면 무시
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    // 한글 IME 조합 중 무시
+    if (e.isComposing) return;
+
+    if (e.key === '1' || e.key === '2' || e.key === '3') {
+      const step = parseInt(e.key);
+      const btn = document.querySelector(`.action-btn[data-step="${step}"]`);
+      if (btn && !btn.disabled) {
+        e.preventDefault();
+        runStep(step);
+      }
+    } else if (e.key === ' ') {
+      e.preventDefault();
+      if (timer.running) pauseTimer();
+      else if (timer.remaining > 0) startTimer();
+    } else if (e.key === 'h' || e.key === 'H') {
+      // 메인 페이지로 이동
+      e.preventDefault();
+      location.href = 'index.html';
+    }
+  });
+}
+
+// 시작
+(async () => {
+  await loadStateAsync();
+  applyHashRouting();  // URL 해시 #class=N 파싱하여 자동 탭 선택
+  document.getElementById('soundSwitch').classList.toggle('on', state.sound);
+  document.getElementById('fairnessSwitch').classList.toggle('on', state.fairness);
+  renderTabs();
+  render();
+  attachEventListeners();
+  updateTimerDisplay();
+})();
+</script>
+</body>
+</html>
