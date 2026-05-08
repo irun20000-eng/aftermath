@@ -32,17 +32,47 @@ tools: Read, Write, Edit, Bash, Grep, Glob
    - 중단원 마무리 (`학습지_04_중단원마무리.html` 패턴)
    - 대단원 평가 (`학습지_05_대단원평가.html` 패턴)
 
-4. **콘텐츠**
+4. **콘텐츠 (모든 문제에 출처 명시 필수)**
    - **흥미 발문** 1개 (생각 열기)
    - **이전 차시 복습** 발문 1개 (전 차시가 있을 때)
    - **개념 정의·정리·증명** (개념 구성)
-   - **예제 1~3개** (단계별 풀이, 답 토글)
-   - **연습 문제 5~10개** (객관식 또는 단답)
+   - **예제 1~3개** — 각 문제마다 출처 (📚 교과서 / 🎯 모의고사 / 🏆 수능 / ✏️ 기출 / 🛠 자체)
+   - **연습 문제 5~10개** — 각 문제마다 출처
+   - **(선택) 도전 문제 1개** — 상위 학습자용 고난도 문제, 팝업 모달로 표시 (`challenge-popup.js`)
    - **메타인지 회고 발문** 2~3개 (Exit Ticket)
 
 5. **차시 이동 정보** (현재 학습지의 이전·다음)
    - 이전 차시 파일명 (없으면 `null`)
    - 다음 차시 파일명 (없으면 `null`)
+
+### 출처 표기 — 2학기부터 필수
+
+> ⚠️ **1학기 학습지(2026)는 출처가 불명확함. 2학기 미적분I부터는 예외 없이 모든 문제에 출처 표시.**
+
+각 문제 상단에 배지로:
+```html
+<span class="badge-source bg-blue-100 text-blue-800 border-blue-200">📚 교과서 78p</span>
+```
+
+| 카테고리 | 배지 색상 (Tailwind) |
+|---|---|
+| 📚 교과서 | `bg-blue-100 text-blue-800 border-blue-200` |
+| 🎯 모의고사 | `bg-purple-100 text-purple-800 border-purple-200` |
+| 🏆 수능 | `bg-rose-100 text-rose-800 border-rose-200` |
+| ✏️ 학교 기출 | `bg-amber-100 text-amber-800 border-amber-200` |
+| 🛠 자체 제작 | `bg-slate-100 text-slate-700 border-slate-200` |
+
+`.badge-source` CSS 클래스는 학습지 `<style>` 블록에 포함:
+```css
+.badge-source {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.75rem; font-weight: 600;
+  padding: 0.2rem 0.6rem; border-radius: 0.5rem;
+  border: 1px solid; margin-right: 0.5rem;
+}
+```
+
+자세한 가이드: `docs/conventions.md` §4-A.
 
 ## 📤 출력
 

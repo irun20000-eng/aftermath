@@ -94,6 +94,60 @@ katex.renderToString(math, { throwOnError: false, displayMode: false });
 
 ---
 
+## 4-A. 문제 출처 표기 (2학기부터 필수)
+
+> **1학기 학습지(2026)는 출처가 불분명하게 작성되었음.**
+> **2학기 미적분I부터는 모든 문제에 출처 배지를 표시하세요.**
+> 일반 차시 학습지·중단원 마무리·대단원 평가·해설 SPA 모두 적용.
+
+### 4-A.1 출처 카테고리 + 배지
+
+| 카테고리 | 배지 색상 (Tailwind) | 표기 예 |
+|---|---|---|
+| 📚 교과서 | `bg-blue-100 text-blue-800 border-blue-200` | `📚 교과서 78p` |
+| 🎯 모의고사 | `bg-purple-100 text-purple-800 border-purple-200` | `🎯 2024.06 평가원` |
+| 🏆 수능 | `bg-rose-100 text-rose-800 border-rose-200` | `🏆 2025 수능` |
+| ✏️ 학교 기출 | `bg-amber-100 text-amber-800 border-amber-200` | `✏️ 2024 1학기 중간` |
+| 🛠 자체 제작 | `bg-slate-100 text-slate-700 border-slate-200` | `🛠 자체` |
+
+### 4-A.2 마크업 패턴
+
+문제 카드 **상단**(난이도 배지 옆 또는 바로 아래)에 작은 인라인 배지로:
+
+```html
+<span class="badge-source bg-blue-100 text-blue-800 border-blue-200">
+  📚 교과서 78p
+</span>
+```
+
+CSS 클래스 `.badge-source`를 학습지 공용 CSS에 추가:
+```css
+.badge-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  margin-right: 0.5rem;
+}
+```
+
+### 4-A.3 작성 원칙
+
+- **모든 문제**에 출처 표시 (예외 없음)
+- **자체 제작**도 명시 (출처 누락 X — `🛠 자체`로라도)
+- 인쇄 시에도 보임 (`@media print`에 hide X)
+- 짧고 명확하게 (예: "교과서 78p", "2024.09 모평")
+- 해설 SPA의 `PROBLEMS` 객체에는 `source` 속성 추가:
+  ```js
+  { id: '...', source: '🏆 2025 수능 22번', ... }
+  ```
+
+---
+
 ## 5. 한국어 텍스트 검수
 
 ### 5.1 자주 발생하는 오타
