@@ -321,7 +321,10 @@
          ============================================================ -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
       <div class="aft-widget-head">
-        <span class="aft-widget-title">⏱ 타이머</span>
+        <span class="aft-widget-title">
+          <span class="aft-widget-title-icon">⏱</span>
+          <span>타이머</span>
+        </span>
         <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
       </div>
       <div class="aft-widget-body">
@@ -333,7 +336,9 @@
           <button type="button" class="aft-preset" data-sec="600">10분</button>
         </div>
         <div class="aft-timer-controls">
-          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
+          <input type="text" id="aft-timer-input" value="01:00" placeholder="mm:ss"
+                 inputmode="numeric" autocomplete="off" spellcheck="false"
+                 aria-label="타이머 시간 (mm:ss 또는 분)">
           <button type="button" id="aft-timer-start">시작</button>
           <button type="button" id="aft-timer-pause">일시정지</button>
           <button type="button" id="aft-timer-reset">리셋</button>
