@@ -2,9 +2,16 @@
  * Aftermath Floating Timer Widget
  * 우측 하단 floating 카운트다운 타이머. 학습지/해설지 등에서 한 줄로 사용.
  *   <script src="timer-widget.js" defer></script>
+ *
+ * 기능:
+ * - 카운트다운 (프리셋 1/3/5/10분, 초 직접 입력)
+ * - 위젯 위치/크기 자유 조정 (헤더 드래그 + 우하단 리사이즈 핸들)
+ * - localStorage에 위치·크기 저장
  */
 (function () {
   'use strict';
+
+  const STORAGE_KEY = 'aftermath_timer_widget_state';
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
@@ -46,22 +53,39 @@
 }
 .aftermath-timer-mini:empty { display:none; }
 .aftermath-timer-toggle:has(.aftermath-timer-mini:not(:empty)) .aftermath-timer-icon { font-size:14px; margin-bottom:2px; }
+
+/* 패널 — 자유 위치/크기 */
 .aftermath-timer-panel {
-  position:absolute; right:0; bottom:64px;
-  width:248px; padding:14px;
+  position:fixed;
+  right:84px; bottom:24px;       /* 기본 위치 (저장값 있으면 JS로 덮어씀) */
+  width:248px; padding:0;
   background:#fff; color:#1e293b;
   border:1px solid #e2e8f0; border-radius:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.15);
+  box-shadow:0 8px 24px rgba(0,0,0,0.18);
   animation:aftermath-timer-pop 180ms cubic-bezier(0.16,1,0.3,1);
+  resize: both; overflow: auto;
+  min-width: 232px; min-height: 260px;
+  max-width: 90vw; max-height: 80vh;
+  z-index:9001;
+  display:flex; flex-direction:column;
 }
 .aftermath-timer-panel[hidden] { display:none; }
+.aftermath-timer-panel-inner { padding:14px; flex:1; min-height:0; overflow:auto; }
 @keyframes aftermath-timer-pop { from{opacity:0;transform:translateY(8px) scale(.96)} to{opacity:1;transform:translateY(0) scale(1)} }
 @keyframes aftermath-timer-blink { 50% { opacity:.45; } }
+
 .aftermath-timer-header {
   display:flex; justify-content:space-between; align-items:center;
   font-size:12px; font-weight:700; color:#475569;
   letter-spacing:.05em; text-transform:uppercase;
-  margin-bottom:8px;
+  padding:10px 14px; margin-bottom:0;
+  border-bottom:1px solid #f1f5f9;
+  cursor:move; user-select:none;
+  background:#f8fafc; border-radius:14px 14px 0 0;
+  flex-shrink:0;
+}
+.aftermath-timer-header::before {
+  content:'⠿'; margin-right:6px; color:#94a3b8; font-size:12px; cursor:move;
 }
 .aftermath-timer-close {
   background:none; border:none; font-size:20px; cursor:pointer;
@@ -111,13 +135,13 @@
   .aftermath-timer { right:12px; bottom:12px; }
   .aftermath-timer-toggle { width:48px; height:48px; }
   .aftermath-timer-icon { font-size:18px; }
-  .aftermath-timer-panel { width:228px; padding:12px; }
+  .aftermath-timer-panel { width:228px; min-width:220px; }
   .aftermath-timer-display { font-size:30px; }
 }
-@media print { .aftermath-timer { display:none !important; } }
+@media print { .aftermath-timer, .aftermath-timer-panel { display:none !important; } }
 @media (prefers-color-scheme: dark) {
   .aftermath-timer-panel { background:#1e293b; color:#f1f5f9; border-color:#475569; }
-  .aftermath-timer-header { color:#cbd5e1; }
+  .aftermath-timer-header { background:#0f172a; color:#cbd5e1; border-bottom-color:#334155; }
   .aftermath-timer-display { color:#f1f5f9; }
   .aftermath-timer-presets button { background:#334155; border-color:#475569; color:#cbd5e1; }
   .aftermath-timer-presets button:hover { background:#6366f1; color:#fff; border-color:#6366f1; }
@@ -133,7 +157,7 @@
   }
 
   /* ──────────────────────────────────────────────
-     마크업 삽입
+     마크업 삽입 — 토글은 .aftermath-timer 안, 패널은 body 직접 자식
   ────────────────────────────────────────────── */
   function injectDOM() {
     const wrap = document.createElement('div');
@@ -145,11 +169,20 @@
         <span class="aftermath-timer-icon">⏱</span>
         <span class="aftermath-timer-mini" id="aftermathTimerMini"></span>
       </button>
-      <div class="aftermath-timer-panel" id="aftermathTimerPanel" hidden>
-        <div class="aftermath-timer-header">
-          <span>⏱ 타이머</span>
-          <button class="aftermath-timer-close" id="aftermathTimerClose" aria-label="닫기">×</button>
-        </div>
+    `;
+    document.body.appendChild(wrap);
+
+    // 패널은 body 직접 자식 (드래그 시 다른 요소와 겹침 자유)
+    const panel = document.createElement('div');
+    panel.className = 'aftermath-timer-panel';
+    panel.id = 'aftermathTimerPanel';
+    panel.hidden = true;
+    panel.innerHTML = `
+      <div class="aftermath-timer-header" id="aftermathTimerHeader">
+        <span>⏱ 타이머</span>
+        <button class="aftermath-timer-close" id="aftermathTimerClose" aria-label="닫기">×</button>
+      </div>
+      <div class="aftermath-timer-panel-inner">
         <div class="aftermath-timer-display" id="aftermathTimerDisplay">00:00</div>
         <div class="aftermath-timer-presets">
           <button data-sec="60">1분</button>
@@ -165,7 +198,7 @@
         </div>
       </div>
     `;
-    document.body.appendChild(wrap);
+    document.body.appendChild(panel);
   }
 
   /* ──────────────────────────────────────────────
@@ -244,6 +277,108 @@
   }
 
   /* ──────────────────────────────────────────────
+     상태 저장/복원 (위치·크기)
+  ────────────────────────────────────────────── */
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || null; }
+    catch (e) { return null; }
+  }
+  function saveState() {
+    const panel = document.getElementById('aftermathTimerPanel');
+    if (!panel || panel.hidden) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        left: parseInt(panel.style.left, 10) || 0,
+        top: parseInt(panel.style.top, 10) || 0,
+        width: panel.offsetWidth,
+        height: panel.offsetHeight
+      }));
+    } catch (e) {}
+  }
+  function applyState() {
+    const s = loadState();
+    const panel = document.getElementById('aftermathTimerPanel');
+    if (!panel) return;
+    if (!s) return;
+    // 화면 안쪽으로 클램핑
+    const w = window.innerWidth, h = window.innerHeight;
+    const W = Math.min(s.width || 248, w * 0.9);
+    const H = Math.min(s.height || 280, h * 0.8);
+    const L = Math.max(0, Math.min(s.left, w - W));
+    const T = Math.max(0, Math.min(s.top, h - 60));
+    panel.style.left = L + 'px';
+    panel.style.top = T + 'px';
+    panel.style.right = 'auto'; panel.style.bottom = 'auto';
+    panel.style.width = W + 'px';
+    panel.style.height = H + 'px';
+  }
+
+  /* ──────────────────────────────────────────────
+     드래그·리사이즈
+  ────────────────────────────────────────────── */
+  function setupDrag() {
+    const panel = document.getElementById('aftermathTimerPanel');
+    const header = document.getElementById('aftermathTimerHeader');
+    if (!panel || !header) return;
+
+    let dragging = false;
+    let startX = 0, startY = 0, startL = 0, startT = 0;
+
+    function onDown(e) {
+      if (e.target.closest('.aftermath-timer-close')) return; // 닫기 버튼은 무시
+      const pt = (e.touches && e.touches[0]) || e;
+      e.preventDefault();
+      const rect = panel.getBoundingClientRect();
+      // fixed 좌표로 고정
+      panel.style.left = rect.left + 'px';
+      panel.style.top = rect.top + 'px';
+      panel.style.right = 'auto'; panel.style.bottom = 'auto';
+      dragging = true;
+      startX = pt.clientX; startY = pt.clientY;
+      startL = rect.left; startT = rect.top;
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+      document.addEventListener('touchmove', onMove, { passive: false });
+      document.addEventListener('touchend', onUp);
+    }
+    function onMove(e) {
+      if (!dragging) return;
+      const pt = (e.touches && e.touches[0]) || e;
+      if (e.cancelable) e.preventDefault();
+      const dx = pt.clientX - startX;
+      const dy = pt.clientY - startY;
+      const newL = Math.max(0, Math.min(startL + dx, window.innerWidth - panel.offsetWidth));
+      const newT = Math.max(0, Math.min(startT + dy, window.innerHeight - 40));
+      panel.style.left = newL + 'px';
+      panel.style.top = newT + 'px';
+    }
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('touchend', onUp);
+      saveState();
+    }
+
+    header.addEventListener('mousedown', onDown);
+    header.addEventListener('touchstart', onDown, { passive: false });
+  }
+
+  function setupResize() {
+    const panel = document.getElementById('aftermathTimerPanel');
+    if (!panel || !window.ResizeObserver) return;
+    let timeoutId = null;
+    const ro = new ResizeObserver(() => {
+      if (panel.hidden) return;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(saveState, 200);
+    });
+    ro.observe(panel);
+  }
+
+  /* ──────────────────────────────────────────────
      이벤트 바인딩
   ────────────────────────────────────────────── */
   function bindEvents() {
@@ -252,9 +387,8 @@
     const closeBtn = document.getElementById('aftermathTimerClose');
 
     toggle.addEventListener('click', e => {
-      // 패널 내부 요소 클릭이면 무시
-      if (e.target.closest('.aftermath-timer-panel')) return;
       panel.hidden = !panel.hidden;
+      if (!panel.hidden) applyState();
     });
     closeBtn.addEventListener('click', e => {
       e.stopPropagation();
@@ -278,13 +412,6 @@
     document.getElementById('aftermathTimerPause').addEventListener('click', pause);
     document.getElementById('aftermathTimerReset').addEventListener('click', reset);
 
-    // 패널 외부 클릭 시 닫기
-    document.addEventListener('click', e => {
-      if (panel.hidden) return;
-      if (e.target.closest('#aftermathTimer')) return;
-      panel.hidden = true;
-    });
-
     // 패널 열린 동안만 Esc 닫기
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && !panel.hidden) {
@@ -292,5 +419,9 @@
         panel.hidden = true;
       }
     }, true);
+
+    // 드래그·리사이즈
+    setupDrag();
+    setupResize();
   }
 })();
