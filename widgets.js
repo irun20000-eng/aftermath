@@ -38,10 +38,28 @@
     });
   }
 
+  // ====== 시간 포맷·파싱 ======
   function aftFormat(sec) {
     var m = Math.floor(sec / 60);
     var s = sec % 60;
     return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+  }
+  // "1:30" / "01:30" / "90" (단순 초) / "5:" → 모두 파싱
+  function aftParseTime(str) {
+    if (typeof str !== 'string') return NaN;
+    str = str.trim();
+    if (!str) return NaN;
+    var m = str.match(/^(\d{1,3}):(\d{1,2})$/);
+    if (m) {
+      var min = parseInt(m[1], 10);
+      var sec = parseInt(m[2], 10);
+      if (isNaN(min) || isNaN(sec) || sec >= 60) return NaN;
+      return min * 60 + sec;
+    }
+    // 콜론 없으면 분 단위로 해석 (사용자 직관)
+    var n = parseInt(str, 10);
+    if (isNaN(n) || n < 0) return NaN;
+    return n * 60;
   }
 
   function aftUpdateDisplay() {
@@ -53,10 +71,16 @@
     else if (aftTimer.remaining <= 30 && aftTimer.remaining > 0) el.classList.add('aft-warn');
   }
 
+  function aftSyncInput() {
+    var input = document.getElementById('aft-timer-input');
+    if (input) input.value = aftFormat(aftTimer.total);
+  }
+
   function aftStart(seconds) {
     if (typeof seconds === 'number') {
       aftTimer.total = seconds;
       aftTimer.remaining = seconds;
+      aftSyncInput();
     }
     if (aftTimer.remaining <= 0) return;
     if (aftTimer.intervalId) clearInterval(aftTimer.intervalId);
@@ -92,7 +116,6 @@
 
   function aftSaveState(widget) {
     try {
-      var rect = widget.getBoundingClientRect();
       var state = {
         x: parseInt(widget.dataset.x || '0', 10),
         y: parseInt(widget.dataset.y || '0', 10),
@@ -101,7 +124,7 @@
         collapsed: widget.classList.contains('aft-collapsed')
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (e) { /* localStorage 실패 무시 */ }
+    } catch (e) { /* 무시 */ }
   }
 
   function aftLoadState(widget) {
@@ -129,7 +152,6 @@
     var startX = 0, startY = 0, baseX = 0, baseY = 0;
 
     head.addEventListener('pointerdown', function (e) {
-      // 접기 버튼 등 다른 인터랙티브 요소면 무시
       if (e.target.closest('.aft-widget-collapse')) return;
       dragging = true;
       try { head.setPointerCapture(e.pointerId); } catch (err) {}
@@ -203,39 +225,49 @@
     });
   }
 
-  // ====== 초기화 — DOMContentLoaded ======
+  // ====== 초기화 ======
   function aftInit() {
     var widget = document.getElementById('aft-timer-widget');
     if (!widget) return;
 
-    // 상태 복원
     aftLoadState(widget);
-
-    // 디스플레이 초기 표시
     aftUpdateDisplay();
+    aftSyncInput();
 
-    // 프리셋 버튼들
-    var presets = widget.querySelectorAll('.aft-preset');
-    presets.forEach(function (btn) {
+    // 프리셋
+    widget.querySelectorAll('.aft-preset').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var sec = parseInt(btn.getAttribute('data-sec'), 10);
-        if (!isNaN(sec) && sec > 0) {
-          var input = document.getElementById('aft-timer-input');
-          if (input) input.value = sec;
-          aftStart(sec);
-        }
+        if (!isNaN(sec) && sec > 0) aftStart(sec);
       });
     });
 
-    // 시작 버튼
+    // 시작 — input.value를 항상 우선시 (단 변경 없으면 재개)
     var startBtn = document.getElementById('aft-timer-start');
+    var input = document.getElementById('aft-timer-input');
     if (startBtn) {
       startBtn.addEventListener('click', function () {
         if (aftTimer.running) return;
-        if (aftTimer.remaining > 0) { aftStart(); return; }
-        var input = document.getElementById('aft-timer-input');
-        var sec = input ? parseInt(input.value, 10) : 60;
-        if (!isNaN(sec) && sec > 0) aftStart(sec);
+        var sec = input ? aftParseTime(input.value) : 60;
+        if (isNaN(sec) || sec <= 0) {
+          // 잘못된 입력이면 시각 피드백
+          if (input) {
+            input.classList.add('aft-input-error');
+            setTimeout(function () { input.classList.remove('aft-input-error'); }, 1200);
+            input.focus();
+          }
+          return;
+        }
+        if (sec !== aftTimer.total) {
+          // input 변경됨 → 그 값으로 새로 시작
+          aftStart(sec);
+        } else if (aftTimer.remaining > 0) {
+          // 일시정지 상태 → 재개
+          aftStart();
+        } else {
+          // 끝남 + 변경 없음 → input 값으로 새로 시작
+          aftStart(sec);
+        }
       });
     }
 
@@ -245,20 +277,27 @@
     var resetBtn = document.getElementById('aft-timer-reset');
     if (resetBtn) resetBtn.addEventListener('click', aftReset);
 
-    // input 변경 시 total 동기화 (시작 누르기 전이면)
-    var input = document.getElementById('aft-timer-input');
+    // input 변경 — running 아닐 때만 total/remaining 동기화
     if (input) {
       input.addEventListener('change', function () {
-        var sec = parseInt(input.value, 10);
+        var sec = aftParseTime(input.value);
         if (!isNaN(sec) && sec > 0 && !aftTimer.running) {
           aftTimer.total = sec;
           aftTimer.remaining = sec;
           aftUpdateDisplay();
+          input.value = aftFormat(sec); // 정규화 (e.g. "5" → "05:00")
+        }
+      });
+      // 엔터 키로 시작
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          input.blur();
+          if (startBtn) startBtn.click();
         }
       });
     }
 
-    // 드래그·리사이즈·접기
     aftSetupDrag(widget);
     aftSetupResize(widget);
     aftSetupCollapse(widget);
