@@ -311,10 +311,15 @@
         if (timer.running) { debugLog('이미 running'); return; }
         if (timer.remaining > 0) { start(); debugLog('이어서 시작'); return; }
         const input = document.getElementById('aftermathTimerInput');
-        const sec = parseInt(input?.value, 10);
+        let sec = parseInt(input?.value, 10);
         debugLog('input value=' + input?.value + ' parsed=' + sec);
-        if (sec > 0) { start(sec); debugLog('새로 시작 ' + sec + 's'); }
-        else debugLog('sec ≤ 0, 시작 안 함');
+        if (!Number.isFinite(sec) || sec <= 0) {
+          sec = 60;  // input 비어있으면 기본 1분
+          debugLog('input 비었음 → 기본 60초');
+          if (input) input.value = sec;
+        }
+        start(sec);
+        debugLog('start(' + sec + ') 호출됨');
         return;
       }
 
