@@ -1,183 +1,251 @@
 /* ============================================================
-   aftermath floating widgets — 공통 스타일
+   aftermath floating widgets — 모던 미니멀
+   - Notion / Linear / Vercel 스타일
+   - 절제된 색상 + 컴팩트 간격
    - 모든 셀렉터는 .aft-* prefix (학습지 본문과 충돌 차단)
-   - 인쇄 시 숨김
    ============================================================ */
 
 .aft-widget {
   position: fixed;
-  top: 80px;
-  right: 16px;
-  width: 280px;
+  top: 24px;
+  right: 24px;
+  width: 244px;
   min-width: 220px;
-  min-height: 60px;
+  min-height: 56px;
   background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.05);
   z-index: 9999;
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Pretendard',
+               'Segoe UI', system-ui, sans-serif;
+  color: #111;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: none; /* 드래그 시 스크롤 차단 */
+  touch-action: none;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.2s ease;
+}
+.aft-widget:hover {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
+/* ============================================================
+   헤더 — 드래그 핸들
+   ============================================================ */
 .aft-widget-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
-  background: #1e293b;
-  color: #f8fafc;
+  padding: 8px 12px;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  color: #555;
   cursor: move;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.01em;
 }
 
 .aft-widget-title {
-  pointer-events: none; /* 텍스트 자체엔 드래그 이벤트 안 가게 */
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
 }
 
 .aft-widget-collapse {
   background: transparent;
   border: none;
-  color: #f8fafc;
-  font-size: 14px;
+  color: #999;
+  font-size: 11px;
   cursor: pointer;
   padding: 2px 6px;
   border-radius: 4px;
-  transition: background 0.15s;
+  line-height: 1;
+  transition: color 0.15s, background 0.15s;
 }
-.aft-widget-collapse:hover { background: rgba(255,255,255,0.15); }
+.aft-widget-collapse:hover { color: #111; background: #f0f0f0; }
 
+/* ============================================================
+   본문
+   ============================================================ */
 .aft-widget-body {
   padding: 14px;
   overflow: auto;
   flex: 1;
 }
 
-.aft-widget.aft-collapsed {
-  height: auto !important;
-  min-height: 0;
-}
+.aft-widget.aft-collapsed { height: auto !important; min-height: 0; }
 .aft-widget.aft-collapsed .aft-widget-body,
-.aft-widget.aft-collapsed .aft-widget-resize {
-  display: none;
-}
-.aft-widget.aft-collapsed .aft-widget-collapse {
-  transform: rotate(-90deg);
-}
+.aft-widget.aft-collapsed .aft-widget-resize { display: none; }
+.aft-widget.aft-collapsed .aft-widget-collapse { transform: rotate(-90deg); }
 
+/* ============================================================
+   리사이즈 핸들 — 미세하게
+   ============================================================ */
 .aft-widget-resize {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   cursor: nwse-resize;
-  background:
-    linear-gradient(135deg, transparent 50%, #94a3b8 50%, #94a3b8 60%, transparent 60%, transparent 75%, #94a3b8 75%, #94a3b8 85%, transparent 85%);
-  border-bottom-right-radius: 12px;
   touch-action: none;
+  opacity: 0.35;
+  transition: opacity 0.15s;
+  background-image:
+    linear-gradient(135deg,
+      transparent 0%, transparent 55%,
+      #999 55%, #999 60%,
+      transparent 60%, transparent 75%,
+      #999 75%, #999 80%,
+      transparent 80%);
 }
+.aft-widget:hover .aft-widget-resize { opacity: 0.7; }
 
 /* ============================================================
-   타이머 위젯 전용
+   타이머 — 디스플레이
    ============================================================ */
-
 .aft-timer-display {
-  font-family: 'Courier New', monospace;
-  font-size: 38px;
-  font-weight: 700;
+  font-family: 'SF Mono', 'JetBrains Mono', 'Roboto Mono', 'Menlo', monospace;
+  font-size: 34px;
+  font-weight: 400;
   text-align: center;
-  color: #0f172a;
-  background: #f1f5f9;
-  border-radius: 8px;
-  padding: 10px 0;
-  margin-bottom: 12px;
-  letter-spacing: 2px;
+  color: #111;
+  background: transparent;
+  padding: 6px 0 12px;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s;
 }
-.aft-timer-display.aft-warn { color: #d97706; background: #fef3c7; }
-.aft-timer-display.aft-danger { color: #dc2626; background: #fee2e2; animation: aft-pulse 1s infinite; }
+.aft-timer-display.aft-warn { color: #b45309; }
+.aft-timer-display.aft-danger {
+  color: #dc2626;
+  animation: aft-pulse 1s ease-in-out infinite;
+}
 
 @keyframes aft-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.55; }
+  50% { opacity: 0.5; }
 }
 
+/* ============================================================
+   프리셋 — 컴팩트 chip
+   ============================================================ */
 .aft-timer-presets {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  gap: 4px;
   margin-bottom: 10px;
 }
 .aft-preset {
-  background: #e0f2fe;
-  border: 1px solid #7dd3fc;
-  color: #075985;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  color: #555;
   border-radius: 6px;
-  padding: 6px 0;
-  font-size: 13px;
-  font-weight: 600;
+  padding: 5px 0;
+  font-size: 11px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all 0.12s ease;
+  font-family: inherit;
 }
-.aft-preset:hover { background: #bae6fd; }
-.aft-preset:active { background: #7dd3fc; }
+.aft-preset:hover {
+  background: #f7f7f7;
+  border-color: #ddd;
+  color: #111;
+}
+.aft-preset:active { background: #efefef; }
 
+/* ============================================================
+   컨트롤 — 2x2 grid (input | 시작 / 일시정지 | 리셋)
+   ============================================================ */
 .aft-timer-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "input start"
+    "pause reset";
+  gap: 4px;
 }
 #aft-timer-input {
-  width: 60px;
+  grid-area: input;
   padding: 6px 8px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #ececec;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 500;
   text-align: center;
+  color: #111;
+  background: #fff;
+  font-family: inherit;
+  -moz-appearance: textfield;
 }
-.aft-timer-controls button {
-  flex: 1;
-  min-width: 60px;
-  padding: 7px 0;
-  border-radius: 6px;
-  border: none;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s;
+#aft-timer-input:focus {
+  outline: none;
+  border-color: #999;
 }
-#aft-timer-start { background: #16a34a; color: white; }
-#aft-timer-start:hover { background: #15803d; }
-#aft-timer-pause { background: #f59e0b; color: white; }
-#aft-timer-pause:hover { background: #d97706; }
-#aft-timer-reset { background: #64748b; color: white; }
-#aft-timer-reset:hover { background: #475569; }
+#aft-timer-input::-webkit-outer-spin-button,
+#aft-timer-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-/* ============================================================
-   인쇄 시 숨김
-   ============================================================ */
+.aft-timer-controls button {
+  padding: 6px 0;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  font-family: inherit;
+  border: 1px solid #ececec;
+  background: #fff;
+  color: #555;
+}
+.aft-timer-controls button:hover {
+  background: #f7f7f7;
+  border-color: #ddd;
+  color: #111;
+}
+.aft-timer-controls button:active { background: #efefef; }
+
+#aft-timer-start { grid-area: start; }
+#aft-timer-pause { grid-area: pause; }
+#aft-timer-reset { grid-area: reset; }
+
+/* 시작 버튼만 강조 — 모노 액센트 */
+#aft-timer-start {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+#aft-timer-start:hover {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+#aft-timer-start:active { background: #222; }
+
+/* 모바일 — 좀 더 작게 */
+@media (max-width: 600px) {
+  .aft-widget {
+    width: 220px;
+    top: 16px;
+    right: 16px;
+  }
+  .aft-timer-display { font-size: 30px; }
+}
+
+/* 인쇄 시 숨김 */
 @media print {
   .aft-widget { display: none !important; }
-}
-
-/* ============================================================
-   다크 모드 (페이지가 dark 클래스 가질 때)
-   ============================================================ */
-.dark .aft-widget,
-[data-theme="dark"] .aft-widget {
-  background: #1e293b;
-  border-color: #334155;
-  color: #f1f5f9;
-}
-.dark .aft-timer-display,
-[data-theme="dark"] .aft-timer-display {
-  background: #0f172a;
-  color: #f1f5f9;
 }
