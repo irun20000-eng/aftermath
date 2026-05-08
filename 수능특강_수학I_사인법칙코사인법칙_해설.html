@@ -2496,17 +2496,29 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// 마우스 휠 강제 위임 v3
-// 핵심 원인: html{scroll-behavior:smooth} 상속으로 휠 입력이 누적되지 않고 무효화됨
-// 해결: scroll-behavior=auto 강제 + scrollTop 변경 검증 + fallback 컨테이너 순회
+// 마우스 휠 강제 위임 v4
+// v3에 더해: 태블릿/터치 디바이스의 한 손가락 스크롤 보장
+// (일부 브라우저는 터치를 wheel 이벤트로 발사 → 우리 패치가 native 스크롤 차단하던 문제)
 (function() {
   const mainArea = document.getElementById('main-area');
   if (!mainArea) return;
   // 부드러운 스크롤 비활성화 (휠로 즉시 반응)
   mainArea.style.scrollBehavior = 'auto';
 
+  // 최근 터치 입력이 있었는지 추적: 있으면 wheel 패치 비활성화 → native 터치 스크롤 보장
+  let recentTouch = false;
+  let touchTimer = null;
+  const markTouch = () => {
+    recentTouch = true;
+    if (touchTimer) clearTimeout(touchTimer);
+    touchTimer = setTimeout(() => { recentTouch = false; }, 800);
+  };
+  window.addEventListener('touchstart', markTouch, { passive: true, capture: true });
+  window.addEventListener('touchmove',  markTouch, { passive: true, capture: true });
+
   window.addEventListener('wheel', (e) => {
-    if (e.ctrlKey) return;  // 브라우저 줌 보존
+    if (recentTouch) return;  // 태블릿/터치: native 스크롤에 맡김
+    if (e.ctrlKey) return;    // 브라우저 줌 보존
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;  // 가로 휠 그대로
     e.preventDefault();
     // 후보 컨테이너 순회: 실제 변화가 발생한 첫 컨테이너 사용
