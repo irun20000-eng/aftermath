@@ -2061,10 +2061,23 @@ const PROBLEMS = [
      4-b. 정답 선지 강조 (수동)
   ══════════════════════════════════ */
   function revealAnswerOnly(pid) {
-    const problem = PROBLEMS.find(p => p.id === pid);
-    if (!problem) return;
-    highlightAnswer(pid, problem);
-    document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`)?.classList.add('active');
+    const card = document.querySelector(`.problem-card[data-pid="${pid}"]`);
+    const btn = card?.querySelector('.answer-btn');
+    if (!card || !btn) return;
+    if (btn.classList.contains('active')) {
+      // 토글 해제 — 선지 형광펜 + 버튼 active 제거
+      const correctEl = card.querySelector('.correct-choice');
+      if (correctEl) {
+        ['background','border','color','font-weight'].forEach(p => correctEl.style.removeProperty(p));
+      }
+      btn.classList.remove('active');
+    } else {
+      // 강조
+      const problem = PROBLEMS.find(p => p.id === pid);
+      if (!problem) return;
+      highlightAnswer(pid, problem);
+      btn.classList.add('active');
+    }
   }
 
   /* ══════════════════════════════════
