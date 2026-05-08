@@ -313,6 +313,43 @@
             }
         });
     </script>
+<!-- 도전 문제 (상위 학습자용 — 시범 데이터, 추후 교체) -->
+<script>
+  window.AFTERMATH_CHALLENGE = {
+    source: '🛠 자체 제작 (시범)',
+    question: `삼각형 \\(ABC\\)에서 외접원의 반지름이 \\(6\\)이고, \\(\\angle A = 30^\\circ\\), \\(\\angle C = 45^\\circ\\)일 때, 변 \\(b\\)의 길이를 구하시오.`,
+    choices: [
+      '\\(3\\)',
+      '\\(3\\sqrt{2}\\)',
+      '\\(3\\sqrt{6}\\)',
+      '\\(3(\\sqrt{3}+\\sqrt{2})\\)',
+      '\\(3(\\sqrt{6}+\\sqrt{2})\\)'
+    ],
+    answer: 4,
+    steps: [
+      {
+        tag: 'STEP 1',
+        title: '주어진 조건 정리',
+        body: `<p>외접원의 반지름 \\(R = 6\\). 사인법칙에 의해 \\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R = 12\\).</p>
+               <p>삼각형의 내각의 합은 \\(180^\\circ\\)이므로 \\(\\angle B = 180^\\circ - 30^\\circ - 45^\\circ = 105^\\circ\\).</p>`
+      },
+      {
+        tag: 'STEP 2',
+        title: '사인법칙 적용 + \\(\\sin 105^\\circ\\) 분해',
+        body: `<p>\\(b = 2R \\sin B = 12 \\sin 105^\\circ\\)</p>
+               <p>\\(\\sin 105^\\circ = \\sin(60^\\circ + 45^\\circ) = \\sin 60^\\circ \\cos 45^\\circ + \\cos 60^\\circ \\sin 45^\\circ\\)</p>
+               <p>\\( = \\dfrac{\\sqrt{3}}{2} \\cdot \\dfrac{\\sqrt{2}}{2} + \\dfrac{1}{2} \\cdot \\dfrac{\\sqrt{2}}{2} = \\dfrac{\\sqrt{6}+\\sqrt{2}}{4}\\)</p>`
+      },
+      {
+        tag: 'STEP 3',
+        title: '최종 계산',
+        body: `<p>\\(b = 12 \\cdot \\dfrac{\\sqrt{6}+\\sqrt{2}}{4} = 3(\\sqrt{6}+\\sqrt{2})\\)</p>
+               <p>따라서 정답은 ⑤번.</p>`
+      }
+    ]
+  };
+</script>
 <script src="timer-widget.js" defer></script>
+<script src="challenge-popup.js" defer></script>
 </body>
 </html>
