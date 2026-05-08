@@ -2340,6 +2340,26 @@ document.addEventListener('keydown', (e) => {
     location.href = 'index.html';
   }
 });
+
+// 마우스 휠 위임: 헤더/푸터/가로 스크롤 박스 위에서도 main-area 스크롤
+(function() {
+  const mainArea = document.getElementById('main-area');
+  if (!mainArea) return;
+  document.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) return;  // 줌 제스처 보존
+    let el = e.target;
+    // 위로 올라가며 실제 세로 스크롤 가능한 조상 찾기
+    while (el && el !== document.body) {
+      const cs = getComputedStyle(el);
+      if ((cs.overflowY === 'auto' || cs.overflowY === 'scroll')
+          && el.scrollHeight > el.clientHeight) return;
+      el = el.parentElement;
+    }
+    // 스크롤 가능한 조상 없음 → main-area로 강제 위임
+    e.preventDefault();
+    mainArea.scrollTop += e.deltaY;
+  }, { passive: false });
+})();
 </script>
 </body>
 </html>
