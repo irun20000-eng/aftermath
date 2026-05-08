@@ -228,7 +228,7 @@
     header.className = 'aftermath-challenge-header';
     header.id = 'aftermathChallengeHeader';
     header.innerHTML = `
-      <span class="aftermath-challenge-title">🚀 도전 문제 — 상위 학습자용</span>
+      <span class="aftermath-challenge-title">🚀 도전 문제</span>
       <button class="aftermath-challenge-close" id="aftermathChallengeClose" aria-label="닫기">×</button>
     `;
     panel.appendChild(header);
