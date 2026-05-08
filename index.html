@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 1학기 대수 학습지</title>
     <meta name="robots" content="noindex,nofollow">
+    <script>
+        // FOUC 방지: 페이지 렌더 전 다크 모드 즉시 적용
+        (function() {
+            try {
+                if (localStorage.getItem('aftermath_theme') === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-        body { font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%); min-height: 100vh; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%); min-height: 100vh; transition: background 0.3s, color 0.3s; }
         .lesson-link {
             display: flex; align-items: center; justify-content: space-between;
             padding: 0.875rem 1.25rem;
@@ -18,6 +28,7 @@
             transition: all 0.15s;
             text-decoration: none;
             color: #1e293b;
+            position: relative;
         }
         .lesson-link:hover {
             border-color: #3b82f6;
@@ -34,16 +45,191 @@
             align-items: center; justify-content: center;
             font-size: 0.85rem;
         }
-        .unit-card { background: white; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-        .unit-title { font-size: 1.125rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+        .unit-card { background: white; border-radius: 1.25rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: background 0.3s, border-color 0.3s; }
+        .unit-title { font-size: 1.125rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s, border-color 0.3s; }
+
+        /* 진도 체크박스 */
+        .progress-check {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 26px; height: 26px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.15s;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: transparent;
+            user-select: none;
+        }
+        .progress-check:hover { border-color: #10b981; background: #f0fdf4; }
+        .progress-check.completed { background: #10b981; border-color: #10b981; color: white; }
+        .lesson-row { display: flex; align-items: stretch; gap: 0.5rem; }
+        .lesson-row .lesson-link { flex: 1; }
+        .lesson-row.done .lesson-link { background: #f0fdf4; border-color: #86efac; }
+        .lesson-row.done .lesson-num { background: #dcfce7; color: #166534; }
+
+        /* 진행 요약 배지 */
+        .progress-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 12px;
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #86efac;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* 즉석 타이머 위젯 */
+        .timer-widget {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .timer-display {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #1e293b;
+            font-variant-numeric: tabular-nums;
+            min-width: 90px;
+            letter-spacing: 1px;
+        }
+        .timer-display.warning { color: #f59e0b; }
+        .timer-display.danger { color: #dc2626; animation: timer-blink 0.5s infinite; }
+        @keyframes timer-blink { 50% { opacity: 0.35; } }
+        .timer-preset {
+            padding: 4px 10px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.15s;
+        }
+        .timer-preset:hover { background: #4f46e5; color: white; border-color: #4f46e5; }
+        .timer-input {
+            width: 56px;
+            padding: 4px 6px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #1e293b;
+        }
+        .timer-btn {
+            padding: 5px 12px;
+            background: #4f46e5;
+            border: 1px solid #4f46e5;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.15s;
+        }
+        .timer-btn:hover { background: #4338ca; }
+        .timer-btn.secondary { background: white; color: #475569; border-color: #cbd5e1; }
+        .timer-btn.secondary:hover { background: #f1f5f9; }
+
+        /* 다크 모드 토글 */
+        .theme-toggle {
+            position: absolute; top: 1.5rem; right: 1.5rem;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 42px; height: 42px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            user-select: none;
+        }
+        .theme-toggle:hover { border-color: #4f46e5; transform: translateY(-1px); }
+
+        /* 외부 링크 표시 */
+        .ext-icon { font-size: 0.65rem; opacity: 0.5; margin-left: 4px; }
+
+        /* ===== 다크 모드 ===== */
+        html.dark body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            font-size: 17px;
+        }
+        html.dark .unit-card {
+            background: #1e293b;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        html.dark .unit-card.bg-gradient-to-br {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+        }
+        html.dark .unit-title { color: #f1f5f9; border-bottom-color: #475569; }
+        html.dark .lesson-link {
+            background: #334155;
+            border-color: #475569;
+            color: #f1f5f9;
+        }
+        html.dark .lesson-link:hover {
+            border-color: #60a5fa;
+            box-shadow: 0 4px 16px rgba(96, 165, 250, 0.3);
+        }
+        html.dark .lesson-num { background: #1e3a8a; color: #bfdbfe; }
+        html.dark .lesson-row.done .lesson-link { background: #14532d; border-color: #166534; }
+        html.dark .lesson-row.done .lesson-num { background: #166534; color: #dcfce7; }
+        html.dark .progress-check { background: #334155; border-color: #475569; }
+        html.dark .progress-check.completed { background: #10b981; border-color: #10b981; }
+        html.dark .progress-check:hover { border-color: #10b981; background: #14532d; }
+        html.dark .progress-badge { background: #064e3b; color: #6ee7b7; border-color: #047857; }
+        html.dark .timer-widget { background: #334155; border-color: #475569; }
+        html.dark .timer-display { color: #f1f5f9; }
+        html.dark .timer-preset { background: #1e293b; border-color: #475569; color: #cbd5e1; }
+        html.dark .timer-preset:hover { background: #6366f1; color: white; }
+        html.dark .timer-input { background: #1e293b; border-color: #475569; color: #f1f5f9; }
+        html.dark .timer-btn.secondary { background: #475569; border-color: #64748b; color: #f1f5f9; }
+        html.dark .timer-btn.secondary:hover { background: #64748b; }
+        html.dark .theme-toggle { background: #1e293b; border-color: #475569; color: #fbbf24; }
+        html.dark .theme-toggle:hover { border-color: #fbbf24; }
+        html.dark header p, html.dark header h1 { color: #f1f5f9 !important; }
+        html.dark header .text-slate-500 { color: #94a3b8 !important; }
+        html.dark header .text-slate-600 { color: #cbd5e1 !important; }
+        html.dark .text-slate-400 { color: #64748b !important; }
+        html.dark footer { color: #64748b !important; }
+        html.dark .text-amber-700 { color: #fcd34d !important; }
+        html.dark .text-indigo-700 { color: #a5b4fc !important; }
+        html.dark .text-indigo-800 { color: #c7d2fe !important; }
+        html.dark .border-amber-200 { border-color: #92400e !important; }
+        html.dark .border-indigo-200 { border-color: #4338ca !important; }
+        html.dark .bg-slate-50 { background: #1e293b !important; }
     </style>
 </head>
-<body class="p-6 md:p-10">
+<body class="p-6 md:p-10 relative">
     <div class="max-w-4xl mx-auto">
-        <header class="text-center mb-12">
+        <!-- 다크 모드 토글 -->
+        <button id="themeToggle" class="theme-toggle" title="다크/칠판 모드 전환" aria-label="테마 전환">
+            <span id="themeIcon">🌙</span>
+        </button>
+
+        <header class="text-center mb-8">
             <p class="text-slate-500 font-bold text-xs tracking-[0.3em] mb-2 uppercase">2026학년도 1학기</p>
             <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-3 tracking-tight">대수 학습지</h1>
             <p class="text-slate-600 font-medium">"틀려야 는다" — 차시별 학습지를 클릭하여 확인하시오.</p>
+            <div class="mt-4 flex items-center justify-center gap-3">
+                <span class="progress-badge">
+                    <span>📈</span>
+                    <span>진행 <span id="progressCount">0</span> / 19</span>
+                </span>
+                <button id="resetProgressBtn" class="text-xs text-slate-400 hover:text-slate-600 underline" title="모든 진도 체크 초기화">초기화</button>
+            </div>
         </header>
 
         <!-- 수업 도구 (맨 위 — 매 차시 활용) -->
@@ -51,24 +237,43 @@
             <h2 class="unit-title"><span>🎯</span> 수업 도구 <span class="text-xs font-normal text-indigo-700 ml-2">— 매 차시 활용</span></h2>
             <div class="grid gap-3">
                 <!-- 메인 CTA: 학생 뽑기 -->
-                <a class="lesson-link bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white border-indigo-600 hover:!border-indigo-700 hover:!shadow-lg hover:!text-white" href="뽑기.html" style="color:white">
+                <a class="lesson-link bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white border-indigo-600 hover:!border-indigo-700 hover:!shadow-lg hover:!text-white" href="뽑기.html" target="_blank" rel="noopener noreferrer" style="color:white">
                     <span class="flex items-center gap-3">
                         <span class="lesson-num" style="background:rgba(255,255,255,0.25);color:white">🎲</span>
-                        <span class="font-bold text-white">학생 뽑기 (해설 → 풀이 → 칠판풀이)</span>
+                        <span class="font-bold text-white">학생 뽑기 (해설 → 풀이 → 칠판풀이) <span class="ext-icon">↗</span></span>
                     </span>
                     <span class="text-white/80 text-sm">→</span>
                 </a>
                 <!-- 4개 반 빠른 진입 -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=1"><span class="font-bold text-indigo-700">1반</span></a>
-                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=4"><span class="font-bold text-indigo-700">4반</span></a>
-                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=7"><span class="font-bold text-indigo-700">7반</span></a>
-                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=10"><span class="font-bold text-indigo-700">10반</span></a>
+                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=1" target="_blank" rel="noopener noreferrer"><span class="font-bold text-indigo-700">1반 <span class="ext-icon">↗</span></span></a>
+                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=4" target="_blank" rel="noopener noreferrer"><span class="font-bold text-indigo-700">4반 <span class="ext-icon">↗</span></span></a>
+                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=7" target="_blank" rel="noopener noreferrer"><span class="font-bold text-indigo-700">7반 <span class="ext-icon">↗</span></span></a>
+                    <a class="lesson-link justify-center text-sm py-2" href="뽑기.html#class=10" target="_blank" rel="noopener noreferrer"><span class="font-bold text-indigo-700">10반 <span class="ext-icon">↗</span></span></a>
                 </div>
-                <!-- 외부 도구 placeholder -->
-                <div class="grid grid-cols-2 gap-2 opacity-60">
-                    <span class="lesson-link justify-center text-sm py-2 cursor-not-allowed bg-slate-50">📋 구글 폼 모음 <span class="text-xs text-slate-400 ml-1">준비 중</span></span>
-                    <span class="lesson-link justify-center text-sm py-2 cursor-not-allowed bg-slate-50">📺 유튜브 자료 <span class="text-xs text-slate-400 ml-1">준비 중</span></span>
+
+                <!-- 즉석 타이머 위젯 -->
+                <div class="timer-widget" id="timerWidget">
+                    <span class="text-xs font-bold text-slate-500">⏱ 타이머</span>
+                    <span class="timer-display" id="timerDisplay">00:00</span>
+                    <button class="timer-preset" data-sec="60">1분</button>
+                    <button class="timer-preset" data-sec="180">3분</button>
+                    <button class="timer-preset" data-sec="300">5분</button>
+                    <button class="timer-preset" data-sec="600">10분</button>
+                    <input type="number" class="timer-input" id="timerInput" placeholder="초" min="1" aria-label="초 단위 직접 입력">
+                    <button class="timer-btn" id="timerStartBtn">시작</button>
+                    <button class="timer-btn secondary" id="timerPauseBtn">일시정지</button>
+                    <button class="timer-btn secondary" id="timerResetBtn">리셋</button>
+                    <span class="text-xs text-slate-400 ml-auto" title="단축키"><kbd class="px-1 py-0.5 bg-slate-100 border border-slate-200 rounded text-slate-500">Space</kbd></span>
+                </div>
+
+                <!-- 외부 도구 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                    <a class="lesson-link justify-center text-sm py-2 bg-emerald-50 border-emerald-200 text-emerald-800 hover:!border-emerald-400" href="https://contents.m-teacher.co.kr/cms/ebookviewer/epub/index.html?contentInformationURL=../../smartppt/etarae/epub/h_algebra/ebook1&page=9" target="_blank" rel="noopener noreferrer">
+                        <span class="font-bold">📖 전자책 <span class="ext-icon">↗</span></span>
+                    </a>
+                    <span class="lesson-link justify-center text-sm py-2 cursor-not-allowed bg-slate-50 opacity-60">📋 구글 폼 모음 <span class="text-xs text-slate-400 ml-1">준비 중</span></span>
+                    <span class="lesson-link justify-center text-sm py-2 cursor-not-allowed bg-slate-50 opacity-60">📺 유튜브 자료 <span class="text-xs text-slate-400 ml-1">준비 중</span></span>
                 </div>
             </div>
         </div>
@@ -77,10 +282,13 @@
         <div class="unit-card mb-6 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200">
             <h2 class="unit-title"><span>📝</span> 시험 성찰 <span class="text-xs font-normal text-amber-700 ml-2">— 중간고사 직후 첫 차시</span></h2>
             <div class="grid gap-2">
-                <a class="lesson-link" href="중간고사_자기평가성찰지.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num" style="background:#fff7ed;color:#c2410c">M</span><span>중간고사 자기평가 &amp; 성찰지</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
+                <div class="lesson-row" data-lesson="중간고사_자기평가성찰지.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="중간고사_자기평가성찰지.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num" style="background:#fff7ed;color:#c2410c">M</span><span>중간고사 자기평가 &amp; 성찰지 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -88,26 +296,41 @@
         <div class="unit-card mb-6">
             <h2 class="unit-title"><span>📐</span> II-2. 삼각함수의 활용</h2>
             <div class="grid gap-2">
-                <a class="lesson-link" href="학습지_01_사인법칙.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">01</span><span>사인법칙</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_02_코사인법칙.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">02</span><span>코사인법칙</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_03_삼각형의넓이.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">03</span><span>삼각형의 넓이</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_04_중단원마무리.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">04</span><span>중단원 마무리</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_05_대단원평가.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">05</span><span>대단원 평가 (II)</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
+                <div class="lesson-row" data-lesson="학습지_01_사인법칙.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_01_사인법칙.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">01</span><span>사인법칙 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_02_코사인법칙.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_02_코사인법칙.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">02</span><span>코사인법칙 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_03_삼각형의넓이.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_03_삼각형의넓이.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">03</span><span>삼각형의 넓이 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_04_중단원마무리.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_04_중단원마무리.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">04</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_05_대단원평가.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_05_대단원평가.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">05</span><span>대단원 평가 (II) <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -115,26 +338,41 @@
         <div class="unit-card mb-6">
             <h2 class="unit-title"><span>📊</span> III-1. 등차수열과 등비수열</h2>
             <div class="grid gap-2">
-                <a class="lesson-link" href="학습지_06_등차수열.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">06</span><span>등차수열</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_07_등차수열의합.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">07</span><span>등차수열의 합</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_08_등비수열.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">08</span><span>등비수열</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_09_등비수열의합.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">09</span><span>등비수열의 합</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_10_중단원마무리_III_1.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">10</span><span>중단원 마무리</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
+                <div class="lesson-row" data-lesson="학습지_06_등차수열.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_06_등차수열.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">06</span><span>등차수열 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_07_등차수열의합.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_07_등차수열의합.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">07</span><span>등차수열의 합 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_08_등비수열.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_08_등비수열.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">08</span><span>등비수열 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_09_등비수열의합.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_09_등비수열의합.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">09</span><span>등비수열의 합 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_10_중단원마무리_III_1.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_10_중단원마무리_III_1.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">10</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -142,22 +380,34 @@
         <div class="unit-card mb-6">
             <h2 class="unit-title"><span>∑</span> III-2. 수열의 합</h2>
             <div class="grid gap-2">
-                <a class="lesson-link" href="학습지_11_합의기호.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">11</span><span>합의 기호 Σ</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_12_자연수의거듭제곱의합.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">12</span><span>자연수의 거듭제곱의 합</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_13_여러가지수열의합.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">13</span><span>여러 가지 수열의 합</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_14_중단원마무리_III_2.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">14</span><span>중단원 마무리</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
+                <div class="lesson-row" data-lesson="학습지_11_합의기호.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_11_합의기호.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">11</span><span>합의 기호 Σ <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_12_자연수의거듭제곱의합.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_12_자연수의거듭제곱의합.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">12</span><span>자연수의 거듭제곱의 합 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_13_여러가지수열의합.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_13_여러가지수열의합.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">13</span><span>여러 가지 수열의 합 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_14_중단원마무리_III_2.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_14_중단원마무리_III_2.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">14</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -165,22 +415,34 @@
         <div class="unit-card mb-6">
             <h2 class="unit-title"><span>🔁</span> III-3. 수학적 귀납법</h2>
             <div class="grid gap-2">
-                <a class="lesson-link" href="학습지_15_수열의귀납적정의.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">15</span><span>수열의 귀납적 정의</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_16_수학적귀납법.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">16</span><span>수학적 귀납법</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_17_중단원마무리_III_3.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">17</span><span>중단원 마무리</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
-                <a class="lesson-link" href="학습지_18_대단원평가_III.html">
-                    <span class="flex items-center gap-3"><span class="lesson-num">18</span><span>대단원 평가 (III)</span></span>
-                    <span class="text-slate-400 text-sm">→</span>
-                </a>
+                <div class="lesson-row" data-lesson="학습지_15_수열의귀납적정의.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_15_수열의귀납적정의.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">15</span><span>수열의 귀납적 정의 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_16_수학적귀납법.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_16_수학적귀납법.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">16</span><span>수학적 귀납법 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_17_중단원마무리_III_3.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_17_중단원마무리_III_3.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">17</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_18_대단원평가_III.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_18_대단원평가_III.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">18</span><span>대단원 평가 (III) <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -188,5 +450,184 @@
             <p>© 2026 Mathematics Education Engineering · 대수 학습지 모음</p>
         </footer>
     </div>
+
+<script>
+// ============================================
+// 차시 진도 체크
+// ============================================
+const PROGRESS_KEY = 'aftermath_progress';
+const loadProgress = () => {
+    try { return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}'); }
+    catch (e) { return {}; }
+};
+const saveProgress = (p) => {
+    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); }
+    catch (e) {}
+};
+
+function applyProgress() {
+    const progress = loadProgress();
+    let count = 0;
+    document.querySelectorAll('.lesson-row').forEach(row => {
+        const key = row.dataset.lesson;
+        const check = row.querySelector('.progress-check');
+        if (progress[key]) {
+            row.classList.add('done');
+            check.classList.add('completed');
+            count++;
+        } else {
+            row.classList.remove('done');
+            check.classList.remove('completed');
+        }
+    });
+    document.getElementById('progressCount').textContent = count;
+}
+
+document.querySelectorAll('.progress-check').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const row = btn.closest('.lesson-row');
+        const key = row.dataset.lesson;
+        const progress = loadProgress();
+        progress[key] = !progress[key];
+        saveProgress(progress);
+        applyProgress();
+    });
+});
+
+document.getElementById('resetProgressBtn').addEventListener('click', () => {
+    if (confirm('모든 진도 체크를 초기화할까요?')) {
+        localStorage.removeItem(PROGRESS_KEY);
+        applyProgress();
+    }
+});
+
+applyProgress();
+
+// ============================================
+// 즉석 타이머
+// ============================================
+let timer = { total: 0, remaining: 0, running: false, intervalId: null };
+let audioCtx = null;
+
+function getAudioCtx() {
+    if (!audioCtx) {
+        try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+        catch (e) { return null; }
+    }
+    return audioCtx;
+}
+function playTick(freq = 800, duration = 0.1) {
+    const ctx = getAudioCtx();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
+}
+function playTimerEnd() {
+    [880, 660, 880, 660].forEach((f, i) => setTimeout(() => playTick(f, 0.2), i * 200));
+}
+
+function formatTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function updateTimerDisplay() {
+    const el = document.getElementById('timerDisplay');
+    el.textContent = formatTime(timer.remaining);
+    el.classList.remove('warning', 'danger');
+    if (timer.remaining <= 10 && timer.remaining > 0) el.classList.add('danger');
+    else if (timer.remaining <= 30 && timer.remaining > 0) el.classList.add('warning');
+}
+
+function startTimer(seconds) {
+    if (seconds !== undefined) { timer.total = seconds; timer.remaining = seconds; }
+    if (timer.remaining <= 0) return;
+    if (timer.intervalId) clearInterval(timer.intervalId);
+    timer.running = true;
+    updateTimerDisplay();
+    timer.intervalId = setInterval(() => {
+        timer.remaining--;
+        updateTimerDisplay();
+        if (timer.remaining <= 5 && timer.remaining > 0) playTick(880, 0.1);
+        if (timer.remaining <= 0) {
+            clearInterval(timer.intervalId);
+            timer.intervalId = null;
+            timer.running = false;
+            playTimerEnd();
+        }
+    }, 1000);
+}
+function pauseTimer() {
+    if (timer.intervalId) { clearInterval(timer.intervalId); timer.intervalId = null; }
+    timer.running = false;
+}
+function resetTimer() { pauseTimer(); timer.remaining = timer.total; updateTimerDisplay(); }
+
+document.querySelectorAll('.timer-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const sec = parseInt(btn.dataset.sec, 10);
+        document.getElementById('timerInput').value = sec;
+        startTimer(sec);
+    });
+});
+document.getElementById('timerStartBtn').addEventListener('click', () => {
+    if (timer.running) return;
+    if (timer.remaining > 0) { startTimer(); return; }
+    const sec = parseInt(document.getElementById('timerInput').value, 10);
+    if (sec > 0) startTimer(sec);
+});
+document.getElementById('timerPauseBtn').addEventListener('click', pauseTimer);
+document.getElementById('timerResetBtn').addEventListener('click', resetTimer);
+updateTimerDisplay();
+
+// ============================================
+// 다크/칠판 모드 토글
+// ============================================
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeIcon.textContent = '☀️';
+    } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.textContent = '🌙';
+    }
+}
+applyTheme(localStorage.getItem('aftermath_theme') === 'dark' ? 'dark' : 'light');
+themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    try { localStorage.setItem('aftermath_theme', next); } catch (e) {}
+    applyTheme(next);
+});
+
+// ============================================
+// 단축키: Space → 타이머 시작/정지
+// ============================================
+document.addEventListener('keydown', (e) => {
+    if (e.isComposing) return;
+    const t = e.target;
+    if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+    if (e.key === ' ') {
+        e.preventDefault();
+        if (timer.running) pauseTimer();
+        else if (timer.remaining > 0) startTimer();
+        else {
+            const sec = parseInt(document.getElementById('timerInput').value, 10);
+            if (sec > 0) startTimer(sec);
+        }
+    }
+});
+</script>
 </body>
 </html>
