@@ -1,120 +1,78 @@
 /* ============================================================
-   aftermath floating widgets — 풍부한 모던 (뎁스 + 액센트)
+   aftermath floating widgets — 모던 미니멀
+   - Notion / Linear / Vercel 스타일
+   - 절제된 색상 + 컴팩트 간격
    - 모든 셀렉터는 .aft-* prefix (학습지 본문과 충돌 차단)
    ============================================================ */
-
-:root {
-  --aft-accent: #4f46e5;        /* 인디고 */
-  --aft-accent-dark: #4338ca;
-  --aft-accent-light: #eef2ff;
-  --aft-bg: #ffffff;
-  --aft-bg-soft: #f8fafc;
-  --aft-bg-deep: #f1f5f9;
-  --aft-border: #e2e8f0;
-  --aft-border-soft: #f0f0f0;
-  --aft-text: #0f172a;
-  --aft-text-soft: #64748b;
-  --aft-text-faint: #94a3b8;
-  --aft-warn: #d97706;
-  --aft-warn-bg: #fef3c7;
-  --aft-danger: #dc2626;
-  --aft-danger-bg: #fee2e2;
-}
 
 .aft-widget {
   position: fixed;
   top: 24px;
   right: 24px;
-  width: 264px;
-  min-width: 240px;
-  min-height: 60px;
-  background: var(--aft-bg);
-  border: 1px solid var(--aft-border);
-  border-radius: 14px;
+  width: 244px;
+  min-width: 220px;
+  min-height: 56px;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
   box-shadow:
-    0 1px 1px rgba(15, 23, 42, 0.04),
-    0 4px 8px rgba(15, 23, 42, 0.04),
-    0 12px 32px rgba(15, 23, 42, 0.08);
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.05);
   z-index: 9999;
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Inter',
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Pretendard',
                'Segoe UI', system-ui, sans-serif;
-  color: var(--aft-text);
+  color: #111;
   user-select: none;
   -webkit-user-select: none;
   touch-action: none;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.25s ease, transform 0.05s ease;
+  transition: box-shadow 0.2s ease;
 }
 .aft-widget:hover {
   box-shadow:
-    0 1px 1px rgba(15, 23, 42, 0.05),
-    0 6px 14px rgba(15, 23, 42, 0.06),
-    0 20px 50px rgba(15, 23, 42, 0.12);
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 /* ============================================================
-   헤더 — 액센트 strip + 텍스트 (드래그 핸들)
+   헤더 — 드래그 핸들
    ============================================================ */
 .aft-widget-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
-  background: linear-gradient(180deg, #ffffff 0%, var(--aft-bg-soft) 100%);
-  border-bottom: 1px solid var(--aft-border-soft);
-  color: var(--aft-text);
+  padding: 8px 12px;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  color: #555;
   cursor: move;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: -0.01em;
-  position: relative;
-}
-.aft-widget-head::before {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; top: 0;
-  height: 3px;
-  background: linear-gradient(90deg,
-    var(--aft-accent) 0%,
-    #7c3aed 50%,
-    #ec4899 100%);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.01em;
 }
 
 .aft-widget-title {
   pointer-events: none;
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-.aft-widget-title-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--aft-accent-light);
-  color: var(--aft-accent);
-  font-size: 13px;
+  gap: 6px;
+  color: #555;
 }
 
 .aft-widget-collapse {
   background: transparent;
   border: none;
-  color: var(--aft-text-faint);
-  font-size: 12px;
+  color: #999;
+  font-size: 11px;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 2px 6px;
+  border-radius: 4px;
   line-height: 1;
   transition: color 0.15s, background 0.15s;
 }
-.aft-widget-collapse:hover {
-  color: var(--aft-text);
-  background: var(--aft-bg-deep);
-}
+.aft-widget-collapse:hover { color: #111; background: #f0f0f0; }
 
 /* ============================================================
    본문
@@ -131,102 +89,81 @@
 .aft-widget.aft-collapsed .aft-widget-collapse { transform: rotate(-90deg); }
 
 /* ============================================================
-   리사이즈 핸들
+   리사이즈 핸들 — 미세하게
    ============================================================ */
 .aft-widget-resize {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   cursor: nwse-resize;
   touch-action: none;
-  opacity: 0.4;
+  opacity: 0.35;
   transition: opacity 0.15s;
   background-image:
     linear-gradient(135deg,
       transparent 0%, transparent 55%,
-      var(--aft-text-faint) 55%, var(--aft-text-faint) 60%,
+      #999 55%, #999 60%,
       transparent 60%, transparent 75%,
-      var(--aft-text-faint) 75%, var(--aft-text-faint) 80%,
+      #999 75%, #999 80%,
       transparent 80%);
 }
-.aft-widget:hover .aft-widget-resize { opacity: 0.85; }
+.aft-widget:hover .aft-widget-resize { opacity: 0.7; }
 
 /* ============================================================
-   타이머 — 디스플레이 (큰 카드)
+   타이머 — 디스플레이
    ============================================================ */
 .aft-timer-display {
-  font-family: 'SF Mono', 'JetBrains Mono', 'Roboto Mono', 'Menlo',
-               'Consolas', monospace;
-  font-size: 40px;
-  font-weight: 600;
+  font-family: 'SF Mono', 'JetBrains Mono', 'Roboto Mono', 'Menlo', monospace;
+  font-size: 34px;
+  font-weight: 400;
   text-align: center;
-  color: var(--aft-text);
-  background: linear-gradient(180deg,
-    var(--aft-bg-soft) 0%,
-    var(--aft-bg-deep) 100%);
-  border: 1px solid var(--aft-border);
-  border-radius: 10px;
-  padding: 12px 0 14px;
-  margin-bottom: 12px;
+  color: #111;
+  background: transparent;
+  padding: 6px 0 12px;
   letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
-  transition: all 0.25s;
-  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: color 0.2s;
 }
-.aft-timer-display.aft-warn {
-  color: var(--aft-warn);
-  background: linear-gradient(180deg, #fffbeb 0%, var(--aft-warn-bg) 100%);
-  border-color: #fde68a;
-}
+.aft-timer-display.aft-warn { color: #b45309; }
 .aft-timer-display.aft-danger {
-  color: var(--aft-danger);
-  background: linear-gradient(180deg, #fef2f2 0%, var(--aft-danger-bg) 100%);
-  border-color: #fca5a5;
-  animation: aft-pulse 0.9s ease-in-out infinite;
-  box-shadow:
-    inset 0 1px 2px rgba(220, 38, 38, 0.08),
-    0 0 0 4px rgba(220, 38, 38, 0.06);
+  color: #dc2626;
+  animation: aft-pulse 1s ease-in-out infinite;
 }
 
 @keyframes aft-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 /* ============================================================
-   프리셋 — 둥근 chip
+   프리셋 — 컴팩트 chip
    ============================================================ */
 .aft-timer-presets {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 4px;
   margin-bottom: 10px;
 }
 .aft-preset {
-  background: var(--aft-bg-soft);
-  border: 1px solid var(--aft-border);
-  color: var(--aft-text-soft);
-  border-radius: 8px;
-  padding: 7px 0;
-  font-size: 12px;
-  font-weight: 600;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  color: #555;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 11px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.12s ease;
   font-family: inherit;
 }
 .aft-preset:hover {
-  background: var(--aft-accent-light);
-  border-color: var(--aft-accent);
-  color: var(--aft-accent);
-  transform: translateY(-1px);
+  background: #f7f7f7;
+  border-color: #ddd;
+  color: #111;
 }
-.aft-preset:active {
-  transform: translateY(0);
-  background: var(--aft-accent);
-  color: #fff;
-}
+.aft-preset:active { background: #efefef; }
 
 /* ============================================================
    컨트롤 — 2x2 grid (input | 시작 / 일시정지 | 리셋)
@@ -237,100 +174,78 @@
   grid-template-areas:
     "input start"
     "pause reset";
-  gap: 5px;
+  gap: 4px;
 }
 #aft-timer-input {
   grid-area: input;
-  padding: 8px 10px;
-  border: 1.5px solid var(--aft-border);
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 6px 8px;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
   text-align: center;
-  color: var(--aft-text);
+  color: #111;
   background: #fff;
-  font-family: 'SF Mono', 'JetBrains Mono', 'Menlo', monospace;
-  font-variant-numeric: tabular-nums;
-  transition: all 0.15s;
+  font-family: inherit;
+  -moz-appearance: textfield;
 }
 #aft-timer-input:focus {
   outline: none;
-  border-color: var(--aft-accent);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  border-color: #1e3a8a;
 }
-#aft-timer-input.aft-input-error {
-  border-color: var(--aft-danger);
-  background: var(--aft-danger-bg);
-  animation: aft-shake 0.4s ease;
-}
-@keyframes aft-shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  75% { transform: translateX(3px); }
+#aft-timer-input::-webkit-outer-spin-button,
+#aft-timer-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .aft-timer-controls button {
-  padding: 8px 0;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.12s ease;
   font-family: inherit;
-  border: 1.5px solid var(--aft-border);
+  border: 1px solid #ececec;
   background: #fff;
-  color: var(--aft-text-soft);
+  color: #555;
 }
 .aft-timer-controls button:hover {
-  background: var(--aft-bg-soft);
-  border-color: var(--aft-text-faint);
-  color: var(--aft-text);
-  transform: translateY(-1px);
+  background: #f7f7f7;
+  border-color: #ddd;
+  color: #111;
 }
-.aft-timer-controls button:active {
-  transform: translateY(0);
-  background: var(--aft-bg-deep);
-}
+.aft-timer-controls button:active { background: #efefef; }
 
 #aft-timer-start { grid-area: start; }
 #aft-timer-pause { grid-area: pause; }
 #aft-timer-reset { grid-area: reset; }
 
-/* 시작 버튼 — 인디고 액센트 + 그라데이션 */
+/* 시작 버튼만 강조 — 네이비 액센트 */
 #aft-timer-start {
-  background: linear-gradient(180deg, var(--aft-accent) 0%, var(--aft-accent-dark) 100%);
+  background: #1e3a8a;
   color: #fff;
-  border-color: var(--aft-accent-dark);
-  box-shadow: 0 1px 2px rgba(79, 70, 229, 0.25);
+  border-color: #1e3a8a;
 }
 #aft-timer-start:hover {
-  background: linear-gradient(180deg, #5b53ed 0%, var(--aft-accent) 100%);
-  border-color: var(--aft-accent);
+  background: #172554;
+  border-color: #172554;
   color: #fff;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
 }
-#aft-timer-start:active {
-  background: var(--aft-accent-dark);
-  box-shadow: 0 1px 1px rgba(79, 70, 229, 0.35);
-}
+#aft-timer-start:active { background: #1e40af; }
 
-/* input 힌트 placeholder */
-#aft-timer-input::placeholder {
-  color: var(--aft-text-faint);
-  font-weight: 500;
-}
-
-/* 모바일 */
+/* 모바일 — 좀 더 작게 */
 @media (max-width: 600px) {
   .aft-widget {
-    width: 240px;
+    width: 220px;
     top: 16px;
     right: 16px;
   }
-  .aft-timer-display { font-size: 34px; padding: 10px 0 12px; }
+  .aft-timer-display { font-size: 30px; }
 }
 
-/* 인쇄 */
+/* 인쇄 시 숨김 */
 @media print {
   .aft-widget { display: none !important; }
 }
