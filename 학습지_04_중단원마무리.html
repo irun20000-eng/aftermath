@@ -65,6 +65,7 @@
             .thinking-space { min-height: 150px; }
         }
     </style>
+    <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -311,5 +312,33 @@
             }
         });
     </script>
+
+    <!-- ============================================================
+         floating 타이머 위젯 (정적 HTML — innerHTML 안 씀)
+         ID/클래스 모두 aft- prefix (학습지 본문과 충돌 차단)
+         ============================================================ -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+    <script src="widgets.js"></script>
 </body>
 </html>
