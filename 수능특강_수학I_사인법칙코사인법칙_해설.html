@@ -116,7 +116,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:none;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);
-  background:var(--color-bg);min-height:100dvh;display:flex;flex-direction:column;overflow-x:hidden}
+  background:var(--color-bg);overflow-x:hidden;
+  padding-top:var(--header-h);padding-bottom:var(--footer-h)}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 a{color:var(--color-primary);text-decoration:none}
 :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
@@ -186,11 +187,7 @@ a{color:var(--color-primary);text-decoration:none}
    MAIN AREA
 ══════════════════════════════════ */
 .main-area{
-  flex:1;margin-top:var(--header-h);margin-bottom:var(--footer-h);
-  overflow-y:auto;overflow-x:hidden;
   padding:var(--space-5) var(--space-5) var(--space-8);
-  -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
-  touch-action:pan-y pinch-zoom;
 }
 .card-viewport{max-width:900px;margin:0 auto}
 
@@ -2102,7 +2099,7 @@ const PROBLEMS = [
     viewport.innerHTML = renderCard(problem);
     renderMath(viewport);
     restoreStepState(problem.id);
-    mainArea.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function goTo(idx) {
@@ -2512,41 +2509,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// 마우스 휠 강제 위임 v4
-// v3에 더해: 태블릿/터치 디바이스의 한 손가락 스크롤 보장
-// (일부 브라우저는 터치를 wheel 이벤트로 발사 → 우리 패치가 native 스크롤 차단하던 문제)
-(function() {
-  const mainArea = document.getElementById('main-area');
-  if (!mainArea) return;
-  // 부드러운 스크롤 비활성화 (휠로 즉시 반응)
-  mainArea.style.scrollBehavior = 'auto';
-
-  // 최근 터치 입력이 있었는지 추적: 있으면 wheel 패치 비활성화 → native 터치 스크롤 보장
-  let recentTouch = false;
-  let touchTimer = null;
-  const markTouch = () => {
-    recentTouch = true;
-    if (touchTimer) clearTimeout(touchTimer);
-    touchTimer = setTimeout(() => { recentTouch = false; }, 800);
-  };
-  window.addEventListener('touchstart', markTouch, { passive: true, capture: true });
-  window.addEventListener('touchmove',  markTouch, { passive: true, capture: true });
-
-  window.addEventListener('wheel', (e) => {
-    if (recentTouch) return;  // 태블릿/터치: native 스크롤에 맡김
-    if (e.ctrlKey) return;    // 브라우저 줌 보존
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;  // 가로 휠 그대로
-    e.preventDefault();
-    // 후보 컨테이너 순회: 실제 변화가 발생한 첫 컨테이너 사용
-    const candidates = [mainArea, document.scrollingElement, document.documentElement];
-    for (const el of candidates) {
-      if (!el || el.scrollHeight <= el.clientHeight) continue;
-      const before = el.scrollTop;
-      el.scrollTop = before + e.deltaY;
-      if (el.scrollTop !== before) return;
-    }
-  }, { passive: false, capture: true });
-})();
 </script>
 </body>
 </html>
