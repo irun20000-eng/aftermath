@@ -2142,10 +2142,10 @@ const PROBLEMS = [
         btn.classList.remove('revealed');
         btn.querySelector('.blank-answer').innerHTML = '';
       });
-      document.querySelector(`.problem-card[data-pid="${pid}"] .correct-choice`)
-        ?.style.removeProperty('background');
-      document.querySelector(`.problem-card[data-pid="${pid}"] .correct-choice`)
-        ?.style.removeProperty('border');
+      const correctEl = document.querySelector(`.problem-card[data-pid="${pid}"] .correct-choice`);
+      if (correctEl) {
+        ['background','border','color','font-weight'].forEach(p => correctEl.style.removeProperty(p));
+      }
       updateStepBtns(pid, 0);
       return;
     }
