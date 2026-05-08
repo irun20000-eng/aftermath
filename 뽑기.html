@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>대수 모둠 활동 진행 도구</title>
 <meta name="robots" content="noindex,nofollow">
+<script>window.name = 'aftermath_picker';</script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -605,7 +606,7 @@
   <header>
     <h1>대수 모둠 활동<span class="accent">진행 도구</span></h1>
     <div class="header-controls">
-      <a href="index.html" class="home-btn" title="메인 페이지로 (단축키 H)">
+      <a href="index.html" target="aftermath_main" class="home-btn" title="메인 페이지로 (단축키 H)">
         <span>🏠</span><span>메인</span><kbd>H</kbd>
       </a>
       <div class="toggle-wrapper" id="fairnessToggle" title="적게 뽑힌 학생에게 가중치">
@@ -1586,7 +1587,8 @@ function attachEventListeners() {
     } else if (e.key === 'h' || e.key === 'H') {
       // 메인 페이지로 이동
       e.preventDefault();
-      location.href = 'index.html';
+      const w = window.open('index.html', 'aftermath_main');
+      if (w) w.focus();
     }
   });
 }
