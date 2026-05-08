@@ -190,6 +190,7 @@ a{color:var(--color-primary);text-decoration:none}
   overflow-y:auto;overflow-x:hidden;
   padding:var(--space-5) var(--space-5) var(--space-8);
   -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  touch-action:pan-y pinch-zoom;
 }
 .card-viewport{max-width:900px;margin:0 auto}
 
@@ -2347,13 +2348,28 @@ const PROBLEMS = [
     }
   });
 
-  // 스와이프
-  let tx = 0, ty = 0;
-  mainArea.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
-  mainArea.addEventListener('touchend',   e => {
+  // 스와이프 (개선: 두 손가락 줌 무시, 임계값/시간 강화)
+  let tx = 0, ty = 0, tt = 0, swipeActive = false;
+  mainArea.addEventListener('touchstart', e => {
+    // 한 손가락일 때만 swipe 추적 (두 손가락 = 줌이므로 비활성)
+    if (e.touches.length !== 1) { swipeActive = false; return; }
+    swipeActive = true;
+    tx = e.touches[0].clientX;
+    ty = e.touches[0].clientY;
+    tt = Date.now();
+  }, { passive: true });
+  mainArea.addEventListener('touchmove', e => {
+    // 도중에 두 번째 손가락 들어오면 swipe 취소 (줌 시작 감지)
+    if (e.touches.length > 1) swipeActive = false;
+  }, { passive: true });
+  mainArea.addEventListener('touchend', e => {
+    if (!swipeActive) return;
+    swipeActive = false;
     const dx = e.changedTouches[0].clientX - tx;
     const dy = e.changedTouches[0].clientY - ty;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    const dt = Date.now() - tt;
+    // 강화된 임계값: 100px 이상 + 가로 비율 2.0 이상 + 600ms 이내 빠른 swipe만 인식
+    if (Math.abs(dx) > 100 && Math.abs(dx) > Math.abs(dy) * 2 && dt < 600) {
       goTo(dx < 0 ? currentIdx + 1 : currentIdx - 1);
     }
   }, { passive: true });
