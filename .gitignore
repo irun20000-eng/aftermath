@@ -21,12 +21,8 @@ MEMORY.md
 # PDF 추출 임시 텍스트
 *_text.txt
 
-# Claude / 메모리 관련 — agents·skills 등 공유용 하위는 추적, 비공개 하위만 ignore
-.claude/sessions/
-.claude/projects/
-.claude/local/
-.claude/cache/
-.claude/settings.local.json
+# Claude / 메모리 관련
+.claude/
 memory/
 
 # 백업 파일
