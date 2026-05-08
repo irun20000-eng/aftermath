@@ -173,36 +173,128 @@
   }
 
   /* ──────────────────────────────────────────────
-     마크업 — 모든 button에 inline onclick (위임/이벤트 우회)
+     마크업 — createElement + button.onclick 직접 할당
+     (innerHTML / inline onclick 패턴 우회 — 갤럭시탭/모든 환경 호환)
   ────────────────────────────────────────────── */
   function injectDOM() {
     var wrap = document.createElement('div');
     wrap.className = 'aftermath-timer';
     wrap.id = 'aftermathTimer';
-    wrap.innerHTML = ''
-      + '<button class="aftermath-timer-toggle" id="aftermathTimerToggle" aria-label="타이머 열기/닫기" title="타이머" onclick="window.aftermathTimerToggle()">'
-      +   '<span class="aftermath-timer-icon">⏱</span>'
-      +   '<span class="aftermath-timer-mini" id="aftermathTimerMini"></span>'
-      + '</button>'
-      + '<div class="aftermath-timer-panel" id="aftermathTimerPanel" hidden>'
-      +   '<div class="aftermath-timer-header">'
-      +     '<span>⏱ 타이머</span>'
-      +     '<button class="aftermath-timer-close" id="aftermathTimerClose" aria-label="닫기" onclick="window.aftermathTimerClose()">×</button>'
-      +   '</div>'
-      +   '<div class="aftermath-timer-display" id="aftermathTimerDisplay">00:00</div>'
-      +   '<div class="aftermath-timer-presets">'
-      +     '<button type="button" onclick="window.aftermathTimerPreset(60)">1분</button>'
-      +     '<button type="button" onclick="window.aftermathTimerPreset(180)">3분</button>'
-      +     '<button type="button" onclick="window.aftermathTimerPreset(300)">5분</button>'
-      +     '<button type="button" onclick="window.aftermathTimerPreset(600)">10분</button>'
-      +   '</div>'
-      +   '<div class="aftermath-timer-controls">'
-      +     '<input type="number" id="aftermathTimerInput" placeholder="초" min="1" inputmode="numeric">'
-      +     '<button type="button" class="primary" id="aftermathTimerStart" onclick="window.aftermathTimerStart()">시작</button>'
-      +     '<button type="button" id="aftermathTimerPause" onclick="window.aftermathTimerPause()">일시정지</button>'
-      +     '<button type="button" id="aftermathTimerReset" onclick="window.aftermathTimerReset()">리셋</button>'
-      +   '</div>'
-      + '</div>';
+
+    // Toggle button
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'aftermath-timer-toggle';
+    toggle.id = 'aftermathTimerToggleBtn';
+    toggle.setAttribute('aria-label', '타이머 열기/닫기');
+    toggle.title = '타이머';
+    var icon = document.createElement('span');
+    icon.className = 'aftermath-timer-icon';
+    icon.textContent = '⏱';
+    toggle.appendChild(icon);
+    var mini = document.createElement('span');
+    mini.className = 'aftermath-timer-mini';
+    mini.id = 'aftermathTimerMini';
+    toggle.appendChild(mini);
+    toggle.onclick = function () {
+      var p = document.getElementById('aftermathTimerPanel');
+      if (p) p.hidden = !p.hidden;
+    };
+    wrap.appendChild(toggle);
+
+    // Panel
+    var panel = document.createElement('div');
+    panel.className = 'aftermath-timer-panel';
+    panel.id = 'aftermathTimerPanel';
+    panel.hidden = true;
+
+    // Header
+    var header = document.createElement('div');
+    header.className = 'aftermath-timer-header';
+    var title = document.createElement('span');
+    title.textContent = '⏱ 타이머';
+    header.appendChild(title);
+    var closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'aftermath-timer-close';
+    closeBtn.setAttribute('aria-label', '닫기');
+    closeBtn.textContent = '×';
+    closeBtn.onclick = function () {
+      var p = document.getElementById('aftermathTimerPanel');
+      if (p) p.hidden = true;
+    };
+    header.appendChild(closeBtn);
+    panel.appendChild(header);
+
+    // Display
+    var display = document.createElement('div');
+    display.className = 'aftermath-timer-display';
+    display.id = 'aftermathTimerDisplay';
+    display.textContent = '00:00';
+    panel.appendChild(display);
+
+    // Presets (1, 3, 5, 10분)
+    var presets = document.createElement('div');
+    presets.className = 'aftermath-timer-presets';
+    [60, 180, 300, 600].forEach(function (sec) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = (sec / 60) + '분';
+      b.onclick = function () {
+        var input = document.getElementById('aftermathTimerInput');
+        if (input) input.value = sec;
+        startTimer(sec);
+      };
+      presets.appendChild(b);
+    });
+    panel.appendChild(presets);
+
+    // Controls
+    var controls = document.createElement('div');
+    controls.className = 'aftermath-timer-controls';
+
+    var input = document.createElement('input');
+    input.type = 'number';
+    input.id = 'aftermathTimerInput';
+    input.placeholder = '초';
+    input.min = '1';
+    input.setAttribute('inputmode', 'numeric');
+    controls.appendChild(input);
+
+    var startBtn = document.createElement('button');
+    startBtn.type = 'button';
+    startBtn.className = 'primary';
+    startBtn.id = 'aftermathTimerStartBtn';
+    startBtn.textContent = '시작';
+    startBtn.onclick = function () {
+      if (timer.running) return;
+      if (timer.remaining > 0) { startTimer(); return; }
+      var inp = document.getElementById('aftermathTimerInput');
+      var sec = inp ? parseInt(inp.value, 10) : NaN;
+      if (!isFinite(sec) || sec <= 0) {
+        sec = 60;
+        if (inp) inp.value = sec;
+      }
+      startTimer(sec);
+    };
+    controls.appendChild(startBtn);
+
+    var pauseBtn = document.createElement('button');
+    pauseBtn.type = 'button';
+    pauseBtn.id = 'aftermathTimerPauseBtn';
+    pauseBtn.textContent = '일시정지';
+    pauseBtn.onclick = pauseTimer;
+    controls.appendChild(pauseBtn);
+
+    var resetBtn = document.createElement('button');
+    resetBtn.type = 'button';
+    resetBtn.id = 'aftermathTimerResetBtn';
+    resetBtn.textContent = '리셋';
+    resetBtn.onclick = resetTimer;
+    controls.appendChild(resetBtn);
+
+    panel.appendChild(controls);
+    wrap.appendChild(panel);
     document.body.appendChild(wrap);
   }
 })();
