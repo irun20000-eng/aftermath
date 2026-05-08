@@ -13,12 +13,31 @@
   }
 
   function init() {
-    if (document.getElementById('aftermathTimer')) return; // 중복 방지
+    debugLog('init 시작');
+    if (document.getElementById('aftermathTimer')) { debugLog('이미 존재 → return'); return; }
     injectCSS();
     injectDOM();
     bindEvents();
     update();
+    const startBtn = document.getElementById('aftermathTimerStart');
+    debugLog('init 완료 / 시작버튼 ' + (startBtn ? 'O' : 'X'));
   }
+
+  // 진단용 — 화면에 직접 디버그 표시 (alert 대신 화면 우측 상단에 작은 텍스트)
+  function debugLog(msg) {
+    let box = document.getElementById('aftermathDebug');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'aftermathDebug';
+      box.style.cssText = 'position:fixed;top:8px;left:8px;z-index:99999;background:#fef3c7;color:#78350f;padding:8px 12px;border:2px solid #f59e0b;border-radius:8px;font:12px monospace;max-width:280px;line-height:1.4;';
+      document.body.appendChild(box);
+    }
+    const line = document.createElement('div');
+    line.textContent = '[' + new Date().toLocaleTimeString() + '] ' + msg;
+    box.appendChild(line);
+    while (box.children.length > 6) box.removeChild(box.firstChild);
+  }
+  window.__aftermathDebugLog = debugLog;
 
   /* ──────────────────────────────────────────────
      스타일
@@ -257,9 +276,15 @@
       const wrap = t.closest('#aftermathTimer');
       const inPanel = t.closest('#aftermathTimerPanel');
 
+      // 위젯/패널 영역 클릭만 진단 출력 (외부 클릭은 noise)
+      if (wrap || inPanel) {
+        debugLog('click ' + (t.id || t.tagName + '.' + (t.className || '')));
+      }
+
       // 토글 버튼 (또는 그 안 아이콘) 클릭
       if (t.closest('#aftermathTimerToggle') && !inPanel) {
         panel.hidden = !panel.hidden;
+        debugLog('toggle → panel.hidden=' + panel.hidden);
         return;
       }
 
@@ -275,17 +300,21 @@
         const sec = parseInt(presetBtn.dataset.sec, 10);
         const input = document.getElementById('aftermathTimerInput');
         if (input) input.value = sec;
+        debugLog('preset start ' + sec + 's');
         start(sec);
         return;
       }
 
       // 시작
       if (t.closest('#aftermathTimerStart')) {
-        if (timer.running) return;
-        if (timer.remaining > 0) { start(); return; }
+        debugLog('start 핸들러 진입');
+        if (timer.running) { debugLog('이미 running'); return; }
+        if (timer.remaining > 0) { start(); debugLog('이어서 시작'); return; }
         const input = document.getElementById('aftermathTimerInput');
         const sec = parseInt(input?.value, 10);
-        if (sec > 0) start(sec);
+        debugLog('input value=' + input?.value + ' parsed=' + sec);
+        if (sec > 0) { start(sec); debugLog('새로 시작 ' + sec + 's'); }
+        else debugLog('sec ≤ 0, 시작 안 함');
         return;
       }
 
