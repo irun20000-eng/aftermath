@@ -250,7 +250,7 @@ a{color:var(--color-primary);text-decoration:none}
   align-items:center;gap:var(--space-2);text-align:center;
 }
 .scratch-label::after{
-  content:'턱치하여 넓히기';
+  content:'터치하여 넓히기';
   font-size:var(--text-xs);color:var(--color-text-faint);opacity:.7;
 }
 
@@ -336,6 +336,9 @@ a{color:var(--color-primary);text-decoration:none}
 .step-btn.active{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
 .reset-btn{color:var(--color-text-faint);border-style:dashed}
 .reset-btn:hover{background:var(--color-red-bg);color:var(--color-red-text);border-color:var(--color-red-border);border-style:solid}
+.answer-btn{color:var(--color-success);border-color:var(--color-answer-border)}
+.answer-btn:hover{background:var(--color-answer-bg);color:var(--color-answer-text);border-color:var(--color-success)}
+.answer-btn.active{background:var(--color-success);color:#fff;border-color:var(--color-success)}
 .steps-container{padding:var(--space-5) var(--space-6);display:flex;flex-direction:column;gap:var(--space-5);min-height:60px}
 
 /* ── STEP 카드 ── */
@@ -2033,6 +2036,7 @@ const PROBLEMS = [
     for (let s = 1; s <= maxStep; s++) {
       stepBtns += `<button class="step-btn" data-pid="${problem.id}" data-step="${s}">STEP ${s}</button>`;
     }
+    stepBtns += `<button class="step-btn answer-btn" data-pid="${problem.id}" data-step="answer">정답</button>`;
     stepBtns += `<button class="step-btn reset-btn" data-pid="${problem.id}" data-step="0">초기화</button>`;
 
     // STEP 내용
@@ -2147,6 +2151,7 @@ const PROBLEMS = [
       if (correctEl) {
         ['background','border','color','font-weight'].forEach(p => correctEl.style.removeProperty(p));
       }
+      document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`)?.classList.remove('active');
       updateStepBtns(pid, 0);
       return;
     }
@@ -2161,11 +2166,6 @@ const PROBLEMS = [
 
     stepState[pid] = Math.max(stepState[pid] || 0, targetStep);
     updateStepBtns(pid, stepState[pid]);
-
-    const problem = PROBLEMS.find(p => p.id === pid);
-    if (problem && targetStep >= problem.steps.length) {
-      highlightAnswer(pid, problem);
-    }
 
     renderMath(container);
 
@@ -2214,6 +2214,16 @@ const PROBLEMS = [
       });
       answerEl.innerHTML = html;
     }
+  }
+
+  /* ══════════════════════════════════
+     4-b. 정답 선지 강조 (수동)
+  ══════════════════════════════════ */
+  function revealAnswerOnly(pid) {
+    const problem = PROBLEMS.find(p => p.id === pid);
+    if (!problem) return;
+    highlightAnswer(pid, problem);
+    document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`)?.classList.add('active');
   }
 
   /* ══════════════════════════════════
@@ -2325,7 +2335,11 @@ const PROBLEMS = [
     const stepBtn  = e.target.closest('.step-btn');
     const blankBtn = e.target.closest('.blank-btn');
     if (stepBtn) {
-      showSteps(stepBtn.dataset.pid, parseInt(stepBtn.dataset.step));
+      if (stepBtn.classList.contains('answer-btn')) {
+        revealAnswerOnly(stepBtn.dataset.pid);
+      } else {
+        showSteps(stepBtn.dataset.pid, parseInt(stepBtn.dataset.step));
+      }
     } else if (blankBtn) {
       revealBlank(blankBtn);
     }
@@ -2343,6 +2357,10 @@ const PROBLEMS = [
     if (e.key === '0') {
       const pid = filteredList[currentIdx]?.id;
       if (pid) showSteps(pid, 0);
+    }
+    if (e.key === 'a' || e.key === 'A') {
+      const pid = filteredList[currentIdx]?.id;
+      if (pid) revealAnswerOnly(pid);
     }
   });
 
