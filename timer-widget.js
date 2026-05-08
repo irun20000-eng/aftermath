@@ -244,45 +244,67 @@
   }
 
   /* ──────────────────────────────────────────────
-     이벤트 바인딩
+     이벤트 바인딩 — document 위임 방식
+     iPad Safari에서 동적 innerHTML로 추가된 button의 click이
+     누락되는 이슈 회피 (직접 binding 대신 document에 한 핸들러)
   ────────────────────────────────────────────── */
   function bindEvents() {
-    const toggle = document.getElementById('aftermathTimerToggle');
     const panel = document.getElementById('aftermathTimerPanel');
-    const closeBtn = document.getElementById('aftermathTimerClose');
 
-    toggle.addEventListener('click', e => {
-      // 패널 내부 요소 클릭이면 무시
-      if (e.target.closest('.aftermath-timer-panel')) return;
-      panel.hidden = !panel.hidden;
-    });
-    closeBtn.addEventListener('click', e => {
-      e.stopPropagation();
-      panel.hidden = true;
-    });
-
-    document.querySelectorAll('.aftermath-timer-presets button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const sec = parseInt(btn.dataset.sec, 10);
-        document.getElementById('aftermathTimerInput').value = sec;
-        start(sec);
-      });
-    });
-
-    document.getElementById('aftermathTimerStart').addEventListener('click', () => {
-      if (timer.running) return;
-      if (timer.remaining > 0) { start(); return; }
-      const sec = parseInt(document.getElementById('aftermathTimerInput').value, 10);
-      if (sec > 0) start(sec);
-    });
-    document.getElementById('aftermathTimerPause').addEventListener('click', pause);
-    document.getElementById('aftermathTimerReset').addEventListener('click', reset);
-
-    // 패널 외부 클릭 시 닫기
+    // 모든 click을 document에서 처리 (위임)
     document.addEventListener('click', e => {
-      if (panel.hidden) return;
-      if (e.target.closest('#aftermathTimer')) return;
-      panel.hidden = true;
+      const t = e.target;
+      const wrap = t.closest('#aftermathTimer');
+      const inPanel = t.closest('#aftermathTimerPanel');
+
+      // 토글 버튼 (또는 그 안 아이콘) 클릭
+      if (t.closest('#aftermathTimerToggle') && !inPanel) {
+        panel.hidden = !panel.hidden;
+        return;
+      }
+
+      // 닫기
+      if (t.closest('#aftermathTimerClose')) {
+        panel.hidden = true;
+        return;
+      }
+
+      // 프리셋 (1/3/5/10분)
+      const presetBtn = t.closest('.aftermath-timer-presets button');
+      if (presetBtn) {
+        const sec = parseInt(presetBtn.dataset.sec, 10);
+        const input = document.getElementById('aftermathTimerInput');
+        if (input) input.value = sec;
+        start(sec);
+        return;
+      }
+
+      // 시작
+      if (t.closest('#aftermathTimerStart')) {
+        if (timer.running) return;
+        if (timer.remaining > 0) { start(); return; }
+        const input = document.getElementById('aftermathTimerInput');
+        const sec = parseInt(input?.value, 10);
+        if (sec > 0) start(sec);
+        return;
+      }
+
+      // 일시정지
+      if (t.closest('#aftermathTimerPause')) {
+        pause();
+        return;
+      }
+
+      // 리셋
+      if (t.closest('#aftermathTimerReset')) {
+        reset();
+        return;
+      }
+
+      // 외부 클릭 → 패널 닫기
+      if (!panel.hidden && !wrap) {
+        panel.hidden = true;
+      }
     });
 
     // 패널 열린 동안만 Esc 닫기
