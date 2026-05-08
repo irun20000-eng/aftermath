@@ -209,6 +209,8 @@
         html.dark .text-indigo-800 { color: #c7d2fe !important; }
         html.dark .border-amber-200 { border-color: #92400e !important; }
         html.dark .border-indigo-200 { border-color: #4338ca !important; }
+        html.dark .text-purple-700 { color: #d8b4fe !important; }
+        html.dark .border-purple-200 { border-color: #6b21a8 !important; }
         html.dark .bg-slate-50 { background: #1e293b !important; }
     </style>
 </head>
@@ -226,7 +228,7 @@
             <div class="mt-4 flex items-center justify-center gap-3">
                 <span class="progress-badge">
                     <span>📈</span>
-                    <span>진행 <span id="progressCount">0</span> / 19</span>
+                    <span>교과서 <span id="progressCountTextbook">0</span> / 19 · 수능특강 <span id="progressCountSuneung">0</span> / 3</span>
                 </span>
                 <button id="resetProgressBtn" class="text-xs text-slate-400 hover:text-slate-600 underline" title="모든 진도 체크 초기화">초기화</button>
             </div>
@@ -446,6 +448,34 @@
             </div>
         </div>
 
+        <!-- 수능특강 (수학 I) -->
+        <div class="unit-card mb-6 bg-gradient-to-br from-rose-50 to-purple-50 border border-purple-200">
+            <h2 class="unit-title"><span>📚</span> 수능특강 <span class="text-xs font-normal text-purple-700 ml-2">— 수학 I 자기학습 (단계별 해설)</span></h2>
+            <div class="grid gap-2">
+                <div class="lesson-row" data-lesson="수능특강_수학I_사인법칙코사인법칙_해설.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="수능특강_수학I_사인법칙코사인법칙_해설.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num" style="background:#fce7f3;color:#9d174d">①</span><span>4. 사인법칙·코사인법칙 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="수능특강_수학I_등차수열등비수열_해설.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="수능특강_수학I_등차수열등비수열_해설.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num" style="background:#fce7f3;color:#9d174d">②</span><span>5. 등차수열·등비수열 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+                <div class="lesson-row" data-lesson="수능특강_수학I_수열의합귀납법_해설.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="수능특강_수학I_수열의합귀납법_해설.html" target="_blank" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num" style="background:#fce7f3;color:#9d174d">③</span><span>6. 수열의 합·수학적 귀납법 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
             <p>© 2026 Mathematics Education Engineering · 대수 학습지 모음</p>
         </footer>
@@ -467,20 +497,22 @@ const saveProgress = (p) => {
 
 function applyProgress() {
     const progress = loadProgress();
-    let count = 0;
+    let textbookCount = 0, suneungCount = 0;
     document.querySelectorAll('.lesson-row').forEach(row => {
         const key = row.dataset.lesson;
         const check = row.querySelector('.progress-check');
         if (progress[key]) {
             row.classList.add('done');
             check.classList.add('completed');
-            count++;
+            if (key.startsWith('수능특강_')) suneungCount++;
+            else textbookCount++;
         } else {
             row.classList.remove('done');
             check.classList.remove('completed');
         }
     });
-    document.getElementById('progressCount').textContent = count;
+    document.getElementById('progressCountTextbook').textContent = textbookCount;
+    document.getElementById('progressCountSuneung').textContent = suneungCount;
 }
 
 document.querySelectorAll('.progress-check').forEach(btn => {
