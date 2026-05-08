@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="light">
 <head>
-<!--
-   ______                            __
-  / ____/___  ____ ___  ____  __  __/ /____  _____
- / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
-/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
-\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
-                    /_/
-        Created with Perplexity Computer
-        https://www.perplexity.ai/computer
--->
-<meta name="generator" content="Perplexity Computer">
-<meta name="author" content="Perplexity Computer">
-<meta property="og:see_also" content="https://www.perplexity.ai/computer">
-<link rel="author" href="https://www.perplexity.ai/computer">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>수학 I · 4. 사인법칙과 코사인법칙 — 단계별 해설</title>
@@ -722,9 +708,6 @@ a{color:var(--color-primary);text-decoration:none}
     다음
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
-  <div class="footer-attr">
-    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
-  </div>
 </footer>
 
 <!-- 인쇄 모달 -->
@@ -2513,24 +2496,17 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// 마우스 휠 위임: 헤더/푸터/가로 스크롤 박스 위에서도 main-area 스크롤
+// 마우스 휠 강제 위임 (capture phase) → 페이지 어디서든 main-area 스크롤
+// 자식 컨테이너의 휠 가로채기보다 먼저 처리해 STEP 펼침 영역에서도 보장
 (function() {
   const mainArea = document.getElementById('main-area');
   if (!mainArea) return;
-  document.addEventListener('wheel', (e) => {
-    if (e.ctrlKey) return;  // 줌 제스처 보존
-    let el = e.target;
-    // 위로 올라가며 실제 세로 스크롤 가능한 조상 찾기
-    while (el && el !== document.body) {
-      const cs = getComputedStyle(el);
-      if ((cs.overflowY === 'auto' || cs.overflowY === 'scroll')
-          && el.scrollHeight > el.clientHeight) return;
-      el = el.parentElement;
-    }
-    // 스크롤 가능한 조상 없음 → main-area로 강제 위임
+  window.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) return;  // 브라우저 줌 보존
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;  // 가로 휠은 그대로 (Shift+휠/트랙패드)
     e.preventDefault();
     mainArea.scrollTop += e.deltaY;
-  }, { passive: false });
+  }, { passive: false, capture: true });
 })();
 </script>
 </body>
