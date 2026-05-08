@@ -2324,16 +2324,27 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// 마우스 휠 강제 위임 (capture phase) → 페이지 어디서든 main-area 스크롤
-// 자식 컨테이너의 휠 가로채기보다 먼저 처리해 STEP 펼침 영역에서도 보장
+// 마우스 휠 강제 위임 v3
+// 핵심 원인: html{scroll-behavior:smooth} 상속으로 휠 입력이 누적되지 않고 무효화됨
+// 해결: scroll-behavior=auto 강제 + scrollTop 변경 검증 + fallback 컨테이너 순회
 (function() {
   const mainArea = document.getElementById('main-area');
   if (!mainArea) return;
+  // 부드러운 스크롤 비활성화 (휠로 즉시 반응)
+  mainArea.style.scrollBehavior = 'auto';
+
   window.addEventListener('wheel', (e) => {
     if (e.ctrlKey) return;  // 브라우저 줌 보존
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;  // 가로 휠은 그대로 (Shift+휠/트랙패드)
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;  // 가로 휠 그대로
     e.preventDefault();
-    mainArea.scrollTop += e.deltaY;
+    // 후보 컨테이너 순회: 실제 변화가 발생한 첫 컨테이너 사용
+    const candidates = [mainArea, document.scrollingElement, document.documentElement];
+    for (const el of candidates) {
+      if (!el || el.scrollHeight <= el.clientHeight) continue;
+      const before = el.scrollTop;
+      el.scrollTop = before + e.deltaY;
+      if (el.scrollTop !== before) return;
+    }
   }, { passive: false, capture: true });
 })();
 </script>
