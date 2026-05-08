@@ -59,7 +59,7 @@
   function update() {
     var d = document.getElementById('aftermathTimerDisplay');
     var m = document.getElementById('aftermathTimerMini');
-    var t = document.getElementById('aftermathTimerToggle');
+    var t = document.getElementById('aftermathTimerToggleBtn');
     if (!d || !t) return;
     d.textContent = fmt(timer.remaining);
     d.classList.remove('warning', 'danger');
