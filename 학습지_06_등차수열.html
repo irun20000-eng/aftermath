@@ -167,7 +167,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -239,9 +239,98 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4">6. 어느 극장의 \(1\)열은 좌석이 \(20\)개이고, 그 다음 열부터는 앞 열보다 좌석이 \(2\)개씩 늘어난다고 한다. 이 극장의 \(15\)열의 좌석 수를 구하시오.</div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 등차·등비 유제 2) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-ex2"
+                 data-aft-source-label="수능특강 등차·등비 유제 2">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 유제 2</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+3, 10분) · 핵심: 절댓값 항등식 분기 + 등차 단독 종합</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                두 등차수열 \(\{a_n\}\), \(\{b_n\}\)이 다음 조건을 만족시킬 때, \(a_2 + b_8\)의 값은?
+            </div>
+
+            <div class="bg-slate-100 p-6 rounded-2xl mb-6 border-2 border-slate-200">
+                <div class="text-lg leading-loose">
+                    (가) 모든 자연수 \(n\)에 대하여 \(|a_n| = |b_{2n+1}|\) <br>
+                    (나) \(a_3 - b_7 = 8,\quad a_5 = b_{11}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>일반항 설정</strong>: \(a_n = A + (n-1)D,\; b_n = B + (n-1)E\) → \(b_{2n+1} = B + 2nE\)</li>
+                    <li><strong>절댓값 항등식</strong>: \(|A + (n-1)D| = |B + 2nE|\)가 모든 \(n\)에서 성립 → 부호 분기 2가지
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li><strong>Case 1 (동부호)</strong>: \(A-D = B,\; D = 2E\) → 조건 (나) 검증 시 \(a_3-b_7 = 0 \neq 8\), <span class="text-red-600 font-bold">모순 → 기각</span></li>
+                            <li><strong>Case 2 (반부호)</strong>: \(A-D = -B,\; D = -2E\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Case 2 연립</strong>: \(a_3-b_7 = 2A+4D = 8 \Rightarrow A+2D = 4\) ··· (i) <br>\(a_5 = b_{11} \Rightarrow A+4D = -A-4D \Rightarrow A+4D = 0\) ··· (ii)</li>
+                    <li><strong>해</strong>: (i)-(ii)로 \(-2D = 4 \Rightarrow D = -2,\; A = 8,\; E = 1,\; B = -10\)</li>
+                    <li><strong>검산 + 정답</strong>: \(a_2+b_8 = (8-2) + (-10+7) = 6 + (-3) = \boxed{3}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 절댓값 항등식은 모든 \(n\)에서 성립해야 하므로 부호 분기가 항등식 처리. 한 케이스가 조건과 모순임을 검증해 소거.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-ex2" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 2</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 등차·등비 기본 1) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-s1"
+                 data-aft-source-label="수능특강 등차·등비 기본 1">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 기본 1</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 8분) · 핵심: 두 등차 + 자연수 + 최솟값 (등차 단독 종합)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                모든 항이 자연수인 두 등차수열 \(\{a_n\}\), \(\{b_n\}\)이 \(a_5 - b_8 = a_3 - b_2 = a_2\)를 만족시킨다. \(a_k = b_k\)를 만족시키는 자연수 \(k\)가 존재할 때, \(a_6 - b_4\)의 최솟값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>일반항 설정</strong>: \(a_n = a + (n-1)A\), \(b_n = b + (n-1)B\) (\(a, b\): 첫항, \(A, B\): 공차)</li>
+                    <li><strong>두 조건 연립</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_5 - b_8 = a_2\): \((a+4A) - (b+7B) = a+A \Rightarrow 3A - 7B - b = 0\)</li>
+                            <li>\(a_3 - b_2 = a_2\): \((a+2A) - (b+B) = a+A \Rightarrow A - B - b = 0\)</li>
+                            <li>두 식 차: \(3A - 7B - (A-B) = 0 \Rightarrow 2A = 6B \Rightarrow A = 3B\) (또는 \(3A = 7B\) 형태로 정수 조건 추출)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(a_k = b_k\) 자연수 조건</strong>: \(a + (k-1)A = b + (k-1)B \Rightarrow (a-b) = (k-1)(B-A)\) → 자연수 \(k\) 존재 조건으로 첫항·공차 정수 해 후보 결정</li>
+                    <li><strong>최솟값 산출</strong>: 모든 항 자연수 + 자연수 \(k\) 조건 충족하는 정수 해 중 \(a_6 - b_4 = (a+5A) - (b+3B)\)의 최솟값 탐색</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 등차 단독 (합 미사용) — 일반항 + 조건 연립 + 정수해 탐색 + 최솟값. 수능 21~29번 단골 패턴.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-s1" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 1</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
