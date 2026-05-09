@@ -157,7 +157,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -229,9 +229,113 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">6. 세 수 \(x-2, x-1, x+2\)가 이 순서대로 등비수열을 이룰 때, 실수 \(x\)의 값을 구하시오.</div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 등차·등비 유제 8) — Q5 부호 함정 심화 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-ex8"
+                 data-aft-source-label="수능특강 등차·등비 유제 8">
+            <h2 class="section-title">⭐ 도전 문제 1 — Q5 부호 함정 심화</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 유제 8</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+4, 10분) · 핵심: 정수 r + 약수 열거 + 음수 r 부호 케이스 (수능 28·30번급)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                첫째항과 공비가 모두 정수 \(r\)인 등비수열 \(\{a_n\}\)에 대하여 \(a_k = 2^{12}\)인 자연수 \(k\)가 존재하도록 하는 \(r\)의 개수는?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>일반항 정리</strong>: 첫항 = 공비 = \(r\) → \(a_n = r \cdot r^{n-1} = r^n\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>조건: \(r^k = 2^{12}\)인 자연수 \(k\) 존재 → \(r\)는 \(2\)의 거듭제곱 (\(\pm 2^m\), \(m \geq 1\))</li>
+                        </ul>
+                    </li>
+                    <li><strong>양수 \(r = 2^m\) 케이스</strong>: \(r^k = 2^{mk} = 2^{12}\) → \(mk = 12\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(m \in \{1, 2, 3, 4, 6, 12\}\) (\(12\)의 양의 약수) → \(r = 2, 4, 8, 16, 64, 4096\) → <strong>6개</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>음수 \(r = -2^m\) 케이스</strong>: \((-2^m)^k = 2^{12} > 0\) → <span class="text-red-600 font-bold">\(k\)가 짝수</span>여야 함
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(mk = 12\) 그리고 \(k\) 짝수 → \(k \in \{2, 4, 6, 12\}\), 각각 \(m = 6, 3, 2, 1\)</li>
+                            <li>\(r = -2, -4, -8, -64\) → <strong>4개</strong></li>
+                            <li>합계: \(6 + 4 = \boxed{10}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> Q5의 '음수 해 누락 함정'을 정수 약수 + \(k\) 홀짝 분기로 본질 확장. 음수 \(r\)에서 \(k\) 짝수 조건이 결정적.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-ex8" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 8</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 등차·등비 기본 5) — Q5 부호 함정 + log -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-s5"
+                 data-aft-source-label="수능특강 등차·등비 기본 5">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q5 부호 함정 + log</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 기본 5</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+3, 12분) · 핵심: log 비율 + 음수 r + 자연수·음정수 조건</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                다음 조건을 만족시키는 모든 등비수열 \(\{a_n\}\)에 대하여 \(a_4\)의 최댓값은?
+            </div>
+
+            <div class="bg-slate-100 p-6 rounded-2xl mb-6 border-2 border-slate-200">
+                <div class="text-lg leading-loose">
+                    (가) \(a_3\)과 \(a_5\)는 자연수이고, \(\log_3 a_5 - \log_3 a_3 = 2\) <br>
+                    (나) \(a_2 a_3\)은 음의 정수
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>(가) log → r 결정</strong>: \(\log_3(a_5/a_3) = 2 \Rightarrow a_5/a_3 = 9 \Rightarrow r^2 = 9 \Rightarrow r = \pm 3\)</li>
+                    <li><strong>(나) 부호 케이스 분기</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li><strong>\(r = 3\)</strong>: \(a_3\) 자연수이면 \(a_2 = a_3/3 > 0\) → \(a_2 a_3 > 0\), 음의 정수 조건 위반 <span class="text-red-600 font-bold">→ 모순</span></li>
+                            <li><strong>\(r = -3\)</strong>: 항 부호 교차. \(a_2 = a_3/r = -a_3/3 < 0\) → \(a_2 a_3 = -a_3^2/3 < 0\) ✓</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(a_3\) 후보 결정</strong>: \(a_2 a_3 = -a_3^2/3\)이 음의 정수 → \(a_3^2\)이 \(3\)의 배수 → \(a_3\)이 \(3\)의 배수
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_3 \in \{3, 6, 9, \ldots\}\), 각각 \(a_2 a_3 = -3, -12, -27, \ldots\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(a_4\) 최댓값</strong>: \(a_4 = a_3 \cdot r = -3 a_3\) (음수)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>음수 중 최댓값 = 절댓값 최소 → \(a_3 = 3\)일 때 \(a_4 = -9\)</li>
+                            <li>답: \(\boxed{-9}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> Q5의 '\(x = \pm 12\)' 부호 함정이 r=±3 + 부호 조건 + 자연수 + 음의 정수까지 4중 조건으로 강화된 형태. log 차이를 비율로 변환하는 기본 도구도 함께 훈련.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-s5" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 5</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
