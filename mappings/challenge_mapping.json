@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_15 도전 2개 추가 — s6-e4·s6-s4, 점화식·등차 환원·Σ 융합)",
+  "updated_at": "2026-05-09 (학습지_16 진입: B안 — 증명 단원, 마킹만 수행)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -620,6 +620,25 @@
         "target_count": 2,
         "current_count": 2,
         "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_16_수학적귀납법",
+      "worksheet_concepts": ["수학적 귀납법 (출발 + 귀납 단계)", "등식 증명 (Σ 공식)", "부등식 증명 (베르누이)", "배수 증명", "점화식 → 일반항 증명"],
+      "max_difficulty_in_worksheet": 6,
+      "max_difficulty_note": "Q5(조화수 부등식 1+1/2+...+1/n > 2n/(n+1))이 max=6. 학습지 자체가 증명 위주라 본문 도전이 충분.",
+      "no_external_challenge": {
+        "decision": "사용자 B안 — 원본 유지",
+        "reason": "수학적 귀납법은 증명 위주 단원이라 수능특강 객관식·단답형 도전과 매칭 부적합. 학습지 본문(Q5 조화수 부등식)이 이미 충분히 도전적. 마킹만 수행하고 도전 카드는 추가하지 않음.",
+        "considered_candidates": [
+          {"problem_id": "s6-ex6", "difficulty": 8, "note": "점화식·망원합·부분분수 3중 융합. A안 후보였으나 학습지 증명 본질과 다른 사고 경로(객관식)라 보류."}
+        ]
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
       }
     }
   ],
