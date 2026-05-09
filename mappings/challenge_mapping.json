@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_12 도전 2개 추가 — s6-b8·s6-b4, Σk²·Σk³ 다항식 합)",
+  "updated_at": "2026-05-09 (학습지_13 도전 2개 추가 — s6-b6·s6-ex5, 부분분수·무리식 유리화)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -485,6 +485,55 @@
         "current_count": 2,
         "status": "complete"
       }
+    },
+    {
+      "worksheet_id": "학습지_13_여러가지수열의합",
+      "worksheet_concepts": ["부분분수 분해 1/AB = 1/(B-A)·(1/A - 1/B)", "무리식 유리화 (켤레 곱)", "망원합 (telescoping)", "남는 항 대칭성", "1/(B-A) 계수 함정"],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "Q4(형성평가 — aₙ=n²+2n=n(n+2) 인수분해 + 한 칸 건너 부분분수 + 남는 항 4개)이 max=5. Q3(B-A=2 계수 함정)도 4~5 동급.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-b6",
+          "label": "수능특강 수열의 합·귀납법 기초 6",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "기초",
+          "estimated_time_min": 5,
+          "concepts_matched": ["분모 무리식 유리화 (켤레 곱)", "망원합", "1/2 계수 처리"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분", "점화식"],
+          "reason": "학습지_13 Q2(Σ 1/(√(k+1)+√k) 유리화) 직접 확장 — 분모를 √(2k-1)+√(2k+1)로 바꿔 B-A=2 함정 추가. 학습지가 강조하는 '계수 1/(B-A) 빼먹기' 함정 정확히 강화. 끝항 √81=9 인지로 마무리. max(5)+1=6 적정.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        },
+        {
+          "rank": 2,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-ex5",
+          "label": "수능특강 수열의 합·귀납법 유제 5",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 5,
+          "concepts_matched": ["부분분수 분해 (B-A=3)", "1/(c-b) 계수", "망원합", "한 칸 건너 소거"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분", "점화식"],
+          "reason": "학습지_13 Q3(B-A=2)·Q4(B-A=2 한 칸 건너) 직접 확장 — B-A=3 케이스로 일반화. 분모가 (3k-1)(3k+2)이므로 1/3 계수 처리가 명시적으로 등장 (학습지 함정 강화). rank 1과 다른 도구(부분분수 vs. 무리식). max(5)+1=6 적정.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "rejected_candidates": [
+        {"problem_id": "s6-e3", "reason": "난이도 6, Sₙ→aₙ + 부분분수. 정합하지만 a₁ 분리 처리가 추가 부담. 사용자 A안 선택으로 보류 (학습지_18 종합 후보)."},
+        {"problem_id": "s6-ex8", "reason": "난이도 7, 점화식 + 부분분수 융합. 점화식이 학습지_15+ 전이라 첨단적 — C안 후보였으나 보류."},
+        {"problem_id": "s6-ex9·ex10·ex11", "reason": "미평가 — 학습지_14(중단원) 또는 모의고사 도전 시 평가."},
+        {"problem_id": "s6-s1·s2·s3", "reason": "미평가 — 다수 점화식·복잡 융합. 학습지_14·15+ 진도 후."}
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
     }
   ],
   "evaluated_problems_pool": {
@@ -502,10 +551,10 @@
       "unevaluated_categories": "잔여 — 다른 챕터(c1·c2·c3 실력 등) 또는 등차합 외 항목. 학습지_18(중단원) 또는 모의고사 도전 시 평가."
     },
     "수능특강_수열의합귀납법": {
-      "evaluated_count": 8,
-      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2"],
-      "unevaluated_count": 28,
-      "unevaluated_categories": "잔여 Σk² 후보 (s6-e3·ex5·ex8~11·s1·s2·s3) — 학습지_13·14 진입 시 평가. 점화식·귀납법 (s6-b2·b5·b7·e4·e5·ex7·s4~s7) — 학습지_15+ 진입 시. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
+      "evaluated_count": 11,
+      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2", "s6-b6", "s6-ex5", "s6-e3"],
+      "unevaluated_count": 25,
+      "unevaluated_categories": "잔여 부분분수·복합 (s6-ex8~11·s1·s2·s3) — 학습지_14 또는 모의고사 도전 시 평가. 점화식·귀납법 (s6-b2·b5·b7·e4·e5·ex7·s4~s7) — 학습지_15+ 진입 시. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
       "policy_violations": []
     }
   }
