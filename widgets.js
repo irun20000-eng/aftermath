@@ -284,22 +284,6 @@
       return clone;
     }
 
-    function buildGroupSection(g, items) {
-      var section = document.createElement('section');
-      section.className = 'aft-problem-group';
-      section.setAttribute('data-level', g.key);
-
-      var header = document.createElement('h4');
-      header.className = 'aft-problem-group-title';
-      header.textContent = g.icon + ' ' + g.label;
-      section.appendChild(header);
-
-      items.forEach(function (item) {
-        section.appendChild(buildClone(item));
-      });
-      return section;
-    }
-
     function renderProblems() {
       if (rendered) return;
 
@@ -329,15 +313,17 @@
       rightTitle.textContent = '⭐ 도전 문제';
       rightPane.appendChild(rightTitle);
 
+      // 그룹 헤더(🟡기본·🔴심화) 없이 카드 자체 제목으로 구분
+      // GROUPS 순서 유지 — l1→l2→l3 순으로 자연 stacking
       GROUPS.forEach(function (g) {
         var items = byLevel[g.key];
         if (!items || items.length === 0) return;
-        var section = buildGroupSection(g, items);
-        if (g.key === 'challenge') rightPane.appendChild(section);
-        else leftPane.appendChild(section);
+        var targetPane = (g.key === 'challenge') ? rightPane : leftPane;
+        items.forEach(function (item) {
+          targetPane.appendChild(buildClone(item));
+        });
       });
 
-      // 빈 pane이면 안내 문구
       if (leftPane.children.length === 1) {
         var emptyL = document.createElement('p');
         emptyL.className = 'aft-pane-empty';

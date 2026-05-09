@@ -1,6 +1,69 @@
 {
   "schema_version": 1,
-  "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님이 검수·승인 후 기록. PR-E 이후 채워짐.",
-  "updated_at": null,
-  "mappings": []
+  "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
+  "updated_at": "2026-05-09",
+  "policies": {
+    "exclude_levels": ["실력 (advanced)"],
+    "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
+    "rationale": "수능 1등급 수준의 '실력' 카테고리는 학생 좌절 위험이 커 도전 후보에서 제외. 예제·유제·기초·기본 범위 내에서 학습지 max_difficulty +1~2단계 위로 선정."
+  },
+  "mappings": [
+    {
+      "worksheet_id": "학습지_01_사인법칙",
+      "worksheet_concepts": ["사인법칙 (Type A·B·C)", "외접원 반지름 R", "sin의 두 해 가능성", "변·각 변형식"],
+      "max_difficulty_in_worksheet": 6,
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_사인법칙코사인법칙",
+          "problem_id": "s4-e1",
+          "label": "수능특강 사인법칙·코사인법칙 예제 1",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "예제",
+          "estimated_time_min": 5,
+          "concepts_matched": ["사인법칙", "외접원 반지름 R"],
+          "reason": "두 삼각형 ADC·ABC에 사인법칙을 따로 세운 뒤 미지각 sinA를 구하지 않고 두 식을 곱셈으로 소거하는 전략. 학습지 max(6)와 동일한 발상 수준이지만 '한 삼각형의 사인법칙'이 아니라 '두 삼각형 연립'이라는 점에서 한 단계 열린 구조. 수능 4점 소재 전형적 출발점.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        },
+        {
+          "rank": 2,
+          "source": "self_made",
+          "problem_id": "ws01_challenge_2",
+          "label": "자체 제작 — 사인법칙 종합 (외접원 R + sin 두 해)",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "자체 제작",
+          "estimated_time_min": 8,
+          "concepts_matched": ["사인법칙", "외접원 반지름 R", "sin의 두 해 함정", "삼각형 내각의 합"],
+          "problem_text": "△ABC에서 R=4, ∠A=30°, AC=4√3. (1) 가능한 ∠B의 값을 모두 구하시오. (2) (1)의 각 경우 △ABC의 둘레.",
+          "answer": {
+            "part_1": "∠B = 60° 또는 120°",
+            "part_2": "B=60°일 때 12+4√3, B=120°일 때 8+4√3"
+          },
+          "solution_outline": "(1) 사인법칙 b/sinB=2R로 sinB=√3/2 → B 두 해 (2) 각 경우 C=180-A-B 결정 → a=2RsinA=4, c=2RsinC → 둘레.",
+          "tools_used": ["사인법칙", "피타고라스"],
+          "tools_avoided": ["코사인법칙", "덧셈정리", "반각·배각", "내적", "미분"],
+          "reason": "학습지 5번(두 해 함정)과 4번(외접원 R + 둘레)을 결합한 종합 도전. 학습지 max(6)+1=7 적정. 평가원·수능 모타 스타일. 수Ⅰ 사인법칙만으로 완결 — 정책 부합. 수능특강 통합 단원에 사인법칙 단독 매칭 후보가 부족해 자체 제작.",
+          "self_made_rationale": "수능특강 35개 후보 중 학습지_01(사인법칙 단독)에 단원 매칭 강한 건 s4-e1 1개뿐. 나머지는 코사인법칙·반각·덧셈정리 본질로 단원 비대칭. 사용자 결정에 따라 자체 제작으로 보충.",
+          "added_at": "2026-05-09",
+          "curated_by": "self_made"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    }
+  ],
+  "evaluated_problems_pool": {
+    "수능특강_사인법칙코사인법칙": {
+      "evaluated_count": 10,
+      "evaluated_ids": ["s4-c1", "s4-c2", "s4-c3", "s4-e1", "s4-e2", "s4-e3", "s4-e4", "s4-s4", "s4-s6", "s4-ex1"],
+      "unevaluated_count": 28,
+      "unevaluated_categories": "기초 12 (s4-b1~b12) + 유제 6 (s4-ex2~ex8 일부) + 기본 9 (s4-s1·s2·s3·s5·s7·s8·s9·s10·s11). 추후 학습지_02 도전 후보 검토 시 활용 가능."
+    }
+  }
 }
