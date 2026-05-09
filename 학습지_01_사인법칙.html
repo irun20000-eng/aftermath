@@ -341,6 +341,76 @@
       </div>
       <div class="aft-widget-resize" aria-hidden="true"></div>
     </div>
+
+    <!-- ============================================================
+         floating 도전 문제 위젯
+         콘텐츠는 아래 <template id="aft-challenge-data"> 안에 inline 작성
+         ============================================================ -->
+    <div id="aft-challenge-widget" class="aft-widget no-print" data-widget="challenge">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">🎯 도전 문제</span>
+        <span id="aft-challenge-counter" class="aft-counter">1 / 1</span>
+        <span class="aft-widget-head-actions">
+          <button type="button" id="aft-challenge-prev" class="aft-nav-btn" aria-label="이전">◀</button>
+          <button type="button" id="aft-challenge-next" class="aft-nav-btn" aria-label="다음">▶</button>
+          <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+        </span>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-challenge-content"></div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 도전 문제 콘텐츠 (학습지마다 자유 작성, 비워두면 위젯 숨김) -->
+    <template id="aft-challenge-data">
+      <div class="aft-challenge-item">
+        <div class="aft-challenge-source">[더미] 2024학년도 9월 모의평가 변형</div>
+        <div class="aft-challenge-stem">
+          삼각형 ABC에서 \( \angle A = 60^\circ \), \( a = 7 \), \( b = 8 \)일 때, \( \sin B \)의 값은?
+        </div>
+        <div class="aft-challenge-choices">
+          <label><input type="radio" name="aft-ch-1"> ① \( \dfrac{4\sqrt{3}}{7} \)</label>
+          <label><input type="radio" name="aft-ch-1"> ② \( \dfrac{5\sqrt{3}}{7} \)</label>
+          <label><input type="radio" name="aft-ch-1"> ③ \( \dfrac{6\sqrt{3}}{7} \)</label>
+          <label><input type="radio" name="aft-ch-1"> ④ \( \dfrac{7\sqrt{3}}{7} \)</label>
+          <label><input type="radio" name="aft-ch-1"> ⑤ \( \dfrac{8\sqrt{3}}{7} \)</label>
+        </div>
+        <div class="aft-challenge-actions">
+          <button type="button" class="aft-challenge-answer">정답 보기</button>
+          <button type="button" class="aft-challenge-explain">해설 보기</button>
+        </div>
+        <div class="aft-challenge-answer-text" hidden>정답: ①</div>
+        <div class="aft-challenge-explain-text" hidden>
+          사인법칙 \( \dfrac{a}{\sin A} = \dfrac{b}{\sin B} \)에서
+          \( \dfrac{7}{\sin 60^\circ} = \dfrac{8}{\sin B} \)이므로
+          \( \sin B = \dfrac{8 \sin 60^\circ}{7} = \dfrac{8 \cdot \frac{\sqrt{3}}{2}}{7} = \dfrac{4\sqrt{3}}{7} \).
+        </div>
+      </div>
+
+      <div class="aft-challenge-item">
+        <div class="aft-challenge-source">[더미] 페이지네이션 테스트용 2번 문제</div>
+        <div class="aft-challenge-stem">
+          삼각형 ABC의 외접원의 반지름이 \( R = 5 \)이고 \( \angle A = 30^\circ \)일 때, 변 \( a \)의 길이는?
+        </div>
+        <div class="aft-challenge-choices">
+          <label><input type="radio" name="aft-ch-2"> ① 4</label>
+          <label><input type="radio" name="aft-ch-2"> ② 5</label>
+          <label><input type="radio" name="aft-ch-2"> ③ 6</label>
+          <label><input type="radio" name="aft-ch-2"> ④ 8</label>
+          <label><input type="radio" name="aft-ch-2"> ⑤ 10</label>
+        </div>
+        <div class="aft-challenge-actions">
+          <button type="button" class="aft-challenge-answer">정답 보기</button>
+          <button type="button" class="aft-challenge-explain">해설 보기</button>
+        </div>
+        <div class="aft-challenge-answer-text" hidden>정답: ②</div>
+        <div class="aft-challenge-explain-text" hidden>
+          사인법칙 \( \dfrac{a}{\sin A} = 2R \)에서 \( a = 2R \sin A = 2 \cdot 5 \cdot \sin 30^\circ = 10 \cdot \frac{1}{2} = 5 \).
+        </div>
+      </div>
+    </template>
+
     <script src="widgets.js"></script>
 </body>
 </html>
