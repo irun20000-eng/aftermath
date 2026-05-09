@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님이 검수·승인 후 기록. PR-E 이후 채워짐.",
+  "updated_at": null,
+  "mappings": []
+}

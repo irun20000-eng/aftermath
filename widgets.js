@@ -266,6 +266,40 @@
 
     var rendered = false;
 
+    function buildClone(item) {
+      var clone = item.cloneNode(true);
+      if (clone.id) clone.id = 'aft-clone-' + clone.id;
+      clone.querySelectorAll('[id]').forEach(function (el) {
+        el.id = 'aft-clone-' + el.id;
+      });
+      clone.classList.add('aft-problem-clone');
+
+      var sourceLabel = item.getAttribute('data-aft-source-label');
+      if (sourceLabel) {
+        var badge = document.createElement('div');
+        badge.className = 'aft-source-badge';
+        badge.textContent = '📖 ' + sourceLabel;
+        clone.insertBefore(badge, clone.firstChild);
+      }
+      return clone;
+    }
+
+    function buildGroupSection(g, items) {
+      var section = document.createElement('section');
+      section.className = 'aft-problem-group';
+      section.setAttribute('data-level', g.key);
+
+      var header = document.createElement('h4');
+      header.className = 'aft-problem-group-title';
+      header.textContent = g.icon + ' ' + g.label;
+      section.appendChild(header);
+
+      items.forEach(function (item) {
+        section.appendChild(buildClone(item));
+      });
+      return section;
+    }
+
     function renderProblems() {
       if (rendered) return;
 
@@ -277,46 +311,50 @@
         if (byLevel[level]) byLevel[level].push(problem);
       });
 
+      // 2-pane: 좌(학습지 l1·l2·l3) / 우(도전 challenge)
+      var paneWrap = document.createElement('div');
+      paneWrap.className = 'aft-problems-pane-wrap';
+
+      var leftPane = document.createElement('div');
+      leftPane.className = 'aft-problems-pane aft-problems-pane-left';
+      var leftTitle = document.createElement('h3');
+      leftTitle.className = 'aft-problems-pane-title';
+      leftTitle.textContent = '📖 학습지 문제';
+      leftPane.appendChild(leftTitle);
+
+      var rightPane = document.createElement('div');
+      rightPane.className = 'aft-problems-pane aft-problems-pane-right';
+      var rightTitle = document.createElement('h3');
+      rightTitle.className = 'aft-problems-pane-title';
+      rightTitle.textContent = '⭐ 도전 문제';
+      rightPane.appendChild(rightTitle);
+
       GROUPS.forEach(function (g) {
         var items = byLevel[g.key];
         if (!items || items.length === 0) return;
-
-        var section = document.createElement('section');
-        section.className = 'aft-problem-group';
-        section.setAttribute('data-level', g.key);
-
-        var header = document.createElement('h3');
-        header.className = 'aft-problem-group-title';
-        header.textContent = g.icon + ' ' + g.label;
-        section.appendChild(header);
-
-        items.forEach(function (item) {
-          var clone = item.cloneNode(true);
-
-          // ID 중복 차단 — 모든 id에 aft-clone- prefix
-          if (clone.id) clone.id = 'aft-clone-' + clone.id;
-          clone.querySelectorAll('[id]').forEach(function (el) {
-            el.id = 'aft-clone-' + el.id;
-          });
-
-          clone.classList.add('aft-problem-clone');
-
-          // 도전 카드면 출처 배지 prepend
-          var sourceLabel = item.getAttribute('data-aft-source-label');
-          if (sourceLabel) {
-            var badge = document.createElement('div');
-            badge.className = 'aft-source-badge';
-            badge.textContent = '📖 ' + sourceLabel;
-            clone.insertBefore(badge, clone.firstChild);
-          }
-
-          section.appendChild(clone);
-        });
-
-        content.appendChild(section);
+        var section = buildGroupSection(g, items);
+        if (g.key === 'challenge') rightPane.appendChild(section);
+        else leftPane.appendChild(section);
       });
 
-      // MathJax 콘텐츠 typeset
+      // 빈 pane이면 안내 문구
+      if (leftPane.children.length === 1) {
+        var emptyL = document.createElement('p');
+        emptyL.className = 'aft-pane-empty';
+        emptyL.textContent = '학습지 문제가 없습니다.';
+        leftPane.appendChild(emptyL);
+      }
+      if (rightPane.children.length === 1) {
+        var emptyR = document.createElement('p');
+        emptyR.className = 'aft-pane-empty';
+        emptyR.textContent = '도전 문제가 없습니다.';
+        rightPane.appendChild(emptyR);
+      }
+
+      paneWrap.appendChild(leftPane);
+      paneWrap.appendChild(rightPane);
+      content.appendChild(paneWrap);
+
       if (window.MathJax && MathJax.typesetPromise) {
         MathJax.typesetPromise([content]).catch(function () {});
       }
