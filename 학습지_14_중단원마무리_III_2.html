@@ -281,6 +281,57 @@
                     </div>
                     <div class="thinking-space bg-white"></div>
                 </div>
+
+                <!-- ⭐ 도전 문제 3 (수능특강 수열의 합 유제 8) — 종합 융합형 -->
+                <div class="bg-purple-50 p-8 rounded-2xl border-2 border-purple-200 relative"
+                     data-aft-problem-level="challenge"
+                     data-aft-source="suneung_수열의합귀납법"
+                     data-aft-source-id="s6-ex8"
+                     data-aft-source-label="수능특강 수열의 합·귀납법 유제 8">
+                    <div class="absolute -top-4 -right-4 bg-purple-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">⭐ 종합 융합</div>
+                    <span class="badge badge-l3" style="color:#6b21a8;background:#f3e8ff;border-color:#e9d5ff">[Type: 망원합 · 점화식 · 부분분수] 발전·심화</span>
+
+                    <div class="bg-purple-100/70 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                        <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 유제 8</p>
+                        <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max 동급, 10분) · 핵심: 망원합 + 점화식 → 등차수열 환원 + 부분분수 (수능 28번급)</p>
+                    </div>
+
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">
+                        12. 첫째항이 양수인 수열 \(\{a_n\}\)이 모든 자연수 \(n\)에 대하여 \(\displaystyle\sum_{k=1}^{n}(a_{k+1} - a_k) = a_n\)을 만족시킨다. \(\displaystyle\sum_{k=1}^{24}\frac{1}{a_k a_{k+1}} = \frac{2}{75}\)일 때, \(a_8\)의 값은?
+                    </div>
+
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-purple-400 bg-purple-50"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                        <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                        <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                            <li><strong>망원합으로 점화식 추출</strong>:
+                                <ul class="ml-4 mt-1 list-disc text-sm">
+                                    <li>\(\displaystyle\sum_{k=1}^{n}(a_{k+1} - a_k) = a_{n+1} - a_1\) (망원합 정의)</li>
+                                    <li>조건: \(a_{n+1} - a_1 = a_n\) ⇒ \(a_{n+1} = a_n + a_1\)</li>
+                                    <li>⇒ <strong>공차 \(a_1\)인 등차수열</strong>, \(a_n = n \cdot a_1\)</li>
+                                </ul>
+                            </li>
+                            <li><strong>부분분수로 \(a_1\) 결정</strong>:
+                                <ul class="ml-4 mt-1 list-disc text-sm">
+                                    <li>\(\displaystyle\frac{1}{a_k a_{k+1}} = \frac{1}{k(k+1) a_1^2} = \frac{1}{a_1^2}\left(\frac{1}{k} - \frac{1}{k+1}\right)\)</li>
+                                    <li>\(\displaystyle\sum_{k=1}^{24}\frac{1}{a_k a_{k+1}} = \frac{1}{a_1^2}\left(1 - \frac{1}{25}\right) = \frac{24}{25 a_1^2} = \frac{2}{75}\)</li>
+                                    <li>\(a_1^2 = \dfrac{24 \cdot 75}{25 \cdot 2} = 36\) ⇒ \(a_1 = 6\) (양수)</li>
+                                </ul>
+                            </li>
+                            <li><strong>\(a_8\) 계산</strong>:
+                                <ul class="ml-4 mt-1 list-disc text-sm">
+                                    <li>\(a_8 = 8 \cdot 6 = \boxed{48}\)</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 본 단원의 세 핵심 도구(망원합·점화식 → 등차·부분분수)를 한 문제에 융합. 본문 Q10·Q11(부분분수 진입)과 다른 사고 경로 — <strong>망원합으로 시작</strong>해 점화식을 등차로 환원하는 것이 결정적. 수능 28번급.</p>
+                    </div></details>
+
+                    <div class="mt-4 text-sm text-slate-500 italic">
+                        ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-ex8" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 8</a> 참조.
+                    </div>
+
+                    <div class="thinking-space bg-white"></div>
+                </div>
             </div>
         </section>
 

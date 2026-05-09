@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_13 도전 2개 추가 — s6-b6·s6-ex5, 부분분수·무리식 유리화)",
+  "updated_at": "2026-05-09 (학습지_14 도전 1개 추가 — s6-ex8, 망원합·점화식·부분분수 3중 융합)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -534,6 +534,45 @@
         "current_count": 2,
         "status": "complete"
       }
+    },
+    {
+      "worksheet_id": "학습지_14_중단원마무리_III_2",
+      "worksheet_concepts": ["Σ 성질·거듭제곱 합 종합", "근과 계수 + Σ", "부분분수·무리식 유리화", "Sₙ→aₙ 변환 + Σ"],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "Q10·Q11(advanced — 부분분수 융합)이 max=7. Q1~Q4 기본(2~4), Q5~Q9 표준(4~5).",
+      "embedded_advanced": {
+        "count": 2,
+        "ids": ["미래엔 P.152 11번 (Q10 1/(1+2+...+k) 역수 합 + 부분분수)", "미래엔 P.153 13번 (Q11 Sₙ=n²+2n → 부분분수)"],
+        "marking": "data-aft-problem-level=\"advanced\"",
+        "note": "교과서 본문 도전. 수능특강 추가 도전과 별도 분리."
+      },
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-ex8",
+          "label": "수능특강 수열의 합·귀납법 유제 8",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 10,
+          "concepts_matched": ["망원합 Σ(aₖ₊₁-aₖ)=aₙ₊₁-a₁", "점화식 → 등차수열", "부분분수 (B-A=1)", "방정식으로 a₁ 결정"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_14가 III-2 종합 마무리이므로 단원 핵심 도구를 모두 활용하는 융합형 도전. Σ(aₖ₊₁-aₖ)=aₙ₊₁-a₁이 망원합의 정의 그 자체 → aₙ₊₁=aₙ+a₁로 등차수열 환원 → aₙ=na₁ → 부분분수 1/(k(k+1))로 a₁ 결정 → a₈=48. 본문 Q10·Q11(부분분수 위주)와 다른 사고 경로(망원합 진입). max(7) 동급이지만 발상 깊이가 더 큼. 수능 28번급.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "rejected_candidates": [
+        {"problem_id": "s6-e3", "reason": "난이도 6, Sₙ→aₙ + 부분분수 — 본문 Q11과 풀이 구조 거의 동일 (중복)."},
+        {"problem_id": "s6-ex9·ex10·ex11", "reason": "미평가 — 모의고사·수능 도전 시 평가."},
+        {"problem_id": "s6-s1·s2·s3", "reason": "미평가 — 다수 점화식 본문 비중. 학습지_15+ 진입 시."}
+      ],
+      "pending_challenges": {
+        "target_count": 1,
+        "current_count": 1,
+        "status": "complete"
+      }
     }
   ],
   "evaluated_problems_pool": {
@@ -551,10 +590,10 @@
       "unevaluated_categories": "잔여 — 다른 챕터(c1·c2·c3 실력 등) 또는 등차합 외 항목. 학습지_18(중단원) 또는 모의고사 도전 시 평가."
     },
     "수능특강_수열의합귀납법": {
-      "evaluated_count": 11,
-      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2", "s6-b6", "s6-ex5", "s6-e3"],
-      "unevaluated_count": 25,
-      "unevaluated_categories": "잔여 부분분수·복합 (s6-ex8~11·s1·s2·s3) — 학습지_14 또는 모의고사 도전 시 평가. 점화식·귀납법 (s6-b2·b5·b7·e4·e5·ex7·s4~s7) — 학습지_15+ 진입 시. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
+      "evaluated_count": 12,
+      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2", "s6-b6", "s6-ex5", "s6-e3", "s6-ex8"],
+      "unevaluated_count": 24,
+      "unevaluated_categories": "잔여 복합 (s6-ex9·ex10·ex11·s1·s2·s3) — 모의고사 도전 시 평가. 점화식·귀납법 (s6-b2·b5·b7·e4·e5·ex7·s4~s7) — 학습지_15+ 진입 시. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
       "policy_violations": []
     }
   }
