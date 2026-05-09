@@ -45,3 +45,12 @@ desktop.ini
 
 # 교사용 가이드 폴더 (Nav_*.html + Solutions_All + Nav_All_index 등)
 nav/
+
+# 임시 압축·백업 파일 (교사용 자료)
+nav_backup*.tar.gz
+*.tar.gz
+
+# 압축 백업 파일 (1회용 전송 후 제거)
+*.zip
+*.tar.gz
+*.tar
