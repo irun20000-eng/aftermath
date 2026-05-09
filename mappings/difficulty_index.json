@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_12 진입: 합귀 단원 3개 추가 평가, 총 51개)",
+  "updated_at": "2026-05-09 (학습지_13 진입: 합귀 단원 3개 추가 평가, 총 54개)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -796,6 +796,50 @@
       "in_curriculum": true,
       "fit_for_worksheet_12": false,
       "fit_for_worksheet_12_reason": "난이도 7 = max+2. B안 후보였으나 사용자 A안 선택으로 보류. 학습지_18 종합 후보 가능.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-b6": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "기초",
+      "concepts": ["분모 무리식 유리화 (켤레 곱)", "망원합 (telescoping)", "끝항만 남기"],
+      "strategy": "1/(√(2k-1)+√(2k+1)) = (√(2k+1)-√(2k-1))/2. Σ_{k=1}^{40} = (1/2)(√81-√1) = (1/2)(9-1) = 4",
+      "estimated_time_min": 5,
+      "suneung_connection": "수능 21·27번급 — 무리식 유리화 + 망원합. 단골 출제 패턴.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ 무리식 유리화 (학습지_13 학습 도구). 추가 도구 불필요.",
+      "fit_for_worksheet_13": true,
+      "fit_for_worksheet_13_reason": "학습지_13 Q2(Σ 1/(√(k+1)+√k) 유리화) 직접 확장 — 분모를 √(2k-1)+√(2k+1)로 변형해 B-A=2 함정 추가. 학습지가 강조하는 '계수 1/2 빼먹기' 함정 강화. max(5)+1=6 적정. 학습지_13 도전 rank 1 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-ex5": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "유제",
+      "concepts": ["부분분수 분해 (B-A=3)", "1/(c-b) 계수 처리", "망원합", "한 칸 건너 소거"],
+      "strategy": "1/((3k-1)(3k+2)) = (1/3)(1/(3k-1) - 1/(3k+2)). Σ_{k=1}^{8} = (1/3)(1/2 - 1/26) = (1/3)(12/26) = 2/13",
+      "estimated_time_min": 5,
+      "suneung_connection": "수능 21·27번급 — 부분분수 표준 패턴. B-A=3은 살짝 변형.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ 부분분수 (학습지_13 학습 도구). 추가 도구 불필요.",
+      "fit_for_worksheet_13": true,
+      "fit_for_worksheet_13_reason": "학습지_13 Q3(B-A=2)·Q4(B-A=2 한 칸 건너) 직접 확장 — B-A=3 케이스로 일반화 + 1/(c-b) 계수 명시 강화. max(5)+1=6 적정. rank 1과 다른 도구(부분분수 vs. 무리식). 학습지_13 도전 rank 2 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-e3": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "예제",
+      "concepts": ["Sₙ → aₙ 변환 (n=1 분리)", "부분분수 (B-A=1)", "망원합"],
+      "strategy": "S₁=2 → a₁=2. n≥2: aₙ=Sₙ-Sₙ₋₁=3n²-3n=3n(n-1). Σ_{k=2}^{10} 1/aₖ = (1/3)Σ(1/(k-1) - 1/k) = (1/3)(1-1/10) = 3/10. + 1/a₁=1/2 = 1/2+3/10=8/10=4/5",
+      "estimated_time_min": 6,
+      "suneung_connection": "수능 27번급 — Sₙ→aₙ + 부분분수.",
+      "in_curriculum": true,
+      "fit_for_worksheet_13": false,
+      "fit_for_worksheet_13_reason": "학습지_13에 적합하나 a₁ 분리 처리가 추가 부담. rank 1·2(b6·ex5)와 비등하지만 사용자 A안 선택으로 보류.",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     }

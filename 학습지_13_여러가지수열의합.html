@@ -153,7 +153,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -213,12 +213,109 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto">4. 수열 \(\{a_n\}\)의 일반항이 \(a_n = n^2 + 2n\) 일 때, \(\sum_{k=1}^{8} \frac{1}{a_k}\) 의 값을 구하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                 <strong>💡 힌트:</strong> 먼저 분모 \(n^2+2n\)을 인수분해하여 \(n(n+2)\) 로 만든다. 부분분수로 쪼갤 때 바로 이웃한 항이 지워지지 않고 한 칸 건너뛰어서 지워짐을 주의하여 남는 항들을 꼼꼼히 챙기자.
             </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수열의 합 기초 6) — Q2 무리식 유리화 직접 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-b6"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 기초 6">
+            <h2 class="section-title">⭐ 도전 문제 1 — Q2 무리식 유리화 직접 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 기초 6</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+1, 5분) · 핵심: 무리식 유리화 + 망원합 + 1/2 계수 함정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\displaystyle\sum_{k=1}^{40}\frac{1}{\sqrt{2k-1} + \sqrt{2k+1}}\)의 값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>분모 유리화 (켤레 곱)</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\dfrac{1}{\sqrt{2k-1}+\sqrt{2k+1}} = \dfrac{\sqrt{2k+1}-\sqrt{2k-1}}{(2k+1)-(2k-1)} = \dfrac{\sqrt{2k+1}-\sqrt{2k-1}}{2}\)</li>
+                            <li>분모의 차가 <span class="text-red-600 font-bold">2</span>이므로 \(\dfrac{1}{2}\) 계수가 앞에 빠져나옴 — Q3 함정과 동일한 발상</li>
+                        </ul>
+                    </li>
+                    <li><strong>망원합 정리</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum_{k=1}^{40}\dfrac{\sqrt{2k+1}-\sqrt{2k-1}}{2} = \dfrac{1}{2}\sum_{k=1}^{40}\left(\sqrt{2k+1}-\sqrt{2k-1}\right)\)</li>
+                            <li>\(k=1\): \(\sqrt{3}-\sqrt{1}\), \(k=2\): \(\sqrt{5}-\sqrt{3}\), …, \(k=40\): \(\sqrt{81}-\sqrt{79}\) — 끝항만 남음</li>
+                        </ul>
+                    </li>
+                    <li><strong>끝항 합산</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(= \dfrac{1}{2}(\sqrt{81}-\sqrt{1}) = \dfrac{1}{2}(9-1) = \boxed{4}\)</li>
+                            <li>(\(\sqrt{2 \cdot 40+1}=\sqrt{81}=9\) 인지가 핵심)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q2(B-A=1, 1 계수)와 동일한 유리화 발상이지만 분모의 차가 2가 되어 <strong>1/2 계수</strong>가 앞에 등장. Q3에서 강조한 "1/(B-A) 빼먹기 함정"을 무리식 버전으로 다시 검증.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-b6" class="text-purple-600 underline font-semibold">수능특강 해설지 기초 6</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 수열의 합 유제 5) — Q3·Q4 부분분수 직접 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-ex5"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 유제 5">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q3·Q4 부분분수 직접 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 유제 5</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+1, 5분) · 핵심: 부분분수 (B-A=3) + 1/3 계수 + 망원합</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\displaystyle\sum_{k=1}^{8}\frac{1}{(3k-1)(3k+2)}\)의 값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>분모의 차 확인 + 부분분수 분해</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(B - A = (3k+2) - (3k-1) = 3\) ⇒ <span class="text-red-600 font-bold">1/3 계수</span> (Q3 함정 강화)</li>
+                            <li>\(\dfrac{1}{(3k-1)(3k+2)} = \dfrac{1}{3}\left(\dfrac{1}{3k-1} - \dfrac{1}{3k+2}\right)\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>망원합 정리</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum_{k=1}^{8} = \dfrac{1}{3}\left(\dfrac{1}{2}-\dfrac{1}{5}+\dfrac{1}{5}-\dfrac{1}{8}+\cdots+\dfrac{1}{23}-\dfrac{1}{26}\right)\)</li>
+                            <li>중간 항 모두 소거 → 첫 항(1/2)과 끝 항(-1/26)만 남음</li>
+                        </ul>
+                    </li>
+                    <li><strong>최종 계산</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(= \dfrac{1}{3}\left(\dfrac{1}{2} - \dfrac{1}{26}\right) = \dfrac{1}{3} \cdot \dfrac{13-1}{26} = \dfrac{1}{3} \cdot \dfrac{12}{26} = \boxed{\dfrac{2}{13}}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q3(B-A=2, 1/2 계수)·Q4(B-A=2, 한 칸 건너) 본질을 그대로 가져와 <strong>B-A=3</strong>으로 일반화. 학습지가 강조한 "1/(B-A) 계수 처리"의 표준 점검 — rank 1(무리식)과 다른 도구 경로.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-ex5" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 5</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
