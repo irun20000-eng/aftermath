@@ -214,12 +214,14 @@
                 <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
                     <span class="badge badge-l3">[Type: Σ-항 연립] 상</span>
                     <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">11. 수열 \(\{a_n\}\) 이 모든 자연수 \(n\) 에 대하여 \(\displaystyle\sum_{k=1}^{n}\dfrac{1}{(2k-1)a_k}=n^2-2n\) 을 만족시킬 때, \(\displaystyle\sum_{k=1}^{10}a_k\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 11번)</span></div>
-                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
-                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">⚠️ 함정 주의 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                             \(S_n - S_{n-1}\) 으로 \(\dfrac{1}{(2n-1)a_n}\) 을 추출 (단 \(n \geq 2\)). 이로부터 \(a_n\) 의 일반항을 구한 뒤 \(\sum a_k\) 계산. \(n=1\) 항은 별도로 직접 대입해 검증해야 한다.
                         </p>
-                    </div>
+                            </div>
+                        </details>
                     <div class="thinking-space bg-white"></div>
                 </div>
 
@@ -227,12 +229,14 @@
                 <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
                     <span class="badge badge-l3">[Type: 조건 분기 점화식] 상</span>
                     <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">12. 수열 \(\{a_n\}\) 이 모든 자연수 \(n\) 에 대하여 \(a_{n+1}=\begin{cases}\dfrac{a_n+2}{2} & (a_n \text{이 짝수}) \\ \dfrac{a_n-1}{2} & (a_n \text{이 홀수})\end{cases}\) 을 만족시킨다. \(a_1=20\) 일 때, \(\displaystyle\sum_{k=1}^{8}a_k\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.167 대단원 12번)</span></div>
-                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
-                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">⚠️ 함정 주의 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                             매 단계 \(a_n\) 의 짝/홀을 정확히 판별. 직접 \(a_1, a_2, \dots, a_8\) 을 표로 추적하라. (\(20 \to 11 \to 5 \to 2 \to 2 \to 2 \to \dots\)) — 일정 시점에 항이 고정되는지 관찰.
                         </p>
-                    </div>
+                            </div>
+                        </details>
                     <div class="thinking-space bg-white"></div>
                 </div>
 
@@ -265,12 +269,14 @@
                 <div class="bg-red-50/50 p-6 rounded-2xl border-2 border-red-100">
                     <span class="badge badge-l3">[Type: 무리식 + Σ + 부분분수] 상 (서술형)</span>
                     <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">15. \(n\) 이 자연수일 때, \(x\) 에 대한 이차방정식 \(x^2-(4n+1)x+4n^2+2n=0\) 의 두 근을 \(\alpha_n,\ \beta_n\,(\alpha_n &gt; \beta_n)\) 이라 하자. \(\displaystyle\sum_{n=1}^{24}\dfrac{1}{\sqrt{\alpha_n}-\sqrt{\beta_n}}=\displaystyle\sum_{k=l}^{m}\sqrt{k}\) 를 만족시키는 두 자연수 \(l\) 과 \(m\) 에 대하여 \(l+m\) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.168 대단원 15번 서술형)</span></div>
-                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
-                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">⚠️ 함정 주의 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                             ① 근의 공식 또는 인수분해로 \(\alpha_n=2n+1,\ \beta_n=2n\) 도출. ② 분모 유리화 후 \(\sqrt{2n+1}+\sqrt{2n}\) 형태 → ③ \(n=1\) 부터 \(24\) 까지 합하면 \(\sqrt{2}, \sqrt{3}, \dots, \sqrt{49}\) 가 모두 나옴. \(l, m\) 의 범위를 정확히 결정.
                         </p>
-                    </div>
+                            </div>
+                        </details>
                     <div class="thinking-space bg-white"></div>
                 </div>
 
@@ -471,7 +477,6 @@
           <button type="button" class="aft-preset" data-sec="600">10분</button>
         </div>
         <div class="aft-timer-controls">
-          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
           <button type="button" id="aft-timer-start">시작</button>
           <button type="button" id="aft-timer-pause">일시정지</button>
           <button type="button" id="aft-timer-reset">리셋</button>

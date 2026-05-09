@@ -174,14 +174,16 @@
                     <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">6. \(a_1=1\) 인 수열 \(\{a_n\}\) 이 모든 자연수 \(n\) 에 대하여 다음을 만족시킨다.<br>
                         \[a_{n+1}=\begin{cases} 2a_n & (a_n &lt; 15) \\ a_n-15 & (a_n \geq 15) \end{cases}\]
                         \(\displaystyle\sum_{k=1}^{m}a_k=325\) 일 때, 자연수 \(m\) 의 값을 구하는 풀이 과정과 답을 쓰시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.164 발전 06번 서술형)</span></div>
-                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
-                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">⚠️ 함정 주의 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                             ① \(a_n &lt; 15\) 이면 두 배, \(a_n \geq 15\) 이면 \(15\) 를 빼는 분기를 헷갈리지 말 것. \(a_n\) 의 크기를 매 단계 확인하라.<br>
                             ② 항을 직접 나열하면 일정 시점부터 <strong>주기적으로 반복</strong>되는 패턴을 발견할 수 있다. (\(a_1=1, 2, 4, 8, 16, 1, 2, \dots\)) — 주기를 파악한 뒤 한 주기의 합을 활용하라.<br>
                             ③ \(\displaystyle\sum a_k=325\) 를 한 주기의 합으로 나눈 몫·나머지로 \(m\) 을 결정하라.
                         </p>
-                    </div>
+                            </div>
+                        </details>
                     <div class="thinking-space bg-white"></div>
                 </div>
 
@@ -193,13 +195,15 @@
                         <p>(1) 모든 자연수 \(n\) 에 대하여 \(3^{2n}-1\) 은 \(8\) 의 배수이다.</p>
                         <p>(2) \(n \geq 2\) 인 모든 자연수 \(n\) 에 대하여 \(\ \ 1+\dfrac{1}{2}+\dfrac{1}{3}+\dots+\dfrac{1}{n} &gt; \dfrac{2n}{n+1}\ \ \) 이다.</p>
                     </div>
-                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 mt-4 shadow-sm">
-                        <h4 class="font-black text-red-700 mb-2">⚠️ 함정 주의</h4>
-                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                    <details class="trap-box mb-4 mt-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                        <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">⚠️ 함정 주의 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                        <div class="trap-body px-5 pb-5">
+                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
                             (1) \(3^{2k}-1=8m\) 가정 후 \(3^{2(k+1)}-1=9 \cdot 3^{2k}-1=9(8m+1)-1=8(9m+1)\) 의 변형이 핵심.<br>
                             (2) 출발점은 \(n=2\). 양변에 \(\dfrac{1}{k+1}\) 을 더한 뒤 \(\dfrac{2k}{k+1}+\dfrac{1}{k+1}=\dfrac{2k+1}{k+1}\) 과 \(\dfrac{2(k+1)}{k+2}\) 의 대소를 통분으로 비교하라.
                         </p>
-                    </div>
+                        </div>
+                    </details>
                     <div class="thinking-space bg-white"></div>
                 </div>
 
@@ -361,7 +365,6 @@
           <button type="button" class="aft-preset" data-sec="600">10분</button>
         </div>
         <div class="aft-timer-controls">
-          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
           <button type="button" id="aft-timer-start">시작</button>
           <button type="button" id="aft-timer-pause">일시정지</button>
           <button type="button" id="aft-timer-reset">리셋</button>

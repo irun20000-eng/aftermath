@@ -214,14 +214,16 @@
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-등비중항의 부호 결정</span>
                         <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">5. 세 수 \(4, x, 36\)이 이 순서대로 등비수열을 이룰 때, <strong>모든 실수 \(x\)의 값의 합</strong>을 구하시오.</div>
-                        <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                            <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
-                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                                 등비중항 공식을 쓰면 \(x^2 = 4 \times 36 = 144\) 가 나온다.<br>
                                 이때 무심코 \(x=12\) 라고 단정짓는 학생이 너무나 많다. <strong>제곱해서 양수가 되는 실수는 과연 한 개뿐인가?</strong><br>
                                 공비가 양수일 때와 음수일 때, 두 가지 상황의 수열이 모두 가능하다는 사실을 명심하자!
                             </p>
-                        </div>
+                            </div>
+                        </details>
                         <div class="thinking-space bg-white"></div>
                     </div>
                 </div>
@@ -452,7 +454,6 @@
           <button type="button" class="aft-preset" data-sec="600">10분</button>
         </div>
         <div class="aft-timer-controls">
-          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
           <button type="button" id="aft-timer-start">시작</button>
           <button type="button" id="aft-timer-pause">일시정지</button>
           <button type="button" id="aft-timer-reset">리셋</button>

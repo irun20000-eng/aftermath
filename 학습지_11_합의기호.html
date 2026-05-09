@@ -220,14 +220,16 @@
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-상수항의 맹점</span>
                         <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">5. 수열 \(\{a_n\}\)에 대하여 \(\sum_{k=1}^{10} a_k = 10\) 일 때, \(\sum_{k=1}^{10} (2a_k + 5)\) 의 값을 구하시오.</div>
-                        <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                            <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
-                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                                 무의식적으로 식을 \(2 \times 10 + 5 = 25\) 라고 계산했다면 완벽하게 함정에 빠진 것이다.<br>
                                 시그마 기호 \(\sum_{k=1}^{10}\)은 괄호 안의 **모든 항을 10번 더하라**는 뜻이다.<br>
                                 즉, 뒤에 있는 숫자 \(5\)도 1번만 더해지는 것이 아니라 **10번** 더해져야 한다. 
                             </p>
-                        </div>
+                            </div>
+                        </details>
                         <div class="thinking-space bg-white"></div>
                     </div>
                 </div>
@@ -452,7 +454,6 @@
           <button type="button" class="aft-preset" data-sec="600">10분</button>
         </div>
         <div class="aft-timer-controls">
-          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
           <button type="button" id="aft-timer-start">시작</button>
           <button type="button" id="aft-timer-pause">일시정지</button>
           <button type="button" id="aft-timer-reset">리셋</button>
