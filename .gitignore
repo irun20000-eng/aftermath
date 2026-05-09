@@ -42,3 +42,6 @@ desktop.ini
 *~
 .vscode/
 .idea/
+
+# 교사용 가이드 폴더 (Nav_*.html + Solutions_All + Nav_All_index 등)
+nav/
