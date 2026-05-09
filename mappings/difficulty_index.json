@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_06 후보 검색: 등차 단원 예제·유제·기본 7개 추가 평가, 총 25개)",
+  "updated_at": "2026-05-09 (학습지_07 후보 검색: 등차합 단원 5개 추가 평가, 총 30개)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -429,7 +429,77 @@
       "fit_for_worksheet_06": false,
       "fit_for_worksheet_06_reason": "난이도 4=max 동급 (도전 갭 부족). 합 공식 사용으로 학습지_07 도입에 더 적합.",
       "fit_for_worksheet_07": true,
-      "fit_for_worksheet_07_reason": "합 공식이 마지막 단계. 학습지_07 기초·기본 후보.",
+      "fit_for_worksheet_07_reason": "합 공식이 마지막 단계. 학습지_07 기초·기본 후보. 단 max(5) 미달로 도전 탈락, 본문 연습 수준.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_등차수열등비수열#s5-b5": {
+      "difficulty": 4,
+      "tier": "기초",
+      "level_label_in_source": "기초",
+      "concepts": ["aₙ=Sₙ-Sₙ₋₁", "합 차분 (S₈-S₁-a₃)", "Sₙ=n³+n 계산"],
+      "strategy": "a₂+a₄+...+a₈ = S₈-S₁-a₃ = 520-2-20 = 498",
+      "estimated_time_min": 4,
+      "in_curriculum": true,
+      "fit_for_worksheet_07": true,
+      "fit_for_worksheet_07_reason": "학습지_07 Q5 직접 연계 (Sₙ에서 aₙ 추출). 단 난이도 4로 max 동급 → 도전 탈락, 본문 연습 수준.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_등차수열등비수열#s5-b8": {
+      "difficulty": 5,
+      "tier": "기본",
+      "level_label_in_source": "기초",
+      "concepts": ["Sₙ₊₁-Sₙ=aₙ₊₁", "등비합 공식", "지수 일반항"],
+      "strategy": "aₙ₊₁=2ⁿ → aₙ=2ⁿ⁻¹ → 등비합으로 a₂~a₉ 합 = 2¹+...+2⁸ = 510",
+      "estimated_time_min": 4,
+      "in_curriculum": true,
+      "fit_for_worksheet_07": false,
+      "fit_for_worksheet_07_reason": "핵심 도구가 등비합. 학습지_07(등차합) 단원 정합 약함 → 학습지_09(등비) 후보로 이관.",
+      "fit_for_worksheet_09": true,
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_등차수열등비수열#s5-s2": {
+      "difficulty": 7,
+      "tier": "심화",
+      "level_label_in_source": "기본",
+      "concepts": ["Sₙ=pn²+qn+r에서 aₙ 추출", "첫째항 분리 검산 (a₁=S₁)", "조건 3개 연립", "S₁₀ 계산"],
+      "strategy": "aₙ=Sₙ-Sₙ₋₁=p(2n-1)+q (n≥2). a_{2n+1}-a_{2n}=2p=6 → p=3. a₃=15+q=11 → q=-4. a₁=S₁=p+q+r=11 → r=12. S₁₀=300-40+12=272",
+      "estimated_time_min": 10,
+      "suneung_connection": "수능 20~22번급. 이차형 Sₙ + 첫째항 분리 함정 + 연립.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ 등차합 + 대수 연립. 금지 도구 불필요.",
+      "fit_for_worksheet_07": true,
+      "fit_for_worksheet_07_reason": "학습지_07 Q5(첫째항 분리 함정) 직접 심화 확장. max+2 적정. 학습지_07 도전 rank 2 채택 ⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_등차수열등비수열#s5-s4": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "기본",
+      "concepts": ["삼차함수 그래프", "등차수열 세 근", "이차방정식", "y절편 부호"],
+      "strategy": "β=α+2, γ=α+4. 등차조건 차분 → α²+4α+3=0 → α∈{-1,-3}. y절편 양수 조건으로 α=-3, k=3 → γ=1, f(γ)=4",
+      "estimated_time_min": 8,
+      "in_curriculum": true,
+      "fit_for_worksheet_07": false,
+      "fit_for_worksheet_07_reason": "등차합 미사용. 함수 결합 — 학습지_07 단원 외. (학습지_06 보충 후보로 재검토 가능)",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_등차수열등비수열#s5-s7": {
+      "difficulty": 8,
+      "tier": "심화",
+      "level_label_in_source": "기본",
+      "concepts": ["Sₙ 최솟값 조건 (a₁₃≤0≤a₁₄)", "절댓값 분기", "부등식 + 공차 d 범위", "S₃₃ 최댓값·최솟값"],
+      "strategy": "(가) S₁₃ 최소 → d>0, -13d≤a₁≤-12d. (나) S₆-S₃=3a₅=3(a₁+4d) 음수, |·|=36 → a₁=-12-4d, 4/3≤d≤3/2. S₃₃=33(a₁+16d)=396(d-1) → max(d=3/2)=198, min(d=4/3)=132 → 합=330",
+      "estimated_time_min": 14,
+      "suneung_connection": "수능 29·30번급 — 등차합 최대·최소 + 절댓값 + 범위 탐색 3단 복합.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ 등차합 + 부등식. 금지 도구 불필요.",
+      "fit_for_worksheet_07": true,
+      "fit_for_worksheet_07_reason": "학습지_07 Q6(합 최댓값·aₙ 부호 변환점) 직접 심화 확장. 단원 정합 최강. max+3로 갭 크나 수능 29·30번 도전용. 학습지_07 도전 rank 1 채택 ⭐⭐⭐",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     }

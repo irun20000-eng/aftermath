@@ -161,7 +161,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -233,12 +233,115 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4">6. 첫째항이 \(30\), 공차가 \(-4\)인 등차수열에 대하여 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. \(S_n\)이 최대가 될 때의 \(n\)의 값과 그 최댓값을 구하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                 <strong>💡 힌트:</strong> 합이 최대가 되려면 양수인 항들만 더해야 한다. 일반항 \(a_n\)이 음수가 되기 직전의 항이 몇 번째인지 먼저 파악해 보자.
             </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 등차·등비 기본 7) — Q6 심화 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-s7"
+                 data-aft-source-label="수능특강 등차·등비 기본 7">
+            <h2 class="section-title">⭐ 도전 문제 1 — Q6 심화 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 기본 7</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+3, 14분) · 핵심: 합 최댓값 조건 + 절댓값 + 부등식 (Q6 → 수능 29·30번급)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                등차수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. \(S_n\)이 다음 조건을 만족시킬 때, \(S_{33}\)의 최댓값과 최솟값의 합을 구하시오.
+            </div>
+
+            <div class="bg-slate-100 p-6 rounded-2xl mb-6 border-2 border-slate-200">
+                <div class="text-lg leading-loose">
+                    (가) 모든 자연수 \(n\)에 대하여 \(S_n \geq S_{13}\) <br>
+                    (나) \(|S_6 - S_3| = 36\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>(가) 부호 분석</strong>: \(S_{13}\)이 모든 \(S_n\)의 최솟값 → \(a_{13} \leq 0 \leq a_{14}\) (Q6 인사이트와 동일)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(d > 0\) (수열이 증가, 음수→양수 전환)</li>
+                            <li>\(a_1 + 12d \leq 0\) 그리고 \(a_1 + 13d \geq 0\) → \(-13d \leq a_1 \leq -12d\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>(나)와 결합</strong>: \(S_6 - S_3 = a_4 + a_5 + a_6 = 3a_5 = 3(a_1+4d)\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>(가)에서 \(a_1 + 4d \in [-9d, -8d]\) (음수)</li>
+                            <li>\(|3(a_1+4d)| = -3(a_1+4d) = 36 \Rightarrow a_1 = -12 - 4d\)</li>
+                            <li>이를 \(-13d \leq a_1 \leq -12d\)에 대입 → \(\dfrac{4}{3} \leq d \leq \dfrac{3}{2}\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(S_{33}\) 범위</strong>: \(S_{33} = 33(a_1+16d) = 33(-12+12d) = 396(d-1)\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>최댓값 (\(d = 3/2\)): \(396 \cdot 1/2 = 198\)</li>
+                            <li>최솟값 (\(d = 4/3\)): \(396 \cdot 1/3 = 132\)</li>
+                            <li>합: \(198 + 132 = \boxed{330}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> Q6의 'aₙ 부호 변환점 = Sₙ 극값 위치' 인사이트를 부등식·절댓값 분기·d 범위 탐색으로 확장. 수능 29·30번 고정 골격.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-s7" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 7</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 등차·등비 기본 2) — Q5 심화 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-s2"
+                 data-aft-source-label="수능특강 등차·등비 기본 2">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q5 심화 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 기본 2</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 10분) · 핵심: 첫째항 분리 함정 심화 (Q5의 r≠0 버전)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. 모든 자연수 \(n\)에 대하여 \(S_n = pn^2 + qn + r\), \(a_{2n+1} - a_{2n} = 6\)이 성립한다. \(a_1 = a_3 = 11\)일 때, \(S_{10}\)의 값은? (단, \(p, q, r\)은 상수이다.)
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>\(n \geq 2\) 일반항 추출</strong>: \(a_n = S_n - S_{n-1} = p(2n-1) + q\) (Q5 핵심 절차)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>이로부터 \(a_{2n+1} - a_{2n} = 2p = 6 \Rightarrow p = 3\)</li>
+                            <li>(\(a_n\)은 \(n \geq 2\)에서 공차 \(2p\)인 등차)</li>
+                        </ul>
+                    </li>
+                    <li><strong>상수 결정</strong> (Q5 함정 직접 응용 — \(a_1\)은 식 대입값과 다름):
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_3 = p(5) + q = 15 + q = 11 \Rightarrow q = -4\)</li>
+                            <li><span class="text-red-600 font-bold">\(a_1 = S_1 = p + q + r = 3 - 4 + r = -1 + r\)</span> (식 \(p(2n-1)+q\)에 \(n=1\) 대입한 \(p+q=-1\)이 아님!)</li>
+                            <li>\(a_1 = 11 \Rightarrow -1 + r = 11 \Rightarrow r = 12\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(S_{10}\) 계산</strong>: \(S_{10} = 3(100) + (-4)(10) + 12 = 300 - 40 + 12 = \boxed{272}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> Q5의 함정(첫째항 분리)이 \(r \neq 0\) 케이스에서 본질적으로 강화된 형태. 'Sₙ 식의 상수항 r이 곧 \(a_1\)과 식 대입값의 차이'라는 직관 형성.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-s2" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 2</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
