@@ -272,6 +272,14 @@
   min-height: 0;
 }
 
+/* modal-body와 paneWrap 사이 중간 래퍼 — flex chain 유지 */
+#aft-problems-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 /* body에 잠금 클래스 추가 시 페이지 스크롤 차단 */
 body.aft-modal-locked { overflow: hidden; }
 
