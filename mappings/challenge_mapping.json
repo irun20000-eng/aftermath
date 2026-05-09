@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_14 도전 1개 추가 — s6-ex8, 망원합·점화식·부분분수 3중 융합)",
+  "updated_at": "2026-05-09 (학습지_15 도전 2개 추가 — s6-e4·s6-s4, 점화식·등차 환원·Σ 융합)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -573,6 +573,54 @@
         "current_count": 1,
         "status": "complete"
       }
+    },
+    {
+      "worksheet_id": "학습지_15_수열의귀납적정의",
+      "worksheet_concepts": ["수열의 귀납적 정의 (a₁ + 점화식)", "등차형·등비형 점화식", "비선형 대입 (aₙ₊₁=aₙ+f(n))", "망원곱 (Telescoping Product)", "Σ + 점화식 결합"],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "Q5(망원곱 — aₙ₊₁=(n/(n+1))aₙ → a₁₀)·Q6(등비 r=2 + 200 이상 자연수 n)이 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-e4",
+          "label": "수능특강 수열의 합·귀납법 예제 4",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "예제",
+          "estimated_time_min": 6,
+          "concepts_matched": ["등차중항 (2aₙ₊₁=aₙ+aₙ₊₂ → 등차)", "등차 합 공식", "Σ 조건 → d 결정"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_15 Q3(귀납적 정의 표현) 본질 확장 — 점화식 2aₙ₊₁=aₙ+aₙ₊₂를 등차중항 정의로 인식하고 등차로 환원하는 표준 발상. Σ_{k=1}^{8}aₖ=a₈ 조건은 학습지_07(등차 합) 복습. 학습지 max(5)+1=6 적정.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        },
+        {
+          "rank": 2,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-s4",
+          "label": "수능특강 수열의 합·귀납법 기본 4",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "기본",
+          "estimated_time_min": 12,
+          "concepts_matched": ["점화식 → 등차 환원", "부분합 부등식 → 음수항 조건", "Σaₖaₖ₊₁ 다항식 합", "이차방정식 (a₁ 결정)"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_15 Q5·Q6(점화식 + 조건 결합) 본질 확장 — 4중 융합. (가) aₙ₊₁=aₙ+2 등차 환원. (나) 부분합 부등식 Σ_{k=1}^{m+1} < Σ_{k=1}^{m} ⇔ a_{m+1}<0 ⇔ 음수항 존재 ⇔ a₁<0. (다) Σaₖaₖ₊₁=215 다항식 합 → a₁²+10a₁-11=0 → a₁=-11. aₙ=2n-13 → a₉=5. 부등식이 음수항 존재 조건으로 환산되는 것이 결정적 발상. max(5)+2=7 적정. 수능 28~29번급.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "rejected_candidates": [
+        {"problem_id": "s6-b2", "reason": "난이도 4 = max(5) 미달. 단순 홀짝 분기 대입 — 학습지 Q1·Q4와 같은 수준."},
+        {"problem_id": "s6-b5·b7·ex7", "reason": "난이도 2~4. 단순 점화식 적용 — 본문 연습 수준."},
+        {"problem_id": "s6-e5·ex6·s5·s6·s7", "reason": "복잡 융합 (그래프·log·점화식 다중) — 모의고사 도전 시 평가."}
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
     }
   ],
   "evaluated_problems_pool": {
@@ -590,10 +638,10 @@
       "unevaluated_categories": "잔여 — 다른 챕터(c1·c2·c3 실력 등) 또는 등차합 외 항목. 학습지_18(중단원) 또는 모의고사 도전 시 평가."
     },
     "수능특강_수열의합귀납법": {
-      "evaluated_count": 12,
-      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2", "s6-b6", "s6-ex5", "s6-e3", "s6-ex8"],
-      "unevaluated_count": 24,
-      "unevaluated_categories": "잔여 복합 (s6-ex9·ex10·ex11·s1·s2·s3) — 모의고사 도전 시 평가. 점화식·귀납법 (s6-b2·b5·b7·e4·e5·ex7·s4~s7) — 학습지_15+ 진입 시. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
+      "evaluated_count": 15,
+      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2", "s6-b6", "s6-ex5", "s6-e3", "s6-ex8", "s6-e4", "s6-s4", "s6-b2"],
+      "unevaluated_count": 21,
+      "unevaluated_categories": "잔여 복합 (s6-ex9·ex10·ex11·s1·s2·s3·s5·s6·s7) — 모의고사 도전 시 평가. 점화식·귀납법 (s6-b5·b7·e5·ex6·ex7) — 학습지_16(귀납법) 진입 시. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
       "policy_violations": []
     }
   }

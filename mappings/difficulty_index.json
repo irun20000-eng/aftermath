@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_14 진입: s6-ex8 신규 평가, 총 55개)",
+  "updated_at": "2026-05-09 (학습지_15 진입: 합귀 점화식 3개 신규 평가, 총 58개)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -857,6 +857,49 @@
       "in_curriculum_note": "수Ⅰ Σ 망원합 + 점화식 (학습지_15 진도 전이지만 등차 수준) + 부분분수. 모두 단독 사용 가능 도구.",
       "fit_for_worksheet_14": true,
       "fit_for_worksheet_14_reason": "학습지_14(III-2 종합)에 최적. 본문 Q10(부분분수)·Q11(Sₙ→aₙ + 부분분수)와 다른 사고 경로 — 망원합으로 시작해 점화식을 등차로 환원하는 발상. max(7) 동급이지만 사고 깊이가 더 큼. 학습지_14 도전 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-e4": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "예제",
+      "concepts": ["등차중항 (2aₙ₊₁=aₙ+aₙ₊₂ → 등차)", "등차 합 공식", "Σ 조건 → d 결정"],
+      "strategy": "(가) 2aₙ₊₁=aₙ+aₙ₊₂ → 등차수열. (나) Σ_{k=1}^{8}aₖ=8a₁+28d=a₈=a₁+7d → 7a₁+21d=0 → a₁=-3d. a₁=6 → d=-2. a₃=a₁+2d=6+2(-2)=2",
+      "estimated_time_min": 6,
+      "suneung_connection": "수능 27·28번급 — 점화식 → 등차 환원 + Σ 조건.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ 점화식 인식 + 등차 합 공식. 학습지_15에서 학습한 점화식 도구로 직접 풀이 가능.",
+      "fit_for_worksheet_15": true,
+      "fit_for_worksheet_15_reason": "학습지_15가 점화식 도입이므로 '점화식 → 등차 환원'의 표준 패턴이 적정. 등차중항 2aₙ₊₁=aₙ+aₙ₊₂ 형태가 학습지 Q3(귀납적 정의 표현) 본질 확장. Σ 조건은 학습지_07(등차 합) 복습. max(5)+1=6 적정. 학습지_15 도전 rank 1 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-s4": {
+      "difficulty": 7,
+      "tier": "심화",
+      "level_label_in_source": "기본",
+      "concepts": ["점화식 → 등차 환원 (aₙ₊₁=aₙ+2)", "부분합 부등식 → 음수항 조건", "Σaₖaₖ₊₁ 다항식 합", "이차방정식 (a₁ 결정)"],
+      "strategy": "(가) aₙ₊₁=aₙ+2 → 공차 2 등차. aₖ=a₁+2k-2. (나) Σ_{k=1}^{m+1}aₖ<Σ_{k=1}^{m}aₖ → a_{m+1}<0 → 음수항 존재 → a₁<0. Σ_{k=1}^{5}aₖaₖ₊₁=Σ(a₁+2k-2)(a₁+2k)=5a₁²+50a₁+160=215 → a₁²+10a₁-11=0 → (a₁+11)(a₁-1)=0 → a₁=-11 (음수). aₙ=2n-13. a₉=2·9-13=5",
+      "estimated_time_min": 12,
+      "suneung_connection": "수능 28~29번급 — 점화식·등차·부등식·Σ 다항식 4중 융합.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ 점화식 + 등차 + 부등식 분기 + Σ 거듭제곱 합. 모두 단독 도구.",
+      "fit_for_worksheet_15": true,
+      "fit_for_worksheet_15_reason": "학습지_15(점화식)에 max+2 도전. 학습지 Q5(망원곱)·Q6(등비+조건)과 같은 사고 경로(점화식 + 조건 결합)를 4중으로 확장. 부분합 부등식이 음수항 존재 조건으로 환산되는 발상이 결정적. 수능 28~29번급. 학습지_15 도전 rank 2 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-b2": {
+      "difficulty": 4,
+      "tier": "기본",
+      "level_label_in_source": "기초",
+      "concepts": ["홀짝 분기 점화식", "단계별 대입"],
+      "strategy": "n=1(홀): a₂=2(1)-3=-1. n=2(짝): a₃=-1+5=4. n=3(홀): a₄=2(4)-3=5. n=4(짝): a₅=5+5=10",
+      "estimated_time_min": 3,
+      "in_curriculum": true,
+      "fit_for_worksheet_15": false,
+      "fit_for_worksheet_15_reason": "난이도 4 = max(5) 미달. 단순 대입 — 학습지 Q1·Q4와 같은 수준. 본문 연습.",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     }

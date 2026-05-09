@@ -239,7 +239,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -318,7 +318,7 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto">
                 6. 수열 \(\{a_n\}\) 이 다음을 모두 만족시킨다. 수열 \(\{a_n\}\) 에서 처음으로 \(200\) 이상이 되는 항은 제몇 항인지 구하시오.
@@ -330,6 +330,117 @@
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                 <strong>💡 힌트:</strong> (나)에서 수열 \(\{a_n\}\) 은 공비 \(2\) 인 등비수열임을 알 수 있다. 일반항을 \(a_1\) 으로 표현한 뒤 (가) 조건으로 \(a_1\) 을 결정하고, \(a_n \geq 200\) 을 만족시키는 가장 작은 자연수 \(n\) 을 찾는다.
             </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 합귀 예제 4) — Q3 점화식 → 등차 환원 본질 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-e4"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 예제 4">
+            <h2 class="section-title">⭐ 도전 문제 1 — 점화식 → 등차 환원 + Σ 조건</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 예제 4</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+1, 6분) · 핵심: 등차중항 점화식 인식 + 등차 합 공식</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                첫째항이 \(6\)인 수열 \(\{a_n\}\)이 다음 조건을 만족시킬 때, \(a_3\)의 값은?<br>
+                (가) 모든 자연수 \(n\)에 대하여 \(2 a_{n+1} = a_n + a_{n+2}\)이다.<br>
+                (나) \(\displaystyle\sum_{k=1}^{8} a_k = a_8\)
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>점화식 → 등차수열 환원</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(2 a_{n+1} = a_n + a_{n+2}\) ⇒ \(a_{n+1}\)이 \(a_n\)과 \(a_{n+2}\)의 등차중항</li>
+                            <li>⇒ \(\{a_n\}\)은 <strong>등차수열</strong>. 공차를 \(d\)라 하면 \(a_n = 6 + (n-1)d\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>(나) 조건으로 공차 결정</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum_{k=1}^{8} a_k = 8 a_1 + (0+1+\cdots+7) d = 8 \cdot 6 + 28 d = 48 + 28 d\)</li>
+                            <li>\(a_8 = 6 + 7 d\)</li>
+                            <li>\(48 + 28 d = 6 + 7 d\) ⇒ \(21 d = -42\) ⇒ <strong>\(d = -2\)</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>\(a_3\) 계산</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_3 = 6 + 2 \cdot (-2) = \boxed{2}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q3(귀납적 정의 표현)의 본질 확장 — <strong>점화식의 형태를 보고 등차로 환원</strong>하는 인식이 결정적. 일단 등차로 환원되면 학습지_07(등차의 합) 도구로 풀 수 있다.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-e4" class="text-purple-600 underline font-semibold">수능특강 해설지 예제 4</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 합귀 기본 4) — Q5·Q6 4중 융합 심화 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-s4"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 기본 4">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q5·Q6 점화식+조건 4중 융합</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 기본 4</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+2, 12분) · 핵심: 점화식 + 부분합 부등식 + Σ 다항식 4중 융합 (수능 28~29번급)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                수열 \(\{a_n\}\)이 다음 조건을 만족시킨다.<br>
+                (가) 모든 자연수 \(n\)에 대하여 \(a_{n+1} = a_n + 2\)이다.<br>
+                (나) 어떤 자연수 \(m\)에 대하여 \(\displaystyle\sum_{k=1}^{m+1} a_k < \sum_{k=1}^{m} a_k\)이다.<br>
+                \(\displaystyle\sum_{k=1}^{5} a_k a_{k+1} = 215\)일 때, \(a_9\)의 값을 구하시오.
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>(가) 점화식 → 등차수열</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_{n+1} = a_n + 2\) ⇒ 공차 \(2\)인 등차. \(a_k = a_1 + 2(k-1) = a_1 + 2k - 2\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>(나) 부분합 부등식 ⇒ 음수항 존재 조건</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum_{k=1}^{m+1}a_k - \sum_{k=1}^{m}a_k = a_{m+1}\)</li>
+                            <li>이 차가 음수이려면 <span class="text-red-600 font-bold">\(a_{m+1} &lt; 0\)</span> — 즉 음수항이 존재</li>
+                            <li>공차 2인 등차수열에 음수항이 존재하려면 <strong>\(a_1 &lt; 0\)</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>\(\sum a_k a_{k+1} = 215\) ⇒ \(a_1\) 결정</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_k a_{k+1} = (a_1 + 2k - 2)(a_1 + 2k)\). \(p = a_1\)로 두면</li>
+                            <li>\(\sum_{k=1}^{5}(p+2k-2)(p+2k) = 5 p^2 + 50 p + 160 = 215\)</li>
+                            <li>\(p^2 + 10 p - 11 = 0\) ⇒ \((p+11)(p-1) = 0\) ⇒ \(p = -11\) 또는 \(1\)</li>
+                            <li>음수 조건에서 <strong>\(a_1 = -11\)</strong> 채택</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(a_9\) 계산</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_n = -11 + 2(n-1) = 2n - 13\)</li>
+                            <li>\(a_9 = 18 - 13 = \boxed{5}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q5·Q6(점화식 + 조건 결합)의 본질을 4중으로 확장. 특히 <strong>부분합 부등식 ⇔ 다음 항 부호</strong>로 환산하는 발상이 결정적 — Σ_{k=1}^{m+1} - Σ_{k=1}^{m} = a_{m+1}. 수능 28~29번급.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-s4" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 4</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
