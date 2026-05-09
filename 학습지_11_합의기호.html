@@ -163,7 +163,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -235,12 +235,111 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto">6. 수열 \(\{a_n\}\)에 대하여 \(\sum_{k=1}^{10} a_k = 15\) 이고 \(\sum_{k=1}^{10} a_k^2 = 30\) 일 때, \(\sum_{k=1}^{10} (2a_k - 1)^2\) 의 값을 구하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                 <strong>💡 힌트:</strong> 완전제곱식을 먼저 전개한 다음, 시그마 기호를 각각 분배하여 주어진 조건들을 대입하자.
             </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수열의 합 예제 1) — Q4·Q6 본질 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-e1"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 예제 1">
+            <h2 class="section-title">⭐ 도전 문제 1 — Q4·Q6 본질 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 예제 1</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+1, 7분) · 핵심: 두 시그마식의 차/합으로 Σaₖ·Σaₖ² 동시 추출 (Σk·Σk² 공식 불필요)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                수열 \(\{a_n\}\)에 대하여 \(\displaystyle\sum_{k=1}^{10}(a_k+1)^2 = 52\), \(\displaystyle\sum_{k=1}^{10}(a_k-1)^2 = 24\)일 때, \(\displaystyle\sum_{k=1}^{10}(2a_k-3)^2\)의 값을 구하시오.
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>두 식의 차로 \(\sum a_k\) 추출</strong>: \((a+1)^2 - (a-1)^2 = 4a\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum 4 a_k = 52 - 24 = 28\) ⇒ <strong>\(\sum a_k = 7\)</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>두 식의 합으로 \(\sum a_k^2\) 추출</strong>: \((a+1)^2 + (a-1)^2 = 2(a^2+1)\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle 2 \sum (a_k^2 + 1) = 76\) ⇒ \(\sum (a_k^2 + 1) = 38\)</li>
+                            <li>\(\displaystyle\sum 1 = 10\) (k=1~10이므로 1을 10번 — Q5와 같은 함정 주의!)</li>
+                            <li>⇒ <strong>\(\sum a_k^2 = 38 - 10 = 28\)</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>\((2 a_k - 3)^2\) 전개·대입</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\((2 a_k - 3)^2 = 4 a_k^2 - 12 a_k + 9\)</li>
+                            <li>\(\displaystyle\sum (2 a_k - 3)^2 = 4 \sum a_k^2 - 12 \sum a_k + 9 \cdot 10\)</li>
+                            <li>\(= 4(28) - 12(7) + 90 = 112 - 84 + 90 = \boxed{118}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q4(전개·분리) + Q6(완전제곱) + Q5(상수합 함정)을 한 문제에 모두 결합. 두 시그마식의 <strong>차·합</strong>이라는 발상이 결정적 — Σaₖ와 Σaₖ²을 따로따로 구할 필요 없이 동시에 추출.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-e1" class="text-purple-600 underline font-semibold">수능특강 해설지 예제 1</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 수열의 합 유제 3) — Q1·Q2 정의·범위 심화 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-ex3"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 유제 3">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q1·Q2 Σ 정의·범위 심화</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 유제 3</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+1, 6분) · 핵심: 두 시그마 구간 비교 + 공통 부분 소거 (Σk² 공식 불필요)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\displaystyle\sum_{k=1}^{20}(2k-1)^2 - \sum_{k=8}^{21}(2k-3)^2\)의 값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>두 시그마 펼쳐 보기</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum_{k=1}^{20}(2k-1)^2 = 1^2 + 3^2 + 5^2 + \cdots + 39^2\) (k=1→1, k=20→39)</li>
+                            <li>\(\displaystyle\sum_{k=8}^{21}(2k-3)^2 = 13^2 + 15^2 + 17^2 + \cdots + 39^2\) (k=8→13, k=21→39)</li>
+                        </ul>
+                    </li>
+                    <li><strong>공통 부분 발견</strong>: 두 합은 \(13^2 + 15^2 + \cdots + 39^2\) 부분이 <span class="text-red-600 font-bold">완전히 같다</span>
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>차를 구하면 공통 부분이 모두 소거되고, 첫 번째 합의 앞쪽 6개 항만 남음</li>
+                            <li>남는 항: \(1^2 + 3^2 + 5^2 + 7^2 + 9^2 + 11^2\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>여섯 항 직접 합산</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(1 + 9 + 25 + 49 + 81 + 121 = \boxed{286}\)</li>
+                            <li>(\(\Sigma k^2\) 공식 미사용 — 학습지_12 진도 전이라도 풀이 가능)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q1·Q2(Σ 압축·풀어쓰기)에서 익힌 <strong>'k의 범위' 의미</strong>를 깊이 이해해야 가능. 두 시그마의 일반항이 다르더라도 펼쳐 쓰면 같은 항을 만들 수 있음을 발견하는 것이 결정적.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-ex3" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 3</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
