@@ -204,14 +204,11 @@
     aftLoadState(widget, TIMER_KEY);
     aftUpdateDisplay();
 
+    // 프리셋 버튼만 사용 (직접입력 input은 UX 혼선으로 제거됨)
     widget.querySelectorAll('.aft-preset').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var sec = parseInt(btn.getAttribute('data-sec'), 10);
-        if (!isNaN(sec) && sec > 0) {
-          var input = document.getElementById('aft-timer-input');
-          if (input) input.value = sec;
-          aftStart(sec);
-        }
+        if (!isNaN(sec) && sec > 0) aftStart(sec);
       });
     });
 
@@ -220,9 +217,8 @@
       startBtn.addEventListener('click', function () {
         if (aftTimer.running) return;
         if (aftTimer.remaining > 0) { aftStart(); return; }
-        var input = document.getElementById('aft-timer-input');
-        var sec = input ? parseInt(input.value, 10) : 60;
-        if (!isNaN(sec) && sec > 0) aftStart(sec);
+        // 기본 60초 (프리셋 미선택 시)
+        aftStart(60);
       });
     }
     var pauseBtn = document.getElementById('aft-timer-pause');

@@ -250,15 +250,17 @@
                     <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">
                         10. 수열 \(\dfrac{1}{1},\ \dfrac{1}{1+2},\ \dfrac{1}{1+2+3},\ \dfrac{1}{1+2+3+4},\ \cdots\)의 첫째항부터 제\(n\)항까지의 합이 \(\dfrac{20}{11}\)일 때, 자연수 \(n\)의 값을 구하는 풀이 과정과 답을 쓰시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.152 중단원 11번)</span>
                     </div>
-                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                        <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
-                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                             이 수열의 제\(k\)항은 \(a_k = \frac{1}{1+2+\cdots+k} = \frac{2}{k(k+1)}\) 이다.<br>
                             여기서 \(a_k\)를 구하고 끝이라고 착각하는 학생들이 매우 많다!<br>
                             문제를 다시 읽어보자. <strong>"첫째항부터 제\(n\)항까지의 합"</strong>을 구하라고 했다. 즉, \(a_k\)를 다시 \(\Sigma\) 기호 안에 넣고 계산해야 한다.<br>
                             \(\frac{2}{k(k+1)} = 2\left(\frac{1}{k} - \frac{1}{k+1}\right)\)로 부분분수 분해 후 소거!
                         </p>
-                    </div>
+                            </div>
+                        </details>
                     <div class="thinking-space bg-white"></div>
                 </div>
 
@@ -272,13 +274,15 @@
                         <p>(1) 수열 \(\{a_n\}\)의 일반항을 구하시오.</p>
                         <p>(2) \(\displaystyle\sum_{k=1}^{30} \frac{1}{a_k a_{k+1}}\) 의 값을 구하시오.</p>
                     </div>
-                    <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 mt-4 shadow-sm">
-                        <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
-                        <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                    <details class="trap-box mb-4 mt-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                        <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                        <div class="trap-body px-5 pb-5">
+                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
                             (1)에서 \(a_n = S_n - S_{n-1}\) (<strong>단, \(n \geq 2\)</strong>)를 이용하되, \(n = 1\)일 때도 성립하는지 반드시 확인!<br>
                             (2)에서는 (1)의 결과를 대입한 후 부분분수 분해가 핵심이다.
                         </p>
-                    </div>
+                        </div>
+                    </details>
                     <div class="thinking-space bg-white"></div>
                 </div>
 
@@ -440,7 +444,6 @@
           <button type="button" class="aft-preset" data-sec="600">10분</button>
         </div>
         <div class="aft-timer-controls">
-          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
           <button type="button" id="aft-timer-start">시작</button>
           <button type="button" id="aft-timer-pause">일시정지</button>
           <button type="button" id="aft-timer-reset">리셋</button>

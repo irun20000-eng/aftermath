@@ -284,15 +284,17 @@
                         <span class="badge badge-l3">심화-조화수 부등식</span>
                         <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">5. \(n \geq 2\) 인 모든 자연수 \(n\) 에 대하여 다음 부등식이 성립함을 수학적 귀납법으로 증명하시오.<br>
                             \[1+\dfrac{1}{2}+\dfrac{1}{3}+\dots+\dfrac{1}{n} &gt; \dfrac{2n}{n+1}\]</div>
-                        <div class="bg-white border-l-8 border-red-500 p-5 rounded-r-xl mb-4 shadow-sm">
-                            <h4 class="font-black text-red-700 mb-2">🚨 선생님의 함정 경고</h4>
-                            <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
                                 ① 출발점은 \(n=1\) 이 아니라 <strong>\(n=2\)</strong> 다. 좌변에 적어도 두 항이 있어야 한다.<br>
                                 ② 귀납 단계에서 양변에 더하는 것은 <strong>\(\dfrac{1}{k+1}\)</strong> 이다. (헷갈려서 \(\dfrac{1}{k}\) 를 더하면 다음 항으로 넘어가지 못한다.)<br>
                                 ③ 핵심 계산: \(\dfrac{2k}{k+1}+\dfrac{1}{k+1}\) 과 \(\dfrac{2(k+1)}{k+2}\) 의 대소를 비교하라. 통분 후 분자를 빼서 부호를 살펴야 한다.<br>
                                 ④ "\(\dfrac{2k+1}{k+1} &gt; \dfrac{2(k+1)}{k+2}\) 가 정말 성립하는가?" 를 의심하지 말고 직접 \((2k+1)(k+2) - 2(k+1)^2\) 를 계산하라.
                             </p>
-                        </div>
+                            </div>
+                        </details>
                         <div class="thinking-space bg-white"></div>
                     </div>
                 </div>
@@ -416,7 +418,6 @@
           <button type="button" class="aft-preset" data-sec="600">10분</button>
         </div>
         <div class="aft-timer-controls">
-          <input type="number" id="aft-timer-input" value="60" min="1" max="3600">
           <button type="button" id="aft-timer-start">시작</button>
           <button type="button" id="aft-timer-pause">일시정지</button>
           <button type="button" id="aft-timer-reset">리셋</button>

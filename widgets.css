@@ -516,3 +516,62 @@ section[data-aft-problem-level="challenge"] details.hint-box > summary {
   details.hint-box > .hint-content { animation: none; }
   details:not([open]) > .hint-content { display: block !important; }
 }
+
+/* ============================================================
+   🚨 함정 경고 박스 (details 펼침형 — 학습지 06~18 일괄 적용)
+   ============================================================ */
+details.trap-box {
+  list-style: none;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+details.trap-box[open] { box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15); }
+details.trap-box:hover { box-shadow: 0 2px 8px rgba(220, 38, 38, 0.12); }
+
+details.trap-box > summary {
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  background: linear-gradient(180deg, #fef2f2, #fff);
+  transition: background 0.2s;
+}
+details.trap-box > summary:hover { background: linear-gradient(180deg, #fee2e2, #fff); }
+details.trap-box > summary::-webkit-details-marker { display: none; }
+
+details.trap-box > summary::after {
+  content: '▼';
+  margin-left: auto;
+  color: #dc2626;
+  font-size: 0.875rem;
+  transition: transform 0.2s;
+}
+details.trap-box[open] > summary::after { transform: rotate(180deg); }
+
+details.trap-box .trap-hint {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ef4444;
+  margin-left: 0.5rem;
+  opacity: 0.7;
+}
+details.trap-box[open] .trap-hint { display: none; }
+
+details.trap-box .trap-body {
+  animation: trapSlide 0.25s ease-out;
+}
+@keyframes trapSlide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 인쇄 시 모두 펼침 */
+@media print {
+  details.trap-box { display: block; }
+  details.trap-box > summary { display: block; color: #991b1b; }
+  details.trap-box > summary::after { content: ''; }
+  details.trap-box .trap-hint { display: none; }
+  details.trap-box > .trap-body { display: block !important; padding: 1rem 1.25rem; }
+}
