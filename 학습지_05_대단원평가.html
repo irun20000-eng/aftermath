@@ -269,6 +269,28 @@
       </div>
       <div class="aft-widget-resize" aria-hidden="true"></div>
     </div>
+    <!-- ============================================================
+         📚 문제 모아보기 — FAB + 풀스크린 모달
+         JS가 [data-aft-problem-level] 마킹된 카드 자동 수집
+         ============================================================ -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
     <script src="widgets.js"></script>
 </body>
 </html>
