@@ -148,7 +148,7 @@
         </section>
 
         <!-- 02. 수준별 문항 연습 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             
             <!-- Level 1 -->
@@ -187,11 +187,87 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
                 5. 평행사변형 ABCD에서 \(\overline{AB}=4\), \(\overline{AD}=6\)이고, 이 평행사변형의 넓이가 \(12\sqrt{2}\)일 때, 예각 \(\angle A\)의 크기를 구하시오.
             </div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 사인법칙·코사인법칙 기본 10) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_사인법칙코사인법칙"
+                 data-aft-source-id="s4-s10"
+                 data-aft-source-label="수능특강 사인법칙·코사인법칙 기본 10">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 사인법칙·코사인법칙 · 기본 10</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+1, 8분) · 핵심: 닮음 발견 + 이등변 + 넓이비 + 코사인법칙 (4단계 종합)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                삼각형 \(ABC\)에서 변 \(\overline{BC}\)를 \(2:1\)로 내분하는 점을 \(D\)라 하자. \(\overline{BC} = 12\)이고, 변 \(\overline{AC}\) 위의 점 \(E\)에 대하여 \(\angle\mathrm{BAE} = \angle\mathrm{BED}\), 삼각형 \(ABE\)의 넓이가 \(9\sqrt{5}\)일 때, 선분 \(\overline{AD}\)의 길이는?
+            </div>
+
+            <div class="hint-box mt-0">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>닮음 발견</strong>: \(\angle\mathrm{BAE} = \angle\mathrm{BED}\), 공통각 \(\angle B\) → \(\triangle ABC \sim \triangle EBD\) (AA). 이로부터 \(\overline{BD}=8,\; \overline{CD}=4\)와 변 비율 도출</li>
+                    <li><strong>이등변 + 변수 도입</strong>: \(\overline{BE}=a,\; \angle\mathrm{DBE}=\theta\) 두면 닮음에서 \(\overline{AC}=\dfrac{3}{2}a,\; \angle\mathrm{BCA}=\theta\). \(\triangle EBC\)에서 \(\angle\mathrm{EBC}=\angle\mathrm{ECB}=\theta\) → 이등변 \(\overline{CE}=\overline{BE}=a\) → \(\overline{AE}=\dfrac{a}{2}\)</li>
+                    <li><strong>넓이비로 \(a\) 결정</strong>: \(\overline{AE}:\overline{EC}=1:2\)이므로 \([\triangle ABE]:[\triangle EBC]=1:2\) → \([\triangle EBC]=18\sqrt{5}\). \(E\)에서 \(\overline{BC}\)에 내린 수선 \(\overline{EH}=3\sqrt{5}\), 이등변이라 \(\overline{CH}=6\) → \(\cos\theta=\dfrac{6}{9}=\dfrac{2}{3},\; a=9\)</li>
+                    <li><strong>코사인법칙</strong>: \(\overline{AC}=\dfrac{27}{2},\; \overline{CD}=4,\; \cos\theta=\dfrac{2}{3}\) → \(\overline{AD}^2 = \overline{AC}^2 + \overline{CD}^2 - 2\cdot\overline{AC}\cdot\overline{CD}\cos\theta\) → \(\overline{AD}\) 결정</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 닮음 발견이 첫 단추. 이후 넓이비(½ab sinC)가 변수 결정의 허브 역할. 배각·반각·덧셈정리 불필요.</p>
+            </div>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 도형 그림과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-s10" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 10</a>에서 확인.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 사인법칙·코사인법칙 유제 8) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_사인법칙코사인법칙"
+                 data-aft-source-id="s4-ex8"
+                 data-aft-source-label="수능특강 사인법칙·코사인법칙 유제 8">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 사인법칙·코사인법칙 · 유제 8</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max 동급, 7분) · 핵심: 넓이공식 → sinA 역산 → sin 두 해 분기 → 코사인법칙 → 최댓값</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\overline{AB}=4,\; \overline{BC}=6\)인 평행사변형 \(ABCD\)에서 선분 \(\overline{AD}\)를 \(2:1\)로 내분하는 점을 \(E\)라 하자. 삼각형 \(ABE\)의 넓이가 \(4\sqrt{3}\)일 때, 선분 \(\overline{AC}\)의 길이의 최댓값은?
+            </div>
+
+            <div class="hint-box mt-0">
+                <strong>💡 수Ⅰ 단독 풀이 흐름:</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>내분점</strong>: 평행사변형이라 \(\overline{AD} = \overline{BC} = 6\), \(\overline{AE} = \dfrac{2}{3}\cdot 6 = 4\)</li>
+                    <li><strong>넓이공식 역산</strong>: \([\triangle ABE] = \dfrac{1}{2}\cdot\overline{AB}\cdot\overline{AE}\cdot\sin(\angle A) = \dfrac{1}{2}\cdot 4\cdot 4\cdot\sin A = 8\sin A = 4\sqrt{3}\) → \(\sin A = \dfrac{\sqrt{3}}{2}\)</li>
+                    <li><strong>sin 두 해 함정</strong>: \(0 < \angle A < 180°\)에서 \(\sin A = \dfrac{\sqrt{3}}{2}\) → <span class="text-red-600 font-bold">\(\angle A = 60°\) 또는 \(120°\)</span></li>
+                    <li><strong>평행사변형 인접각 보각</strong>: \(\angle ABC = 180° - \angle A\) → \(\triangle ABC\)에 코사인법칙 \(\overline{AC}^2 = \overline{AB}^2 + \overline{BC}^2 - 2\cdot 4\cdot 6\cdot\cos(\angle ABC)\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\angle A = 60°\) → \(\angle ABC = 120°,\; \cos = -\dfrac{1}{2}\) → \(\overline{AC}^2 = 16+36+24 = 76\) → \(\overline{AC} = 2\sqrt{19}\)</li>
+                            <li>\(\angle A = 120°\) → \(\angle ABC = 60°,\; \cos = \dfrac{1}{2}\) → \(\overline{AC}^2 = 16+36-24 = 28\) → \(\overline{AC} = 2\sqrt{7}\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>최댓값</strong>: \(\overline{AC} = 2\sqrt{19}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 5번(평행사변형 + 넓이 → ∠A 역산)을 한 단계 확장 — sin 두 해를 분기해 각 경우 코사인법칙으로 대각선 길이를 구하고 최댓값을 선택.</p>
+            </div>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 도형과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-ex8" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 8</a>에서 확인.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
