@@ -264,9 +264,12 @@
 .aft-modal-close:hover { background: rgba(255,255,255,0.22); }
 
 .aft-modal-body {
-  padding: 24px;
-  overflow-y: auto;
+  padding: 0;
+  overflow: hidden;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 /* body에 잠금 클래스 추가 시 페이지 스크롤 차단 */
@@ -315,32 +318,41 @@ body.aft-modal-locked { overflow: hidden; }
 }
 
 /* ============================================================
-   모달 2-pane 레이아웃 (좌: 학습지 / 우: 도전)
+   모달 2-pane 레이아웃 (좌: 학습지 / 우: 도전) — 독립 스크롤
    ============================================================ */
 .aft-problems-pane-wrap {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
 }
 .aft-problems-pane {
   flex: 1;
   min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 24px 24px;
+  -webkit-overflow-scrolling: touch;
 }
 .aft-problems-pane-left {
   border-right: 2px solid #e2e8f0;
-  padding-right: 24px;
 }
+/* sticky 헤더 — 각 pane 자체 스크롤 컨테이너 기준
+   pane padding-top 대신 헤더에 padding 부여 → 헤더 위 빈 공간 X
+   배경 불투명 → 스크롤 시 내용 헤더 뒤로 비치지 X */
 .aft-problems-pane-title {
   font-size: 17px;
   font-weight: 800;
   color: #1e293b;
-  margin: 0 0 16px;
-  padding-bottom: 10px;
+  margin: 0 0 14px;
+  padding: 18px 0 10px;
   border-bottom: 3px solid #cbd5e1;
   position: sticky;
   top: 0;
   background: #f8fafc;
-  z-index: 1;
+  z-index: 5;
+  box-shadow: 0 6px 8px -6px rgba(15, 23, 42, 0.08);
 }
 .aft-problems-pane-right .aft-problems-pane-title {
   color: #5b21b6;
@@ -374,17 +386,17 @@ body.aft-modal-locked { overflow: hidden; }
   border-bottom-width: 2px;
 }
 
-/* 모바일 — pane 세로 stack + 모달 풀스크린 */
+/* 모바일 — pane 세로 stack (각각 절반 높이로 독립 스크롤) */
 @media (max-width: 800px) {
   .aft-problems-pane-wrap {
     flex-direction: column;
-    gap: 16px;
+  }
+  .aft-problems-pane {
+    flex: 1 1 50%;
   }
   .aft-problems-pane-left {
     border-right: none;
     border-bottom: 2px solid #e2e8f0;
-    padding-right: 0;
-    padding-bottom: 16px;
   }
 }
 @media (max-width: 600px) {
