@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'. PR-D 이후 채워짐.",
+  "updated_at": null,
+  "items": {}
+}

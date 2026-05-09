@@ -314,7 +314,79 @@ body.aft-modal-locked { overflow: hidden; }
   letter-spacing: 0.02em;
 }
 
-/* 모바일 — 모달 풀스크린 */
+/* ============================================================
+   모달 2-pane 레이아웃 (좌: 학습지 / 우: 도전)
+   ============================================================ */
+.aft-problems-pane-wrap {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.aft-problems-pane {
+  flex: 1;
+  min-width: 0;
+}
+.aft-problems-pane-left {
+  border-right: 2px solid #e2e8f0;
+  padding-right: 24px;
+}
+.aft-problems-pane-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #cbd5e1;
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+}
+.aft-problems-pane-right .aft-problems-pane-title {
+  color: #5b21b6;
+  border-bottom-color: #c4b5fd;
+}
+.aft-pane-empty {
+  color: #94a3b8;
+  font-size: 14px;
+  font-style: italic;
+  padding: 12px 0;
+}
+
+/* ============================================================
+   클론 카드 — 모달 안에서 여백 압축
+   ============================================================ */
+.aft-problem-clone { padding: 14px 18px; margin-bottom: 12px; }
+/* 필기 공간·사고 공간은 모달 안에서 숨김 — 학생이 풀이는 본문에서 */
+.aft-problem-clone .thinking-space,
+.aft-problem-clone .empty-line { display: none !important; }
+/* Tailwind 큰 여백 압축 */
+.aft-problem-clone .mb-8 { margin-bottom: 0.75rem !important; }
+.aft-problem-clone .mb-6 { margin-bottom: 0.5rem !important; }
+.aft-problem-clone .mt-8 { margin-top: 0.75rem !important; }
+.aft-problem-clone .p-8 { padding: 1rem !important; }
+.aft-problem-clone .py-8 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+/* 카드 안 section-title 축소 */
+.aft-problem-clone .section-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom-width: 2px;
+}
+
+/* 모바일 — pane 세로 stack + 모달 풀스크린 */
+@media (max-width: 800px) {
+  .aft-problems-pane-wrap {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .aft-problems-pane-left {
+    border-right: none;
+    border-bottom: 2px solid #e2e8f0;
+    padding-right: 0;
+    padding-bottom: 16px;
+  }
+}
 @media (max-width: 600px) {
   .aft-modal-content {
     width: 100%;

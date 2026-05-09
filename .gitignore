@@ -22,7 +22,11 @@ MEMORY.md
 *_text.txt
 
 # Claude / 메모리 관련
-.claude/
+# .claude/agents/ 는 도메인 에이전트 정의 — git 추적 (다른 세션·머신에서 사용)
+# .claude/ 안의 history·settings 등은 무시. GitHub Pages는 dot 디렉터리 자동 제외.
+.claude/*
+!.claude/agents/
+!.claude/agents/**
 memory/
 
 # 백업 파일
