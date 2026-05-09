@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_17 진입: s6-ex6 신규 평가, 총 59개)",
+  "updated_at": "2026-05-09 (학습지_18 진입: s6-s6 신규 평가, 총 60개)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -915,6 +915,21 @@
       "in_curriculum_note": "수Ⅰ 점화식 + 부분분수 + 망원합. 모두 단독 도구.",
       "fit_for_worksheet_17": true,
       "fit_for_worksheet_17_reason": "학습지_17(III-3 종합)에 최적. 본문 Q6(분기 점화식 + 주기)·Q7(증명)와 다른 사고 경로 — 비선형 점화식을 역수 변환으로 부분분수 망원합으로 환원. III-3 핵심 도구(점화식·Σ·부분분수)가 한 문제에 모두 결합. max(7)+1=8 적정. 학습지_17 도전 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-s6": {
+      "difficulty": 9,
+      "tier": "심화",
+      "level_label_in_source": "기본",
+      "concepts": ["로그 정수부 (⌊log₂n⌋ 구간 분석)", "구간 길이 = 2^k", "조건 a_{t-5}=a_{t+5} → 같은 구간 길이 ≥ 11", "Σ 구간별 합산"],
+      "strategy": "aₙ=⌊log₂n⌋: n=1→0, n=2~3→1, n=4~7→2, n=8~15→3, n=16~31→4. a_{t-5}=a_{t+5} ⇔ [t-5,t+5] 같은 k 구간 (길이 11 ≤ 2^k → k≥4) → t∈[21,26], 최솟값 m=21. Σ_{n=1}^{21}aₙ = 0 + 1·2 + 2·4 + 3·8 + 4·6 = 58",
+      "estimated_time_min": 15,
+      "suneung_connection": "수능 30번급 — log 정수부 + 구간 분석 + Σ.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ log + 정수부 (수Ⅰ log 단원 결합) + 구간 분석 + Σ. 단독 도구.",
+      "fit_for_worksheet_18": true,
+      "fit_for_worksheet_18_reason": "학습지_18(대단원 평가 III)에 최적 — 수능 30번급 극난도. 본문 Q11~Q16(advanced 6개)이 max=7이라 추가 도전은 본문보다 +2 단계 높은 극난도가 적정. log 정수부 + 인덱스 분석 + Σ 종합으로 다른 단원(수Ⅰ log)과의 결합 본질을 검증. 대단원 평가의 마지막 도전으로 채택 ⭐⭐⭐⭐⭐",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     }
