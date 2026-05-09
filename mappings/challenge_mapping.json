@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_17 도전 1개 추가 — s6-ex6, 점화식·역수·부분분수·망원합 4중 융합)",
+  "updated_at": "2026-05-09 (학습지_18 도전 1개 추가 — s6-s6, 수능 30번급 log·정수부·Σ. 대단원 III 큐레이션 완료)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -677,6 +677,52 @@
         "current_count": 1,
         "status": "complete"
       }
+    },
+    {
+      "worksheet_id": "학습지_18_대단원평가_III",
+      "worksheet_concepts": ["대단원 III 종합 (16문항)", "수열·Σ·점화식·귀납법 통합", "다중 단원 결합 (log·다항식·무리식)"],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "Q11(Σ-항 연립)·Q12(분기 점화식 + Σ)·Q15(무리식 + Σ + 부분분수)이 max=7. 본문 advanced 6개 (Q11~Q16) 모두 단원 핵심 도구 종합 커버.",
+      "embedded_advanced": {
+        "count": 6,
+        "ids": [
+          "미래엔 P.167 11번 (Q11 Σ-항 연립 + 부분분수)",
+          "미래엔 P.167 12번 (Q12 조건 분기 점화식 + Σ)",
+          "미래엔 P.167 13번 (Q13 귀납법 빈칸 4ⁿ-1 3 배수)",
+          "미래엔 P.168 14번 (Q14 등차+등비 동시 서술형)",
+          "미래엔 P.168 15번 (Q15 무리식 + Σ + 부분분수 서술형)",
+          "미래엔 P.168 16번 (Q16 점화식 → 일반항 귀납법 증명 서술형)"
+        ],
+        "marking": "data-aft-problem-level=\"advanced\"",
+        "note": "교과서 본문 도전 6개. 수능특강 추가 도전과 별도 분리."
+      },
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-s6",
+          "label": "수능특강 수열의 합·귀납법 기본 6",
+          "difficulty": 9,
+          "tier": "심화",
+          "level_label_in_source": "기본",
+          "estimated_time_min": 15,
+          "concepts_matched": ["로그 정수부 (⌊log₂n⌋ 구간 분석)", "구간 길이 2^k", "조건 분석 (a_{t-5}=a_{t+5} → 길이 ≥ 11)", "Σ 구간별 합산"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_18(대단원 평가 III)이 모의 시험 형식이므로 수능 30번급 극난도가 정합. 본문 advanced(Q11~Q16)이 max=7이라 추가 도전은 +2 단계 높은 극난도가 적정. log 정수부 + 인덱스 분석 + Σ 종합으로 다른 단원(수Ⅰ log)과의 결합 본질 검증. m=21, Σ=58. 대단원 평가의 마지막 도전.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "rejected_candidates": [
+        {"problem_id": "s6-s5", "reason": "난이도 7, 등차+무리식 유리화. max 동급 — 본문 advanced와 비슷 수준이라 추가 도전으로는 변별력 부족."},
+        {"problem_id": "s6-s7", "reason": "난이도 9, log+정수부+등식 (수능 30번급). s6-s6과 유사 — 사용자 선택으로 보류."},
+        {"problem_id": "s6-s1·s2·s3·ex9·ex10·ex11", "reason": "난이도 6~7 — 본문 advanced와 같은 수준 또는 미평가. 모의고사 도전 시 평가."}
+      ],
+      "pending_challenges": {
+        "target_count": 1,
+        "current_count": 1,
+        "status": "complete"
+      }
     }
   ],
   "evaluated_problems_pool": {
@@ -694,10 +740,10 @@
       "unevaluated_categories": "잔여 — 다른 챕터(c1·c2·c3 실력 등) 또는 등차합 외 항목. 학습지_18(중단원) 또는 모의고사 도전 시 평가."
     },
     "수능특강_수열의합귀납법": {
-      "evaluated_count": 16,
-      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2", "s6-b6", "s6-ex5", "s6-e3", "s6-ex8", "s6-e4", "s6-s4", "s6-b2", "s6-ex6"],
-      "unevaluated_count": 20,
-      "unevaluated_categories": "잔여 복합 (s6-ex9·ex10·ex11·s1·s2·s3·s5·s6·s7) — 학습지_18(대단원 평가) 또는 모의고사 도전 시 평가. 점화식·귀납법 (s6-b5·b7·e5·ex7) — 본문 연습 또는 모의고사. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
+      "evaluated_count": 17,
+      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1", "s6-b8", "s6-b4", "s6-e2", "s6-b6", "s6-ex5", "s6-e3", "s6-ex8", "s6-e4", "s6-s4", "s6-b2", "s6-ex6", "s6-s6"],
+      "unevaluated_count": 19,
+      "unevaluated_categories": "잔여 복합 (s6-ex9·ex10·ex11·s1·s2·s3·s5·s7) — 모의고사 도전 시 평가. 점화식·귀납법 (s6-b5·b7·e5·ex7) — 본문 연습 또는 모의고사. e6 그래프 — 단원 외. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
       "policy_violations": []
     }
   }
