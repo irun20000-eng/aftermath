@@ -244,11 +244,15 @@
      ============================================================ */
 
   var GROUPS = [
-    { key: 'l1',        label: '기초', icon: '🟢' },
-    { key: 'l2',        label: '기본', icon: '🟡' },
-    { key: 'l3',        label: '심화', icon: '🔴' },
-    { key: 'challenge', label: '도전', icon: '⭐' }
+    { key: 'l1',        label: '기초',   icon: '🟢' },
+    { key: 'l2',        label: '기본',   icon: '🟡' },
+    { key: 'l3',        label: '심화',   icon: '🔴' },
+    { key: 'advanced',  label: '고난도', icon: '📈' },  // 학습지 자체 고난도 (중·대단원 마무리)
+    { key: 'challenge', label: '도전',   icon: '⭐' }   // 수능특강 큐레이션
   ];
+
+  // 우측 pane으로 가는 카테고리
+  var RIGHT_KEYS = ['advanced', 'challenge'];
 
   function aftInitProblemViewer() {
     var fab = document.getElementById('aft-problems-fab');
@@ -310,15 +314,26 @@
       rightPane.className = 'aft-problems-pane aft-problems-pane-right';
       var rightTitle = document.createElement('h3');
       rightTitle.className = 'aft-problems-pane-title';
-      rightTitle.textContent = '⭐ 도전 문제';
+
+      // 우측 pane 헤더 — 카테고리 존재 여부에 따라 동적 결정
+      var hasChallenge = byLevel.challenge && byLevel.challenge.length > 0;
+      var hasAdvanced  = byLevel.advanced  && byLevel.advanced.length  > 0;
+      if (hasChallenge && hasAdvanced) {
+        rightTitle.textContent = '⭐ 도전 · 📈 고난도';
+      } else if (hasChallenge) {
+        rightTitle.textContent = '⭐ 도전 문제';
+      } else if (hasAdvanced) {
+        rightTitle.textContent = '📈 고난도 도전';
+      } else {
+        rightTitle.textContent = '⭐ 도전 문제';
+      }
       rightPane.appendChild(rightTitle);
 
-      // 그룹 헤더(🟡기본·🔴심화) 없이 카드 자체 제목으로 구분
-      // GROUPS 순서 유지 — l1→l2→l3 순으로 자연 stacking
+      // GROUPS 순서 유지 — l1→l2→l3→advanced→challenge 순으로 자연 stacking
       GROUPS.forEach(function (g) {
         var items = byLevel[g.key];
         if (!items || items.length === 0) return;
-        var targetPane = (g.key === 'challenge') ? rightPane : leftPane;
+        var targetPane = (RIGHT_KEYS.indexOf(g.key) !== -1) ? rightPane : leftPane;
         items.forEach(function (item) {
           targetPane.appendChild(buildClone(item));
         });
@@ -333,7 +348,7 @@
       if (rightPane.children.length === 1) {
         var emptyR = document.createElement('p');
         emptyR.className = 'aft-pane-empty';
-        emptyR.textContent = '도전 문제가 없습니다.';
+        emptyR.textContent = (hasAdvanced || hasChallenge) ? '문제가 없습니다.' : '도전 문제가 없습니다.';
         rightPane.appendChild(emptyR);
       }
 
