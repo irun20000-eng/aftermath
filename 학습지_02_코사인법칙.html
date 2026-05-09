@@ -173,15 +173,15 @@
             <div class="mb-16">
                 <span class="badge badge-l2">Level 2: 응용 훈련 (사인법칙 융합)</span>
                 <div class="text-2xl font-bold text-slate-800 mb-4">3. \(\triangle ABC\)에서 \(a=5\), \(b=4\), \(\cos C = \frac{1}{5}\)일 때, 이 삼각형의 외접원의 반지름의 길이 \(R\)을 구하시오.</div>
-                <div class="hint-box">
+                <details class="hint-box"><summary>💡 힌트 보기</summary><div class="hint-content">
                     <strong>💡 Hint:</strong> 먼저 코사인법칙으로 변 \(c\)를 구하자. 그 다음, \(\cos C\)를 이용해 \(\sin C\)를 찾아낸 뒤에 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">사인법칙</span></span>을 적용해야 한다!
-                </div>
+                </div></details>
                 <div class="thinking-space"></div>
 
                 <div class="text-2xl font-bold text-slate-800 mt-12 mb-4">4. \(\triangle ABC\)에서 세 변의 길이의 비가 \(a : b : c = 3 : 5 : 7\) 일 때, 이 삼각형의 가장 큰 내각의 크기를 구하시오.</div>
-                <div class="hint-box">
+                <details class="hint-box"><summary>💡 힌트 보기</summary><div class="hint-content">
                     <strong>💡 Hint:</strong> 길이가 가장 긴 변과 마주보는 대각이 항상 가장 큰 각이다. 변의 길이를 \(3k, 5k, 7k\)로 두고 식을 세워보자. (\(k\)는 약분되어 사라진다!)
-                </div>
+                </div></details>
                 <div class="thinking-space"></div>
             </div>
 
@@ -189,9 +189,9 @@
             <div class="mb-10">
                 <span class="badge badge-l3">Level 3: 심화 훈련 (함정 주의)</span>
                 <div class="text-2xl font-bold text-slate-800 mb-4">5. 세 변의 길이가 \(a=4\), \(b=5\), \(c=6\)인 \(\triangle ABC\)는 예각삼각형, 직각삼각형, 둔각삼각형 중 어떤 삼각형인지 판별하시오.</div>
-                <div class="hint-box border-red-400 bg-red-50 text-red-900">
+                <details class="hint-box border-red-400 bg-red-50 text-red-900"><summary>⚠️ 함정 분석 보기</summary><div class="hint-content">
                     <strong>⚠️ 핵심 분석 (틀려야 는다!):</strong> 모든 각의 코사인 값을 계산할 필요가 없다. 삼각형의 가장 큰 각(가장 긴 변의 대각)이 둔각인지 예각인지만 판별하면 된다. 가장 긴 변 \(c=6\)에 대한 \(\cos C\)의 **부호**만 확인해 보자! \(\cos C > 0\)이면 예각, \(\cos C < 0\)이면 둔각이다.
-                </div>
+                </div></details>
                 <div class="thinking-space"></div>
             </div>
         </section>
@@ -205,9 +205,9 @@
             <div class="bg-slate-100 p-8 rounded-2xl text-center text-3xl font-black mb-8 border-2 border-slate-200">
                 \[ a \cos A = b \cos B \]
             </div>
-            <div class="hint-box bg-slate-50 border-slate-400 text-slate-700 mt-0">
+            <details class="hint-box bg-slate-50 border-slate-400 text-slate-700 mt-0"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                 <strong>💡 전략:</strong> 이전에는 사인법칙 변형 공식을 대입했다면 이번엔 코사인법칙 변형 공식(Type B)을 대입하여 전체를 변의 길이(\(a, b, c\))에 대한 식으로 바꾸어 전개해 보자. 
-            </div>
+            </div></details>
             <div class="thinking-space"></div>
         </section>
 
@@ -237,7 +237,7 @@
                 </div>
             </div>
 
-            <div class="hint-box mt-0">
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
                 <strong>💡 수Ⅰ 단독 우회 풀이:</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
                     <li>피타고라스 항등식: \((\sin B - 2\cos A \sin C)^2 = 1 - \cos^2 B = \sin^2 B\) → \(\sin B - 2\cos A \sin C = \pm \sin B\)</li>
@@ -245,7 +245,7 @@
                     <li><strong>− 경우</strong>: \(\sin B = \cos A \sin C\). 사인법칙 \(b = 2R\sin B,\; c = 2R\sin C\)로 변 환산 → \(b = c \cdot \cos A\). 코사인법칙으로 \(\cos A = \dfrac{b^2 + c^2 - a^2}{2bc}\) 대입 → \(a^2 + b^2 = c^2\) → \(\angle C = 90°\)</li>
                     <li>빗변 \(c = \overline{AB} = 4\), 다리 \(a = \overline{BC} = 3\) → \(b = \overline{CA} = \sqrt{7}\) → 넓이 \(= \dfrac{1}{2} \cdot 3 \cdot \sqrt{7} = \dfrac{3\sqrt{7}}{2}\)</li>
                 </ol>
-            </div>
+            </div></details>
 
             <div class="mt-4 text-sm text-slate-500 italic">
                 ※ 원 해설은 덧셈정리(\(\sin B = \sin(A+C)\))를 사용하나, 위 우회 풀이로 코사인법칙·사인법칙·피타고라스 항등식만으로 완결 가능. 자세한 풀이는 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-e3" class="text-purple-600 underline font-semibold">수능특강 해설지 예제 3</a> 참조.
@@ -271,7 +271,7 @@
                 이등변삼각형 \(\triangle ABC\)(\(\overline{AB} = \overline{AC} = 6\))의 변 \(\overline{AC}\) 위의 점 \(E\)와 변 \(\overline{BC}\) 위의 점 \(D\)에 대하여 \(\overline{AE} = \overline{DE},\; \overline{AD} = 3,\; \overline{BD} = 3\)일 때, 삼각형 \(DEC\)의 외접원의 반지름의 길이를 구하시오.
             </div>
 
-            <div class="hint-box mt-0">
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
                 <strong>💡 수Ⅰ 단독 풀이 흐름:</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
                     <li>\(\triangle ADE\)에서 코사인법칙으로 \(\cos(\angle A)\) 결정 → \(\sin(\angle A)\) 도출</li>
@@ -280,7 +280,7 @@
                     <li>\(\angle DCE = \angle ACB\)이므로 \(\triangle DEC\)에서 사인법칙: \(2R = \dfrac{\overline{DE}}{\sin(\angle DCE)}\)</li>
                 </ol>
                 <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 원 해설은 반각 공식·삼각방정식을 거치지만, 위 흐름으로 코사인법칙 2회 + 사인법칙 2회만으로 완결 가능 (배각·반각·삼각방정식 불필요).</p>
-            </div>
+            </div></details>
 
             <div class="mt-4 text-sm text-slate-500 italic">
                 ※ 도형 그림과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-s6" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 6</a>에서 확인.

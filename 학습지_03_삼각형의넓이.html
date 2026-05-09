@@ -165,12 +165,12 @@
             <div class="mb-16">
                 <span class="badge badge-l2">Level 2: 응용 훈련 (코사인법칙 융합)</span>
                 <div class="text-2xl font-bold text-slate-800 mb-4">3. \(\triangle ABC\)의 세 변의 길이가 \(a=5\), \(b=7\), \(c=8\)일 때, 이 삼각형의 넓이를 구하시오.</div>
-                <div class="hint-box">
+                <details class="hint-box"><summary>💡 힌트 보기</summary><div class="hint-content">
                     <strong>💡 Hint:</strong> 세 변의 길이만 알 때는 바로 넓이를 구할 수 없다!
                     <br>1) <strong>코사인법칙</strong>으로 \(\cos A\)를 먼저 구한다.
                     <br>2) \(\sin^2 A + \cos^2 A = 1\)을 이용해 \(\sin A\)를 구한다.
                     <br>3) 넓이 공식에 대입한다!
-                </div>
+                </div></details>
                 <div class="thinking-space"></div>
             </div>
 
@@ -178,10 +178,10 @@
             <div class="mb-10">
                 <span class="badge badge-l3">Level 3: 심화 훈련 (함정 주의)</span>
                 <div class="text-2xl font-bold text-slate-800 mb-4">4. 원에 내접하는 사각형 ABCD에서 \(\overline{AB}=3\), \(\overline{BC}=5\), \(\overline{CD}=4\), \(\angle B = 60^\circ\) 일 때, 사각형 ABCD의 넓이를 구하시오.</div>
-                <div class="hint-box border-red-400 bg-red-50 text-red-900">
+                <details class="hint-box border-red-400 bg-red-50 text-red-900"><summary>⚠️ 함정 분석 보기</summary><div class="hint-content">
                     <strong>⚠️ 핵심 분석 (틀려야 는다!):</strong> 그냥 공식에 넣으려고 하면 안 된다. 보조선(대각선 \(\overline{AC}\))을 그어 삼각형 두 개로 쪼개야 한다!
                     <br><strong>함정 포인트:</strong> 원에 내접하는 사각형은 **'마주보는 각의 합이 \(180^\circ\)'**라는 중학교 성질을 놓치면 \(\angle D\)를 구할 수 없다. (\(\angle D = 120^\circ\))
-                </div>
+                </div></details>
                 <div class="thinking-space"></div>
             </div>
         </section>
@@ -212,7 +212,7 @@
                 삼각형 \(ABC\)에서 변 \(\overline{BC}\)를 \(2:1\)로 내분하는 점을 \(D\)라 하자. \(\overline{BC} = 12\)이고, 변 \(\overline{AC}\) 위의 점 \(E\)에 대하여 \(\angle\mathrm{BAE} = \angle\mathrm{BED}\), 삼각형 \(ABE\)의 넓이가 \(9\sqrt{5}\)일 때, 선분 \(\overline{AD}\)의 길이는?
             </div>
 
-            <div class="hint-box mt-0">
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
                 <strong>💡 수Ⅰ 단독 풀이 흐름 (4단계):</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
                     <li><strong>닮음 발견</strong>: \(\angle\mathrm{BAE} = \angle\mathrm{BED}\), 공통각 \(\angle B\) → \(\triangle ABC \sim \triangle EBD\) (AA). 이로부터 \(\overline{BD}=8,\; \overline{CD}=4\)와 변 비율 도출</li>
@@ -221,7 +221,7 @@
                     <li><strong>코사인법칙</strong>: \(\overline{AC}=\dfrac{27}{2},\; \overline{CD}=4,\; \cos\theta=\dfrac{2}{3}\) → \(\overline{AD}^2 = \overline{AC}^2 + \overline{CD}^2 - 2\cdot\overline{AC}\cdot\overline{CD}\cos\theta\) → \(\overline{AD}\) 결정</li>
                 </ol>
                 <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 닮음 발견이 첫 단추. 이후 넓이비(½ab sinC)가 변수 결정의 허브 역할. 배각·반각·덧셈정리 불필요.</p>
-            </div>
+            </div></details>
 
             <div class="mt-4 text-sm text-slate-500 italic">
                 ※ 도형 그림과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-s10" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 10</a>에서 확인.
@@ -247,7 +247,7 @@
                 \(\overline{AB}=4,\; \overline{BC}=6\)인 평행사변형 \(ABCD\)에서 선분 \(\overline{AD}\)를 \(2:1\)로 내분하는 점을 \(E\)라 하자. 삼각형 \(ABE\)의 넓이가 \(4\sqrt{3}\)일 때, 선분 \(\overline{AC}\)의 길이의 최댓값은?
             </div>
 
-            <div class="hint-box mt-0">
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
                 <strong>💡 수Ⅰ 단독 풀이 흐름:</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
                     <li><strong>내분점</strong>: 평행사변형이라 \(\overline{AD} = \overline{BC} = 6\), \(\overline{AE} = \dfrac{2}{3}\cdot 6 = 4\)</li>
@@ -262,7 +262,7 @@
                     <li><strong>최댓값</strong>: \(\overline{AC} = 2\sqrt{19}\)</li>
                 </ol>
                 <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 5번(평행사변형 + 넓이 → ∠A 역산)을 한 단계 확장 — sin 두 해를 분기해 각 경우 코사인법칙으로 대각선 길이를 구하고 최댓값을 선택.</p>
-            </div>
+            </div></details>
 
             <div class="mt-4 text-sm text-slate-500 italic">
                 ※ 도형과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-ex8" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 8</a>에서 확인.

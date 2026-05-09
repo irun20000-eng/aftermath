@@ -444,3 +444,75 @@ body.aft-modal-locked { overflow: hidden; }
   background: #0f172a;
   color: #f1f5f9;
 }
+
+/* ============================================================
+   힌트·풀이 토글 — <details>/<summary> 스타일
+   ============================================================ */
+details.hint-box {
+  display: block;
+  padding: 0;
+}
+details.hint-box > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  color: #92400e;
+  background: transparent;
+  border-radius: inherit;
+  transition: background 0.15s;
+}
+details.hint-box > summary:hover {
+  background: rgba(245, 158, 11, 0.08);
+}
+details.hint-box > summary::-webkit-details-marker { display: none; }
+details.hint-box > summary::before {
+  content: '▶';
+  font-size: 0.65em;
+  color: currentColor;
+  opacity: 0.6;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+details.hint-box[open] > summary::before {
+  transform: rotate(90deg);
+}
+details.hint-box > .hint-content {
+  padding: 0 1.25rem 1.25rem 2rem;
+  animation: hintFadeIn 0.2s ease-out;
+}
+@keyframes hintFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 빨간색 변형 (Level 3 함정) */
+details.hint-box.border-red-400 > summary,
+details.hint-box.bg-red-50 > summary { color: #991b1b; }
+details.hint-box.border-red-400 > summary:hover,
+details.hint-box.bg-red-50 > summary:hover { background: rgba(220, 38, 38, 0.08); }
+
+/* slate 변형 (형성평가 전략) */
+details.hint-box.bg-slate-50 > summary,
+details.hint-box.border-slate-400 > summary { color: #334155; }
+details.hint-box.bg-slate-50 > summary:hover { background: rgba(100, 116, 139, 0.08); }
+
+/* 도전 카드 — purple 변형 (학습지_03 등) */
+.aft-problem-clone details.hint-box > summary,
+section[data-aft-problem-level="challenge"] details.hint-box > summary {
+  color: #5b21b6;
+}
+
+/* 인쇄 시 모두 펼침 (오답분석·복습용) */
+@media print {
+  details.hint-box { display: block; }
+  details.hint-box > summary { display: none; }
+  details.hint-box > .hint-content { padding: 1rem 1.25rem !important; display: block !important; }
+  details.hint-box::after { content: ''; }
+  details.hint-box > .hint-content { animation: none; }
+  details:not([open]) > .hint-content { display: block !important; }
+}
