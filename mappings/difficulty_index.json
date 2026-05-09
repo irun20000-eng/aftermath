@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_10 진입: s5-ex10 fit_for_worksheet_10 갱신)",
+  "updated_at": "2026-05-09 (학습지_11 진입: 수열의합귀납법 단원 5개 신규 평가, 총 48개)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -683,6 +683,75 @@
       "in_curriculum": true,
       "fit_for_worksheet_08": true,
       "fit_for_worksheet_08_reason": "학습지_08 정합. 난이도 7로 rank 1·2와 비등하나 rank 3 후보 (다른 후보가 학습지 Q5와 더 직접 연계).",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-e1": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "예제",
+      "concepts": ["Σ 분배·선형성", "(a+1)²-(a-1)²=4a 차분", "(a+1)²+(a-1)²=2(a²+1) 합", "Σaₖ·Σaₖ² 동시 추출", "Σ 상수합 (Σ1=n)"],
+      "strategy": "Σ(aₖ+1)²-Σ(aₖ-1)²=Σ4aₖ=28 → Σaₖ=7. Σ(aₖ+1)²+Σ(aₖ-1)²=Σ2(aₖ²+1)=76 → Σaₖ²=28. Σ(2aₖ-3)²=4·28-12·7+9·10=118",
+      "estimated_time_min": 7,
+      "suneung_connection": "수능 21·27번급 — Σ 성질 + 식 변형 + Σaₖ·Σaₖ² 분리.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ Σ 성질만 사용 (Σk·Σk² 공식 불필요). 학습지_11에서 학습한 분배·선형성·상수합으로 완결.",
+      "fit_for_worksheet_11": true,
+      "fit_for_worksheet_11_reason": "학습지_11 Q4((aₖ+bₖ)² 전개·분리) + Q6(완전제곱 (2aₖ-1)² 전개·대입) 본질 확장 — 차합 분리로 Σaₖ·Σaₖ² 동시 추출. max(5)+1=6 적정. Σk·Σk² 공식 불필요로 단원 정합. 학습지_11 도전 rank 1 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-ex3": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "유제",
+      "concepts": ["Σ 정의 (k의 범위)", "두 시그마 구간 차이 비교", "공통 부분 소거", "직접 합산"],
+      "strategy": "∑₁²⁰(2k-1)²=1²+3²+...+39². ∑₈²¹(2k-3)²=13²+15²+...+39². 공통 부분(13²~39²) 소거 → 1²+3²+5²+7²+9²+11² = 1+9+25+49+81+121 = 286",
+      "estimated_time_min": 6,
+      "suneung_connection": "수능 21·27번급 — Σ 인덱스 변환 + 구간 차이 분석.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ Σ 정의만 사용 (Σk² 공식 미사용). 끝항만 직접 6개 합산.",
+      "fit_for_worksheet_11": true,
+      "fit_for_worksheet_11_reason": "학습지_11 Q1(압축)·Q2(풀어쓰기) Σ 정의·범위 이해 심화 — 두 시그마 구간 비교로 공통 부분 소거. max(5)+1=6 적정. 다른 사고 경로(Σ 정의 깊이 이해 vs. e1의 식 변형). 학습지_11 도전 rank 2 채택 ⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-b1": {
+      "difficulty": 4,
+      "tier": "기본",
+      "level_label_in_source": "기초",
+      "concepts": ["Σ 분배 (Σ(aₖ+c)=Σaₖ+cn)", "Σ(aₖ+k) 분리 (Σk=28 직접 계산)", "aₙ=Sₙ-Sₙ₋₁"],
+      "strategy": "Σ(aₖ+1)=Σaₖ+8=45 → Σaₖ(1~8)=37. Σ(aₖ+k)=Σaₖ+Σk=53, Σk=1+2+...+7=28 → Σaₖ(1~7)=25. a₈=37-25=12",
+      "estimated_time_min": 4,
+      "in_curriculum": true,
+      "fit_for_worksheet_11": false,
+      "fit_for_worksheet_11_reason": "난이도 4 = max(5) 미달. 학습지 Q3(분배 + 상수합)와 같은 수준 → 본문 연습.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-b3": {
+      "difficulty": 4,
+      "tier": "기본",
+      "level_label_in_source": "기초",
+      "concepts": ["Σ 선형성", "두 시그마 식 연립"],
+      "strategy": "A=Σaₖ, B=Σbₖ. A+3B=25, 2A-B=8 → A=7, B=6 → A+B=13",
+      "estimated_time_min": 3,
+      "in_curriculum": true,
+      "fit_for_worksheet_11": false,
+      "fit_for_worksheet_11_reason": "난이도 4 = max(5) 미달. 학습지 Q3 수준 → 본문 연습.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-ex1": {
+      "difficulty": 3,
+      "tier": "기초",
+      "level_label_in_source": "유제",
+      "concepts": ["Σ 선형성"],
+      "strategy": "Σ(3aₖ+4bₖ)=3·23+4·6=93",
+      "estimated_time_min": 1,
+      "in_curriculum": true,
+      "fit_for_worksheet_11": false,
+      "fit_for_worksheet_11_reason": "난이도 3 — 갭 부족.",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     }

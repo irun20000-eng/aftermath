@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_10 도전 1개 추가 — s5-ex10, 종합 단원 융합형)",
+  "updated_at": "2026-05-09 (학습지_11 도전 2개 추가 — s6-e1·s6-ex3, 수열의합귀납법 단원 신규)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -345,6 +345,58 @@
       }
     },
     {
+      "worksheet_id": "학습지_11_합의기호",
+      "worksheet_concepts": ["합의 기호 Σ 정의", "Σ의 분배·선형성", "상수배 (Σcaₖ=cΣaₖ)", "상수합 (Σc=cn)"],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "Q4·Q6(완전제곱 전개·분리)이 max=5. Q5(상수합 함정)은 개념 이해 4. Σk·Σk² 공식은 다음 차시(학습지_12)에서 학습.",
+      "constraints_note": "학습지_11 후보는 Σk·Σk² 자연수 거듭제곱 합 공식 미사용해야 함. 부분분수, mod 분류 등도 단원 외 도구로 제외.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-e1",
+          "label": "수능특강 수열의 합 예제 1",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "예제",
+          "estimated_time_min": 7,
+          "concepts_matched": ["Σ 분배·선형성", "(a+1)²-(a-1)²=4a 차분", "(a+1)²+(a-1)²=2(a²+1) 합", "Σaₖ·Σaₖ² 동시 추출", "Σ 상수합 (Σ1=n)"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분", "Σk·Σk² 공식", "부분분수"],
+          "reason": "학습지_11 Q4((aₖ+bₖ)² 전개·분리) + Q6(완전제곱 (2aₖ-1)² 전개·대입) 본질 확장. 두 시그마식의 차/합으로 Σaₖ와 Σaₖ²를 동시 추출하는 발상이 핵심 — 학습지에서 학습한 분배·선형성·상수합만으로 완결 (Σk·Σk² 공식 불필요). max(5)+1=6 적정. 단원 정합 최강.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        },
+        {
+          "rank": 2,
+          "source": "수능특강_수열의합귀납법",
+          "problem_id": "s6-ex3",
+          "label": "수능특강 수열의 합 유제 3",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 6,
+          "concepts_matched": ["Σ 정의 (k의 범위)", "두 시그마 구간 차이 비교", "공통 부분 소거", "직접 합산"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분", "Σk·Σk² 공식", "부분분수"],
+          "reason": "학습지_11 Q1(압축)·Q2(풀어쓰기) Σ 정의·범위 이해 심화 — 두 시그마 ∑₁²⁰(2k-1)²과 ∑₈²¹(2k-3)²이 13²~39² 구간에서 겹침을 발견하고 소거. 끝항만 직접 6개 합산(1+9+25+49+81+121=286)으로 Σk² 공식 미사용. rank 1과 다른 사고 경로(식 변형 vs. 정의 깊이 이해).",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "rejected_candidates": [
+        {"problem_id": "s6-b1", "reason": "난이도 4 = max(5) 미달. 학습지 Q3 수준 → 본문 연습."},
+        {"problem_id": "s6-b3", "reason": "난이도 4 = max(5) 미달. 학습지 Q3 수준 → 본문 연습."},
+        {"problem_id": "s6-ex1", "reason": "난이도 3 — 단순 선형성. 갭 부족."},
+        {"problem_id": "s6-b4·b8·e2·e3·ex5", "reason": "Σk·Σk² 공식 또는 부분분수 사용 — 학습지_12·13 진도 후. 학습지_11 단원 외."},
+        {"problem_id": "s6-ex2", "reason": "mod 잉여류 분류 — 학습지_11 단원 외 (수론적 사고)."},
+        {"problem_id": "s6-b2·b5·b7", "reason": "점화식 — 학습지_15+ 진도 후."}
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
       "worksheet_id": "학습지_10_중단원마무리_III_1",
       "worksheet_concepts": ["등차·등비 일반항·중항·합 종합", "절댓값 + 부호 분기", "합의 최댓값 (aₙ 부호 변환점)", "두 수열 동시 조건"],
       "max_difficulty_in_worksheet": 7,
@@ -397,6 +449,13 @@
       "evaluated_ids": ["s5-e1", "s5-ex1", "s5-ex2", "s5-ex3", "s5-ex4", "s5-s1", "s5-s3", "s5-b5", "s5-b8", "s5-s2", "s5-s4", "s5-s7", "s5-e4", "s5-ex7", "s5-ex8", "s5-b4", "s5-b6", "s5-b7", "s5-s5", "s5-s6", "s5-e5", "s5-ex5", "s5-ex9", "s5-ex10", "s5-s8"],
       "unevaluated_count": 9,
       "unevaluated_categories": "잔여 — 다른 챕터(c1·c2·c3 실력 등) 또는 등차합 외 항목. 학습지_18(중단원) 또는 모의고사 도전 시 평가."
+    },
+    "수능특강_수열의합귀납법": {
+      "evaluated_count": 5,
+      "evaluated_ids": ["s6-e1", "s6-ex3", "s6-b1", "s6-b3", "s6-ex1"],
+      "unevaluated_count": 31,
+      "unevaluated_categories": "Σk·Σk² 공식 후보 (s6-b4·b8·e2·e3·ex5·ex8·ex9·ex10·ex11·s1~s7) — 학습지_12·13·14 진입 시 평가. 점화식·귀납법 후보 (s6-b2·b5·b7·ex6·ex7·s4·s5·s6·s7) — 학습지_15+ 진입 시 평가. mod 분류 (s6-ex2) — 단원 외. 실력 (s6-c1·c2·c3) — 정책상 제외.",
+      "policy_violations": []
     }
   }
 }
