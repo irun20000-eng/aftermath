@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_08 도전 2개 추가 — s5-ex8·s5-s5)",
+  "updated_at": "2026-05-09 (학습지_09 도전 2개 추가 — s5-s8·s5-ex9)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -295,6 +295,54 @@
         "current_count": 2,
         "status": "complete"
       }
+    },
+    {
+      "worksheet_id": "학습지_09_등비수열의합",
+      "worksheet_concepts": ["등비합 공식 Sₙ=a(rⁿ-1)/(r-1)", "공비 r 분기 (r=1, r≠1)", "Sₙ→aₙ 변환 (aₙ=Sₙ-Sₙ₋₁)", "Sₙ에서 등비 판정 (첫째항 일치 함정)", "원리합계 (적금)"],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "Q3(인수분해 1-r⁶=(1-r³)(1+r³) + 합 조건 연립)·Q4(Sₙ→aₙ 등비 함정 — 첫째항부터 등비 조건) 모두 난이도 5. 오답률 1위 함정은 Q4.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_등차수열등비수열",
+          "problem_id": "s5-s8",
+          "label": "수능특강 등차·등비 기본 8",
+          "difficulty": 8,
+          "tier": "심화",
+          "level_label_in_source": "기본",
+          "estimated_time_min": 12,
+          "concepts_matched": ["등차중항 (2a₁=a₂+a₃)", "등비 부호 (a₁a₂<0 → r<0)", "등비합 공식", "Sₙ-c 등비 변환 (학습지 Q4 핵심)"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_09 Q4(Sₙ→aₙ 등비 함정) 본질 확장. r²+r-2=0 + 부호 분기로 r=-2 결정 후 Sₙ-1이 등비가 되는 조건(상수항 소거)에서 a₁=3 → S₇=129. 학습지 Q4가 가르치는 'Sₙ에서 첫째항부터 등비'의 변환 사고를 4단 결합으로 끌어올림. max+3 적정 — 수능 29·30번급.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        },
+        {
+          "rank": 2,
+          "source": "수능특강_등차수열등비수열",
+          "problem_id": "s5-ex9",
+          "label": "수능특강 등차·등비 유제 9",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 8,
+          "concepts_matched": ["등비합 공식", "1+r+r²+r³=(1+r)(1+r²) 인수분해 (학습지 Q3 핵심)", "이차방정식", "부호 조건 r>1", "다중 조건 연립"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_09 Q3(1-r⁶=(1-r³)(1+r³) 인수분해 합 조건) 직접 심화 — 1+r+r²+r³=(1+r)(1+r²) 인수분해로 2r²-5r+2=0 → r=2 (r>1) → a=1 → S₆=63. Q3와 동일한 인수분해 발상을 다른 인수분해 형태 + 이차방정식까지 확장. 학습지 Q3·Q4 모두 직접 연계 (일관성).",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "rejected_candidates": [
+        {"problem_id": "s5-e5", "reason": "난이도 5 = max 동급. Q3와 같은 합 조건 연립 → 본문 연습 수준."},
+        {"problem_id": "s5-ex5", "reason": "난이도 3 — Sₙ→aₙ 단순 적용. 갭 부족."},
+        {"problem_id": "s5-ex10", "reason": "난이도 8, log·등차·등비·곱 4중 융합. rank 2 후보였으나 사용자 선택으로 보류 (학습지_18 종합 활용 가능)."}
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
     }
   ],
   "evaluated_problems_pool": {
@@ -306,10 +354,10 @@
       "policy_violations": ["s4-s1 (배각 필수)", "s4-s4 (반각·배각 필수)", "s4-s9 (덧셈정리 필수)"]
     },
     "수능특강_등차수열등비수열": {
-      "evaluated_count": 20,
-      "evaluated_ids": ["s5-e1", "s5-ex1", "s5-ex2", "s5-ex3", "s5-ex4", "s5-s1", "s5-s3", "s5-b5", "s5-b8", "s5-s2", "s5-s4", "s5-s7", "s5-e4", "s5-ex7", "s5-ex8", "s5-b4", "s5-b6", "s5-b7", "s5-s5", "s5-s6"],
-      "unevaluated_count": 14,
-      "unevaluated_categories": "등비합 5개 (s5-e5·ex5·ex9·ex10·s8) — 학습지_09 진입 시 평가. 잔여 9개는 다른 단원."
+      "evaluated_count": 25,
+      "evaluated_ids": ["s5-e1", "s5-ex1", "s5-ex2", "s5-ex3", "s5-ex4", "s5-s1", "s5-s3", "s5-b5", "s5-b8", "s5-s2", "s5-s4", "s5-s7", "s5-e4", "s5-ex7", "s5-ex8", "s5-b4", "s5-b6", "s5-b7", "s5-s5", "s5-s6", "s5-e5", "s5-ex5", "s5-ex9", "s5-ex10", "s5-s8"],
+      "unevaluated_count": 9,
+      "unevaluated_categories": "잔여 — 다른 챕터(c1·c2·c3 실력 등) 또는 등차합 외 항목. 학습지_18(중단원) 또는 모의고사 도전 시 평가."
     }
   }
 }
