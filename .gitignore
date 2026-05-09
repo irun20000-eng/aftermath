@@ -49,3 +49,8 @@ nav/
 # 임시 압축·백업 파일 (교사용 자료)
 nav_backup*.tar.gz
 *.tar.gz
+
+# 압축 백업 파일 (1회용 전송 후 제거)
+*.zip
+*.tar.gz
+*.tar
