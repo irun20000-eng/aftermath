@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
-  "updated_at": "2026-05-09 (학습지_07 도전 2개 추가 — s5-s7·s5-s2)",
+  "updated_at": "2026-05-09 (학습지_08 도전 2개 추가 — s5-ex8·s5-s5)",
   "policies": {
     "exclude_levels": ["실력 (advanced)"],
     "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
@@ -246,6 +246,55 @@
         "current_count": 2,
         "status": "complete"
       }
+    },
+    {
+      "worksheet_id": "학습지_08_등비수열",
+      "worksheet_concepts": ["등비수열 일반항 aₙ=ar^(n-1)", "공비 r (실수)", "등비중항 b²=ac (부호 함정)", "항의 조건 연립"],
+      "max_difficulty_in_worksheet": 4,
+      "max_difficulty_note": "Q5(등비중항 부호 함정) + Q6(이차전개) 모두 난이도 4. 학습지 max가 매우 낮아 도전 갭이 크게 잡힘.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_등차수열등비수열",
+          "problem_id": "s5-ex8",
+          "label": "수능특강 등차·등비 유제 8",
+          "difficulty": 8,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 10,
+          "concepts_matched": ["등비 일반항 (aₙ=rⁿ)", "정수 인수분해 (2¹² 약수)", "음수 r 부호 케이스 (k 짝수)", "약수 열거"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_08 Q5(등비중항 부호 함정) 정수 r·약수 열거로 본질 확장. 'r^k=2¹² 자연수 k 존재'을 양수 r·음수 r(k 짝수) 두 케이스로 분리하여 약수 m∈{1,2,3,4,6,12} 열거. 양수 6개 + 음수 4개 = 10. 학습지 max(4) 대비 +4 갭 크나 학습지 부호 함정의 직접 심화 — 수능 28·30번급 도전 목표.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        },
+        {
+          "rank": 2,
+          "source": "수능특강_등차수열등비수열",
+          "problem_id": "s5-s5",
+          "label": "수능특강 등차·등비 기본 5",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "기본",
+          "estimated_time_min": 12,
+          "concepts_matched": ["등비 일반항", "log 비율 변환 (log a/b=log a-log b)", "공비 부호 분기 (음수 r)", "자연수·음정수 조건", "최댓값"],
+          "tools_avoided": ["배각", "반각", "덧셈정리", "내적", "미분"],
+          "reason": "학습지_08 Q5(부호 함정) + log 결합 + 자연수·음정수 부호 조건. r=±3 분기 후 r=3은 모순(a₂a₃>0), r=-3에서 a₃ 3의 배수 조건으로 a₄ 최댓값 -9. max+3 적정. rank 1과 다른 사고 경로(약수 열거 vs. log·부호·정수 분기).",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "rejected_candidates": [
+        {"problem_id": "s5-b4·b6·e4·ex7", "reason": "난이도 3~4 = max 동급 이하. 학습지_08 본문 연습 수준."},
+        {"problem_id": "s5-b7", "reason": "난이도 6, max+2 가능하나 rank 1·2(7·8) 대비 우선순위 낮음. 심화 보충 후보."},
+        {"problem_id": "s5-s6", "reason": "난이도 7 적정하나 rank 1·2가 Q5와 더 직접 연계. rank 3 여분 후보."},
+        {"problem_id": "s5-e5·ex5·ex9·ex10·s8", "reason": "등비합(Sₙ) 사용 → 학습지_09 후보로 이관."}
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
     }
   ],
   "evaluated_problems_pool": {
@@ -257,10 +306,10 @@
       "policy_violations": ["s4-s1 (배각 필수)", "s4-s4 (반각·배각 필수)", "s4-s9 (덧셈정리 필수)"]
     },
     "수능특강_등차수열등비수열": {
-      "evaluated_count": 12,
-      "evaluated_ids": ["s5-e1", "s5-ex1", "s5-ex2", "s5-ex3", "s5-ex4", "s5-s1", "s5-s3", "s5-b5", "s5-b8", "s5-s2", "s5-s4", "s5-s7"],
-      "unevaluated_count": 22,
-      "unevaluated_categories": "등비 12개 (e4·e5·ex5·ex7·ex8·ex9·ex10·b4·b6·b7·s5·s6·s8) — 학습지_08·09 진입 시 평가."
+      "evaluated_count": 20,
+      "evaluated_ids": ["s5-e1", "s5-ex1", "s5-ex2", "s5-ex3", "s5-ex4", "s5-s1", "s5-s3", "s5-b5", "s5-b8", "s5-s2", "s5-s4", "s5-s7", "s5-e4", "s5-ex7", "s5-ex8", "s5-b4", "s5-b6", "s5-b7", "s5-s5", "s5-s6"],
+      "unevaluated_count": 14,
+      "unevaluated_categories": "등비합 5개 (s5-e5·ex5·ex9·ex10·s8) — 학습지_09 진입 시 평가. 잔여 9개는 다른 단원."
     }
   }
 }
