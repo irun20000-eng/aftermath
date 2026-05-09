@@ -157,7 +157,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -217,12 +217,112 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto">4. 수열의 합 \(1 \cdot 2 + 2 \cdot 5 + 3 \cdot 8 + \dots + 7 \cdot 20\) 의 값을 구하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                 <strong>💡 힌트:</strong> 숫자들이 어떤 규칙으로 곱해져 있는지 파악하고, 일반항 \(a_k\)를 세운 뒤 \(\sum_{k=1}^{7} a_k\) 꼴로 나타내어 계산해보자. (앞의 숫자는 \(1, 2, 3, \dots\) 이고 뒤의 숫자는 \(2, 5, 8, \dots\) 이다.)
             </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수열의 합 기초 8) — Q3 곱셈 함정 직접 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-b8"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 기초 8">
+            <h2 class="section-title">⭐ 도전 문제 1 — Q3 곱셈 함정 직접 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 기초 8</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+1, 6분) · 핵심: 근과 계수의 관계 + 다항식 전개 + Σk²·Σk·Σ1</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                이차방정식 \(x^2 - 3x + 1 = 0\)의 두 근을 \(\alpha\), \(\beta\)라 하자. \(\displaystyle\sum_{k=1}^{6}(k - \alpha^2)(k - \beta^2)\)의 값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>근과 계수의 관계로 대칭식 추출</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\alpha + \beta = 3\), \(\alpha\beta = 1\)</li>
+                            <li>\(\alpha^2 + \beta^2 = (\alpha+\beta)^2 - 2\alpha\beta = 9 - 2 = 7\)</li>
+                            <li>\(\alpha^2 \beta^2 = (\alpha\beta)^2 = 1\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>(k-α²)(k-β²)는 곱! 반드시 전개해야 Σ 적용 가능</strong> <span class="text-red-600 font-bold">(Q3 함정 핵심)</span>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\((k - \alpha^2)(k - \beta^2) = k^2 - (\alpha^2 + \beta^2) k + \alpha^2 \beta^2 = k^2 - 7 k + 1\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Σ 분배 + 공식 대입</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum_{k=1}^{6} k^2 = 91\), \(\displaystyle\sum_{k=1}^{6} k = 21\), \(\displaystyle\sum_{k=1}^{6} 1 = 6\)</li>
+                            <li>\(\displaystyle\sum_{k=1}^{6}(k^2 - 7k + 1) = 91 - 7 \cdot 21 + 6 = 91 - 147 + 6 = \boxed{-50}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q3가 가르치는 "Σab≠ΣaΣb 곱셈 분리 함정"을 정확히 강화. 곱은 반드시 전개해서 다항식 합으로 만들어야 Σk·Σk² 공식이 적용된다. 근과 계수의 관계로 대칭식을 추출하는 것은 수상 도구 — 수Ⅰ과 융합되는 전형적인 패턴.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-b8" class="text-purple-600 underline font-semibold">수능특강 해설지 기초 8</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 수열의 합 기초 4) — Q2·Q4 다항식 차수 축소 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수열의합귀납법"
+                 data-aft-source-id="s6-b4"
+                 data-aft-source-label="수능특강 수열의 합·귀납법 기초 4">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q2·Q4 다항식 차수 축소</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 기초 4</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+1, 7분) · 핵심: A²-B² 차수 축소 + Σk·Σk² + 방정식</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\displaystyle\sum_{k=1}^{5}(k+a)^4 - \sum_{k=1}^{5}\{k(k+2a)\}^2 = 250 a^2\)을 만족시키는 양수 \(a\)의 값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>차수 축소 (\(A^2 - B^2\) 묶기)</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(X = k^2 + 2 a k\)로 치환하면 \((k+a)^2 = X + a^2\), \(k(k+2a) = X\)</li>
+                            <li>\((k+a)^4 - \{k(k+2a)\}^2 = (X + a^2)^2 - X^2 = 2 a^2 X + a^4\)</li>
+                            <li>4차 다항식이 2차로 단순화 — Σ 계산이 쉬워짐</li>
+                        </ul>
+                    </li>
+                    <li><strong>Σ 분배 + 공식 대입</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\displaystyle\sum_{k=1}^{5}(2 a^2 X + a^4) = 2 a^2 \sum (k^2 + 2 a k) + 5 a^4\)</li>
+                            <li>\(\displaystyle\sum_{k=1}^{5} k^2 = 55\), \(\sum_{k=1}^{5} k = 15\)</li>
+                            <li>\(= 2 a^2 (55 + 30 a) + 5 a^4 = 5 a^4 + 60 a^3 + 110 a^2\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(a\) 방정식 풀기</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(5 a^4 + 60 a^3 + 110 a^2 = 250 a^2\) ⇒ \(5 a^2 (a^2 + 12 a - 28) = 0\)</li>
+                            <li>\((a - 2)(a + 14) = 0\) ⇒ <strong>\(a = 2\)</strong> (\(a > 0\))</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q2((2k-1)² 전개)·Q4(일반항 곱) 본질을 확장 — 4차·2차 곱이 등장하는 더 복잡한 다항식이라도 <strong>차수 축소</strong>(공통식 묶기, A²-B²) 발상으로 단순화한 뒤 Σk·Σk² 적용. rank 1과 다른 사고 경로(근과 계수 vs. 차수 축소).</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_수열의합귀납법_해설.html#s6-b4" class="text-purple-600 underline font-semibold">수능특강 해설지 기초 4</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 

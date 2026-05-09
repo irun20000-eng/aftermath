@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_11 진입: 수열의합귀납법 단원 5개 신규 평가, 총 48개)",
+  "updated_at": "2026-05-09 (학습지_12 진입: 합귀 단원 3개 추가 평가, 총 51개)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -752,6 +752,50 @@
       "in_curriculum": true,
       "fit_for_worksheet_11": false,
       "fit_for_worksheet_11_reason": "난이도 3 — 갭 부족.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-b8": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "기초",
+      "concepts": ["근과 계수의 관계 (대칭식 α+β·αβ)", "α²+β²=(α+β)²-2αβ", "다항식 전개 (k-α²)(k-β²)=k²-(α²+β²)k+α²β²", "Σk², Σk, Σ1 분배"],
+      "strategy": "α+β=3, αβ=1 → α²+β²=7, α²β²=1. (k-α²)(k-β²)=k²-7k+1. Σ_{k=1}^{6}(k²-7k+1)=91-7·21+6=-50",
+      "estimated_time_min": 6,
+      "suneung_connection": "수능 21·27번급 — 근과 계수의 관계 + Σk²·Σk 다항식 합.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ Σk·Σk² 공식 + 수상 근과 계수 관계. 학습지_12 학습 직후 적용 가능.",
+      "fit_for_worksheet_12": true,
+      "fit_for_worksheet_12_reason": "학습지_12 Q3(곱셈 분리 함정 — Σab≠ΣaΣb) 직접 확장 — (k-α²)(k-β²) 곱을 반드시 전개해야 Σ 적용 가능. 학습지가 강조하는 본질을 정확히 강화. max(5)+1=6 적정. Q4(일반항·Σ변환)와도 정합. 학습지_12 도전 rank 1 채택 ⭐⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-b4": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "기초",
+      "concepts": ["다항식 차수 축소 ((X+a²)²-X² = 2a²X+a⁴)", "Σk·Σk² 분배", "방정식 풀이"],
+      "strategy": "X=k²+2ak로 치환 → (k+a)⁴-{k(k+2a)}² = (X+a²)²-X² = 2a²X+a⁴. Σ_{k=1}^{5}(2a²(k²+2ak)+a⁴) = 2a²(55+30a)+5a⁴ = 5a⁴+60a³+110a². 250a²과 같이 두면 5a²(a²+12a-28)=0 → (a-2)(a+14)=0 → a=2 (a>0)",
+      "estimated_time_min": 7,
+      "suneung_connection": "수능 21·27번급 — 다항식 차수 축소 발상 + Σ.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ Σk·Σk² + 다항식 곱셈 (수상 범위). 차수 축소 발상이 핵심.",
+      "fit_for_worksheet_12": true,
+      "fit_for_worksheet_12_reason": "학습지_12 Q2((2k-1)² 전개)·Q4(일반항 곱) 본질 확장 — 더 복잡한 다항식을 차수 축소(A²-B² 묶기)로 단순화한 뒤 Σk·Σk² 적용. max(5)+1=6 적정. 학습지_12 도전 rank 2 채택 ⭐⭐⭐",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-e2": {
+      "difficulty": 7,
+      "tier": "심화",
+      "level_label_in_source": "예제",
+      "concepts": ["근과 계수의 관계", "분수항 소거", "Σk²·Σk 융합"],
+      "strategy": "aₙ=-(n²-2)/n=2/n-n, bₙ=(1-n³)/n=1/n-n². aₙ/2-bₙ=n²-n/2 (1/n 소거). Σ_{k=1}^{11}(k²-k/2)=506-33=473",
+      "estimated_time_min": 8,
+      "suneung_connection": "수능 27·28번급 — 근과 계수 + Σk²·Σk + 분수항 소거.",
+      "in_curriculum": true,
+      "fit_for_worksheet_12": false,
+      "fit_for_worksheet_12_reason": "난이도 7 = max+2. B안 후보였으나 사용자 A안 선택으로 보류. 학습지_18 종합 후보 가능.",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     }
