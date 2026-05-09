@@ -159,7 +159,7 @@
         </section>
 
         <!-- 02. 수준별 훈련 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             <div class="grid grid-cols-1 gap-12">
                 <!-- Level 1 -->
@@ -224,9 +224,96 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card border-l-[8px] border-emerald-500">
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4 overflow-x-auto overflow-y-hidden">5. 연이율이 \(5\%\)이고 1년마다 복리로 매년 초에 \(100\)만 원씩 10년 동안 적립할 때, 10년째 연말의 원리합계를 구하시오. (단, \(1.05^{10} = 1.6\) 으로 계산한다.)</div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 등차·등비 기본 8) — Q4 Sₙ 등비 변환 본질 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-s8"
+                 data-aft-source-label="수능특강 등차·등비 기본 8">
+            <h2 class="section-title">⭐ 도전 문제 1 — Q4 Sₙ 등비 변환 본질 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 기본 8</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+3, 12분) · 핵심: 등차중항 + 부호 + Sₙ-c 등비 변환 (수능 29·30번급)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                등비수열 \(\{a_n\}\)에 대하여 \(a_1 a_2 < 0\)이고, 세 수 \(a_2, a_1, a_3\)이 이 순서대로 등차수열을 이룬다. 수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. 수열 \(\{S_n - 1\}\)이 등비수열일 때, \(S_7\)의 값을 구하시오.
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>등차중항 → r 후보</strong>: \(2 a_1 = a_2 + a_3 = a_1 r + a_1 r^2\) ⇒ \(r^2 + r - 2 = 0\) ⇒ \((r-1)(r+2)=0\) → \(r = 1\) 또는 \(-2\)</li>
+                    <li><strong>부호 조건으로 r 결정</strong>: \(a_1 a_2 = a_1^2 r < 0\) ⇒ <span class="text-red-600 font-bold">r &lt; 0</span> ⇒ \(r = -2\)</li>
+                    <li><strong>\(S_n - 1\)이 등비 → \(a_1\) 결정</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(S_n = \dfrac{a(1-(-2)^n)}{3} = \dfrac{a}{3} - \dfrac{a}{3}(-2)^n\)</li>
+                            <li>\(S_n - 1 = \dfrac{a-3}{3} - \dfrac{a}{3}(-2)^n\) — 형태 \(A r^n + c\)에서 <strong>상수항 \((a-3)/3 = 0\)</strong>이어야 \(A r^n\) 등비 형태</li>
+                            <li>⇒ \(a_1 = 3\). 그러면 \(S_n - 1 = -(-2)^n\) → 공비 \(-2\)의 등비수열 ✓</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(S_7\) 계산</strong>: \(S_7 = \dfrac{3(1-(-2)^7)}{3} = 1 - (-128) = \boxed{129}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q4("Sₙ에서 첫째항부터 등비")의 본질을 4단으로 확장 — 등차중항 → 부호 → Sₙ-c 변환 → 상수항 소거. \(S_n - c\)가 등비 ⟺ \(S_n\)이 \(A r^n + c\) 꼴.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-s8" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 8</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 등차·등비 유제 9) — Q3 인수분해 심화 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-ex9"
+                 data-aft-source-label="수능특강 등차·등비 유제 9">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q3 인수분해 심화</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 유제 9</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 8분) · 핵심: 1+r+r²+r³=(1+r)(1+r²) 인수분해 + 다중 조건 연립</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                공비가 \(1\)보다 큰 등비수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. \(2 S_4 = 5(a_2 + a_3)\), \(S_5 = a_6 - 1\)이 성립할 때, \(S_6\)의 값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>인수분해로 r 결정</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(2 S_4 = 2 a (1 + r + r^2 + r^3) = 2 a (1+r)(1+r^2)\)</li>
+                            <li>\(5(a_2 + a_3) = 5 a r (1 + r)\)</li>
+                            <li>\((1+r) \neq 0\)로 약분 → \(2(1 + r^2) = 5 r\) ⇒ \(2 r^2 - 5 r + 2 = 0\)</li>
+                            <li>\((2r-1)(r-2) = 0\) → \(r = 2\) (\(r > 1\))</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(S_5 = a_6 - 1\)에서 첫째항 결정</strong>:
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(S_5 = a \cdot (2^5 - 1)/(2-1) = 31 a\), \(a_6 = 32 a\)</li>
+                            <li>\(31 a = 32 a - 1\) ⇒ \(a = 1\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(S_6\) 계산</strong>: \(S_6 = \dfrac{1 \cdot (2^6 - 1)}{2 - 1} = \boxed{63}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 Q3의 \(1 - r^6 = (1-r^3)(1+r^3)\) 인수분해 발상을 \(1 + r + r^2 + r^3 = (1+r)(1+r^2)\)로 확장. 등비합 형태에서 인수분해는 항상 도구상자에 두자.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-ex9" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 9</a> 참조.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
