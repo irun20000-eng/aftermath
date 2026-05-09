@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_13 진입: 합귀 단원 3개 추가 평가, 총 54개)",
+  "updated_at": "2026-05-09 (학습지_14 진입: s6-ex8 신규 평가, 총 55개)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -840,6 +840,23 @@
       "in_curriculum": true,
       "fit_for_worksheet_13": false,
       "fit_for_worksheet_13_reason": "학습지_13에 적합하나 a₁ 분리 처리가 추가 부담. rank 1·2(b6·ex5)와 비등하지만 사용자 A안 선택으로 보류.",
+      "fit_for_worksheet_14": false,
+      "fit_for_worksheet_14_reason": "학습지_14 종합 단원 후보였으나 본문 Q11(Sₙ=n²+2n)과 풀이 구조 거의 동일 — 중복. 사용자 B안(추가 1개) 선택으로 보류.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_수열의합귀납법#s6-ex8": {
+      "difficulty": 7,
+      "tier": "심화",
+      "level_label_in_source": "유제",
+      "concepts": ["망원합 Σ(aₖ₊₁-aₖ)=aₙ₊₁-a₁", "점화식 → 등차수열 (aₙ=na₁)", "부분분수 1/(k(k+1))=1/k-1/(k+1)", "방정식으로 a₁ 결정"],
+      "strategy": "Σ(aₖ₊₁-aₖ)=aₙ₊₁-a₁=aₙ → aₙ₊₁=aₙ+a₁ → 등차수열 → aₙ=na₁. Σ_{k=1}^{24}1/(aₖaₖ₊₁) = (1/a₁²)·Σ1/(k(k+1)) = (1/a₁²)·(1-1/25) = 24/(25a₁²) = 2/75 → a₁²=36 → a₁=6 → a₈=48",
+      "estimated_time_min": 10,
+      "suneung_connection": "수능 28번급 — 망원합 + 점화식 + 부분분수 3중 융합.",
+      "in_curriculum": true,
+      "in_curriculum_note": "수Ⅰ Σ 망원합 + 점화식 (학습지_15 진도 전이지만 등차 수준) + 부분분수. 모두 단독 사용 가능 도구.",
+      "fit_for_worksheet_14": true,
+      "fit_for_worksheet_14_reason": "학습지_14(III-2 종합)에 최적. 본문 Q10(부분분수)·Q11(Sₙ→aₙ + 부분분수)와 다른 사고 경로 — 망원합으로 시작해 점화식을 등차로 환원하는 발상. max(7) 동급이지만 사고 깊이가 더 큼. 학습지_14 도전 채택 ⭐⭐⭐⭐",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     }
