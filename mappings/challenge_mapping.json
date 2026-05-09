@@ -1,6 +1,46 @@
 {
   "schema_version": 1,
-  "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님이 검수·승인 후 기록. PR-E 이후 채워짐.",
-  "updated_at": null,
-  "mappings": []
+  "description": "학습지 ↔ 수능특강 도전문제 양방향 매핑. problem-curator의 추천을 선생님 검수 후 기록.",
+  "updated_at": "2026-05-09",
+  "policies": {
+    "exclude_levels": ["실력 (advanced)"],
+    "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
+    "rationale": "수능 1등급 수준의 '실력' 카테고리는 학생 좌절 위험이 커 도전 후보에서 제외. 예제·유제·기초·기본 범위 내에서 학습지 max_difficulty +1~2단계 위로 선정."
+  },
+  "mappings": [
+    {
+      "worksheet_id": "학습지_01_사인법칙",
+      "worksheet_concepts": ["사인법칙 (Type A·B·C)", "외접원 반지름 R", "sin의 두 해 가능성", "변·각 변형식"],
+      "max_difficulty_in_worksheet": 6,
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_사인법칙코사인법칙",
+          "problem_id": "s4-e1",
+          "label": "수능특강 사인법칙·코사인법칙 예제 1",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "예제",
+          "estimated_time_min": 5,
+          "concepts_matched": ["사인법칙", "외접원 반지름 R"],
+          "reason": "두 삼각형 ADC·ABC에 사인법칙을 따로 세운 뒤 미지각 sinA를 구하지 않고 두 식을 곱셈으로 소거하는 전략. 학습지 max(6)와 동일한 발상 수준이지만 '한 삼각형의 사인법칙'이 아니라 '두 삼각형 연립'이라는 점에서 한 단계 열린 구조. 수능 4점 소재 전형적 출발점.",
+          "added_at": "2026-05-09",
+          "curated_by": "problem-curator"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 1,
+        "note": "두 번째 도전 후보는 보류. 학습지_01이 사인법칙 단독 단원이라 수능특강(통합 단원)에서 적정 후보가 부족. 평가한 10문항 중 적합한 건 s4-e1 1개뿐(나머지는 코사인법칙·항등식 본질적 또는 너무 쉬움/어려움). 추후 평가원 기출 또는 자체 작성 또는 미평가 23문항 추가 평가 시 보충 예정."
+      }
+    }
+  ],
+  "evaluated_problems_pool": {
+    "수능특강_사인법칙코사인법칙": {
+      "evaluated_count": 10,
+      "evaluated_ids": ["s4-c1", "s4-c2", "s4-c3", "s4-e1", "s4-e2", "s4-e3", "s4-e4", "s4-s4", "s4-s6", "s4-ex1"],
+      "unevaluated_count": 28,
+      "unevaluated_categories": "기초 12 (s4-b1~b12) + 유제 6 (s4-ex2~ex8 일부) + 기본 9 (s4-s1·s2·s3·s5·s7·s8·s9·s10·s11). 추후 학습지_02 도전 후보 검토 시 활용 가능."
+    }
+  }
 }

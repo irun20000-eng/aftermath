@@ -1,6 +1,127 @@
 {
   "schema_version": 1,
-  "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'. PR-D 이후 채워짐.",
-  "updated_at": null,
-  "items": {}
+  "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
+  "updated_at": "2026-05-09",
+  "items": {
+    "수능특강_사인법칙코사인법칙#s4-c1": {
+      "difficulty": 8,
+      "tier": "심화",
+      "level_label_in_source": "실력",
+      "concepts": ["삼각형의 외접원과 사인법칙", "닮음 삼각형 (엇각·맞꼭지각)", "방멱정리", "외접원 반지름 R 결정", "좌표화"],
+      "strategy": "AQ//BC로 닮음 → 방멱정리로 BP → 좌표화 후 cos∠ACB로 R 결정",
+      "estimated_time_min": 12,
+      "suneung_connection": "수능 21·30번 유형. 외접원+방멱+닮음 결합은 매년 고난도 문항 핵심 골격.",
+      "comment": "발상 난이도 수능 29~30번 수준. 학습지의 사인법칙 + 외접원 R 개념을 한 단계 위로 확장.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-c2": {
+      "difficulty": 7,
+      "tier": "심화",
+      "level_label_in_source": "실력",
+      "concepts": ["코사인법칙", "사인법칙 비례식", "중선·중점 조건", "삼각형 넓이 (SAS)"],
+      "strategy": "BC=t로 놓고 코사인법칙으로 cosC와 AB 표현, 사인 비례식으로 4차방정식 풀이.",
+      "estimated_time_min": 8,
+      "suneung_connection": "수능 21·29번 수준. 변의 비 + 보조선 + 코사인법칙 연립 패턴.",
+      "comment": "코사인법칙 위주 — 학습지_01(사인법칙)에 도전으로 부적절. 학습지_02 도전 후보로 적합.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-c3": {
+      "difficulty": 8,
+      "tier": "심화",
+      "level_label_in_source": "실력",
+      "concepts": ["사인법칙", "코사인법칙", "내적", "이차곡선 매개변수", "4차방정식"],
+      "strategy": "조건 (가) 코사인법칙으로 직각삼각형, 내적으로 Q 좌표 확정, 조건 (나) cos값 맞추는 P 결정.",
+      "estimated_time_min": 15,
+      "suneung_connection": "수능 29·30번 수준. 조건 해석 + 기하 변환 + 좌표 연립 3단 구조.",
+      "comment": "코사인법칙·곡선 결합 — 학습지_01에 도전으로 부적절 (단원 범위 초과 + 갭 큼).",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-e1": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "예제",
+      "concepts": ["사인법칙", "외접원 반지름", "두 삼각형 사인법칙 동시 적용", "미지각 소거 전략"],
+      "strategy": "두 삼각형 ADC, ABC에 사인법칙 각각 적용 → 두 식 곱하여 미지각 sin∠BAC 소거.",
+      "estimated_time_min": 5,
+      "suneung_connection": "수능·학력평가에서 두 삼각형 공유 꼭짓점 + 외접원 결합 사인법칙 응용 자주 출제. 28~29번 전초.",
+      "comment": "학습지_01의 사인법칙 + 외접원 R 개념과 강 매칭. 도전 1순위.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-e2": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "예제",
+      "concepts": ["코사인법칙", "등변사다리꼴 성질", "좌표법(벡터 내적)", "이차방정식"],
+      "strategy": "등변사다리꼴 대칭성으로 좌표 설정 → cos∠DAB로 높이 h를 k로 표현 → BD=6으로 k 결정.",
+      "estimated_time_min": 6,
+      "suneung_connection": "수능 도형 단원의 조건부 사다리꼴+코사인법칙·내적 연계. 15·16번 수준.",
+      "comment": "코사인법칙 위주 — 학습지_02 도전 후보로 적합.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-e3": {
+      "difficulty": 6,
+      "tier": "기본",
+      "level_label_in_source": "예제",
+      "concepts": ["삼각함수 피타고라스 항등식", "삼각함수 덧셈정리", "삼각형 내각의 합", "직각삼각형 판별"],
+      "strategy": "항등식으로 좌변을 sin²B로 변환 → ±두 경우 분기 → 덧셈정리 적용 → 변 크기 모순으로 직각 위치 결정.",
+      "estimated_time_min": 6,
+      "suneung_connection": "수능 삼각함수 조건식 + 특수각 결정 유형 매년 출제. 29번 직전 난이도.",
+      "comment": "덧셈정리·항등식 위주 — 학습지_01의 사인법칙 단독 범위 밖.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-e4": {
+      "difficulty": 7,
+      "tier": "심화",
+      "level_label_in_source": "예제",
+      "concepts": ["원의 접선과 반지름 수직", "외부점 두 접선의 길이가 같음", "코사인법칙", "반각공식", "삼각형의 넓이 (SAS)"],
+      "strategy": "접선⊥반지름으로 r 결정 → 사각형 내각 합으로 ∠PAQ 결정 → 반각공식으로 AP → 넓이.",
+      "estimated_time_min": 7,
+      "suneung_connection": "수능 14~16번 중간 고난도. 코사인법칙·접선·반각 결합.",
+      "comment": "코사인법칙 위주 — 학습지_02 도전 후보로 적합. 학습지_01엔 부적절.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-s4": {
+      "difficulty": 7,
+      "tier": "심화",
+      "level_label_in_source": "기본",
+      "concepts": ["사인법칙", "외접원 반지름 R", "이등변삼각형의 성질", "반각 공식", "코사인법칙"],
+      "strategy": "사인법칙으로 변의 비 설정 → 이등변 조건과 △ACD 사인법칙으로 t=1 → 코사인법칙으로 cos B → 외접원 넓이.",
+      "estimated_time_min": 9,
+      "suneung_connection": "수능 30번 직전 수준. 사인법칙 변비 전환 + 이등변 조건 + 외접원 결합.",
+      "comment": "STEP 4 코사인법칙 본질적, 반각 공식 별도 발상. 학습지_01(사인법칙 단독)엔 부적절. 학습지_02 도전 후보로 적합.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-s6": {
+      "difficulty": 8,
+      "tier": "심화",
+      "level_label_in_source": "기본",
+      "concepts": ["사인법칙 (외접원 반지름 2R)", "이등변삼각형의 각도 관계", "삼각방정식 (양변 제곱법)", "코사인법칙", "배각 공식", "반각 공식"],
+      "strategy": "∠A=θ로 놓고 √7sinθ-cosθ=1 풀이 → 각 변 결정 → △DEC에 사인법칙으로 외접원 지름.",
+      "estimated_time_min": 12,
+      "suneung_connection": "수능 21·29번 수준. 이등변+보조점+사인법칙+삼각방정식 연쇄.",
+      "comment": "코사인·배각·반각 본질적, 사인법칙 단독 학습지에 갭 +2 단계로 큼. 학습지_01엔 부적절.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    },
+    "수능특강_사인법칙코사인법칙#s4-ex1": {
+      "difficulty": 4,
+      "tier": "기본",
+      "level_label_in_source": "유제",
+      "concepts": ["삼각형의 내각의 합 (A+B+C=π)", "보각의 사인 (sin(π-θ)=sinθ)", "사인법칙 (a/sinA=b/sinB)"],
+      "strategy": "A+C=π-B 치환으로 sinA=2sinB → 사인법칙으로 AC.",
+      "estimated_time_min": 2,
+      "suneung_connection": "사인법칙 기본 활용 유형. 단골 출제.",
+      "comment": "풀이 2단계로 발상 난도 낮음. 학습지_01의 도전(max+1~2)에는 부적합 — 학습지 본문 풀 문제와 비슷한 수준.",
+      "evaluated_at": "2026-05-09",
+      "evaluated_by": "problem-evaluator"
+    }
+  }
 }
