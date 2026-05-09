@@ -1,16 +1,16 @@
 /* ============================================================
-   aftermath floating widgets — 공통 동작 (타이머 + 도전 문제)
-   - 정적 HTML이 학습지에 inline 작성된 후 호출됨
-   - innerHTML 사용 X (위젯 outer markup은 정적, 내부 콘텐츠는 cloneNode)
+   aftermath floating widgets — 공통 동작
+   - 타이머 위젯 (floating)
+   - 문제 모아보기 (FAB + 풀스크린 모달, DOM 자동 수집)
+   - innerHTML 사용 X (위젯 outer markup은 정적, 모달 콘텐츠만 cloneNode)
    - getElementById + addEventListener (메인 페이지와 동일 패턴)
-   - 함수명·ID 모두 aft prefix (충돌 차단)
+   - 모든 ID 접두 aft- (충돌 차단)
    ============================================================ */
 (function () {
   'use strict';
 
   /* ============================================================
-     공통 — localStorage / 드래그 / 리사이즈 / 접기
-     widget마다 storage key 다르게 받음
+     공통 — 위젯 영속화 / 드래그 / 리사이즈 / 접기
      ============================================================ */
 
   function aftSaveState(widget, key) {
@@ -45,12 +45,10 @@
   function aftSetupDrag(widget, key) {
     var head = widget.querySelector('.aft-widget-head');
     if (!head) return;
-    var dragging = false;
-    var startX = 0, startY = 0, baseX = 0, baseY = 0;
+    var dragging = false, startX = 0, startY = 0, baseX = 0, baseY = 0;
 
     head.addEventListener('pointerdown', function (e) {
-      // 헤더 안의 인터랙티브 element면 드래그 무시
-      if (e.target.closest('.aft-widget-collapse, .aft-nav-btn')) return;
+      if (e.target.closest('.aft-widget-collapse')) return;
       dragging = true;
       try { head.setPointerCapture(e.pointerId); } catch (err) {}
       startX = e.clientX;
@@ -80,8 +78,7 @@
   function aftSetupResize(widget, key) {
     var grip = widget.querySelector('.aft-widget-resize');
     if (!grip) return;
-    var resizing = false;
-    var startX = 0, startY = 0, startW = 0, startH = 0;
+    var resizing = false, startX = 0, startY = 0, startW = 0, startH = 0;
 
     grip.addEventListener('pointerdown', function (e) {
       resizing = true;
@@ -153,13 +150,11 @@
       setTimeout(function () { aftPlayTick(f, 0.2); }, i * 200);
     });
   }
-
   function aftFormat(sec) {
     var m = Math.floor(sec / 60);
     var s = sec % 60;
     return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
   }
-
   function aftUpdateDisplay() {
     var el = document.getElementById('aft-timer-display');
     if (!el) return;
@@ -168,7 +163,6 @@
     if (aftTimer.remaining <= 10 && aftTimer.remaining > 0) el.classList.add('aft-danger');
     else if (aftTimer.remaining <= 30 && aftTimer.remaining > 0) el.classList.add('aft-warn');
   }
-
   function aftStart(seconds) {
     if (typeof seconds === 'number') {
       aftTimer.total = seconds;
@@ -242,107 +236,113 @@
   }
 
   /* ============================================================
-     도전 문제 위젯
-     - 학습지의 <template id="aft-challenge-data">에서 콘텐츠 추출
-     - 페이지네이션 (이전/다음)
-     - 정답·해설 토글 (다시 누르면 숨김)
-     - 콘텐츠 0개면 위젯 자체 숨김
+     문제 모아보기 (FAB + 풀스크린 모달)
+     - 학습지 본문에서 [data-aft-problem-level] 마킹된 카드 자동 수집
+     - 난이도별 그룹화 (l1·l2·l3·challenge)
+     - 도전 카드는 출처 배지 표시
+     - 마킹된 카드 0개면 FAB 숨김
      ============================================================ */
 
-  var CHALLENGE_KEY = 'aft-widget-challenge-state';
+  var GROUPS = [
+    { key: 'l1',        label: '기초', icon: '🟢' },
+    { key: 'l2',        label: '기본', icon: '🟡' },
+    { key: 'l3',        label: '심화', icon: '🔴' },
+    { key: 'challenge', label: '도전', icon: '⭐' }
+  ];
 
-  function aftInitChallenge() {
-    var widget = document.getElementById('aft-challenge-widget');
-    var template = document.getElementById('aft-challenge-data');
-    if (!widget || !template) return;
+  function aftInitProblemViewer() {
+    var fab = document.getElementById('aft-problems-fab');
+    var modal = document.getElementById('aft-problems-modal');
+    var overlay = modal && modal.querySelector('.aft-modal-overlay');
+    var closeBtn = document.getElementById('aft-problems-close');
+    var content = document.getElementById('aft-problems-content');
+    if (!fab || !modal || !content) return;
 
-    var items = template.content.querySelectorAll('.aft-challenge-item');
-    if (!items || items.length === 0) {
-      // 도전 문제 없는 학습지 → 위젯 숨김
-      widget.style.display = 'none';
+    var problems = document.querySelectorAll('[data-aft-problem-level]');
+    if (problems.length === 0) {
+      fab.style.display = 'none';
       return;
     }
 
-    var contentEl = document.getElementById('aft-challenge-content');
-    var counterEl = document.getElementById('aft-challenge-counter');
-    var prevBtn = document.getElementById('aft-challenge-prev');
-    var nextBtn = document.getElementById('aft-challenge-next');
-    if (!contentEl) return;
+    var rendered = false;
 
-    // 모든 문제를 한 번에 DOM에 렌더 (radio 선택 상태 유지·MathJax 1번 typeset)
-    items.forEach(function (item, i) {
-      var clone = item.cloneNode(true);
-      clone.classList.add('aft-challenge-item');
-      if (i !== 0) clone.classList.add('aft-hidden');
-      contentEl.appendChild(clone);
-    });
+    function renderProblems() {
+      if (rendered) return;
 
-    var idx = 0;
-    var pages = contentEl.querySelectorAll('.aft-challenge-item');
-    var total = pages.length;
+      var byLevel = {};
+      GROUPS.forEach(function (g) { byLevel[g.key] = []; });
 
-    function updateNav() {
-      if (counterEl) counterEl.textContent = (idx + 1) + ' / ' + total;
-      if (prevBtn) prevBtn.disabled = idx === 0;
-      if (nextBtn) nextBtn.disabled = idx === total - 1;
-    }
-
-    function show(i) {
-      pages.forEach(function (el, j) {
-        el.classList.toggle('aft-hidden', j !== i);
+      problems.forEach(function (problem) {
+        var level = problem.getAttribute('data-aft-problem-level');
+        if (byLevel[level]) byLevel[level].push(problem);
       });
-      idx = i;
-      updateNav();
+
+      GROUPS.forEach(function (g) {
+        var items = byLevel[g.key];
+        if (!items || items.length === 0) return;
+
+        var section = document.createElement('section');
+        section.className = 'aft-problem-group';
+        section.setAttribute('data-level', g.key);
+
+        var header = document.createElement('h3');
+        header.className = 'aft-problem-group-title';
+        header.textContent = g.icon + ' ' + g.label;
+        section.appendChild(header);
+
+        items.forEach(function (item) {
+          var clone = item.cloneNode(true);
+
+          // ID 중복 차단 — 모든 id에 aft-clone- prefix
+          if (clone.id) clone.id = 'aft-clone-' + clone.id;
+          clone.querySelectorAll('[id]').forEach(function (el) {
+            el.id = 'aft-clone-' + el.id;
+          });
+
+          clone.classList.add('aft-problem-clone');
+
+          // 도전 카드면 출처 배지 prepend
+          var sourceLabel = item.getAttribute('data-aft-source-label');
+          if (sourceLabel) {
+            var badge = document.createElement('div');
+            badge.className = 'aft-source-badge';
+            badge.textContent = '📖 ' + sourceLabel;
+            clone.insertBefore(badge, clone.firstChild);
+          }
+
+          section.appendChild(clone);
+        });
+
+        content.appendChild(section);
+      });
+
+      // MathJax 콘텐츠 typeset
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([content]).catch(function () {});
+      }
+
+      rendered = true;
     }
 
-    if (prevBtn) prevBtn.addEventListener('click', function () {
-      if (idx > 0) show(idx - 1);
-    });
-    if (nextBtn) nextBtn.addEventListener('click', function () {
-      if (idx < total - 1) show(idx + 1);
-    });
-
-    // 정답·해설 토글 (모든 페이지에 binding)
-    pages.forEach(function (page) {
-      var ansBtn = page.querySelector('.aft-challenge-answer');
-      var ansText = page.querySelector('.aft-challenge-answer-text');
-      if (ansBtn && ansText) {
-        ansBtn.addEventListener('click', function () {
-          if (ansText.hasAttribute('hidden')) {
-            ansText.removeAttribute('hidden');
-            ansBtn.classList.add('active');
-          } else {
-            ansText.setAttribute('hidden', '');
-            ansBtn.classList.remove('active');
-          }
-        });
-      }
-      var expBtn = page.querySelector('.aft-challenge-explain');
-      var expText = page.querySelector('.aft-challenge-explain-text');
-      if (expBtn && expText) {
-        expBtn.addEventListener('click', function () {
-          if (expText.hasAttribute('hidden')) {
-            expText.removeAttribute('hidden');
-            expBtn.classList.add('active');
-          } else {
-            expText.setAttribute('hidden', '');
-            expBtn.classList.remove('active');
-          }
-        });
-      }
-    });
-
-    updateNav();
-
-    // MathJax 콘텐츠 typeset
-    if (window.MathJax && MathJax.typesetPromise) {
-      MathJax.typesetPromise([contentEl]).catch(function () {});
+    function openModal() {
+      renderProblems();
+      modal.classList.add('aft-modal-open');
+      document.body.classList.add('aft-modal-locked');
+    }
+    function closeModal() {
+      modal.classList.remove('aft-modal-open');
+      document.body.classList.remove('aft-modal-locked');
     }
 
-    aftLoadState(widget, CHALLENGE_KEY);
-    aftSetupDrag(widget, CHALLENGE_KEY);
-    aftSetupResize(widget, CHALLENGE_KEY);
-    aftSetupCollapse(widget, CHALLENGE_KEY);
+    fab.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('aft-modal-open')) {
+        closeModal();
+      }
+    });
   }
 
   /* ============================================================
@@ -351,7 +351,7 @@
 
   function aftInit() {
     aftInitTimer();
-    aftInitChallenge();
+    aftInitProblemViewer();
   }
 
   if (document.readyState === 'loading') {

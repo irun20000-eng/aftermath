@@ -121,7 +121,7 @@
         </section>
 
         <!-- 01. 개념 구성 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l1">
             <h2 class="section-title">01. 사인법칙 (The Law of Sines)</h2>
             <div class="bg-slate-900 text-white p-10 rounded-3xl text-center shadow-xl mb-10 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-2 bg-blue-500"></div>
@@ -153,7 +153,7 @@
         </section>
 
         <!-- 02. 수준별 문항 연습 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             
             <!-- Level 1 -->
@@ -191,7 +191,7 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l3">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
                 6. \(\triangle ABC\)에서 다음 관계식이 성립할 때, 이 삼각형은 어떤 삼각형인지 말하시오.
@@ -201,6 +201,22 @@
             </div>
             <div class="hint-box bg-slate-50 border-slate-400 text-slate-700 mt-0">
                 <strong>💡 전략:</strong> 변의 길이(\(a, b, c\))에 대한 식으로 모두 바꾸어 보자. (Type B 변형 공식 활용)
+            </div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 (수능특강 출처) — 모아보기 위젯에서 자동 수집 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_사인법칙코사인법칙"
+                 data-aft-source-id="example_dummy"
+                 data-aft-source-label="[더미] 수능특강 사인법칙·코사인법칙 예제 1">
+            <h2 class="section-title">⭐ 도전 문제</h2>
+            <div class="text-lg text-slate-700 mb-6 leading-relaxed">
+                삼각형 \(ABC\)에서 \(\angle A = 60^\circ\), \(a = 7\), \(b = 8\)일 때, \(\sin B\)의 값을 구하시오.
+            </div>
+            <div class="hint-box mt-0">
+                <strong>💡 전략:</strong> 사인법칙 \(\dfrac{a}{\sin A} = \dfrac{b}{\sin B}\)에서 \(\sin B\)를 \(a\), \(b\), \(\sin A\)로 표현해보자.
             </div>
             <div class="thinking-space"></div>
         </section>
@@ -343,73 +359,26 @@
     </div>
 
     <!-- ============================================================
-         floating 도전 문제 위젯
-         콘텐츠는 아래 <template id="aft-challenge-data"> 안에 inline 작성
+         📚 문제 모아보기 — FAB + 풀스크린 모달
+         JS가 [data-aft-problem-level] 마킹된 카드 자동 수집
          ============================================================ -->
-    <div id="aft-challenge-widget" class="aft-widget no-print" data-widget="challenge">
-      <div class="aft-widget-head">
-        <span class="aft-widget-title">🎯 도전 문제</span>
-        <span id="aft-challenge-counter" class="aft-counter">1 / 1</span>
-        <span class="aft-widget-head-actions">
-          <button type="button" id="aft-challenge-prev" class="aft-nav-btn" aria-label="이전">◀</button>
-          <button type="button" id="aft-challenge-next" class="aft-nav-btn" aria-label="다음">▶</button>
-          <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
-        </span>
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
       </div>
-      <div class="aft-widget-body">
-        <div id="aft-challenge-content"></div>
-      </div>
-      <div class="aft-widget-resize" aria-hidden="true"></div>
     </div>
-
-    <!-- 도전 문제 콘텐츠 (학습지마다 자유 작성, 비워두면 위젯 숨김) -->
-    <template id="aft-challenge-data">
-      <div class="aft-challenge-item">
-        <div class="aft-challenge-source">[더미] 2024학년도 9월 모의평가 변형</div>
-        <div class="aft-challenge-stem">
-          삼각형 ABC에서 \( \angle A = 60^\circ \), \( a = 7 \), \( b = 8 \)일 때, \( \sin B \)의 값은?
-        </div>
-        <div class="aft-challenge-choices">
-          <label><input type="radio" name="aft-ch-1"> ① \( \dfrac{4\sqrt{3}}{7} \)</label>
-          <label><input type="radio" name="aft-ch-1"> ② \( \dfrac{5\sqrt{3}}{7} \)</label>
-          <label><input type="radio" name="aft-ch-1"> ③ \( \dfrac{6\sqrt{3}}{7} \)</label>
-          <label><input type="radio" name="aft-ch-1"> ④ \( \dfrac{7\sqrt{3}}{7} \)</label>
-          <label><input type="radio" name="aft-ch-1"> ⑤ \( \dfrac{8\sqrt{3}}{7} \)</label>
-        </div>
-        <div class="aft-challenge-actions">
-          <button type="button" class="aft-challenge-answer">정답 보기</button>
-          <button type="button" class="aft-challenge-explain">해설 보기</button>
-        </div>
-        <div class="aft-challenge-answer-text" hidden>정답: ①</div>
-        <div class="aft-challenge-explain-text" hidden>
-          사인법칙 \( \dfrac{a}{\sin A} = \dfrac{b}{\sin B} \)에서
-          \( \dfrac{7}{\sin 60^\circ} = \dfrac{8}{\sin B} \)이므로
-          \( \sin B = \dfrac{8 \sin 60^\circ}{7} = \dfrac{8 \cdot \frac{\sqrt{3}}{2}}{7} = \dfrac{4\sqrt{3}}{7} \).
-        </div>
-      </div>
-
-      <div class="aft-challenge-item">
-        <div class="aft-challenge-source">[더미] 페이지네이션 테스트용 2번 문제</div>
-        <div class="aft-challenge-stem">
-          삼각형 ABC의 외접원의 반지름이 \( R = 5 \)이고 \( \angle A = 30^\circ \)일 때, 변 \( a \)의 길이는?
-        </div>
-        <div class="aft-challenge-choices">
-          <label><input type="radio" name="aft-ch-2"> ① 4</label>
-          <label><input type="radio" name="aft-ch-2"> ② 5</label>
-          <label><input type="radio" name="aft-ch-2"> ③ 6</label>
-          <label><input type="radio" name="aft-ch-2"> ④ 8</label>
-          <label><input type="radio" name="aft-ch-2"> ⑤ 10</label>
-        </div>
-        <div class="aft-challenge-actions">
-          <button type="button" class="aft-challenge-answer">정답 보기</button>
-          <button type="button" class="aft-challenge-explain">해설 보기</button>
-        </div>
-        <div class="aft-challenge-answer-text" hidden>정답: ②</div>
-        <div class="aft-challenge-explain-text" hidden>
-          사인법칙 \( \dfrac{a}{\sin A} = 2R \)에서 \( a = 2R \sin A = 2 \cdot 5 \cdot \sin 30^\circ = 10 \cdot \frac{1}{2} = 5 \).
-        </div>
-      </div>
-    </template>
 
     <script src="widgets.js"></script>
 </body>
