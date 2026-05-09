@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "problem-evaluator의 평가 결과 누적 캐시. 키 = '<source>#<problem_id>'.",
-  "updated_at": "2026-05-09 (학습지_09 후보 검색: 등비합 5개 추가 평가, 총 43개)",
+  "updated_at": "2026-05-09 (학습지_10 진입: s5-ex10 fit_for_worksheet_10 갱신)",
   "items": {
     "수능특강_사인법칙코사인법칙#s4-c1": {
       "difficulty": 8,
@@ -652,7 +652,9 @@
       "in_curriculum": true,
       "in_curriculum_note": "log 정의 + 등차·등비 호환 변환 (수Ⅰ 범위). 금지 도구 불필요.",
       "fit_for_worksheet_09": true,
-      "fit_for_worksheet_09_reason": "난이도 8, 신선한 도구 융합. rank 2 후보였으나 사용자 선택으로 rank 3 여분. 추후 학습지_18(중단원 종합) 등에서 활용 가능.",
+      "fit_for_worksheet_09_reason": "난이도 8, 신선한 도구 융합. rank 2 후보였으나 사용자 선택으로 보류 (학습지_10에서 채택).",
+      "fit_for_worksheet_10": true,
+      "fit_for_worksheet_10_reason": "학습지_10(중단원 마무리 III-1, 등차·등비 종합) 도전 채택 ⭐⭐⭐⭐ — log·등차·등비·곱 4중 융합으로 종합 단원 성격에 최적. 학습지 max(7)+1=8 적정. 본문 advanced(Q10·Q11) 외 추가 도전 카드.",
       "evaluated_at": "2026-05-09",
       "evaluated_by": "problem-evaluator"
     },
