@@ -156,7 +156,7 @@
         </section>
 
         <!-- 02. 수준별 문항 연습 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
             <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
             
             <!-- Level 1 -->
@@ -197,7 +197,7 @@
         </section>
 
         <!-- 03. 형성평가 -->
-        <section class="card">
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
                 6. \(\triangle ABC\)에서 다음 관계식이 성립할 때, 이 삼각형은 어떤 삼각형인지 말하시오. (단, \(a \neq b\))
@@ -208,6 +208,84 @@
             <div class="hint-box bg-slate-50 border-slate-400 text-slate-700 mt-0">
                 <strong>💡 전략:</strong> 이전에는 사인법칙 변형 공식을 대입했다면 이번엔 코사인법칙 변형 공식(Type B)을 대입하여 전체를 변의 길이(\(a, b, c\))에 대한 식으로 바꾸어 전개해 보자. 
             </div>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 사인법칙·코사인법칙 예제 3) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_사인법칙코사인법칙"
+                 data-aft-source-id="s4-e3"
+                 data-aft-source-label="수능특강 사인법칙·코사인법칙 예제 3">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 사인법칙·코사인법칙 · 예제 3</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+1, 6분) · 핵심: 조건식 → ±분기 → 모순 기각 → 직각 판별 → 넓이</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\overline{AB} = 4\), \(\overline{BC} = 3\)인 삼각형 \(ABC\)에 대하여 다음 식이 성립할 때, 삼각형 \(ABC\)의 넓이는?
+            </div>
+
+            <div class="bg-slate-100 p-6 rounded-2xl mb-6 border-2 border-slate-200 text-center">
+                <div class="text-2xl">
+                    \[ (\sin B - 2\cos A \sin C)^2 + \cos^2 B = 1 \]
+                </div>
+                <div class="text-base text-slate-600 mt-4 pt-4 border-t border-slate-300">
+                    선지: ① \(\dfrac{3\sqrt{7}}{2}\) &nbsp;&nbsp; ② \(2\sqrt{7}\) &nbsp;&nbsp; ③ \(\dfrac{5\sqrt{7}}{2}\) &nbsp;&nbsp; ④ \(3\sqrt{7}\) &nbsp;&nbsp; ⑤ \(\dfrac{7\sqrt{7}}{2}\)
+                </div>
+            </div>
+
+            <div class="hint-box mt-0">
+                <strong>💡 수Ⅰ 단독 우회 풀이:</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li>피타고라스 항등식: \((\sin B - 2\cos A \sin C)^2 = 1 - \cos^2 B = \sin^2 B\) → \(\sin B - 2\cos A \sin C = \pm \sin B\)</li>
+                    <li><strong>+ 경우</strong>: \(\cos A \sin C = 0\) → \(\angle A = 90°\) → \(\overline{BC}^2 = \overline{AB}^2 + \overline{AC}^2\)인데 \(9 < 16\)이라 <span class="text-red-600 font-bold">모순</span></li>
+                    <li><strong>− 경우</strong>: \(\sin B = \cos A \sin C\). 사인법칙 \(b = 2R\sin B,\; c = 2R\sin C\)로 변 환산 → \(b = c \cdot \cos A\). 코사인법칙으로 \(\cos A = \dfrac{b^2 + c^2 - a^2}{2bc}\) 대입 → \(a^2 + b^2 = c^2\) → \(\angle C = 90°\)</li>
+                    <li>빗변 \(c = \overline{AB} = 4\), 다리 \(a = \overline{BC} = 3\) → \(b = \overline{CA} = \sqrt{7}\) → 넓이 \(= \dfrac{1}{2} \cdot 3 \cdot \sqrt{7} = \dfrac{3\sqrt{7}}{2}\)</li>
+                </ol>
+            </div>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 원 해설은 덧셈정리(\(\sin B = \sin(A+C)\))를 사용하나, 위 우회 풀이로 코사인법칙·사인법칙·피타고라스 항등식만으로 완결 가능. 자세한 풀이는 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-e3" class="text-purple-600 underline font-semibold">수능특강 해설지 예제 3</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 사인법칙·코사인법칙 기본 6) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_사인법칙코사인법칙"
+                 data-aft-source-id="s4-s6"
+                 data-aft-source-label="수능특강 사인법칙·코사인법칙 기본 6">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 사인법칙·코사인법칙 · 기본 6</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max 동일, 7분) · 핵심: 보조 삼각형 코사인법칙 2회 연쇄 + 사인법칙 외접원 R</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                이등변삼각형 \(\triangle ABC\)(\(\overline{AB} = \overline{AC} = 6\))의 변 \(\overline{AC}\) 위의 점 \(E\)와 변 \(\overline{BC}\) 위의 점 \(D\)에 대하여 \(\overline{AE} = \overline{DE},\; \overline{AD} = 3,\; \overline{BD} = 3\)일 때, 삼각형 \(DEC\)의 외접원의 반지름의 길이를 구하시오.
+            </div>
+
+            <div class="hint-box mt-0">
+                <strong>💡 수Ⅰ 단독 풀이 흐름:</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li>\(\triangle ADE\)에서 코사인법칙으로 \(\cos(\angle A)\) 결정 → \(\sin(\angle A)\) 도출</li>
+                    <li>\(\triangle ABC\)에서 코사인법칙으로 \(\overline{BC}\) 계산</li>
+                    <li>\(\triangle ABC\)에서 사인법칙으로 \(\sin(\angle ACB)\) 계산</li>
+                    <li>\(\angle DCE = \angle ACB\)이므로 \(\triangle DEC\)에서 사인법칙: \(2R = \dfrac{\overline{DE}}{\sin(\angle DCE)}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 원 해설은 반각 공식·삼각방정식을 거치지만, 위 흐름으로 코사인법칙 2회 + 사인법칙 2회만으로 완결 가능 (배각·반각·삼각방정식 불필요).</p>
+            </div>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 도형 그림과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-s6" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 6</a>에서 확인.
+            </div>
+
             <div class="thinking-space"></div>
         </section>
 
