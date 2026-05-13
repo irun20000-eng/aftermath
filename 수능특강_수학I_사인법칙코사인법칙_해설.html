@@ -1918,14 +1918,15 @@ const PROBLEMS = [
 <span class="blank-wrap"><button class="blank-btn" data-answer="$2\\sqrt{5}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
       },
       {
-        tag: 'STEP 3', title: '좌표화 후 $R$ 결정',
-        body: `<p class="step-hint">$P$를 원점, $\\overline{BD}$를 $x$축으로. $A=(-\\sqrt{10}\\cos\\theta,-\\sqrt{10}\\sin\\theta)$, $C=\\left(\\dfrac{\\sqrt{10}}{2}\\cos\\theta,\\dfrac{\\sqrt{10}}{2}\\sin\\theta\\right)$</p>
-<div class="calc-line">$\\cos(\\angle ACB)=\\dfrac{2\\sqrt{5}}{5}\\;\\Rightarrow\\;\\cos^2=\\dfrac{4}{5}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\dfrac{(\\sqrt{2}\\cos\\theta+1)^2}{3+2\\sqrt{2}\\cos\\theta}=\\dfrac{4}{5}\\;\\Rightarrow\\;10\\cos^2\\theta+2\\sqrt{2}\\cos\\theta-7=0$</div>
+        tag: 'STEP 3', title: '좌표화 후 $\\triangle ACB$ 코사인법칙',
+        body: `<p class="step-hint">$P$를 원점, $\\overline{BD}$를 $x$축으로. 방멱정리 $\\overline{BP}\\cdot\\overline{PD}=\\overline{AP}\\cdot\\overline{PC}=5$, $\\overline{BP}=\\overline{PD}\\Rightarrow \\overline{BP}=\\sqrt{5}$. 좌표: $A=(-\\sqrt{10}\\cos\\theta,-\\sqrt{10}\\sin\\theta)$, $C=\\left(\\dfrac{\\sqrt{10}}{2}\\cos\\theta,\\dfrac{\\sqrt{10}}{2}\\sin\\theta\\right)$, $B=(-\\sqrt{5},0)$, $D=(\\sqrt{5},0)$.</p>
+<div class="calc-line">세 변 제곱: $\\overline{AC}^{2}=\\dfrac{45}{2}$, $\\overline{BC}^{2}=\\dfrac{5}{2}(3+2\\sqrt{2}\\cos\\theta)$, $\\overline{AB}^{2}=15-10\\sqrt{2}\\cos\\theta$</div>
+<div class="formula-box highlight-blue" style="margin-top:var(--space-3)">코사인법칙: $\\cos\\angle ACB=\\dfrac{\\overline{AC}^{2}+\\overline{BC}^{2}-\\overline{AB}^{2}}{2\\,\\overline{AC}\\,\\overline{BC}}=\\dfrac{15(1+\\sqrt{2}\\cos\\theta)}{15\\sqrt{3+2\\sqrt{2}\\cos\\theta}}=\\dfrac{1+\\sqrt{2}\\cos\\theta}{\\sqrt{3+2\\sqrt{2}\\cos\\theta}}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\cos\\angle ACB=\\dfrac{2\\sqrt{5}}{5}\\Rightarrow\\cos^{2}\\angle ACB=\\dfrac{4}{5}$ → $\\dfrac{(1+\\sqrt{2}\\cos\\theta)^{2}}{3+2\\sqrt{2}\\cos\\theta}=\\dfrac{4}{5}\\;\\Rightarrow\\;10\\cos^{2}\\theta+2\\sqrt{2}\\cos\\theta-7=0$</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$\\cos\\theta=\\dfrac{\\sqrt{2}}{2}$, $\\sin\\theta=\\dfrac{\\sqrt{2}}{2}\\;\\Rightarrow\\;k\\sin\\theta=-\\dfrac{\\sqrt{10}}{4}\\;\\Rightarrow\\;k=-\\dfrac{\\sqrt{5}}{2}$</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$R^2=5+\\dfrac{5}{4}=\\dfrac{25}{4}\\;\\Rightarrow\\;R=\\dfrac{5}{2}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">③ $\\dfrac{5}{2}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 전략</span>닮음 → P가 BD 중점 → 방멱 + 좌표</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>닮음 → P가 BD 중점 → 방멱 + 좌표 + 코사인법칙</div>`
       }
     ]
   },
