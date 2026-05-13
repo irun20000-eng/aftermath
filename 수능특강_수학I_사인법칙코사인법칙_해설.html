@@ -1612,22 +1612,27 @@ const PROBLEMS = [
     answer: 1,
     steps: [
       {
-        tag: 'STEP 1', title: '비례 조건 정리 + 변 길이 결정',
-        body: `<p class="step-hint">사인법칙: $5\\sin B=4\\sin C\\;\\Rightarrow\\;5b=4c$이므로 $\\overline{AC}:\\overline{AB}=4:5$. 그림 조건 ($\\overline{BC}=6$)에서 비례상수가 $1$로 결정된다.</p>
-<div class="formula-box highlight-blue">$\\overline{AC}=4$, $\\overline{AB}=5$, $\\overline{BD}=\\overline{AB}=5$, $\\overline{CD}=1$, $\\overline{BC}=6$</div>`
+        tag: 'STEP 1', title: '비례 조건 + 변수 설정',
+        body: `<p class="step-hint">사인법칙으로 변 길이의 비를 정리: $5\\sin B=4\\sin C\\;\\Rightarrow\\;5b=4c$이므로 $\\overline{AC}:\\overline{AB}=4:5$.</p>
+<div class="formula-box highlight-blue">$\\overline{AC}=4t$, $\\overline{AB}=5t$, $\\overline{BD}=\\overline{AB}=5t$, $\\overline{CD}=1$, $\\overline{BC}=5t+1$</div>`
       },
       {
-        tag: 'STEP 2', title: '$\\cos B$ 결정 — $\\triangle ABC$ 코사인법칙',
-        body: `<p class="step-hint">$\\triangle ABC$의 세 변을 알고 있으므로 코사인법칙으로 $\\angle B$의 코사인을 직접 구한다.</p>
-<div class="formula-box highlight-blue">$\\cos B=\\dfrac{\\overline{AB}^{2}+\\overline{BC}^{2}-\\overline{AC}^{2}}{2\\cdot\\overline{AB}\\cdot\\overline{BC}}=\\dfrac{25+36-16}{2\\cdot 5\\cdot 6}=\\dfrac{45}{60}=\\dfrac{3}{4}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\sin B=\\sqrt{1-\\cos^{2}B}=\\sqrt{1-\\dfrac{9}{16}}=\\dfrac{\\sqrt{7}}{4}$</div>`
+        tag: 'STEP 2', title: '$t$ 결정 — 두 사인법칙 + $\\sin\\angle DAB=4\\sin\\angle CAD$',
+        body: `<p class="step-hint">$\\sin\\angle DAB$와 $\\sin\\angle CAD$를 각각 부분삼각형의 사인법칙으로 표현한다.</p>
+<div class="formula-box highlight-blue">$\\triangle ABD$ 사인법칙: $\\dfrac{\\overline{AB}}{\\sin\\angle ADB}=\\dfrac{\\overline{BD}}{\\sin\\angle DAB}$. $\\overline{AB}=\\overline{BD}$이므로 $\\sin\\angle DAB=\\sin\\angle ADB$.</div>
+<div class="formula-box highlight-blue" style="margin-top:var(--space-3)">$\\triangle ACD$ 사인법칙: $\\dfrac{\\overline{AC}}{\\sin\\angle ADC}=\\dfrac{\\overline{CD}}{\\sin\\angle CAD}\\;\\Rightarrow\\;\\sin\\angle CAD=\\dfrac{\\overline{CD}\\sin\\angle ADC}{\\overline{AC}}=\\dfrac{\\sin\\angle ADC}{4t}$</div>
+<p style="margin-top:var(--space-3)" class="step-hint">$D$가 $\\overline{BC}$ 위에 있으므로 $\\angle ADB+\\angle ADC=\\pi$, 즉 $\\sin\\angle ADB=\\sin\\angle ADC$ (보각).</p>
+<div class="calc-line">$\\dfrac{\\sin\\angle DAB}{\\sin\\angle CAD}=\\dfrac{\\sin\\angle ADB}{\\sin\\angle ADC/(4t)}=4t$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">조건 $\\sin\\angle DAB=4\\sin\\angle CAD$ → $4t=4$ → $t=$
+<span class="blank-wrap"><button class="blank-btn" data-answer="$1$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>
+<div class="key-concept" style="margin-top:var(--space-3)"><span class="concept-label">변 결정</span>$\\overline{AB}=5$, $\\overline{AC}=4$, $\\overline{BC}=6$, $\\overline{BD}=5$, $\\overline{CD}=1$</div>`
       },
       {
-        tag: 'STEP 3', title: '$\\overline{AD}$ — $\\triangle ABD$ 코사인법칙',
-        body: `<p class="step-hint">$\\triangle ABD$는 $\\overline{AB}=\\overline{BD}=5$, 끼인각 $\\angle ABD=B$인 이등변. 코사인법칙으로 $\\overline{AD}$를 직접 구한다 (반각 공식 불필요).</p>
-<div class="formula-box highlight-yellow">$\\overline{AD}^{2}=\\overline{AB}^{2}+\\overline{BD}^{2}-2\\cdot\\overline{AB}\\cdot\\overline{BD}\\cos B=25+25-2\\cdot 25\\cdot\\dfrac{3}{4}=50\\!\\left(1-\\dfrac{3}{4}\\right)=\\dfrac{25}{2}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{AD}=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{5\\sqrt{2}}{2}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
+        tag: 'STEP 3', title: '$\\cos B$와 $\\overline{AD}$ — 두 번의 코사인법칙',
+        body: `<p class="step-hint">$\\triangle ABC$의 세 변이 결정됐으므로 $\\cos B$ 직접 계산, 그 다음 $\\triangle ABD$에 코사인법칙으로 $\\overline{AD}$ 결정.</p>
+<div class="formula-box highlight-yellow">$\\cos B=\\dfrac{\\overline{AB}^{2}+\\overline{BC}^{2}-\\overline{AC}^{2}}{2\\cdot\\overline{AB}\\cdot\\overline{BC}}=\\dfrac{25+36-16}{2\\cdot 5\\cdot 6}=\\dfrac{45}{60}=\\dfrac{3}{4}\\;\\Rightarrow\\;\\sin B=\\dfrac{\\sqrt{7}}{4}$</div>
+<div class="formula-box highlight-yellow" style="margin-top:var(--space-3)">$\\triangle ABD$ 이등변($\\overline{AB}=\\overline{BD}=5$, $\\angle ABD=B$) 코사인법칙: $\\overline{AD}^{2}=25+25-2\\cdot 25\\cdot\\dfrac{3}{4}=50\\!\\left(1-\\dfrac{3}{4}\\right)=\\dfrac{25}{2}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{AD}=\\dfrac{5\\sqrt{2}}{2}$</div>`
       },
       {
         tag: 'STEP 4', title: '$\\triangle ABD$ 외접원 반지름 + 넓이',
@@ -1635,7 +1640,7 @@ const PROBLEMS = [
 <div class="formula-box highlight-green">$2R'=\\dfrac{\\overline{AD}}{\\sin B}=\\dfrac{5\\sqrt{2}/2}{\\sqrt{7}/4}=\\dfrac{5\\sqrt{2}}{2}\\cdot\\dfrac{4}{\\sqrt{7}}=\\dfrac{10\\sqrt{2}}{\\sqrt{7}}=\\dfrac{10\\sqrt{14}}{7}$</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$R'=\\dfrac{5\\sqrt{14}}{7}\\;\\Rightarrow\\;R'^{2}=\\dfrac{25\\cdot 14}{49}=\\dfrac{50}{7}\\;\\Rightarrow\\;\\pi R'^{2}=\\dfrac{50}{7}\\pi$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">② $\\dfrac{50}{7}\\pi$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 전략</span>$\\triangle ABC$ 코사인법칙 → $\\cos B$ + $\\triangle ABD$ 이등변 코사인법칙 → $\\overline{AD}$ + 사인법칙 → 외접원 반지름 (반각·배각 모두 미사용).</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>두 사인법칙 + 보각 관계로 $t=1$ 결정 → △ABC 코사인법칙으로 $\\cos B$ → △ABD 코사인법칙으로 $\\overline{AD}$ → 사인법칙으로 외접원 반지름 (반각·배각·덧셈정리 모두 미사용).</div>`
       }
     ]
   },
