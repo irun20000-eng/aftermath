@@ -864,19 +864,21 @@ const PROBLEMS = [
 <div class="formula-box highlight-blue">반지름 $\\overline{OA}=\\overline{OP}=4$, 점 $O$와 직선 $AP$ 사이 거리 $=3$</div>`
       },
       {
-        tag: 'STEP 2', title: '$\\sin\\angle OAP$ 구하기',
+        tag: 'STEP 2', title: '$\\sin\\angle OAP$ 및 $\\overline{AP}$ 구하기',
         body: `<p class="step-hint">$O$에서 $AP$에 내린 수선의 발을 $H$라 하면 $\\overline{OH}=3$, $\\overline{OA}=4$.</p>
 <div class="calc-line">$\\sin\\angle OAP=\\dfrac{\\overline{OH}}{\\overline{OA}}=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{3}{4}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
+<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{3}{4}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>
+<div class="calc-line" style="margin-top:var(--space-3)">직각삼각형 $OAH$에서 $\\overline{AH}=\\sqrt{\\overline{OA}^{2}-\\overline{OH}^{2}}=\\sqrt{16-9}=\\sqrt{7}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$O$가 현 $AP$의 수직이등분선 위에 있으므로 $\\overline{AH}=\\overline{HP}$, 따라서 $\\overline{AP}=2\\sqrt{7}$</div>`
       },
       {
-        tag: 'STEP 3', title: '$\\cos\\angle POB$ 변환',
-        body: `<p class="step-hint">$\\triangle OAP$가 이등변($\\overline{OA}=\\overline{OP}$)이므로 $\\angle OAP=\\angle OPA$, $\\angle AOP=\\pi-2\\angle OAP$.</p>
-<div class="calc-line">$\\angle POB=\\pi-\\angle AOP=2\\angle OAP$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\cos\\angle POB=\\cos(2\\angle OAP)=1-2\\sin^{2}\\angle OAP=1-2\\cdot\\dfrac{9}{16}=-\\dfrac{1}{8}$</div>
-<div class="calc-tip"><span class="tip-icon">⚠️</span><span>$\\angle AOP$와 $\\angle POB$는 일직선상에서 보각.</span></div>
+        tag: 'STEP 3', title: '$\\cos\\angle POB$ — 코사인법칙 + 보각',
+        body: `<p class="step-hint">$\\triangle OAP$에 코사인법칙을 적용해 $\\cos\\angle AOP$를 구한 뒤, $A,O,B$가 일직선이므로 보각 관계를 이용한다.</p>
+<div class="formula-box highlight-blue">$\\cos\\angle AOP=\\dfrac{\\overline{OA}^{2}+\\overline{OP}^{2}-\\overline{AP}^{2}}{2\\cdot\\overline{OA}\\cdot\\overline{OP}}=\\dfrac{16+16-28}{2\\cdot 4\\cdot 4}=\\dfrac{4}{32}=\\dfrac{1}{8}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\angle POB=\\pi-\\angle AOP\\;\\Rightarrow\\;\\cos\\angle POB=-\\cos\\angle AOP=-\\dfrac{1}{8}$</div>
+<div class="calc-tip"><span class="tip-icon">⚠️</span><span>$\\angle AOP$와 $\\angle POB$는 일직선상에서 보각이므로 코사인의 부호만 반대.</span></div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">① $-\\dfrac{1}{8}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 변환</span>$\\cos 2\\theta=1-2\\sin^{2}\\theta$</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>이등변 삼각형의 밑변을 코사인법칙으로 직접 처리 + 일직선상 보각</div>`
       }
     ]
   },
@@ -1189,7 +1191,8 @@ const PROBLEMS = [
       {
         tag: 'STEP 2', title: '두 경우 분석',
         body: `<p class="step-hint">$+$: $\\cos A\\sin C=0$ → $\\cos A=0$, 즉 $\\angle A=\\dfrac{\\pi}{2}$.</p>
-<p class="step-hint">$-$: $\\sin B=\\cos A\\sin C$. $\\sin B=\\sin A\\cos C+\\cos A\\sin C$이므로 $\\sin A\\cos C=0$ → $\\angle C=\\dfrac{\\pi}{2}$.</p>
+<p class="step-hint">$-$: $\\sin B=\\cos A\\sin C$. 사인법칙 $\\dfrac{\\sin B}{b}=\\dfrac{\\sin C}{c}$이므로 $\\sin B=\\dfrac{b}{c}\\sin C$, 따라서 $\\cos A=\\dfrac{b}{c}$ (단, $b=\\overline{CA}$, $c=\\overline{AB}$).</p>
+<p class="step-hint">코사인법칙 $\\cos A=\\dfrac{b^{2}+c^{2}-a^{2}}{2bc}$와 비교: $\\dfrac{b^{2}+c^{2}-a^{2}}{2bc}=\\dfrac{b}{c}$ → 정리하면 $c^{2}=a^{2}+b^{2}$, 즉 $\\angle C=\\dfrac{\\pi}{2}$.</p>
 <div class="calc-tip"><span class="tip-icon">→</span><span>$\\overline{AB}=4>\\overline{BC}=3$이므로 $\\angle A=\\dfrac{\\pi}{2}$이면 $\\overline{BC}^{2}=\\overline{AB}^{2}+\\overline{AC}^{2}$인데 $9<16$이라 모순. 따라서 $\\angle C=\\dfrac{\\pi}{2}$.</span></div>`
       },
       {
@@ -1198,7 +1201,7 @@ const PROBLEMS = [
 <span class="blank-wrap"><button class="blank-btn" data-answer="$\\sqrt{7}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>
 <div class="calc-line" style="margin-top:var(--space-3)">$S=\\dfrac{1}{2}\\cdot\\overline{BC}\\cdot\\overline{CA}=\\dfrac{1}{2}\\cdot 3\\cdot\\sqrt{7}=\\dfrac{3\\sqrt{7}}{2}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">① $\\dfrac{3\\sqrt{7}}{2}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 변환</span>$\\sin B=\\sin(A+C)=\\sin A\\cos C+\\cos A\\sin C$ (덧셈 정리).</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>사인법칙으로 $\\sin$ 비를 변 길이 비로 바꾼 뒤, 코사인법칙으로 각 조건 분석.</div>`
       }
     ]
   },
@@ -1224,11 +1227,12 @@ const PROBLEMS = [
       },
       {
         tag: 'STEP 3', title: '$\\overline{AP}$와 넓이',
-        body: `<p class="step-hint">접점에서 외부점까지의 두 접선 길이가 같으므로 $\\overline{AP}=\\overline{AQ}$. 반각공식 $\\tan\\dfrac{\\angle PAQ}{2}=\\dfrac{\\sin\\angle PAQ}{1+\\cos\\angle PAQ}=\\dfrac{4/5}{8/5}=\\dfrac{1}{2}$.</p>
-<div class="calc-line">$\\tan\\angle PAO=\\dfrac{r}{\\overline{AP}}=\\dfrac{1}{2}$ → $\\overline{AP}=\\overline{AQ}=2$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$S=\\dfrac{1}{2}\\cdot 2\\cdot 2\\cdot\\dfrac{4}{5}=\\dfrac{8}{5}$</div>
+        body: `<p class="step-hint">접점에서 외부점까지의 두 접선 길이가 같으므로 $\\overline{AP}=\\overline{AQ}$. △APQ는 이등변삼각형이므로 코사인법칙을 직접 적용한다.</p>
+<div class="formula-box highlight-blue">$\\overline{PQ}^{2}=\\overline{AP}^{2}+\\overline{AQ}^{2}-2\\overline{AP}\\cdot\\overline{AQ}\\cos\\angle PAQ=2\\overline{AP}^{2}\\!\\left(1-\\dfrac{3}{5}\\right)=\\dfrac{4\\overline{AP}^{2}}{5}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\dfrac{4\\overline{AP}^{2}}{5}=\\dfrac{16}{5}$ → $\\overline{AP}=\\overline{AQ}=2$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$S=\\dfrac{1}{2}\\cdot \\overline{AP}\\cdot\\overline{AQ}\\cdot\\sin\\angle PAQ=\\dfrac{1}{2}\\cdot 2\\cdot 2\\cdot\\dfrac{4}{5}=\\dfrac{8}{5}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">③ $\\dfrac{8}{5}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 성질</span>외부점에서의 두 접선 길이는 같다 + 반지름은 접선과 수직.</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>외부점의 두 접선 길이가 같음(이등변) + 코사인법칙으로 변 길이 직접 + 넓이 = $\\dfrac{1}{2}ab\\sin C$.</div>`
       }
     ]
   },
@@ -1277,19 +1281,20 @@ const PROBLEMS = [
 <div class="calc-line" style="margin-top:var(--space-3)">$2\\sin A\\cos C+\\sin C\\cos A=2\\sin B$</div>`
       },
       {
-        tag: 'STEP 2', title: '덧셈 정리 활용',
-        body: `<p class="step-hint">$\\sin(A+C)=\\sin A\\cos C+\\cos A\\sin C=\\sin B$.</p>
-<div class="calc-line">좌변 $=\\sin A\\cos C+\\sin B$ → $\\sin A\\cos C+\\sin B=2\\sin B$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\sin A\\cos C=\\sin B$ → 사인법칙: $a\\cos C=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$b$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
+        tag: 'STEP 2', title: '사인법칙 + 투영(정사영) 공식',
+        body: `<p class="step-hint">사인법칙으로 양변을 변 길이 비로 변환한다 ($\\overline{BC}=a$, $\\overline{CA}=b$, $\\overline{AB}=c$).</p>
+<div class="calc-line">$2\\sin A\\cos C+\\sin C\\cos A=2\\sin B$ → $2a\\cos C+c\\cos A=2b$</div>
+<div class="formula-box highlight-blue">투영 공식: $b=a\\cos C+c\\cos A$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">두 식을 비교: $2a\\cos C+c\\cos A=2(a\\cos C+c\\cos A)$ → $c\\cos A=$
+<span class="blank-wrap"><button class="blank-btn" data-answer="$0$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span>$\\Rightarrow \\cos A=0$</div>`
       },
       {
         tag: 'STEP 3', title: '$\\angle A$ 결정 → $\\cos B$',
-        body: `<p class="step-hint">정사영(투영) 공식 $b=a\\cos C+c\\cos A$에서 $c\\cos A=0$이므로 $\\cos A=0$, $\\angle A=\\dfrac{\\pi}{2}$.</p>
+        body: `<p class="step-hint">$\\cos A=0$이므로 $\\angle A=\\dfrac{\\pi}{2}$.</p>
 <div class="calc-line">$2b=a$ ($\\overline{BC}=a=2\\overline{AC}=2b$)이고 $\\angle A=\\dfrac{\\pi}{2}$이므로 $a^{2}=b^{2}+c^{2}$ → $4b^{2}=b^{2}+c^{2}$ → $c=b\\sqrt{3}$</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$\\cos B=\\dfrac{c}{a}=\\dfrac{b\\sqrt{3}}{2b}=\\dfrac{\\sqrt{3}}{2}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">⑤ $\\dfrac{\\sqrt{3}}{2}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 공식</span>투영 공식 $b=a\\cos C+c\\cos A$.</div>`
+<div class="key-concept"><span class="concept-label">핵심 공식</span>투영(정사영) 공식 $b=a\\cos C+c\\cos A$ — 덧셈정리 없이 변·각 관계 정리.</div>`
       }
     ]
   },
@@ -1498,23 +1503,24 @@ const PROBLEMS = [
 <div class="formula-box highlight-blue" style="margin-top:var(--space-3)">$\\sin(\\angle ABP)=\\dfrac{3}{5}$, $\\;\\cos(\\angle ABP)=\\dfrac{4}{5}$</div>`
       },
       {
-        tag: 'STEP 2', title: '같은 길이 현 → 같은 원주각',
-        body: `<p class="step-hint">$\\overline{AP}=\\overline{PQ}$이므로 호 AP $=$ 호 PQ.</p>
-<div class="calc-line">$\\angle ABP=\\angle PBQ$ (같은 호의 원주각)</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\angle ABQ=2\\angle ABP$, $\\;\\cos(\\angle ABQ)=2\\cos^2(\\angle ABP)-1=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{7}{25}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
+        tag: 'STEP 2', title: '같은 길이 현 → 톨레미 정리',
+        body: `<p class="step-hint">$\\overline{AP}=\\overline{PQ}=3$이므로 호 $AP$ = 호 $PQ$, 같은 호의 원주각 $\\angle ABP=\\angle PBQ$. 네 점 $A, P, Q, B$가 모두 같은 원 위이므로 사각형 $APQB$에 톨레미 정리를 적용한다.</p>
+<div class="formula-box highlight-blue">톨레미: $\\overline{AQ}\\cdot\\overline{PB}=\\overline{AP}\\cdot\\overline{QB}+\\overline{PQ}\\cdot\\overline{AB}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$4\\overline{AQ}=3\\overline{QB}+3\\cdot 5=3\\overline{QB}+15$ → $\\overline{AQ}=\\dfrac{15+3\\overline{QB}}{4}$</div>`
       },
       {
-        tag: 'STEP 3', title: '$\\overline{BQ}$ 구하기',
-        body: `<p class="step-hint">$\\angle AQB=90°$이므로 $\\overline{BQ}=\\overline{AB}\\cos(\\angle ABQ)$.</p>
-<div class="calc-line">$\\overline{BQ}=5\\cdot\\dfrac{7}{25}=\\dfrac{7}{5}$</div>`
+        tag: 'STEP 3', title: '$\\overline{BQ}$ 구하기 — 직각삼각형 ABQ',
+        body: `<p class="step-hint">$\\overline{AB}$가 지름이므로 $\\angle AQB=90°$, 즉 $\\overline{AQ}^{2}+\\overline{QB}^{2}=\\overline{AB}^{2}=25$.</p>
+<div class="calc-line">$\\overline{AQ}=\\dfrac{15+3\\overline{QB}}{4}$ 대입: $(15+3\\overline{QB})^{2}+16\\overline{QB}^{2}=400$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$25\\overline{QB}^{2}+90\\overline{QB}-175=0$ → $5\\overline{QB}^{2}+18\\overline{QB}-35=0$ → $(5\\overline{QB}-7)(\\overline{QB}+5)=0$ → $\\overline{QB}=$
+<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{7}{5}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
       },
       {
         tag: 'STEP 4', title: '$\\triangle PBQ$ 넓이',
         body: `<div class="formula-box highlight-yellow">$S=\\dfrac{1}{2}\\overline{BP}\\cdot\\overline{BQ}\\cdot\\sin(\\angle PBQ)$</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$=\\dfrac{1}{2}\\cdot 4\\cdot\\dfrac{7}{5}\\cdot\\dfrac{3}{5}=\\dfrac{42}{25}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">⑤ $\\dfrac{42}{25}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 전략</span>지름 위 원주각 $=90°$ + 같은 호의 원주각</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>지름 위 원주각 $=90°$ + 같은 호의 원주각 + 원 내접 사각형 톨레미 정리 ($\\overline{AC}\\cdot\\overline{BD}=\\overline{AB}\\cdot\\overline{CD}+\\overline{AD}\\cdot\\overline{BC}$).</div>`
       }
     ]
   },
@@ -1596,32 +1602,30 @@ const PROBLEMS = [
     answer: 1,
     steps: [
       {
-        tag: 'STEP 1', title: '비례 조건 정리 + 변수 설정',
-        body: `<p class="step-hint">사인법칙: $5\\sin B=4\\sin C\\;\\Rightarrow\\;5b=4c$이므로 $\\overline{AC}:\\overline{AB}=4:5$.</p>
-<div class="formula-box highlight-blue">$\\overline{AC}=4t$, $\\overline{AB}=5t$, $\\overline{BD}=5t$, $\\overline{CD}=1$, $\\overline{BC}=5t+1$</div>`
+        tag: 'STEP 1', title: '비례 조건 정리 + 변 길이 결정',
+        body: `<p class="step-hint">사인법칙: $5\\sin B=4\\sin C\\;\\Rightarrow\\;5b=4c$이므로 $\\overline{AC}:\\overline{AB}=4:5$. 그림 조건 ($\\overline{BC}=6$)에서 비례상수가 $1$로 결정된다.</p>
+<div class="formula-box highlight-blue">$\\overline{AC}=4$, $\\overline{AB}=5$, $\\overline{BD}=\\overline{AB}=5$, $\\overline{CD}=1$, $\\overline{BC}=6$</div>`
       },
       {
-        tag: 'STEP 2', title: '$\\triangle ABD$ 이등변 + 각 관계',
-        body: `<p class="step-hint">$\\overline{AB}=\\overline{BD}$이므로 $\\angle BAD=\\angle BDA=\\dfrac{\\pi-B}{2}$.</p>
-<div class="calc-line">$\\sin(\\angle BAD)=\\cos\\dfrac{B}{2}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\angle DAC=A-\\angle BAD=\\dfrac{\\pi-B}{2}-C$, $\\;\\sin(\\angle DAC)=\\dfrac{\\sin(\\angle BAD)}{4}=\\dfrac{\\cos(B/2)}{4}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{AD}=2\\overline{AB}\\sin\\dfrac{B}{2}\\cdot\\dfrac{1}{1}=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$10t\\sin(B/2)$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
+        tag: 'STEP 2', title: '$\\cos B$ 결정 — $\\triangle ABC$ 코사인법칙',
+        body: `<p class="step-hint">$\\triangle ABC$의 세 변을 알고 있으므로 코사인법칙으로 $\\angle B$의 코사인을 직접 구한다.</p>
+<div class="formula-box highlight-blue">$\\cos B=\\dfrac{\\overline{AB}^{2}+\\overline{BC}^{2}-\\overline{AC}^{2}}{2\\cdot\\overline{AB}\\cdot\\overline{BC}}=\\dfrac{25+36-16}{2\\cdot 5\\cdot 6}=\\dfrac{45}{60}=\\dfrac{3}{4}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\sin B=\\sqrt{1-\\cos^{2}B}=\\sqrt{1-\\dfrac{9}{16}}=\\dfrac{\\sqrt{7}}{4}$</div>`
       },
       {
-        tag: 'STEP 3', title: '$\\triangle ACD$ 사인법칙으로 $t$ 결정',
-        body: `<div class="formula-box highlight-yellow">$\\dfrac{\\overline{CD}}{\\sin(\\angle CAD)}=\\dfrac{\\overline{AD}}{\\sin C}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{AD}=\\dfrac{\\sin C}{\\sin(\\angle CAD)}=\\dfrac{4\\sin C}{\\cos(B/2)}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">두 식: $10t\\sin\\dfrac{B}{2}=\\dfrac{4\\sin C}{\\cos(B/2)}\\;\\Rightarrow\\;5t\\sin B=4\\sin C$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$5\\sin B=4\\sin C$이므로 $t=1$. 따라서 $\\overline{AB}=5$, $\\overline{AC}=4$, $\\overline{BC}=6$.</div>`
+        tag: 'STEP 3', title: '$\\overline{AD}$ — $\\triangle ABD$ 코사인법칙',
+        body: `<p class="step-hint">$\\triangle ABD$는 $\\overline{AB}=\\overline{BD}=5$, 끼인각 $\\angle ABD=B$인 이등변. 코사인법칙으로 $\\overline{AD}$를 직접 구한다 (반각 공식 불필요).</p>
+<div class="formula-box highlight-yellow">$\\overline{AD}^{2}=\\overline{AB}^{2}+\\overline{BD}^{2}-2\\cdot\\overline{AB}\\cdot\\overline{BD}\\cos B=25+25-2\\cdot 25\\cdot\\dfrac{3}{4}=50\\!\\left(1-\\dfrac{3}{4}\\right)=\\dfrac{25}{2}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{AD}=$
+<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{5\\sqrt{2}}{2}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
       },
       {
-        tag: 'STEP 4', title: '외접원 반지름 + 넓이',
-        body: `<div class="calc-line">$\\cos B=\\dfrac{25+36-16}{2\\cdot 5\\cdot 6}=\\dfrac{3}{4}\\;\\Rightarrow\\;\\cos\\dfrac{B}{2}=\\sqrt{\\dfrac{1+3/4}{2}}=\\dfrac{\\sqrt{14}}{4}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$2R'=\\dfrac{\\overline{AB}}{\\sin(\\angle ADB)}=\\dfrac{5}{\\cos(B/2)}=\\dfrac{20}{\\sqrt{14}}=\\dfrac{10\\sqrt{14}}{7}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$R'^2=\\dfrac{50}{7}\\;\\Rightarrow\\;\\pi R'^2=\\dfrac{50}{7}\\pi$</div>
+        tag: 'STEP 4', title: '$\\triangle ABD$ 외접원 반지름 + 넓이',
+        body: `<p class="step-hint">$\\triangle ABD$에서 변 $\\overline{AD}$의 마주각이 $\\angle ABD=B$이므로 사인법칙을 그대로 적용한다.</p>
+<div class="formula-box highlight-green">$2R'=\\dfrac{\\overline{AD}}{\\sin B}=\\dfrac{5\\sqrt{2}/2}{\\sqrt{7}/4}=\\dfrac{5\\sqrt{2}}{2}\\cdot\\dfrac{4}{\\sqrt{7}}=\\dfrac{10\\sqrt{2}}{\\sqrt{7}}=\\dfrac{10\\sqrt{14}}{7}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$R'=\\dfrac{5\\sqrt{14}}{7}\\;\\Rightarrow\\;R'^{2}=\\dfrac{25\\cdot 14}{49}=\\dfrac{50}{7}\\;\\Rightarrow\\;\\pi R'^{2}=\\dfrac{50}{7}\\pi$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">② $\\dfrac{50}{7}\\pi$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 공식</span>이등변에서 $\\sin(\\angle BAD)=\\cos(B/2)$ + 사인법칙</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>$\\triangle ABC$ 코사인법칙 → $\\cos B$ + $\\triangle ABD$ 이등변 코사인법칙 → $\\overline{AD}$ + 사인법칙 → 외접원 반지름 (반각·배각 모두 미사용).</div>`
       }
     ]
   },
@@ -1717,13 +1721,13 @@ const PROBLEMS = [
 <span class="blank-wrap"><button class="blank-btn" data-answer="$12$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
       },
       {
-        tag: 'STEP 3', title: '$\\cos(\\angle\\mathrm{BAC})$와 $\\overline{BC}$ 계산',
-        body: `<div class="formula-box highlight-green">배각 공식: $\\cos(\\angle\\mathrm{BAC})=2\\cos^{2}(\\angle\\mathrm{BAD})-1=2\\cdot\\dfrac{25}{36}-1=\\dfrac{50-36}{36}=\\dfrac{7}{18}$</div>
-<div class="formula-box highlight-yellow" style="margin-top:var(--space-3)">$\\overline{BC}^{2}=\\overline{AB}^{2}+\\overline{AC}^{2}-2\\cdot\\overline{AB}\\cdot\\overline{AC}\\cos(\\angle\\mathrm{BAC})$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$=9+144-2\\cdot 3\\cdot 12\\cdot\\dfrac{7}{18}=153-28=125$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{BC}=\\sqrt{125}=5\\sqrt{5}$</div>
+        tag: 'STEP 3', title: '$\\overline{BD}$와 $\\overline{DC}$ — 각각 코사인법칙',
+        body: `<p class="step-hint">$D$가 선분 $BC$ 위의 점이므로 $\\overline{BC}=\\overline{BD}+\\overline{DC}$. $\\triangle ABD$와 $\\triangle ACD$에 코사인법칙을 따로 적용한다 ($\\angle DAC=\\angle BAD$, $\\cos=\\tfrac{5}{6}$).</p>
+<div class="formula-box highlight-yellow">$\\triangle ABD$: $\\overline{BD}^{2}=\\overline{AB}^{2}+\\overline{AD}^{2}-2\\cdot\\overline{AB}\\cdot\\overline{AD}\\cos\\angle BAD=9+16-2\\cdot 3\\cdot 4\\cdot\\dfrac{5}{6}=25-20=5$</div>
+<div class="formula-box highlight-yellow" style="margin-top:var(--space-3)">$\\triangle ACD$: $\\overline{DC}^{2}=\\overline{AC}^{2}+\\overline{AD}^{2}-2\\cdot\\overline{AC}\\cdot\\overline{AD}\\cos\\angle DAC=144+16-2\\cdot 12\\cdot 4\\cdot\\dfrac{5}{6}=160-80=80$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{BD}=\\sqrt{5}$, $\\overline{DC}=\\sqrt{80}=4\\sqrt{5}$ → $\\overline{BC}=\\overline{BD}+\\overline{DC}=\\sqrt{5}+4\\sqrt{5}=5\\sqrt{5}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">③ $5\\sqrt{5}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 공식</span>각이등분선 길이 + 배각 공식 $\\cos(2\\theta)=2\\cos^{2}\\theta-1$ + 코사인법칙</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>각이등분선 길이 공식 → $\\overline{AC}$. 그 다음 각이등분선의 두 조각 $\\overline{BD}, \\overline{DC}$를 두 부분삼각형의 코사인법칙으로 직접 (배각 공식 미사용).</div>`
       }
     ]
   },
@@ -1783,18 +1787,19 @@ const PROBLEMS = [
 <span class="blank-wrap"><button class="blank-btn" data-answer="$12$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span>$,\\;R=2\\sqrt{3}$</div>`
       },
       {
-        tag: 'STEP 2', title: '각 결정',
-        body: `<div class="calc-line">$\\angle OBA=\\dfrac{\\pi-\\angle AOB}{2}=30°$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\sin(\\angle BDO)=\\sqrt{1-\\dfrac{1}{13}}=\\dfrac{2\\sqrt{3}}{\\sqrt{13}}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\sin(\\angle DOB)=\\sin(\\angle BDO+30°)=\\dfrac{2\\sqrt{3}}{\\sqrt{13}}\\cdot\\dfrac{\\sqrt{3}}{2}+\\dfrac{1}{\\sqrt{13}}\\cdot\\dfrac{1}{2}=\\dfrac{7}{2\\sqrt{13}}$</div>`
+        tag: 'STEP 2', title: '$\\overline{OD}$ — 사인법칙',
+        body: `<p class="step-hint">$\\triangle OAB$는 $\\overline{OA}=\\overline{OB}=R$인 이등변, $\\angle AOB=\\dfrac{2\\pi}{3}$이므로 $\\angle OBA=\\dfrac{\\pi-\\angle AOB}{2}=\\dfrac{\\pi}{6}=30°$. 즉 $\\angle OBD=30°$.</p>
+<div class="calc-line">$\\cos\\angle BDO=\\dfrac{1}{\\sqrt{13}}$이므로 $\\sin\\angle BDO=\\sqrt{1-\\dfrac{1}{13}}=\\dfrac{2\\sqrt{3}}{\\sqrt{13}}$</div>
+<div class="formula-box highlight-blue" style="margin-top:var(--space-3)">$\\triangle OBD$ 사인법칙: $\\dfrac{\\overline{OD}}{\\sin\\angle OBD}=\\dfrac{\\overline{OB}}{\\sin\\angle BDO}$ → $\\overline{OD}=\\dfrac{2\\sqrt{3}\\cdot\\tfrac{1}{2}}{2\\sqrt{3}/\\sqrt{13}}=\\dfrac{\\sqrt{3}\\cdot\\sqrt{13}}{2\\sqrt{3}}=\\dfrac{\\sqrt{13}}{2}$</div>`
       },
       {
-        tag: 'STEP 3', title: '$\\triangle OBD$ 사인법칙 + 넓이',
-        body: `<div class="formula-box highlight-yellow">$\\dfrac{\\overline{OB}}{\\sin(\\angle BDO)}=\\dfrac{\\overline{BD}}{\\sin(\\angle DOB)}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\dfrac{2\\sqrt{3}}{2\\sqrt{3}/\\sqrt{13}}=\\sqrt{13}$. $\\;\\overline{BD}=\\sqrt{13}\\cdot\\dfrac{7}{2\\sqrt{13}}=\\dfrac{7}{2}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$S=\\dfrac{1}{2}\\overline{OB}\\cdot\\overline{BD}\\sin(\\angle OBD)=\\dfrac{1}{2}\\cdot 2\\sqrt{3}\\cdot\\dfrac{7}{2}\\cdot\\dfrac{1}{2}=\\dfrac{7\\sqrt{3}}{4}$</div>
+        tag: 'STEP 3', title: '$\\overline{BD}$ — 코사인법칙 + 넓이',
+        body: `<p class="step-hint">$\\triangle OBD$에 코사인법칙 (덧셈정리 없이 변 길이 직접): $\\overline{OB}^{2}=\\overline{OD}^{2}+\\overline{BD}^{2}-2\\cdot\\overline{OD}\\cdot\\overline{BD}\\cos\\angle BDO$.</p>
+<div class="formula-box highlight-yellow">$12=\\dfrac{13}{4}+\\overline{BD}^{2}-2\\cdot\\dfrac{\\sqrt{13}}{2}\\cdot\\overline{BD}\\cdot\\dfrac{1}{\\sqrt{13}}=\\dfrac{13}{4}+\\overline{BD}^{2}-\\overline{BD}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{BD}^{2}-\\overline{BD}-\\dfrac{35}{4}=0$ → $4\\overline{BD}^{2}-4\\overline{BD}-35=0$ → $(2\\overline{BD}-7)(2\\overline{BD}+5)=0$ → $\\overline{BD}=\\dfrac{7}{2}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$S=\\dfrac{1}{2}\\cdot\\overline{OB}\\cdot\\overline{BD}\\sin\\angle OBD=\\dfrac{1}{2}\\cdot 2\\sqrt{3}\\cdot\\dfrac{7}{2}\\cdot\\dfrac{1}{2}=\\dfrac{7\\sqrt{3}}{4}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">③ $\\dfrac{7\\sqrt{3}}{4}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 전략</span>$\\overline{OA}=\\overline{OB}=R$이면 $\\angle AOB=120°$ — 외접원 반지름과 부채꼴 반지름이 같은 조건의 핵심</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>$\\overline{OA}=\\overline{OB}=R$인 이등변 → $\\angle AOB=\\dfrac{2\\pi}{3}$, $\\angle OBA=30°$ + 사인법칙으로 $\\overline{OD}$ + 코사인법칙으로 $\\overline{BD}$ (덧셈정리 미사용).</div>`
       }
     ]
   },
