@@ -1974,13 +1974,14 @@ const PROBLEMS = [
         tag: 'STEP 1', title: '조건 (가) 해석 — 직각삼각형',
         body: `<p class="step-hint">$\\triangle OAQ$의 세 각의 코사인을 코사인법칙으로 풀면:</p>
 <div class="formula-box highlight-blue">조건 (가) $\\Leftrightarrow\\;c^2=a^2+b^2$</div>
-<div class="calc-tip"><span class="tip-icon">→</span><span>즉 $\\angle AOQ=\\dfrac{\\pi}{2}$ ($\\overrightarrow{OA}\\perp\\overrightarrow{OQ}$)</span></div>`
+<div class="calc-tip"><span class="tip-icon">→</span><span>피타고라스의 역으로 $\\angle AOQ=\\dfrac{\\pi}{2}$ (직각)</span></div>`
       },
       {
-        tag: 'STEP 2', title: 'Q 좌표 결정',
-        body: `<div class="calc-line">$Q=(q,q^2-2q)$, $0&lt;q&lt;2$ (제4사분면).</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$\\overrightarrow{OA}\\cdot\\overrightarrow{OQ}=3q+3(q^2-2q)=3q^2-3q=0\\;\\Rightarrow\\;q=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$1$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>
+        tag: 'STEP 2', title: 'Q 좌표 결정 — 피타고라스 관계 직접 대입',
+        body: `<div class="calc-line">$Q=(q,q^2-2q)$, $0&lt;q&lt;2$ (제4사분면). $\\overline{OA}^{2}=18$, $\\overline{OQ}^{2}=q^{2}+(q^{2}-2q)^{2}=q^{2}(q^{2}-4q+5)$, $\\overline{AQ}^{2}=(q-3)^{2}+(q^{2}-2q-3)^{2}$.</div>
+<div class="formula-box highlight-blue" style="margin-top:var(--space-3)">$\\overline{AQ}^{2}=\\overline{OA}^{2}+\\overline{OQ}^{2}$ (직각) → $(q-3)^{2}+(q^{2}-2q-3)^{2}=18+q^{2}(q^{2}-4q+5)$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">좌변 전개: $q^{4}-4q^{3}-q^{2}+6q+18$. 우변: $q^{4}-4q^{3}+5q^{2}+18$. 차: $-6q^{2}+6q=0\\;\\Rightarrow\\;6q(1-q)=0\\;\\Rightarrow\\;q=$
+<span class="blank-wrap"><button class="blank-btn" data-answer="$1$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span> (∵ $0&lt;q&lt;2$)</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$Q=(1,-1)$, $a=3\\sqrt{2}$, $b=\\sqrt{2}$, $c=2\\sqrt{5}$</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$\\sin(\\angle OAQ)=\\dfrac{b}{c}=\\dfrac{\\sqrt{2}}{2\\sqrt{5}}=\\dfrac{1}{\\sqrt{10}}$</div>`
       },
