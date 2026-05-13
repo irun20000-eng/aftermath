@@ -1503,24 +1503,34 @@ const PROBLEMS = [
 <div class="formula-box highlight-blue" style="margin-top:var(--space-3)">$\\sin(\\angle ABP)=\\dfrac{3}{5}$, $\\;\\cos(\\angle ABP)=\\dfrac{4}{5}$</div>`
       },
       {
-        tag: 'STEP 2', title: '같은 길이 현 → 톨레미 정리',
-        body: `<p class="step-hint">$\\overline{AP}=\\overline{PQ}=3$이므로 호 $AP$ = 호 $PQ$, 같은 호의 원주각 $\\angle ABP=\\angle PBQ$. 네 점 $A, P, Q, B$가 모두 같은 원 위이므로 사각형 $APQB$에 톨레미 정리를 적용한다.</p>
-<div class="formula-box highlight-blue">톨레미: $\\overline{AQ}\\cdot\\overline{PB}=\\overline{AP}\\cdot\\overline{QB}+\\overline{PQ}\\cdot\\overline{AB}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$4\\overline{AQ}=3\\overline{QB}+3\\cdot 5=3\\overline{QB}+15$ → $\\overline{AQ}=\\dfrac{15+3\\overline{QB}}{4}$</div>`
+        tag: 'STEP 2', title: '같은 길이 현 → 같은 호의 원주각',
+        body: `<p class="step-hint">$\\overline{AP}=\\overline{PQ}=3$이므로 호 $AP$ = 호 $PQ$. 같은 호의 원주각이 같으므로 $\\angle PBQ=\\angle ABP$이다.</p>
+<div class="formula-box highlight-blue">$\\cos\\angle PBQ=\\cos\\angle ABP=\\dfrac{4}{5}$, $\\sin\\angle PBQ=\\sin\\angle ABP=\\dfrac{3}{5}$</div>`
       },
       {
-        tag: 'STEP 3', title: '$\\overline{BQ}$ 구하기 — 직각삼각형 ABQ',
-        body: `<p class="step-hint">$\\overline{AB}$가 지름이므로 $\\angle AQB=90°$, 즉 $\\overline{AQ}^{2}+\\overline{QB}^{2}=\\overline{AB}^{2}=25$.</p>
-<div class="calc-line">$\\overline{AQ}=\\dfrac{15+3\\overline{QB}}{4}$ 대입: $(15+3\\overline{QB})^{2}+16\\overline{QB}^{2}=400$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$25\\overline{QB}^{2}+90\\overline{QB}-175=0$ → $5\\overline{QB}^{2}+18\\overline{QB}-35=0$ → $(5\\overline{QB}-7)(\\overline{QB}+5)=0$ → $\\overline{QB}=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{7}{5}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span></div>`
+        tag: 'STEP 3', title: '$\\overline{BQ}$ — $\\triangle PBQ$ 코사인법칙',
+        body: `<p class="step-hint">$\\triangle PBQ$에서 두 변 $\\overline{BP}=4$, $\\overline{PQ}=3$과 끼인각 $\\angle PBQ$의 코사인을 알고 있으므로, 코사인법칙으로 나머지 변 $\\overline{BQ}$를 결정한다.</p>
+<div class="formula-box highlight-yellow">$\\overline{PQ}^{2}=\\overline{BP}^{2}+\\overline{BQ}^{2}-2\\cdot\\overline{BP}\\cdot\\overline{BQ}\\cos\\angle PBQ$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$9=16+\\overline{BQ}^{2}-2\\cdot 4\\cdot\\overline{BQ}\\cdot\\dfrac{4}{5}=16+\\overline{BQ}^{2}-\\dfrac{32\\overline{BQ}}{5}$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$5\\overline{BQ}^{2}-32\\overline{BQ}+35=0$ → $(5\\overline{BQ}-7)(\\overline{BQ}-5)=0$ → $\\overline{BQ}=$
+<span class="blank-wrap"><button class="blank-btn" data-answer="$\\dfrac{7}{5}$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span>
+<span class="calc-tip" style="margin-left:var(--space-2)">(∵ $\\overline{BQ}=5$이면 $Q=A$로 모순)</span></div>`
       },
       {
         tag: 'STEP 4', title: '$\\triangle PBQ$ 넓이',
         body: `<div class="formula-box highlight-yellow">$S=\\dfrac{1}{2}\\overline{BP}\\cdot\\overline{BQ}\\cdot\\sin(\\angle PBQ)$</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$=\\dfrac{1}{2}\\cdot 4\\cdot\\dfrac{7}{5}\\cdot\\dfrac{3}{5}=\\dfrac{42}{25}$</div>
 <div class="answer-reveal"><span class="answer-label">정답</span><span class="answer-number">⑤ $\\dfrac{42}{25}$</span></div>
-<div class="key-concept"><span class="concept-label">핵심 전략</span>지름 위 원주각 $=90°$ + 같은 호의 원주각 + 원 내접 사각형 톨레미 정리 ($\\overline{AC}\\cdot\\overline{BD}=\\overline{AB}\\cdot\\overline{CD}+\\overline{AD}\\cdot\\overline{BC}$).</div>`
+<div class="key-concept"><span class="concept-label">핵심 전략</span>지름 위 원주각 $=90°$ + 같은 호의 원주각이 같다 + $\\triangle PBQ$ 코사인법칙.</div>
+<details class="aft-altsol" style="margin-top:var(--space-3);padding:var(--space-2) var(--space-3);border-left:3px solid var(--accent-secondary,#888);background:var(--bg-soft,#f7f7f9);border-radius:6px">
+<summary style="cursor:pointer;font-weight:600">📌 별해 — 톨레미 정리 (참고)</summary>
+<div style="margin-top:var(--space-2)">
+<p>원 내접 사각형 $APQB$에 톨레미 정리를 적용해도 같은 답을 얻는다.</p>
+<div class="formula-box highlight-blue">$\\overline{AQ}\\cdot\\overline{PB}=\\overline{AP}\\cdot\\overline{QB}+\\overline{PQ}\\cdot\\overline{AB}$ → $4\\overline{AQ}=3\\overline{QB}+15$</div>
+<p style="margin-top:var(--space-2)">$\\angle AQB=90°$의 $\\overline{AQ}^{2}+\\overline{QB}^{2}=25$와 연립하면 $\\overline{QB}=\\dfrac{7}{5}$.</p>
+<p style="font-size:0.92em;color:var(--text-secondary,#666);margin-top:var(--space-2)">※ 톨레미 정리는 정식 교육과정엔 없으나 사인법칙으로 증명 가능한 보조정리.</p>
+</div>
+</details>`
       }
     ]
   },
