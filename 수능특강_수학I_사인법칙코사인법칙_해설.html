@@ -1986,12 +1986,16 @@ const PROBLEMS = [
 <div class="calc-line" style="margin-top:var(--space-3)">$\\sin(\\angle OAQ)=\\dfrac{b}{c}=\\dfrac{\\sqrt{2}}{2\\sqrt{5}}=\\dfrac{1}{\\sqrt{10}}$</div>`
       },
       {
-        tag: 'STEP 3', title: '조건 (나) — P 좌표',
-        body: `<p class="step-hint">$P=(p,p^2-2p)$, $p&lt;0$. $\\cos(\\angle OPA)=\\dfrac{1}{\\sqrt{10}}$.</p>
-<div class="calc-line">$\\cos(\\angle OPA)=\\dfrac{1+p-p^2}{\\sqrt{(p^2-4p+5)(p^2+2p+2)}}=\\dfrac{1}{\\sqrt{10}}$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$10(p^2-p-1)^2=(p^2-4p+5)(p^2+2p+2)$</div>
-<div class="calc-line" style="margin-top:var(--space-3)">$9p(p-2)(p-1)(p+1)=0\\;\\Rightarrow\\;p=$
-<span class="blank-wrap"><button class="blank-btn" data-answer="$-1$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span> (제2사분면 조건)</div>
+        tag: 'STEP 3', title: '조건 (나) — P 좌표 ($\\triangle OPA$ 코사인법칙)',
+        body: `<p class="step-hint">$P=(p,p^{2}-2p)$, $p&lt;0$ (제2사분면). $\\triangle OPA$의 세 변 길이를 좌표로 구한 뒤 코사인법칙을 적용한다.</p>
+<div class="calc-line">$\\overline{OP}^{2}=p^{2}+(p^{2}-2p)^{2}=p^{2}(p^{2}-4p+5)$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{PA}^{2}=(3-p)^{2}+(3-p^{2}+2p)^{2}=(p-3)^{2}\\bigl[1+(p+1)^{2}\\bigr]=(p-3)^{2}(p^{2}+2p+2)$ &nbsp;(∵ $3+2p-p^{2}=-(p+1)(p-3)$)</div>
+<div class="calc-line" style="margin-top:var(--space-3)">$\\overline{OA}^{2}=18$</div>
+<div class="formula-box highlight-blue" style="margin-top:var(--space-3)">코사인법칙: $\\cos\\angle OPA=\\dfrac{\\overline{OP}^{2}+\\overline{PA}^{2}-\\overline{OA}^{2}}{2\\,\\overline{OP}\\,\\overline{PA}}=\\dfrac{2p(p-3)(p^{2}-p-1)}{2\\,|p(p-3)|\\sqrt{(p^{2}-4p+5)(p^{2}+2p+2)}}=\\dfrac{p^{2}-p-1}{\\sqrt{(p^{2}-4p+5)(p^{2}+2p+2)}}$</div>
+<div class="calc-tip" style="margin-top:var(--space-2)"><span class="tip-icon">→</span><span>$p&lt;0$, $p-3&lt;0$이므로 $p(p-3)&gt;0$, $|p(p-3)|=p(p-3)$로 약분.</span></div>
+<div class="calc-line" style="margin-top:var(--space-3)">조건 (나) $\\cos\\angle OPA=\\sin\\angle OAQ=\\dfrac{1}{\\sqrt{10}}$ → $10(p^{2}-p-1)^{2}=(p^{2}-4p+5)(p^{2}+2p+2)$</div>
+<div class="calc-line" style="margin-top:var(--space-3)">전개·정리: $9p(p-2)(p-1)(p+1)=0\\;\\Rightarrow\\;p=$
+<span class="blank-wrap"><button class="blank-btn" data-answer="$-1$"><span class="blank-placeholder">?</span><span class="blank-answer"></span></button></span> (∵ 제2사분면 $p&lt;0$)</div>
 <div class="calc-line" style="margin-top:var(--space-3)">$P=(-1,3)$</div>`
       },
       {
