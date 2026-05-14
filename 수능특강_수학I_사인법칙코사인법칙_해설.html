@@ -577,16 +577,17 @@ a{color:var(--color-primary);text-decoration:none}
   .site-header,.bottom-nav,.print-modal,.modal-backdrop,
   .main-area,.footer-attr{display:none!important}
 
+  /* 페이지 마진 일관화 — 첫 페이지부터 두번째·세번째까지 동일 시작 위치 */
+  @page{size:A4;margin:15mm}
+
   /* 인쇄 영역 표시 */
   .print-area{display:block!important}
-  body{overflow:visible;background:#fff;color:#000;font-size:10pt}
+  html,body{margin:0;padding:0;overflow:visible;background:#fff;color:#000;font-size:10pt}
 
   .print-card{
-    page-break-inside:avoid;break-inside:avoid;
-    page-break-after:always;break-after:page;
-    padding:14pt 16pt;border:none;
+    break-inside:avoid-page;
+    padding:0;border:none;margin-bottom:0;
   }
-  .print-card:last-child{page-break-after:auto}
 
   .print-badge{
     display:inline-block;font-weight:700;font-size:10pt;
@@ -606,8 +607,8 @@ a{color:var(--color-primary);text-decoration:none}
     background:#f0fdf4;border-color:#86efac;font-weight:700;
   }
   .print-scratch{display:none!important}
-  .problem-figure{max-height:55mm;width:auto;max-width:100%;display:block;margin:0 auto 4pt}
-  .print-card .problem-figure{max-height:35mm;margin:0 auto 3pt}
+  .problem-figure{max-height:80mm;width:auto;max-width:100%;display:block;margin:0 auto 6pt}
+  .print-card .problem-figure{max-height:75mm;margin:0 auto 6pt}
   .print-solution{border-top:1pt solid #ddd;padding-top:6pt}
   .print-solution-title{
     font-weight:700;font-size:10pt;color:#555;
@@ -624,7 +625,7 @@ a{color:var(--color-primary);text-decoration:none}
     display:inline;font-weight:700;background:#fefce8;
     border-bottom:1.5pt solid #ca8a04;padding:0 3pt;
   }
-  
+
   /* 인쇄 추가 축소 — 핵심공식/정답박스 */
   .print-step-body .formula-box{padding:4pt 8pt;margin:3pt 0;font-size:9pt;line-height:1.4}
   .print-step-body .answer-reveal{padding:5pt 8pt;margin:4pt 0}
@@ -636,19 +637,26 @@ a{color:var(--color-primary);text-decoration:none}
 
   .print-short-label{font-size:9pt;color:#666;margin-bottom:6pt}
 
-  /* 필기 공간 (mode='blank') — 모달의 풀이공간과 동일하게 좌우 분할 + 가로 인쇄 */
+  /* 필기 공간 (mode='blank') — 모달의 풀이공간과 동일하게 좌우 분할 + 가로 인쇄
+     한 페이지 = 한 문제 강제 (필기 공간 확보 목적) */
   @page blank-landscape{size:A4 landscape;margin:12mm}
   .print-card.print-mode-blank{
     page:blank-landscape;
+    page-break-after:always;break-after:page;
     display:flex;flex-direction:row;gap:10pt;
-    min-height:calc(100vh - 28pt);
+    height:calc(100vh - 24mm);
   }
+  .print-card.print-mode-blank:last-child{page-break-after:auto;break-after:auto}
   .print-card.print-mode-blank .print-content-area{
     flex:0 0 38%;padding-right:8pt;border-right:1pt solid #e5e7eb;
     display:flex;flex-direction:column;
   }
   .print-card.print-mode-blank .print-content-area .print-choices{
     grid-template-columns:1fr 1fr;
+  }
+  /* blank 모드 좌측 영역에서 PNG는 영역 폭에 꽉 차게 */
+  .print-card.print-mode-blank .problem-figure{
+    max-width:100%;max-height:none;width:100%;height:auto;margin:0 auto 6pt;
   }
   .print-blank-space{
     flex:1;min-height:120mm;
