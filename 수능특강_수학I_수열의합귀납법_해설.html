@@ -2227,7 +2227,7 @@ const PROBLEMS = [
       let choicesHTML = '';
       if (p.type === 'choice' && p.choices) {
         choicesHTML = `<ol class="print-choices">` +
-          p.choices.map((c, i) => `<li class="${i === p.answer ? 'print-correct' : ''}">${nums[i]} ${c}</li>`).join('') +
+          p.choices.map((c, i) => `<li class="${(mode === 'solution' && i === p.answer) ? 'print-correct' : ''}">${nums[i]} ${c}</li>`).join('') +
           `</ol>`;
       } else {
         choicesHTML = `<div class="print-short-label">단답형</div>`;
