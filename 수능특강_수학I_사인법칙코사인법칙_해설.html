@@ -514,7 +514,8 @@ a{color:var(--color-primary);text-decoration:none}
 .modal-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-2)}
 .modal-desc{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
 .modal-options{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-5)}
-.modal-check{margin-bottom:var(--space-6)}
+.modal-check{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6)}
+.modal-sub-label{font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);margin:0 0 var(--space-1)}
 .radio-option,.check-option{
   display:flex;align-items:center;gap:var(--space-3);
   font-size:var(--text-base);cursor:pointer;
@@ -634,6 +635,17 @@ a{color:var(--color-primary);text-decoration:none}
   .print-step-body .highlight-blue,.print-step-body .highlight-green,.print-step-body .highlight-yellow{font-size:10pt;line-height:1.5;padding:4pt 8pt}
 
   .print-short-label{font-size:9pt;color:#666;margin-bottom:6pt}
+
+  /* 필기 공간 (mode='blank') — 페이지 남은 공간을 그리드로 채워 손글씨용 */
+  .print-card.print-mode-blank{display:flex;flex-direction:column;min-height:calc(100vh - 28pt)}
+  .print-blank-space{
+    flex:1;min-height:120mm;margin-top:6pt;
+    border:1pt solid #ddd;border-radius:3pt;
+    background-image:
+      linear-gradient(#e5e7eb 0.5pt, transparent 0.5pt),
+      linear-gradient(90deg,#e5e7eb 0.5pt, transparent 0.5pt);
+    background-size:5mm 5mm;
+  }
 }
 </style>
 <style>
@@ -768,8 +780,15 @@ a{color:var(--color-primary);text-decoration:none}
       </label>
     </div>
     <div class="modal-check">
-      <label class="check-option">
-        <input type="checkbox" id="print-with-solution" checked> 해설 포함 (빈칸은 정답 표시)
+      <p class="modal-sub-label">출력 형태</p>
+      <label class="radio-option">
+        <input type="radio" name="print-mode" value="problem"> 문제만
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="print-mode" value="blank" checked> 문제 + 필기 공간 (그리드)
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="print-mode" value="solution"> 문제 + 해설 (빈칸 답 표시)
       </label>
     </div>
     <div class="modal-btns">
@@ -2367,19 +2386,20 @@ const PROBLEMS = [
 
   document.getElementById('modal-confirm').addEventListener('click', () => {
     const rangeVal = document.querySelector('input[name="print-range"]:checked').value;
-    const withSolution = document.getElementById('print-with-solution').checked;
+    const printMode = document.querySelector('input[name="print-mode"]:checked').value;
 
     let targetProblems;
     if (rangeVal === 'current') targetProblems = [filteredList[currentIdx]];
     else if (rangeVal === 'filter') targetProblems = [...filteredList];
     else targetProblems = [...PROBLEMS];
 
-    buildPrintArea(targetProblems, withSolution);
+    buildPrintArea(targetProblems, printMode);
     closePrintModal();
     setTimeout(() => { window.print(); }, 400);
   });
 
-  function buildPrintArea(problems, withSolution) {
+  function buildPrintArea(problems, mode) {
+    // mode: 'problem' | 'blank' | 'solution'
     printArea.innerHTML = problems.map(p => {
       const nums = ['①','②','③','④','⑤'];
       let choicesHTML = '';
@@ -2391,11 +2411,11 @@ const PROBLEMS = [
         choicesHTML = `<div class="print-short-label">단답형</div>`;
       }
 
-      let stepsHTML = '';
-      if (withSolution) {
-        stepsHTML = `<div class="print-solution">
+      let extraHTML = '';
+      if (mode === 'solution') {
+        extraHTML = `<div class="print-solution">
           <div class="print-solution-title">해설</div>` +
-          p.steps.map((s, i) => `
+          p.steps.map(s => `
             <div class="print-step">
               <span class="print-step-tag">${s.tag}</span>
               <span class="print-step-title">${s.title}</span>
@@ -2406,18 +2426,20 @@ const PROBLEMS = [
               }</div>
             </div>`).join('') +
           `</div>`;
+      } else if (mode === 'blank') {
+        extraHTML = `<div class="print-blank-space" aria-hidden="true"></div>`;
       }
 
       const figMatch = p.question.match(/<img class="problem-figure"[^>]*>/);
       const printQuestion = figMatch ? figMatch[0] : p.question;
       const printChoices = figMatch ? '' : choicesHTML;
       return `
-        <div class="print-card">
+        <div class="print-card print-mode-${mode}">
           <div class="print-badge">${p.levelLabel} ${p.num}</div>
           <p class="print-question">${printQuestion}</p>
           ${printChoices}
 
-          ${stepsHTML}
+          ${extraHTML}
         </div>`;
     }).join('');
 
