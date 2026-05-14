@@ -304,10 +304,46 @@ a{color:var(--color-primary);text-decoration:none}
   }
 }
 .scratch-overlay-canvas{
-  flex:1;min-width:0;
+  flex:1;min-width:0;display:flex;flex-direction:column;
+  background-color:var(--color-surface);
+}
+.overlay-step-bar{
+  display:flex;flex-wrap:wrap;gap:var(--space-2);
+  padding:var(--space-3) var(--space-4);
+  border-bottom:1px solid var(--color-border);
+  background:var(--color-surface-offset);flex-shrink:0;
+}
+.overlay-step-bar .step-btn{flex:0 0 auto}
+.overlay-steps-container{
+  flex:1;min-height:0;overflow-y:auto;
+  padding:var(--space-4) var(--space-5);
   background-image:linear-gradient(var(--color-divider) 1px,transparent 1px),
                    linear-gradient(90deg,var(--color-divider) 1px,transparent 1px);
-  background-size:32px 32px;background-color:var(--color-surface);
+  background-size:32px 32px;
+}
+.overlay-steps-container .step{margin-bottom:var(--space-4)}
+.overlay-steps-container .step:last-child{margin-bottom:0}
+.overlay-nav{
+  display:flex;align-items:center;gap:var(--space-2);
+  margin-left:auto;margin-right:var(--space-3);
+}
+.overlay-nav-btn{
+  padding:var(--space-2) var(--space-3);
+  background:var(--color-surface-offset);
+  border:1.5px solid var(--color-border);
+  border-radius:var(--radius-md);
+  font-size:var(--text-sm);font-weight:600;
+  color:var(--color-text-muted);cursor:pointer;
+  transition:all var(--transition-fast);
+}
+.overlay-nav-btn:hover:not(:disabled){
+  background:var(--color-primary-subtle);color:var(--color-primary);
+  border-color:var(--color-primary-light);
+}
+.overlay-nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.overlay-nav-label{
+  font-size:var(--text-sm);color:var(--color-text-muted);
+  font-weight:600;min-width:54px;text-align:center;
 }
 
 /* ── 해설 섹션 ── */
@@ -478,7 +514,8 @@ a{color:var(--color-primary);text-decoration:none}
 .modal-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-2)}
 .modal-desc{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
 .modal-options{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-5)}
-.modal-check{margin-bottom:var(--space-6)}
+.modal-check{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6)}
+.modal-sub-label{font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);margin:0 0 var(--space-1)}
 .radio-option,.check-option{
   display:flex;align-items:center;gap:var(--space-3);
   font-size:var(--text-base);cursor:pointer;
@@ -540,16 +577,17 @@ a{color:var(--color-primary);text-decoration:none}
   .site-header,.bottom-nav,.print-modal,.modal-backdrop,
   .main-area,.footer-attr{display:none!important}
 
+  /* 페이지 마진 일관화 — 첫 페이지부터 두번째·세번째까지 동일 시작 위치 */
+  @page{size:A4;margin:15mm}
+
   /* 인쇄 영역 표시 */
   .print-area{display:block!important}
-  body{overflow:visible;background:#fff;color:#000;font-size:10pt}
+  html,body{margin:0;padding:0;overflow:visible;background:#fff;color:#000;font-size:10pt}
 
   .print-card{
-    page-break-inside:avoid;break-inside:avoid;
-    page-break-after:always;break-after:page;
-    padding:14pt 16pt;border:none;
+    break-inside:avoid-page;
+    padding:0;border:none;margin-bottom:0;
   }
-  .print-card:last-child{page-break-after:auto}
 
   .print-badge{
     display:inline-block;font-weight:700;font-size:10pt;
@@ -569,8 +607,8 @@ a{color:var(--color-primary);text-decoration:none}
     background:#f0fdf4;border-color:#86efac;font-weight:700;
   }
   .print-scratch{display:none!important}
-  .problem-figure{max-height:55mm;width:auto;max-width:100%;display:block;margin:0 auto 4pt}
-  .print-card .problem-figure{max-height:35mm;margin:0 auto 3pt}
+  .problem-figure{max-height:80mm;width:auto;max-width:100%;display:block;margin:0 auto 6pt}
+  .print-card .problem-figure{max-height:75mm;margin:0 auto 6pt}
   .print-solution{border-top:1pt solid #ddd;padding-top:6pt}
   .print-solution-title{
     font-weight:700;font-size:10pt;color:#555;
@@ -587,7 +625,7 @@ a{color:var(--color-primary);text-decoration:none}
     display:inline;font-weight:700;background:#fefce8;
     border-bottom:1.5pt solid #ca8a04;padding:0 3pt;
   }
-  
+
   /* 인쇄 추가 축소 — 핵심공식/정답박스 */
   .print-step-body .formula-box{padding:4pt 8pt;margin:3pt 0;font-size:9pt;line-height:1.4}
   .print-step-body .answer-reveal{padding:5pt 8pt;margin:4pt 0}
@@ -598,6 +636,36 @@ a{color:var(--color-primary);text-decoration:none}
   .print-step-body .highlight-blue,.print-step-body .highlight-green,.print-step-body .highlight-yellow{font-size:10pt;line-height:1.5;padding:4pt 8pt}
 
   .print-short-label{font-size:9pt;color:#666;margin-bottom:6pt}
+
+  /* 필기 공간 (mode='blank') — 모달의 풀이공간과 동일하게 좌우 분할 + 가로 인쇄
+     한 페이지 = 한 문제 강제 (필기 공간 확보 목적) */
+  @page blank-landscape{size:A4 landscape;margin:12mm}
+  .print-card.print-mode-blank{
+    page:blank-landscape;
+    page-break-after:always;break-after:page;
+    display:flex;flex-direction:row;gap:10pt;
+    height:calc(100vh - 24mm);
+  }
+  .print-card.print-mode-blank:last-child{page-break-after:auto;break-after:auto}
+  .print-card.print-mode-blank .print-content-area{
+    flex:0 0 38%;padding-right:8pt;border-right:1pt solid #e5e7eb;
+    display:flex;flex-direction:column;
+  }
+  .print-card.print-mode-blank .print-content-area .print-choices{
+    grid-template-columns:1fr 1fr;
+  }
+  /* blank 모드 좌측 영역에서 PNG는 영역 폭에 꽉 차게 */
+  .print-card.print-mode-blank .problem-figure{
+    max-width:100%;max-height:none;width:100%;height:auto;margin:0 auto 6pt;
+  }
+  .print-blank-space{
+    flex:1;min-height:120mm;
+    border:1pt solid #ddd;border-radius:3pt;
+    background-image:
+      linear-gradient(#e5e7eb 0.5pt, transparent 0.5pt),
+      linear-gradient(90deg,#e5e7eb 0.5pt, transparent 0.5pt);
+    background-size:5mm 5mm;
+  }
 }
 </style>
 <style>
@@ -733,8 +801,15 @@ a{color:var(--color-primary);text-decoration:none}
       </label>
     </div>
     <div class="modal-check">
-      <label class="check-option">
-        <input type="checkbox" id="print-with-solution" checked> 해설 포함 (빈칸은 정답 표시)
+      <p class="modal-sub-label">출력 형태</p>
+      <label class="radio-option">
+        <input type="radio" name="print-mode" value="problem"> 문제만
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="print-mode" value="blank" checked> 문제 + 필기 공간 (그리드)
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="print-mode" value="solution"> 문제 + 해설 (빈칸 답 표시)
       </label>
     </div>
     <div class="modal-btns">
@@ -1893,6 +1968,10 @@ const PROBLEMS = [
     showCard(idx);
     updateNav();
     updateProgress();
+    // 오버레이 열려 있으면 새 문제로 다시 렌더
+    if (document.getElementById('scratch-overlay')) {
+      renderScratchOverlay(false);
+    }
   }
 
   function updateNav() {
@@ -1929,11 +2008,19 @@ const PROBLEMS = [
         btn.classList.remove('revealed');
         btn.querySelector('.blank-answer').innerHTML = '';
       });
-      const correctEl = document.querySelector(`.problem-card[data-pid="${pid}"] .correct-choice`);
-      if (correctEl) {
-        ['background','border','color','font-weight'].forEach(p => correctEl.style.removeProperty(p));
-      }
+      [document.querySelector(`.problem-card[data-pid="${pid}"] .correct-choice`),
+       document.querySelector('#scratch-overlay .correct-choice')]
+        .filter(Boolean).forEach(el => {
+          ['background','border','color','font-weight'].forEach(p => el.style.removeProperty(p));
+        });
       document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`)?.classList.remove('active');
+      // 오버레이 내 blank도 초기화
+      const overlayContainer = document.getElementById('overlay-steps-' + pid);
+      overlayContainer?.querySelectorAll('.blank-btn').forEach(btn => {
+        btn.classList.remove('revealed');
+        const ans = btn.querySelector('.blank-answer');
+        if (ans) ans.innerHTML = '';
+      });
       updateStepBtns(pid);
       return;
     }
@@ -1980,14 +2067,16 @@ const PROBLEMS = [
 
   function highlightAnswer(pid, problem) {
     const card = document.querySelector(`.problem-card[data-pid="${pid}"]`);
-    if (!card) return;
-    const correct = card.querySelector('.correct-choice');
-    if (correct) {
+    const overlay = document.getElementById('scratch-overlay');
+    const targets = [];
+    if (card) targets.push(card.querySelector('.correct-choice'));
+    if (overlay) targets.push(overlay.querySelector('.correct-choice'));
+    targets.filter(Boolean).forEach(correct => {
       correct.style.background = 'var(--color-answer-bg)';
       correct.style.border     = '2px solid var(--color-answer-border)';
       correct.style.color      = 'var(--color-answer-text)';
       correct.style.fontWeight = '700';
-    }
+    });
   }
 
   /* ══════════════════════════════════
@@ -2015,11 +2104,12 @@ const PROBLEMS = [
     const btn = card?.querySelector('.answer-btn');
     if (!card || !btn) return;
     if (btn.classList.contains('active')) {
-      // 토글 해제 — 선지 형광펜 + 버튼 active 제거
-      const correctEl = card.querySelector('.correct-choice');
-      if (correctEl) {
-        ['background','border','color','font-weight'].forEach(p => correctEl.style.removeProperty(p));
-      }
+      // 토글 해제 — 선지 형광펜 + 버튼 active 제거 (메인 + 오버레이)
+      [card.querySelector('.correct-choice'),
+       document.querySelector('#scratch-overlay .correct-choice')]
+        .filter(Boolean).forEach(el => {
+          ['background','border','color','font-weight'].forEach(p => el.style.removeProperty(p));
+        });
       btn.classList.remove('active');
     } else {
       // 강조
@@ -2068,19 +2158,20 @@ const PROBLEMS = [
 
   document.getElementById('modal-confirm').addEventListener('click', () => {
     const rangeVal = document.querySelector('input[name="print-range"]:checked').value;
-    const withSolution = document.getElementById('print-with-solution').checked;
+    const printMode = document.querySelector('input[name="print-mode"]:checked').value;
 
     let targetProblems;
     if (rangeVal === 'current') targetProblems = [filteredList[currentIdx]];
     else if (rangeVal === 'filter') targetProblems = [...filteredList];
     else targetProblems = [...PROBLEMS];
 
-    buildPrintArea(targetProblems, withSolution);
+    buildPrintArea(targetProblems, printMode);
     closePrintModal();
     setTimeout(() => { window.print(); }, 400);
   });
 
-  function buildPrintArea(problems, withSolution) {
+  function buildPrintArea(problems, mode) {
+    // mode: 'problem' | 'blank' | 'solution'
     printArea.innerHTML = problems.map(p => {
       const nums = ['①','②','③','④','⑤'];
       let choicesHTML = '';
@@ -2092,11 +2183,11 @@ const PROBLEMS = [
         choicesHTML = `<div class="print-short-label">단답형</div>`;
       }
 
-      let stepsHTML = '';
-      if (withSolution) {
-        stepsHTML = `<div class="print-solution">
+      let extraHTML = '';
+      if (mode === 'solution') {
+        extraHTML = `<div class="print-solution">
           <div class="print-solution-title">해설</div>` +
-          p.steps.map((s, i) => `
+          p.steps.map(s => `
             <div class="print-step">
               <span class="print-step-tag">${s.tag}</span>
               <span class="print-step-title">${s.title}</span>
@@ -2112,13 +2203,27 @@ const PROBLEMS = [
       const figMatch = p.question.match(/<img class="problem-figure"[^>]*>/);
       const printQuestion = figMatch ? figMatch[0] : p.question;
       const printChoices = figMatch ? '' : choicesHTML;
+
+      if (mode === 'blank') {
+        // 모달의 풀이공간과 동일한 좌우 분할: 좌측 문제, 우측 필기 그리드
+        return `
+          <div class="print-card print-mode-blank">
+            <div class="print-content-area">
+              <div class="print-badge">${p.levelLabel} ${p.num}</div>
+              <p class="print-question">${printQuestion}</p>
+              ${printChoices}
+            </div>
+            <div class="print-blank-space" aria-hidden="true"></div>
+          </div>`;
+      }
+
       return `
-        <div class="print-card">
+        <div class="print-card print-mode-${mode}">
           <div class="print-badge">${p.levelLabel} ${p.num}</div>
           <p class="print-question">${printQuestion}</p>
           ${printChoices}
 
-          ${stepsHTML}
+          ${extraHTML}
         </div>`;
     }).join('');
 
@@ -2139,11 +2244,13 @@ const PROBLEMS = [
     const stepBtn  = e.target.closest('.step-btn');
     const blankBtn = e.target.closest('.blank-btn');
     if (stepBtn) {
+      const pid = stepBtn.dataset.pid;
       if (stepBtn.classList.contains('answer-btn')) {
-        revealAnswerOnly(stepBtn.dataset.pid);
+        revealAnswerOnly(pid);
       } else {
-        showSteps(stepBtn.dataset.pid, parseInt(stepBtn.dataset.step));
+        showSteps(pid, parseInt(stepBtn.dataset.step));
       }
+      if (typeof window.syncOverlayStepUI === 'function') window.syncOverlayStepUI(pid);
     } else if (blankBtn) {
       revealBlank(blankBtn);
     }
@@ -2156,15 +2263,19 @@ const PROBLEMS = [
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); goTo(currentIdx - 1); }
     if (['1','2','3','4','5'].includes(e.key)) {
       const pid = filteredList[currentIdx]?.id;
-      if (pid) showSteps(pid, parseInt(e.key));
+      if (pid) { showSteps(pid, parseInt(e.key)); window.syncOverlayStepUI?.(pid); }
     }
     if (e.key === '0') {
       const pid = filteredList[currentIdx]?.id;
-      if (pid) showSteps(pid, 0);
+      if (pid) { showSteps(pid, 0); window.syncOverlayStepUI?.(pid); }
     }
     if (e.key === 'a' || e.key === 'A') {
       const pid = filteredList[currentIdx]?.id;
-      if (pid) revealAnswerOnly(pid);
+      if (pid) { revealAnswerOnly(pid); window.syncOverlayStepUI?.(pid); }
+    }
+    if (e.key === 'Escape' && document.getElementById('scratch-overlay')) {
+      e.preventDefault();
+      closeScratchOverlay();
     }
   });
 
@@ -2221,23 +2332,29 @@ const PROBLEMS = [
   ══════════════════════════════════ */
   window.openScratchOverlay = function(e) {
     if (e) { e.stopPropagation(); }
+    renderScratchOverlay(true);
+  };
+
+  function renderScratchOverlay(animateIn) {
     const existing = document.getElementById('scratch-overlay');
     if (existing) existing.remove();
 
     const problem = filteredList[currentIdx];
+    if (!problem) return;
+
     const nums = ['①','②','③','④','⑤'];
     let choicesHTML = '';
-    if (problem && problem.type === 'choice' && problem.choices) {
+    if (problem.type === 'choice' && problem.choices) {
       choicesHTML = `<ol class="choices" role="list">` +
         problem.choices.map((c, i) =>
-          `<li class="choice-item"><span class="choice-num">${nums[i]}</span><span class="choice-content">${c}</span></li>`).join('') +
+          `<li class="choice-item${i === problem.answer ? ' correct-choice' : ''}"><span class="choice-num">${nums[i]}</span><span class="choice-content">${c}</span></li>`).join('') +
         `</ol>`;
-    } else if (problem) {
+    } else {
       choicesHTML = `<div class="short-answer-label">단답형 (서술)</div>`;
     }
-    const hasFigure = problem && /problem-figure/.test(problem.question);
+    const hasFigure = /problem-figure/.test(problem.question);
     const overlayChoices = hasFigure ? '' : choicesHTML;
-    const titleSuffix = problem ? `${problem.levelLabel} ${problem.num} · ` : '';
+    const titleSuffix = `${problem.levelLabel} ${problem.num} · `;
     const _lvc = {
       basic:    { bg:'var(--level-basic-bg)',    text:'var(--level-basic-text)',    border:'var(--level-basic-border)' },
       example:  { bg:'var(--level-example-bg)',  text:'var(--level-example-text)',  border:'var(--level-example-border)' },
@@ -2245,6 +2362,101 @@ const PROBLEMS = [
       standard: { bg:'var(--level-standard-bg)', text:'var(--level-standard-text)', border:'var(--level-standard-border)' },
       advanced: { bg:'var(--level-advanced-bg)', text:'var(--level-advanced-text)', border:'var(--level-advanced-border)' },
     };
+    const lc = _lvc[problem.level] || _lvc.basic;
+    const badgeHTML = `<div class="problem-badge" style="background:${lc.bg};color:${lc.text};border-color:${lc.border}">${problem.levelLabel} ${problem.num}</div>`;
+    const problemHTML = `${badgeHTML}<p class="problem-statement">${problem.question}</p>${overlayChoices}`;
+
+    const maxStep = problem.steps.length;
+    let stepBtns = '';
+    for (let s = 1; s <= maxStep; s++) {
+      stepBtns += `<button class="step-btn" data-pid="${problem.id}" data-step="${s}">STEP ${s}</button>`;
+    }
+    stepBtns += `<button class="step-btn answer-btn" data-pid="${problem.id}" data-step="answer">정답</button>`;
+    stepBtns += `<button class="step-btn reset-btn" data-pid="${problem.id}" data-step="0">초기화</button>`;
+
+    let stepsHTML = '';
+    problem.steps.forEach((step, i) => {
+      stepsHTML += `
+        <div class="step" data-step-num="${i+1}" style="display:none">
+          <div class="step-header">
+            <span class="step-tag">${step.tag}</span>
+            <span class="step-title">${step.title}</span>
+          </div>
+          <div class="step-body">${step.body}</div>
+        </div>`;
+    });
+    const total = filteredList.length;
+    const prevDisabled = currentIdx === 0 ? 'disabled' : '';
+    const nextDisabled = currentIdx === total - 1 ? 'disabled' : '';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'scratch-overlay';
+    overlay.id = 'scratch-overlay';
+    if (!animateIn) overlay.style.animation = 'none';
+    overlay.innerHTML = `
+      <div class="scratch-overlay-header">
+        <span class="scratch-overlay-title">${titleSuffix}풀이 공간</span>
+        <div class="overlay-nav">
+          <button class="overlay-nav-btn" id="overlay-prev" ${prevDisabled} aria-label="이전 문제">← 이전</button>
+          <span class="overlay-nav-label">${currentIdx+1} / ${total}</span>
+          <button class="overlay-nav-btn" id="overlay-next" ${nextDisabled} aria-label="다음 문제">다음 →</button>
+        </div>
+        <button class="scratch-overlay-close" id="scratch-overlay-close" aria-label="닫기">&times;</button>
+      </div>
+      <div class="scratch-overlay-body">
+        <div class="scratch-overlay-problem">${problemHTML}</div>
+        <div class="scratch-overlay-canvas">
+          <div class="overlay-step-bar">${stepBtns}</div>
+          <div class="overlay-steps-container" id="overlay-steps-${problem.id}">${stepsHTML}</div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    renderMath(overlay);
+
+    document.getElementById('scratch-overlay-close').addEventListener('click', closeScratchOverlay);
+    document.getElementById('overlay-prev').addEventListener('click', () => {
+      if (currentIdx > 0) goTo(currentIdx - 1);
+    });
+    document.getElementById('overlay-next').addEventListener('click', () => {
+      if (currentIdx < filteredList.length - 1) goTo(currentIdx + 1);
+    });
+
+    // 기존 stepState 반영
+    syncOverlayStepUI(problem.id);
+  }
+
+  function closeScratchOverlay() {
+    const overlay = document.getElementById('scratch-overlay');
+    if (!overlay) return;
+    overlay.style.animation = 'overlayOut 180ms cubic-bezier(0.4,0,1,1) both';
+    overlay.addEventListener('animationend', () => overlay.remove(), { once: true });
+  }
+
+  function syncOverlayStepUI(pid) {
+    const overlay = document.getElementById('scratch-overlay');
+    if (!overlay) return;
+    const container = document.getElementById('overlay-steps-' + pid);
+    if (!container) return;
+    const opened = stepState[pid] instanceof Set ? stepState[pid] : new Set();
+    container.querySelectorAll('.step').forEach(stepEl => {
+      const n = parseInt(stepEl.dataset.stepNum, 10);
+      stepEl.style.display = opened.has(n) ? 'block' : 'none';
+    });
+    // step 버튼 active
+    overlay.querySelectorAll('.overlay-step-bar .step-btn').forEach(btn => {
+      if (btn.classList.contains('reset-btn')) return;
+      const s = btn.dataset.step;
+      if (s === 'answer') {
+        // 정답은 별도 — 메인 카드 answer-btn 상태 따라감
+        const mainAnswerBtn = document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`);
+        btn.classList.toggle('active', !!mainAnswerBtn?.classList.contains('active'));
+      } else {
+        btn.classList.toggle('active', opened.has(parseInt(s, 10)));
+      }
+    });
+  }
+  window.syncOverlayStepUI = syncOverlayStepUI;
     const lc = problem ? (_lvc[problem.level] || _lvc.basic) : null;
     const badgeHTML = problem
       ? `<div class="problem-badge" style="background:${lc.bg};color:${lc.text};border-color:${lc.border}">${problem.levelLabel} ${problem.num}</div>`
