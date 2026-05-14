@@ -323,11 +323,6 @@ a{color:var(--color-primary);text-decoration:none}
 }
 .overlay-steps-container .step{margin-bottom:var(--space-4)}
 .overlay-steps-container .step:last-child{margin-bottom:0}
-.overlay-steps-empty{
-  display:flex;align-items:center;justify-content:center;
-  height:100%;color:var(--color-text-muted);
-  font-size:var(--text-sm);text-align:center;line-height:1.6;
-}
 .overlay-nav{
   display:flex;align-items:center;gap:var(--space-2);
   margin-left:auto;margin-right:var(--space-3);
@@ -2584,8 +2579,6 @@ const PROBLEMS = [
           <div class="step-body">${step.body}</div>
         </div>`;
     });
-    const emptyHint = '<div class="overlay-steps-empty">STEP 버튼을 누르면 이곳에 풀이가 펼쳐집니다.<br>키보드 1·2·3·4·5 / A(정답) / 0(초기화)<br>←/→ 또는 ↑/↓ 로 문제 이동</div>';
-
     const total = filteredList.length;
     const prevDisabled = currentIdx === 0 ? 'disabled' : '';
     const nextDisabled = currentIdx === total - 1 ? 'disabled' : '';
@@ -2608,7 +2601,7 @@ const PROBLEMS = [
         <div class="scratch-overlay-problem">${problemHTML}</div>
         <div class="scratch-overlay-canvas">
           <div class="overlay-step-bar">${stepBtns}</div>
-          <div class="overlay-steps-container" id="overlay-steps-${problem.id}">${stepsHTML}<div class="overlay-steps-empty-wrap">${emptyHint}</div></div>
+          <div class="overlay-steps-container" id="overlay-steps-${problem.id}">${stepsHTML}</div>
         </div>
       </div>
     `;
@@ -2640,12 +2633,9 @@ const PROBLEMS = [
     const container = document.getElementById('overlay-steps-' + pid);
     if (!container) return;
     const opened = stepState[pid] instanceof Set ? stepState[pid] : new Set();
-    let anyOpen = false;
     container.querySelectorAll('.step').forEach(stepEl => {
       const n = parseInt(stepEl.dataset.stepNum, 10);
-      const isOpen = opened.has(n);
-      stepEl.style.display = isOpen ? 'block' : 'none';
-      if (isOpen) anyOpen = true;
+      stepEl.style.display = opened.has(n) ? 'block' : 'none';
     });
     // step 버튼 active
     overlay.querySelectorAll('.overlay-step-bar .step-btn').forEach(btn => {
@@ -2659,9 +2649,6 @@ const PROBLEMS = [
         btn.classList.toggle('active', opened.has(parseInt(s, 10)));
       }
     });
-    // 빈 상태 힌트 토글
-    const emptyWrap = container.querySelector('.overlay-steps-empty-wrap');
-    if (emptyWrap) emptyWrap.style.display = anyOpen ? 'none' : 'block';
   }
   window.syncOverlayStepUI = syncOverlayStepUI;
   // 오버레이 닫기 애니메이션 CSS 동적 주입
