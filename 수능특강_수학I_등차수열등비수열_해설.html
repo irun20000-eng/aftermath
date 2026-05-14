@@ -2457,37 +2457,6 @@ const PROBLEMS = [
     });
   }
   window.syncOverlayStepUI = syncOverlayStepUI;
-    const lc = problem ? (_lvc[problem.level] || _lvc.basic) : null;
-    const badgeHTML = problem
-      ? `<div class="problem-badge" style="background:${lc.bg};color:${lc.text};border-color:${lc.border}">${problem.levelLabel} ${problem.num}</div>`
-      : '';
-    const problemHTML = problem
-      ? `${badgeHTML}<p class="problem-statement">${problem.question}</p>${overlayChoices}`
-      : '';
-
-    const overlay = document.createElement('div');
-    overlay.className = 'scratch-overlay';
-    overlay.id = 'scratch-overlay';
-    overlay.innerHTML = `
-      <div class="scratch-overlay-header">
-        <span class="scratch-overlay-title">${titleSuffix}풀이 공간</span>
-        <button class="scratch-overlay-close" id="scratch-overlay-close" aria-label="닫기">&times;</button>
-      </div>
-      <div class="scratch-overlay-body">
-        <div class="scratch-overlay-problem">${problemHTML}</div>
-        <div class="scratch-overlay-canvas"></div>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-
-    if (problem) renderMath(overlay);
-
-    const closeBtn = document.getElementById('scratch-overlay-close');
-    closeBtn.addEventListener('click', () => {
-      overlay.style.animation = 'overlayOut 180ms cubic-bezier(0.4,0,1,1) both';
-      overlay.addEventListener('animationend', () => overlay.remove(), { once: true });
-    });
-  };
   // 오버레이 닫기 애니메이션 CSS 동적 주입
   (function(){
     if(!document.getElementById('overlay-out-style')){
