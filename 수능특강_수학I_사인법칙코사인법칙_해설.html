@@ -636,10 +636,22 @@ a{color:var(--color-primary);text-decoration:none}
 
   .print-short-label{font-size:9pt;color:#666;margin-bottom:6pt}
 
-  /* 필기 공간 (mode='blank') — 페이지 남은 공간을 그리드로 채워 손글씨용 */
-  .print-card.print-mode-blank{display:flex;flex-direction:column;min-height:calc(100vh - 28pt)}
+  /* 필기 공간 (mode='blank') — 모달의 풀이공간과 동일하게 좌우 분할 + 가로 인쇄 */
+  @page blank-landscape{size:A4 landscape;margin:12mm}
+  .print-card.print-mode-blank{
+    page:blank-landscape;
+    display:flex;flex-direction:row;gap:10pt;
+    min-height:calc(100vh - 28pt);
+  }
+  .print-card.print-mode-blank .print-content-area{
+    flex:0 0 38%;padding-right:8pt;border-right:1pt solid #e5e7eb;
+    display:flex;flex-direction:column;
+  }
+  .print-card.print-mode-blank .print-content-area .print-choices{
+    grid-template-columns:1fr 1fr;
+  }
   .print-blank-space{
-    flex:1;min-height:120mm;margin-top:6pt;
+    flex:1;min-height:120mm;
     border:1pt solid #ddd;border-radius:3pt;
     background-image:
       linear-gradient(#e5e7eb 0.5pt, transparent 0.5pt),
@@ -2426,13 +2438,25 @@ const PROBLEMS = [
               }</div>
             </div>`).join('') +
           `</div>`;
-      } else if (mode === 'blank') {
-        extraHTML = `<div class="print-blank-space" aria-hidden="true"></div>`;
       }
 
       const figMatch = p.question.match(/<img class="problem-figure"[^>]*>/);
       const printQuestion = figMatch ? figMatch[0] : p.question;
       const printChoices = figMatch ? '' : choicesHTML;
+
+      if (mode === 'blank') {
+        // 모달의 풀이공간과 동일한 좌우 분할: 좌측 문제, 우측 필기 그리드
+        return `
+          <div class="print-card print-mode-blank">
+            <div class="print-content-area">
+              <div class="print-badge">${p.levelLabel} ${p.num}</div>
+              <p class="print-question">${printQuestion}</p>
+              ${printChoices}
+            </div>
+            <div class="print-blank-space" aria-hidden="true"></div>
+          </div>`;
+      }
+
       return `
         <div class="print-card print-mode-${mode}">
           <div class="print-badge">${p.levelLabel} ${p.num}</div>
