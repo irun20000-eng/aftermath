@@ -387,6 +387,126 @@
   function aftInit() {
     aftInitTimer();
     aftInitProblemViewer();
+    aftInitPdfWidget();
+  }
+
+  /* ============================================================
+     PDF 저장 위젯 — 우측 하단 플로팅 + 옵션 모달
+     ============================================================ */
+  function aftInitPdfWidget() {
+    if (document.getElementById('aft-pdf-fab')) return;
+
+    var fab = document.createElement('button');
+    fab.type = 'button';
+    fab.id = 'aft-pdf-fab';
+    fab.className = 'aft-pdf-fab no-print';
+    fab.setAttribute('aria-label', 'PDF로 저장');
+    fab.title = 'PDF로 저장';
+    fab.textContent = '📄';
+    document.body.appendChild(fab);
+
+    var modal = document.createElement('div');
+    modal.id = 'aft-pdf-modal';
+    modal.className = 'aft-pdf-modal no-print';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-hidden', 'true');
+
+    var inner = document.createElement('div');
+    inner.className = 'aft-pdf-modal-inner';
+
+    var title = document.createElement('h2');
+    title.className = 'aft-pdf-modal-title';
+    title.textContent = 'PDF로 저장';
+    inner.appendChild(title);
+
+    var desc = document.createElement('p');
+    desc.className = 'aft-pdf-modal-desc';
+    desc.textContent = '필기앱에서 사용할 PDF 형태를 선택하세요.';
+    inner.appendChild(desc);
+
+    var opts = document.createElement('div');
+    opts.className = 'aft-pdf-modal-options';
+
+    function addRadio(value, label, sub, checked) {
+      var lab = document.createElement('label');
+      lab.className = 'aft-pdf-radio';
+      var rad = document.createElement('input');
+      rad.type = 'radio';
+      rad.name = 'aft-pdf-mode';
+      rad.value = value;
+      if (checked) rad.checked = true;
+      var txt = document.createElement('span');
+      txt.className = 'aft-pdf-radio-text';
+      var l1 = document.createElement('span');
+      l1.className = 'aft-pdf-radio-label';
+      l1.textContent = label;
+      var l2 = document.createElement('span');
+      l2.className = 'aft-pdf-radio-sub';
+      l2.textContent = sub;
+      txt.appendChild(l1);
+      txt.appendChild(l2);
+      lab.appendChild(rad);
+      lab.appendChild(txt);
+      opts.appendChild(lab);
+    }
+    addRadio('blank', '학습지 + 필기 공간', '가로 페이지, 우측에 5mm 그리드 (필기앱 추천)', true);
+    addRadio('plain', '학습지만', '세로 페이지, 카드 흐름 그대로 (필기 공간 없음)', false);
+
+    inner.appendChild(opts);
+
+    var btns = document.createElement('div');
+    btns.className = 'aft-pdf-modal-btns';
+
+    var cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'aft-pdf-btn aft-pdf-btn-cancel';
+    cancelBtn.textContent = '취소';
+    btns.appendChild(cancelBtn);
+
+    var confirmBtn = document.createElement('button');
+    confirmBtn.type = 'button';
+    confirmBtn.className = 'aft-pdf-btn aft-pdf-btn-confirm';
+    confirmBtn.textContent = 'PDF 저장';
+    btns.appendChild(confirmBtn);
+
+    inner.appendChild(btns);
+    modal.appendChild(inner);
+    document.body.appendChild(modal);
+
+    function openModal() {
+      modal.classList.add('aft-open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() {
+      modal.classList.remove('aft-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    function runPrint() {
+      var modeInput = modal.querySelector('input[name="aft-pdf-mode"]:checked');
+      var mode = modeInput ? modeInput.value : 'blank';
+      closeModal();
+      document.body.classList.add('aft-print-active');
+      if (mode === 'blank') document.body.classList.add('aft-print-mode-blank');
+      setTimeout(function () {
+        window.print();
+        setTimeout(function () {
+          document.body.classList.remove('aft-print-active');
+          document.body.classList.remove('aft-print-mode-blank');
+        }, 800);
+      }, 100);
+    }
+
+    fab.addEventListener('click', openModal);
+    cancelBtn.addEventListener('click', closeModal);
+    confirmBtn.addEventListener('click', runPrint);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('aft-open')) {
+        closeModal();
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
