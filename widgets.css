@@ -707,37 +707,84 @@ details.trap-box .trap-body {
   /* 페이지 마진 통일 */
   @page { size: A4; margin: 15mm; }
 
+  /* 가독성 — 인쇄용 베이스 조정 */
+  body.aft-print-active { font-size: 11pt; color: #0f172a; }
+  body.aft-print-active section.card {
+    padding: 1.25rem 1.5rem !important;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+    border-radius: 8pt !important;
+  }
+  body.aft-print-active section.card h2.section-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.4rem !important;
+  }
+  body.aft-print-active section.card .grid {
+    gap: 0.75rem !important;
+  }
+  /* 카드 내부 자식이 페이지 중간에서 잘리지 않도록 */
+  body.aft-print-active section.card > *,
+  body.aft-print-active section.card .grid > *,
+  body.aft-print-active section.card table,
+  body.aft-print-active section.card figure,
+  body.aft-print-active section.card pre,
+  body.aft-print-active section.card .formula-box,
+  body.aft-print-active section.card .reveal-box,
+  body.aft-print-active section.card details {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   /* 플로팅 버튼·모달은 인쇄 제외 */
   .aft-pdf-fab,
   .aft-pdf-modal,
   .aft-pdf-modal-backdrop { display: none !important; }
 
-  /* 카드 단위 페이지 분할 — 한 카드 = 한 페이지 시도 (길면 자연스럽게 흐름) */
+  /* 카드 단위 페이지 분할 — 한 카드 = 한 페이지, 한 페이지 초과 시
+     break-inside:avoid가 다음 페이지로 옮기려 시도. 그래도 길면 자연 분할. */
   body.aft-print-active section.card:not(.no-print) {
-    break-inside: avoid-page;
+    break-inside: avoid;
+    page-break-inside: avoid;
     break-after: page;
     page-break-after: always;
-    margin: 0 0 0 0;
   }
   body.aft-print-active section.card:not(.no-print):last-of-type {
     break-after: auto;
     page-break-after: auto;
   }
 
-  /* 필기 공간 모드: 가로 인쇄 + 좌측 카드 / 우측 5mm 그리드 */
+  /* 필기 공간 모드: 가로 인쇄 + 좌측 카드 / 우측 5mm 그리드
+     min-height 제거 (강제 페이지 채움 X), padding 압축 (한 페이지 들어가게) */
   @page aft-blank-page { size: A4 landscape; margin: 12mm; }
   body.aft-print-mode-blank section.card:not(.no-print) {
     page: aft-blank-page;
     position: relative;
-    padding-right: 58%;
-    min-height: calc(100vh - 30mm);
+    padding: 0.875rem 1.25rem !important;
+    padding-right: 58% !important;
+    margin: 0 !important;
+    border-radius: 6pt !important;
+  }
+  body.aft-print-mode-blank section.card h2.section-title {
+    font-size: 1.15rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+  /* 좌측이 좁아지므로 카드 내부 grid를 1열로 강제 (가독성) */
+  body.aft-print-mode-blank section.card .grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  body.aft-print-mode-blank section.card p,
+  body.aft-print-mode-blank section.card li {
+    line-height: 1.45 !important;
   }
   body.aft-print-mode-blank section.card:not(.no-print)::after {
     content: '';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    bottom: 1rem;
+    top: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
     width: 55%;
     border: 1pt solid #cbd5e1;
     border-radius: 4pt;
