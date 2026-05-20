@@ -575,3 +575,176 @@ details.trap-box .trap-body {
   details.trap-box .trap-hint { display: none; }
   details.trap-box > .trap-body { display: block !important; padding: 1rem 1.25rem; }
 }
+
+/* ============================================================
+   PDF 저장 기능 — 18개 학습지 공통
+   ============================================================ */
+
+/* 플로팅 PDF 버튼 (기존 .aft-fab 위에 한 줄 띄움) */
+.aft-pdf-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+  z-index: 9999;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.aft-pdf-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.5);
+}
+.aft-pdf-fab:active { transform: translateY(0); }
+
+/* 모달 (해설지 스타일과 유사) */
+.aft-pdf-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  background: rgba(15, 23, 42, 0.55);
+  padding: 1rem;
+}
+.aft-pdf-modal.aft-open { display: flex; }
+.aft-pdf-modal-inner {
+  background: white;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.aft-pdf-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+}
+.aft-pdf-modal-desc {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+.aft-pdf-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.aft-pdf-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #f8fafc;
+  transition: all 0.15s;
+}
+.aft-pdf-radio:hover {
+  border-color: #818cf8;
+  background: #eef2ff;
+}
+.aft-pdf-radio input { accent-color: #4f46e5; margin-top: 2px; }
+.aft-pdf-radio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aft-pdf-radio-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+.aft-pdf-radio-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+.aft-pdf-modal-btns {
+  display: flex;
+  gap: 0.625rem;
+  justify-content: flex-end;
+}
+.aft-pdf-btn {
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+.aft-pdf-btn-cancel {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #e2e8f0;
+}
+.aft-pdf-btn-cancel:hover { background: #e2e8f0; }
+.aft-pdf-btn-confirm {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+}
+.aft-pdf-btn-confirm:hover { filter: brightness(1.1); }
+
+/* ============================================================
+   인쇄 — 학습지만 모드 (기본 세로) + 학습지+필기공간 모드 (가로 좌우분할)
+   ============================================================ */
+@media print {
+  /* 페이지 마진 통일 */
+  @page { size: A4; margin: 15mm; }
+
+  /* 플로팅 버튼·모달은 인쇄 제외 */
+  .aft-pdf-fab,
+  .aft-pdf-modal,
+  .aft-pdf-modal-backdrop { display: none !important; }
+
+  /* 카드 단위 페이지 분할 — 한 카드 = 한 페이지 시도 (길면 자연스럽게 흐름) */
+  body.aft-print-active section.card:not(.no-print) {
+    break-inside: avoid-page;
+    break-after: page;
+    page-break-after: always;
+    margin: 0 0 0 0;
+  }
+  body.aft-print-active section.card:not(.no-print):last-of-type {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  /* 필기 공간 모드: 가로 인쇄 + 좌측 카드 / 우측 5mm 그리드 */
+  @page aft-blank-page { size: A4 landscape; margin: 12mm; }
+  body.aft-print-mode-blank section.card:not(.no-print) {
+    page: aft-blank-page;
+    position: relative;
+    padding-right: 58%;
+    min-height: calc(100vh - 30mm);
+  }
+  body.aft-print-mode-blank section.card:not(.no-print)::after {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: 55%;
+    border: 1pt solid #cbd5e1;
+    border-radius: 4pt;
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.35) 0.5pt, transparent 0.5pt),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.35) 0.5pt, transparent 0.5pt);
+    background-size: 5mm 5mm;
+    pointer-events: none;
+  }
+}
