@@ -486,12 +486,29 @@
       var mode = modeInput ? modeInput.value : 'blank';
       closeModal();
       document.body.classList.add('aft-print-active');
-      if (mode === 'blank') document.body.classList.add('aft-print-mode-blank');
+      if (mode === 'blank') {
+        document.body.classList.add('aft-print-mode-blank');
+        // 카드마다 실제 DOM 그리드 영역 삽입 (iOS Safari가 ::after 제한적이라
+        // ::after 대신 실제 요소로 처리)
+        var cards = document.querySelectorAll('section.card');
+        for (var i = 0; i < cards.length; i++) {
+          if (cards[i].classList.contains('no-print')) continue;
+          if (cards[i].querySelector('.aft-pdf-blank')) continue;
+          var blank = document.createElement('div');
+          blank.className = 'aft-pdf-blank';
+          blank.setAttribute('aria-hidden', 'true');
+          cards[i].appendChild(blank);
+        }
+      }
       setTimeout(function () {
         window.print();
         setTimeout(function () {
           document.body.classList.remove('aft-print-active');
           document.body.classList.remove('aft-print-mode-blank');
+          var blanks = document.querySelectorAll('.aft-pdf-blank');
+          for (var i = 0; i < blanks.length; i++) {
+            blanks[i].parentNode && blanks[i].parentNode.removeChild(blanks[i]);
+          }
         }, 800);
       }, 100);
     }
