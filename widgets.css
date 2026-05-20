@@ -754,14 +754,15 @@ details.trap-box .trap-body {
     page-break-after: auto;
   }
 
-  /* 필기 공간 모드: 가로 인쇄 + 좌측 카드 / 우측 5mm 그리드
-     min-height 제거 (강제 페이지 채움 X), padding 압축 (한 페이지 들어가게) */
+  /* 필기 공간 모드: orientation 적응형 (태블릿 iOS Safari 호환)
+     - 가로(landscape): 좌 카드 / 우 그리드 (좌우분할)
+     - 세로(portrait):  위 카드 / 아래 그리드 (상하분할)
+     min-height 제거, ::after 대신 실제 .aft-pdf-blank DOM 요소 사용 */
   @page aft-blank-page { size: A4 landscape; margin: 12mm; }
   body.aft-print-mode-blank section.card:not(.no-print) {
     page: aft-blank-page;
     position: relative;
     padding: 0.875rem 1.25rem !important;
-    padding-right: 58% !important;
     margin: 0 !important;
     border-radius: 6pt !important;
   }
@@ -770,7 +771,6 @@ details.trap-box .trap-body {
     margin-bottom: 0.5rem !important;
     padding-bottom: 0.3rem !important;
   }
-  /* 좌측이 좁아지므로 카드 내부 grid를 1열로 강제 (가독성) */
   body.aft-print-mode-blank section.card .grid {
     grid-template-columns: 1fr !important;
     gap: 0.5rem !important;
@@ -779,13 +779,10 @@ details.trap-box .trap-body {
   body.aft-print-mode-blank section.card li {
     line-height: 1.45 !important;
   }
-  body.aft-print-mode-blank section.card:not(.no-print)::after {
-    content: '';
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    bottom: 0.75rem;
-    width: 55%;
+
+  /* 그리드 영역 — 실제 DOM 요소 (JS가 동적 삽입) */
+  body.aft-print-mode-blank section.card .aft-pdf-blank {
+    display: block;
     border: 1pt solid #cbd5e1;
     border-radius: 4pt;
     background-image:
@@ -793,5 +790,33 @@ details.trap-box .trap-body {
       linear-gradient(90deg, rgba(148, 163, 184, 0.35) 0.5pt, transparent 0.5pt);
     background-size: 5mm 5mm;
     pointer-events: none;
+    break-inside: avoid;
+  }
+
+  /* 가로 페이지: 카드 우측 58% 영역에 그리드 (절대 위치 좌우분할) */
+  @media (orientation: landscape) {
+    body.aft-print-mode-blank section.card:not(.no-print) {
+      padding-right: 58% !important;
+    }
+    body.aft-print-mode-blank section.card .aft-pdf-blank {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      width: 55%;
+    }
+  }
+  /* 세로 페이지(landscape 강제 안 되는 iOS 등 fallback):
+     카드 아래에 그리드 (상하분할, 100mm 높이) */
+  @media (orientation: portrait) {
+    body.aft-print-mode-blank section.card .aft-pdf-blank {
+      position: static;
+      width: 100%;
+      height: 100mm;
+      margin-top: 0.5rem;
+    }
   }
 }
+
+/* 화면에서는 동적 삽입된 .aft-pdf-blank 숨김 (인쇄 시에만 의미) */
+.aft-pdf-blank { display: none; }
