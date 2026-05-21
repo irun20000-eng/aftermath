@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "semester": "2",
+  "subject": "미적분 I",
+  "description": "2학기 미적분 I 학습지 ↔ 수능특강 도전문제 양방향 매핑. 1학기(challenge_mapping.json)와 키 네임스페이스 분리. problem-curator의 추천을 선생님 검수 후 기록.",
+  "updated_at": "2026-05-21 (골격 생성 — 단원·차시 확정 후 채움)",
+  "policies": {
+    "exclude_levels": ["실력 (advanced)"],
+    "include_levels": ["기초 (basic)", "예제 (example)", "유제 (exercise)", "기본 (standard)"],
+    "rationale": "1학기와 동일 정책 — 학습지 max_difficulty +1~2단계 위로 선정. 단원 확정 후 미적분 I 특화 도구(극한·미분·적분 정의 우회 가능성)에 대한 추가 정책은 차후 보완.",
+    "key_namespace_note": "수능특강 미적분 I 섹션 키는 'c1·c2·c3·c4' (1학기 s4·s5·s6와 충돌 없음). 학습지 ID는 '학습지_미적분I_NN_<단원>' 형식."
+  },
+  "mappings": [],
+  "evaluated_problems_pool": {}
+}
