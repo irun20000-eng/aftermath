@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수능특강 미적분 I · 07. 정적분의 활용 — 단계별 해설</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>window.name = 'aftermath_sol_calc_07';</script>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%); color: #0f172a; opacity: 0; transition: opacity 0.3s; min-height: 100vh; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e9d5ff; }
+        .placeholder-body {
+            background: linear-gradient(135deg, #fce7f3 0%, #fae8ff 100%);
+            border: 3px dashed #a21caf;
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #581c87;
+        }
+        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
+        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-12 border-b-4 border-purple-300 pb-8">
+            <p class="text-purple-600 font-bold text-sm tracking-[0.3em] mb-3 uppercase">EBS 수능특강 · 단계별 해설</p>
+            <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-3 tracking-tight">수능특강 미적분 I · 07. 정적분의 활용 — 넓이·속도와 거리</h1>
+            <p class="text-slate-600 font-medium">미적분 I · 자기학습용 해설지 — 사고 흐름·함정·수능 연결 중심</p>
+        </header>
+
+        <nav class="no-print mb-8 flex justify-start">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-purple-50 text-purple-700 hover:text-purple-900 rounded-lg text-sm font-bold border border-purple-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인 (2학기 미적분 I)</span>
+            </a>
+        </nav>
+
+        <section class="card placeholder-body">
+            <h2>📝 해설지 작성 예정</h2>
+            <div class="ph-row">EBS 수능특강 미적분 I</div>
+            <div class="ph-row">07. 정적분의 활용</div>
+            <p class="ph-meta">사용자의 수능특강 본문 PDF 제공 후 단계별 해설(PROBLEMS 배열 · 사고 흐름 · 함정 · 수능 연결)이 작성됩니다.</p>
+            <p class="ph-meta">1학기 수능특강 해설지 양식을 그대로 차용 — 문제 카드 + STEP별 해설 + 도전문제 배지.</p>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 수능특강 미적분 I 해설</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+</body>
+</html>
