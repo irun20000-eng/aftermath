@@ -3201,7 +3201,7 @@ document.addEventListener('click', function(e) {
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 각 후보점 \(x = 1, 2, 4\)에서 좌극한·우극한·함숫값을 표로 정리. 극한 존재 ⇔ 좌·우극한 일치. 연속 ⇔ (극한 존재) + (극한값 = 함숫값). 두 개념이 별개임에 유의 — "불연속 개수"와 "극한 존재하지 않는 개수"는 다를 수 있음.
+                        <strong>💡 전략 힌트:</strong> 그림에서 의심 후보점은 \(x = 1, 3, 4\) (각각 빈 원·검은 점이 표시됨). 각 점에서 좌극한·우극한·함숫값을 표로 정리. 극한 존재 ⇔ 좌·우극한 일치. 연속 ⇔ (극한 존재) + (극한값 = 함숫값). 두 개념이 별개임에 유의 — "불연속 개수"와 "극한 존재하지 않는 개수"는 다를 수 있음.
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -3580,7 +3580,7 @@ document.addEventListener('click', function(e) {
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 두 식 연립: \(x^2 = a - y\)를 원에 대입 → \((a - y) + (y - a)^2 = a^2\) → \(y\)에 대한 이차식. 제1사분면 해 \(y_P\) 구해 \(\overline{OQ} = y_P\), \(\overline{OC} = a\). \(a \to 0^+\)에서 비율 극한 계산 → \(\dfrac{1}{2}\).
+                        <strong>💡 전략 힌트:</strong> 두 식 연립 — \(x^2 = a - y\)를 원에 대입 → \((a - y) + (y - a)^2 = a^2\). \(u = a - y\) 치환 → \(u^2 + u - a^2 = 0\). 양수 근 \(u = \dfrac{-1 + \sqrt{1 + 4a^2}}{2}\). 작은 \(a\)에서 \(\sqrt{1 + 4a^2} \approx 1 + 2a^2\)이므로 \(u \approx a^2\). 따라서 \(y_P = a - u \approx a - a^2\), \(\overline{OQ} = y_P\), \(\overline{OC} = a\). 비율 \(\dfrac{\overline{OQ}}{\overline{OC}} \approx \dfrac{a - a^2}{a} = 1 - a \to \mathbf{1}\) (\(a \to 0^+\)). 핵심 직관: \(u\)가 \(a^2\) 차수라 \(a\)에 대한 일차 보정만 살고 비율은 1로 수렴.
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
