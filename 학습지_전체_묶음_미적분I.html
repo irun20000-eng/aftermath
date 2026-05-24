@@ -145,8 +145,13 @@
   }
 </style>
 
+<style id="aft-bundle-override">
+  /* MathJax 처리 완료 대기 없이 본문 즉시 표시 — 수식은 처리되는대로 점진 렌더링 */
+  body { opacity: 1 !important; }
+</style>
+
 </head>
-<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+<body class="p-4 md:p-8 lg:p-12 mathjax-process mathjax-ready">
 
 <button class="aft-pdf-save-bundle no-print" onclick="window.print()">
   📄 전체 PDF 저장 (31개 학습지)
