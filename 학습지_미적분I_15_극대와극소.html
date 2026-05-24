@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-2a 도함수의 활용 1 · 차시 15 극대와 극소 · Agent A6 작성 (도전 1·2 진짜 콘텐츠 포함) -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 극대와 극소</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_15';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        .sign-table { border-collapse: collapse; margin: 1rem auto; font-size: 1rem; }
+        .sign-table th, .sign-table td { border: 1.5px solid #94a3b8; padding: 0.5rem 1rem; text-align: center; font-weight: 700; }
+        .sign-table th { background: #f1f5f9; color: #0f172a; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "15차시 극대와 극소";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">15차시: 극대와 극소</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_미적분I_14_함수의증가와감소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_미적분I_16_함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">시간대별 주택용 전력 소비 그래프를 떠올려 보자. 새벽에는 낮고, 점심·저녁에는 <strong>봉우리</strong>를 이루고, 그 사이에는 잠깐 <strong>골짜기</strong>가 생긴다. 이 "봉우리"와 "골짜기"가 바로 함수의 <span class="calc-accent font-bold">극대</span>와 <span class="calc-accent font-bold">극소</span>이다.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 차시 14에서 만든 함수 \(f(x) = x^3 - 3x^2 + 1\)의 증감표를 다시 살펴보자. \(f\)는 \(x = 0\)에서 증가 \(\to\) 감소로 바뀌고, \(x = 2\)에서 감소 \(\to\) 증가로 바뀐다. 이때 두 점 중 어느 쪽이 "봉우리"이고 어느 쪽이 "골짜기"인지, 그리고 도함수 \(f'(x)\)의 부호 변화와 어떻게 연결되는지 추측해 보자.</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 차시 14의 <strong>증감표</strong>는 도함수 부호 \(+\to-\to+\)의 전환점 \(x = 0,\ 2\)를 정확히 짚었다. 본 차시는 그 전환점에서 <span class="calc-accent font-bold">함수가 봉우리(극대)인지 골짜기(극소)인지</span>를 판정하는 도구를 배운다. 핵심 함정 — \(f'(a) = 0\)이라고 해서 \(a\)에서 반드시 극값을 갖는 것은 아니다 (예: \(f(x) = x^3\)에서 \(x = 0\)). 차시 14 Level 3에서 만난 이 함정이 본 차시의 출발점이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.82 · 극대와 극소 개념 탐구 참고)</span></p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 극대·극소 정의 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        극대·극소의 정의 — "어떤 열린구간 내부의 최대/최소"
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)에서 \(x = a\)를 포함하는 어떤 열린구간에 속하는 모든 \(x\)에 대하여</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ul class="space-y-2 text-lg font-medium">
+                            <li>① \(f(x) \leq f(a)\) \(\Rightarrow\) \(f\)는 \(x = a\)에서 <span class="calc-accent font-bold">극대</span>가 된다고 하고, \(f(a)\)를 <strong>극댓값</strong>이라 한다.</li>
+                            <li>② \(f(x) \geq f(a)\) \(\Rightarrow\) \(f\)는 \(x = a\)에서 <span class="calc-accent font-bold">극소</span>가 된다고 하고, \(f(a)\)를 <strong>극솟값</strong>이라 한다.</li>
+                        </ul>
+                        <p class="mt-3 text-base text-slate-700">극댓값과 극솟값을 통틀어 <strong>극값(extreme value)</strong>이라 한다.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> "극"은 <strong>지역적(local)</strong> 개념이다. 정의역 전체의 최댓값/최솟값이 아니라, "\(x = a\) 주변의 어떤 작은 열린구간 안에서 가장 크다/작다"는 뜻. 그래서 한 함수에 극값이 여러 개 있을 수 있고, <strong>극댓값이 극솟값보다 작을 수도 있다</strong>. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.82 · 극대와 극소의 정의 + 문제 06 「극댓값이 극솟값보다 항상 큰가?」 참고)</span></p>
+                </div>
+
+                <!-- 2. 극값의 필요조건 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        극값의 필요조건 — \(f'(a) = 0\) (페르마 정리)
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 \(x = a\)에서 극값을 갖고 \(x = a\)를 포함하는 어떤 열린구간에서 <strong>미분가능</strong>할 때:</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-center text-lg font-bold">미분가능한 함수 \(f(x)\)가 \(x = a\)에서 극값을 가지면 \(f'(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(0\)</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>정당화 (극댓값 사례):</strong> \(x = a\)에서 극댓값이면 \(h\)의 절댓값이 충분히 작을 때 \(f(a + h) - f(a) \leq 0\). 따라서<br>
+                    좌극한 \(\displaystyle\lim_{h\to 0^-}\dfrac{f(a+h) - f(a)}{h} \geq 0\), 우극한 \(\displaystyle\lim_{h\to 0^+}\dfrac{f(a+h) - f(a)}{h} \leq 0\). 미분가능 \(\Rightarrow\) 두 극한이 같으므로 \(f'(a) = 0\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.83 · 극값과 미분계수 참고)</span></p>
+                    <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                        <p class="text-sm text-red-900 font-bold mb-1">⚠ 역은 일반적으로 거짓!</p>
+                        <p class="text-sm text-slate-700">\(f'(a) = 0\)이라고 해서 \(f\)가 \(x = a\)에서 반드시 극값을 갖는 것은 아니다. 예: \(f(x) = x^3\)은 \(f'(0) = 0\)이지만 \(x = 0\)에서 증가만 — 극값 없음. 또, 극값을 갖더라도 미분가능하지 않을 수 있다. 예: \(f(x) = |x|\)는 \(x = 0\)에서 극솟값을 갖지만 미분가능 X.</p>
+                    </div>
+                </div>
+
+                <!-- 3. 극대·극소의 판정 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        극대·극소의 판정 — 도함수의 <strong>부호 변화</strong>가 결정한다
+                    </h3>
+                    <p class="mb-3 text-slate-700">미분가능한 함수 \(f(x)\)에 대하여 \(f'(a) = 0\)일 때:</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① \(x = a\)의 좌우에서 \(f'(x)\)의 부호가 <strong>양에서 음</strong>으로 바뀌면 \(f(a)\)는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">극댓값</span></span>.</li>
+                            <li>② \(x = a\)의 좌우에서 \(f'(x)\)의 부호가 <strong>음에서 양</strong>으로 바뀌면 \(f(a)\)는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">극솟값</span></span>.</li>
+                            <li>③ \(x = a\)의 좌우에서 \(f'(x)\)의 부호가 <strong>바뀌지 않으면</strong> 극값 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">아님</span></span>.</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "\(f'(a) = 0\)"이라는 <em>필요조건</em>만으로는 부족하다. 반드시 \(f'\)의 <strong>부호 변화 패턴</strong>까지 봐야 극값 여부와 그 종류(극대/극소)가 결정된다. 차시 14에서 익힌 <strong>증감표</strong>가 본 차시의 핵심 무기. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.84 · 함수의 극대와 극소의 판정 참고)</span></p>
+                </div>
+
+                <!-- 4. 예제 — 극값 구하기 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        예제 풀이 — \(f(x) = x^3 - 3x + 5\)의 극값
+                    </h3>
+                    <p class="mb-3 text-slate-700">3단계 루틴: ① \(f'(x)\) 구하기 ② \(f'(x) = 0\) 해 ③ 증감표로 부호 변화 분석.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-2">\(f'(x) = 3x^2 - 3 = 3(x + 1)(x - 1)\). \(f'(x) = 0 \Rightarrow x = -1\) 또는 \(x = 1\).</p>
+                        <table class="sign-table">
+                            <thead>
+                                <tr>
+                                    <th>\(x\)</th><th>\(\cdots\)</th><th>\(-1\)</th><th>\(\cdots\)</th><th>\(1\)</th><th>\(\cdots\)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>\(f'(x)\)</th><td>\(+\)</td><td>\(0\)</td><td>\(-\)</td><td>\(0\)</td><td>\(+\)</td>
+                                </tr>
+                                <tr>
+                                    <th>\(f(x)\)</th><td>↗</td><td>\(7\)</td><td>↘</td><td>\(3\)</td><td>↗</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-base mt-3">\(x = -1\) 좌우 \(+ \to -\) \(\Rightarrow\) 극댓값 \(f(-1) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(7\)</span></span>. \(x = 1\) 좌우 \(- \to +\) \(\Rightarrow\) 극솟값 \(f(1) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(3\)</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주목:</strong> 극댓값 \(7\)이 극솟값 \(3\)보다 크다 — 본 예제에서는 우리의 직관과 같지만, 일반적으로는 그렇지 않다 (예: \(y = x + \dfrac{1}{x}\)에서 극댓값 \(-2\), 극솟값 \(2\)). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.84 · 예제 3 참고)</span></p>
+                </div>
+
+                <!-- 5. 매개변수 결정 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        매개변수 결정 — 극값 조건이 주어졌을 때
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x) = x^3 + ax^2 + bx + 4\)가 \(x = 1\)에서 극댓값 \(8\)을 가질 때 \(a, b\)와 극솟값을 구하라.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-1"><strong>STEP 1 (필요조건):</strong> \(f'(x) = 3x^2 + 2ax + b\), \(f'(1) = 0 \Rightarrow 3 + 2a + b = 0\) … ①</p>
+                        <p class="text-base mb-1"><strong>STEP 2 (함숫값):</strong> \(f(1) = 1 + a + b + 4 = 8 \Rightarrow a + b = 3\) … ②</p>
+                        <p class="text-base mb-1"><strong>STEP 3 (연립):</strong> ①, ② \(\Rightarrow a = -6,\ b = 9\).</p>
+                        <p class="text-base mb-1"><strong>STEP 4 (확인):</strong> \(f'(x) = 3x^2 - 12x + 9 = 3(x-1)(x-3)\). \(x = 1\) 좌우 \(+ \to -\) (극대 ✓), \(x = 3\) 좌우 \(- \to +\) (극소).</p>
+                        <p class="text-base mb-1"><strong>STEP 5 (극솟값):</strong> \(f(3) = 27 - 54 + 27 + 4 = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(4\)</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-red-700"><strong>⚠ 함정:</strong> STEP 1, 2만 풀고 끝내면 안 된다. <strong>STEP 4에서 부호 변화를 확인</strong>해야 한다. 만약 \(x = 1\)이 실제 극댓값이 아니면 (예: 변곡점) 답을 다시 풀어야 한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 예제 4 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">증감표 작성 → 극값 직접 구하기</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-삼차·사차함수 극값</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 극값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 문제 07 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = -2x^3 + 3x^2 + 1 \) &nbsp;&nbsp;
+                                (2) \( f(x) = x^4 - 8x^2 + 6 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong><br>
+                            <strong>(1)</strong> \(f'(x) = -6x^2 + 6x = -6x(x - 1)\). \(f' = 0 \Rightarrow x = 0,\ 1\). 부호: \((-\infty,0)\)에서 \(-\), \((0,1)\)에서 \(+\), \((1,\infty)\)에서 \(-\). 따라서 \(x = 0\)에서 극솟값 \(f(0) = 1\), \(x = 1\)에서 극댓값 \(f(1) = -2 + 3 + 1 = 2\).<br>
+                            <strong>(2)</strong> \(f'(x) = 4x^3 - 16x = 4x(x - 2)(x + 2)\). \(f' = 0 \Rightarrow x = -2,\ 0,\ 2\). 부호 \((-,+,-,+)\). 따라서 \(x = \pm 2\)에서 극솟값 \(f(\pm 2) = 16 - 32 + 6 = -10\), \(x = 0\)에서 극댓값 \(f(0) = 6\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-매개변수 결정</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \( f(x) = -2x^3 + 3x^2 + ax + b \)가 \(x = -1\)에서 극솟값 \(-2\)를 가질 때, 실수 \(a, b\)의 값과 극댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 문제 08 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = -6x^2 + 6x + a\). 필요조건 \(f'(-1) = 0 \Rightarrow -6 - 6 + a = 0 \Rightarrow a = 12\). 함숫값 \(f(-1) = 2 + 3 - 12 + b = -2 \Rightarrow b = 5\). 검증: \(f'(x) = -6x^2 + 6x + 12 = -6(x - 2)(x + 1)\). \(x = -1\) 좌우 \(- \to +\) (극소 ✓), \(x = 2\) 좌우 \(+ \to -\) (극대). 극댓값 \(f(2) = -16 + 12 + 24 + 5 = 25\). 정답: \(a = 12,\ b = 5\), 극댓값 \(25\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-극값의 합·곱</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \(f(x) = 2x^3 - 9x^2 + 12x - 3\)의 극댓값과 극솟값의 차(극댓값 \(-\) 극솟값)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.97 기본 07 변형)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 6x^2 - 18x + 12 = 6(x-1)(x-2)\). \(f' = 0 \Rightarrow x = 1,\ 2\). 부호 \((+,-,+)\). 극댓값 \(f(1) = 2 - 9 + 12 - 3 = 2\), 극솟값 \(f(2) = 16 - 36 + 24 - 3 = 1\). 차 \(= 2 - 1 = 1\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">"극값 갖는다 / 갖지 않는다" 조건 — 도함수 판별식</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-극값을 갖지 않을 조건</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 삼차함수 \( f(x) = x^3 + 3x^2 + ax + 1 \)이 <strong>극값을 갖지 않도록</strong> 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.97 기본 08 패턴)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 삼차함수가 극값을 갖지 않을 \(\Leftrightarrow\) \(f'(x) = 3x^2 + 6x + a\)가 <strong>실수 전체에서 부호 변화 없음</strong> \(\Leftrightarrow\) 판별식 \(D \leq 0\). \(D/4 = 9 - 3a \leq 0 \Rightarrow a \geq 3\). 정답: \(a \geq 3\). <strong>차시 14와 연결:</strong> "극값 없음 = 단조증가(단조감소)" — 차시 14의 매개변수 응용 패턴과 동일.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-극값을 가질 조건</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 삼차함수 \( f(x) = x^3 - 3ax^2 + 3x + 2 \)가 <strong>극댓값과 극솟값을 모두 갖도록</strong> 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 2 도전 1 기반 패턴)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 삼차함수가 극값(극댓값·극솟값 모두) \(\Leftrightarrow\) \(f'(x) = 3x^2 - 6ax + 3 = 0\)이 <strong>서로 다른 두 실근</strong> \(\Leftrightarrow\) 판별식 \(D \gt 0\). \(D/4 = 9a^2 - 9 \gt 0 \Rightarrow a^2 \gt 1 \Rightarrow a \lt -1\) 또는 \(a \gt 1\). <strong>핵심 대비:</strong> 4번(극값 없음 \(\Leftrightarrow D \leq 0\))과 5번(극값 있음 \(\Leftrightarrow D \gt 0\))은 부등호와 등호 포함 여부가 다르다. 4번에서 \(D = 0\)일 때 도함수가 중근 \(\to\) 부호 변화 없음 \(\to\) 극값 없음 (포함됨).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-수리 언어 소양: 도함수 그래프로 극값 판정</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림은 삼차함수 \(f(x)\)의 <strong>도함수</strong> \(y = f'(x)\)의 그래프를 그린 것이다. 각 경우에 대하여 함수 \(f(x)\)가 극값을 갖는지 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 문제 09 (내 역량) 참고)</span>
+                            <div class="mt-3 flex justify-center">
+                                <img src="images/calc_15_q_deriv3graphs.png" alt="P.85 f'(x) 도함수 3가지 그래프" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:240px;">
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong><br>
+                            <strong>(1)</strong> \(f'(x) = 0\)인 점 \(x = a,\ b\) (\(0 \lt a \lt b\)). \(f'\)의 부호: \(x \lt a\)에서 \(+\), \(a \lt x \lt b\)에서 \(-\), \(x \gt b\)에서 \(+\). 따라서 \(x = a\)에서 <strong>극대</strong>(\(+\to-\)), \(x = b\)에서 <strong>극소</strong>(\(-\to+\)). 극값 <strong>있음 (2개)</strong>.<br>
+                            <strong>(2)</strong> \(f'(x) = 0\)인 점 \(x = c\) 단 하나 (그래프가 \(x\)축에 접함). \(f'(x) \geq 0\) 항상, 등호는 \(x = c\)에서만. 부호 변화 <strong>없음</strong> \(\Rightarrow\) \(f\)는 \(x = c\)에서 극값 <strong>아님</strong>. (단순히 정체점, 즉 \(f(x) = x^3\) 유형의 변곡점)<br>
+                            <strong>(3)</strong> \(f'(x) \gt 0\) 항상 (\(x\)축과 만나지 않음). \(f\)는 실수 전체에서 단조증가 \(\Rightarrow\) 극값 <strong>없음</strong>.<br>
+                            <strong>핵심:</strong> \(f'(x) = 0\)의 해가 있다고 자동으로 극값이 생기는 것이 아니다. 도함수 그래프가 \(x\)축을 <strong>가로지르는가</strong>(부호 변화) vs <strong>접하는가</strong>(부호 유지)를 구별하라.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" \(f'(a) = 0\) \(\Rightarrow\) 극값? — 필요조건의 함정</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-수리 언어 소양: 학생의 주장 판정 + 반례 제시</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고, 거짓이면 <strong>반례</strong>를 들어 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.83 · 본문 「일반적으로 위의 역은 성립하지 않는다」 + \(f(x) = x^3\) 반례 참고)</span>
+                            <div class="mt-3 p-4 bg-white rounded-xl border-2 border-orange-200 space-y-2">
+                                <p class="text-base text-slate-700">📢 학생 A: "미분가능한 함수 \(f(x)\)에 대해 \(f'(a) = 0\)이면 \(f\)는 \(x = a\)에서 반드시 극값을 가져!"</p>
+                                <p class="text-base text-slate-700">📢 학생 B: "함수 \(f(x)\)가 \(x = a\)에서 극값을 가지면 \(f\)는 \(x = a\)에서 반드시 미분가능해!"</p>
+                            </div>
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                두 주장 모두 <strong>거짓</strong>이다. "필요조건"과 "충분조건"의 구별을 강조하는 차시 15의 핵심 함정.<br><br>
+                                <strong>STEP 1 — 학생 A 반례:</strong> \(f(x) = x^3\)을 보자. \(f'(x) = 3x^2 \Rightarrow f'(0) = 0\). 그러나 \(x = 0\) 주변에서 \(f'(x) \geq 0\)이므로 부호 변화 없음 \(\Rightarrow\) \(f\)는 \(x = 0\)에서 극값을 갖지 <strong>않는다</strong> (오히려 실수 전체에서 증가). 따라서 학생 A의 주장은 거짓.<br><br>
+                                <strong>STEP 2 — 학생 B 반례:</strong> \(f(x) = |x|\)를 보자. \(f\)는 \(x = 0\) 주변에서 \(f(x) \geq f(0) = 0\)이므로 \(x = 0\)에서 <strong>극솟값 \(0\)</strong>을 갖는다. 그러나 \(f\)는 \(x = 0\)에서 좌미분계수 \(-1\)과 우미분계수 \(+1\)이 다르므로 <strong>미분가능하지 않다</strong>. 따라서 학생 B의 주장도 거짓.<br><br>
+                                <strong>STEP 3 — 정확한 명제:</strong><br>
+                                ① <strong>미분가능한 함수가 극값을 가지면 \(f'(a) = 0\)</strong> (참) — <em>필요조건</em>(페르마 정리).<br>
+                                ② <strong>\(f'(a) = 0 \Rightarrow\) 극값</strong> (<span class="text-red-700 font-bold">거짓</span>) — 부호 변화 필요.<br>
+                                ③ <strong>극값을 가지면 미분가능</strong> (<span class="text-red-700 font-bold">거짓</span>) — \(|x|\) 반례.<br>
+                                ④ <strong>\(f'(a) = 0\) AND \(f'\)이 \(a\)에서 부호 변화 \(\Leftrightarrow\) 극값</strong> (참) — <em>미분가능한 함수의 극값 판정 정리</em>.<br><br>
+                                <strong>핵심 통찰:</strong> "필요조건이지만 충분조건이 아닌" 관계를 명확히 구분해야 한다. \(f'(a) = 0\)은 (미분가능한 함수에서) 극값의 <strong>필요조건</strong>이지만 <strong>충분조건이 아니다</strong>. 충분조건이 되려면 "부호 변화"가 추가되어야 한다. 이 함정은 차시 16(함수의 그래프 개형)에서 <strong>변곡점</strong> 개념으로 다시 정리된다 — \(f'(a) = 0\)이지만 극값 아닌 점이 바로 변곡점의 일부.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(f(x) = x^3 + 3x^2 + ax - 4\)의 극댓값과 극솟값의 합이 \(0\)이 되도록 하는 실수 \(a\)의 값을 구하시오. (단, 극값이 존재하도록 \(a \lt 3\)임을 활용한다.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 1·2 통합)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략 (4단계):</strong><br>
+                <strong>STEP 1 — 극값 조건:</strong> \(f'(x) = 3x^2 + 6x + a\). 극값 존재 \(\Leftrightarrow D/4 = 9 - 3a \gt 0 \Rightarrow a \lt 3\).<br>
+                <strong>STEP 2 — 두 극값의 \(x\)좌표:</strong> \(f'(x) = 0\)의 두 실근을 \(\alpha, \beta\) (\(\alpha \lt \beta\))라 하면 근과 계수 \(\Rightarrow \alpha + \beta = -2,\ \alpha\beta = \dfrac{a}{3}\).<br>
+                <strong>STEP 3 — 극값의 합:</strong> 부호 분포 \((+,-,+)\) \(\Rightarrow\) \(f(\alpha) = \) 극댓값, \(f(\beta) = \) 극솟값.<br>
+                \[ f(\alpha) + f(\beta) = (\alpha^3 + \beta^3) + 3(\alpha^2 + \beta^2) + a(\alpha + \beta) - 8 \]
+                \(\alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta = 4 - \dfrac{2a}{3}\), \(\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta) = -8 + 2a\).<br>
+                <strong>STEP 4 — 대입 후 \(0\):</strong>\[ (-8 + 2a) + 3\left(4 - \dfrac{2a}{3}\right) + a(-2) - 8 = -8 + 2a + 12 - 2a - 2a - 8 = -4 - 2a = 0\] \(\Rightarrow a = -2\). \(a = -2 \lt 3\) 조건 만족 ✓. <strong>정답: \(a = -2\)</strong>. <em>(검증: \(f'(x) = 3x^2 + 6x - 2\)는 두 실근 가짐, 극값 정상 존재.)</em>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 도함수의 활용 1 유제 6 [26009-0080]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_도함수의활용1"
+                 data-aft-source-id="c4-ex6"
+                 data-aft-source-label="수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 6">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 6 [26009-0080]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 곱함수 \(g(x) = (x^2 - x)f(x)\)의 극값 조건 \(g'(3) = 0\), \(g(3) = 12\)에서 일차함수 \(f(x)\)를 결정 → 값 \(g(-3)\) 대입</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                두 함수 \(f(x),\ g(x) = (x^2 - x)f(x)\)가 다음 조건을 만족시킬 때, \(g(-3)\)의 값은?
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl mb-6">
+                <p class="text-lg text-slate-800">(가) 함수 \(f(x)\)는 일차함수이다.</p>
+                <p class="text-lg text-slate-800">(나) 함수 \(g(x)\)는 \(x = 3\)에서 극값 \(12\)를 갖는다.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(142\) &nbsp;&nbsp; ② \(144\) &nbsp;&nbsp; ③ \(146\) &nbsp;&nbsp; ④ \(148\) &nbsp;&nbsp; ⑤ \(150\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — \(g(3) = 12 \Rightarrow f(3) = 2\)</strong>: 극값 \(12\)는 함숫값 \(g(3) = 12\). \(g(3) = (9 - 3)f(3) = 6f(3) = 12 \Rightarrow f(3) = 2\).</li>
+                    <li><strong>STEP 2 — \(g'(3) = 0\) (극값의 필요조건)</strong>: 미분가능하므로 \(g'(3) = 0\). 곱의 미분법 \(\Rightarrow g'(x) = (2x - 1)f(x) + (x^2 - x)f'(x)\). \(g'(3) = 5 \cdot 2 + 6 \cdot f'(3) = 10 + 6f'(3) = 0 \Rightarrow f'(3) = -\dfrac{5}{3}\).</li>
+                    <li><strong>STEP 3 — \(f(x)\) 결정</strong>: \(f\)가 일차함수 \(\Rightarrow f(x) = ax + b\)에서 \(a = f'(3) = -\dfrac{5}{3}\). \(f(3) = -5 + b = 2 \Rightarrow b = 7\). 따라서 \(f(x) = -\dfrac{5}{3}x + 7\).</li>
+                    <li><strong>STEP 4 — \(g(-3)\) 계산</strong>: \(g(-3) = (9 + 3)f(-3) = 12 \cdot (5 + 7) = 12 \cdot 12 = 144\). <span class="text-red-600 font-bold">정답: ② \(144\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-purple-700"><strong>핵심:</strong> 극값 조건은 <strong>"\(g'(a) = 0\) AND \(g(a) = (\text{극값})\)"</strong>의 <strong>두 가지 정보</strong>를 동시에 준다. 한쪽으로 \(f'(3)\) 결정, 다른 쪽으로 \(f(3)\) 결정 \(\Rightarrow\) 일차함수 \(f\)의 두 계수를 정확히 묶는다. "극값을 갖는다"는 조건의 <strong>이중 활용</strong>이 본 문제의 미덕.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_도함수의활용1_해설.html#c4-ex6" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 6</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2014년 4월 학력평가 가형 7번 — 극값을 가질 조건) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분"
+                 data-aft-source-id="g_ws15_d2"
+                 data-aft-source-label="평가원·교육청 기출 · 수학Ⅱ · 극값 활용 · 2014년 4월 학력평가 가형 7번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2014학년도 4월 학력평가 수학영역 가형 7번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: "삼차함수가 극값을 갖는다" \(\Leftrightarrow\) "도함수가 서로 다른 두 실근(부호 변화 2회)" \(\Leftrightarrow\) "이차식 도함수의 판별식 \(\gt 0\)" — 매개변수 \(a\)에 대한 이차부등식 풀이 후 정수 개수</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                함수 \(f(x) = x^3 + ax^2 + (a^2 - 4a)x + 3\)이 <strong>극값을 갖도록</strong> 하는 모든 정수 \(a\)의 개수는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(5\) &nbsp;&nbsp; ② \(6\) &nbsp;&nbsp; ③ \(7\) &nbsp;&nbsp; ④ \(8\) &nbsp;&nbsp; ⑤ \(9\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — "극값을 갖는다"의 도함수 해석</strong>: 최고차계수가 양수인 삼차함수 \(f\)가 극값(극댓값·극솟값)을 갖는다 \(\Leftrightarrow\) 도함수 \(f'(x)\)가 <strong>서로 다른 두 실근</strong>을 가지고 그 좌우에서 부호가 \((+,\,-,\,+)\)로 변한다.</li>
+                    <li><strong>STEP 2 — \(f'(x)\) 계산</strong>: \[ f'(x) = 3x^2 + 2ax + (a^2 - 4a). \] 이차식 \(f'(x)\)가 서로 다른 두 실근 \(\Leftrightarrow\) 판별식 \(D \gt 0\).</li>
+                    <li><strong>STEP 3 — 판별식 부등식</strong>: \[ \dfrac{D}{4} = a^2 - 3(a^2 - 4a) = a^2 - 3a^2 + 12a = -2a^2 + 12a = -2a(a - 6) \gt 0. \] \(\Rightarrow a(a - 6) \lt 0 \Rightarrow 0 \lt a \lt 6\).</li>
+                    <li><strong>STEP 4 — 정수 \(a\) 개수</strong>: \(a \in \{1,\ 2,\ 3,\ 4,\ 5\}\) \(\Rightarrow\) <strong>5개</strong>.</li>
+                    <li><strong>STEP 5 — 경계값 검증</strong>: \(a = 0\) 또는 \(a = 6\)일 때 \(D = 0\) \(\Rightarrow\) \(f'\)이 중근 \(\Rightarrow\) 부호 변화 없음 \(\Rightarrow\) 극값 없음. 따라서 경계 제외가 정확. <span class="text-red-600 font-bold">정답: ① \(5\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 본 차시 Level 2 문제 4·5의 정확한 평가원 출제 패턴. "극값 갖는다" \(\Leftrightarrow D \gt 0\) (등호 제외), "극값 갖지 않는다" \(\Leftrightarrow D \leq 0\) (등호 포함) — 두 조건의 부등호와 등호 처리가 핵심. 본 문제는 학력평가 3점이지만 학생들이 \(D \geq 0\)로 풀어 \(a = 0, 6\)을 포함시키는 함정에 자주 빠진다. 차시 14(증감) \(\to\) 차시 15(극값) \(\to\) 차시 16(그래프 개형)으로 이어지는 핵심 사고 패턴.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (극값의 필요조건 vs 충분조건)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"미분가능한 함수가 극값을 가지면 \(f'(a) = 0\)" (필요조건, 페르마 정리)와 "\(f'(a) = 0\)이고 부호 변화하면 극값" (충분조건, 판정정리)의 차이를 자신의 언어로 정리하고, 두 조건을 헷갈리지 않기 위한 자기만의 점검 카드를 만들어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"'\(f'(a) = 0\)이면 \(x = a\)에서 극값'이라고 적었다가 \(f(x) = x^3\) 반례에 막혔다. \(x = 0\)에서 \(f' = 0\)이지만 극값이 아니다. 필요조건('미분가능 + 극값 \(\Rightarrow f' = 0\)')과 충분조건('\(f' = 0\) + 부호 변화 \(\Rightarrow\) 극값')이 다르다는 걸 그제야 분명히 구분했다. 차시 14의 단조함수 함정도 결국 같은 '필요·충분 비대칭' 문제라는 걸 묶어 정리했다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (극값 갖는다 vs 안 갖는다 — 판별식)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">삼차함수 \(f\)에 대해 "극값을 갖는다 \(\Leftrightarrow D \gt 0\)"와 "극값을 갖지 않는다 \(\Leftrightarrow D \leq 0\)"의 부등호·등호 처리를 정확히 구분하라. 도전 2(학력평가 가형 7번)에서 등호 포함의 함정을 어떻게 검증했는지 자신의 풀이 절차를 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"삼차함수가 극값을 가질 조건을 처음엔 그냥 '\(D \geq 0\)'으로 적었다가 틀렸다. 도함수(이차식)의 판별식이 \(D = 0\)이면 중근이라 부호 변화가 없어 극값이 안 생긴다. 그래서 '극값 존재 \(\Leftrightarrow D &gt; 0\)'이 맞다는 걸 알게 됐다. 등호 하나로 답이 갈리는 게 무서워서, 부등호·등호 처리는 마지막에 꼭 다시 점검하는 습관을 들였다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (극값 → 그래프 개형 → 방정식·부등식)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">차시 15에서 익힌 "증감표 + 극값"이 차시 16(그래프 개형), 차시 17(그래프 응용), 차시 18(방정식과 부등식)에서 어떻게 사용될지 예측하라. 특히 극댓값·극솟값의 부호가 \(x\)축과의 교점 개수(실근의 개수)를 어떻게 결정하는지 자신의 노트에 도식화해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"극댓값·극솟값이 단순한 봉우리·골짜기가 아니라 그래프 개형이랑 방정식 \(f(x) = 0\)의 실근 개수를 결정하는 핵심 정보라는 걸 알게 됐다. 예를 들어 삼차함수에서 '극댓값 \(&gt; 0\)이고 극솟값 \(&lt; 0\)이면 서로 다른 세 실근'이 나온다는 규칙을 미리 예측해뒀더니, 차시 16~18에서 그 규칙이 그대로 쓰이는 게 신기했다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 15차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 FAB -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

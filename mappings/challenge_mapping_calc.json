@@ -1,0 +1,1736 @@
+{
+  "schema_version": 1,
+  "semester": "2",
+  "subject": "미적분 I",
+  "description": "2학기 미적분 I 학습지 ↔ 수능특강·기출 도전문제 양방향 매핑. 1학기(challenge_mapping.json)와 키 네임스페이스 분리. Agent D1·D2(병렬 처리) 결과를 메인 Claude가 검수 후 기록.",
+  "updated_at": "2026-05-21 (단원 I-1 함수의 극한: 차시 01·02·03 도전 6건 등록)",
+  "policies": {
+    "exclude_levels": [
+      "실력 (advanced)"
+    ],
+    "include_levels": [
+      "기초 (basic)",
+      "예제 (example)",
+      "유제 (exercise)",
+      "기본 (standard)"
+    ],
+    "rationale": "1학기와 동일 정책 — 학습지 max_difficulty +1~2단계 위로 선정. 단원 확정 후 미적분 I 특화 도구(극한·미분·적분 정의 우회 가능성)에 대한 추가 정책은 차후 보완.",
+    "key_namespace_note": "수능특강 미적분 I(=수학Ⅱ) 함수의 극한 키 prefix 'c1-' (1학기 s4·s5·s6와 충돌 없음). 기출 키 prefix 'g_' (학습지 차시·도전 번호 인덱스). 학습지 ID는 '학습지_미적분I_NN_<단원>' 형식."
+  },
+  "mappings": [
+    {
+      "worksheet_id": "학습지_미적분I_01_함수의극한",
+      "worksheet_concepts": [
+        "함수의 극한 직관적 정의",
+        "좌극한·우극한",
+        "극한 존재 ⟺ 좌=우",
+        "함숫값 ≠ 극한값 (오개념)",
+        "발산 ∞"
+      ],
+      "max_difficulty_in_worksheet": 4,
+      "max_difficulty_note": "Q5(Level 3 함정 — f(1)=5 vs lim=2)이 max=4. 함정 인지가 핵심.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_함수의극한",
+          "problem_id": "c1-ex2",
+          "label": "수능특강 수학Ⅱ · 함수의 극한 · 유제 2",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "합성 그래프 좌·우극한",
+            "f(x+2)·f(-x) 치환",
+            "극한 존재 조건"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분",
+            "급수"
+          ],
+          "reason": "학습지 차시 01 Level 1 ②(그래프 읽기)·도전 본질(좌·우극한 분리)을 합성·치환으로 확장. 그래프 변환 발상 추가로 max(4)+2=6 적정. 1학기 도전 패턴(graph + 치환) 직접 연계.",
+          "graph_asset": "images/calc_sol_c1-ex2.png",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d1_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수능_수학II",
+          "problem_id": "g_ws01_d2",
+          "label": "2022학년도 수능 수학영역 4번 [3점]",
+          "difficulty": 5,
+          "tier": "기본",
+          "level_label_in_source": "수능 4번 (기본)",
+          "estimated_time_min": 5,
+          "concepts_matched": [
+            "그래프 좌극한 점프",
+            "x=2 좌·우 일치 극한",
+            "사칙연산"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분"
+          ],
+          "reason": "그래프형 좌·우극한 결합의 표준 수능 4번급. lim(x→-1⁻)f(x)·lim(x→2)f(x) 두 가지를 동시 결정하는 학습지 핵심 발상. rank 1(c1-ex2, 합성 치환)과 다른 진입(직접 그래프 읽기). 정답 ④(=4).",
+          "graph_asset": "images/calc_01_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[1]함수의극한-(2)그래프.pdf",
+          "source_pdf_page": 8,
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d2_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_02_함수의극한값의계산",
+      "worksheet_concepts": [
+        "극한의 사칙 성질 (합·차·곱·몫)",
+        "직접 대입",
+        "인수분해 (0/0 해체)",
+        "유리화"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "Level 3 ⑤ Q5(인수분해 + 미정계수 결정)이 max=5. 인수분해 기반의 0/0 처리.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_함수의극한",
+          "problem_id": "c1-ex4",
+          "label": "수능특강 수학Ⅱ · 함수의 극한 · 유제 4",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "(x+1)f, g/(x+1) 분해",
+            "0·∞ → 두 유한극한 곱 변형",
+            "fg + (x²+3x+2)f 결합"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분",
+            "급수"
+          ],
+          "reason": "Agent D1 선택 (c1-ex3 대신). 공통 인수 매개로 0·∞를 두 유한 극한 곱으로 변형하는 패턴이 학습지 max(5)+2=7 부합. c1-ex3은 단일 묶기로 max+1 수준에 가까운데, c1-ex4는 4단계 인수 추적 + 서답형으로 수능 21·22번 단골 패턴과 동형. 학습지 02 컨셉 '극한의 성질 + 인수분해 변형'과 정확히 일치.",
+          "rejected_alternative": {
+            "problem_id": "c1-ex3",
+            "reason": "max+1 수준이라 갭 부족 — c1-ex4 우선 채택"
+          },
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d1_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws02_d2",
+          "label": "2011년 10월 학평 나형 14번 [4점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "학평 14번 (기본)",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "두 함수 f·g 그래프 좌·우극한",
+            "보기형 ㄱ/ㄴ/ㄷ",
+            "합·곱 극한"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분"
+          ],
+          "reason": "열린구간 (-3,3)의 두 함수 그래프에서 lim(x→0)f, lim(x→1){f+g}, lim(x→-1)fg 세 가지 판정. 학습지 차시 02 도입(두 함수 사칙 극한)을 보기형으로 종합. rank 1(c1-ex4 인수분해 서답형)과 다른 사고 경로(그래프 직접 판정). 정답 ④(ㄱ, ㄷ).",
+          "graph_asset": "images/calc_02_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[1]함수의극한-(2)그래프.pdf",
+          "source_pdf_page": 2,
+          "user_note": "그림이 듀얼 패널(1021×1563)로 세로로 김 — 학습지 표시 시 max-w-md → max-w-lg로 보정 권장 (Agent D2 보고)",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d2_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_03_함수의극한_미정형",
+      "worksheet_concepts": [
+        "0/0 부정형 (인수분해·유리화)",
+        "∞/∞ 부정형 (최고차항 분리)",
+        "∞-∞ 부정형 (유리화)",
+        "0·∞ 부정형"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 + 도형 극한(자체 출제 placeholder 시점) 기준 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_함수의극한",
+          "problem_id": "c1-ex6",
+          "label": "수능특강 수학Ⅱ · 함수의 극한 · 유제 6",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "√(4x²+3x)-2x 무리식",
+            "x→-∞ 치환 (x=-t)",
+            "유리화 + 최고차항 분리"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분",
+            "샌드위치 외 도구"
+          ],
+          "reason": "학습지 차시 03 핵심(∞-∞ 유리화)을 x→-∞ 치환으로 한 단계 확장. 부호 변환 함정 + 유리화 결합. max(5)+2=7 적정. 본문 학습 패턴 직접 심화.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d1_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "수능특강_수학II_함수의극한",
+          "problem_id": "c1-s7",
+          "label": "수능특강 수학Ⅱ · 함수의 극한 · 기본 7",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "기본",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "곡선 y=√x 도형",
+            "점 P(t², t)·H(t², 0) 좌표 조작",
+            "∞에서 차이 PH-QH 극한 (∞-∞ 유리화)"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분"
+          ],
+          "reason": "학습지 차시 03 도전 2(좌표 도형 placeholder)와 도형 극한 패턴 완벽 매칭 — Agent C2 그래프 추출 완료. 무리식 유리화의 기하적 응용. rank 1(c1-ex6 대수적 무리식)과 다른 진입(도형 좌표). max(5)+2=7 적정.",
+          "graph_asset": "images/calc_sol_c1-s7.png",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d1_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_04_중단원마무리_I_1",
+      "worksheet_concepts": [
+        "함수의 극한 종합 14문항 (비상 P.25~27 그대로)",
+        "기초 1~3 · 기본 4~12 · 도전 13·14"
+      ],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "도전 13·14 서술형 킬러가 max=7. 비상 교과서 중단원 마무리 14문항으로 단원 종합 검증.",
+      "no_external_challenge": {
+        "decision": "1학기 04 패턴 동일 — 교과서 문제만 14개로 종합 도전 충분",
+        "reason": "중단원 마무리는 단원 종합 평가 성격. 비상 교과서 P.25~27의 14문항(특히 도전 13·14 서술형)이 max=7로 별도 수능특강 도전 추가 불필요. 1학기 학습지_04와 같은 정책.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_05_함수의연속",
+      "worksheet_concepts": [
+        "함수의 연속 정의 (세 조건)",
+        "불연속 분류 (점프·제거 가능·무한)",
+        "좌·우 연속",
+        "연속 함수의 사칙"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 (제거 가능 불연속 vs 점프) 기준 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_함수의연속",
+          "problem_id": "c2-ex2",
+          "label": "수능특강 수학Ⅱ · 함수의 연속 · 유제 2",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "분기 함수 다중 점 연속",
+            "두 점 x=1, b 동시 연속 조건",
+            "미정계수 연립"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분",
+            "급수"
+          ],
+          "reason": "학습지 차시 05 컨셉(분기 함수 연속)을 두 점 동시 연속으로 확장. 학습지 max(5)+2=7 적정. 정답 ④ 4/3. Agent D3 검수 완료.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d3_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수학II_함수의연속",
+          "problem_id": "g_ws05_d2",
+          "label": "2021년 10월 학력평가 수학영역 공통 5번 [3점]",
+          "difficulty": 5,
+          "tier": "기본",
+          "level_label_in_source": "학평 5번 (기본)",
+          "estimated_time_min": 5,
+          "concepts_matched": [
+            "그래프 좌·우극한 다른 한 점 불연속",
+            "(x²+ax+b)·f(x) 한 점 연속 조건",
+            "분자 0 강제"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분"
+          ],
+          "reason": "그래프형 분기 함수와 다항식 곱이 한 점에서 연속이 되는 미정계수 결정. 학습지 차시 05 핵심(좌·우 연속)을 그래프 + 다항식 결합으로 확장. rank 1(c2-ex2 분기 함수 두 점)과 다른 사고 경로(그래프 + 곱 연속). 정답 ② (-1).",
+          "graph_asset": "images/calc_05_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[2]함수의연속-(2)그래프.pdf",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d4_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_06_연속함수의성질",
+      "worksheet_concepts": [
+        "사잇값 정리 (IVT)",
+        "최대·최소 정리 (EVT)",
+        "방정식 근의 존재 증명",
+        "합성함수 연속"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 사잇값 정리 응용 기준 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_함수의연속",
+          "problem_id": "c2-e4",
+          "label": "수능특강 수학Ⅱ · 함수의 연속 · 예제 4",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "예제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "사잇값 정리 (f(3)f(6)<0)",
+            "근의 위치 결정",
+            "근의 곱 p·q 추출"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분"
+          ],
+          "reason": "학습지 차시 06 컨셉(사잇값 정리)과 완벽 매칭. 두 부등식 f(3)f(6)<0, f(3)f(20)>0 결합으로 근의 위치 결정 후 p²+q² 산출. 학습지 max(5)+2=7 적정. 정답 29.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d3_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수능_수학II",
+          "problem_id": "g_ws06_d2",
+          "label": "1994학년도 수능 1차 수학 11번 [수능 종합]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "수능 11번 (보기형)",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "연속함수 + 우함수",
+            "사잇값 정리 (f=5 두 점)",
+            "최대점·반례 추론",
+            "보기 ①~⑤"
+          ],
+          "tools_avoided": [
+            "미분",
+            "적분"
+          ],
+          "reason": "세 조건(우함수 + |x|>5에서 f=0 + |x|<5에서 |f|≤10 + 최댓값 10 유일)으로 연속 함수의 종합 보기형. 사잇값·최대점·반례 모두 다룸. 학습지 차시 06의 사잇값·최대최소 모두 종합. 정답 ④ (반례 존재).",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d4_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_07_중단원마무리_I_2",
+      "worksheet_concepts": [
+        "함수의 연속 종합 14문항 (비상 P.40~42 그대로)",
+        "기초 1~3 · 기본 4~12 · 도전 13·14"
+      ],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "도전 13·14 서술형 (곱 연속 + 사잇값 응용)이 max=7. 비상 교과서 중단원 마무리 14문항 + Q5 그래프 (calc_07_q5.png).",
+      "no_external_challenge": {
+        "decision": "1학기 04 패턴 동일 — 교과서 문제만 14개로 종합 도전 충분",
+        "reason": "중단원 마무리는 단원 종합 평가 성격. 비상 교과서 P.40~42의 14문항이 max=7로 별도 수능특강 도전 추가 불필요.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_08_대단원평가_I",
+      "worksheet_concepts": [
+        "단원 I 종합 (함수의 극한 + 연속)",
+        "13문항 (객관·단답 1~8 + 서술형 9~13)",
+        "수능 모의 형식"
+      ],
+      "max_difficulty_in_worksheet": 8,
+      "max_difficulty_note": "서술형 12·13 (그래프 곱 연속 + 사잇값 정수 a 개수)이 max=8. 단원 I 마지막 평가 — 모의시험 형식.",
+      "embedded_advanced": {
+        "count": 5,
+        "ids": [
+          "비상 P.45 서술 09 다항함수 결정",
+          "P.45 서술 10 ∞형 사칙",
+          "P.45 서술 11 분수 연속 범위",
+          "P.46 서술 12 그래프 곱 연속",
+          "P.46 서술 13 사잇값 정수 a 개수"
+        ],
+        "marking": "data-aft-problem-level=\"advanced\"",
+        "note": "교과서 서술형 5개 모두 advanced. + Q4 도형극한 (calc_08_q4.png), Q12 그래프 곱 연속 (calc_08_q12.png) 그림 임베드 완료."
+      },
+      "no_external_challenge": {
+        "decision": "1학기 05 패턴 동일 — 대단원 평가는 교과서 종합 평가 자체가 도전",
+        "reason": "대단원 평가는 단원 I 전체 종합 평가 (모의시험 형식). 교과서 P.44~46의 13문항 (서술형 5개 advanced 포함)이 max=8로 별도 수능특강 도전 추가 불필요. 1학기 학습지_05와 같은 정책.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_09_미분계수",
+      "worksheet_concepts": [
+        "평균변화율 Δy/Δx",
+        "미분계수 f'(a) = lim_{h→0} (f(a+h)-f(a))/h",
+        "접선의 기울기",
+        "미분 가능성 (좌·우 미분계수 일치)"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 (미분 가능 vs 연속 — |x| 사례) 기준 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_미분계수와도함수",
+          "problem_id": "c3-ex2",
+          "label": "수능특강 수학Ⅱ · 미분계수와 도함수 · 유제 2",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "lim (f-g)/(x-1) = g'(1) 미분계수 정의",
+            "두 다항함수 결합",
+            "f'(1)+g'(1) 추출"
+          ],
+          "tools_avoided": [
+            "도함수 공식 전 단계 우회 가능"
+          ],
+          "reason": "학습지 차시 09 컨셉(미분계수 정의)을 두 함수 결합으로 확장. 학습지 max(5)+2=7 적정. 단답형, 정답 3. Agent D5 검수 완료.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d5_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수학II_미분",
+          "problem_id": "g_ws09_d2",
+          "label": "2009년 7월 학력평가 가형 4번 [3점]",
+          "difficulty": 5,
+          "tier": "기본",
+          "level_label_in_source": "학평 4번 (기본)",
+          "estimated_time_min": 5,
+          "concepts_matched": [
+            "대칭 미분계수 lim {f(a+h)-f(a-h)}/h = 2f'(a)",
+            "±f(a) 끼워넣기",
+            "이차함수 미분"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "f(x)=x²-6x+5에서 대칭 미분계수 = 8 → 2f'(a)=8 → a=5. 학습지 차시 09 정의 응용. rank 1(c3-ex2 두 함수 결합)과 다른 사고 경로(±f(a) 트릭). 정답 ① 5.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(1)기본문제.pdf",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d6_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_10_도함수",
+      "worksheet_concepts": [
+        "도함수 정의 f'(x) = lim_{h→0} (f(x+h)-f(x))/h",
+        "(x^n)' = nx^{n-1}",
+        "도함수 사칙 ((f±g)', (cf)', (fg)')",
+        "곱의 미분"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 (곱의 미분 적용 오인 — Σ vs Π) 기준 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_미분계수와도함수",
+          "problem_id": "c3-ex6",
+          "label": "수능특강 수학Ⅱ · 미분계수와 도함수 · 유제 6",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "함수방정식 4f(x²+1) = 2x³f'(x) + 3x²-1",
+            "차수비교 (양변 다항식)",
+            "f(0) 추출"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 10 컨셉(도함수 사칙)을 함수방정식·차수비교로 확장. 학습지 max(5)+2=7 적정. 객관식 정답 ① f(0)=-5/8.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d5_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수능_수학II",
+          "problem_id": "g_ws10_d2",
+          "label": "2000학년도 수능 나형 20번 [3점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "수능 20번 (기본)",
+          "estimated_time_min": 6,
+          "concepts_matched": [
+            "두 분수극한에서 f(3), g(3), f'(3), g'(3) 분리 추출",
+            "곱미분 {fg}'(3) = f'(3)g(3) + f(3)g'(3)"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "두 분수극한 → 미분계수 분리 + 곱미분 결합형. 학습지 차시 10 곱미분 직접 응용. rank 1(c3-ex6 함수방정식)과 다른 사고 경로(미분계수 추출 + 곱미분). 정답 ① 5.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(1)기본문제.pdf",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d6_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_11_중단원마무리_II_1",
+      "worksheet_concepts": [
+        "미분계수와 도함수 종합 14문항 (비상 P.64~66)",
+        "기초 1~3 · 기본 4~12 · 도전 13·14"
+      ],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "도전 13·14 서술형 (극한 + 곱미분 / 삼차 보조함수)이 max=7. + Q5 그래프 (calc_11_q5.png) 임베드.",
+      "no_external_challenge": {
+        "decision": "1학기 04 패턴 동일 — 교과서 문제 14개로 종합 도전 충분",
+        "reason": "중단원 마무리는 단원 종합 평가 성격. 비상 P.64~66의 14문항이 max=7로 별도 수능특강 도전 추가 불필요.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_12_접선의방정식",
+      "worksheet_concepts": [
+        "접선의 방정식 y-f(a)=f'(a)(x-a)",
+        "접점 결정",
+        "곡선 밖 점에서 접선 (매개변수)",
+        "두 곡선 공통 접선"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 (접점 vs 곡선 밖 점 혼동) 기준 max=5. + Q5 섬·육지 다리 최소거리 (calc_12_q5_island.png).",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용1",
+          "problem_id": "c4-ex1",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 1 [26009-0075]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "사차곡선 접선",
+            "접선이 외부점 통과 조건",
+            "계수 a 결정"
+          ],
+          "tools_avoided": [
+            "적분 단원 사용 금지"
+          ],
+          "reason": "학습지 차시 12 외부점 접선 컨셉을 사차곡선으로 확장. max(5)+2=7 적정. 정답 ① a=-6.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d7_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수능_수학II",
+          "problem_id": "g_ws12_d2",
+          "label": "1998학년도 수능 나형 9번 [3점]",
+          "difficulty": 5,
+          "tier": "기본",
+          "level_label_in_source": "수능 9번 (기본)",
+          "estimated_time_min": 5,
+          "concepts_matched": [
+            "포물선 접선",
+            "x축·y축으로 둘러싸인 삼각형 넓이"
+          ],
+          "tools_avoided": [
+            "적분"
+          ],
+          "reason": "y=-x²/4의 점 (2,-1)에서 접선 + 좌표축 삼각형 넓이 = 1/2. 학습지 차시 12 직접 응용. rank 1(c4-ex1)과 다른 사고 경로(접선 기울기 → 좌표축 절편 → 넓이). 정답 ①.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(2)활용문제.pdf",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d8_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_13_평균값정리",
+      "worksheet_concepts": [
+        "롤의 정리",
+        "평균값 정리 (f(b)-f(a))/(b-a) = f'(c)",
+        "평균값 정리 응용 (부등식 증명)"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 (롤 vs 평균값 적용 조건) 기준 max=5. + Q5 세 점 그림 (calc_13_q5_threepoints.png).",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용1",
+          "problem_id": "c4-ex3",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 3 [26009-0077]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "평균값 정리로 f(x)-f(0)=x·f'(c)",
+            "조건 (가)·(나) 결합 부등식",
+            "p 최댓값 결정"
+          ],
+          "tools_avoided": [
+            "적분",
+            "급수"
+          ],
+          "reason": "학습지 차시 13 컨셉(평균값 정리)와 완벽 매칭. 단답형 정답 p=2. Agent D7 검수 완료.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d7_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_평가원_수학II",
+          "problem_id": "g_ws13_d2",
+          "label": "2005학년도 9월 모의평가 가형 28번 [4점]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "9월 모평 28번 (보기형)",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "다항함수 + 평균값 정리",
+            "보기 ㄱ(평균값 정리 직접 적용)·ㄴ(적분)·ㄷ(합성함수 g=f∘f의 평균값)"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "user_note": "ㄴ은 적분 사용 — 차시 22~ 이후 학습. STEP 2에 '적분 단원 후 재검토' 표기. 사용자 보정 권장. ㄷ은 평균값 + 사잇값 결합 — STEP 3 보강 필요.",
+          "reason": "평균값 정리 + 합성함수 + 보기형 종합. 학습지 차시 13 직접 심화. rank 1과 다른 진입(보기 ㄱ·ㄴ·ㄷ 판정). 정답 ⑤ (ㄱ·ㄴ·ㄷ 모두 옳음).",
+          "graph_asset": "images/calc_13_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(2)활용문제.pdf",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d8_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_15_극대와극소",
+      "worksheet_concepts": [
+        "극대·극소 정의",
+        "극값의 필요조건 f'(x)=0 (페르마 정리)",
+        "극값 판정 (도함수 부호 변화)",
+        "극값 활용 (다항함수 + 매개변수)"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 (f'(a)=0 ≠ 극값, 부호 변화 필수) 기준 max=5. + 도함수 3그래프 (calc_15_q_deriv3graphs.png).",
+      "unit_membership_note": "수능특강 수학Ⅱ 단원 04 도함수의 활용 (1)이 접선·평균값·증감·극값까지 포함. 따라서 차시 15는 단원 II-2a (도활1)의 마무리 차시. c4- anchor 사용.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용1",
+          "problem_id": "c4-ex6",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 6 [26009-0080]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "일차함수 f",
+            "곱함수 g(x)=(x²-x)f(x)",
+            "x=3에서 극값 12 → f 결정",
+            "g(-3) 추출"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 15 컨셉(극값 + 매개변수 결정)을 곱함수로 확장. 학습지 max(5)+2=7 적정. 4단계 풀이로 정답 ② 144.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_a6_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws15_d2",
+          "label": "2014년 4월 학력평가 가형 7번 [3점]",
+          "difficulty": 5,
+          "tier": "기본",
+          "level_label_in_source": "학평 7번 (기본)",
+          "estimated_time_min": 5,
+          "concepts_matched": [
+            "삼차함수 극값 갖도록 조건",
+            "도함수 판별식 D > 0",
+            "정수 a 개수"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "f(x)=x³+ax²+(a²-4a)x+3이 극값 가짐 → D>0 → a(a-6)<0 → 0<a<6 → 정수 a 5개. 학습지 차시 15 직접 응용. rank 1(c4-ex6 곱함수)과 다른 사고 경로(판별식 부호). 정답 ① 5.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-*.pdf",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_a6_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_14_함수의증가와감소",
+      "worksheet_concepts": [
+        "증가·감소 정의 (구간)",
+        "도함수 부호 판정 (f'>0 → 증가)",
+        "다항함수 + 매개변수 + 항상 증가"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 (매개변수 + 항상 증가 조건) 기준 max=5. + Q5 f'(x)·g'(x) 그래프 (calc_14_q5_derivgraph.png).",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용1",
+          "problem_id": "c4-ex5",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 5 [26009-0079]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "모든 x 단조증가 동치조건",
+            "f'(x) ≥ 0 → 판별식 ≤ 0",
+            "정수 a 개수"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 14 컨셉(증가 조건)과 완벽 매칭. 단조증가 ⇔ 판별식 ≤ 0 변환. 정답 ③ 정수 a 개수 13개.",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d7_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_평가원_수학II",
+          "problem_id": "g_ws14_d2",
+          "label": "2003년 6월 모의평가 가/나형 11번 [3점]",
+          "difficulty": 5,
+          "tier": "기본",
+          "level_label_in_source": "6월 모평 11번 (기본)",
+          "estimated_time_min": 5,
+          "concepts_matched": [
+            "삼차함수 극값 갖지 않을 조건",
+            "도함수 판별식 ≤ 0",
+            "a 범위"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "f(x)=x³+(a-1)x²+(a-1)x+1이 극값 없음 → 도함수 판별식 (a-1)(a-4) ≤ 0 → 1 ≤ a ≤ 4. 학습지 차시 14 직접 응용. rank 1(c4-ex5 모든 x 증가)과 다른 사고 경로(극값 없음 = 단조). 정답 ③.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(2)활용문제.pdf",
+          "added_at": "2026-05-21",
+          "curated_by": "agent_d8_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_16_함수의그래프",
+      "worksheet_concepts": [
+        "다항함수 그래프 그리기 (도함수 부호 + 극값)",
+        "3차·4차 함수 개형",
+        "x축 교점·y축 절편"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 (사차함수 극값 3개 케이스) 기준 max=5. + Warmup 그래프 (calc_16_warmup_derivgraphs.png).",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용2",
+          "problem_id": "c5-ex2",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 2 [26009-0100]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "절댓값 포함 함수 그래프",
+            "[-2,2] 닫힌구간 M+m"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "f(x)=x³-3|x+1|+3, [-2,2]에서 M+m. 절댓값 분기 + 다항함수 그래프 분석. max(5)+2=7 적정. 정답 ① -6.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d9_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws16_d2",
+          "label": "2004년 10월 학력평가 가형 6번 [3점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "학평 6번",
+          "estimated_time_min": 6,
+          "concepts_matched": [
+            "도함수 y=f'(x) 그래프 → 원함수 f(x) 복원",
+            "f(x)=kx 세 실근 k 범위"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "위로 볼록 f' 그래프(꼭짓점 3, 영점 ±2)에서 원함수 추론 후 직선과 세 교점 조건. 학습지 차시 16 직접 응용. 정답 ③ k<3.",
+          "graph_asset": "images/calc_16_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(2)활용문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d10_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_17_함수의그래프_응용",
+      "worksheet_concepts": [
+        "함수의 최댓값·최솟값 (닫힌·열린구간)",
+        "실생활 활용 (부피·넓이 최대화)",
+        "도형 + 미분 결합"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 (실생활 도형 + 매개변수) 기준 max=5. + 3개 도형 PNG (직사각형 종이 상자, 포물선 위 직사각형, 원뿔 내접 원기둥).",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용2",
+          "problem_id": "c5-ex1",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 1 [26009-0099]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "f=2x²+ax",
+            "g=f(x)+f(x-a) 합성",
+            "x=1 극값 → a 결정 → [-2,2] 최댓값"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "두 함수 합성 + 극값 조건 + 닫힌구간 최댓값 종합. 학습지 차시 17 직접 매칭. 단답형 정답 48.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d9_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws17_d2",
+          "label": "2011년 4월 학력평가 가형 28번 [4점 단답]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "학평 28번 (단답)",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "12×6 직사각형 네 모퉁이 정사각형 절단",
+            "직육면체 부피 V(x)=x(12-2x)(6-2x) 최댓값"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "실생활 부피 최대화 — 학습지 차시 17 실생활 활용 직접 응용. 단답 (√3/3)M = 24. 그림 calc_17_chal2_kichul.png 임베드.",
+          "graph_asset": "images/calc_17_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(2)활용문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d10_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_18_방정식과부등식에의활용",
+      "worksheet_concepts": [
+        "방정식 f(x)=0 실근 개수 (그래프)",
+        "y=k 수평선 이동",
+        "부등식 f(x)≥0 항상 성립 조건 (최솟값)",
+        "매개변수 결정"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 (방정식 실근 개수 + 매개변수) 기준 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용2",
+          "problem_id": "c5-ex5",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 5 [26009-0103]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "사차 부등식 (1/4)x⁴+(k-3)³x+12>0 모든 실수",
+            "최솟값 ≥ 0 (또는 >0) 조건",
+            "정수 k 합"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "사차 함수 항상 양 조건 → 최솟값 ≥ 0 → 매개변수 k 범위 → 정수 합. 학습지 차시 18 직접 매칭. 정답 ④ 9.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d9_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_평가원_수학II",
+          "problem_id": "g_ws18_d2",
+          "label": "2015학년도 6월 모의평가 나형 17번 [4점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "6월 모평 17번",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "f(x)=g(x) 두 양·한 음의 실근",
+            "매개변수 분리 h(x)=2x³+3x²-12x",
+            "정수 a 개수"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "방정식 실근 위치(양·음) 조건 → 매개변수 분리 → 정수 개수. 학습지 차시 18 직접 응용. rank 1(c5-ex5 부등식)과 다른 사고 경로(실근 위치). 정답 ① 6.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(2)활용문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d10_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_19_속도와가속도",
+      "worksheet_concepts": [
+        "직선 운동 s(t), v(t)=s'(t), a(t)=v'(t)",
+        "정지·방향 전환 시점 (v=0)",
+        "운동 거리 (위치 변화량)"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 (방향 전환 + 거리 누적) 기준 max=5. + Warm-up 학생 대화 + 위치 그래프 (calc_19_q_speed_position.png).",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_도함수의활용2",
+          "problem_id": "c5-ex7",
+          "label": "수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 7 [26009-0105]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "두 점 P, Q 직선 운동 x₁=t³-4t², x₂=t²-4t",
+            "만남 시각 (x₁=x₂)",
+            "속도차 p-q"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "두 점 운동의 만남 + 속도 비교. 학습지 차시 19 직접 매칭. 단답형 12.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d9_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_평가원_수학II",
+          "problem_id": "g_ws19_d2",
+          "label": "2025학년도 6월 모의평가 공통 11번 [4점]",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "6월 모평 11번 (보기형)",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "위치 x=t³-t²-t+1",
+            "보기 ㄱ(위치)·ㄴ(속도)·ㄷ(방향 전환 시 가속도)"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "직선 운동 보기형 종합 — 위치·속도·가속도 모두 다룸. 학습지 차시 19 직접 응용. rank 1(c5-ex7 두 점)과 다른 진입(단일 점 + 보기). 정답 ⑤ ㄴ,ㄷ.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-(3)속도,가속도.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d10_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_20_중단원마무리_II_2",
+      "worksheet_concepts": [
+        "도함수의 활용 종합 14문항 (비상 P.96~98)",
+        "기초 1~3 · 기본 4~12 · 도전 13·14"
+      ],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "도전 13·14 서술형 (|f|=k 5실근 / 평균값 정리 단속)이 max=7. + Q7 도함수 그래프 (calc_20_q7.png).",
+      "no_external_challenge": {
+        "decision": "1학기 04 패턴 동일 — 교과서 문제 14개로 종합 도전 충분",
+        "reason": "중단원 마무리는 단원 종합 평가 성격. 비상 P.96~98의 14문항 (특히 도전 13·14 서술형)이 max=7로 별도 수능특강 도전 추가 불필요.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_21_대단원평가_II",
+      "worksheet_concepts": [
+        "단원 II 종합 (미분 전체)",
+        "14문항 (객관·단답 1~9 + 서술형 10~14)",
+        "수능 모의 형식"
+      ],
+      "max_difficulty_in_worksheet": 8,
+      "max_difficulty_note": "서술형 13·14 (실생활 우유 판매 최대 / 반구 그릇 변화율)이 max=8. + Q5·Q6·Q14 그림 (calc_21_q5·q6·q14.png).",
+      "embedded_advanced": {
+        "count": 5,
+        "ids": [
+          "비상 P.101 서술 10 미분계수+곱미분",
+          "P.101 서술 11 일대일 단조함수 a 범위",
+          "P.101 서술 12 양/음 실근 분포 a 범위",
+          "P.102 서술 13 우유 판매 최대 (실생활)",
+          "P.102 서술 14 반구 그릇 수면 넓이 변화율"
+        ],
+        "marking": "data-aft-problem-level=\"advanced\"",
+        "note": "교과서 서술형 5개 모두 advanced. + Q5·Q6 도함수 그래프 + Q14 반구 그릇 그림 임베드 완료."
+      },
+      "no_external_challenge": {
+        "decision": "1학기 05 패턴 동일 — 대단원 평가는 교과서 종합 평가 자체가 도전",
+        "reason": "대단원 평가는 단원 II 전체 종합 평가 (모의시험 형식). 교과서 P.100~102의 14문항 (서술형 5개 advanced 포함)이 max=8로 별도 수능특강 도전 추가 불필요.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_22_부정적분",
+      "worksheet_concepts": [
+        "부정적분 정의 F'=f",
+        "∫xⁿdx = x^(n+1)/(n+1)+C",
+        "적분 상수 결정"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_부정적분과정적분",
+          "problem_id": "c6-ex1",
+          "label": "수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 1",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 6,
+          "concepts_matched": [
+            "접선 기울기 f'(x)=3x²-2x+1",
+            "함수 복원",
+            "f(0) 결정"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 22 컨셉(부정적분 기본 응용) 직접 매칭. 정답 ① f(0)=1.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d11_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws22_d2",
+          "label": "2024년 3월 학력평가 공통 5번 [3점]",
+          "difficulty": 5,
+          "tier": "기본",
+          "level_label_in_source": "학평 5번",
+          "estimated_time_min": 5,
+          "concepts_matched": [
+            "f'(x)=x(3x+2)",
+            "f(1)=6 조건",
+            "f(0) 결정"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "부정적분 기본 응용 + 적분 상수 결정. 학습지 차시 22 직접 응용. 정답 ④ 4.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[4]적분-(1)기본문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d12_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_23_정적분의정의",
+      "worksheet_concepts": [
+        "구분구적법 직관",
+        "정적분 ∫_a^b f(x)dx 정의",
+        "기하학적 의미 (넓이)"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_부정적분과정적분",
+          "problem_id": "c6-ex3",
+          "label": "수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 3",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "정적분 항등식 ∫_0^x tf(t)dt = x⁴+ax²+∫f",
+            "양변 미분",
+            "f(a) 결정"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 23 컨셉(정적분 정의·미분 관계) 직접 매칭. 단답 f(a)=8.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d11_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws23_d2",
+          "label": "2024년 5월 학력평가 공통 18번 [3점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "학평 18번 (단답)",
+          "estimated_time_min": 6,
+          "concepts_matched": [
+            "최고차 3 이차함수 f",
+            "∫_0^x f = 2x³ + ∫_0^(-x) f",
+            "f(1)=5 → f(2)"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "정적분 항등식 + 양변 미분. 학습지 차시 23 직접 응용. 단답 16.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[4]적분-(1)기본문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d12_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_24_정적분의계산",
+      "worksheet_concepts": [
+        "미적분의 기본정리 ∫_a^b f = F(b)-F(a)",
+        "선형성",
+        "구간 분할",
+        "절댓값 정적분"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "max_difficulty_note": "L3 함정 (∫|f| vs |∫f|) 기준 max=5.",
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_부정적분과정적분",
+          "problem_id": "c6-ex5",
+          "label": "수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 5",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "절댓값 정적분 ∫|x²-2x|",
+            "구간 분할 (영점 분기)",
+            "정적분 계산"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 24 L3 함정(절댓값 정적분) 직접 매칭. 정답 ④ 4/3.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d11_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수능_수학II",
+          "problem_id": "g_ws24_d2",
+          "label": "2024학년도 수능 공통 8번 [3점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "수능 8번",
+          "estimated_time_min": 6,
+          "concepts_matched": [
+            "삼차함수 xf(x)-f(x)=3x⁴-3x",
+            "f 결정",
+            "정적분 ∫_-2^2 f"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "함수방정식 + 정적분 계산. 학습지 차시 24 직접 응용. 정답 ② 16.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[4]적분-(1)기본문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d12_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_25_중단원마무리_III_1",
+      "worksheet_concepts": [
+        "부정적분과 정적분 종합 14문항 (비상 P.121~123)",
+        "기초 1~3 · 기본 4~12 · 도전 13·14"
+      ],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "도전 13·14 서술형 (∫_a^x f + 정적분상수 / 항등식 양변미분)이 max=7.",
+      "no_external_challenge": {
+        "decision": "1학기 04 패턴 동일",
+        "reason": "중단원 마무리는 단원 종합 평가 성격. 비상 P.121~123의 14문항이 max=7로 충분.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_26_넓이_곡선과x축",
+      "worksheet_concepts": [
+        "곡선 y=f(x)·x축 넓이",
+        "부호 분기 (f≥0 / f≤0)",
+        "절댓값 정적분 ∫|f|"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_정적분의활용",
+          "problem_id": "c7-ex1",
+          "label": "수능특강 수학Ⅱ · 정적분의 활용 · 유제 1",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 6,
+          "concepts_matched": [
+            "y=x²(x-3)² 곡선",
+            "x축과의 넓이 (이중 영점)",
+            "정적분 계산"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 26 직접 매핑. 정답 ① 81/10.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d13_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws26_d2",
+          "label": "2009년 7월 학력평가 가형 7번 [3점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "학평 7번",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "f(x)=x²-5x+4와 x·y축 세 영역",
+            "등차수열 조건 2S₂=S₁+S₃",
+            "∫_0^k f dx = S₁-S₂+S₃"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "정적분(부호) vs 넓이 차이 + 등차수열 결합. 학습지 차시 26 L3 함정 직접 응용. 정답 ④ 9/2.",
+          "graph_asset": "images/calc_26_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[4]적분-(2)활용문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d14_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_27_넓이_두곡선사이",
+      "worksheet_concepts": [
+        "두 곡선 사이 넓이 ∫|f-g| dx",
+        "교점 결정 → 구간 분리"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_정적분의활용",
+          "problem_id": "c7-ex2",
+          "label": "수능특강 수학Ⅱ · 정적분의 활용 · 유제 2",
+          "difficulty": 8,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 8,
+          "concepts_matched": [
+            "f=x³+x²-2x+10 vs g=3x²+2x+k",
+            "실근 2개 조건 → k=2",
+            "두 곡선 넓이 64/3"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "극값 + 두 곡선 사이 넓이 융합형. 학습지 차시 27 직접 매핑 + 한 단계 심화. 정답 ②.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d13_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_수능_수학II",
+          "problem_id": "g_ws27_d2",
+          "label": "2022학년도 수능 8번 [3점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "수능 8번",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "y=x²-5x와 y=x 넓이",
+            "직선 x=k가 넓이 이등분",
+            "k³-9k²+54=0"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "두 곡선·직선 넓이 + 넓이 이등분 조건 → 정삼차방정식. 학습지 차시 27 직접 응용. 정답 ① k=3.",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[4]적분-(2)활용문제.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d14_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_28_속도와거리",
+      "worksheet_concepts": [
+        "위치 변화 ∫v dt (변위)",
+        "이동 거리 ∫|v| dt",
+        "방향 전환 시점 분기"
+      ],
+      "max_difficulty_in_worksheet": 5,
+      "challenges": [
+        {
+          "rank": 1,
+          "source": "수능특강_수학II_정적분의활용",
+          "problem_id": "c7-ex4",
+          "label": "수능특강 수학Ⅱ · 정적분의 활용 · 유제 4",
+          "difficulty": 7,
+          "tier": "심화",
+          "level_label_in_source": "유제",
+          "estimated_time_min": 6,
+          "concepts_matched": [
+            "v=2t²-6t",
+            "방향 전환 (v=0 → t=3)",
+            "이동 거리 9"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "학습지 차시 28 직접 매핑. 정답 ④ p=3, 거리 9.",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d13_via_main"
+        },
+        {
+          "rank": 2,
+          "source": "기출_학평_수학II",
+          "problem_id": "g_ws28_d2",
+          "label": "2007년 7월 학력평가 가형 21번 [3점]",
+          "difficulty": 6,
+          "tier": "기본",
+          "level_label_in_source": "학평 21번 (단답)",
+          "estimated_time_min": 7,
+          "concepts_matched": [
+            "y=f'(t) 이차함수 그래프 (영점 1,3)",
+            "v=(t-1)(t-3) 복원",
+            "반대 방향 거리 4/3 → 12d=16"
+          ],
+          "tools_avoided": [
+            "미분 외 도구"
+          ],
+          "reason": "도함수 그래프 → 속도 복원 + 방향 전환 거리. 학습지 차시 28 응용. 단답 16.",
+          "graph_asset": "images/calc_28_chal2_kichul.png",
+          "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[4]적분-(3)속도,거리.pdf",
+          "added_at": "2026-05-22",
+          "curated_by": "agent_d14_via_main"
+        }
+      ],
+      "pending_challenges": {
+        "target_count": 2,
+        "current_count": 2,
+        "status": "complete"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_29_중단원마무리_III_2",
+      "worksheet_concepts": [
+        "정적분의 활용 종합 14문항 (비상 P.135~137 + 익힘책 P.158)",
+        "기초 1~3 · 기본 4~12 · 도전 13·14"
+      ],
+      "max_difficulty_in_worksheet": 7,
+      "max_difficulty_note": "도전 13·14 서술형 (두 점 만남 / 넓이 등분)이 max=7.",
+      "no_external_challenge": {
+        "decision": "1학기 04 패턴 동일",
+        "reason": "중단원 마무리는 종합 평가 성격. 14문항이 max=7로 충분.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_30_대단원평가_III",
+      "worksheet_concepts": [
+        "단원 III 종합 (적분 전체)",
+        "14문항 (객관·단답 1~9 + 서술형 10~14)",
+        "수능 모의 형식"
+      ],
+      "max_difficulty_in_worksheet": 8,
+      "max_difficulty_note": "서술형 13·14 (x²f=...+∫2tf(t)dt+넓이 / v(t)=-3t²+12t-9 위치+움직인 거리)이 max=8. + Q6·Q8 그림 (calc_30_q06·q08.png).",
+      "embedded_advanced": {
+        "count": 5,
+        "ids": [
+          "비상 P.141~142 서술 10 함수방정식+미분",
+          "서술 11 합·곱 도함수 → f,g 결정",
+          "서술 12 자기참조 정적분",
+          "서술 13 x²f=...+∫2tf(t)dt+넓이",
+          "서술 14 v(t)=-3t²+12t-9 위치+거리"
+        ],
+        "marking": "data-aft-problem-level=\"advanced\"",
+        "note": "교과서 서술형 5개 모두 advanced. + Q6 곡선 넓이 이등분 + Q8 v(t) 꺾은선 그림 임베드 완료."
+      },
+      "no_external_challenge": {
+        "decision": "1학기 05 패턴 동일 — 대단원 평가는 교과서 종합 평가 자체가 도전",
+        "reason": "단원 III 전체 종합 평가 (모의시험 형식). 교과서 P.140~142의 14문항이 max=8로 충분.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (no_external_challenge)"
+      }
+    },
+    {
+      "worksheet_id": "학습지_미적분I_31_학기말종합",
+      "worksheet_concepts": [
+        "학기말 종합 평가 (단원 I·II·III 모두)",
+        "14문항 (객관·단답 1~10 + 서술형 11~14 융합)",
+        "수능 모의시험 형식"
+      ],
+      "max_difficulty_in_worksheet": 8,
+      "max_difficulty_note": "서술형 11~14 (I+II 연속·미분가능 / II 방정식 세 실근 / II+III 접선+넓이 / II+III 위치+거리)이 max=8. 단원 융합형.",
+      "unit_distribution": {
+        "단원 I (극한·연속)": "Q1~3 (3문항) — 유리화 극한, 분기함수 연속, 사잇값 정리",
+        "단원 II (미분)": "Q4~7 (4문항) — 미분계수 정의, 외부점 접선, 닫힌구간 최대·최소, 운동방향 전환 가속도",
+        "단원 III (적분)": "Q8~10 (3문항) — |x²-x| 정적분, 두 포물선 넓이, 적분 정의 함수 극솟값",
+        "서술형 융합 Q11~14": "I+II (Q11), II (Q12), II+III (Q13·Q14)"
+      },
+      "embedded_advanced": {
+        "count": 4,
+        "ids": [
+          "Q11 I+II 융합 (연속·미분가능 + a,b,c 결정)",
+          "Q12 II (방정식 x³-3x²+a=0 세 실근)",
+          "Q13 II+III (접선+넓이)",
+          "Q14 II+III (v=t²-6t+8 위치+거리)"
+        ],
+        "marking": "data-aft-problem-level=\"advanced\""
+      },
+      "no_external_challenge": {
+        "decision": "학기말 종합은 자체 모의시험 형식",
+        "reason": "단원 I·II·III 모두 융합. 비상 교과서에 별도 학기말 종합 없어 익힘책 + 단원 핵심 자체 종합 출제. 도전 추가 불필요.",
+        "considered_candidates": []
+      },
+      "challenges": [],
+      "pending_challenges": {
+        "target_count": 0,
+        "current_count": 0,
+        "status": "complete (학기말 종합 — no_external_challenge)"
+      }
+    }
+  ],
+  "evaluated_problems_pool": {
+    "수능특강_수학II_함수의극한": {
+      "evaluated_count": 6,
+      "evaluated_ids": [
+        "c1-ex2",
+        "c1-ex3",
+        "c1-ex4",
+        "c1-ex6",
+        "c1-s7",
+        "c1-b1"
+      ],
+      "selected_for_challenge": [
+        "c1-ex2",
+        "c1-ex4",
+        "c1-ex6",
+        "c1-s7"
+      ],
+      "unevaluated_count": 25,
+      "unevaluated_categories": "잔여 — 예제 c1-e1~e4, 유제 c1-ex1·5·7·8, 기초 c1-b1~b8(b1 평가됨), 기본 c1-s1~s7(s7 평가됨), 실력 c1-l1~l3 (실력은 정책상 제외), 대표기출 c1-k1 (학습지_04 후보 — 종합 단원이므로 별도 평가)",
+      "policy_violations": []
+    },
+    "수능특강_수학II_함수의연속": {
+      "evaluated_count": 2,
+      "evaluated_ids": [
+        "c2-ex2",
+        "c2-e4"
+      ],
+      "selected_for_challenge": [
+        "c2-ex2",
+        "c2-e4"
+      ],
+      "unevaluated_count": 27,
+      "unevaluated_categories": "잔여 — 예제 c2-e1~e3, 유제 c2-ex1·3~6, 기초 c2-b1~b8, 기본 c2-s1~s7, 실력 c2-l1~l3 (정책상 제외), 대표기출 c2-k1. 향후 차시 추가 도전 또는 모의고사 도전 시 평가.",
+      "policy_violations": []
+    },
+    "기출_수학II_함수의극한_그래프": {
+      "evaluated_count": 2,
+      "evaluated_ids": [
+        "g_ws01_d2 (2022 수능 4번, PDF p.8)",
+        "g_ws02_d2 (2011 10월 학평 14번, PDF p.2)"
+      ],
+      "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[1]함수의극한-(2)그래프.pdf",
+      "unevaluated_count": "다수 (PDF 전체 미평가 — 향후 차시 추가 도전 또는 모의고사 도전 시 평가)"
+    },
+    "기출_수학II_함수의연속": {
+      "evaluated_count": 2,
+      "evaluated_ids": [
+        "g_ws05_d2 (2021 10월 학평 5번, 그래프형 PDF)",
+        "g_ws06_d2 (1994 수능 1차 11번, 보기형)"
+      ],
+      "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[2]함수의연속-*.pdf (3종)",
+      "unevaluated_count": "다수 (PDF 전체 미평가)"
+    },
+    "수능특강_수학II_미분계수와도함수": {
+      "evaluated_count": 2,
+      "evaluated_ids": [
+        "c3-ex2",
+        "c3-ex6"
+      ],
+      "selected_for_challenge": [
+        "c3-ex2",
+        "c3-ex6"
+      ],
+      "unevaluated_count": 27,
+      "unevaluated_categories": "잔여 — 예제 c3-e1~e4, 유제 c3-ex1·3·4·5, 기초 c3-b1~b7, 기본 c3-s1~s8, 실력 c3-l1~l3 (정책상 제외), 대표기출 c3-k1 (2025 수능 9월 모평). 향후 차시 추가 도전 또는 모의고사 도전 시 평가.",
+      "policy_violations": []
+    },
+    "기출_수학II_미분": {
+      "evaluated_count": 5,
+      "evaluated_ids": [
+        "g_ws09_d2 (2009 7월 학평 가형 4번, 대칭 미분계수)",
+        "g_ws10_d2 (2000 수능 나형 20번, 곱미분)",
+        "g_ws12_d2 (1998 수능 나형 9번, 접선+넓이)",
+        "g_ws13_d2 (2005 9월 모평 가형 28번, 평균값정리 보기형, 그래프)",
+        "g_ws14_d2 (2003 6월 모평 11번, 삼차 극값 없음)"
+      ],
+      "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[3]미분-*.pdf (기본·활용·심화 시리즈)",
+      "unevaluated_count": "다수 (속도가속도·심화 PDF 미평가)"
+    },
+    "수능특강_수학II_도함수의활용1": {
+      "evaluated_count": 4,
+      "evaluated_ids": [
+        "c4-ex1",
+        "c4-ex3",
+        "c4-ex5",
+        "c4-ex6"
+      ],
+      "selected_for_challenge": [
+        "c4-ex1",
+        "c4-ex3",
+        "c4-ex5",
+        "c4-ex6"
+      ],
+      "unevaluated_count": 25,
+      "unevaluated_categories": "잔여 — 예제 c4-e1~e4, 유제 c4-ex2·4, 기초 c4-b1~b8, 기본 c4-s1~s7, 실력 c4-l1~l3 (정책상 제외), 대표기출 c4-k1 (2025 6월 모평).",
+      "chapter_range_note": "도함수의 활용 (1) = 수능특강 수학Ⅱ P.46~P.59 — 접선·평균값·증감·극값 모두 포함. 학습지 차시 12·13·14·15가 본 챕터에 모두 매핑.",
+      "policy_violations": []
+    },
+    "수능특강_수학II_도함수의활용2": {
+      "evaluated_count": 4,
+      "evaluated_ids": [
+        "c5-ex1",
+        "c5-ex2",
+        "c5-ex5",
+        "c5-ex7"
+      ],
+      "selected_for_challenge": [
+        "c5-ex1",
+        "c5-ex2",
+        "c5-ex5",
+        "c5-ex7"
+      ],
+      "unevaluated_count": 26,
+      "unevaluated_categories": "잔여 — 예제 c5-e1~e4, 유제 c5-ex3·4·6, 기초 c5-b1~b8, 기본 c5-s1~s7, 실력 c5-l1~l3 (정책상 제외), 대표기출 c5-k1 (2025 수능 운동방향).",
+      "chapter_range_note": "도함수의 활용 (2) = 수능특강 수학Ⅱ P.60~P.73 — 그래프·그래프 응용·방정식·부등식·속도가속도 모두 포함. 학습지 차시 16·17·18·19가 본 챕터에 모두 매핑.",
+      "policy_violations": []
+    },
+    "수능특강_수학II_부정적분과정적분": {
+      "evaluated_count": 3,
+      "evaluated_ids": [
+        "c6-ex1",
+        "c6-ex3",
+        "c6-ex5"
+      ],
+      "selected_for_challenge": [
+        "c6-ex1",
+        "c6-ex3",
+        "c6-ex5"
+      ],
+      "unevaluated_count": 28,
+      "unevaluated_categories": "잔여 — 예제 c6-e1~e4, 유제 c6-ex2·4·6·7, 기초 c6-b1~b8, 기본 c6-s1~s8, 실력 c6-l1~l3, 대표기출 c6-k1 (2025 9월 모평).",
+      "chapter_range_note": "부정적분과 정적분 = 수능특강 수학Ⅱ P.74~P.87. 학습지 차시 22·23·24가 본 챕터에 매핑.",
+      "policy_violations": []
+    },
+    "기출_수학II_적분": {
+      "evaluated_count": 6,
+      "evaluated_ids": [
+        "g_ws22_d2 (2024 3월 학평 공통 5번)",
+        "g_ws23_d2 (2024 5월 학평 공통 18번, 단답)",
+        "g_ws24_d2 (2024 수능 공통 8번)",
+        "g_ws26_d2 (2009 7월 학평 가형 7번, 등차 영역)",
+        "g_ws27_d2 (2022 수능 8번, 넓이 이등분)",
+        "g_ws28_d2 (2007 7월 학평 가형 21번, 단답, 방향 전환)"
+      ],
+      "source_pdf": "_assets_private/Cal_2/기출/단원별 2.수학2-[4]적분-*.pdf (기본·활용·속도거리·심화 시리즈)",
+      "unevaluated_count": "다수 (심화 PDF 미평가)"
+    },
+    "수능특강_수학II_정적분의활용": {
+      "evaluated_count": 3,
+      "evaluated_ids": [
+        "c7-ex1",
+        "c7-ex2",
+        "c7-ex4"
+      ],
+      "selected_for_challenge": [
+        "c7-ex1",
+        "c7-ex2",
+        "c7-ex4"
+      ],
+      "unevaluated_count": 24,
+      "unevaluated_categories": "잔여 — 예제 c7-e1~e4, 유제 c7-ex3, 기초 c7-b1~b8, 기본 c7-s1~s7, 실력 c7-l1~l3, 대표기출 c7-k1 (2025 수능).",
+      "chapter_range_note": "정적분의 활용 = 수능특강 수학Ⅱ P.87~P.101 (총 27문항). 학습지 차시 26·27·28이 본 챕터에 매핑.",
+      "policy_violations": []
+    }
+  }
+}

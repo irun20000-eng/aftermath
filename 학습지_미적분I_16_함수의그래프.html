@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-2b 도함수의 활용 2 · 차시 16 함수의 그래프 · Agent A7 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 함수의 그래프</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_16';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        .sign-table { border-collapse: collapse; margin: 1rem auto; font-size: 1rem; }
+        .sign-table th, .sign-table td { border: 1.5px solid #94a3b8; padding: 0.5rem 1rem; text-align: center; font-weight: 700; }
+        .sign-table th { background: #f1f5f9; color: #0f172a; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "16차시 함수의 그래프";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">16차시: 함수의 그래프</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_미적분I_15_극대와극소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_미적분I_17_함수의그래프_응용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">차시 14·15에서 우리는 <strong>증감표</strong>를 통해 도함수 부호 변화와 극값을 잡았다. 하지만 같은 증감 정보만 가지고도 그래프의 "<strong>높낮이</strong>"는 무한히 많다. 오늘은 증감과 극값에 <strong>좌표축과의 교점</strong>까지 더해 <span class="calc-accent font-bold">그래프 개형</span>을 한 번에 결정하는 5단계 알고리즘을 배운다.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 두 학생의 대화: "도함수 \(y = f'(x)\)의 그래프가 \(x = -1,\ 1\)에서 \(x\)축을 가로지른다는 사실만 알아도 함수 \(y = f(x)\)의 그래프 모양은 하나로 정해질까?" 정해지지 않는다면, <strong>무엇을 더 알아야</strong> 그래프 개형이 결정되는지 추측해 보자. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.86 · 개념 탐구 참고)</span></p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 차시 14의 <strong>증감</strong> + 차시 15의 <strong>극값</strong>만으로는 그래프가 평행이동된 채로 무수히 많다. 본 차시는 거기에 <span class="calc-accent font-bold">\(x\)절편·\(y\)절편</span>(좌표축과의 교점)과 <span class="calc-accent font-bold">극값의 \(y\)좌표</span>를 추가해 그래프 개형을 <strong>하나로 결정</strong>하는 5단계 표준 절차를 익힌다. 이는 차시 18(방정식의 실근 개수), 차시 19(운동 그래프 해석)의 기초 무기가 된다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.86 · 그래프의 개형 도입 참고)</span></p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 그래프 개형 5단계 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        함수의 그래프의 개형 — 5단계 표준 알고리즘
+                    </h3>
+                    <p class="mb-3 text-slate-700">미분가능한 함수 \(y = f(x)\)의 그래프의 개형은 다음 순서로 그린다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>❶ 도함수 \(f'(x)\)를 구한다.</li>
+                            <li>❷ \(f'(x) = 0\)을 만족시키는 \(x\)의 값을 모두 구한다.</li>
+                            <li>❸ 함수 \(f(x)\)의 <strong>증가와 감소를 표</strong>(증감표)로 나타내고, <span class="calc-accent font-bold">극값</span>을 구한다.</li>
+                            <li>❹ 함수 \(y = f(x)\)의 그래프와 <strong>좌표축과의 교점</strong>(\(x\)절편, \(y\)절편)의 좌표를 구한다.</li>
+                            <li>❺ 위 정보를 종합해 함수 \(y = f(x)\)의 그래프의 개형을 그린다.</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 1·2·3단계는 차시 14·15에서 완성한 도구. 4단계의 \(x\)절편(\(f(x) = 0\)의 실근)과 \(y\)절편(\(f(0)\))이 그래프의 <strong>"위치"</strong>를 결정한다. 즉 차시 16의 새 도구는 <strong>"좌표축과의 교점"</strong> 한 가지뿐이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.86 · 5단계 알고리즘 참고)</span></p>
+                </div>
+
+                <!-- 2. 삼차함수 개형 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        예제 — \(y = 2x^3 - 6x + 1\)의 그래프 개형
+                    </h3>
+                    <p class="mb-3 text-slate-700">5단계를 한 번 완주해 보자.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-1"><strong>STEP 1·2:</strong> \(f'(x) = 6x^2 - 6 = 6(x+1)(x-1)\). \(f'(x) = 0 \Rightarrow x = -1\) 또는 \(x = 1\).</p>
+                        <p class="text-base mb-1"><strong>STEP 3 (증감표):</strong></p>
+                        <table class="sign-table">
+                            <thead><tr><th>\(x\)</th><th>\(\cdots\)</th><th>\(-1\)</th><th>\(\cdots\)</th><th>\(1\)</th><th>\(\cdots\)</th></tr></thead>
+                            <tbody>
+                                <tr><th>\(f'(x)\)</th><td>\(+\)</td><td>\(0\)</td><td>\(-\)</td><td>\(0\)</td><td>\(+\)</td></tr>
+                                <tr><th>\(f(x)\)</th><td>↗</td><td>\(5\)</td><td>↘</td><td>\(-3\)</td><td>↗</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="text-base mb-1"><strong>STEP 4:</strong> \(y\)절편 \(f(0) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1\)</span></span>. 극댓값 \(f(-1) = 5\), 극솟값 \(f(1) = -3\). (3차 함수이므로 \(x\)절편은 1~3개, 정확한 값은 인수분해 어려움 — 개형엔 영향 없음.)</p>
+                        <p class="text-base"><strong>STEP 5:</strong> 좌하단에서 올라와 \((-1, 5)\) 극대 \(\to\) 내려가 \(y\)축 \(1\) 지나 \((1, -3)\) 극소 \(\to\) 우상으로 올라가는 모양.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주목:</strong> 삼차함수 그래프는 항상 <strong>좌→하 / 우→상</strong> (양의 최고차) 또는 <strong>좌→상 / 우→하</strong> (음의 최고차) 양 끝 방향이 정해진다. 가운데에 극값이 0개 또는 2개. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.86~87 · 예제 1 참고)</span></p>
+                </div>
+
+                <!-- 3. 사차함수 개형 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        예제 — \(y = x^4 + 4x^3 + 4x^2 - 1\)의 그래프 개형
+                    </h3>
+                    <p class="mb-3 text-slate-700">사차함수는 극값 패턴이 더 풍부하다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-1"><strong>STEP 1·2:</strong> \(f'(x) = 4x^3 + 12x^2 + 8x = 4x(x+2)(x+1)\). \(f'(x) = 0 \Rightarrow x = -2,\ -1,\ 0\).</p>
+                        <p class="text-base mb-1"><strong>STEP 3 (증감표):</strong></p>
+                        <table class="sign-table">
+                            <thead><tr><th>\(x\)</th><th>\(\cdots\)</th><th>\(-2\)</th><th>\(\cdots\)</th><th>\(-1\)</th><th>\(\cdots\)</th><th>\(0\)</th><th>\(\cdots\)</th></tr></thead>
+                            <tbody>
+                                <tr><th>\(f'(x)\)</th><td>\(-\)</td><td>\(0\)</td><td>\(+\)</td><td>\(0\)</td><td>\(-\)</td><td>\(0\)</td><td>\(+\)</td></tr>
+                                <tr><th>\(f(x)\)</th><td>↘</td><td>\(-1\)</td><td>↗</td><td>\(0\)</td><td>↘</td><td>\(-1\)</td><td>↗</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="text-base mb-1"><strong>STEP 4:</strong> 극솟값 \(f(-2) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1\)</span></span>, 극댓값 \(f(-1) = 0\), 극솟값 \(f(0) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1\)</span></span>. \(y\)절편 \(f(0) = -1\).</p>
+                        <p class="text-base"><strong>STEP 5:</strong> 양끝 모두 \(+\infty\)로 올라가며 \(W\) 모양. 두 극솟값이 같아 그래프는 \(x = -\dfrac{3}{2}\)을 기준으로 거의 대칭처럼 보인다.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 사차함수(최고차 \(+\))의 양끝은 \(+\infty\). 가운데 극값은 1개(\(\cup\) 모양) 또는 <strong>3개</strong>(\(W\) 모양 — 극소·극대·극소). 극값 3개의 경우 두 극솟값의 비교가 형성평가·도전의 핵심 포인트. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 예제 2 참고)</span></p>
+                </div>
+
+                <!-- 4. 그래프 개형의 3가지 정보 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        그래프 개형의 3대 정보 — 평행이동·대칭·범위
+                    </h3>
+                    <p class="mb-3 text-slate-700">개형이 결정되면 다음 3가지를 즉시 읽을 수 있어야 한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ul class="space-y-2 text-base font-medium">
+                            <li>① <strong>치역</strong>: 삼차함수는 \((-\infty, \infty)\). 사차함수(최고차 \(+\))는 \([\text{(가장 작은 극솟값)}, \infty)\).</li>
+                            <li>② <strong>\(x\)절편 개수 = 방정식 \(f(x) = 0\)의 실근 개수</strong>: 극값들의 \(y\)좌표 부호로 즉시 판정. <em>차시 18의 핵심 도구!</em></li>
+                            <li>③ <strong>\(y = k\)와의 교점 개수</strong>: 수평선 \(y = k\)가 극값들 사이 어디에 있느냐로 결정. <em>차시 18의 매개변수 분리.</em></li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>예시:</strong> 위 예제 \(y = 2x^3 - 6x + 1\)에서 극댓값 \(5 \gt 0\), 극솟값 \(-3 \lt 0\). 따라서 \(x\)축과 <strong>세 점</strong>에서 교차 \(\Rightarrow\) 방정식 \(2x^3 - 6x + 1 = 0\)은 <strong>서로 다른 세 실근</strong>. 이것이 차시 18에서 본격적으로 쓰일 핵심 추론. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 그래프 개형의 함의 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">5단계 알고리즘으로 그래프 개형 그리기</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-삼차함수 개형</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 그래프의 개형을 그리시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 문제 01 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( y = x^3 + 3x^2 - 2 \) &nbsp;&nbsp;
+                                (2) \( y = -x^3 + 6x^2 - 12x + 4 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong><br>
+                            <strong>(1)</strong> \(f'(x) = 3x^2 + 6x = 3x(x+2)\). \(f' = 0 \Rightarrow x = -2,\ 0\). 부호 \((+,-,+)\). 극댓값 \(f(-2) = -8 + 12 - 2 = 2\), 극솟값 \(f(0) = -2\). \(y\)절편 \(-2\). 좌하 \(\to (-2, 2)\) 극대 \(\to (0, -2)\) 극소 \(\to\) 우상.<br>
+                            <strong>(2)</strong> \(f'(x) = -3x^2 + 12x - 12 = -3(x - 2)^2\). \(f' \leq 0\) 항상 (등호는 \(x = 2\)). 부호 변화 없음 \(\Rightarrow\) <strong>극값 없이 단조감소</strong>. \(x = 2\)는 정체점(접선 수평)일 뿐. \(y\)절편 \(4\). 좌상 \(\to\) 단조감소 \(\to\) 우하 (\(x = 2\)에서 잠깐 평평).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-사차함수 개형</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 그래프의 개형을 그리시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 문제 02 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( y = x^4 - 2x^2 - 2 \) &nbsp;&nbsp;
+                                (2) \( y = -\dfrac{3}{4}x^4 + 2x^3 + 1 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong><br>
+                            <strong>(1)</strong> \(f'(x) = 4x^3 - 4x = 4x(x-1)(x+1)\). \(f' = 0 \Rightarrow x = -1,\ 0,\ 1\). 부호 \((-,+,-,+)\). 극솟값 \(f(\pm 1) = 1 - 2 - 2 = -3\), 극댓값 \(f(0) = -2\). \(W\) 모양, 두 극솟값 동일 (\(y\)축 대칭).<br>
+                            <strong>(2)</strong> \(f'(x) = -3x^3 + 6x^2 = -3x^2(x - 2)\). \(f' = 0 \Rightarrow x = 0,\ 2\). 부호: \(x \lt 0\)에서 \(+\), \(0 \lt x \lt 2\)에서 \(+\), \(x \gt 2\)에서 \(-\). 즉 \(x = 0\) 좌우 부호 같음 \(\Rightarrow\) <strong>\(x = 0\)은 극값 아님</strong> (정체점). \(x = 2\)에서만 부호 \(+ \to -\) \(\Rightarrow\) 극댓값 \(f(2) = -12 + 16 + 1 = 5\). 단조증가 후 극대 후 감소.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-좌표축 교점</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \(y = x^3 - 3x^2 + 4\)의 그래프와 \(x\)축의 교점을 모두 구하고, 그래프의 개형을 그리시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.87 예제 1 변형)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 3x^2 - 6x = 3x(x - 2)\). \(f' = 0 \Rightarrow x = 0,\ 2\). 부호 \((+,-,+)\). 극댓값 \(f(0) = 4\), 극솟값 \(f(2) = 8 - 12 + 4 = 0\). \(x\)축 교점: \(x^3 - 3x^2 + 4 = 0 \Rightarrow (x + 1)(x - 2)^2 = 0 \Rightarrow x = -1\) 또는 <strong>\(x = 2\) (중근)</strong>. 극솟값이 \(0\)이라 그래프가 \(x = 2\)에서 \(x\)축에 <strong>접한다</strong>. 교점은 \((-1, 0),\ (2, 0)\) 두 곳, 단 \((2, 0)\)에서 접함.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">도함수 그래프 \(\to\) 원함수 개형, 매개변수 결정</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-도함수 그래프 해석</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 그림은 삼차함수 \(y = f(x)\)의 도함수 \(y = f'(x)\)의 그래프이다. \(f(-1) = 2,\ f(1) = -2\)일 때, 함수 \(y = f(x)\)의 그래프의 개형을 그리시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.86 · 개념 탐구 그림 참고)</span>
+                            <div class="mt-3 flex justify-center">
+                                <img src="images/calc_16_warmup_derivgraph.png" alt="P.86 도함수 그래프 (x=-1, 1에서 부호 변화 +,-,+)" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:220px;">
+                                <!-- TODO: 위 이미지는 P.86 우측 영역 자동 크롭. 정확한 그래프(원함수 2개 후보) 영역만 보이도록 사용자가 필요 시 재조정. -->
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 도함수 그래프에서 \(f'(x) = 0\)인 \(x = -1, 1\). \(x \lt -1\)에서 \(f' \gt 0\), \(-1 \lt x \lt 1\)에서 \(f' \lt 0\), \(x \gt 1\)에서 \(f' \gt 0\) \(\Rightarrow\) 부호 \((+,-,+)\). 따라서 \(x = -1\)에서 극대 \(f(-1) = 2\), \(x = 1\)에서 극소 \(f(1) = -2\). 좌하 \(\to (-1, 2)\) 극대 \(\to (1, -2)\) 극소 \(\to\) 우상. <strong>핵심:</strong> 도함수의 그래프 모양 + 두 함숫값만 알면 원함수 개형이 <strong>유일하게</strong> 결정된다(평행이동 자유도가 제거됨).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-매개변수 + 개형</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 삼차함수 \(f(x) = x^3 + ax^2 + bx + c\)의 그래프가 점 \((0, 4)\)를 지나고, \(x = 1\)에서 극댓값, \(x = 3\)에서 극솟값을 가질 때, \(a, b, c\)와 극솟값을 구하고 그래프 개형을 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.85 예제 4 변형)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f(0) = c = 4\). \(f'(x) = 3x^2 + 2ax + b\). 극값 조건 \(f'(1) = 0,\ f'(3) = 0\) \(\Rightarrow\) 근과 계수 \(1 + 3 = -\dfrac{2a}{3} = 4 \Rightarrow a = -6\), \(1 \cdot 3 = \dfrac{b}{3} = 3 \Rightarrow b = 9\). 따라서 \(f(x) = x^3 - 6x^2 + 9x + 4\). 극댓값 \(f(1) = 1 - 6 + 9 + 4 = 8\), 극솟값 \(f(3) = 27 - 54 + 27 + 4 = 4\). 두 극값 모두 양수 \(\Rightarrow\) 그래프는 \(x\)축과 <strong>한 점</strong>에서만 만남(\(x\)절편 1개).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-개형 + 실근 개수 (차시 18 미리보기)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 함수 \(f(x) = x^3 - 3x + 2\)의 그래프 개형을 그리고, 방정식 \(x^3 - 3x + 2 = 0\)의 서로 다른 실근의 개수를 그래프 추론으로 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 차시 18 P.90 예제 1 연계)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 3x^2 - 3 = 3(x-1)(x+1)\). 부호 \((+,-,+)\). 극댓값 \(f(-1) = -1 + 3 + 2 = 4\), 극솟값 \(f(1) = 1 - 3 + 2 = 0\). <strong>극솟값이 정확히 \(0\)</strong> \(\Rightarrow\) 그래프가 \(x = 1\)에서 \(x\)축에 접함. \(x\)축과의 교점은 \(x = 1\)(접점, 중근)과 \(x = -2\)(다른 한 실근). 따라서 방정식의 실근 개수는 <strong>2개</strong>(서로 다른 실근), 단 \(x = 1\)이 중근. (참고: 실제 인수분해 \((x-1)^2(x+2)=0\).) 핵심 규칙: <strong>극값 중 하나가 \(0\) \(\Leftrightarrow\) 중근</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 극값 0개·1개·3개 분류 — 사차함수의 함정</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-사차함수 극값 개수 분류</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 사차함수 \(f(x) = x^4 + ax^2 + b\) (\(a, b\)는 실수)의 그래프가 다음과 같을 때, \(a\)의 부호로 가능한 경우를 모두 말하시오. (1) 극값이 <strong>1개</strong>인 경우 (2) 극값이 <strong>3개</strong>인 경우 <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.87 · 사차함수 개형 분류 + 학생 오개념 함정)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "사차함수면 \(W\) 모양 (극값 3개)"이라는 고정관념을 깨는 차시 16의 핵심 함정. <br><br>
+                                <strong>STEP 1 — 도함수 분석:</strong> \(f'(x) = 4x^3 + 2ax = 2x(2x^2 + a)\). \(f'(x) = 0 \Rightarrow x = 0\) 또는 \(2x^2 + a = 0\), 즉 \(x^2 = -\dfrac{a}{2}\).<br><br>
+                                <strong>STEP 2 — 경우 분류:</strong><br>
+                                ① \(a \geq 0\): \(x^2 = -\dfrac{a}{2} \leq 0 \Rightarrow\) 해 없음(\(a = 0\)은 중근). \(f'(x) = 0\)인 실수는 \(x = 0\) 단 하나. 부호: \(x \lt 0\)에서 \(2x \lt 0\), \(2x^2 + a \gt 0\) \(\Rightarrow f' \lt 0\). \(x \gt 0\)에서 \(f' \gt 0\). 즉 부호 \((-,+)\) \(\Rightarrow\) <strong>\(x = 0\)에서 극소만 (극값 1개, \(\cup\) 모양)</strong>.<br>
+                                ② \(a \lt 0\): \(x^2 = -\dfrac{a}{2} \gt 0 \Rightarrow x = \pm\sqrt{-\dfrac{a}{2}}\). 세 점 \(x = -\sqrt{-\dfrac{a}{2}},\ 0,\ \sqrt{-\dfrac{a}{2}}\). 부호 \((-,+,-,+)\) \(\Rightarrow\) <strong>극소·극대·극소 3개 (\(W\) 모양)</strong>.<br><br>
+                                <strong>STEP 3 — 정답:</strong><br>
+                                (1) 극값 1개 \(\Leftrightarrow a \geq 0\) (\(b\)는 \(y\)절편이므로 개형엔 무영향).<br>
+                                (2) 극값 3개 \(\Leftrightarrow a \lt 0\).<br><br>
+                                <strong>핵심 통찰:</strong> 사차함수 \(y = x^4 + ax^2 + b\)는 짝수 차수의 대칭형. 도함수가 인수분해될 때 <strong>"\(2x^2 + a = 0\)에 해가 있는가"</strong>가 극값 개수의 분기점. 단순히 "사차함수 = \(W\) 모양"이라는 도식적 사고를 버려야 한다. 일반적인 사차함수도 항상 극솟값 1개 or 극소·극대·극소 3개 두 패턴 중 하나. <strong>극값 2개</strong>나 <strong>0개</strong>인 사차함수(최고차 양수)는 <strong>존재하지 않는다</strong>는 정리도 함께 이해해야 한다 — \(f'\)이 3차이므로 실근이 1개 or 3개(중근 포함 시 부호 패턴이 1개와 동치).
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(f(x) = x^3 - 3x^2 + a\)의 그래프가 \(x\)축과 서로 다른 <strong>세 점</strong>에서 만나도록 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 도전 08 변형 · 차시 18 미리보기)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략 (4단계):</strong><br>
+                <strong>STEP 1 — 도함수와 극값:</strong> \(f'(x) = 3x^2 - 6x = 3x(x - 2)\). \(f' = 0 \Rightarrow x = 0, 2\). 부호 \((+,-,+)\). 극댓값 \(f(0) = a\), 극솟값 \(f(2) = 8 - 12 + a = a - 4\).<br>
+                <strong>STEP 2 — \(x\)축과 세 점에서 만남의 조건:</strong> 삼차함수가 \(x\)축과 세 점에서 만나려면 <strong>극댓값과 극솟값의 부호가 반대</strong>여야 한다 (즉 극대 \(\gt 0 \gt\) 극소). 또는 동치 조건: <strong>(극댓값) × (극솟값) \(\lt 0\)</strong>.<br>
+                <strong>STEP 3 — 부등식:</strong> \(a(a - 4) \lt 0 \Rightarrow 0 \lt a \lt 4\).<br>
+                <strong>STEP 4 — 검증:</strong> \(a = 2\)이면 극댓값 \(2 \gt 0\), 극솟값 \(-2 \lt 0\) ✓. \(a = 0\)이면 극솟값 \(-4\), 극댓값 \(0\) \(\Rightarrow\) 그래프가 \(x\)축에 접함(중근) \(\Rightarrow\) 서로 다른 실근 2개, 경계 제외. <strong>정답: \(0 \lt a \lt 4\)</strong>. <em>(차시 18에서 이 사고를 일반화한다.)</em>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 도함수의 활용 2 유제 2 [26009-0100]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_도함수의활용2"
+                 data-aft-source-id="c5-ex2"
+                 data-aft-source-label="수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 2">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 2 [26009-0100]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 절댓값 포함 함수의 분기 + 닫힌구간에서의 최대·최소 — 구간을 \(x\lt -1\), \(x\geq -1\)로 나눠 각각 미분 후 양 끝값·극값·접점값 모두 비교</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                닫힌구간 \([-2,\ 2]\)에서 함수 \(f(x) = x^3 - 3|x + 1| + 3\)의 최댓값과 최솟값을 각각 \(M,\ m\)이라 할 때, \(M + m\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(-6\) &nbsp;&nbsp; ② \(-4\) &nbsp;&nbsp; ③ \(-2\) &nbsp;&nbsp; ④ \(0\) &nbsp;&nbsp; ⑤ \(2\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 구간 분기 (\(x \lt -1\))</strong>: \(|x+1| = -(x+1)\)이므로 \(f(x) = x^3 + 3x + 6\), \(f'(x) = 3x^2 + 3 \gt 0\). 이 구간에서 \(f\)는 단조증가.</li>
+                    <li><strong>STEP 2 — 구간 분기 (\(x \geq -1\))</strong>: \(|x+1| = x+1\)이므로 \(f(x) = x^3 - 3x\), \(f'(x) = 3x^2 - 3 = 3(x-1)(x+1)\). \(x = 1\)에서 극소(부호 \(- \to +\)).</li>
+                    <li><strong>STEP 3 — 후보 함숫값</strong>: \(f(-2) = -8\), \(f(-1) = 2\) (좌·우 일치), \(f(1) = -2\), \(f(2) = 2\).</li>
+                    <li><strong>STEP 4 — 최종</strong>: \(M = 2\) (at \(x = -1\) 또는 \(x = 2\)), \(m = -8\) (at \(x = -2\)). \(M + m = -6\). <span class="text-red-600 font-bold">정답: ① \(-6\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-purple-700"><strong>핵심:</strong> 절댓값이 끼어 있는 함수의 최대·최소는 ① 절댓값 분기점을 기준으로 구간을 나눠 부분 함수를 명시 ② 각 부분에서 미분으로 임계점 탐색 ③ 분기점에서의 좌우 함숫값 일치 확인(연속성) ④ 닫힌구간 양 끝값·분기점값·내부 임계점값을 모두 비교. 차시 16 시나리오의 절댓값·그래프 분석 패턴이 평가원형으로 어떻게 결합되는지 보여주는 정통 사례.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_도함수의활용2_해설.html#c5-ex2" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 2</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2004년 10월 학력평가 가형 6번 — 도함수 그래프 → 방정식 실근) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분활용"
+                 data-aft-source-id="g_ws16_d2"
+                 data-aft-source-label="평가원·교육청 기출 · 수학Ⅱ · 미분 활용 · 2004년 10월 학력평가 가형 6번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2004년 10월 학력평가 수학영역 가형 6번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 도함수 \(f'(x)\)의 그래프 \(\to\) 원함수 \(f(x)\)의 식 복원 \(\to\) 방정식 \(f(x) = kx\)의 실근 개수 (그래프 + 직선 교점 분석)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                삼차함수 \(y = f(x)\)의 도함수 \(y = f'(x)\)의 그래프는 다음과 같다.
+            </div>
+
+            <div class="my-6">
+                <img src="images/calc_16_chal2_kichul.png" alt="삼차함수 f(x)의 도함수 y=f'(x)의 그래프. 위로 볼록한 포물선으로 정점에서 y좌표가 3이고 x=-2, x=2에서 x축과 만남" class="block mx-auto max-w-sm w-full border border-slate-200 rounded-lg" />
+            </div>
+
+            <div class="text-xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(f(0) = 0\)일 때, \(x\)에 대한 방정식 \(f(x) = kx\)가 서로 다른 세 실근을 갖기 위한 실수 \(k\)의 값의 범위는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose space-y-1">
+                    <p>① \(k \gt 2\) &nbsp;&nbsp; ② \(k \gt 3\) &nbsp;&nbsp; ③ \(k \lt 3\)</p>
+                    <p>④ \(-4 \lt k \lt 4\) &nbsp;&nbsp; ⑤ \(k \lt -2\) 또는 \(k \gt 2\)</p>
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 도함수 \(f'(x)\)의 식 복원</strong>: 그래프에서 \(f'(x)\)는 위로 볼록한 이차함수이고 \(x = \pm 2\)에서 \(0\), \(f'(0) = 3\) \(\Rightarrow f'(x) = -\dfrac{3}{4}(x + 2)(x - 2) = -\dfrac{3}{4}x^2 + 3\).</li>
+                    <li><strong>STEP 2 — \(f(x)\) 적분 + 초기조건</strong>: \(f(x) = -\dfrac{1}{4}x^3 + 3x + C\). \(f(0) = 0 \Rightarrow C = 0\). 따라서 \(f(x) = -\dfrac{x^3}{4} + 3x\).</li>
+                    <li><strong>STEP 3 — 방정식 정리</strong>: \(f(x) = kx \Leftrightarrow -\dfrac{x^3}{4} + 3x = kx \Leftrightarrow x\!\left(-\dfrac{x^2}{4} + 3 - k\right) = 0\). \(x = 0\)이 한 근이므로 나머지 두 근이 0이 아니고 서로 다른 실근이어야 한다.</li>
+                    <li><strong>STEP 4 — 이차방정식 조건</strong>: \(-\dfrac{x^2}{4} + 3 - k = 0 \Leftrightarrow x^2 = 4(3 - k)\). 서로 다른 두 0이 아닌 실근 \(\Leftrightarrow 4(3 - k) \gt 0 \Leftrightarrow k \lt 3\).</li>
+                    <li><strong>STEP 5 — 정답</strong>: \(k \lt 3\). 또한 \(k = 0\)일 때도 \(x^2 = 12\)는 두 실근이고 \(x = 0\)을 더해 세 실근이 되므로 \(k = 0\) 포함 OK. <span class="text-red-600 font-bold">정답: ③ \(k \lt 3\)</span>.</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "도함수 그래프 \(\to\) 원함수 복원" 사고가 차시 16의 핵심. ①\(f'\)의 식을 정확히 읽고 ②적분상수를 초기조건으로 결정 ③원함수를 이용해 방정식 해석. 이는 차시 18(방정식·부등식 활용)의 핵심 전제 — 도함수가 보여주는 정보(극값·증감)로부터 원함수 그래프 개형을 추론하고 \(y = k\) 또는 \(y = kx\)와의 교점 개수를 통제한다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (5단계 알고리즘)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"도함수 \(\to\) \(f' = 0\) 해 \(\to\) 증감표 \(\to\) 좌표축 교점 \(\to\) 개형"의 5단계 절차를 자신의 언어로 한 줄 슬로건으로 정리하라. 또한 차시 14·15에서 익힌 도구들이 5단계 중 정확히 어느 단계를 담당하는지 매핑해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"그래프 개형을 처음엔 감으로 그렸는데, '① 도함수 → ② \(f' = 0\)의 해 → ③ 증감표 → ④ 좌표축 교점 → ⑤ 개형'의 5단계 알고리즘으로 정리하니 어떤 다항함수든 같은 절차로 그려졌다. 차시 14·15에서 익힌 도구가 ①~③에 그대로 쓰이고, 차시 16에서 새로 더해진 건 '좌표축과의 교점' 하나뿐이라는 게 보였다. 단원이 새로운 게 아니라 누적된다는 게 느껴졌다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (사차함수 극값 1개 vs 3개)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">Level 3 함정(\(y = x^4 + ax^2 + b\))을 토대로 "사차함수 극값 개수는 \(a\)의 부호로 결정된다"는 결과를 자신의 풀이 절차로 재현하라. "사차함수면 항상 \(W\) 모양"이라는 통념이 왜 거짓인지 도함수 해의 개수로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"사차함수는 무조건 \(W\) 모양인 줄 알았는데, \(y = x^4 + a x^2 + b\)에서 \(a\)의 부호에 따라 극값이 \(1\)개(\(\cup\) 모양)일 수도 있다는 걸 알게 됐다. 도함수 \(f'(x) = 2x(2x^2 + a)\)의 실근 개수가 \(a\)에 따라 \(1\)개 또는 \(3\)개로 갈리니까 극값 개수도 그렇게 분기된다. '모양 외우기'가 아니라 도함수 분석이라는 원리로 바꾸니 헷갈리지 않게 됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (개형 → 실근 개수, 차시 18 미리보기)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">형성평가의 "극댓값과 극솟값의 부호가 반대 \(\Leftrightarrow\) \(x\)축과 세 점에서 만남"이라는 규칙이 차시 18(방정식과 부등식 활용)에서 어떻게 일반화되는지 예측하라. 자신의 노트에 "삼차함수 + 매개변수" 패턴의 풀이 흐름도를 미리 그려 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"삼차함수에서 '(극댓값) \(\times\) (극솟값) \(&lt; 0\)이면 서로 다른 세 실근'이라는 규칙을 그래프와 \(x\)축의 교점 개수로 직접 확인했다. 이게 다음 차시에서 '\(f(x) = k\)의 실근 개수'로 일반화될 텐데, 그러면 \(x\)축 대신 수평선 \(y = k\)를 그리고 교점을 세는 거랑 똑같다는 게 미리 보인다. 그래프 한 장이 방정식 문제까지 다 해결해주는 게 신기했다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 16차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 FAB -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>
