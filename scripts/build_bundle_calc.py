@@ -92,9 +92,17 @@ def main() -> int:
         count=1,
     )
     # 묶음 전용 CSS injection (</head> 직전)
+    # 묶음 전용 override CSS — MathJax 로딩 지연으로 화면이 검정 유지되는 문제 회피.
+    # 1학기 묶음(18개)보다 1.7배 큰 2학기 묶음(31개)에서 사용자 보고된 stall 대응.
+    override_css = (
+        '<style id="aft-bundle-override">\n'
+        '  /* MathJax 처리 완료 대기 없이 본문 즉시 표시 — 수식은 처리되는대로 점진 렌더링 */\n'
+        '  body { opacity: 1 !important; }\n'
+        '</style>'
+    )
     template_head = template_head.replace(
         "</head>",
-        "\n" + bundle_css + "\n\n</head>",
+        "\n" + bundle_css + "\n\n" + override_css + "\n\n</head>",
     )
 
     # 31개 학습지 수집
@@ -111,7 +119,8 @@ def main() -> int:
     out.append("<!DOCTYPE html>")
     out.append('<html lang="ko">')
     out.append(template_head)
-    out.append('<body class="p-4 md:p-8 lg:p-12 mathjax-process">')
+    # mathjax-ready 클래스를 처음부터 박아 opacity:0 → 1 토글 의존성 제거 (override_css와 이중 안전망)
+    out.append('<body class="p-4 md:p-8 lg:p-12 mathjax-process mathjax-ready">')
     out.append("")
     out.append('<button class="aft-pdf-save-bundle no-print" onclick="window.print()">')
     out.append("  📄 전체 PDF 저장 (31개 학습지)")
