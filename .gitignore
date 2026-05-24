@@ -17,6 +17,8 @@ MEMORY.md
 # Apps Script / Python 서버사이드 코드
 *.gs
 *.py
+# 예외: scripts/ 디렉토리의 빌더(.py)는 추적 — 묶음 재빌드·핸들러 재주입 재실행 가능
+!scripts/*.py
 
 # PDF 추출 임시 텍스트
 *_text.txt
