@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 III-1 부정적분과 정적분 · 차시 24 정적분의 계산 · Agent A9 작성 -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 2학기 미적분 I 학습지: 정적분의 성질과 계산</title>
+    <title>2026 2학기 미적분 I 학습지: 정적분의 계산</title>
     <meta name="robots" content="noindex,nofollow">
     <script>
         window.MathJax = {
@@ -19,31 +20,51 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
         body.mathjax-ready { opacity: 1; }
+
         .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
         .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
-        .placeholder-body {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
-            border: 3px dashed #ca8a04;
-            border-radius: 1rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #713f12;
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
         }
-        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
-        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
         @media print {
             .no-print { display: none !important; }
             body { opacity: 1; background: white; }
             .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
-        const GOOGLE_FORM_BASE_URL = ""; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "24차시 정적분의 성질과 계산";
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "24차시 정적분의 계산";
         const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
     </script>
 
@@ -53,7 +74,7 @@
             <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
             <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
                 <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III. 적분</span>
-                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">24차시: 정적분의 성질과 계산</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">24차시: 정적분의 계산</span>
             </div>
         </header>
 
@@ -68,12 +89,362 @@
             </div>
         </nav>
 
-        <section class="card placeholder-body">
-            <h2>📝 학습지 작성 예정</h2>
-            <div class="ph-row">III. 적분</div>
-            <div class="ph-row">24차시 · 정적분의 성질과 계산</div>
-            <p class="ph-meta">사용자의 차시별 자료(교과서·수능특강 PDF) 제공 후 본문(Warm-up · 공식 · Level 1/2/3 · 형성평가 · 도전 · 성찰)이 작성됩니다.</p>
-            <p class="ph-meta">수능특강 매핑: 06. 부정적분과 정적분</p>
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">차시 23에서 정적분 \(\int_a^b f(x)\,dx\)을 "부호 있는 면적"으로 정의했다. 그렇다면 다항함수의 정적분을 매번 도형을 그려서 구해야 할까?</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> \(f(x) = x^2\)일 때 \(\int_0^1 x^2\,dx\)의 값을 추측해 보자. 도형으로 구하기 어렵다 — 곡선 아래 면적을 자로 잴 수 없기 때문. 차시 22의 부정적분 \(F(x) = \dfrac{1}{3}x^3 + C\)와 차시 23의 적분 미분 관계 \(\dfrac{d}{dx}\int_a^x f(t)\,dt = f(x)\)를 합치면 어떤 한 줄 공식이 나올 것 같은가?</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> \(F'(x) = f(x)\)인 함수 \(F\)가 있을 때, 정적분은 단 한 줄로 계산된다 — <strong>\(\int_a^b f(x)\,dx = F(b) - F(a)\)</strong>. 이것이 <span class="calc-accent font-bold">미적분의 기본정리(Fundamental Theorem of Calculus)</span>다. 오늘 우리는 ① 기본정리, ② 정적분의 성질(선형성, 구간 분할), ③ 절댓값이 포함된 정적분의 분할 계산, ④ 정적분 항등식에서 함수 결정까지 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 미적분의 기본정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        미적분의 기본정리 — 정적분 \(=\) 부정적분의 차
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 닫힌구간 \([a, b]\)를 포함하는 열린구간에서 연속이고 \(F(x)\)가 \(f(x)\)의 한 부정적분일 때 다음이 성립한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( \displaystyle \int_a^b f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \big[F(x)\big]_a^b = F(b) - F(a) \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-slate-700">적분상수 \(C\)는 \(F(b) + C - (F(a) + C) = F(b) - F(a)\)에서 소거되므로 <strong>정적분 계산에서는 적분상수를 신경 쓰지 않는다</strong>.</p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 차시 23의 \(S(x) = \int_a^x f(t)\,dt\)는 \(f\)의 한 부정적분이므로 \(S(x) = F(x) + C\), 그리고 \(S(a) = 0\)에서 \(C = -F(a)\). 따라서 \(S(b) = F(b) - F(a)\). \(a \gt b\)인 경우도 차시 23의 약속 \(\int_a^b = -\int_b^a\)으로 자동 성립. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.116~117 · 미적분의 기본정리 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 즉시 활용</p>
+                        <p class="text-sm text-cyan-800">\(\displaystyle\int_1^3 x\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \big[\tfrac{1}{2}x^2\big]_1^3 = \tfrac{9}{2} - \tfrac{1}{2} = 4 \)</span></span>. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.117 · 빈칸 확인하기 참고)</span></p>
+                    </div>
+                </div>
+
+                <!-- 2. 정적분의 선형성 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        실수배·합·차의 정적분 — 선형성
+                    </h3>
+                    <p class="mb-3 text-slate-700">두 함수 \(f, g\)가 닫힌구간 \([a, b]\)에서 연속일 때 (단, \(k\)는 실수)</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \(\displaystyle\int_a^b k f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( k\displaystyle\int_a^b f(x)\,dx \)</span></span></li>
+                            <li>② \(\displaystyle\int_a^b \{f(x) + g(x)\}\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b f(x)\,dx + \int_a^b g(x)\,dx \)</span></span></li>
+                            <li>③ \(\displaystyle\int_a^b \{f(x) - g(x)\}\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b f(x)\,dx - \int_a^b g(x)\,dx \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 부정적분과 동일한 선형성. ②·③은 항이 3개 이상에도 성립. 부정적분의 선형성을 그대로 끌어와 \([a, b]\) 양 끝에서 평가한 것. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.118 · 정적분의 선형성 참고)</span></p>
+                </div>
+
+                <!-- 3. 정적분의 구간 분할 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        정적분의 구간 분할 — \(c\)를 끼워 두 토막으로
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f\)가 임의의 실수 \(a, b, c\)를 포함하는 구간에서 연속일 때</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( \displaystyle \int_a^c f(x)\,dx + \int_c^b f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b f(x)\,dx \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-slate-700">이 성질은 \(a, b, c\)의 <strong>대소에 관계없이</strong> 성립한다 — \(c\)가 \([a, b]\) 바깥에 있어도 차시 23의 \(\int_a^b = -\int_b^a\) 약속과 결합되어 자동 성립.</p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> \(F(b) - F(a) = \{F(c) - F(a)\} + \{F(b) - F(c)\}\) — 미적분 기본정리에서 곧장 따라온다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.119 · 정적분의 성질 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 즉시 활용 — 같은 피적분함수의 두 구간 합치기</p>
+                        <p class="text-sm text-cyan-800">\(\displaystyle\int_{-2}^{1}(6x + 2)\,dx + \int_1^2 (6x + 2)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_{-2}^{2}(6x + 2)\,dx = \big[3x^2 + 2x\big]_{-2}^{2} = 8 \)</span></span>. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.120 · 예제 4 참고)</span></p>
+                    </div>
+                </div>
+
+                <!-- 4. 절댓값이 포함된 정적분 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        절댓값이 포함된 정적분 — 부호로 구간을 나눈다
+                    </h3>
+                    <p class="mb-3 text-slate-700">피적분함수가 \(|f(x)|\) 형태일 때, 적분 구간 안에서 <strong>\(f(x) = 0\)이 되는 점</strong>을 찾아 구간을 둘로(또는 셋 이상으로) 나눈 뒤 부호를 살려 다시 정리한다.</p>
+                    <div class="flex justify-center my-3">
+                        <img src="images/calc_24_ex5_abs.png" alt="예제 5 그림 — y=|x+1|의 그래프, x=-1에서 V자 꼭지점, 적분 구간 [-2, 1]에서 두 삼각형 영역으로 분할" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base font-medium mb-2"><strong>예시:</strong> \(\displaystyle\int_{-2}^{1} |x + 1|\,dx\)</p>
+                        <p class="text-base">① 영점: \(x = -1\)에서 \(f(x) = x + 1\)이 부호를 바꿈. ② \([-2, -1]\)에서 \(|x+1| = -(x+1)\), \([-1, 1]\)에서 \(|x+1| = x+1\). ③ \(\displaystyle\int_{-2}^{-1}-(x+1)\,dx + \int_{-1}^{1}(x+1)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \tfrac{1}{2} + 2 = \tfrac{5}{2} \)</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 절댓값은 도형 넓이를 구할 때 자연스레 등장 — 차시 23 Level 3 함정에서 본 "도형 넓이 \(\neq\) 정적분"의 정확한 보정 도구. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.120 · 예제 5 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">미적분의 기본정리로 다항함수 정적분을 빠르게 계산하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-기본정리로 다항함수 적분</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.117 · 문제 05 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int_{-2}^{2} 3x^2\,dx \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int_{0}^{4} x^3\,dx \) &nbsp;&nbsp;
+                                (3) \( \displaystyle \int_{1}^{3} 4x\,dx \) &nbsp;&nbsp;
+                                (4) \( \displaystyle \int_{-2}^{1} 5x^4\,dx \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 부정적분을 구한 뒤 위·아래 끝 대입. (1) \([x^3]_{-2}^{2} = 8 - (-8) = 16\). (2) \([\tfrac{1}{4}x^4]_0^4 = 64\). (3) \([2x^2]_1^3 = 18 - 2 = 16\). (4) \([x^5]_{-2}^{1} = 1 - (-32) = 33\). — 적분상수는 항상 소거되므로 신경 쓰지 않는다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-선형성과 구간 분할</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.119 · 문제 06 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int_{0}^{2}(8x^3 - x + 5)\,dx \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int_{-1}^{3}(x+1)^3\,dx - \int_{-1}^{3}(x-1)^3\,dx \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> (1) \([2x^4 - \tfrac{1}{2}x^2 + 5x]_0^2 = 32 - 2 + 10 = 40\). <br>
+                            (2) 한 적분으로 합쳐: 피적분 \((x+1)^3 - (x-1)^3 = [(x+1) - (x-1)]\cdot[(x+1)^2 + (x+1)(x-1) + (x-1)^2] = 2 \cdot [3x^2 + 1] = 6x^2 + 2\). \(\int_{-1}^{3}(6x^2 + 2)\,dx = [2x^3 + 2x]_{-1}^{3} = (54 + 6) - (-2 - 2) = 64\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-구간 분할로 합치기</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.120 · 문제 07 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int_{0}^{5}(4x^3 + x)\,dx + \int_{5}^{2}(4x^3 + x)\,dx \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int_{-1}^{4}(x+2)^2\,dx - \int_{2}^{4}(x+2)^2\,dx \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> (1) \(\int_0^5 + \int_5^2 = \int_0^2\) (구간 분할). \([x^4 + \tfrac{1}{2}x^2]_0^2 = 16 + 2 = 18\). <br>
+                            (2) \(\int_{-1}^{4} - \int_{2}^{4} = \int_{-1}^{2}\) ((4 → 4 부분이 소거). \(\int_{-1}^{2}(x+2)^2\,dx = [\tfrac{1}{3}(x+2)^3]_{-1}^{2} = \tfrac{64}{3} - \tfrac{1}{3} = 21\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">정적분 항등식·도함수 구간별 정의·정적분 최솟값 등 다단계 응용</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-선형결합 조건에서 정적분</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 닫힌구간 \([-3, 5]\)에서 연속인 두 함수 \(f(x), g(x)\)가 \[ \int_{-3}^{5}\{f(x) - g(x)\}\,dx = -3,\quad \int_{-3}^{5}\{2f(x) + 3g(x)\}\,dx = 4 \] 를 만족시킬 때, \(\displaystyle\int_{-3}^{5}\{f(x) + g(x)\}\,dx\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.123 · 중단원 기본 09번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(p = \int_{-3}^{5} f,\ q = \int_{-3}^{5} g\)로 두면 ① \(p - q = -3\), ② \(2p + 3q = 4\). 연립: \(p = \tfrac{-9 + 4}{5} = -1\), \(q = 2\). 답: \(p + q = 1\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-정적분 최솟값 (이차함수)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 정적분 \(\displaystyle\int_0^1 (6a^2 x^2 - 16ax + 5)\,dx\)의 값이 최소가 되도록 하는 실수 \(a\)의 값과 그때의 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 08번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 적분 먼저 계산: \([2a^2 x^3 - 8ax^2 + 5x]_0^1 = 2a^2 - 8a + 5\). 이는 \(a\)에 관한 이차함수 \(I(a) = 2(a - 2)^2 - 3\). 최솟값: \(a = 2\)에서 \(I(2) = -3\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-구간별 도함수 → 함숫값</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 모든 실수에서 미분가능한 함수 \(f(x)\)의 도함수가 \[ f'(x) = \begin{cases} x - 3 &amp; (x \geq 1) \\ -2x^2 &amp; (x \lt 1) \end{cases} \] 이고 \(f(2) = -2\)일 때, \(f(-1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.123 · 중단원 기본 12번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(x \geq 1\)에서 \(f(x) = \tfrac{1}{2}x^2 - 3x + C_1\). \(f(2) = 2 - 6 + C_1 = -2 \Rightarrow C_1 = 2\). \(f(1) = \tfrac{1}{2} - 3 + 2 = -\tfrac{3}{2}\). <br>
+                            \(x \lt 1\)에서 \(f(x) = -\tfrac{2}{3}x^3 + C_2\). 연속 조건 \(\lim_{x \to 1^-} f(x) = f(1)\) \(\Rightarrow\) \(-\tfrac{2}{3} + C_2 = -\tfrac{3}{2} \Rightarrow C_2 = -\tfrac{5}{6}\). \(f(-1) = \tfrac{2}{3} - \tfrac{5}{6} = -\tfrac{1}{6}\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 정적분 \(\int_a^b f\) vs. \(\int_a^b |f|\) — 부호와 절댓값 동시 함정</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-절댓값 정적분</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 정적분 \(\displaystyle\int_{-1}^{2}(x^2 - 2|x|)\,dx\)의 값을 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.123 · 중단원 기본 11번 참고)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                많은 학생이 \(|x|\)를 그대로 두고 적분하려다 막힌다. 핵심은 <strong>\(x = 0\)에서 부호가 바뀌므로 구간을 \([-1, 0]\)과 \([0, 2]\)로 나누는 것</strong>.<br><br>
+                                <strong>STEP 1 — 구간 분할</strong>: \(\int_{-1}^{2}(x^2 - 2|x|)\,dx = \int_{-1}^{0}(x^2 - 2|x|)\,dx + \int_{0}^{2}(x^2 - 2|x|)\,dx\).<br><br>
+                                <strong>STEP 2 — 절댓값 풀기</strong>: \(x \in [-1, 0]\)에서 \(|x| = -x\) ⇒ 피적분 \(= x^2 + 2x\). \(x \in [0, 2]\)에서 \(|x| = x\) ⇒ 피적분 \(= x^2 - 2x\).<br><br>
+                                <strong>STEP 3 — 각 정적분 계산</strong>: <br>
+                                \(\int_{-1}^{0}(x^2 + 2x)\,dx = [\tfrac{1}{3}x^3 + x^2]_{-1}^{0} = 0 - (-\tfrac{1}{3} + 1) = -\tfrac{2}{3}\). <br>
+                                \(\int_{0}^{2}(x^2 - 2x)\,dx = [\tfrac{1}{3}x^3 - x^2]_{0}^{2} = \tfrac{8}{3} - 4 = -\tfrac{4}{3}\).<br><br>
+                                <strong>STEP 4 — 합산</strong>: \(-\tfrac{2}{3} - \tfrac{4}{3} = -2\). <br><br>
+                                <strong>결론:</strong> 정적분 \(= -2\).<br><br>
+                                <strong>핵심 통찰:</strong> 절댓값이 들어간 피적분함수는 <strong>"부호가 바뀌는 점에서 자동으로 구간을 나누어야 한다"</strong>는 신호. 차시 23의 부호 있는 면적 개념이 절댓값 풀기와 결합되면 강력한 도구가 됨. 평가원·수능에서 절댓값 정적분은 단골 출제 — 단순 계산형이 아니라 <strong>구간 분할 발상</strong>이 채점 포인트.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 다항함수 \(f(x)\)가 \[ \int_0^1 f(x)\,dx = 5,\quad \int_0^4 f(x)\,dx = 9,\quad \int_{-1}^{1} f(x)\,dx = 3 \] 을 만족시킬 때, 정적분 \(\displaystyle\int_{-1}^{4} f(x)\,dx\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.123 · 중단원 기본 10번 참고)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> 구간 분할 + 차로 정리. ① \(\int_{-1}^{4} = \int_{-1}^{1} + \int_1^4\). ② \(\int_1^4 = \int_0^4 - \int_0^1 = 9 - 5 = 4\). ③ \(\int_{-1}^{4} = 3 + 4 = 7\). — 적분 구간을 자유롭게 끊어 잇는 감각이 핵심.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 부정적분과 정적분 유제 5) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_부정적분과정적분"
+                 data-aft-source-id="c6-ex5"
+                 data-aft-source-label="수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 5">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 5</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 절댓값이 포함된 정적분은 부호 분석 → 구간 분할 → 두 정적분의 상쇄. 차시 24 Level 3 함정 직접 응용</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\displaystyle\int_{0}^{3} |x^2 - 2x|\,dx + \displaystyle\int_{0}^{2} (x^2 - 2x)\,dx\) 의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(\dfrac{1}{3}\) &nbsp;&nbsp; ② \(\dfrac{2}{3}\) &nbsp;&nbsp; ③ \(1\) &nbsp;&nbsp; ④ \(\dfrac{4}{3}\) &nbsp;&nbsp; ⑤ \(\dfrac{5}{3}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 부호 분석</strong>: \(x^2 - 2x = x(x - 2)\). 영점은 \(x = 0, 2\). \(0 \leq x \leq 2\)에서 \(x(x - 2) \leq 0\), \(2 \leq x \leq 3\)에서 \(x(x - 2) \geq 0\). 절댓값을 벗기려면 적분 구간 \([0, 3]\)을 \([0, 2]\)와 \([2, 3]\)으로 분할해야 한다.</li>
+                    <li><strong>STEP 2 — 절댓값 분리</strong>: \(\displaystyle\int_0^3 |x^2 - 2x|\,dx = \int_0^2 -(x^2 - 2x)\,dx + \int_2^3 (x^2 - 2x)\,dx\).</li>
+                    <li><strong>STEP 3 — 두 \([0, 2]\) 정적분 상쇄</strong>: 원래 식 \(=\!\int_0^3 |x^2 - 2x|\,dx + \!\int_0^2 (x^2 - 2x)\,dx\)에 STEP 2의 결과를 대입하면 \(=-\!\int_0^2 (x^2 - 2x)\,dx + \!\int_2^3 (x^2 - 2x)\,dx + \!\int_0^2 (x^2 - 2x)\,dx = \!\int_2^3 (x^2 - 2x)\,dx\). 양과 음의 \(\!\int_0^2\)이 정확히 상쇄된다.</li>
+                    <li><strong>STEP 4 — 남은 정적분 계산</strong>: \(\displaystyle\int_2^3 (x^2 - 2x)\,dx = \left[\dfrac{x^3}{3} - x^2\right]_2^3 = (9 - 9) - \left(\dfrac{8}{3} - 4\right) = 0 - \left(-\dfrac{4}{3}\right) = \dfrac{4}{3}\). <span class="text-red-600 font-bold">정답: ④ \(\dfrac{4}{3}\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 절댓값 정적분의 표준 풀이는 ① <strong>피적분함수의 부호 분석 (영점·인수분해)</strong>, ② 부호가 바뀌는 점을 기준으로 적분 구간 분할, ③ 음수 구간에는 \(-\)를 붙여 절댓값을 벗기는 것. 본 문항은 한 단계 더 나아가 <strong>같은 구간 \([0, 2]\)에 부호만 반대인 두 정적분이 서로 상쇄</strong>되어 결국 \(\!\int_2^3 (x^2 - 2x)\,dx\) 한 개만 남는 함정형. 차시 24 Level 3 절댓값 정적분의 직접 응용이며, "전체를 펼치기 전에 식 구조를 먼저 본다"는 자세가 시간 단축의 열쇠.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_부정적분과정적분_해설.html#c6-ex5" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 5</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2024학년도 수능 공통 8번 — 삼차함수 결정 + 대칭 정적분) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_적분"
+                 data-aft-source-id="g_ws24_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 적분 · 2024학년도 수능 공통 8번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2024학년도 대학수학능력시험 수학영역 공통 8번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 공통 인수 \((x-1)\) 약분으로 \(f(x)\) 확정 \(\to\) 대칭구간 \([-2, 2]\)에서 우함수·기함수 분리 \(\to\) 미적분 기본정리</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                삼차함수 \(f(x)\)가 모든 실수 \(x\)에 대하여 \[ x\,f(x) - f(x) \;=\; 3x^4 - 3x \] 를 만족시킬 때, \(\displaystyle\int_{-2}^{2} f(x)\,dx\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(12\) &nbsp;&nbsp; ② \(16\) &nbsp;&nbsp; ③ \(20\) &nbsp;&nbsp; ④ \(24\) &nbsp;&nbsp; ⑤ \(28\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 좌·우변을 인수분해</strong>: 좌변 \(xf(x) - f(x) = (x - 1)\,f(x)\). 우변 \(3x^4 - 3x = 3x(x^3 - 1) = 3x(x - 1)(x^2 + x + 1)\). 항등식이므로 \[ (x - 1)\,f(x) \;=\; 3x(x - 1)(x^2 + x + 1). \]</li>
+                    <li><strong>STEP 2 — 공통 인수 약분으로 \(f(x)\) 확정</strong>: \(x \ne 1\)에서 양변을 \((x - 1)\)로 나누면 \(f(x) = 3x(x^2 + x + 1)\). 다항함수는 연속이므로 모든 실수에서 성립. 전개: \[ f(x) \;=\; 3x^3 + 3x^2 + 3x. \] 최고차 \(3x^3\)인 삼차함수 조건과 일치 \(\checkmark\).</li>
+                    <li><strong>STEP 3 — 우함수·기함수로 분리</strong>: \(3x^3,\,3x\)는 <strong>기함수</strong>이므로 \(\displaystyle\int_{-2}^{2} 3x^3\,dx = 0,\; \int_{-2}^{2} 3x\,dx = 0\). \(3x^2\)은 <strong>우함수</strong>이므로 \(\displaystyle\int_{-2}^{2} 3x^2\,dx = 2\int_{0}^{2} 3x^2\,dx\). 따라서 \[ \int_{-2}^{2} f(x)\,dx \;=\; 2\int_{0}^{2} 3x^2\,dx. \]</li>
+                    <li><strong>STEP 4 — 미적분 기본정리</strong>: 부정적분 \(\int 3x^2\,dx = x^3\). 따라서 \[ 2\int_{0}^{2} 3x^2\,dx \;=\; 2\,\Big[\,x^3\,\Big]_{0}^{2} \;=\; 2\,(8 - 0) \;=\; 16. \]</li>
+                    <li><strong>STEP 5 — 최종</strong>: \(\displaystyle\int_{-2}^{2} f(x)\,dx = 16\). <span class="text-red-600 font-bold">정답: ② \(16\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 2024학년도 수능의 대표 출제 — ① 좌·우변에 공통 인수 \((x - 1)\)을 찾아 <strong>약분으로 \(f(x)\) 확정</strong> (다항식 항등식의 표준 기법), ② 삼차함수의 정적분 \(\int_{-a}^{a}\)에서 <strong>기함수 항은 \(0\)</strong>, 우함수 \(x^{2n}\) 항만 살아남는 대칭성 활용, ③ 부정적분 + 미적분 기본정리로 마무리. 차시 24 Level 2의 "기·우함수 정적분 단축법"과 Level 3의 "함수 결정 + 정적분"이 동시에 작동하는 수능 표준 패턴.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (기본정리의 정당화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"미적분의 기본정리 \(\int_a^b f(x)\,dx = F(b) - F(a)\)"가 왜 부정적분과 정적분을 연결하는 '한 줄'이 되는지 \(S(x) = \int_a^x f(t)\,dt\)의 부정적분 성질로부터 자신의 언어로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(S(x) = \int_a^x f(t)\,dt\)가 \(f\)의 부정적분이라는 걸 차시 23에서 본 뒤, \(S(a) = 0\)이라 \(F(b) - F(a) = S(b) - S(a) = S(b)\)로 직접 도출됐다. 미적분 기본정리가 부정적분과 정적분을 잇는 다리라는 게 보였고, \(+ C\)가 차로 인해 자동 소거된다는 점도 그제야 납득됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (절댓값 정적분의 루틴화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">절댓값 \(|f(x)|\)이 들어간 정적분에서 ① 영점 분석 ② 구간 분할 ③ 부호별 적분 ④ 합산의 4단계 절차를 자기점검 카드로 정리하고, 도형 넓이와 정적분의 차이가 절댓값으로 어떻게 메워지는지 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\int_0^3 |x^2 - 1|\,dx\) 같은 절댓값 정적분에서 통째로 \(|f|\) 적분 공식을 찾으려다 시간이 다 갔다. 그래서 '① 영점 \(x = \pm 1\) 찾기 → ② 구간 분할 \([0,1]\)과 \([1,3]\) → ③ 부호별 적분(\(x^2 - 1\)이 음수인 구간은 \(-\) 붙이기) → ④ 합산' 4단계로 정리했다. 절댓값이 부호를 뒤집어 도형 넓이로 바꿔준다는 의미를 그림으로도 그려뒀다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (적분의 활용으로의 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">미적분 기본정리로 정적분 계산이 손쉬워진 지금, 적분이 어떤 실생활·기하 문제(곡선 아래 넓이·두 곡선 사이 넓이·속도와 거리)에 활용될지 가설을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"기본정리 덕분에 정적분 계산이 \(F(b) - F(a)\) 한 줄로 줄어드는 게 정말 강력했다. 다음 단원에서는 이게 곡선과 \(x\)축으로 둘러싸인 도형 넓이, 두 곡선 사이 넓이, 속도-거리 같은 실제 활용으로 확장될 텐데, 미분 단원의 '속도'가 적분에서 '거리'로 묶이는 짝꿍 관계도 미리 그려졌다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
@@ -82,7 +453,27 @@
     </div>
 
     <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
         document.addEventListener('keydown', (e) => {
             if (e.isComposing) return;
             const t = e.target;
@@ -94,7 +485,7 @@
         });
     </script>
 
-    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
       <div class="aft-widget-head">
         <span class="aft-widget-title">⏱ 타이머</span>
@@ -117,7 +508,7 @@
       <div class="aft-widget-resize" aria-hidden="true"></div>
     </div>
 
-    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <!-- 문제 모아보기 FAB -->
     <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
       <span class="aft-fab-icon">📚</span>
       <span>문제 모아보기</span>
@@ -137,5 +528,16 @@
     </div>
 
     <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
 </body>
 </html>

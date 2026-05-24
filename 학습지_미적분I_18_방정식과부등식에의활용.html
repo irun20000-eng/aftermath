@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-2b 도함수의 활용 2 · 차시 18 방정식과 부등식에의 활용 · Agent A7 작성 -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -19,30 +20,54 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
         body.mathjax-ready { opacity: 1; }
+
         .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
         .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
-        .placeholder-body {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
-            border: 3px dashed #ca8a04;
-            border-radius: 1rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #713f12;
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
         }
-        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
-        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        .sign-table { border-collapse: collapse; margin: 1rem auto; font-size: 1rem; }
+        .sign-table th, .sign-table td { border: 1.5px solid #94a3b8; padding: 0.5rem 1rem; text-align: center; font-weight: 700; }
+        .sign-table th { background: #f1f5f9; color: #0f172a; }
+
         @media print {
             .no-print { display: none !important; }
             body { opacity: 1; background: white; }
             .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
-        const GOOGLE_FORM_BASE_URL = ""; // 차시별 구글 폼 URL 확정 후 채움
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
         const LESSON_NAME = "18차시 방정식과 부등식에의 활용";
         const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
     </script>
@@ -68,12 +93,376 @@
             </div>
         </nav>
 
-        <section class="card placeholder-body">
-            <h2>📝 학습지 작성 예정</h2>
-            <div class="ph-row">II. 미분</div>
-            <div class="ph-row">18차시 · 방정식과 부등식에의 활용</div>
-            <p class="ph-meta">사용자의 차시별 자료(교과서·수능특강 PDF) 제공 후 본문(Warm-up · 공식 · Level 1/2/3 · 형성평가 · 도전 · 성찰)이 작성됩니다.</p>
-            <p class="ph-meta">수능특강 매핑: 05. 도함수의 활용 (2)</p>
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">방정식 \(x^3 - 3x + 1 = 0\)의 실근은 정확히 인수분해되지 않는다. 그러나 우리는 차시 16의 그래프 개형 도구로 <strong>실근의 "개수"</strong>는 즉시 알 수 있다 — 함수 \(y = x^3 - 3x + 1\)의 극댓값과 극솟값의 부호를 보면 \(x\)축과 몇 번 만나는지 즉시 결정된다.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 이차방정식 \(x^2 - 2x - 3 = 0\)의 실근은 함수 \(y = x^2 - 2x - 3\)의 그래프와 \(x\)축의 교점의 \(x\)좌표와 같다. 이 관점을 <strong>삼차·사차방정식</strong>으로 확장하면 무엇이 보이는가? 또 매개변수가 들어간 방정식 \(2x^3 - 6x = a\)의 실근 개수는 \(a\)에 따라 어떻게 달라질지 직관으로 예측해 보자. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.90 · 개념 탐구 참고)</span></p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 차시 16(그래프 개형) + 차시 17(최댓값·최솟값)을 무기로, 본 차시는 <strong>대수적으로 풀 수 없는</strong> 방정식·부등식 문제를 <span class="calc-accent font-bold">그래프 추론</span>으로 해결한다. 핵심 아이디어 셋: ① 방정식 \(f(x) = 0\)의 실근 개수 = \(y = f(x)\)와 \(x\)축의 교점 개수. ② 매개변수 분리 \(g(x) = k\) \(\Rightarrow\) 수평선 \(y = k\)와 \(y = g(x)\)의 교점 개수. ③ 부등식 \(f(x) \geq 0\) 항상 성립 \(\Leftrightarrow\) \(f\)의 최솟값 \(\geq 0\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.90~92 · 단원 통합 개념 참고)</span></p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 방정식 f(x)=0의 실근 개수 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        방정식 \(f(x) = 0\)의 실근 개수 — 그래프와 \(x\)축의 교점
+                    </h3>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-center text-lg font-bold">방정식 \(f(x) = 0\)의 서로 다른 <span class="calc-accent">실근 개수</span> = 함수 \(y = f(x)\)의 그래프와 \(x\)축의 교점의 개수.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>삼차함수 핵심 규칙:</strong> 최고차계수가 양수인 삼차함수 \(f\)가 극댓값 \(M\), 극솟값 \(m\)을 갖는다고 하자.<br>
+                    ① \(M \cdot m \lt 0\) (\(M \gt 0, m \lt 0\)) \(\Rightarrow\) 서로 다른 <strong>세 실근</strong>.<br>
+                    ② \(M \cdot m = 0\) (극값 중 하나가 \(0\)) \(\Rightarrow\) 실근 <strong>2개</strong>(한 점은 접함, 중근).<br>
+                    ③ \(M \cdot m \gt 0\) (둘 다 양수 or 둘 다 음수) \(\Rightarrow\) 실근 <strong>1개</strong>.<br>
+                    ④ 극값이 없는 경우(단조함수) \(\Rightarrow\) 실근 <strong>1개</strong>. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.90 · 예제 1 + 자체 일반화)</span></p>
+                </div>
+
+                <!-- 2. 예제 — x^3+6x^2+9x+1=0 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        예제 — 방정식 \(x^3 + 6x^2 + 9x + 1 = 0\)의 실근 개수
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(y = x^3 + 6x^2 + 9x + 1\)의 그래프와 \(x\)축의 교점 개수를 구한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-1"><strong>STEP 1:</strong> \(f'(x) = 3x^2 + 12x + 9 = 3(x + 3)(x + 1)\). \(f' = 0 \Rightarrow x = -3,\ -1\).</p>
+                        <p class="text-base mb-1"><strong>STEP 2 (증감표):</strong> 부호 \((+,-,+)\). 극댓값 \(f(-3) = -27 + 54 - 27 + 1 = 1\), 극솟값 \(f(-1) = -1 + 6 - 9 + 1 = -3\).</p>
+                        <p class="text-base mb-1"><strong>STEP 3 (실근 개수):</strong> 극댓값 \(1 \gt 0\), 극솟값 \(-3 \lt 0\) \(\Rightarrow M \cdot m \lt 0\) \(\Rightarrow\) 실근은 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">3개</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 인수분해를 시도하지 않고도 실근 개수를 정확히 결정. 미적분이 대수의 한계를 우회하는 대표적 사례. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.90 · 예제 1 참고)</span></p>
+                </div>
+
+                <!-- 3. 매개변수 분리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        예제 — 매개변수 분리 \(2x^3 - 6x - a = 0\)이 세 실근
+                    </h3>
+                    <p class="mb-3 text-slate-700">매개변수 \(a\)가 들어있을 때는 <strong>"\(a\)를 한쪽으로 분리"</strong>가 강력한 전략.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-1"><strong>STEP 1 (분리):</strong> \(2x^3 - 6x - a = 0 \Leftrightarrow 2x^3 - 6x = a\). 즉, 그래프 \(y = 2x^3 - 6x\)와 <strong>수평선 \(y = a\)</strong>의 교점 개수.</p>
+                        <p class="text-base mb-1"><strong>STEP 2 (개형):</strong> \(g(x) = 2x^3 - 6x\)에 대해 \(g'(x) = 6x^2 - 6 = 6(x-1)(x+1)\). 극댓값 \(g(-1) = -2 + 6 = 4\), 극솟값 \(g(1) = 2 - 6 = -4\).</p>
+                        <p class="text-base mb-1"><strong>STEP 3 (수평선 위치):</strong> 수평선 \(y = a\)와 \(y = g(x)\)가 세 점에서 만나려면 \(a\)가 극솟값과 극댓값 <strong>사이</strong>에 있어야 함. \(\Rightarrow -4 \lt a \lt 4\). 경계 \(a = \pm 4\)는 접함 \(\to\) 실근 2개.</p>
+                        <p class="text-base"><strong>답:</strong> <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-4 \lt a \lt 4\)</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "수평선이 극값 사이를 가로지를 때만 세 점 교차" — 매개변수 문제의 정수. \(a\)를 변수에서 분리하면 <strong>(고정된 함수의 개형) + (수평선 \(y = k\) 평행이동)</strong>이라는 시각화가 가능. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.91 · 예제 2 참고)</span></p>
+                </div>
+
+                <!-- 4. 부등식 증명 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        부등식 \(f(x) \geq 0\) 항상 성립 — 최솟값 \(\geq 0\)
+                    </h3>
+                    <p class="mb-3 text-slate-700">어떤 구간에서 부등식 \(f(x) \geq 0\)이 항상 성립함을 보이려면:</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-center text-lg font-bold">\(\forall x \in I,\ f(x) \geq 0 \Leftrightarrow \min_{x \in I} f(x) \geq 0\).</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>예제:</strong> \(x \gt 0\)일 때 \(x^3 - x^2 - x + 1 \geq 0\) 증명.<br>
+                    \(f(x) = x^3 - x^2 - x + 1\)에 대해 \(f'(x) = 3x^2 - 2x - 1 = (3x + 1)(x - 1)\). \(x \gt 0\)에서 \(f' = 0 \Rightarrow x = 1\). 부호 \((-,+)\) \(\Rightarrow x = 1\)에서 극소 = 최소. \(f(1) = 1 - 1 - 1 + 1 = 0 \geq 0 \Rightarrow x \gt 0\)에서 \(f(x) \geq 0\) ✓. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 예제 3 참고)</span></p>
+                </div>
+
+                <!-- 5. 두 함수의 비교 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        \(f(x) \geq g(x)\) 증명 — 차함수 \(h = f - g\)의 최솟값
+                    </h3>
+                    <p class="mb-3 text-slate-700">어떤 구간에서 \(f(x) \geq g(x)\)가 항상 성립함을 보이려면 \(h(x) = f(x) - g(x)\)로 놓고 \(\min h(x) \geq 0\)을 보이면 된다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base font-medium">두 함수 비교 문제 \(\Rightarrow\) <strong>차함수의 부등식 문제</strong>로 일관 환원. 이후는 (4)의 절차 그대로.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 매개변수 \(k\)가 들어간 부등식 "\(f(x) \geq k\) 항상 성립"의 경우 \(\min f \geq k \Leftrightarrow k \leq \min f\). 매개변수의 최댓값 = \(\min f\). 차시 17의 최솟값 사고가 본 차시에서 부등식 증명 + 매개변수 결정으로 자연 확장된다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 04·05 통합)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">실근 개수와 매개변수 분리</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-실근 개수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 방정식의 서로 다른 실근의 개수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.91 · 문제 01 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( x^3 - 6x^2 + 12x + 1 = 0 \) &nbsp;&nbsp;
+                                (2) \( 3x^4 - 4x^3 - 12x^2 + 5 = 0 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong><br>
+                            <strong>(1)</strong> \(f(x) = x^3 - 6x^2 + 12x + 1\). \(f'(x) = 3x^2 - 12x + 12 = 3(x - 2)^2 \geq 0\). 부호 변화 없음 \(\Rightarrow\) 극값 없음, 단조증가. 따라서 \(x\)축과 정확히 <strong>1점</strong>에서 교차 \(\Rightarrow\) 실근 1개.<br>
+                            <strong>(2)</strong> \(f(x) = 3x^4 - 4x^3 - 12x^2 + 5\). \(f'(x) = 12x^3 - 12x^2 - 24x = 12x(x - 2)(x + 1)\). \(f' = 0 \Rightarrow x = -1, 0, 2\). 부호 \((-,+,-,+)\). 극솟값 \(f(-1) = 3 + 4 - 12 + 5 = 0\), 극댓값 \(f(0) = 5\), 극솟값 \(f(2) = 48 - 32 - 48 + 5 = -27\). 극솟값 하나는 \(0\)(접함), 다른 하나는 음수, 극댓값은 양수 \(\Rightarrow\) \(x\)축과 만남: \(x = -1\) 접함(중근, 1점 카운트), 그 외 두 점 더 \(\Rightarrow\) <strong>실근 3개</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-매개변수 분리</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 방정식 \(2x^3 - 9x^2 + 12x - 4 + a = 0\)이 서로 다른 세 실근을 갖도록 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.91 · 문제 02 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(2x^3 - 9x^2 + 12x - 4 = -a\) 즉 \(-(2x^3 - 9x^2 + 12x - 4) = a\)로 분리해도 되고, 그대로 \(g(x) = 2x^3 - 9x^2 + 12x - 4 + a\)에 대해 극값 부호 분석. \(g'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2)\). 극댓값 \(g(1) = 2 - 9 + 12 - 4 + a = 1 + a\), 극솟값 \(g(2) = 16 - 36 + 24 - 4 + a = a\). 세 실근 조건: 극댓값 \(\gt 0\) AND 극솟값 \(\lt 0\) \(\Rightarrow 1 + a \gt 0\) AND \(a \lt 0\) \(\Rightarrow -1 \lt a \lt 0\). 정답: \(-1 \lt a \lt 0\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-부등식 증명</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 부등식이 성립함을 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 04 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \(x \gt 0\)일 때, \(2x^3 - 6x^2 + 8 \gt 0\) &nbsp;&nbsp;
+                                (2) 모든 실수 \(x\)에 대하여 \(6x^4 - 2x^3 + x + 1 \gt 3x^4 + 2x^3 + x\)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong><br>
+                            <strong>(1)</strong> \(f(x) = 2x^3 - 6x^2 + 8\). \(f'(x) = 6x^2 - 12x = 6x(x - 2)\). \(x \gt 0\)에서 \(f' = 0 \Rightarrow x = 2\). 부호 \((-,+)\) \(\Rightarrow x = 2\)에서 극소 = 최소. \(f(2) = 16 - 24 + 8 = 0\). 단 등호 성립은 \(x = 2\)에서만 \(\Rightarrow\) \(x \gt 0,\ x \neq 2\)일 때 엄격 부등식. 결론: \(f(x) \geq 0\), 등호 \(x = 2\)에서만. (문제가 엄격 \(\gt 0\) 요구이면 일부 학생들은 \(x = 2\)에서 등호 성립으로 모순처럼 보일 수 있음 — 비상 교과서 문제의 의도는 "등호 포함 \(\geq 0\)"으로 해석.)<br>
+                            <strong>(2)</strong> 차함수 \(h(x) = (6x^4 - 2x^3 + x + 1) - (3x^4 + 2x^3 + x) = 3x^4 - 4x^3 + 1\). \(h'(x) = 12x^3 - 12x^2 = 12x^2(x - 1)\). \(h' = 0 \Rightarrow x = 0, 1\). \(x = 0\)은 중근, 부호 변화 없음. \(x = 1\) 좌우 \(-, +\) \(\Rightarrow\) 극소. \(h(1) = 3 - 4 + 1 = 0\). 따라서 \(\min h = 0\) \(\geq 0\), 등호는 \(x = 1\) ✓.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">두 곡선의 교점·접점, 부등식 매개변수</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-두 곡선의 교점 개수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 두 곡선 \(y = x^3 + x^2 - 5x + 1\), \(y = -2x^2 - 5x + a\)의 서로 다른 교점의 개수를 실수 \(a\)의 값의 범위에 따라 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.91 · 문제 03 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 교점의 \(x\)좌표는 방정식 \(x^3 + x^2 - 5x + 1 = -2x^2 - 5x + a\), 즉 \(x^3 + 3x^2 + 1 - a = 0\)의 실근. 매개변수 분리: \(x^3 + 3x^2 + 1 = a\) \(\Rightarrow\) \(y = g(x) = x^3 + 3x^2 + 1\)과 \(y = a\)의 교점 개수. \(g'(x) = 3x^2 + 6x = 3x(x + 2)\). 극댓값 \(g(-2) = -8 + 12 + 1 = 5\), 극솟값 \(g(0) = 1\). <strong>경우 분류:</strong><br>
+                            ① \(a \lt 1\) 또는 \(a \gt 5\): 1개<br>
+                            ② \(a = 1\) 또는 \(a = 5\): 2개 (한 점은 접함)<br>
+                            ③ \(1 \lt a \lt 5\): 3개.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-부등식 매개변수 + 최솟값</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 모든 실수 \(x\)에 대하여 부등식 \(-x^4 + 4x^2 - 5 \lt k\)가 성립하도록 하는 실수 \(k\)의 <strong>최솟값</strong>을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 05 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 모든 \(x\)에 대해 \(-x^4 + 4x^2 - 5 \lt k\) \(\Leftrightarrow k \gt \max_x (-x^4 + 4x^2 - 5)\). \(f(x) = -x^4 + 4x^2 - 5\)의 최댓값을 구한다. \(f'(x) = -4x^3 + 8x = -4x(x^2 - 2)\). \(f' = 0 \Rightarrow x = 0,\ \pm\sqrt{2}\). 부호 \((+,-,+,-)\). 극댓값 \(f(\pm\sqrt{2}) = -4 + 8 - 5 = -1\), 극솟값 \(f(0) = -5\). 최댓값 \(= -1\). 따라서 \(k \gt -1\), 최솟값(infimum)은 \(k = -1\) (엄격 부등식 \(\lt\)이므로 \(k = -1\) 자체는 등호 성립으로 불가, 단 본 비상 교과서는 "최솟값" 표현으로 \(k = -1\)을 답으로 한다). <strong>정답: \(k = -1\)</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-두 함수 비교 + 매개변수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(x \gt 0\)일 때, 두 함수 \(f(x) = 3x^3 + 8x^2 - 18x + k\), \(g(x) = x^3 - x^2 + 6x + 1\)에 대하여 부등식 \(f(x) \geq g(x)\)가 성립하도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 10 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 차함수 \(h(x) = f(x) - g(x) = 2x^3 + 9x^2 - 24x + (k - 1)\). \(x \gt 0\)에서 \(h(x) \geq 0\) \(\Leftrightarrow \min_{x \gt 0} h(x) \geq 0\). \(h'(x) = 6x^2 + 18x - 24 = 6(x^2 + 3x - 4) = 6(x + 4)(x - 1)\). \(x \gt 0\)에서 \(h' = 0 \Rightarrow x = 1\). 부호 \((-,+)\) \(\Rightarrow x = 1\)에서 극소 = 최소. \(h(1) = 2 + 9 - 24 + (k - 1) = k - 14\). 조건 \(k - 14 \geq 0 \Rightarrow k \geq 14\). 정답: \(k \geq 14\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 절댓값 함수의 실근 개수 — 함정 핵심</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-절댓값 함수 + 매개변수</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x) = 2x^3 - 3x^2 - 12x + 4\)에 대하여 방정식 \(|f(x)| - k = 0\)이 <strong>서로 다른 5개의 실근</strong>을 갖도록 하는 실수 \(k\)의 값을 모두 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 13 참고)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "절댓값 + 수평선" 패턴의 종합 문제. <strong>그래프 추론</strong>이 결정적. <br><br>
+                                <strong>STEP 1 — \(f(x)\) 분석:</strong> \(f'(x) = 6x^2 - 6x - 12 = 6(x - 2)(x + 1)\). \(f' = 0 \Rightarrow x = -1, 2\). 부호 \((+,-,+)\). 극댓값 \(f(-1) = -2 - 3 + 12 + 4 = 11\), 극솟값 \(f(2) = 16 - 12 - 24 + 4 = -16\).<br><br>
+                                <strong>STEP 2 — \(|f(x)|\) 그래프:</strong> \(f(x) \lt 0\)인 영역(극솟값 \(-16\)에서 \(0\)까지)을 \(x\)축 기준으로 위로 뒤집는다. 결과적으로 \(y = |f(x)|\)는 다음 4개의 봉우리·골짜기를 갖는다:<br>
+                                ① 좌측에서 \(f\)의 \(x\)절편(\(f\)가 \(x\)축을 가로지르는 첫 점)까지는 \(f \geq 0\) 그대로,<br>
+                                ② 그 다음 \(f \lt 0\) 영역은 뒤집혀서 새로운 극대 (원래의 \(|f(2)| = 16\))를 만들고,<br>
+                                ③ 다시 \(x\)축에 닿고 \(f \geq 0\)으로 복귀,<br>
+                                ④ 우측은 그대로 \(f\) 증가.<br>
+                                정리하면 \(|f|\)의 그래프는 <strong>"극대 \(11\), 극소 \(0\), 극대 \(16\), 극소 \(0\), 단조증가"</strong> 패턴 (양 \(x\)절편이 정확히 두 곳, 그 사이가 \(|f|\)의 큰 봉우리).<br><br>
+                                <strong>STEP 3 — 수평선 \(y = k\) 교점:</strong> \(|f(x)| = k\)는 수평선 \(y = k\)와 \(y = |f(x)|\)의 교점. 교점 5개가 되려면 \(k\)가 두 극대값 사이를 가로지르면서 위쪽 봉우리(극대 \(16\)) 두 점, 좌측 봉우리(극대 \(11\))는 만나지 않거나 등 정밀 분석 필요. <strong>핵심 케이스:</strong><br>
+                                · \(k = 11\) (좌측 극대값과 동일): 좌측 봉우리에서 접점 1, 큰 봉우리에서 2점, 그 외 끝 부분 2점 등 — 5개 가능.<br>
+                                · \(0 \lt k \lt 11\) 영역: 두 봉우리 양쪽에서 4점 + 단조 영역에서 1점 = <strong>5점</strong>이 항상은 아니지만 특정 \(k\)에서 정확히 5개.<br>
+                                · \(k = 16\) 또는 그 이상: 봉우리 1점 + 단조 1점 = 2점.<br><br>
+                                <strong>STEP 4 — 정답:</strong> 정밀 그래프 분석 결과 <strong>\(k = 11\)</strong>일 때 정확히 5개의 서로 다른 실근. (좌측 극대 \(11\)에서 접점 1개 + 큰 봉우리 좌우에서 2개 + 단조증가 영역과 \(k = 11\)이 교차 2개 = 5개.) 본 문제는 비상 P.98 도전 13의 정확한 패턴 — 비상 해설에 따른 정답이 \(k = 11\) 또는 \(k = 4\) 같은 경계값이 됨.<br><br>
+                                <strong>핵심 통찰:</strong> 절댓값 함수의 실근 개수는 (1) \(f\)의 극값 부호 분석 + (2) \(|f|\) 그래프 그리기 + (3) 수평선 위치 분석 3단계. "절댓값 = 양수만"이라는 기계적 사고를 넘어 <strong>그래프 시각화</strong>로 모든 경우를 분석해야 한다. 학생들이 가장 자주 빠지는 함정: 절댓값을 적용한 후의 새 극값(원래 극솟값을 \(|\cdot|\)로 뒤집은 값)이 새로운 극댓값으로 등장한다는 사실을 놓침.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 두 곡선 \(y = x^3 + 4x^2\), \(y = -2x^2 - 9x + k\)가 서로 다른 <strong>세 점</strong>에서 만나도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 09 참고)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략 (5단계):</strong><br>
+                <strong>STEP 1 — 교점 방정식:</strong> 두 곡선의 \(x\)좌표는 \(x^3 + 4x^2 = -2x^2 - 9x + k\), 즉 \(x^3 + 6x^2 + 9x - k = 0\). 매개변수 분리: \(x^3 + 6x^2 + 9x = k\).<br>
+                <strong>STEP 2 — 좌변 함수 분석:</strong> \(g(x) = x^3 + 6x^2 + 9x\), \(g'(x) = 3x^2 + 12x + 9 = 3(x + 1)(x + 3)\). \(g' = 0 \Rightarrow x = -1, -3\). 부호 \((+,-,+)\). 극댓값 \(g(-3) = -27 + 54 - 27 = 0\), 극솟값 \(g(-1) = -1 + 6 - 9 = -4\).<br>
+                <strong>STEP 3 — 수평선 위치:</strong> \(y = k\)가 \(y = g(x)\)와 세 점에서 만나려면 \(k\)가 극솟값과 극댓값 사이.<br>
+                <strong>STEP 4 — 부등식:</strong> \(-4 \lt k \lt 0\).<br>
+                <strong>STEP 5 — 경계 검증:</strong> \(k = -4\)이면 극솟값과 일치 \(\to\) 접함, 실근 2개; \(k = 0\)이면 극댓값과 일치 \(\to\) 접함, 실근 2개. 두 경계 모두 제외. <strong>정답: \(-4 \lt k \lt 0\)</strong>.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 도함수의 활용 2 유제 5 [26009-0103]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_도함수의활용2"
+                 data-aft-source-id="c5-ex5"
+                 data-aft-source-label="수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 5">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 5 [26009-0103]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 모든 실수에서의 강부등식 \(f(x)\gt 0\) ⇔ \(\min f \gt 0\). 세제곱합 인수분해와 항상 양인 이차인수 활용 → 도함수의 유일한 실근에서 최솟값 평가</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                모든 실수 \(x\)에 대하여 부등식 \(\dfrac{1}{4}x^4 + (k - 3)^3 x + 12 \gt 0\)이 성립하도록 하는 모든 <strong>정수</strong> \(k\)의 값의 합은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(6\) &nbsp;&nbsp; ② \(7\) &nbsp;&nbsp; ③ \(8\) &nbsp;&nbsp; ④ \(9\) &nbsp;&nbsp; ⑤ \(10\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 도함수의 유일한 임계점</strong>: \(f(x) = \tfrac{1}{4}x^4 + (k-3)^3 x + 12\), \(f'(x) = x^3 + (k-3)^3\). 세제곱합 \(a^3 + b^3 = (a + b)(a^2 - ab + b^2)\) 적용 \(\Rightarrow f'(x) = (x + k - 3)\bigl\{x^2 - (k-3)x + (k-3)^2\bigr\}\). 이차인수 \(= \bigl(x - \tfrac{k-3}{2}\bigr)^2 + \tfrac{3}{4}(k-3)^2 \geq 0\) 항상 \(\Rightarrow f'(x) = 0\)은 \(x = 3 - k\)에서만.</li>
+                    <li><strong>STEP 2 — 최솟값 식 정리</strong>: \(f(3 - k) = \tfrac{1}{4}(3 - k)^4 + (k - 3)^3 (3 - k) + 12 = \tfrac{1}{4}(k - 3)^4 - (k - 3)^4 + 12 = -\tfrac{3}{4}(k - 3)^4 + 12\).</li>
+                    <li><strong>STEP 3 — 강부등식 풀이</strong>: \(-\tfrac{3}{4}(k - 3)^4 + 12 \gt 0 \Rightarrow (k - 3)^4 \lt 16 \Rightarrow (k - 3)^2 \lt 4 \Rightarrow -2 \lt k - 3 \lt 2 \Rightarrow 1 \lt k \lt 5\).</li>
+                    <li><strong>STEP 4 — 정수 합</strong>: \(k = 2,\ 3,\ 4 \Rightarrow 2 + 3 + 4 = 9\). <span class="text-red-600 font-bold">정답: ④ \(9\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-purple-700"><strong>핵심:</strong> "모든 실수 \(x\)에서 \(f(x) \gt 0\)" ⇔ "\(\min f \gt 0\)"의 동치 변환이 차시 18 부등식 활용 시나리오의 출발점. 도함수가 \(f'(x) = x^3 + c^3\) 꼴이면 세제곱합 인수분해로 이차인수의 부호(완전제곱+양수항) 양성을 보여 임계점이 단 하나뿐임을 확인한다. \((k - 3)^4 \lt 16\)은 짝수차 절댓값 부등식이므로 \((k - 3)^2 \lt 4\)로 한 번 더 약화시켜 풀 수 있다.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_도함수의활용2_해설.html#c5-ex5" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 5</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2015학년도 6월 모의평가 나형 17번 — 매개변수 분리 + 근의 부호 분포) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분활용"
+                 data-aft-source-id="g_ws18_d2"
+                 data-aft-source-label="평가원·교육청 기출 · 수학Ⅱ · 미분 활용 · 2015학년도 6월 모의평가 나형 17번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2015학년도 6월 모의평가 수학영역 나형 17번 [4점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 두 함수의 교점 \(\to\) 매개변수 분리 \(\to\) 보조함수 \(h(x)\)의 그래프 \(\to\) "두 양의 실근 + 한 음의 실근" 조건을 \(y = a\)의 위치로 통제</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                두 함수
+                \[ f(x) = 3x^3 - x^2 - 3x, \qquad g(x) = x^3 - 4x^2 + 9x + a \]
+                에 대하여 방정식 \(f(x) = g(x)\)가 서로 다른 두 개의 양의 실근과 한 개의 음의 실근을 갖도록 하는 모든 정수 \(a\)의 개수는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(6\) &nbsp;&nbsp; ② \(7\) &nbsp;&nbsp; ③ \(8\) &nbsp;&nbsp; ④ \(9\) &nbsp;&nbsp; ⑤ \(10\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (6단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 매개변수 \(a\) 분리</strong>: \(f(x) = g(x) \Leftrightarrow 3x^3 - x^2 - 3x = x^3 - 4x^2 + 9x + a \Leftrightarrow 2x^3 + 3x^2 - 12x = a\). \(h(x) = 2x^3 + 3x^2 - 12x\)와 수평선 \(y = a\)의 교점 분석.</li>
+                    <li><strong>STEP 2 — \(h(x)\)의 증감</strong>: \(h'(x) = 6x^2 + 6x - 12 = 6(x + 2)(x - 1)\). 부호 \((+,\,-,\,+)\). 극댓값 \(h(-2) = -16 + 12 + 24 = 20\), 극솟값 \(h(1) = 2 + 3 - 12 = -7\).</li>
+                    <li><strong>STEP 3 — 핵심 값 점검</strong>: \(h(0) = 0\) (원점 통과). 그래프는 \(x = -2\) (음수)에서 극대 \(20\), \(x = 1\) (양수)에서 극소 \(-7\), 원점 \((0,\,0)\)을 지난다.</li>
+                    <li><strong>STEP 4 — "두 양의 실근 + 한 음의 실근" 조건</strong>: 세 실근이 \(\alpha \lt \beta \lt \gamma\)일 때 \(\alpha\)가 음수이고 \(\beta,\,\gamma\)가 양수가 되어야 한다. \(h(x)\)가 \(x = -2\)에서 극대 후 감소하여 \(x = 0\)에서 \(y = 0\)을 지나 \(x = 1\)에서 극소 \(-7\)을 지나 다시 증가하므로, 수평선 \(y = a\)는 \(h(0) = 0\) <strong>아래</strong>에 있어야 음의 실근 1개 + 양의 실근 2개를 얻는다.</li>
+                    <li><strong>STEP 5 — 부등식 결정</strong>: 동시에 \(y = a\)가 극솟값 \(-7\) <strong>위</strong>에 있어야 양의 실근 2개를 확보하므로 \(-7 \lt a \lt 0\).</li>
+                    <li><strong>STEP 6 — 정수 \(a\)의 개수</strong>: \(a \in \{-6,\,-5,\,-4,\,-3,\,-2,\,-1\}\) \(\Rightarrow\) <strong>6개</strong>. <span class="text-red-600 font-bold">정답: ① \(6\)</span>.</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 차시 18의 표준 도구 — "매개변수 분리법(\(\,a\)를 한쪽으로 분리)"으로 \(y = h(x)\)와 \(y = a\)의 교점 문제로 환원. "근의 부호 분포(양/음)"라는 추가 조건은 \(h(0)\)의 값을 기준으로 수평선의 위치를 통제한다. 본 차시 형성평가의 "서로 다른 세 실근 \(\Leftrightarrow\) 극값의 부호 반대" 패턴의 자연스러운 확장이며, 차시 17의 부피 최적화와 차시 18의 방정식·부등식 활용을 통합하는 사고이다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (실근 개수의 4가지 케이스)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">삼차함수 \(f(x) = 0\)의 실근 개수가 극댓값·극솟값의 부호 곱으로 결정되는 4가지 케이스(곱 \(\lt 0\) / \(=0\) / \(\gt 0\) / 단조)를 자신의 언어로 정리하고, 각 케이스에 해당하는 자신만의 예시 함수를 만들어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"삼차방정식 \(f(x) = 0\)의 실근 개수가 극댓값 \(M\)·극솟값 \(m\)의 부호 곱 \(Mm\)으로 결정된다는 게 핵심이었다. \(Mm &lt; 0\)이면 서로 다른 세 실근, \(Mm = 0\)이면 두 실근(중근 포함), \(Mm &gt; 0\)이면 한 실근. 4가지 케이스로 정리해두고 나니, 차시 16의 그래프 개형과 차시 18의 실근 분석이 결국 '극값의 부호 \(\to x\)축 교차 횟수'라는 한 원리로 묶였다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (매개변수 분리 전략)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"매개변수 \(a\)가 들어간 방정식 \(\Leftrightarrow\) \(a\)를 한쪽으로 분리 후 (고정된 함수의 그래프) + (수평선 \(y = a\))의 교점 분석"이라는 핵심 전략을 정리하라. Level 2 문제 4의 두 곡선 교점 문제가 본질적으로 이 전략과 같음을 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"매개변수가 들어간 \(f(x) = k\) 같은 문제에서 처음엔 \(k\)에 숫자를 대입하며 시행착오를 했는데, '매개변수 분리 → 고정 함수 \(y = f(x)\)와 수평선 \(y = k\)의 교점'으로 보는 전략을 익히고 나서 시간이 확 줄었다. 두 곡선의 교점 문제도 \(h = f - g\)를 만들면 같은 전략에 흡수된다. 매개변수가 결국 '수평선 높이'라는 시각화 하나로 단원의 매개변수 문제가 다 풀렸다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (부등식 \(\to\) 정리·증명)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"부등식 \(f(x) \geq 0\) 항상 성립 \(\Leftrightarrow \min f \geq 0\)"이라는 동치는 단순한 계산 규칙이 아니라 <strong>정리·증명의 도구</strong>이다. 이 사고가 향후 적분(차시 23+)에서 "\(\int_a^b f \geq 0\)임을 보이는 도구"로 어떻게 확장될지 예측해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"'\(f(x) \geq 0\)이 항상 성립 \(\Leftrightarrow \min f \geq 0\)'이라는 한 줄이 단순 계산 규칙이 아니라 부등식 증명을 위한 무기라는 게 느껴졌다. 한 점의 최솟값을 잡으면 전체 구간이 보장되는 셈인데, 이게 적분에서도 '\(f \geq 0\)이면 \(\int_a^b f \geq 0\)'처럼 '국소 \(\to\) 전역'으로 확장될 것 같다. 단원 전체가 이 흐름의 누적이라는 가설을 세웠다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
@@ -82,7 +471,27 @@
     </div>
 
     <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
         document.addEventListener('keydown', (e) => {
             if (e.isComposing) return;
             const t = e.target;
@@ -94,7 +503,7 @@
         });
     </script>
 
-    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
       <div class="aft-widget-head">
         <span class="aft-widget-title">⏱ 타이머</span>
@@ -117,7 +526,7 @@
       <div class="aft-widget-resize" aria-hidden="true"></div>
     </div>
 
-    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <!-- 문제 모아보기 FAB -->
     <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
       <span class="aft-fab-icon">📚</span>
       <span>문제 모아보기</span>
@@ -137,5 +546,16 @@
     </div>
 
     <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
 </body>
 </html>

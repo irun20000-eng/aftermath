@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 III-2 정적분의 활용 · 차시 27 넓이 — 두 곡선 사이 · Agent A10 작성 -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -19,30 +20,50 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
         body.mathjax-ready { opacity: 1; }
+
         .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
         .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
-        .placeholder-body {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
-            border: 3px dashed #ca8a04;
-            border-radius: 1rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #713f12;
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
         }
-        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
-        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
         @media print {
             .no-print { display: none !important; }
             body { opacity: 1; background: white; }
             .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
-        const GOOGLE_FORM_BASE_URL = ""; // 차시별 구글 폼 URL 확정 후 채움
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
         const LESSON_NAME = "27차시 넓이 — 두 곡선 사이";
         const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
     </script>
@@ -52,7 +73,7 @@
             <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
             <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
             <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
-                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III. 적분</span>
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-2. 정적분의 활용</span>
                 <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">27차시: 넓이 — 두 곡선 사이</span>
             </div>
         </header>
@@ -68,12 +89,349 @@
             </div>
         </nav>
 
-        <section class="card placeholder-body">
-            <h2>📝 학습지 작성 예정</h2>
-            <div class="ph-row">III. 적분</div>
-            <div class="ph-row">27차시 · 넓이 — 두 곡선 사이</div>
-            <p class="ph-meta">사용자의 차시별 자료(교과서·수능특강 PDF) 제공 후 본문(Warm-up · 공식 · Level 1/2/3 · 형성평가 · 도전 · 성찰)이 작성됩니다.</p>
-            <p class="ph-meta">수능특강 매핑: 07. 정적분의 활용</p>
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">차시 26에서 곡선 \(y = f(x)\)와 \(x\)축이 둘러싸는 넓이를 \(S = \displaystyle\int_a^b |f(x)|\,dx\)로 통합했다. 그렇다면 \(x\)축이 아닌 <strong>다른 곡선</strong> \(y = g(x)\)와 \(y = f(x)\)가 둘러싸는 도형의 넓이는?</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> \([a, b]\)에서 \(f(x) \geq g(x) \geq 0\)인 경우를 생각해 보자.</p>
+                    <div class="flex justify-center my-2">
+                        <img src="images/calc_27_concept_case1.png" alt="case 1 그림 — [a,b]에서 y=f(x)가 위, y=g(x)가 아래에 있는 두 곡선과 직선 x=a, x=b로 둘러싸인 영역 S" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
+                    </div>
+                    <p>위 도형의 넓이 \(S\)는 "\(y = f(x)\) 아래 넓이"에서 "\(y = g(x)\) 아래 넓이"를 빼면 된다 — 즉 \(S = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b f(x)\,dx - \int_a^b g(x)\,dx \)</span></span> \(= \displaystyle\int_a^b \{f(x) - g(x)\}\,dx\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.129 · 두 곡선 사이의 넓이 ❶ 참고)</span></p>
+                    <p>그렇다면 \(g(x)\)가 음수 부분을 포함한다면? 두 곡선이 도중에 교차해서 위·아래가 바뀐다면? — 차시 26의 절댓값 발상을 그대로 이어 받자.</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 차시 26의 한 줄 공식이 차시 27에서 <strong>\(g(x) = 0\)</strong>일 때의 특수 경우였음이 드러난다. 일반화하면 두 곡선 사이의 넓이는 <span class="calc-accent font-bold">\(S = \displaystyle\int_a^b |f(x) - g(x)|\,dx\)</span> 한 줄로 통합된다. 오늘 우리는 ① 교점 구하기로 적분 구간 확정, ② 두 곡선의 상하 관계 판단, ③ 위·아래가 바뀔 때 구간 분할, ④ 곡선과 접선·곡선과 직선의 결합형까지 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 기본 공식 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        두 곡선 사이의 넓이 — 통합 공식
+                    </h3>
+                    <p class="mb-3 text-slate-700">두 함수 \(f(x), g(x)\)가 닫힌구간 \([a, b]\)에서 연속일 때, 두 곡선 \(y = f(x)\), \(y = g(x)\)와 두 직선 \(x = a\), \(x = b\)로 둘러싸인 도형의 넓이 \(S\):</p>
+                    <div class="bg-cyan-50 p-4 rounded-xl border-2 border-cyan-300 my-3">
+                        <p class="text-center text-2xl font-black text-teal-700">\( \displaystyle S = \int_a^b |f(x) - g(x)|\,dx \)</p>
+                    </div>
+                    <p class="mt-3 text-slate-700"><strong>유도 흐름 (3 case 통합):</strong></p>
+                    <ul class="list-disc ml-6 text-base space-y-2 mt-2">
+                        <li><strong>❶ \([a, b]\)에서 \(f(x) \geq g(x) \geq 0\)일 때:</strong> \(S = \int_a^b f\,dx - \int_a^b g\,dx = \int_a^b (f - g)\,dx\). \(f - g \geq 0\)이므로 절댓값을 벗긴 것과 같음.</li>
+                        <li><strong>❷ \(f \geq g\)이지만 \(f\) 또는 \(g\)가 음수일 때:</strong> 두 곡선을 \(y\)축 방향으로 \(k\)만큼 평행이동하여 \(f + k \geq g + k \geq 0\)으로 만들 수 있음. 평행이동은 <strong>넓이를 바꾸지 않으므로</strong> \(S = \int_a^b \{(f + k) - (g + k)\}\,dx = \int_a^b (f - g)\,dx\). \(k\)가 소거됨.</li>
+                        <li><strong>❸ 도중에 위·아래가 바뀔 때:</strong> 교점 \(c\)를 기준으로 \([a, c]\)에서 \(f \geq g\), \([c, b]\)에서 \(f \leq g\)이면 \(S = \int_a^c (f - g)\,dx + \int_c^b (g - f)\,dx = \int_a^b |f - g|\,dx\). 차시 26의 부호 분할과 동일한 발상.</li>
+                    </ul>
+                    <div class="flex justify-center my-3">
+                        <img src="images/calc_27_concept_case3.png" alt="case 3 그림 — [a,c]에서 위쪽 곡선, [c,b]에서 아래쪽 곡선이 서로 바뀌는 두 곡선 사이 영역. 교점 c에서 위·아래 관계가 역전됨" class="block mx-auto max-w-md w-full rounded-lg border border-slate-200" />
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 절댓값은 ① 양수에는 그대로, ② 음수에는 \(-\)를 붙여 부호를 통일. "어느 쪽이 위인가"를 매 구간 판단해 큰 함수에서 작은 함수를 빼면 자동으로 양수. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.129~130 · 두 곡선 사이의 넓이 정리 참고)</span></p>
+                </div>
+
+                <!-- 2. 예제 3 시연 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        예제 — 두 곡선 \(y = x^2 - 3x + 2\), \(y = -x^2 + x + 2\) 사이 넓이
+                    </h3>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-2"><strong>풀이 흐름:</strong></p>
+                        <ul class="list-disc ml-6 text-base space-y-1">
+                            <li>① 교점: \(x^2 - 3x + 2 = -x^2 + x + 2 \Rightarrow 2x^2 - 4x = 0 \Rightarrow 2x(x - 2) = 0 \Rightarrow x = 0, 2\). 적분 구간 \([0, 2]\).</li>
+                            <li>② 상하 판단: \([0, 2]\)에서 \(x = 1\) 대입 — \(x^2 - 3x + 2 = 0\), \(-x^2 + x + 2 = 2\). 따라서 \(-x^2 + x + 2 \geq x^2 - 3x + 2\) (포물선 위쪽이 위).</li>
+                            <li>③ 차: \((-x^2 + x + 2) - (x^2 - 3x + 2) = -2x^2 + 4x\).</li>
+                            <li>④ 적분: \(S = \int_0^2 (-2x^2 + 4x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \big[-\tfrac{2}{3}x^3 + 2x^2\big]_0^2 = -\tfrac{16}{3} + 8 = \tfrac{8}{3} \)</span></span></li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심 절차:</strong> 교점 \(\to\) 상하 \(\to\) 차의 적분. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.130 · 예제 3 참고)</span></p>
+                </div>
+
+                <!-- 3. 예제 4 — 상하 역전 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        상하 역전이 있는 경우 — 예제 \(y = x^2(x - 1)\)과 \(y = 2x\)
+                    </h3>
+                    <div class="flex justify-center my-3">
+                        <img src="images/calc_27_ex4.png" alt="예제 4 그림 — 삼차곡선 y=x²(x-1)과 직선 y=2x가 x=-1, 0, 2에서 교차. [-1, 0]에서 곡선이 직선 위, [0, 2]에서 직선이 곡선 위. 두 영역이 색칠됨" class="block mx-auto max-w-xs w-full rounded-lg border border-slate-200" />
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-2"><strong>풀이 흐름:</strong></p>
+                        <ul class="list-disc ml-6 text-base space-y-1">
+                            <li>① 교점: \(x^2(x - 1) = 2x \Rightarrow x^3 - x^2 - 2x = 0 \Rightarrow x(x - 2)(x + 1) = 0 \Rightarrow x = -1, 0, 2\). 세 교점.</li>
+                            <li>② 상하 판단 — \([-1, 0]\): \(x = -\tfrac{1}{2}\) 대입, 곡선 \(= \tfrac{1}{4} \cdot (-\tfrac{3}{2}) = -\tfrac{3}{8}\), 직선 \(= -1\) \(\Rightarrow\) 곡선이 위. \([0, 2]\): \(x = 1\) 대입, 곡선 \(= 0\), 직선 \(= 2\) \(\Rightarrow\) 직선이 위.</li>
+                            <li>③ 분할 적분: \(S = \int_{-1}^{0}\{x^2(x-1) - 2x\}\,dx + \int_{0}^{2}\{2x - x^2(x-1)\}\,dx\)<br>
+                            \(= \int_{-1}^{0}(x^3 - x^2 - 2x)\,dx + \int_{0}^{2}(-x^3 + x^2 + 2x)\,dx\)<br>
+                            \(= \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \tfrac{5}{12} + \tfrac{8}{3} = \tfrac{37}{12} \)</span></span></li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 교점이 셋이면 구간이 둘로 나뉘고, 두 구간의 상하 관계가 반대. 각각 큰 함수 \(-\) 작은 함수의 정적분을 구해 합산. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 예제 4 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">교점 \(\to\) 상하 \(\to\) 차의 정적분 — 단일 구간 표준 흐름</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-곡선과 직선 사이</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 곡선 \(y = -2x^2 + 1\)과 직선 \(y = 2x - 3\)으로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.130 · 문제 03 (1) 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 교점: \(-2x^2 + 1 = 2x - 3 \Rightarrow -2x^2 - 2x + 4 = 0 \Rightarrow x^2 + x - 2 = 0 \Rightarrow (x + 2)(x - 1) = 0 \Rightarrow x = -2, 1\). \([-2, 1]\)에서 \(x = 0\) 대입: 곡선 \(= 1\), 직선 \(= -3\). 곡선이 위. \(S = \int_{-2}^{1}\{(-2x^2 + 1) - (2x - 3)\}\,dx = \int_{-2}^{1}(-2x^2 - 2x + 4)\,dx = \big[-\tfrac{2}{3}x^3 - x^2 + 4x\big]_{-2}^{1} = \tfrac{7}{3} - (-\tfrac{20}{3}) = 9\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-두 곡선 사이</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 두 곡선 \(y = 2x^2 - 7x + 5\), \(y = -x^2 + 5x - 4\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.130 · 문제 03 (2) 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 교점: \(2x^2 - 7x + 5 = -x^2 + 5x - 4 \Rightarrow 3x^2 - 12x + 9 = 0 \Rightarrow x^2 - 4x + 3 = 0 \Rightarrow (x - 1)(x - 3) = 0 \Rightarrow x = 1, 3\). \([1, 3]\)에서 \(x = 2\) 대입: 첫 곡선 \(= -1\), 둘째 \(= 2\). 둘째가 위. \(S = \int_1^3 \{(-x^2 + 5x - 4) - (2x^2 - 7x + 5)\}\,dx = \int_1^3 (-3x^2 + 12x - 9)\,dx = -3\int_1^3(x^2 - 4x + 3)\,dx = -3 \cdot \big[\tfrac{1}{3}x^3 - 2x^2 + 3x\big]_1^3 = -3 \cdot (0 - \tfrac{4}{3}) = 4\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-두 곡선 사이 (단축공식 확인)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 두 곡선 \(y = x^2 - 6x + 9\), \(y = -2x^2 + 6x\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.135 · 중단원 기초 02번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 교점: \(x^2 - 6x + 9 = -2x^2 + 6x \Rightarrow 3x^2 - 12x + 9 = 0 \Rightarrow x^2 - 4x + 3 = 0 \Rightarrow x = 1, 3\). \([1, 3]\)에서 \(x = 2\) 대입: 첫 \(= 1\), 둘째 \(= 4\). 둘째가 위. \(S = \int_1^3 \{(-2x^2 + 6x) - (x^2 - 6x + 9)\}\,dx = \int_1^3 (-3x^2 + 12x - 9)\,dx = 4\). (두 이차함수 차의 정적분 단축공식 \(\tfrac{|a|}{6}(\beta - \alpha)^3 = \tfrac{3}{6} \cdot 2^3 = 4\)로도 즉답 가능.)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">상하 역전 구간 분할·역함수 대칭·접선 결합형 응용</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-상하 역전 (삼차 \(\times\) 이차)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 두 곡선 \(y = x^3 - x^2 - x\), \(y = -x^2 + 3x\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 문제 05 (1) 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 차: \((x^3 - x^2 - x) - (-x^2 + 3x) = x^3 - 4x = x(x - 2)(x + 2)\). 영점 \(= 0, \pm 2\). \([-2, 0]\)에서 \(x = -1\) 대입: \(x^3 - 4x = -1 + 4 = 3 \gt 0 \Rightarrow\) 첫 곡선이 위. \([0, 2]\)에서 \(x = 1\) 대입: \(1 - 4 = -3 \lt 0 \Rightarrow\) 둘째 곡선이 위. \(S = \int_{-2}^{0}(x^3 - 4x)\,dx + \int_{0}^{2}(-x^3 + 4x)\,dx = \big[\tfrac{1}{4}x^4 - 2x^2\big]_{-2}^{0} + \big[-\tfrac{1}{4}x^4 + 2x^2\big]_{0}^{2} = -(4 - 8) + (-4 + 8) = 4 + 4 = 8\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-삼차곡선 \(\times\) 삼차곡선</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 두 곡선 \(y = x^3\), \(y = -x^3 + 2x\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 문제 05 (2) 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 차: \(x^3 - (-x^3 + 2x) = 2x^3 - 2x = 2x(x^2 - 1) = 2x(x-1)(x+1)\). 영점 \(\pm 1, 0\). 두 곡선 모두 원점 대칭(기함수)이므로 영역도 원점 대칭. \([-1, 0]\)에서 \(x = -\tfrac{1}{2}\) 대입: \(2 \cdot (-\tfrac{1}{2})(\tfrac{1}{4} - 1) = \tfrac{3}{4} \gt 0 \Rightarrow\) 첫 곡선이 위. \([0, 1]\)에서 반대. 대칭으로 \(S = 2 \int_0^1 (-2x^3 + 2x)\,dx = 2 \cdot \big[-\tfrac{1}{2}x^4 + x^2\big]_0^1 = 2 \cdot \tfrac{1}{2} = 1\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-역함수 대칭 활용</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 두 함수 \(f(x) = \dfrac{1}{5}x^2 + \dfrac{4}{5}\,(x \geq 0)\), \(g(x) = \sqrt{5x - 4}\)에 대하여 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 도형의 넓이를 구하시오. \(g\)가 \(f\)의 역함수임을 활용. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 문제 06 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f\)와 \(g\)는 직선 \(y = x\)에 대칭(역함수 관계)이므로 두 곡선이 둘러싸는 영역도 직선 \(y = x\)에 대칭. \(y = x\)와 \(y = f(x)\) 사이의 한 쪽 영역을 두 배 하면 전체 넓이가 된다. \(f(x) = x \Rightarrow \tfrac{1}{5}x^2 + \tfrac{4}{5} = x \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow x = 1, 4\). \([1, 4]\)에서 \(x = 2\) 대입: \(f(2) = \tfrac{4}{5} + \tfrac{4}{5} = \tfrac{8}{5} \lt 2\), 직선 \(y = x\)가 포물선보다 위. 한 쪽 영역 \(= \int_1^4 \{x - (\tfrac{1}{5}x^2 + \tfrac{4}{5})\}\,dx = \int_1^4 (-\tfrac{1}{5}x^2 + x - \tfrac{4}{5})\,dx\). 단축공식 \(\tfrac{|a|}{6}(\beta - \alpha)^3 = \tfrac{1/5}{6} \cdot 3^3 = \tfrac{9}{10}\). 전체 \(S = 2 \cdot \tfrac{9}{10} = \tfrac{9}{5}\). (역함수 대칭으로 \(\sqrt{\,\,}\)를 직접 적분하지 않아도 됨이 핵심.)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 곡선과 절댓값 그래프 — V자 꺾인 점 분기</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-포물선과 절댓값 함수</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 두 함수 \(y = x^2 - 4x + 2\), \(y = |x - 2|\)의 그래프로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.136 · 중단원 기본 07번 참고)</span></div>
+                        <div class="flex justify-center my-3">
+                            <img src="images/calc_29_q07.png" alt="문제 07 그림 — V자 모양 y=|x-2|와 아래로 볼록한 포물선 y=x²-4x+2. 두 그래프가 둘러싸는 영역이 색칠됨" class="block mx-auto max-w-xs w-full rounded-lg border border-slate-200" />
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "절댓값 \(|x - 2|\)" 때문에 직선이 \(x = 2\)에서 꺾이므로 <strong>적분 구간을 절댓값 분기점에서 한 번 더 나눠야 한다</strong>는 점을 놓치기 쉽다.<br><br>
+                                <strong>STEP 1 — 절댓값 풀기</strong>: \(x \geq 2\)에서 \(|x - 2| = x - 2\), \(x \lt 2\)에서 \(|x - 2| = -(x - 2) = -x + 2\).<br><br>
+                                <strong>STEP 2 — 교점</strong>: <br>
+                                ① \(x \geq 2\)에서 \(x^2 - 4x + 2 = x - 2 \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow (x - 1)(x - 4) = 0 \Rightarrow x = 4\) (\(x = 1\)은 \(x \geq 2\) 위배).<br>
+                                ② \(x \lt 2\)에서 \(x^2 - 4x + 2 = -x + 2 \Rightarrow x^2 - 3x = 0 \Rightarrow x(x - 3) = 0 \Rightarrow x = 0\) (\(x = 3\)은 \(x \lt 2\) 위배).<br>
+                                도형의 \(x\) 범위는 \([0, 4]\), 절댓값 꺾이는 점 \(x = 2\)에서 구간 분할.<br><br>
+                                <strong>STEP 3 — 상하 판단</strong>: \([0, 2]\)에서 \(x = 1\) 대입: 포물선 \(= 1 - 4 + 2 = -1\), V자 \(= -1 + 2 = 1\). V자가 위. \([2, 4]\)에서 \(x = 3\) 대입: 포물선 \(= 9 - 12 + 2 = -1\), V자 \(= 3 - 2 = 1\). V자가 위.<br><br>
+                                <strong>STEP 4 — 두 구간 정적분</strong>: <br>
+                                \(\int_0^2 \{(-x + 2) - (x^2 - 4x + 2)\}\,dx = \int_0^2 (-x^2 + 3x)\,dx = \big[-\tfrac{1}{3}x^3 + \tfrac{3}{2}x^2\big]_0^2 = -\tfrac{8}{3} + 6 = \tfrac{10}{3}\).<br>
+                                \(\int_2^4 \{(x - 2) - (x^2 - 4x + 2)\}\,dx = \int_2^4 (-x^2 + 5x - 4)\,dx = \big[-\tfrac{1}{3}x^3 + \tfrac{5}{2}x^2 - 4x\big]_2^4 = (-\tfrac{64}{3} + 40 - 16) - (-\tfrac{8}{3} + 10 - 8) = \tfrac{8}{3} - (-\tfrac{2}{3}) = \tfrac{10}{3}\).<br>
+                                <strong>STEP 5 — 합산</strong>: \(S = \tfrac{10}{3} + \tfrac{10}{3} = \tfrac{20}{3}\).<br><br>
+                                <strong>결론:</strong> 넓이 \(= \tfrac{20}{3}\).<br><br>
+                                <strong>핵심 통찰:</strong> 절댓값 함수와 포물선의 교점은 <strong>두 구간으로 분리</strong>해 각각 풀어야 한다. 절댓값 \(|x - a|\)는 \(x = a\)에서 미분 불가능한 꺾인 점이며, "두 곡선 사이 넓이"의 구간 분할은 ① 교점에서 + ② 절댓값 꺾인 점에서 동시에 일어난다. V자 도형의 대칭성 덕분에 \([0, 2]\)와 \([2, 4]\) 두 정적분이 같은 값 \(\tfrac{10}{3}\)으로 나옴 \(\to\) 대칭 검증의 좋은 사례.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 다음 그림과 같이 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 세 도형의 넓이를 각각 \(A, B, C\)라고 할 때, \(A = 12, B = 6, C = 5\)이다. 정적분 \(\displaystyle\int_0^9 \{f(x) - g(x)\}\,dx\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.136 · 중단원 기본 08번 참고)</span></div>
+            <div class="flex justify-center my-3">
+                <img src="images/calc_29_q08.png" alt="문제 08 그림 — 두 곡선 y=f(x), y=g(x)가 x=0, 4, 7, 9에서 교차하여 세 영역 A([0,4]), B([4,7]), C([7,9])를 형성. A는 f 위, B는 g 위, C는 f 위" class="block mx-auto max-w-xs w-full rounded-lg border border-slate-200" />
+            </div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> 정적분 \(= f - g\)의 부호 있는 면적. ① \([0, 4]\)에서 \(f \geq g\) \(\Rightarrow f - g \geq 0 \Rightarrow +A = +12\). ② \([4, 7]\)에서 \(g \geq f\) \(\Rightarrow f - g \leq 0 \Rightarrow -B = -6\). ③ \([7, 9]\)에서 \(f \geq g\) \(\Rightarrow +C = +5\). 합 \(= 12 - 6 + 5 = 11\).
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 정적분의 활용 유제 2) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_정적분의활용"
+                 data-aft-source-id="c7-ex2"
+                 data-aft-source-label="수능특강 수학Ⅱ · 정적분의 활용 · 유제 2">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 정적분의 활용 · 유제 2</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+2, 7분) · 핵심: 두 곡선 교점의 실근 개수 조건 \(\Rightarrow\) 극값 분석으로 \(k\) 결정. 부호 분기 후 두 곡선 사이 넓이 정적분</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                두 함수 \(f(x) = x^3 + x^2 - 2x + 10\), \(g(x) = 3x^2 + 2x + k\) (\(k\)는 정수)에 대하여 \(x\)에 대한 방정식 \(f(x) = g(x)\)의 서로 다른 실근의 개수가 \(2\)일 때, 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 부분의 넓이는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(\dfrac{61}{3}\) &nbsp;&nbsp; ② \(\dfrac{64}{3}\) &nbsp;&nbsp; ③ \(\dfrac{67}{3}\) &nbsp;&nbsp; ④ \(\dfrac{70}{3}\) &nbsp;&nbsp; ⑤ \(\dfrac{73}{3}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 차함수의 극값 분석</strong>: \(h(x) = f(x) - g(x) = x^3 - 2x^2 - 4x + 10 - k\). \(f(x) = g(x) \Leftrightarrow h(x) = 0 \Leftrightarrow x^3 - 2x^2 - 4x + 10 = k\). 곡선 \(y = x^3 - 2x^2 - 4x + 10\)과 직선 \(y = k\)의 교점 분석. \(h'(x) = 3x^2 - 4x - 4 = (3x + 2)(x - 2) = 0 \Rightarrow x = -\tfrac{2}{3}, 2\).</li>
+                    <li><strong>STEP 2 — 실근 \(2\)개 조건</strong>: 극댓값 \(h(-\tfrac{2}{3}) = \tfrac{310}{27}\) (≈ 11.48), 극솟값 \(h(2) = 2\). 서로 다른 실근이 정확히 \(2\)개 \(\Leftrightarrow\) \(k\)가 극값 중 하나. \(k\)는 정수이므로 \(k = 2\) (극솟값). 따라서 \(g(x) = 3x^2 + 2x + 2\).</li>
+                    <li><strong>STEP 3 — 교점 \(x = -2, 2\)</strong>: \(f(x) - g(x) = x^3 - 2x^2 - 4x + 8 = (x + 2)(x - 2)^2 = 0 \Rightarrow x = -2, 2\) (\(x = 2\)는 중근). \([-2, 2]\)에서 \(f(x) - g(x) = (x + 2)(x - 2)^2 \geq 0\) ⇒ \(f \geq g\).</li>
+                    <li><strong>STEP 4 — 넓이 정적분 (기·우함수 분리)</strong>: \(S = \displaystyle\int_{-2}^{2}(x^3 - 2x^2 - 4x + 8)\,dx\). \(x^3, -4x\)는 기함수 ⇒ \([-2, 2]\) 적분 \(= 0\). 우함수만: \(S = 2\displaystyle\int_0^2(-2x^2 + 8)\,dx = 2\big[-\tfrac{2x^3}{3} + 8x\big]_0^2 = 2 \cdot \tfrac{32}{3} = \tfrac{64}{3}\). <span class="text-red-600 font-bold">정답: ② \(\dfrac{64}{3}\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "실근의 개수 \(=2\)" 조건은 <strong>극값에서 접하는 경우</strong>를 의미. 차함수 \(h(x) = k\)의 그래프 분석으로 극댓값·극솟값 중 정수 값을 채택. 차시 27의 두 곡선 사이 넓이를 풀기 위해 III장 도함수의 활용(극값)이 결합되는 융합형 수능특강 문항. 기함수 적분의 대칭성(\(\int_{-a}^a x^{2n+1}\,dx = 0\))으로 계산을 가속.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_정적분의활용_해설.html#c7-ex2" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 2</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (평가원 기출 수학Ⅱ 적분 활용 — 2022학년도 수능 8번) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_적분"
+                 data-aft-source-id="g_ws27_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 적분 · 2022학년도 수능 8번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2022학년도 수능 8번</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 두 곡선이 둘러싸는 도형의 넓이를 수직선 \(x = k\)가 <strong>이등분</strong>하는 조건. 좌측 영역 정적분 \(= \tfrac{1}{2} \cdot\) 전체 정적분으로 \(k\)에 대한 삼차방정식 도출</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                곡선 \(y = x^2 - 5x\)와 직선 \(y = x\)로 둘러싸인 부분의 넓이를 직선 \(x = k\)가 이등분할 때, 상수 \(k\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(3\) &nbsp;&nbsp; ② \(\dfrac{13}{4}\) &nbsp;&nbsp; ③ \(\dfrac{7}{2}\) &nbsp;&nbsp; ④ \(\dfrac{15}{4}\) &nbsp;&nbsp; ⑤ \(4\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 교점 찾기</strong>: \(x^2 - 5x = x \Rightarrow x^2 - 6x = 0 \Rightarrow x(x - 6) = 0 \Rightarrow x = 0,\ 6\). 두 곡선이 만나는 점은 \((0, 0)\)과 \((6, 6)\). 적분 구간 \([0, 6]\).</li>
+                    <li><strong>STEP 2 — 상하 판단</strong>: \(x \in [0, 6]\)의 내부 점 \(x = 3\)에서 직선 \(y = 3\), 곡선 \(y = 9 - 15 = -6\). 직선이 위. 즉 \([0, 6]\)에서 \(x \geq x^2 - 5x\), 차 \(g(x) = x - (x^2 - 5x) = 6x - x^2 = x(6 - x) \geq 0\).</li>
+                    <li><strong>STEP 3 — 전체 넓이</strong>: \(S = \displaystyle\int_0^6 (6x - x^2)\,dx = \big[3x^2 - \tfrac{1}{3}x^3\big]_0^6 = 108 - 72 = 36\). 단축 공식 확인: \(\tfrac{1}{6}(6 - 0)^3 = \tfrac{216}{6} = 36\). \(\checkmark\)</li>
+                    <li><strong>STEP 4 — 이등분 조건</strong>: \(0 \lt k \lt 6\)이고 \(\displaystyle\int_0^k (6x - x^2)\,dx = \tfrac{S}{2} = 18\). 좌변 계산: \(\big[3x^2 - \tfrac{1}{3}x^3\big]_0^k = 3k^2 - \tfrac{k^3}{3}\). 방정식 \(3k^2 - \tfrac{k^3}{3} = 18\).</li>
+                    <li><strong>STEP 5 — 방정식 풀이</strong>: 양변 \(\times 3\): \(9k^2 - k^3 = 54 \Rightarrow k^3 - 9k^2 + 54 = 0\). \(k = 3\) 대입: \(27 - 81 + 54 = 0\) \(\checkmark\). 인수분해 \((k - 3)(k^2 - 6k - 18) = 0\). 이차식의 근 \(k = 3 \pm 3\sqrt{3}\). \(0 \lt k \lt 6\) 조건에서 \(3 + 3\sqrt{3} \approx 8.2 \gt 6\), \(3 - 3\sqrt{3} \approx -2.2 \lt 0\)이므로 모두 배제. 유효한 해는 \(k = 3\). <span class="text-red-600 font-bold">정답: ① \(3\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "수직선 \(x = k\)가 두 곡선 사이 넓이를 이등분" 조건은 <strong>좌측 영역 = 전체의 절반</strong>이라는 정적분 방정식으로 환원. 차시 27의 4단계 절차(교점 → 상하 → 차의 정적분) 위에 이등분 조건을 더한 평가원 표준 응용. 두 곡선 사이 차 \(g(x) = 6x - x^2\)이 \([0, 6]\)에서 단일 부호이므로 절댓값 분기 없이 한 식으로 풀린다는 점이 중요.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (두 곡선 사이의 일반화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">차시 26의 "곡선과 \(x\)축" 공식이 차시 27의 "두 곡선 사이" 공식의 특수 경우임을 인식하고 — \(g(x) \equiv 0\)일 때 일치 — 평행이동이 두 곡선 사이 넓이를 변화시키지 않는다는 사실을 자신의 언어로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"두 곡선 사이 넓이 \(S = \int_a^b |f - g|\,dx\)에서 \(g \equiv 0\)을 넣으면 차시 26 공식이 그대로 나온다는 게 보였다. 게다가 두 함수를 위쪽으로 같이 평행이동해도 차 \(f - g\)는 그대로니까 부호와 무관하게 공식이 통한다는 게 신기했다. '위 - 아래'의 적분만 잘 잡으면 항상 같다는 게 핵심이었다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (4단계 절차 + 단축공식)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">두 곡선 사이 넓이 문제의 4단계 절차 ① 교점 \(\to\) 적분 구간 ② 상하 판단 ③ 차의 정적분 ④ 부호 역전 시 분할을 정리하고, 두 이차함수 사이 \(\tfrac{|a|}{6}(\beta - \alpha)^3\)·곡선과 접선 \(\tfrac{|a|}{12}(\beta - \alpha)^4\) 단축공식이 언제 통하는지 카드화해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"두 이차함수 사이 넓이를 한 번에 \(\tfrac{|a|}{6}(\beta - \alpha)^3\)로 적는 단축공식이 너무 편해서 그냥 외우려다가, 곡선·접선 사이는 \(\tfrac{|a|}{12}(\beta - \alpha)^4\)로 분모가 다른 이유를 헷갈렸다. 직접 \(a(x - \alpha)(x - \beta)\) 인수분해랑 중근 \((x - t)^2\) 형태로 유도해보니 분모 차이가 자연스럽게 나왔다. 공식이 어디서 왔는지 알고 나니 잘못 외울 일이 없어졌다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (속도·거리로의 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">두 곡선 사이 넓이가 "차의 절댓값의 정적분"으로 통합되었다는 점을 바탕으로, 차시 28에서 다룰 "위치 변화 \(\int v\,dt\)"와 "이동 거리 \(\int |v|\,dt\)"가 동일한 구조라는 가설을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\int |f - g|\,dx\)가 '차의 절댓값'이라는 단순한 구조라는 게 보이고 나니, 다음 차시의 변위 \(\int v\,dt\) vs. 이동 거리 \(\int |v|\,dt\)도 똑같이 '절댓값 유무가 부호 처리를 가른다'는 동일 구조라는 게 예측됐다. 단원 III-2가 결국 '절댓값 정적분' 하나로 묶일 것 같다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
@@ -82,7 +440,27 @@
     </div>
 
     <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
         document.addEventListener('keydown', (e) => {
             if (e.isComposing) return;
             const t = e.target;
@@ -94,7 +472,7 @@
         });
     </script>
 
-    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
       <div class="aft-widget-head">
         <span class="aft-widget-title">⏱ 타이머</span>
@@ -117,7 +495,7 @@
       <div class="aft-widget-resize" aria-hidden="true"></div>
     </div>
 
-    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <!-- 문제 모아보기 FAB -->
     <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
       <span class="aft-fab-icon">📚</span>
       <span>문제 모아보기</span>
@@ -137,5 +515,16 @@
     </div>
 
     <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
 </body>
 </html>

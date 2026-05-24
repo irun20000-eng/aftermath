@@ -46,6 +46,9 @@ desktop.ini
 # 교사용 가이드 폴더 (Nav_*.html + Solutions_All + Nav_All_index 등)
 nav/
 
+# 교사용 자료 — PDF·인벤토리·검수 노트 (학생 비공개)
+_assets_private/
+
 # 임시 압축·백업 파일 (교사용 자료)
 nav_backup*.tar.gz
 *.tar.gz
