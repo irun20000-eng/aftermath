@@ -293,6 +293,53 @@
     50% { box-shadow: 0 0 0 8px rgba(201, 162, 39, 0.25); }
   }
 
+  /* === 모드 라디오 (기본 3단계 / 간편 2단계 / 학습리더) === */
+  .mode-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 16px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+  .mode-label {
+    font-weight: 700;
+    color: #475569;
+    font-size: 14px;
+  }
+  .mode-radio {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .mode-radio:hover { border-color: #6366f1; color: #4338ca; }
+  .mode-radio input { display: none; }
+  .mode-radio.checked {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-color: #4f46e5;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  }
+
+  /* 모드별 단계 버튼 표시 제어 */
+  .action-btn-leader { display: none; }
+  body.mode-simple .action-btn[data-step="1"] { display: none; }
+  body.mode-leader .action-btn[data-step="1"],
+  body.mode-leader .action-btn[data-step="2"],
+  body.mode-leader .action-btn[data-step="3"] { display: none; }
+  body.mode-leader .action-btn-leader { display: inline-flex; }
+
   /* Groups grid */
   .groups-grid {
     display: grid;
@@ -646,6 +693,13 @@
     👆 학번 클릭=결석 토글 · 단계 버튼 다시 클릭=재추첨 · 모둠별 🔄로 부분 재추첨 · 단축키 <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> · 타이머 <kbd>스페이스</kbd> · 메인 <kbd>H</kbd>
   </div>
 
+  <div class="mode-bar">
+    <span class="mode-label">모드:</span>
+    <label class="mode-radio"><input type="radio" name="pick-mode" value="standard" checked><span>기본 3단계</span></label>
+    <label class="mode-radio"><input type="radio" name="pick-mode" value="simple"><span>간편 2단계</span></label>
+    <label class="mode-radio"><input type="radio" name="pick-mode" value="leader"><span>🌟 학습리더</span></label>
+  </div>
+
   <div class="action-bar">
     <button class="action-btn" data-step="1">
       <span class="shortcut">1</span>
@@ -658,6 +712,10 @@
     <button class="action-btn" data-step="3" disabled>
       <span class="shortcut">3</span>
       <span class="step-num">3</span>칠판 풀이 뽑기
+    </button>
+    <button class="action-btn action-btn-leader" data-step="leader">
+      <span class="shortcut">1</span>
+      <span class="step-num">🌟</span>리더 칠판 풀이 뽑기
     </button>
   </div>
 
@@ -727,6 +785,7 @@ let state = {
   currentRound: {},
   fairness: true,
   sound: true,
+  mode: 'standard', // 'standard' | 'simple' | 'leader'
 };
 
 let isRunning = false; // 룰렛 진행 중 잠금
@@ -798,6 +857,7 @@ async function loadStateAsync() {
         state.pickHistory = parsed.pickHistory || {};
         state.fairness = parsed.fairness !== undefined ? parsed.fairness : true;
         state.sound = parsed.sound !== undefined ? parsed.sound : true;
+        state.mode = ['standard','simple','leader'].includes(parsed.mode) ? parsed.mode : 'standard';
         const absentData = parsed.absent || {};
         for (const cls in absentData) {
           state.absent[cls] = new Set(absentData[cls]);
@@ -823,6 +883,7 @@ async function saveState() {
     pickHistory: state.pickHistory,
     fairness: state.fairness,
     sound: state.sound,
+    mode: state.mode,
   };
   for (const cls in state.absent) {
     toSave.absent[cls] = Array.from(state.absent[cls]);
@@ -968,23 +1029,158 @@ function updateButtons() {
   const step3Done = round[3] !== null;
 
   btns.forEach(btn => {
-    const step = parseInt(btn.dataset.step);
+    const step = btn.dataset.step;
     btn.classList.remove('done', 'active');
     btn.disabled = false;
 
-    if (step === 1) {
+    // 학습리더 모드 — leader 버튼만 동작
+    if (state.mode === 'leader') {
+      if (step !== 'leader') return;
+      if (round[3] !== null) btn.classList.add('done');
+      else btn.classList.add('active');
+      return;
+    }
+    if (step === 'leader') return; // 다른 모드에선 leader 버튼 무시
+
+    // 간편 2단계 — step1 건너뜀, step2가 첫 단계
+    if (state.mode === 'simple') {
+      if (step === '1') return;
+      if (step === '2') {
+        if (step2Done) btn.classList.add('done');
+        else btn.classList.add('active');
+      } else if (step === '3') {
+        if (!step2Done) btn.disabled = true;
+        else if (step3Done) btn.classList.add('done');
+        else btn.classList.add('active');
+      }
+      return;
+    }
+
+    // 기본 3단계
+    if (step === '1') {
       if (step1Done) btn.classList.add('done');
       else btn.classList.add('active');
-    } else if (step === 2) {
+    } else if (step === '2') {
       if (!step1Done) btn.disabled = true;
       else if (step2Done) btn.classList.add('done');
       else btn.classList.add('active');
-    } else if (step === 3) {
+    } else if (step === '3') {
       if (!step2Done) btn.disabled = true;
       else if (step3Done) btn.classList.add('done');
       else btn.classList.add('active');
     }
   });
+}
+
+// === 모드 관련 유틸 ===
+function applyModeClass() {
+  document.body.classList.remove('mode-standard', 'mode-simple', 'mode-leader');
+  document.body.classList.add('mode-' + state.mode);
+  document.querySelectorAll('.mode-radio').forEach(lab => {
+    const inp = lab.querySelector('input');
+    lab.classList.toggle('checked', inp && inp.value === state.mode);
+    if (inp) inp.checked = (inp.value === state.mode);
+  });
+  // 단축키 표시 모드별 갱신
+  const sc1 = document.querySelector('.action-btn[data-step="1"] .shortcut');
+  const sc2 = document.querySelector('.action-btn[data-step="2"] .shortcut');
+  const sc3 = document.querySelector('.action-btn[data-step="3"] .shortcut');
+  const scL = document.querySelector('.action-btn[data-step="leader"] .shortcut');
+  if (state.mode === 'simple') {
+    if (sc2) sc2.textContent = '1';
+    if (sc3) sc3.textContent = '2';
+  } else if (state.mode === 'standard') {
+    if (sc1) sc1.textContent = '1';
+    if (sc2) sc2.textContent = '2';
+    if (sc3) sc3.textContent = '3';
+  }
+  if (scL) scL.textContent = '1';
+}
+
+function clearAllRounds() {
+  Object.keys(CLASS_DATA).forEach(c => {
+    const r = state.currentRound[c] || { 1:{}, 2:{}, 3:null };
+    Object.values(r[1] || {}).forEach(id => {
+      state.pickHistory[c] = state.pickHistory[c] || {};
+      state.pickHistory[c][id] = Math.max(0, (state.pickHistory[c][id] || 0) - 1);
+    });
+    Object.values(r[2] || {}).forEach(id => {
+      state.pickHistory[c] = state.pickHistory[c] || {};
+      state.pickHistory[c][id] = Math.max(0, (state.pickHistory[c][id] || 0) - 1);
+    });
+    if (r[3] !== null && r[3] !== undefined) {
+      state.pickHistory[c] = state.pickHistory[c] || {};
+      state.pickHistory[c][r[3]] = Math.max(0, (state.pickHistory[c][r[3]] || 0) - 1);
+    }
+    state.currentRound[c] = { 1:{}, 2:{}, 3:null };
+  });
+}
+
+async function setMode(newMode) {
+  if (isRunning) return;
+  if (state.mode === newMode) return;
+  if (!['standard','simple','leader'].includes(newMode)) return;
+
+  const cls = state.currentClass;
+  const round = state.currentRound[cls];
+  const hasProgress = (round && (Object.keys(round[1] || {}).length > 0
+                              || Object.keys(round[2] || {}).length > 0
+                              || round[3] !== null));
+  if (hasProgress) {
+    if (!confirm('모드를 바꾸면 진행 중인 라운드가 모든 반에서 초기화됩니다.\n계속할까요?')) {
+      applyModeClass(); // 라디오 원복
+      return;
+    }
+    clearAllRounds();
+  }
+  state.mode = newMode;
+  applyModeClass();
+  await saveState();
+  render();
+}
+
+// === 학습리더 모드 — 전체 조장 중 칠판 풀이 1명 ===
+async function runLeaderPick() {
+  if (isRunning) return;
+  const cls = state.currentClass;
+  const groups = CLASS_DATA[cls];
+  const round = state.currentRound[cls];
+
+  const isRedraw = round[3] !== null;
+  if (isRedraw) {
+    if (!confirm('리더 칠판 풀이를 다시 뽑을까요?')) return;
+    state.pickHistory[cls][round[3]] = Math.max(0, (state.pickHistory[cls][round[3]] || 0) - 1);
+    round[3] = null;
+  }
+
+  isRunning = true;
+  const leaderIds = [];
+  const leaderPool = {};
+  let poolIdx = 0;
+  groups.forEach(group => {
+    group.students.forEach(s => {
+      if (s.leader && !state.absent[cls].has(s.id)) {
+        leaderIds.push(s.id);
+        leaderPool[poolIdx++] = s.id;
+      }
+    });
+  });
+
+  if (leaderIds.length === 0) {
+    isRunning = false;
+    alert('출석한 학습리더가 없습니다.');
+    return;
+  }
+  const pick = weightedPick(leaderIds, cls);
+  if (pick === null) { isRunning = false; return; }
+
+  await showSpotlightResult(pick, leaderPool, groups);
+  round[3] = pick;
+  state.pickHistory[cls][pick] = (state.pickHistory[cls][pick] || 0) + 1;
+
+  await saveState();
+  isRunning = false;
+  render();
 }
 
 // ============================================
@@ -1481,9 +1677,15 @@ function showToast(msg, duration = 2000) {
 function attachEventListeners() {
   document.querySelectorAll('.action-btn').forEach(btn => {
     btn.onclick = () => {
-      const step = parseInt(btn.dataset.step);
-      if (!btn.disabled) runStep(step);
+      if (btn.disabled) return;
+      const step = btn.dataset.step;
+      if (step === 'leader') runLeaderPick();
+      else runStep(parseInt(step));
     };
+  });
+
+  document.querySelectorAll('input[name="pick-mode"]').forEach(radio => {
+    radio.addEventListener('change', (e) => setMode(e.target.value));
   });
 
   document.getElementById('fairnessToggle').onclick = () => {
@@ -1574,11 +1776,22 @@ function attachEventListeners() {
     if (e.isComposing) return;
 
     if (e.key === '1' || e.key === '2' || e.key === '3') {
-      const step = parseInt(e.key);
-      const btn = document.querySelector(`.action-btn[data-step="${step}"]`);
-      if (btn && !btn.disabled) {
-        e.preventDefault();
-        runStep(step);
+      const k = parseInt(e.key);
+      if (state.mode === 'leader') {
+        if (k === 1) {
+          const btn = document.querySelector('.action-btn[data-step="leader"]');
+          if (btn && !btn.disabled) { e.preventDefault(); runLeaderPick(); }
+        }
+      } else if (state.mode === 'simple') {
+        const stepMap = { 1: 2, 2: 3 };
+        const step = stepMap[k];
+        if (step) {
+          const btn = document.querySelector(`.action-btn[data-step="${step}"]`);
+          if (btn && !btn.disabled) { e.preventDefault(); runStep(step); }
+        }
+      } else {
+        const btn = document.querySelector(`.action-btn[data-step="${k}"]`);
+        if (btn && !btn.disabled) { e.preventDefault(); runStep(k); }
       }
     } else if (e.key === ' ') {
       e.preventDefault();
@@ -1599,6 +1812,7 @@ function attachEventListeners() {
   applyHashRouting();  // URL 해시 #class=N 파싱하여 자동 탭 선택
   document.getElementById('soundSwitch').classList.toggle('on', state.sound);
   document.getElementById('fairnessSwitch').classList.toggle('on', state.fairness);
+  applyModeClass();    // 저장된 모드 라디오·단축키·body 클래스 동기화
   renderTabs();
   render();
   attachEventListeners();
