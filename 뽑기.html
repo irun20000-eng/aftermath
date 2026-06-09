@@ -1081,18 +1081,26 @@ function applyModeClass() {
     lab.classList.toggle('checked', inp && inp.value === state.mode);
     if (inp) inp.checked = (inp.value === state.mode);
   });
-  // 단축키 표시 모드별 갱신
+  // 단축키 + 단계 번호 표시 모드별 갱신
   const sc1 = document.querySelector('.action-btn[data-step="1"] .shortcut');
   const sc2 = document.querySelector('.action-btn[data-step="2"] .shortcut');
   const sc3 = document.querySelector('.action-btn[data-step="3"] .shortcut');
   const scL = document.querySelector('.action-btn[data-step="leader"] .shortcut');
+  const sn1 = document.querySelector('.action-btn[data-step="1"] .step-num');
+  const sn2 = document.querySelector('.action-btn[data-step="2"] .step-num');
+  const sn3 = document.querySelector('.action-btn[data-step="3"] .step-num');
   if (state.mode === 'simple') {
     if (sc2) sc2.textContent = '1';
     if (sc3) sc3.textContent = '2';
+    if (sn2) sn2.textContent = '1';
+    if (sn3) sn3.textContent = '2';
   } else if (state.mode === 'standard') {
     if (sc1) sc1.textContent = '1';
     if (sc2) sc2.textContent = '2';
     if (sc3) sc3.textContent = '3';
+    if (sn1) sn1.textContent = '1';
+    if (sn2) sn2.textContent = '2';
+    if (sn3) sn3.textContent = '3';
   }
   if (scL) scL.textContent = '1';
 }
@@ -1818,16 +1826,6 @@ function attachEventListeners() {
   attachEventListeners();
   updateTimerDisplay();
 })();
-</script>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
 </script>
 </body>
 </html>
