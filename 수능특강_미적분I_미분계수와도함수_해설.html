@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 수능특강 수학Ⅱ 미분계수와 도함수 29문항 인터랙티브 해설 · 1학기 양식 · Agent B4 작성 -->
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미적분 I · 03. 미분계수와 도함수 — 단계별 해설</title>
+<meta name="robots" content="noindex,nofollow">
+<script>window.name = 'aftermath_sol_calc_c3';</script>
+
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['\\[','\\]'],['$$','$$']], processEscapes: true },
+  options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+  startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style id="site-css">
+:root {
+  --text-xs:clamp(0.75rem,0.7rem+0.25vw,0.875rem);
+  --text-sm:clamp(0.875rem,0.8rem+0.35vw,1rem);
+  --text-base:clamp(1rem,0.95rem+0.25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem+0.75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem+1.25vw,2.25rem);
+  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
+  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;
+  --radius-xl:1rem;--radius-full:9999px;
+  --transition-fast:150ms cubic-bezier(0.16,1,0.3,1);
+  --transition-base:220ms cubic-bezier(0.16,1,0.3,1);
+  --font-display:'Noto Sans KR',sans-serif;
+  --font-body:'Noto Sans KR',sans-serif;
+  --font-math:Georgia,serif;
+  --header-h:116px;--footer-h:64px;
+  --level-basic-bg:#fefce8;--level-basic-text:#a16207;--level-basic-border:#fde047;
+  --level-example-bg:#faf5ff;--level-example-text:#7e22ce;--level-example-border:#e9d5ff;
+  --level-exercise-bg:#f0fdf4;--level-exercise-text:#15803d;--level-exercise-border:#bbf7d0;
+  --level-standard-bg:#fff7ed;--level-standard-text:#9a3412;--level-standard-border:#fed7aa;
+  --level-advanced-bg:#fff1f2;--level-advanced-text:#be123c;--level-advanced-border:#fecdd3;
+  --level-kihul-bg:#fdf4ff;--level-kihul-text:#86198f;--level-kihul-border:#f5d0fe;
+}
+:root,[data-theme="light"]{
+  --color-bg:#faf5ff;--color-surface:#ffffff;
+  --color-surface-2:#fdf4ff;--color-surface-offset:#f5edff;
+  --color-border:#e9d5ff;--color-divider:#f3e8ff;
+  --color-text:#1a1a2e;--color-text-muted:#6b21a8;
+  --color-text-faint:#a78bfa;--color-text-inverse:#faf5ff;
+  --color-primary:#a855f7;--color-primary-hover:#9333ea;
+  --color-primary-light:#e9d5ff;--color-primary-subtle:#f5edff;
+  --color-blue-bg:#eff6ff;--color-blue-border:#bfdbfe;--color-blue-text:#1d4ed8;
+  --color-green-bg:#f0fdf4;--color-green-border:#bbf7d0;--color-green-text:#15803d;
+  --color-yellow-bg:#fefce8;--color-yellow-border:#fde047;--color-yellow-text:#a16207;
+  --color-red-bg:#fef2f2;--color-red-border:#fecaca;--color-red-text:#b91c1c;
+  --color-success:#7e22ce;--color-success-bg:#faf5ff;
+  --color-answer-bg:#faf5ff;--color-answer-border:#d8b4fe;--color-answer-text:#581c87;
+  --shadow-sm:0 1px 3px rgba(80,40,130,.06);
+  --shadow-md:0 4px 16px rgba(80,40,130,.09);
+  --shadow-lg:0 12px 40px rgba(80,40,130,.13);
+}
+[data-theme="dark"]{
+  --color-bg:#1a1326;--color-surface:#241834;
+  --color-surface-2:#2b1d3f;--color-surface-offset:#291a3c;
+  --color-border:#412a5e;--color-divider:#3a2552;
+  --color-text:#f3e8ff;--color-text-muted:#b794d8;
+  --color-text-faint:#6b4587;--color-text-inverse:#1a1326;
+  --color-primary:#c084fc;--color-primary-hover:#d8b4fe;
+  --color-primary-light:#5b2188;--color-primary-subtle:#2d1846;
+  --color-blue-bg:#172040;--color-blue-border:#1d4ed8;--color-blue-text:#93c5fd;
+  --color-green-bg:#052e16;--color-green-border:#166534;--color-green-text:#86efac;
+  --color-yellow-bg:#1c1505;--color-yellow-border:#854d0e;--color-yellow-text:#fde047;
+  --color-red-bg:#1c0505;--color-red-border:#991b1b;--color-red-text:#fca5a5;
+  --color-success:#d8b4fe;--color-success-bg:#2d1846;
+  --color-answer-bg:#2d1846;--color-answer-border:#7e22ce;--color-answer-text:#d8b4fe;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.25);
+  --shadow-md:0 4px 16px rgba(0,0,0,.35);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.45);
+  --level-basic-bg:#1c1505;--level-basic-text:#fde047;--level-basic-border:#854d0e;
+  --level-example-bg:#2e1065;--level-example-text:#d8b4fe;--level-example-border:#7e22ce;
+  --level-exercise-bg:#052e16;--level-exercise-text:#86efac;--level-exercise-border:#166534;
+  --level-standard-bg:#1c1005;--level-standard-text:#fed7aa;--level-standard-border:#9a3412;
+  --level-advanced-bg:#1c0505;--level-advanced-text:#fda4af;--level-advanced-border:#be123c;
+  --level-kihul-bg:#2e0a3f;--level-kihul-text:#f0abfc;--level-kihul-border:#86198f;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:none;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);overflow-x:hidden;padding-top:var(--header-h);padding-bottom:var(--footer-h);opacity:0;transition:opacity 0.3s;line-height:1.7}
+body.mathjax-ready{opacity:1}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+a{color:var(--color-primary);text-decoration:none}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);box-shadow:var(--shadow-sm)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-6);gap:var(--space-4)}
+.header-title{display:flex;align-items:center;gap:var(--space-3)}
+.logo-icon{width:34px;height:34px;flex-shrink:0}
+.school-name{font-size:var(--text-xs);font-weight:500;color:var(--color-text-muted);letter-spacing:.04em;display:block;line-height:1.2}
+.site-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);line-height:1.2;white-space:nowrap}
+.unit-name{color:var(--color-primary)}
+.header-controls{display:flex;align-items:center;gap:var(--space-3);flex-shrink:0}
+.progress-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-1)}
+.progress-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.progress-bar-track{width:80px;height:5px;background:var(--color-surface-offset);border-radius:var(--radius-full);overflow:hidden}
+.progress-bar-fill{height:100%;background:var(--color-primary);border-radius:var(--radius-full);transition:width 350ms ease}
+.btn-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-full);color:var(--color-text-muted);background:var(--color-surface-offset);border:1px solid var(--color-border);transition:all var(--transition-fast)}
+.btn-icon:hover{background:var(--color-primary-subtle);color:var(--color-primary);border-color:var(--color-primary-light)}
+.filter-bar{display:flex;gap:var(--space-2);padding:var(--space-2) var(--space-6) var(--space-3);overflow-x:auto;scrollbar-width:none}
+.filter-bar::-webkit-scrollbar{display:none}
+.filter-btn{display:inline-flex;align-items:center;gap:var(--space-1);padding:var(--space-1) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:600;font-family:var(--font-display);color:var(--color-text-muted);background:var(--color-surface-offset);border:1.5px solid var(--color-border);white-space:nowrap;min-height:34px;transition:all var(--transition-fast)}
+.filter-btn:hover{background:var(--color-primary-subtle);color:var(--color-primary);border-color:var(--color-primary-light)}
+.filter-btn.active{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.filter-count{font-size:var(--text-xs);font-weight:700;background:rgba(255,255,255,0.25);border-radius:var(--radius-full);padding:0 6px;min-width:20px;text-align:center}
+.filter-btn:not(.active) .filter-count{background:var(--color-surface-2);color:var(--color-text-muted)}
+.filter-btn[data-filter="basic"].active{background:var(--level-basic-text);border-color:var(--level-basic-text)}
+.filter-btn[data-filter="example"].active{background:var(--level-example-text);border-color:var(--level-example-text)}
+.filter-btn[data-filter="exercise"].active{background:var(--level-exercise-text);border-color:var(--level-exercise-text)}
+.filter-btn[data-filter="standard"].active{background:var(--level-standard-text);border-color:var(--level-standard-text)}
+.filter-btn[data-filter="advanced"].active{background:var(--level-advanced-text);border-color:var(--level-advanced-text)}
+.filter-btn[data-filter="kihul"].active{background:var(--level-kihul-text);border-color:var(--level-kihul-text)}
+.main-area{padding:var(--space-5) var(--space-5) var(--space-8)}
+.card-viewport{max-width:900px;margin:0 auto}
+.problem-card{animation:cardIn 280ms cubic-bezier(0.16,1,0.3,1)}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card-inner{display:flex;flex-direction:column;gap:var(--space-5)}
+.problem-section{background:var(--color-surface);border:1.5px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-sm)}
+.problem-badge{display:inline-flex;align-items:center;font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;border:1.5px solid;border-radius:var(--radius-full);padding:var(--space-1) var(--space-4);margin-bottom:var(--space-4);letter-spacing:.03em}
+.problem-sub-label{display:inline-block;margin-left:var(--space-2);font-size:var(--text-xs);color:var(--color-text-faint);font-weight:500}
+.problem-title{font-size:var(--text-lg);font-weight:800;color:var(--color-text);margin-bottom:var(--space-3);line-height:1.4}
+.problem-statement{font-size:clamp(1.05rem,1rem + 0.6vw,1.35rem);font-weight:500;line-height:1.8;color:var(--color-text);margin-bottom:var(--space-3);max-width:none}
+.problem-statement p{margin:0.4rem 0}
+.choices{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-2);margin-top:var(--space-3)}
+.choices li{padding:var(--space-3) var(--space-2);border:1.5px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);text-align:center;background:var(--color-surface-2);color:var(--color-text-muted);line-height:1.6;max-width:none;transition:all var(--transition-fast)}
+.short-answer-label{display:inline-flex;font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);padding:var(--space-1) var(--space-3);margin-top:var(--space-3)}
+.scratch-area{position:relative;min-height:120px;background-image:linear-gradient(var(--color-divider) 1px,transparent 1px),linear-gradient(90deg,var(--color-divider) 1px,transparent 1px);background-size:28px 28px;background-color:var(--color-surface);border:1.5px dashed var(--color-border);border-radius:var(--radius-xl);overflow:hidden;cursor:pointer;transition:border-color var(--transition-fast),box-shadow var(--transition-fast)}
+.scratch-area:hover{border-color:var(--color-primary);box-shadow:0 0 0 3px var(--color-primary-subtle)}
+.scratch-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:var(--text-sm);font-weight:600;color:var(--color-text-faint);letter-spacing:.06em;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:var(--space-2);text-align:center}
+.scratch-label::after{content:'터치하여 넓히기';font-size:var(--text-xs);color:var(--color-text-faint);opacity:.7}
+.scratch-overlay{position:fixed;inset:0;z-index:500;background:var(--color-bg);display:flex;flex-direction:column;animation:overlayIn 220ms cubic-bezier(0.16,1,0.3,1) both}
+@keyframes overlayIn{from{opacity:0;transform:scale(0.97)}to{opacity:1;transform:scale(1)}}
+.scratch-overlay-header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-6);background:var(--color-surface);border-bottom:1px solid var(--color-border);flex-shrink:0}
+.scratch-overlay-title{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text-muted);letter-spacing:.05em;text-transform:uppercase}
+.scratch-overlay-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-full);background:var(--color-surface-offset);border:1.5px solid var(--color-border);color:var(--color-text-muted);font-size:1.4rem;line-height:1;cursor:pointer;transition:all var(--transition-fast)}
+.scratch-overlay-close:hover{background:var(--color-red-bg);color:var(--color-red-text);border-color:var(--color-red-border)}
+.scratch-overlay-body{display:flex;flex:1;min-height:0}
+.scratch-overlay-problem{width:38%;max-width:520px;min-width:300px;overflow-y:auto;padding:var(--space-5) var(--space-6);border-right:1px solid var(--color-border);background:var(--color-surface)}
+.scratch-overlay-problem .problem-badge{margin-bottom:var(--space-3)}
+.scratch-overlay-problem .problem-statement{font-size:var(--text-base);line-height:1.65;color:var(--color-text);margin:0 0 var(--space-4)}
+.scratch-overlay-problem .choices{margin-top:var(--space-3)}
+@media (max-width:768px){.scratch-overlay-body{flex-direction:column}.scratch-overlay-problem{width:100%;max-width:none;min-width:0;max-height:38vh;border-right:none;border-bottom:1px solid var(--color-border)}}
+.scratch-overlay-canvas{flex:1;min-width:0;display:flex;flex-direction:column;background-color:var(--color-surface)}
+.overlay-step-bar{display:flex;flex-wrap:wrap;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-border);background:var(--color-surface-offset);flex-shrink:0}
+.overlay-step-bar .step-btn{flex:0 0 auto}
+.overlay-steps-container{flex:1;min-height:0;overflow-y:auto;padding:var(--space-4) var(--space-5);background-image:linear-gradient(var(--color-divider) 1px,transparent 1px),linear-gradient(90deg,var(--color-divider) 1px,transparent 1px);background-size:32px 32px}
+.overlay-steps-container .step{margin-bottom:var(--space-4)}
+.overlay-steps-container .step:last-child{margin-bottom:0}
+.overlay-nav{display:flex;align-items:center;gap:var(--space-2);margin-left:auto;margin-right:var(--space-3)}
+.overlay-nav-btn{padding:var(--space-2) var(--space-3);background:var(--color-surface-offset);border:1.5px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);cursor:pointer;transition:all var(--transition-fast)}
+.overlay-nav-btn:hover:not(:disabled){background:var(--color-primary-subtle);color:var(--color-primary);border-color:var(--color-primary-light)}
+.overlay-nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.overlay-nav-label{font-size:var(--text-sm);color:var(--color-text-muted);font-weight:600;min-width:54px;text-align:center}
+.solution-section{background:var(--color-surface);border:1.5px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm)}
+.solution-toggle-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);padding:var(--space-4) var(--space-6);background:var(--color-surface-offset);border-bottom:1px solid var(--color-border)}
+.solution-title{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-text-muted);letter-spacing:.05em;text-transform:uppercase}
+.step-buttons{display:flex;gap:var(--space-2);flex-wrap:wrap}
+.step-btn{padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:600;font-family:var(--font-display);color:var(--color-text-muted);background:var(--color-surface);border:1.5px solid var(--color-border);transition:all var(--transition-fast);min-height:40px;min-width:78px}
+.step-btn:hover{background:var(--color-primary-subtle);color:var(--color-primary);border-color:var(--color-primary-light)}
+.step-btn.active{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.reset-btn{color:var(--color-text-faint);border-style:dashed}
+.reset-btn:hover{background:var(--color-red-bg);color:var(--color-red-text);border-color:var(--color-red-border);border-style:solid}
+.answer-btn{color:var(--color-success);border-color:var(--color-answer-border)}
+.answer-btn:hover{background:var(--color-answer-bg);color:var(--color-answer-text);border-color:var(--color-success)}
+.answer-btn.active{background:var(--color-success);color:#fff;border-color:var(--color-success)}
+.steps-container{padding:var(--space-5) var(--space-6);display:flex;flex-direction:column;gap:var(--space-5);min-height:60px}
+.step{animation:stepReveal 280ms cubic-bezier(0.16,1,0.3,1) both}
+@keyframes stepReveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.step-header{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4)}
+.step-tag{display:inline-flex;align-items:center;justify-content:center;padding:.15em var(--space-3);border-radius:var(--radius-full);font-family:var(--font-display);font-size:var(--text-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--color-primary);color:#fff;flex-shrink:0}
+.step-title{font-size:var(--text-base);font-weight:600;color:var(--color-text)}
+.step-body{padding-left:calc(var(--space-3) + 2px);border-left:3px solid var(--color-primary-light)}
+.step-body p{margin:0.5rem 0;line-height:1.7;color:var(--color-text-muted);font-size:var(--text-base)}
+.step-body b{color:var(--color-text);font-weight:700}
+.calc{background:var(--color-surface-2);border:1px dashed var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);margin:var(--space-2) 0;font-size:var(--text-base);line-height:1.8;color:var(--color-text);overflow-x:auto}
+.calc.purple{background:var(--color-primary-subtle);border:1px solid var(--color-primary-light);color:var(--color-text);font-weight:500}
+.hint{background:var(--color-yellow-bg);border-left:4px solid var(--color-yellow-border);padding:var(--space-3) var(--space-4);border-radius:0 var(--radius-md) var(--radius-md) 0;margin:var(--space-3) 0;font-size:var(--text-sm);color:var(--color-yellow-text);line-height:1.7}
+.warn{background:var(--color-red-bg);border-left:4px solid var(--color-red-border);padding:var(--space-3) var(--space-4);border-radius:0 var(--radius-md) var(--radius-md) 0;margin:var(--space-3) 0;font-size:var(--text-sm);color:var(--color-red-text);line-height:1.7}
+.answer-reveal{display:flex;align-items:center;gap:var(--space-3);margin-top:var(--space-5);padding:var(--space-4) var(--space-5);background:var(--color-answer-bg);border:2px solid var(--color-answer-border);border-radius:var(--radius-lg)}
+.answer-label{font-size:var(--text-xs);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--color-success);font-family:var(--font-display);flex-shrink:0}
+.answer-number{font-size:var(--text-xl);font-weight:700;color:var(--color-answer-text);font-family:var(--font-math)}
+.correct-choice.revealed{position:relative;background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%) !important;border:3px solid #10b981 !important;color:#064e3b !important;font-weight:800 !important;padding-left:2.75rem !important;box-shadow:0 0 0 4px rgba(16,185,129,0.18),0 6px 14px rgba(16,185,129,0.22);animation:correctPulse 0.55s ease-out}
+.correct-choice.revealed::before{content:'✓';position:absolute;left:0.6rem;top:50%;transform:translateY(-50%);width:1.6rem;height:1.6rem;background:#10b981;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;box-shadow:0 2px 4px rgba(16,185,129,0.4)}
+@keyframes correctPulse{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(16,185,129,0.55)}50%{transform:scale(1.015);box-shadow:0 0 0 14px rgba(16,185,129,0)}100%{transform:scale(1);box-shadow:0 0 0 4px rgba(16,185,129,0.18),0 6px 14px rgba(16,185,129,0.22)}}
+[data-theme="dark"] .correct-choice.revealed{background:linear-gradient(135deg,#064e3b 0%,#065f46 100%) !important;border-color:#34d399 !important;color:#d1fae5 !important}
+[data-theme="dark"] .correct-choice.revealed::before{background:#34d399;color:#064e3b}
+.key-concept{display:flex;align-items:flex-start;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-4);padding:var(--space-3) var(--space-4);background:linear-gradient(135deg,#ecfdf5 0%,#f0fdfa 100%);border:1px solid #99f6e4;border-left:4px solid #14b8a6;border-radius:var(--radius-md);font-size:var(--text-base);color:#134e4a;line-height:1.7;max-width:none}
+[data-theme="dark"] .key-concept{background:#042f2e;color:#5eead4;border-color:#0f766e;border-left-color:#14b8a6}
+.concept-label{font-size:var(--text-xs);font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#0f766e;color:#fff;padding:.1em var(--space-2);border-radius:var(--radius-sm);flex-shrink:0}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-6);background:var(--color-surface);border-top:1px solid var(--color-border);box-shadow:0 -4px 16px rgba(80,40,130,.07)}
+.nav-btn{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-6);border-radius:var(--radius-full);font-size:var(--text-base);font-weight:600;font-family:var(--font-display);background:var(--color-primary);color:#fff;min-height:48px;min-width:96px;transition:all var(--transition-fast);box-shadow:0 2px 8px color-mix(in srgb,var(--color-primary) 25%,transparent)}
+.nav-btn:hover{background:var(--color-primary-hover);transform:translateY(-1px)}
+.nav-btn:active{transform:translateY(0)}
+.nav-btn:disabled{background:var(--color-surface-offset);color:var(--color-text-faint);box-shadow:none;cursor:not-allowed;transform:none}
+.problem-counter{flex:1;text-align:center;font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
+.counter-sep{color:var(--color-text-faint);margin:0 2px}
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;opacity:0;transition:opacity var(--transition-base)}
+.modal-backdrop.open{display:block;opacity:1}
+.print-modal{display:none;position:fixed;inset:0;z-index:201;align-items:center;justify-content:center;pointer-events:none}
+.print-modal.open{display:flex;pointer-events:auto}
+.print-modal-inner{background:var(--color-surface);border:1.5px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-8);box-shadow:var(--shadow-lg);width:min(420px,90vw);animation:modalIn 250ms cubic-bezier(0.16,1,0.3,1)}
+@keyframes modalIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.modal-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-2)}
+.modal-desc{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
+.modal-options{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-5)}
+.modal-check{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-6)}
+.modal-sub-label{font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);margin:0 0 var(--space-1)}
+.radio-option,.check-option{display:flex;align-items:center;gap:var(--space-3);font-size:var(--text-base);cursor:pointer;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--color-surface-2);transition:all var(--transition-fast)}
+.radio-option:hover,.check-option:hover{border-color:var(--color-primary-light);background:var(--color-primary-subtle)}
+.radio-option input,.check-option input{accent-color:var(--color-primary)}
+.modal-btns{display:flex;gap:var(--space-3);justify-content:flex-end}
+.btn-secondary{padding:var(--space-3) var(--space-6);border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:600;font-family:var(--font-display);background:var(--color-surface-offset);color:var(--color-text-muted);border:1.5px solid var(--color-border);transition:all var(--transition-fast)}
+.btn-secondary:hover{background:var(--color-surface-2);color:var(--color-text)}
+.btn-primary{padding:var(--space-3) var(--space-6);border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:700;font-family:var(--font-display);background:var(--color-primary);color:#fff;border:none;transition:all var(--transition-fast);box-shadow:0 2px 8px color-mix(in srgb,var(--color-primary) 30%,transparent)}
+.btn-primary:hover{background:var(--color-primary-hover)}
+@media (orientation:landscape) and (min-width:768px){.card-inner{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;gap:var(--space-5)}.problem-section{grid-column:1;grid-row:1}.scratch-area{grid-column:1;grid-row:2;min-height:130px}.solution-section{grid-column:2;grid-row:1/3}}
+@media (max-width:768px){.choices{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.header-inner{padding:var(--space-2) var(--space-4)}.filter-bar{padding:var(--space-2) var(--space-4)}.site-title{font-size:var(--text-base)}.nav-btn{min-width:72px;padding:var(--space-2) var(--space-4);font-size:var(--text-sm)}.step-btn{min-width:60px;padding:var(--space-2) var(--space-3);font-size:var(--text-xs)}:root{--header-h:120px;--footer-h:60px}}
+.print-area{display:none}
+@media print{.site-header,.bottom-nav,.print-modal,.modal-backdrop,.main-area,.lesson-nav-bar{display:none!important}@page{size:A4;margin:15mm}.print-area{display:block!important}html,body{margin:0;padding:0;overflow:visible;background:#fff;color:#000;font-size:10pt;opacity:1}.print-card{break-inside:avoid-page;padding:0;border:none;margin-bottom:0}.print-badge{display:inline-block;font-weight:700;font-size:10pt;border:1pt solid #ccc;border-radius:4pt;padding:2pt 8pt;margin-bottom:4pt;background:#f5f5f5}.print-question{font-size:10.5pt;font-weight:500;line-height:1.55;margin-bottom:6pt}.print-choices{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:4pt;margin-bottom:6pt}.print-choices li{padding:6pt 4pt;border:1pt solid #ddd;border-radius:4pt;font-size:10pt;text-align:center}.print-choices li.print-correct{background:#faf5ff;border-color:#d8b4fe;font-weight:700}.print-scratch{display:none!important}.print-solution{border-top:1pt solid #ddd;padding-top:6pt}.print-solution-title{font-weight:700;font-size:10pt;color:#555;text-transform:uppercase;letter-spacing:1pt;margin-bottom:4pt}.print-step{margin-bottom:5pt}.print-step-tag{display:inline-block;background:#a855f7;color:#fff;font-size:7.5pt;font-weight:700;padding:1pt 5pt;border-radius:3pt;margin-right:4pt}.print-step-title{font-size:9pt;font-weight:600}.print-step-body{font-size:8.5pt;line-height:1.5;padding-left:8pt;margin-top:2pt;border-left:2pt solid #e9d5ff}.print-step-body .calc{font-size:9pt;padding:3pt 6pt;margin:2pt 0;line-height:1.5}.print-step-body .hint,.print-step-body .warn{padding:3pt 6pt;margin:2pt 0;font-size:8pt;line-height:1.4}.print-step-body .answer-reveal{padding:4pt 6pt;margin:3pt 0}.print-step-body .answer-number{font-size:11pt}.print-step-body .key-concept{padding:3pt 6pt;margin:2pt 0;font-size:8pt;line-height:1.4}.print-short-label{font-size:9pt;color:#666;margin-bottom:6pt}@page blank-landscape{size:A4 landscape;margin:12mm}.print-card.print-mode-blank{page:blank-landscape;page-break-after:always;break-after:page;display:flex;flex-direction:row;gap:10pt;height:calc(100vh - 24mm)}.print-card.print-mode-blank:last-child{page-break-after:auto;break-after:auto}.print-card.print-mode-blank .print-content-area{flex:0 0 38%;padding-right:8pt;border-right:1pt solid #e5e7eb;display:flex;flex-direction:column}.print-card.print-mode-blank .print-content-area .print-choices{grid-template-columns:1fr 1fr}.print-blank-space{flex:1;min-height:120mm;border:1pt solid #ddd;border-radius:3pt;background-image:linear-gradient(#e5e7eb 0.5pt,transparent 0.5pt),linear-gradient(90deg,#e5e7eb 0.5pt,transparent 0.5pt);background-size:5mm 5mm}}
+.lesson-nav-bar{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);padding:var(--space-4) var(--space-6);background:var(--color-surface-2);border-bottom:1px solid var(--color-border);flex-wrap:wrap}
+.lesson-nav-bar .nav-group{display:flex;gap:var(--space-2);flex-wrap:wrap}
+.lesson-nav-bar a{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);font-weight:600;font-size:var(--text-sm);text-decoration:none;transition:background-color .2s,border-color .2s,color .2s}
+.lesson-nav-bar a:hover{background:var(--color-primary-subtle);border-color:var(--color-primary);color:var(--color-primary)}
+.lesson-nav-bar kbd{margin-left:var(--space-1);padding:1px 6px;background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:4px;font-size:0.75rem;color:var(--color-text-muted)}
+@media print{.lesson-nav-bar{display:none!important}}
+</style>
+</head>
+<body class="mathjax-process">
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <div class="header-title">
+      <svg class="logo-icon" viewBox="0 0 32 32" fill="none" aria-label="미적분 로고">
+        <rect x="2" y="2" width="28" height="28" rx="6" fill="var(--color-primary)" opacity="0.12"/>
+        <text x="16" y="22" text-anchor="middle" font-family="Georgia,sans-serif" font-size="16" font-weight="700" fill="var(--color-primary)">∫</text>
+      </svg>
+      <div>
+        <span class="school-name">유성고등학교 · 2학기</span>
+        <h1 class="site-title">미적분 I &nbsp;·&nbsp; <span class="unit-name">03. 미분계수와 도함수</span></h1>
+      </div>
+    </div>
+    <div class="header-controls">
+      <div class="progress-wrap">
+        <span class="progress-label" id="progress-label">1 / 29</span>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-bar" style="width:3%"></div>
+        </div>
+      </div>
+      <button class="btn-icon" data-theme-toggle aria-label="테마 전환">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="btn-icon btn-print" id="btn-print" aria-label="PDF 인쇄">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
+      <button class="btn-icon btn-download" id="btn-download" aria-label="HTML 파일 다운로드" title="오프라인 HTML 파일 다운로드">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-bar" role="toolbar" aria-label="난이도 필터">
+    <button class="filter-btn active" data-filter="all">전체 <span class="filter-count" id="cnt-all">29</span></button>
+    <button class="filter-btn" data-filter="example">예제 <span class="filter-count" id="cnt-example">4</span></button>
+    <button class="filter-btn" data-filter="exercise">유제 <span class="filter-count" id="cnt-exercise">6</span></button>
+    <button class="filter-btn" data-filter="basic">기초 <span class="filter-count" id="cnt-basic">7</span></button>
+    <button class="filter-btn" data-filter="standard">기본 <span class="filter-count" id="cnt-standard">8</span></button>
+    <button class="filter-btn" data-filter="advanced">실력 <span class="filter-count" id="cnt-advanced">3</span></button>
+    <button class="filter-btn" data-filter="kihul">대표기출 <span class="filter-count" id="cnt-kihul">1</span></button>
+  </div>
+</header>
+
+<main class="main-area" id="main-area">
+  <nav class="lesson-nav-bar no-print" aria-label="차시 이동">
+    <a href="index-calc.html" target="aftermath_main_calc"><span>🏠</span><span>메인 (2학기 미적분 I)</span><kbd>H</kbd></a>
+    <div class="nav-group">
+      <a href="수능특강_미적분I_함수의연속_해설.html"><span>←</span><span>이전 차시 (함수의 연속)</span></a>
+      <a href="수능특강_미적분I_도함수의활용1_해설.html"><span>다음 차시 (도함수의 활용1)</span><span>→</span></a>
+    </div>
+  </nav>
+  <div class="card-viewport" id="card-viewport"></div>
+</main>
+
+<footer class="bottom-nav" id="bottom-nav">
+  <button class="nav-btn prev-btn" id="prev-btn" disabled>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    이전
+  </button>
+  <div class="problem-counter">
+    <span id="current-num">1</span><span class="counter-sep"> / </span><span id="total-num">29</span>
+  </div>
+  <button class="nav-btn next-btn" id="next-btn">
+    다음
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</footer>
+
+<div class="print-modal" id="print-modal" aria-hidden="true">
+  <div class="print-modal-inner">
+    <h2 class="modal-title">PDF / 인쇄 설정</h2>
+    <p class="modal-desc">인쇄할 범위를 선택하세요.</p>
+    <div class="modal-options">
+      <label class="radio-option"><input type="radio" name="print-range" value="current" checked> 현재 문항만</label>
+      <label class="radio-option"><input type="radio" name="print-range" value="filter"> 현재 필터 전체</label>
+      <label class="radio-option"><input type="radio" name="print-range" value="all"> 전체 29문항</label>
+    </div>
+    <div class="modal-check">
+      <p class="modal-sub-label">출력 형태</p>
+      <label class="radio-option"><input type="radio" name="print-mode" value="problem"> 문제만</label>
+      <label class="radio-option"><input type="radio" name="print-mode" value="blank" checked> 문제 + 풀이 공간 (그리드)</label>
+      <label class="radio-option"><input type="radio" name="print-mode" value="solution"> 문제 + 해설</label>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-secondary" id="modal-cancel">취소</button>
+      <button class="btn-primary" id="modal-confirm">인쇄 / PDF 저장</button>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" id="modal-backdrop"></div>
+<div id="print-area" class="print-area"></div>
+
+<script id="problems-data">
+/* 미적분 I — 03. 미분계수와 도함수 (29문항)
+   levels:
+     - 'example' (예제, 4): c3-e1..c3-e4
+     - 'exercise' (유제, 6): c3-ex1..c3-ex6
+     - 'basic' (기초, 7): c3-b1..c3-b7
+     - 'standard' (기본, 8): c3-s1..c3-s8
+     - 'advanced' (실력, 3): c3-l1..c3-l3
+     - 'kihul' (대표기출, 1): c3-k1
+*/
+const PROBLEMS = [
+/* ───────── 예제 1 ───────── */
+  {
+    id:'c3-e1', level:'example', levelLabel:'예제', num:1, type:'choice',
+    subLabel:'미분계수 정의 · 0/0 패턴',
+    title:'\\(\\displaystyle \\lim_{x\\to 2}\\dfrac{2f(x)-3f(4)}{x-2}=4f(2)\\) — \\(\\dfrac{f\'(2)}{f(4)}\\)',
+    question:`<p>다항함수 \\(f(x)\\)가 \\(\\displaystyle \\lim_{x\\to 2}\\dfrac{2f(x)-3f(4)}{x-2}=4f(2)\\)를 만족시킬 때, \\(\\dfrac{f\'(2)}{f(4)}\\)의 값은? (단, \\(f(4)\\neq 0\\))</p>`,
+    choices:['\\(1\\)','\\(\\dfrac{3}{2}\\)','\\(2\\)','\\(\\dfrac{5}{2}\\)','\\(3\\)'], answer:4,
+    keypoint:'분모 \\(\\to 0\\)이고 극한값 유한 ⇒ <b>분자도 \\(\\to 0\\)</b>. 이 관계식으로 \\(f(4)\\) ↔ \\(f(2)\\) 연결한 뒤 미분계수 정의에 적용.',
+    steps:[
+      {tag:'STEP 1', title:'분자 \\(\\to 0\\) 조건 — \\(f(4)\\)와 \\(f(2)\\) 관계', body:`<p>\\(x\\to 2\\)에서 (분모)\\(\\to 0\\)이고 극한값이 존재하므로 (분자)\\(\\to 0\\). 다항함수 \\(f\\)는 연속이므로</p>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 2}(2f(x)-3f(4))=2f(2)-3f(4)=0\\)</div>
+<div class="calc">\\(f(4)=\\dfrac{2}{3}f(2)\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'\\(3f(4)=2f(2)\\) 치환 → 미분계수 정의 형태', body:`<p>㉠에 의해 \\(3f(4)=2f(2)\\). 그러므로</p>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 2}\\dfrac{2f(x)-3f(4)}{x-2}=\\lim_{x\\to 2}\\dfrac{2f(x)-2f(2)}{x-2}=2\\lim_{x\\to 2}\\dfrac{f(x)-f(2)}{x-2}=2f\'(2)\\)</div>`},
+      {tag:'STEP 3', title:'\\(2f\'(2)=4f(2)\\) ⇒ \\(f\'(2)=2f(2)\\)', body:`<div class="calc">\\(2f\'(2)=4f(2)\\Rightarrow f\'(2)=2f(2)\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 4', title:'\\(\\dfrac{f\'(2)}{f(4)}\\) 계산', body:`<div class="calc">\\(\\dfrac{f\'(2)}{f(4)}=\\dfrac{2f(2)}{\\tfrac{2}{3}f(2)}=3\\)</div>
+<div class="calc purple">\\(\\dfrac{f\'(2)}{f(4)}=3\\)</div>`}
+    ]
+  },
+
+  /* ───────── 유제 1 ───────── */
+  {
+    id:'c3-ex1', level:'exercise', levelLabel:'유제', num:1, type:'short',
+    subLabel:'[26009-0051] · 평균변화율 · \\(f(1)+f(-1)\\)',
+    title:'평균변화율 \\(=1\\) → \\(f(1)+f(-1)\\)',
+    question:`<p>양수 \\(a\\)에 대하여 두 점 \\((-1, a^2),\\ (1, a+4)\\)는 곡선 \\(y=f(x)\\) 위의 점이다. \\(x\\)의 값이 \\(-1\\)에서 \\(1\\)까지 변할 때의 함수 \\(y=f(x)\\)의 평균변화율이 \\(1\\)일 때, \\(f(1)+f(-1)\\)의 값을 구하시오.</p>`,
+    answerText:'\\(10\\)',
+    keypoint:'평균변화율 \\(\\dfrac{f(b)-f(a)}{b-a}\\) — 두 점 \\(y\\)좌표 \\(\\Rightarrow\\) \\(a\\)에 대한 방정식.',
+    steps:[
+      {tag:'STEP 1', title:'두 점 \\(\\Rightarrow\\) \\(f(-1)=a^2,\\ f(1)=a+4\\)', body:`<div class="calc">\\(f(-1)=a^2,\\ f(1)=a+4\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'평균변화율 \\(=1\\) 방정식', body:`<div class="calc">\\(\\dfrac{f(1)-f(-1)}{1-(-1)}=\\dfrac{(a+4)-a^2}{2}=1\\)</div>
+<div class="calc">\\(a+4-a^2=2\\Rightarrow a^2-a-2=0\\Rightarrow (a+1)(a-2)=0\\)</div>
+<p>\\(a\\)가 양수이므로 \\(a=2\\).</p>`},
+      {tag:'STEP 3', title:'합 계산', body:`<div class="calc">\\(f(-1)=4,\\ f(1)=6\\)</div>
+<div class="calc purple">\\(f(1)+f(-1)=6+4=10\\)</div>`}
+    ]
+  },
+
+  /* ───────── 유제 2 ───────── */
+  {
+    id:'c3-ex2', level:'exercise', levelLabel:'유제', num:2, type:'short',
+    subLabel:'[26009-0052] · 미분계수의 정의 · \\(f\'(1)+g\'(1)\\)',
+    title:'\\(\\lim\\dfrac{f-g}{x-1}=g\'(1)\\), \\(f\'(1)(g\'(1))^2=2\\) → \\(f\'(1)+g\'(1)\\)',
+    question:`<p>두 다항함수 \\(f(x),\\ g(x)\\)가 다음 조건을 만족시킬 때, \\(f\'(1)+g\'(1)\\)의 값을 구하시오. (단, \\(g\'(1)\\)의 값은 실수이다.)</p>
+<div class="calc"><p>(가) \\(\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x)-g(x)}{x-1}=g\'(1)\\)</p>
+<p>(나) \\(f\'(1)\\cdot (g\'(1))^2=2\\)</p></div>`,
+    answerText:'\\(3\\)',
+    keypoint:'(가)에서 분모 \\(\\to 0\\) ⇒ 분자 \\(\\to 0\\) ⇒ \\(f(1)=g(1)\\). 그 뒤 미분계수 정의로 \\(f\'(1)-g\'(1)\\) 표현.',
+    steps:[
+      {tag:'STEP 1', title:'분자 \\(\\to 0\\) — \\(f(1)=g(1)\\)', body:`<p>다항함수 \\(f, g\\)는 \\(x=1\\)에서 연속이고, \\(x\\to 1\\)에서 (분모)\\(\\to 0\\), 극한값이 존재하므로 (분자)\\(\\to 0\\).</p>
+<div class="calc">\\(f(1)-g(1)=0\\Rightarrow f(1)=g(1)\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'미분계수 정의로 좌변 분해', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x)-g(x)}{x-1}=\\lim_{x\\to 1}\\dfrac{f(x)-f(1)}{x-1}-\\lim_{x\\to 1}\\dfrac{g(x)-g(1)}{x-1}=f\'(1)-g\'(1)\\)</div>`},
+      {tag:'STEP 3', title:'(가) \\(\\Rightarrow f\'(1)=2g\'(1)\\)', body:`<div class="calc">\\(f\'(1)-g\'(1)=g\'(1)\\Rightarrow f\'(1)=2g\'(1)\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 4', title:'(나)에 대입 — \\((g\'(1))^3=1\\)', body:`<div class="calc">\\(f\'(1)(g\'(1))^2=2g\'(1)\\cdot (g\'(1))^2=2(g\'(1))^3=2\\)</div>
+<div class="calc">\\((g\'(1))^3=1\\Rightarrow g\'(1)=1\\) (실수)</div>
+<div class="calc">\\(f\'(1)=2\\)</div>`},
+      {tag:'STEP 5', title:'최종', body:`<div class="calc purple">\\(f\'(1)+g\'(1)=2+1=3\\)</div>`}
+    ]
+  },
+
+  /* ───────── 예제 2 ───────── */
+  {
+    id:'c3-e2', level:'example', levelLabel:'예제', num:2, type:'choice',
+    subLabel:'미분가능과 연속 · 조각함수 \\(g(x)\\)',
+    title:'\\(g(x)\\) 가 미분가능 + \\(\\lim \\dfrac{f-f(3)}{(x-3)^2}=2\\) → \\(f(1)+g\'(3)\\)',
+    question:`<p>실수 전체의 집합에서 미분가능한 함수 \\(f(x)\\)에 대하여 함수 \\(g(x)=\\begin{cases}\\dfrac{f(x)-2}{x-3} & (x\\lt 1\\ \\text{또는}\\ 1\\lt x\\lt 3\\ \\text{또는}\\ x\\gt 3) \\\\ 0 & (x=1\\ \\text{또는}\\ x=3)\\end{cases}\\) 이 실수 전체의 집합에서 미분가능하다. \\(\\displaystyle \\lim_{x\\to 3}\\dfrac{f(x)-f(3)}{(x-3)^2}=2\\)일 때, \\(f(1)+g\'(3)\\)의 값은?</p>`,
+    choices:['\\(2\\)','\\(\\dfrac{5}{2}\\)','\\(3\\)','\\(\\dfrac{7}{2}\\)','\\(4\\)'], answer:4,
+    keypoint:'미분가능 \\(\\Rightarrow\\) 연속. \\(g(1)=0,\\ g(3)=0\\) 조건으로 \\(f(1)=2,\\ f(3)=2\\). \\(g\'(3)\\)은 정의 그대로 분수 형태에 \\(f(3)=2\\) 대입.',
+    steps:[
+      {tag:'STEP 1', title:'\\(x=1\\) 연속 → \\(f(1)=2\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}g(x)=\\lim_{x\\to 1}\\dfrac{f(x)-2}{x-3}=\\dfrac{f(1)-2}{1-3}=g(1)=0\\)</div>
+<div class="calc">\\(\\dfrac{f(1)-2}{-2}=0\\Rightarrow f(1)=2\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'\\(x=3\\) 연속 → \\(f(3)=2\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 3}g(x)=\\lim_{x\\to 3}\\dfrac{f(x)-2}{x-3}=0\\) (\\(=g(3)\\))</div>
+<p>\\(x\\to 3\\)에서 분모 \\(\\to 0\\), 극한 유한 \\(\\Rightarrow\\) 분자 \\(\\to 0\\):</p>
+<div class="calc">\\(f(3)-2=0\\Rightarrow f(3)=2\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 3', title:'\\(g\'(3)\\) — 정의 + ㉡ 대입', body:`<div class="calc">\\(\\displaystyle g\'(3)=\\lim_{x\\to 3}\\dfrac{g(x)-g(3)}{x-3}=\\lim_{x\\to 3}\\dfrac{\\tfrac{f(x)-2}{x-3}-0}{x-3}=\\lim_{x\\to 3}\\dfrac{f(x)-2}{(x-3)^2}\\)</div>
+<div class="calc">\\(=\\displaystyle \\lim_{x\\to 3}\\dfrac{f(x)-f(3)}{(x-3)^2}=2\\)</div>`},
+      {tag:'STEP 4', title:'최종', body:`<div class="calc purple">\\(f(1)+g\'(3)=2+2=4\\)</div>`}
+    ]
+  },
+
+  /* ───────── 유제 3 ───────── */
+  {
+    id:'c3-ex3', level:'exercise', levelLabel:'유제', num:3, type:'short',
+    subLabel:'[26009-0053] · 조각함수 미분가능 · \\(a-b\\)',
+    title:'\\(f(x)=\\begin{cases}x^2+ax+b & (x\\neq 1) \\\\ 0 & (x=1)\\end{cases}\\) 미분가능 → \\(a-b\\)',
+    question:`<p>함수 \\(f(x)=\\begin{cases}x^2+ax+b & (x\\neq 1) \\\\ 0 & (x=1)\\end{cases}\\) 이 \\(x=1\\)에서 미분가능하고 \\(f\'(1)=3\\)일 때, \\(a-b\\)의 값을 구하시오. (단, \\(a,b\\)는 상수)</p>`,
+    answerText:'\\(3\\)',
+    keypoint:'미분가능 ⇒ 연속 ⇒ \\(f(1)=0\\) ⇒ \\(b=-(1+a)\\). 그 뒤 \\(f\'(1)=\\displaystyle \\lim \\dfrac{f(x)-0}{x-1}\\) 인수분해.',
+    steps:[
+      {tag:'STEP 1', title:'\\(x=1\\) 연속 → \\(b=-(1+a)\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}f(x)=1+a+b=f(1)=0\\Rightarrow b=-(1+a)\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'\\(f\'(1)\\) 정의로 \\(a\\) 결정', body:`<div class="calc">\\(\\displaystyle f\'(1)=\\lim_{x\\to 1}\\dfrac{x^2+ax+b-0}{x-1}=\\lim_{x\\to 1}\\dfrac{x^2+ax-(1+a)}{x-1}\\)</div>
+<div class="calc">\\(=\\displaystyle \\lim_{x\\to 1}\\dfrac{(x-1)(x+1+a)}{x-1}=\\lim_{x\\to 1}(x+1+a)=2+a\\)</div>
+<div class="calc">\\(2+a=3\\Rightarrow a=1\\)</div>`},
+      {tag:'STEP 3', title:'\\(b\\) 와 \\(a-b\\)', body:`<div class="calc">\\(b=-(1+1)=-2\\)</div>
+<div class="calc purple">\\(a-b=1-(-2)=3\\)</div>`}
+    ]
+  },
+
+  /* ───────── 예제 3 ───────── */
+  {
+    id:'c3-e3', level:'example', levelLabel:'예제', num:3, type:'choice',
+    subLabel:'도함수 정의 · 이차함수 부등식',
+    title:'이차함수 \\(f(x)=ax^2-3x+5\\) — \\(a\\)의 최솟값',
+    question:`<p>이차함수 \\(f(x)=ax^2-3x+5\\)가 다음 조건을 만족시키도록 하는 실수 \\(a\\)의 최솟값은?</p>
+<div class="calc">모든 실수 \\(x\\)에 대하여 \\(\\displaystyle \\lim_{t\\to x}\\dfrac{f(2t-1)-f(2x-1)}{2(t-x)}\\leq (x+1)f\'(x)\\) 이다.</div>`,
+    choices:['\\(\\dfrac{1}{2}\\)','\\(1\\)','\\(\\dfrac{3}{2}\\)','\\(2\\)','\\(\\dfrac{5}{2}\\)'], answer:2,
+    keypoint:'좌변에서 \\(u=2t-1\\)로 치환 → 도함수 정의 형태 \\(f\'(2x-1)\\). 그 뒤 모든 \\(x\\)에서 부등식 ⇒ 판별식 조건.',
+    steps:[
+      {tag:'STEP 1', title:'좌변 — 치환으로 \\(f\'(2x-1)\\) 형태로', body:`<p>\\(u=2t-1\\)이라 하면 \\(t\\to x\\)일 때 \\(u\\to 2x-1\\). 그리고 \\(2(t-x)=u-(2x-1)\\).</p>
+<div class="calc">\\(\\displaystyle \\lim_{t\\to x}\\dfrac{f(2t-1)-f(2x-1)}{2(t-x)}=\\lim_{u\\to 2x-1}\\dfrac{f(u)-f(2x-1)}{u-(2x-1)}=f\'(2x-1)\\)</div>`},
+      {tag:'STEP 2', title:'\\(f\'(x)=2ax-3\\) 계산', body:`<div class="calc">\\(f\'(x)=2ax-3\\)</div>
+<div class="calc">\\(f\'(2x-1)=2a(2x-1)-3=4ax-2a-3\\)</div>`},
+      {tag:'STEP 3', title:'부등식 정리', body:`<div class="calc">\\(4ax-2a-3\\leq (x+1)(2ax-3)\\)</div>
+<div class="calc">\\(4ax-2a-3\\leq 2ax^2+(2a-3)x-3\\)</div>
+<div class="calc">\\(2ax^2-(2a+3)x+2a\\geq 0\\quad (\\text{모든 }x)\\quad \\cdots ㉠\\)</div>`},
+      {tag:'STEP 4', title:'\\(a\\gt 0\\) + 판별식 \\(\\leq 0\\)', body:`<p>모든 \\(x\\)에서 ㉠이 성립하려면 \\(a\\gt 0\\)이고</p>
+<div class="calc">\\(D=(2a+3)^2-16a^2\\leq 0\\)</div>
+<div class="calc">\\(-12a^2+12a+9\\leq 0\\Rightarrow 4a^2-4a-3\\geq 0\\Rightarrow (2a+1)(2a-3)\\geq 0\\)</div>
+<p>\\(a\\gt 0\\) ⇒ \\(2a-3\\geq 0\\Rightarrow a\\geq \\dfrac{3}{2}\\).</p>
+<div class="calc purple">\\(a\\)의 최솟값 \\(=\\dfrac{3}{2}\\)</div>`}
+    ]
+  },
+
+  /* ───────── 유제 4 ───────── */
+  {
+    id:'c3-ex4', level:'exercise', levelLabel:'유제', num:4, type:'short',
+    subLabel:'[26009-0054] · 도함수 정의 + 미분계수 — \\(a+b\\) 최솟값',
+    title:'(가) \\(\\lim\\dfrac{f(x)-f(2)}{x^2-4}=6\\), (나) \\(f\'(x)=ax^3+bx\\) → \\(a+b\\) 최솟값',
+    question:`<p>실수 전체의 집합에서 미분가능한 함수 \\(f(x)\\)가 다음 조건을 만족시키도록 하는 두 자연수 \\(a,b\\)의 모든 순서쌍 \\((a,b)\\)에 대하여 \\(a+b\\)의 최솟값을 구하시오.</p>
+<div class="calc"><p>(가) \\(\\displaystyle \\lim_{x\\to -2}\\dfrac{f(x)-f(2)}{x^2-4}=6\\)</p>
+<p>(나) 모든 실수 \\(x\\)에 대하여 \\(\\displaystyle \\lim_{t\\to x}\\dfrac{f(t)-f(x)}{t-x}=ax^3+bx\\) 이다.</p></div>`,
+    answerText:'\\(6\\)',
+    keypoint:'(나) \\(\\Rightarrow f\'(x)=ax^3+bx\\). (가): 분모 \\(\\to 0\\) ⇒ \\(f(-2)=f(2)\\), 그리고 미분계수 정의로 \\(f\'(-2)=-24\\). \\(-8a-2b=-24\\) ⇒ \\(b=12-4a\\). 자연수 \\((a,b)\\) 나열.',
+    steps:[
+      {tag:'STEP 1', title:'(나) \\(\\Rightarrow f\'(x)=ax^3+bx\\)', body:`<p>도함수의 정의 \\(\\displaystyle \\lim_{t\\to x}\\dfrac{f(t)-f(x)}{t-x}=f\'(x)\\)이므로 \\(f\'(x)=ax^3+bx\\).</p>`},
+      {tag:'STEP 2', title:'(가) — 분자 \\(\\to 0\\) ⇒ \\(f(-2)=f(2)\\)', body:`<p>분모 \\(x^2-4=(x+2)(x-2)\\to 0\\), 극한 유한 ⇒ 분자 \\(\\to 0\\):</p>
+<div class="calc">\\(f(-2)-f(2)=0\\Rightarrow f(-2)=f(2)\\)</div>`},
+      {tag:'STEP 3', title:'(가) → \\(f\'(-2)=-24\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to -2}\\dfrac{f(x)-f(-2)}{(x+2)(x-2)}=\\lim_{x\\to -2}\\dfrac{f(x)-f(-2)}{x+2}\\cdot \\dfrac{1}{x-2}=f\'(-2)\\cdot \\left(-\\dfrac{1}{4}\\right)=6\\)</div>
+<div class="calc">\\(f\'(-2)=-24\\)</div>`},
+      {tag:'STEP 4', title:'\\(b=12-4a\\) — 자연수 순서쌍', body:`<div class="calc">\\(f\'(-2)=-8a-2b=-24\\Rightarrow b=12-4a\\)</div>
+<p>\\(a,b\\) 자연수: \\(b\\geq 1\\Rightarrow a\\leq \\dfrac{11}{4}\\Rightarrow a\\in\\{1,2\\}\\).</p>
+<div class="calc">\\((a,b)=(1,8),\\ (2,4)\\)</div>`},
+      {tag:'STEP 5', title:'\\(a+b\\) 최솟값', body:`<div class="calc">\\((1,8)\\Rightarrow 9,\\ (2,4)\\Rightarrow 6\\)</div>
+<div class="calc purple">최솟값 \\(=6\\)</div>`}
+    ]
+  },
+
+  /* ───────── 예제 4 ───────── */
+  {
+    id:'c3-e4', level:'example', levelLabel:'예제', num:4, type:'short',
+    subLabel:'미분법 · 삼차함수 \\(g(x)\\)',
+    title:'\\(g(x)=(f(x))^2-(x^2+2)f(x)\\) 삼차 → \\(g(1)\\)',
+    question:`<p>\\(f(0)=0\\)이고 일차함수가 아닌 다항함수 \\(f(x)\\)에 대하여 함수 \\(g(x)=(f(x))^2-(x^2+2)f(x)\\) 는 삼차함수이다. 함수 \\((2x-1)g(x)\\)의 \\(x=0\\)에서의 미분계수가 \\(-8\\)일 때, \\(g(1)\\)의 값을 구하시오.</p>`,
+    answerText:'\\(18\\)',
+    keypoint:'차수 분석으로 \\(f\\)는 이차 (\\(a=1\\)). 그 뒤 곱미분 \\((fg)\'=f\'g+fg\'\\) 적용.',
+    steps:[
+      {tag:'STEP 1', title:'차수 분석 — \\(f\\)는 이차함수, 최고차계수 \\(=1\\)', body:`<p>\\(f\\)가 상수이면 \\(f=0\\) ⇒ \\(g=0\\) (삼차 아님). \\(f\\)의 차수가 3 이상이면 \\(g\\)의 차수가 6 이상 (삼차 아님). \\(f\\)가 일차 아닌 조건 ⇒ \\(f\\) 는 이차.</p>
+<p>\\(f(0)=0\\) ⇒ \\(f(x)=ax^2+bx\\) (\\(a\\neq 0\\)).</p>
+<div class="calc">\\(g(x)=(ax^2+bx)^2-(x^2+2)(ax^2+bx)=(a^2-a)x^4+(2ab-b)x^3+(b^2-2a)x^2-2bx\\)</div>
+<p>\\(g\\)가 삼차 ⇒ \\(a^2-a=0\\) (\\(a^4\\) 계수 \\(=0\\)) + \\(2ab-b\\neq 0\\). \\(a\\neq 0\\Rightarrow a=1\\), 그리고 \\(b(2a-1)=b\\neq 0\\) ⇒ \\(b\\neq 0\\).</p>`},
+      {tag:'STEP 2', title:'\\(g(x)\\) 정리', body:`<div class="calc">\\(g(x)=bx^3+(b^2-2)x^2-2bx\\)</div>
+<div class="calc">\\(g\'(x)=3bx^2+2(b^2-2)x-2b\\)</div>
+<div class="calc">\\(g(0)=0,\\ g\'(0)=-2b\\)</div>`},
+      {tag:'STEP 3', title:'\\(h(x)=(2x-1)g(x)\\) 미분계수 \\(h\'(0)=-8\\)', body:`<div class="calc">\\(h\'(x)=2g(x)+(2x-1)g\'(x)\\)</div>
+<div class="calc">\\(h\'(0)=2\\cdot 0+(-1)\\cdot (-2b)=2b=-8\\Rightarrow b=-4\\)</div>`},
+      {tag:'STEP 4', title:'\\(g(1)\\)', body:`<div class="calc">\\(g(x)=-4x^3+(16-2)x^2-2(-4)x=-4x^3+14x^2+8x\\)</div>
+<div class="calc purple">\\(g(1)=-4+14+8=18\\)</div>`}
+    ]
+  },
+
+  /* ───────── 유제 5 ───────── */
+  {
+    id:'c3-ex5', level:'exercise', levelLabel:'유제', num:5, type:'choice',
+    subLabel:'[26009-0055] · 도함수 정의 → 미분계수',
+    title:'\\(\\lim\\dfrac{f(t)-f(x)}{t^2-x^2}=2x+1\\) → \\((x^2+2x)f(x)\\)의 \\(x=-1\\) 미분계수',
+    question:`<p>다항함수 \\(f(x)\\)가 \\(0\\)이 아닌 모든 실수 \\(x\\)에 대하여 \\(\\displaystyle \\lim_{t\\to x}\\dfrac{f(t)-f(x)}{t^2-x^2}=2x+1\\) 을 만족시킬 때, 함수 \\((x^2+2x)f(x)\\)의 \\(x=-1\\)에서의 미분계수는?</p>`,
+    choices:['\\(-5\\)','\\(-4\\)','\\(-3\\)','\\(-2\\)','\\(-1\\)'], answer:3,
+    keypoint:'좌변 \\(=\\dfrac{f\'(x)}{2x}\\) ⇒ \\(f\'(x)=2x(2x+1)=4x^2+2x\\). 그 뒤 곱미분.',
+    steps:[
+      {tag:'STEP 1', title:'좌변 분해 → \\(f\'(x)\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{t\\to x}\\dfrac{f(t)-f(x)}{t^2-x^2}=\\lim_{t\\to x}\\dfrac{f(t)-f(x)}{t-x}\\cdot \\dfrac{1}{t+x}=\\dfrac{f\'(x)}{2x}\\)</div>
+<div class="calc">\\(\\dfrac{f\'(x)}{2x}=2x+1\\Rightarrow f\'(x)=2x(2x+1)=4x^2+2x\\)</div>`},
+      {tag:'STEP 2', title:'\\(f\'(-1)\\) 계산', body:`<div class="calc">\\(f\'(-1)=4-2=2\\)</div>`},
+      {tag:'STEP 3', title:'\\(g(x)=(x^2+2x)f(x)\\) 곱미분', body:`<div class="calc">\\(g\'(x)=(2x+2)f(x)+(x^2+2x)f\'(x)\\)</div>
+<div class="calc">\\(g\'(-1)=0\\cdot f(-1)+(1-2)\\cdot f\'(-1)=-f\'(-1)=-2\\)</div>
+<div class="calc purple">\\(g\'(-1)=-2\\)</div>`}
+    ]
+  },
+
+  /* ───────── 유제 6 ───────── */
+  {
+    id:'c3-ex6', level:'exercise', levelLabel:'유제', num:6, type:'choice',
+    subLabel:'[26009-0056] · 함수방정식 \\(4f(x^2+1)=2x^3f\'(x)+3x^2-1\\)',
+    title:'\\(4f(x^2+1)=2x^3f\'(x)+3x^2-1\\) → \\(f(0)\\)',
+    question:`<p>상수함수가 아닌 다항함수 \\(f(x)\\)가 모든 실수 \\(x\\)에 대하여 \\(4f(x^2+1)=2x^3 f\'(x)+3x^2-1\\) 을 만족시킬 때, \\(f(0)\\)의 값은?</p>`,
+    choices:['\\(-\\dfrac{5}{8}\\)','\\(-\\dfrac{1}{2}\\)','\\(-\\dfrac{3}{8}\\)','\\(-\\dfrac{1}{4}\\)','\\(-\\dfrac{1}{8}\\)'], answer:0,
+    keypoint:'양변 차수 비교 \\(2n=n+2\\Rightarrow n=2\\). 그 뒤 \\(f(x)=ax^2+bx+c\\) 가정하고 계수 비교.',
+    steps:[
+      {tag:'STEP 1', title:'차수 비교 \\(2n=n+2\\Rightarrow n=2\\)', body:`<p>\\(f\\)의 차수 \\(n\\) ⇒ \\(f(x^2+1)\\)의 차수 \\(2n\\), \\(2x^3 f\'(x)\\)의 차수 \\((n-1)+3=n+2\\). 양변 차수 같음:</p>
+<div class="calc">\\(2n=n+2\\Rightarrow n=2\\)</div>`},
+      {tag:'STEP 2', title:'\\(f(x)=ax^2+bx+c\\) 대입', body:`<div class="calc">\\(f\'(x)=2ax+b\\)</div>
+<div class="calc">\\(4f(x^2+1)=4a(x^2+1)^2+4b(x^2+1)+4c=4ax^4+(8a+4b)x^2+4a+4b+4c\\)</div>
+<div class="calc">\\(2x^3 f\'(x)+3x^2-1=2x^3(2ax+b)+3x^2-1=4ax^4+2bx^3+3x^2-1\\)</div>`},
+      {tag:'STEP 3', title:'양변 계수 비교 — \\(a, b, c\\) 결정', body:`<div class="calc">\\(x^3\\)항: \\(0=2b\\Rightarrow b=0\\)</div>
+<div class="calc">\\(x^2\\)항: \\(8a+4b=3\\Rightarrow a=\\dfrac{3}{8}\\)</div>
+<div class="calc">상수항: \\(4a+4b+4c=-1\\Rightarrow \\dfrac{3}{2}+4c=-1\\Rightarrow c=-\\dfrac{5}{8}\\)</div>`},
+      {tag:'STEP 4', title:'\\(f(0)=c\\)', body:`<div class="calc purple">\\(f(0)=-\\dfrac{5}{8}\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기초 1 ───────── */
+  {
+    id:'c3-b1', level:'basic', levelLabel:'기초', num:1, type:'choice',
+    subLabel:'[26009-0057] · 평균변화율 + 접선 기울기 → \\(f(1)\\)',
+    title:'이차함수 \\(f\\) — 평균변화율 \\(=3\\), \\(f\'(2)=-3\\) → \\(f(1)\\)',
+    question:`<p>이차함수 \\(f(x)\\)에 대하여 \\(x\\)의 값이 \\(-1\\)에서 \\(2\\)까지 변할 때의 함수 \\(y=f(x)\\)의 평균변화율은 \\(3\\)이고, 곡선 \\(y=f(x)\\) 위의 점 \\((2,4)\\)에서의 접선의 기울기가 \\(-3\\)일 때, \\(f(1)\\)의 값은?</p>`,
+    choices:['\\(-1\\)','\\(1\\)','\\(3\\)','\\(5\\)','\\(7\\)'], answer:3,
+    keypoint:'이차함수 3개 미지수 \\(a,b,c\\). 평균변화율 / \\(f(2)=4\\) / \\(f\'(2)=-3\\) 세 방정식으로 결정.',
+    steps:[
+      {tag:'STEP 1', title:'\\(f(x)=ax^2+bx+c\\) — 평균변화율', body:`<div class="calc">\\(\\dfrac{f(2)-f(-1)}{2-(-1)}=\\dfrac{(4a+2b+c)-(a-b+c)}{3}=a+b=3\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'\\(f(2)=4\\)', body:`<div class="calc">\\(4a+2b+c=4\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 3', title:'\\(f\'(2)=-3\\)', body:`<div class="calc">\\(f\'(x)=2ax+b\\Rightarrow f\'(2)=4a+b=-3\\quad\\cdots ㉢\\)</div>`},
+      {tag:'STEP 4', title:'연립 → \\(a=-2, b=5, c=2\\)', body:`<p>㉠, ㉢: \\(4a+b-(a+b)=3a=-6\\Rightarrow a=-2,\\ b=5\\). ㉡에 대입: \\(-8+10+c=4\\Rightarrow c=2\\).</p>
+<div class="calc">\\(f(x)=-2x^2+5x+2\\)</div>`},
+      {tag:'STEP 5', title:'\\(f(1)\\)', body:`<div class="calc purple">\\(f(1)=-2+5+2=5\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기초 2 ───────── */
+  {
+    id:'c3-b2', level:'basic', levelLabel:'기초', num:2, type:'short',
+    subLabel:'[26009-0058] · 무한대 극한 + 미분계수 → \\(f(a)\\)',
+    title:'\\(\\displaystyle \\lim_{x\\to\\infty}xf(\\tfrac{1}{x})\\{f(\\tfrac{2}{x}-3)-f(-3)\\}=8a\\) → \\(f(a)\\)',
+    question:`<p>실수 \\(a\\)와 함수 \\(f(x)=ax^2+2x-1\\)이 \\(\\displaystyle \\lim_{x\\to\\infty}x\\,f\\!\\left(\\dfrac{1}{x}\\right)\\!\\left\\{f\\!\\left(\\dfrac{2}{x}-3\\right)-f(-3)\\right\\}=8a\\) 을 만족시킬 때, \\(f(a)\\)의 값을 구하시오.</p>`,
+    answerText:'\\(2\\)',
+    keypoint:'\\(h=1/x\\) 치환 — \\(x\\to\\infty\\Rightarrow h\\to 0+\\). \\(2h-3\\)을 \\(t\\)로 두면 미분계수 정의 \\(f\'(-3)\\) 등장.',
+    steps:[
+      {tag:'STEP 1', title:'\\(h=1/x\\) 치환', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to\\infty}xf(\\tfrac{1}{x})\\{f(\\tfrac{2}{x}-3)-f(-3)\\}=\\lim_{h\\to 0+}\\dfrac{1}{h}f(h)\\{f(2h-3)-f(-3)\\}\\)</div>`},
+      {tag:'STEP 2', title:'\\(\\dfrac{f(2h-3)-f(-3)}{2h}\\)로 묶기', body:`<div class="calc">\\(=\\displaystyle \\lim_{h\\to 0+}\\left[2f(h)\\cdot \\dfrac{f(2h-3)-f(-3)}{(2h-3)-(-3)}\\right]\\)</div>
+<p>\\(t=2h-3\\) 치환 ⇒ \\(\\displaystyle \\lim_{t\\to -3+}\\dfrac{f(t)-f(-3)}{t-(-3)}=f\'(-3)\\). 그리고 \\(f(h)\\to f(0)=-1\\).</p>
+<div class="calc">\\(=2f(0)f\'(-3)=2\\cdot (-1)\\cdot f\'(-3)\\)</div>`},
+      {tag:'STEP 3', title:'\\(f\'(-3)\\) — \\(f\'(x)=2ax+2\\)', body:`<div class="calc">\\(f\'(-3)=-6a+2\\)</div>
+<div class="calc">\\(-2\\cdot(-6a+2)=12a-4=8a\\Rightarrow 4a=4\\Rightarrow a=1\\)</div>`},
+      {tag:'STEP 4', title:'\\(f(a)=f(1)\\)', body:`<div class="calc">\\(f(x)=x^2+2x-1\\)</div>
+<div class="calc purple">\\(f(1)=1+2-1=2\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기초 3 ───────── */
+  {
+    id:'c3-b3', level:'basic', levelLabel:'기초', num:3, type:'choice',
+    subLabel:'[26009-0059] · 조각함수 미분가능 → \\(f(a)\\)',
+    title:'\\(f(x)=\\begin{cases}ax^2+2ax & (x\\neq 1) \\\\ a^2+2 & (x=1)\\end{cases}\\), \\(f\'(1)\\gt 5\\) → \\(f(a)\\)',
+    question:`<p>함수 \\(f(x)=\\begin{cases}ax^2+2ax & (x\\neq 1) \\\\ a^2+2 & (x=1)\\end{cases}\\) 이 \\(x=1\\)에서 미분가능하고, \\(f\'(1)\\gt 5\\)일 때, \\(f(a)\\)의 값은? (단, \\(a\\)는 상수)</p>`,
+    choices:['\\(8\\)','\\(10\\)','\\(12\\)','\\(14\\)','\\(16\\)'], answer:4,
+    keypoint:'미분가능 \\(\\Rightarrow\\) 연속 → \\(3a=a^2+2\\). 그 뒤 \\(f\'(1)\\) 계산으로 두 \\(a\\) 중 하나 선택.',
+    steps:[
+      {tag:'STEP 1', title:'연속 → \\(3a=a^2+2\\) → \\(a=1\\) 또는 \\(2\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}(ax^2+2ax)=3a=f(1)=a^2+2\\)</div>
+<div class="calc">\\(a^2-3a+2=0\\Rightarrow (a-1)(a-2)=0\\Rightarrow a=1\\) 또는 \\(2\\)</div>`},
+      {tag:'STEP 2', title:'\\(a=1\\) 사례 — \\(f\'(1)=4\\)', body:`<p>\\(f(x)=x^2+2x\\) (\\(x\\neq 1\\)), \\(f(1)=3\\).</p>
+<div class="calc">\\(\\displaystyle f\'(1)=\\lim_{x\\to 1}\\dfrac{x^2+2x-3}{x-1}=\\lim_{x\\to 1}\\dfrac{(x-1)(x+3)}{x-1}=4\\)</div>
+<p>\\(4\\lt 5\\) — 조건 위배.</p>`},
+      {tag:'STEP 3', title:'\\(a=2\\) 사례 — \\(f\'(1)=8\\)', body:`<p>\\(f(x)=2x^2+4x\\) (\\(x\\neq 1\\)), \\(f(1)=6\\).</p>
+<div class="calc">\\(\\displaystyle f\'(1)=\\lim_{x\\to 1}\\dfrac{2x^2+4x-6}{x-1}=\\lim_{x\\to 1}\\dfrac{2(x-1)(x+3)}{x-1}=8\\)</div>
+<p>\\(8\\gt 5\\) — 만족.</p>`},
+      {tag:'STEP 4', title:'\\(f(a)=f(2)\\)', body:`<div class="calc">\\(f(2)=2\\cdot 4+4\\cdot 2=16\\)</div>
+<div class="calc purple">\\(f(a)=16\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기초 4 ───────── */
+  {
+    id:'c3-b4', level:'basic', levelLabel:'기초', num:4, type:'choice',
+    subLabel:'[26009-0060] · 일차·이차 그래프 결합 + 미분가능 → \\(h\'(1)\\)',
+    title:'\\(h(x)=\\begin{cases}f(x-1) & (x\\leq 0) \\\\ g(x)-2 & (x\\gt 0)\\end{cases}\\) 미분가능 → \\(h\'(1)\\)',
+    question:`<p>일차함수 \\(y=f(x)\\)의 그래프와 이차함수 \\(y=g(x)\\)의 그래프가 두 점 \\((-1,2),\\ (1,4)\\)에서 만난다. 함수 \\(h(x)=\\begin{cases}f(x-1) & (x\\leq 0) \\\\ g(x)-2 & (x\\gt 0)\\end{cases}\\) 이 실수 전체의 집합에서 미분가능할 때, \\(h\'(1)\\)의 값은?</p>`,
+    choices:['\\(-4\\)','\\(-3\\)','\\(-2\\)','\\(-1\\)','\\(0\\)'], answer:3,
+    keypoint:'두 점을 지나는 일차 \\(f\\) 결정. \\(g-f=a(x+1)(x-1)\\). \\(x=0\\) 연속 + 미분가능 조건으로 \\(a\\) 결정.',
+    steps:[
+      {tag:'STEP 1', title:'\\(f(x)=x+3\\)', body:`<p>두 점 \\((-1,2),\\ (1,4)\\) 지나는 직선:</p>
+<div class="calc">\\(f(x)=x+3\\)</div>`},
+      {tag:'STEP 2', title:'\\(g(x)-f(x)=a(x+1)(x-1)\\) (이차)', body:`<p>\\(g(x)=f(x)\\)의 근이 \\(-1,1\\)이므로 \\(g(x)=a(x+1)(x-1)+f(x)=ax^2+x+3-a\\) (\\(a\\neq 0\\)).</p>`},
+      {tag:'STEP 3', title:'\\(x=0\\) 연속 → \\(a=-1\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 0-}h(x)=\\lim_{x\\to 0-}f(x-1)=f(-1)=2\\)</div>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 0+}h(x)=\\lim_{x\\to 0+}(g(x)-2)=g(0)-2=(3-a)-2=1-a\\)</div>
+<div class="calc">\\(h(0)=f(-1)=2\\)</div>
+<div class="calc">\\(1-a=2\\Rightarrow a=-1\\)</div>`},
+      {tag:'STEP 4', title:'\\(g(x)=-x^2+x+4\\) → \\(h(x)\\) 정리', body:`<div class="calc">\\(h(x)=\\begin{cases}x+2 & (x\\leq 0) \\\\ -x^2+x+2 & (x\\gt 0)\\end{cases}\\)</div>`},
+      {tag:'STEP 5', title:'\\(h\'(1)\\)', body:`<div class="calc">\\(x\\gt 0\\)에서 \\(h\'(x)=-2x+1\\Rightarrow h\'(1)=-1\\)</div>
+<div class="calc purple">\\(h\'(1)=-1\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기초 5 ───────── */
+  {
+    id:'c3-b5', level:'basic', levelLabel:'기초', num:5, type:'choice',
+    subLabel:'[26009-0061] · 도함수의 정의 \\(\\Rightarrow f\'(x)=ax(3x-4)\\)',
+    title:'\\(\\lim\\dfrac{f(t)-f(x)}{t-x}=ax(3x-4)\\), \\(f\'(1)+f\'(2)=10\\) → \\(a\\)',
+    question:`<p>함수 \\(f(x)\\)가 모든 실수 \\(x\\)에 대하여 \\(\\displaystyle \\lim_{t\\to x}\\dfrac{f(t)-f(x)}{t-x}=ax(3x-4)\\) 를 만족시킨다. \\(f\'(1)+f\'(2)=10\\)일 때, 상수 \\(a\\)의 값은?</p>`,
+    choices:['\\(\\dfrac{10}{3}\\)','\\(\\dfrac{11}{3}\\)','\\(4\\)','\\(\\dfrac{13}{3}\\)','\\(\\dfrac{14}{3}\\)'], answer:0,
+    keypoint:'좌변이 \\(f\'(x)\\)이므로 \\(f\'(x)=ax(3x-4)=3ax^2-4ax\\). 두 미분계수 합으로 \\(a\\) 결정.',
+    steps:[
+      {tag:'STEP 1', title:'도함수 정의 \\(\\Rightarrow f\'(x)=ax(3x-4)\\)', body:`<div class="calc">\\(f\'(x)=ax(3x-4)\\)</div>`},
+      {tag:'STEP 2', title:'\\(f\'(1), f\'(2)\\) 계산', body:`<div class="calc">\\(f\'(1)=a\\cdot 1\\cdot(-1)=-a\\)</div>
+<div class="calc">\\(f\'(2)=a\\cdot 2\\cdot 2=4a\\)</div>
+<div class="calc">\\(f\'(1)+f\'(2)=-a+4a=3a=10\\Rightarrow a=\\dfrac{10}{3}\\)</div>
+<div class="calc purple">\\(a=\\dfrac{10}{3}\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기초 6 ───────── */
+  {
+    id:'c3-b6', level:'basic', levelLabel:'기초', num:6, type:'choice',
+    subLabel:'[26009-0062] · 조각함수 \\(g\\) · 좌·우 도함수 극한',
+    title:'\\(g(x)=\\begin{cases}2x^3-4x & (x\\lt 0) \\\\ f(x)-f(0) & (x\\geq 0)\\end{cases}\\) — \\(\\lim_{x\\to 0+}g\'+\\lim_{x\\to 0-}g\'\\)',
+    question:`<p>\\(f\'(0)=0\\)인 다항함수 \\(f(x)\\)에 대하여 함수 \\(g(x)\\)를 \\(g(x)=\\begin{cases}2x^3-4x & (x\\lt 0) \\\\ f(x)-f(0) & (x\\geq 0)\\end{cases}\\) 이라 할 때, \\(\\displaystyle \\lim_{x\\to 0+}g\'(x)+\\lim_{x\\to 0-}g\'(x)\\)의 값은?</p>`,
+    choices:['\\(-5\\)','\\(-4\\)','\\(-3\\)','\\(-2\\)','\\(-1\\)'], answer:1,
+    keypoint:'양쪽 분기에서 \\(g\'\\)을 각각 구해 \\(x\\to 0\\)에서 극한값을 더한다. \\(f\'(0)=0\\) 활용.',
+    steps:[
+      {tag:'STEP 1', title:'\\(x\\geq 0\\) — \\(g\'(x)=f\'(x)\\)', body:`<p>\\(g(x)=f(x)-f(0)\\)이므로 \\(g\'(x)=f\'(x)\\) (\\(x\\gt 0\\)).</p>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 0+}g\'(x)=f\'(0)=0\\)</div>`},
+      {tag:'STEP 2', title:'\\(x\\lt 0\\) — \\(g\'(x)=6x^2-4\\)', body:`<div class="calc">\\(g\'(x)=6x^2-4\\Rightarrow \\displaystyle \\lim_{x\\to 0-}g\'(x)=-4\\)</div>`},
+      {tag:'STEP 3', title:'합', body:`<div class="calc purple">\\(0+(-4)=-4\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기초 7 ───────── */
+  {
+    id:'c3-b7', level:'basic', levelLabel:'기초', num:7, type:'choice',
+    subLabel:'[26009-0063] · 점-직선 거리 + 합성함수 미분',
+    title:'점 \\(P(t,-t^2+2t+a)\\) 와 직선 \\(y=2x\\) 거리 \\(f(t)\\), \\(g(x)=(f(x))^2\\) — 접선 기울기',
+    question:`<p>양수 \\(a\\)와 실수 \\(t\\)에 대하여 점 \\(P(t,-t^2+2t+a)\\)와 직선 \\(y=2x\\) 사이의 거리를 \\(f(t)\\)라 하자. 함수 \\(g(x)=(f(x))^2\\) 에 대하여 곡선 \\(y=g(x)\\) 위의 점 \\((-1,5)\\)에서의 접선의 기울기는?</p>`,
+    choices:['\\(\\dfrac{7}{2}\\)','\\(4\\)','\\(\\dfrac{9}{2}\\)','\\(5\\)','\\(\\dfrac{11}{2}\\)'], answer:1,
+    keypoint:'점-직선 거리 \\(\\Rightarrow f(t)=\\dfrac{|t^2-a|}{\\sqrt{5}}\\). \\((f)^2\\)으로 절댓값 제거. \\(g(-1)=5\\)로 \\(a\\) 결정.',
+    steps:[
+      {tag:'STEP 1', title:'\\(f(t)\\) — 점-직선 거리', body:`<p>직선 \\(2x-y=0\\), \\(\\sqrt{2^2+1^2}=\\sqrt 5\\).</p>
+<div class="calc">\\(f(t)=\\dfrac{|2t-(-t^2+2t+a)|}{\\sqrt 5}=\\dfrac{|t^2-a|}{\\sqrt 5}\\)</div>`},
+      {tag:'STEP 2', title:'\\(g(x)=\\dfrac{(x^2-a)^2}{5}\\)', body:`<div class="calc">\\(g(x)=\\dfrac{(x^2-a)^2}{5}\\)</div>`},
+      {tag:'STEP 3', title:'\\(g(-1)=5\\) → \\(a=6\\)', body:`<div class="calc">\\(\\dfrac{(1-a)^2}{5}=5\\Rightarrow (1-a)^2=25\\Rightarrow a=-4\\) 또는 \\(6\\)</div>
+<p>\\(a\\gt 0\\Rightarrow a=6\\).</p>`},
+      {tag:'STEP 4', title:'\\(g\'(x)\\) 계산 → \\(g\'(-1)\\)', body:`<div class="calc">\\(g(x)=\\dfrac{x^4-12x^2+36}{5}\\)</div>
+<div class="calc">\\(g\'(x)=\\dfrac{4x^3-24x}{5}\\)</div>
+<div class="calc">\\(g\'(-1)=\\dfrac{-4+24}{5}=\\dfrac{20}{5}=4\\)</div>
+<div class="calc purple">접선 기울기 \\(=4\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 1 ───────── */
+  {
+    id:'c3-s1', level:'standard', levelLabel:'기본', num:1, type:'choice',
+    subLabel:'[26009-0064] · 합성 미분계수 \\(\\lim \\dfrac{f(x^2)-f(x)}{x^2-1}=12\\)',
+    title:'\\(\\lim\\dfrac{f(x^2)-f(x)}{x^2-1}=12\\) → \\(f\'(1)\\)',
+    question:`<p>함수 \\(f(x)\\)의 \\(x=1\\)에서의 미분계수가 존재하고, \\(\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x^2)-f(x)}{x^2-1}=12\\)일 때, \\(f\'(1)\\)의 값은?</p>`,
+    choices:['\\(21\\)','\\(22\\)','\\(23\\)','\\(24\\)','\\(25\\)'], answer:3,
+    keypoint:'\\(f(x^2)-f(x)=(f(x^2)-f(1))-(f(x)-f(1))\\) 분해. \\(\\lim\\dfrac{f(x^2)-f(1)}{x^2-1}=f\'(1)\\), \\(\\lim\\dfrac{f(x)-f(1)}{x-1}=f\'(1)\\), \\(\\dfrac{1}{x+1}\\to \\dfrac{1}{2}\\).',
+    steps:[
+      {tag:'STEP 1', title:'분자 분해', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x^2)-f(x)}{x^2-1}=\\lim_{x\\to 1}\\dfrac{f(x^2)-f(1)-(f(x)-f(1))}{x^2-1}\\)</div>`},
+      {tag:'STEP 2', title:'두 항으로 분리', body:`<div class="calc">\\(=\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x^2)-f(1)}{x^2-1}-\\lim_{x\\to 1}\\dfrac{f(x)-f(1)}{(x-1)(x+1)}\\)</div>
+<div class="calc">\\(=f\'(1)-\\dfrac{1}{2}f\'(1)=\\dfrac{1}{2}f\'(1)\\)</div>`},
+      {tag:'STEP 3', title:'\\(=12\\) ⇒ \\(f\'(1)=24\\)', body:`<div class="calc">\\(\\dfrac{1}{2}f\'(1)=12\\Rightarrow f\'(1)=24\\)</div>
+<div class="calc purple">\\(f\'(1)=24\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 2 ───────── */
+  {
+    id:'c3-s2', level:'standard', levelLabel:'기본', num:2, type:'choice',
+    subLabel:'[26009-0065] · 역수 극한 + 이차함수 — \\(f(-1)\\)',
+    title:'\\(\\lim\\dfrac{x-1}{f(x)-4}=\\dfrac{1}{2}\\) → \\(f(-1)\\)',
+    question:`<p>함수 \\(f(x)=x^2+ax+b\\) (\\(a,b\\)는 상수)에 대하여 \\(\\displaystyle \\lim_{x\\to 1}\\dfrac{x-1}{f(x)-4}=\\dfrac{1}{2}\\)일 때, \\(f(-1)\\)의 값은?</p>`,
+    choices:['\\(2\\)','\\(4\\)','\\(6\\)','\\(8\\)','\\(10\\)'], answer:1,
+    keypoint:'역수 \\(\\Rightarrow \\lim\\dfrac{f(x)-4}{x-1}=2=f\'(1)\\). 그리고 \\(f(1)=4\\). 두 조건으로 \\(a, b\\) 결정.',
+    steps:[
+      {tag:'STEP 1', title:'역수로 변환 → \\(f\'(1)=2\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x)-4}{x-1}=2\\)</div>
+<p>분모 \\(\\to 0\\) ⇒ 분자 \\(\\to 0\\): \\(f(1)-4=0\\Rightarrow f(1)=4\\). 그러므로 위 극한 \\(=f\'(1)=2\\).</p>`},
+      {tag:'STEP 2', title:'\\(f(1)=4\\) → \\(a+b=3\\)', body:`<div class="calc">\\(f(1)=1+a+b=4\\Rightarrow a+b=3\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 3', title:'\\(f\'(1)=2\\) → \\(a=0\\)', body:`<div class="calc">\\(f\'(x)=2x+a\\Rightarrow f\'(1)=2+a=2\\Rightarrow a=0\\)</div>
+<p>㉠에 대입: \\(b=3\\). 그러므로 \\(f(x)=x^2+3\\).</p>`},
+      {tag:'STEP 4', title:'\\(f(-1)\\)', body:`<div class="calc purple">\\(f(-1)=1+3=4\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 3 ───────── */
+  {
+    id:'c3-s3', level:'standard', levelLabel:'기본', num:3, type:'choice',
+    subLabel:'[26009-0066] · 조각함수 \\(g\\) 미분가능 — \\(f(1)\\)',
+    title:'\\(f(0)=3\\) 이차, \\(g(x)=\\begin{cases}f(x)-f(3) & (x\\lt 2) \\\\ x^2-x+1 & (x\\geq 2)\\end{cases}\\) 미분가능 → \\(f(1)\\)',
+    question:`<p>\\(f(0)=3\\)인 이차함수 \\(f(x)\\)에 대하여 함수 \\(g(x)=\\begin{cases}f(x)-f(3) & (x\\lt 2) \\\\ x^2-x+1 & (x\\geq 2)\\end{cases}\\) 가 \\(x=2\\)에서 미분가능할 때, \\(f(1)\\)의 값은?</p>`,
+    choices:['\\(20\\)','\\(22\\)','\\(24\\)','\\(26\\)','\\(28\\)'], answer:2,
+    keypoint:'미분가능 \\(\\Rightarrow\\) 연속(좌우값 일치) + 좌우 도함수 일치. \\(g(2)=3\\), \\(f\'(2)=3\\).',
+    steps:[
+      {tag:'STEP 1', title:'\\(g(2)=3\\) — 연속 조건', body:`<div class="calc">\\(g(2)=2^2-2+1=3\\)</div>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 2-}g(x)=f(2)-f(3)=3\\Rightarrow f(2)=f(3)+3\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'\\(g\'(2)=3\\) — 좌우 도함수 일치', body:`<p>\\(x\\gt 2\\)에서 \\(g\'(x)=2x-1\\Rightarrow g\'(2)=3\\). 좌극한:</p>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 2-}\\dfrac{g(x)-g(2)}{x-2}=\\lim_{x\\to 2-}\\dfrac{f(x)-f(3)-3}{x-2}=\\lim_{x\\to 2-}\\dfrac{f(x)-f(2)}{x-2}=f\'(2)\\)</div>
+<div class="calc">\\(f\'(2)=3\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 3', title:'\\(f(x)=ax^2+bx+3\\) — \\(a, b\\) 연립', body:`<p>\\(f(0)=3\\) 사용. \\(f\'(x)=2ax+b\\Rightarrow f\'(2)=4a+b=3\\quad\\cdots ㉢\\). ㉠: \\(4a+2b+3=9a+3b+3+3\\Rightarrow 5a+b=-3\\quad\\cdots ㉣\\). ㉢-㉣: \\(-a=6\\Rightarrow a=-6,\\ b=27\\).</p>
+<div class="calc">\\(f(x)=-6x^2+27x+3\\)</div>`},
+      {tag:'STEP 4', title:'\\(f(1)\\)', body:`<div class="calc purple">\\(f(1)=-6+27+3=24\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 4 ───────── */
+  {
+    id:'c3-s4', level:'standard', levelLabel:'기본', num:4, type:'choice',
+    subLabel:'[26009-0067] · 두 함수 곱 + 조각함수 미분계수',
+    title:'\\(h(x)=\\begin{cases}f(x)g(x) & (x\\neq 1) \\\\ f(1) & (x=1)\\end{cases}\\) → \\(f(1)+g(1)\\)',
+    question:`<p>실수 전체의 집합에서 미분가능한 두 함수 \\(f(x), g(x)\\)가 다음 조건을 만족시킬 때, \\(f(1)+g(1)\\)의 값은?</p>
+<div class="calc"><p>(가) \\(f(1)\\neq 0\\)이고, \\(f\'(1)=1,\\ g\'(1)=-2\\) 이다.</p>
+<p>(나) 함수 \\(h(x)=\\begin{cases}f(x)g(x) & (x\\neq 1) \\\\ f(1) & (x=1)\\end{cases}\\) 의 \\(x=1\\)에서의 미분계수가 \\(-3\\)이다.</p></div>`,
+    choices:['\\(1\\)','\\(2\\)','\\(3\\)','\\(4\\)','\\(5\\)'], answer:2,
+    keypoint:'미분가능 ⇒ 연속 → \\(f(1)g(1)=f(1)\\Rightarrow g(1)=1\\). 곱미분으로 \\(h\'(1)=f\'(1)g(1)+f(1)g\'(1)\\).',
+    steps:[
+      {tag:'STEP 1', title:'\\(h\\) 연속 → \\(g(1)=1\\)', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}h(x)=f(1)g(1)=h(1)=f(1)\\)</div>
+<p>\\(f(1)\\neq 0\\)이므로 \\(g(1)=1\\).</p>`},
+      {tag:'STEP 2', title:'곱미분 \\(h\'(1)\\)', body:`<div class="calc">\\(h\'(1)=f\'(1)g(1)+f(1)g\'(1)=1\\cdot 1+f(1)\\cdot(-2)=1-2f(1)\\)</div>`},
+      {tag:'STEP 3', title:'\\(h\'(1)=-3\\) → \\(f(1)=2\\)', body:`<div class="calc">\\(1-2f(1)=-3\\Rightarrow f(1)=2\\)</div>`},
+      {tag:'STEP 4', title:'\\(f(1)+g(1)\\)', body:`<div class="calc purple">\\(2+1=3\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 5 ───────── */
+  {
+    id:'c3-s5', level:'standard', levelLabel:'기본', num:5, type:'short',
+    subLabel:'[26009-0068] · 접선 기울기 = 도함수 + 곱미분 극한',
+    title:'\\(f\'(a)=a^3-2a+1\\), \\(g=(x^2-2x)f\\) — \\(\\lim\\dfrac{g\'(x)}{(x-1)(x-2)}\\)',
+    question:`<p>다항함수 \\(f(x)\\)에 대하여 곡선 \\(y=f(x)\\)가 점 \\((2,0)\\)을 지나고, 모든 실수 \\(a\\)에 대하여 곡선 \\(y=f(x)\\) 위의 점 \\((a,f(a))\\)에서의 접선의 기울기가 \\(a^3-2a+1\\)이다. 함수 \\(g(x)=(x^2-2x)f(x)\\)에 대하여 \\(\\displaystyle \\lim_{x\\to 2}\\dfrac{g\'(x)}{(x-1)(x-2)}\\)의 값을 구하시오.</p>`,
+    answerText:'\\(20\\)',
+    keypoint:'\\(f\'(x)=x^3-2x+1\\Rightarrow f\'(2)=5\\). \\(g\'(x)=(2x-2)f(x)+(x^2-2x)f\'(x)=2(x-1)f(x)+x(x-2)f\'(x)\\). 분모 \\((x-1)(x-2)\\)로 정리 → \\(\\dfrac{2f(x)}{x-2}+\\dfrac{xf\'(x)}{x-1}\\).',
+    steps:[
+      {tag:'STEP 1', title:'\\(f\'(x)\\) 와 \\(f(2),\\ f\'(2)\\)', body:`<div class="calc">\\(f\'(x)=x^3-2x+1,\\ f(2)=0,\\ f\'(2)=8-4+1=5\\)</div>`},
+      {tag:'STEP 2', title:'\\(g\'(x)\\) 계산', body:`<div class="calc">\\(g\'(x)=(2x-2)f(x)+(x^2-2x)f\'(x)=2(x-1)f(x)+x(x-2)f\'(x)\\)</div>`},
+      {tag:'STEP 3', title:'\\(\\dfrac{g\'(x)}{(x-1)(x-2)}\\) 분해', body:`<div class="calc">\\(\\dfrac{g\'(x)}{(x-1)(x-2)}=\\dfrac{2f(x)}{x-2}+\\dfrac{xf\'(x)}{x-1}\\)</div>`},
+      {tag:'STEP 4', title:'각 극한 계산', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 2}\\dfrac{2f(x)}{x-2}=2\\lim_{x\\to 2}\\dfrac{f(x)-f(2)}{x-2}=2f\'(2)=10\\)</div>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 2}\\dfrac{xf\'(x)}{x-1}=\\dfrac{2\\cdot 5}{1}=10\\)</div>`},
+      {tag:'STEP 5', title:'합', body:`<div class="calc purple">\\(10+10=20\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 6 ───────── */
+  {
+    id:'c3-s6', level:'standard', levelLabel:'기본', num:6, type:'short',
+    subLabel:'[26009-0069] · 두 곡선 \\((1,5)\\) 교점 + 곱 미분계수',
+    title:'\\(f(1)g(1)=5,\\ f\'(1)g\'(1)=-10,\\ (fg)\'(1)=15\\) → \\(f\'(1)-g\'(1)\\)',
+    question:`<p>실수 전체의 집합에서 미분가능한 두 함수 \\(f(x), g(x)\\)에 대하여 두 곡선 \\(y=f(x),\\ y=g(x)\\)가 점 \\((1,5)\\)에서 만난다. \\(f\'(1)g\'(1)=-10\\)이고, 함수 \\(f(x)g(x)\\)의 \\(x=1\\)에서의 미분계수가 \\(15\\)일 때, \\(f\'(1)-g\'(1)\\)의 값을 구하시오. (단, \\(f\'(1)\\gt g\'(1)\\))</p>`,
+    answerText:'\\(7\\)',
+    keypoint:'교점에서 \\(f(1)=g(1)=5\\). \\((fg)\'(1)=5(f\'(1)+g\'(1))=15\\). 합과 곱으로 차의 제곱 계산.',
+    steps:[
+      {tag:'STEP 1', title:'\\(f(1)=g(1)=5\\) + \\((fg)\'(1)\\) 식', body:`<div class="calc">\\(h\'(1)=f\'(1)g(1)+f(1)g\'(1)=5(f\'(1)+g\'(1))=15\\)</div>
+<div class="calc">\\(f\'(1)+g\'(1)=3\\)</div>`},
+      {tag:'STEP 2', title:'차의 제곱 — \\((p-q)^2=(p+q)^2-4pq\\)', body:`<div class="calc">\\((f\'(1)-g\'(1))^2=(f\'(1)+g\'(1))^2-4f\'(1)g\'(1)=9-4\\cdot(-10)=49\\)</div>`},
+      {tag:'STEP 3', title:'\\(f\'(1)\\gt g\'(1)\\) → 양수', body:`<div class="calc purple">\\(f\'(1)-g\'(1)=7\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 7 ───────── */
+  {
+    id:'c3-s7', level:'standard', levelLabel:'기본', num:7, type:'choice',
+    subLabel:'[26009-0070] · 이차함수 \\(f\\) + 곱-합 구조 → \\(f(4)\\)',
+    title:'\\(g(x)=(x^2+1)f(x)+2x-f(0)\\), \\(g(1)=0, g\'(0)=1\\) → \\(f(4)\\)',
+    question:`<p>최고차항의 계수가 \\(1\\)인 이차함수 \\(f(x)\\)에 대하여 함수 \\(g(x)\\)를 \\(g(x)=(x^2+1)f(x)+2x-f(0)\\) 이라 하자. \\(g(1)=0,\\ g\'(0)=1\\)일 때, \\(f(4)\\)의 값은?</p>`,
+    choices:['\\(9\\)','\\(10\\)','\\(11\\)','\\(12\\)','\\(13\\)'], answer:1,
+    keypoint:'\\(g(1)\\)에 대입하면 \\(f(0)\\)과 \\(f(1)\\) 관계식. \\(g\'(0)=1\\)에서 곱미분 후 대입 → \\(f\'(0)\\). 두 조건으로 이차함수 계수 결정.',
+    steps:[
+      {tag:'STEP 1', title:'\\(g(1)=0\\) → \\(f(0)=2f(1)+2\\)', body:`<div class="calc">\\(g(1)=2f(1)+2-f(0)=0\\Rightarrow f(0)=2f(1)+2\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 2', title:'\\(g\'(x)=2xf(x)+(x^2+1)f\'(x)+2\\) → \\(g\'(0)=f\'(0)+2=1\\)', body:`<div class="calc">\\(g\'(0)=0+f\'(0)+2=1\\Rightarrow f\'(0)=-1\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 3', title:'\\(f(x)=x^2+ax+b\\) — \\(a, b\\) 결정', body:`<p>\\(f\'(x)=2x+a\\Rightarrow f\'(0)=a=-1\\). ㉠: \\(b=2(1+a+b)+2=2+2a+2b+2\\Rightarrow b=-2a-4=-2(-1)-4=-2\\).</p>
+<div class="calc">\\(f(x)=x^2-x-2\\)</div>`},
+      {tag:'STEP 4', title:'\\(f(4)\\)', body:`<div class="calc purple">\\(f(4)=16-4-2=10\\)</div>`}
+    ]
+  },
+
+  /* ───────── 기본 8 ───────── */
+  {
+    id:'c3-s8', level:'standard', levelLabel:'기본', num:8, type:'choice',
+    subLabel:'[26009-0071] · 조각함수 \\(g\\) 미분가능 + 곱 \\(h\\) 조건',
+    title:'\\(g\\) 미분가능, \\(h\'(-1)+h\'(1)=12\\) → \\(g(0)\\)',
+    question:`<p>실수 전체의 집합에서 미분가능한 함수 \\(f(x)\\)에 대하여 함수 \\(g(x)=\\begin{cases}x^2+3x+a & (-1\\lt x\\lt 1) \\\\ f(x) & (x\\leq -1\\ \\text{또는}\\ x\\geq 1)\\end{cases}\\) 이 실수 전체의 집합에서 미분가능하다. 함수 \\(h(x)=f(x)g(x)\\)에 대하여 \\(h\'(-1)+h\'(1)=12\\)일 때, \\(g(0)\\)의 값은? (단, \\(a\\)는 상수)</p>`,
+    choices:['\\(-3\\)','\\(-2\\)','\\(-1\\)','\\(0\\)','\\(1\\)'], answer:1,
+    keypoint:'경계 \\(x=\\pm 1\\)에서 연속 → \\(f(-1)=a-2,\\ f(1)=a+4\\). 미분가능 → \\(f\'(-1)=1,\\ f\'(1)=5\\). 그 뒤 곱미분 \\(h\'=f\'g+fg\'\\) 적용.',
+    steps:[
+      {tag:'STEP 1', title:'\\(x=-1\\) 연속 + 미분가능', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to -1+}(x^2+3x+a)=a-2=f(-1)\\quad\\cdots ㉠\\)</div>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to -1+}\\dfrac{(x^2+3x+a)-(a-2)}{x+1}=\\lim_{x\\to -1+}\\dfrac{(x+1)(x+2)}{x+1}=1=f\'(-1)\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 2', title:'\\(x=1\\) 연속 + 미분가능', body:`<div class="calc">\\(\\displaystyle \\lim_{x\\to 1-}(x^2+3x+a)=a+4=f(1)\\quad\\cdots ㉢\\)</div>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 1-}\\dfrac{(x^2+3x+a)-(a+4)}{x-1}=\\lim_{x\\to 1-}\\dfrac{(x-1)(x+4)}{x-1}=5=f\'(1)\\quad\\cdots ㉣\\)</div>`},
+      {tag:'STEP 3', title:'\\(h\'(-1)+h\'(1)\\) — 곱미분', body:`<div class="calc">\\(h\'(-1)=f\'(-1)g(-1)+f(-1)g\'(-1)=2f\'(-1)f(-1)=2(a-2)\\)</div>
+<div class="calc">\\(h\'(1)=f\'(1)g(1)+f(1)g\'(1)=2f\'(1)f(1)=10(a+4)\\)</div>
+<div class="calc">\\(2(a-2)+10(a+4)=12a+36=12\\Rightarrow a=-2\\)</div>`},
+      {tag:'STEP 4', title:'\\(g(0)=a\\)', body:`<div class="calc">\\(-1\\lt 0\\lt 1\\Rightarrow g(0)=0+0+a=a=-2\\)</div>
+<div class="calc purple">\\(g(0)=-2\\)</div>`}
+    ]
+  },
+
+  /* ───────── 실력 1 ───────── */
+  {
+    id:'c3-l1', level:'advanced', levelLabel:'실력', num:1, type:'choice',
+    subLabel:'[26009-0072] · 무한대 극한 + 0/0 + 부등식 — \\(f(-3)\\) 최댓값',
+    title:'\\(f\'(1)=-3\\) + \\(f(x)\\leq 5\\) → \\(f(-3)\\) 최댓값',
+    question:`<p>다음 조건을 만족시키는 모든 다항함수 \\(f(x)\\)에 대하여 \\(f(-3)\\)의 최댓값은?</p>
+<div class="calc"><p>(가) \\(\\displaystyle \\lim_{x\\to\\infty}\\dfrac{f(x)}{x^2}\\)의 값이 존재하고, \\(\\displaystyle \\lim_{x\\to 1}\\dfrac{x^2-3x+2}{f(x)-2}=\\dfrac{1}{3}\\)이다.</p>
+<p>(나) 부등식 \\(f(x)\\gt 5\\)를 만족시키는 실수 \\(x\\)는 존재하지 않는다.</p></div>`,
+    choices:['\\(\\dfrac{3}{2}\\)','\\(2\\)','\\(\\dfrac{5}{2}\\)','\\(3\\)','\\(\\dfrac{7}{2}\\)'], answer:1,
+    keypoint:'(가) 무한대 조건: \\(f\\) 차수 ≤2. (가) 둘째: \\(f(1)=2, f\'(1)=-3\\). (나): \\(f(x)\\leq 5\\) ⇒ 이차 \\(p\\lt 0\\), 최댓값 ≤5.',
+    steps:[
+      {tag:'STEP 1', title:'(가) 둘째 식 — \\(f(1)=2,\\ f\'(1)=-3\\)', body:`<p>역수 변환:</p>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x)-2}{x^2-3x+2}=3\\)</div>
+<p>분자 \\(\\to 0\\) ⇒ \\(f(1)=2\\). 그러면</p>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 1}\\dfrac{f(x)-f(1)}{(x-1)(x-2)}=\\dfrac{f\'(1)}{-1}=3\\Rightarrow f\'(1)=-3\\)</div>`},
+      {tag:'STEP 2', title:'(가) 첫째 + (나) → \\(f\\)는 이차, \\(p\\lt 0\\)', body:`<p>\\(\\lim_{x\\to\\infty}f(x)/x^2\\) 존재 ⇒ \\(f\\)는 0,1,2차. 상수면 \\(f\'\\equiv 0\\)이라 모순. 일차면 \\(f(x)=-3x+5\\), \\(x\\lt 0\\)에서 \\(f\\gt 5\\) ⇒ (나) 위배. ⇒ \\(f\\)는 이차.</p>
+<p>\\(f(x)=px^2+qx+r\\), \\(f(1)=p+q+r=2\\), \\(f\'(1)=2p+q=-3\\) ⇒ \\(q=-2p-3,\\ r=p+5\\).</p>`},
+      {tag:'STEP 3', title:'이차 최댓값 \\(\\leq 5\\) → \\(p\\leq -\\dfrac{3}{4}\\)', body:`<div class="calc">\\(f(x)=p\\left(x-\\dfrac{2p+3}{2p}\\right)^2+(p+5)-\\dfrac{(2p+3)^2}{4p}\\)</div>
+<p>(나)에서 \\(f(x)\\leq 5\\) (\\(p\\lt 0\\) 위로 볼록) ⇒ 최댓값 \\((p+5)-\\dfrac{(2p+3)^2}{4p}\\leq 5\\Rightarrow p\\leq \\dfrac{(2p+3)^2}{4p}\\). \\(p\\lt 0\\) 양변에 \\(4p\\) 곱(부호 반전):</p>
+<div class="calc">\\(4p^2\\geq (2p+3)^2\\Rightarrow 12p+9\\leq 0\\Rightarrow p\\leq -\\dfrac{3}{4}\\)</div>`},
+      {tag:'STEP 4', title:'\\(f(-3)=16p+14\\) 최댓값', body:`<div class="calc">\\(f(-3)=9p+3(2p+3)+p+5+(-3)\\cdot... \\) — 정리: \\(f(-3)=9p-3q+r=9p-3(-2p-3)+(p+5)=9p+6p+9+p+5=16p+14\\)</div>
+<p>\\(p\\leq -\\dfrac{3}{4}\\) ⇒ 최댓값은 \\(p=-\\dfrac{3}{4}\\)일 때:</p>
+<div class="calc">\\(16\\cdot\\left(-\\dfrac{3}{4}\\right)+14=-12+14=2\\)</div>
+<div class="calc purple">\\(f(-3)\\)의 최댓값 \\(=2\\)</div>`}
+    ]
+  },
+
+  /* ───────── 실력 2 ───────── */
+  {
+    id:'c3-l2', level:'advanced', levelLabel:'실력', num:2, type:'choice',
+    subLabel:'[26009-0073] · \\((f\'-1)^2=ax^2+bx+a\\) + 사잇값 → \\(a+b\\)',
+    title:'\\(f\'(-4)+f\'(3)=0\\) → \\(a+b\\)',
+    question:`<p>\\(0\\)이 아닌 두 상수 \\(a,b\\)에 대하여 실수 전체의 집합에서 미분가능한 함수 \\(f(x)\\)가 다음 조건을 만족시킨다. \\(f\'(-4)+f\'(3)=0\\)일 때, \\(a+b\\)의 값은?</p>
+<div class="calc"><p>(가) 함수 \\(f\'(x)\\)가 실수 전체의 집합에서 연속이고, \\(f\'(-1)\\lt 1\\lt f\'(2)\\) 이다.</p>
+<p>(나) 모든 실수 \\(x\\)에 대하여 \\((f\'(x)-1)^2=ax^2+bx+a\\) 이다.</p></div>`,
+    choices:['\\(-1\\)','\\(-\\dfrac{4}{9}\\)','\\(\\dfrac{1}{9}\\)','\\(\\dfrac{2}{3}\\)','\\(\\dfrac{11}{9}\\)'], answer:1,
+    keypoint:'\\(g(x)=ax^2+bx+a\\geq 0\\) (모든 \\(x\\)) ⇒ \\(a\\gt 0,\\ D=b^2-4a^2\\leq 0\\). 사잇값으로 \\(f\'(c)=1\\) 어딘가 ⇒ \\(g(c)=0\\) ⇒ 판별식 \\(=0\\) ⇒ \\(b=\\pm 2a\\).',
+    steps:[
+      {tag:'STEP 1', title:'(나) → \\(f\'(x)=1\\pm\\sqrt{g(x)}\\), \\(g\\geq 0\\)', body:`<p>\\((f\'-1)^2\\geq 0\\) ⇒ \\(g(x)=ax^2+bx+a\\geq 0\\) (모든 \\(x\\)) ⇒ \\(a\\gt 0,\\ D=b^2-4a^2\\leq 0\\) ⇒ \\(-2a\\leq b\\leq 2a\\).</p>`},
+      {tag:'STEP 2', title:'사잇값 → \\(c\\in(-1,2)\\) 에서 \\(f\'(c)=1\\Rightarrow g(c)=0\\)', body:`<p>(가)에서 \\(f\'\\) 연속, \\(f\'(-1)\\lt 1\\lt f\'(2)\\) ⇒ 사잇값 정리에 의해 \\(f\'(c)=1\\)인 \\(c\\in(-1,2)\\) 존재.</p>
+<p>그 점에서 \\(g(c)=0\\). \\(g\\geq 0\\) 이차함수가 한 점에서 \\(0\\)이려면 그 점에서 \\(x\\)축과 접함 ⇒ \\(D=0\\Rightarrow b=\\pm 2a\\).</p>`},
+      {tag:'STEP 3', title:'(가) \\(f\'(-1)\\lt 1,\\ f\'(2)\\gt 1\\) 부호 — \\(b=-2a\\) 결정', body:`<p>\\(f\'(-1)=1-\\sqrt{g(-1)}\\lt 1\\Rightarrow \\sqrt{2a-b}\\gt 0\\Rightarrow 2a-b\\gt 0\\).</p>
+<p>\\(f\'(2)=1+\\sqrt{g(2)}\\gt 1\\Rightarrow \\sqrt{5a+2b}\\gt 0\\Rightarrow 5a+2b\\gt 0\\).</p>
+<p>이 둘과 \\(b=\\pm 2a\\) 결합: \\(b=2a\\)면 \\(2a-b=0\\) — 부등호 위배. ⇒ \\(b=-2a\\).</p>
+<div class="calc">\\(g(x)=ax^2-2ax+a=a(x-1)^2\\)</div>
+<p>\\(c=1\\), 그리고 \\(\\sqrt{g(x)}=\\sqrt{a}|x-1|\\).</p>`},
+      {tag:'STEP 4', title:'\\(f\'(x)\\) 식 — 분기', body:`<p>(가) 연속 + \\(f\'(-1)\\lt 1\\) ⇒ \\(x\\lt 1\\)에서 \\(f\'(x)=1-\\sqrt{a}|x-1|=1-\\sqrt{a}(1-x)\\).</p>
+<p>\\(f\'(2)\\gt 1\\) ⇒ \\(x\\geq 1\\)에서 \\(f\'(x)=1+\\sqrt{a}|x-1|=1+\\sqrt{a}(x-1)\\).</p>
+<div class="calc">\\(f\'(x)=\\begin{cases}1-\\sqrt{a}(1-x) & (x\\lt 1) \\\\ 1+\\sqrt{a}(x-1) & (x\\geq 1)\\end{cases}=\\sqrt{a}\\,x+(1-\\sqrt{a})\\)</div>`},
+      {tag:'STEP 5', title:'\\(f\'(-4)+f\'(3)=0\\) → \\(a\\), \\(b\\)', body:`<div class="calc">\\(f\'(-4)=-4\\sqrt{a}+1-\\sqrt{a}=1-5\\sqrt{a}\\)</div>
+<div class="calc">\\(f\'(3)=3\\sqrt{a}+1-\\sqrt{a}=1+2\\sqrt{a}\\)</div>
+<div class="calc">\\(f\'(-4)+f\'(3)=2-3\\sqrt{a}=0\\Rightarrow \\sqrt{a}=\\dfrac{2}{3}\\Rightarrow a=\\dfrac{4}{9}\\)</div>
+<div class="calc">\\(b=-2a=-\\dfrac{8}{9}\\)</div>`},
+      {tag:'STEP 6', title:'\\(a+b\\)', body:`<div class="calc purple">\\(a+b=\\dfrac{4}{9}-\\dfrac{8}{9}=-\\dfrac{4}{9}\\)</div>`}
+    ]
+  },
+
+  /* ───────── 실력 3 ───────── */
+  {
+    id:'c3-l3', level:'advanced', levelLabel:'실력', num:3, type:'short',
+    subLabel:'[26009-0074] · 원과 곡선 거리 \\(M(t), m(t)\\)',
+    title:'\\(g(t)=(M(t)-m(t))^2\\) — \\(g\'(a-\\tfrac{1}{2})+g\'(a+\\tfrac{3}{2})\\)',
+    question:`<p>함수 \\(f(x)=\\begin{cases}2 & (|x|\\leq 1) \\\\ -x^2 & (|x|\\gt 1)\\end{cases}\\) 의 그래프 위의 점 \\(P(t,f(t))\\)와 원 \\(x^2+y^2=1\\) 위의 점 \\(Q\\)에 대하여 \\(\\overline{PQ}^2\\)의 최댓값과 최솟값을 각각 \\(M(t), m(t)\\)라 하자. 함수 \\(g(t)=(M(t)-m(t))^2\\) 이 미분가능하지 않은 모든 실수 \\(t\\)의 값의 합을 \\(a\\)라 할 때, \\(g\'\\!\\left(a-\\dfrac{1}{2}\\right)+g\'\\!\\left(a+\\dfrac{3}{2}\\right)\\)의 값을 구하시오.</p>`,
+    answerText:'\\(248\\)',
+    keypoint:'\\(M(t)=(\\overline{OP}+1)^2,\\ m(t)=(\\overline{OP}-1)^2\\Rightarrow M-m=4\\overline{OP}\\). \\(g(t)=16\\overline{OP}^2=16(t^2+(f(t))^2)\\).',
+    steps:[
+      {tag:'STEP 1', title:'\\(g(t)=16(t^2+(f(t))^2)\\)', body:`<p>원점-\\(P\\) 직선이 원과 만나는 두 점 \\(Q_1, Q_2\\) (\\(P\\) 가까운/먼). \\(\\overline{PQ_1}=\\overline{OP}-1,\\ \\overline{PQ_2}=\\overline{OP}+1\\).</p>
+<div class="calc">\\(M-m=(\\overline{OP}+1)^2-(\\overline{OP}-1)^2=4\\overline{OP}\\)</div>
+<div class="calc">\\(g(t)=(4\\overline{OP})^2=16(t^2+(f(t))^2)\\)</div>`},
+      {tag:'STEP 2', title:'\\(g(t)\\) 분기', body:`<div class="calc">\\(|t|\\leq 1\\Rightarrow f(t)=2\\Rightarrow g(t)=16(t^2+4)\\)</div>
+<div class="calc">\\(|t|\\gt 1\\Rightarrow f(t)=-t^2\\Rightarrow g(t)=16(t^2+t^4)\\)</div>`},
+      {tag:'STEP 3', title:'\\(t=\\pm 1\\)에서 미분가능성 확인', body:`<p>\\(g(\\pm 1)=80\\) 양쪽 모두. 우/좌 미분계수 다름:</p>
+<div class="calc">\\(t=1+\\)에서 \\(g\'=16(4t^3+2t)\\Rightarrow 16(4+2)=96\\)</div>
+<div class="calc">\\(t=1-\\)에서 \\(g\'=16\\cdot 2t=32\\)</div>
+<p>다르므로 \\(t=1\\)에서 미분 불가능. 대칭성으로 \\(t=-1\\)도 미분 불가능.</p>`},
+      {tag:'STEP 4', title:'\\(a=-1+1=0\\)', body:`<div class="calc">\\(a=0\\)</div>`},
+      {tag:'STEP 5', title:'\\(g\'(-\\tfrac{1}{2})+g\'(\\tfrac{3}{2})\\)', body:`<p>\\(t=-\\tfrac{1}{2}\\): \\(|t|\\leq 1\\Rightarrow g\'(t)=32t\\):</p>
+<div class="calc">\\(g\'\\!\\left(-\\dfrac{1}{2}\\right)=32\\cdot\\left(-\\dfrac{1}{2}\\right)=-16\\)</div>
+<p>\\(t=\\tfrac{3}{2}\\): \\(|t|\\gt 1\\Rightarrow g\'(t)=16(4t^3+2t)=32(2t^3+t)\\):</p>
+<div class="calc">\\(g\'\\!\\left(\\dfrac{3}{2}\\right)=32\\left(2\\cdot\\dfrac{27}{8}+\\dfrac{3}{2}\\right)=32\\cdot\\left(\\dfrac{27}{4}+\\dfrac{6}{4}\\right)=32\\cdot\\dfrac{33}{4}=264\\)</div>`},
+      {tag:'STEP 6', title:'합', body:`<div class="calc purple">\\(-16+264=248\\)</div>`}
+    ]
+  },
+
+  /* ───────── 대표기출 ───────── */
+  {
+    id:'c3-k1', level:'kihul', levelLabel:'대표기출', num:1, type:'short',
+    subLabel:'2025학년도 수능 9월 모의평가 · 4점',
+    title:'최고차항 \\(1\\) 삼차함수 \\(f\\) — 모든 정수 \\(k\\) 부등식 → \\(f\'(3)\\)',
+    question:`<p>최고차항의 계수가 \\(1\\)인 삼차함수 \\(f(x)\\)가 모든 정수 \\(k\\)에 대하여 \\(2k-8\\leq \\dfrac{f(k+2)-f(k)}{2}\\leq 4k^2+14k\\) 를 만족시킬 때, \\(f\'(3)\\)의 값을 구하시오. <span style="opacity:0.7">[4점]</span></p>`,
+    answerText:'\\(31\\)',
+    keypoint:'좌·우 끝 같은 \\(k\\) (\\(k=-1,-2\\))에서 \\(\\dfrac{f(k+2)-f(k)}{2}\\) 값이 결정됨 → 두 식. \\(f=x^3+ax^2+bx+c\\)로 가정 후 계수 비교.',
+    steps:[
+      {tag:'STEP 1', title:'좌·우 같은 \\(k\\) 찾기 — \\(k=-1,-2\\)', body:`<div class="calc">\\(2k-8=4k^2+14k\\Rightarrow 4k^2+12k+8=0\\Rightarrow k^2+3k+2=0\\Rightarrow (k+1)(k+2)=0\\)</div>
+<p>그러므로 \\(k=-1, -2\\).</p>`},
+      {tag:'STEP 2', title:'\\(k=-1\\) 대입 → \\(f(1)-f(-1)=-20\\)', body:`<div class="calc">\\(-10\\leq \\dfrac{f(1)-f(-1)}{2}\\leq -10\\Rightarrow f(1)-f(-1)=-20\\quad\\cdots ㉠\\)</div>`},
+      {tag:'STEP 3', title:'\\(k=-2\\) 대입 → \\(f(0)-f(-2)=-24\\)', body:`<div class="calc">\\(-12\\leq \\dfrac{f(0)-f(-2)}{2}\\leq -12\\Rightarrow f(0)-f(-2)=-24\\quad\\cdots ㉡\\)</div>`},
+      {tag:'STEP 4', title:'\\(f(x)=x^3+ax^2+bx+c\\) — \\(a, b\\) 결정', body:`<div class="calc">\\(f(1)-f(-1)=2b+2\\quad\\Rightarrow 2b+2=-20\\Rightarrow b=-11\\)</div>
+<div class="calc">\\(f(0)-f(-2)=-(-8+4a-2b+c)+c=8-4a+2b\\quad\\Rightarrow 8-4a-22=-24\\Rightarrow a=\\dfrac{5}{2}\\)</div>`},
+      {tag:'STEP 5', title:'\\(f\'(x)=3x^2+5x-11\\) → \\(f\'(3)\\)', body:`<div class="calc">\\(f\'(x)=3x^2+5x-11\\)</div>
+<div class="calc">\\(f\'(3)=27+15-11=31\\)</div>
+<div class="calc purple">\\(f\'(3)=31\\)</div>`}
+    ]
+  }
+];
+</script>
+
+<script>
+(function () {
+  let currentFilter = 'all';
+  let filteredList  = [];
+  let currentIdx    = 0;
+  const stepState   = {};
+  PROBLEMS.forEach(p => { stepState[p.id] = new Set(); });
+
+  const viewport    = document.getElementById('card-viewport');
+  const prevBtn     = document.getElementById('prev-btn');
+  const nextBtn     = document.getElementById('next-btn');
+  const currentNum  = document.getElementById('current-num');
+  const totalNum    = document.getElementById('total-num');
+  const progressBar = document.getElementById('progress-bar');
+  const progressLbl = document.getElementById('progress-label');
+  const mainArea    = document.getElementById('main-area');
+
+  function renderCard(problem) {
+    const levelColors = {
+      basic:    { bg:'var(--level-basic-bg)',    text:'var(--level-basic-text)',    border:'var(--level-basic-border)' },
+      example:  { bg:'var(--level-example-bg)',  text:'var(--level-example-text)',  border:'var(--level-example-border)' },
+      exercise: { bg:'var(--level-exercise-bg)', text:'var(--level-exercise-text)', border:'var(--level-exercise-border)' },
+      standard: { bg:'var(--level-standard-bg)', text:'var(--level-standard-text)', border:'var(--level-standard-border)' },
+      advanced: { bg:'var(--level-advanced-bg)', text:'var(--level-advanced-text)', border:'var(--level-advanced-border)' },
+      kihul:    { bg:'var(--level-kihul-bg)',    text:'var(--level-kihul-text)',    border:'var(--level-kihul-border)' },
+    };
+    const lc = levelColors[problem.level] || levelColors.basic;
+    let choicesHTML = '';
+    if (problem.type === 'choice' && problem.choices) {
+      const nums = ['①','②','③','④','⑤'];
+      choicesHTML = `<ol class="choices" role="list">` +
+        problem.choices.map((c, i) =>
+          `<li class="${i === problem.answer ? 'correct-choice' : ''}">${nums[i]} ${c}</li>`).join('') +
+        `</ol>`;
+    } else {
+      choicesHTML = `<div class="short-answer-label">단답형 (서술)</div>`;
+    }
+    const maxStep = problem.steps.length;
+    let stepBtns = '';
+    for (let s = 1; s <= maxStep; s++) {
+      stepBtns += `<button class="step-btn" data-pid="${problem.id}" data-step="${s}">STEP ${s}</button>`;
+    }
+    stepBtns += `<button class="step-btn answer-btn" data-pid="${problem.id}" data-step="answer">정답</button>`;
+    stepBtns += `<button class="step-btn reset-btn" data-pid="${problem.id}" data-step="0">초기화</button>`;
+    let stepsHTML = '';
+    problem.steps.forEach((step, i) => {
+      stepsHTML += `<div class="step" data-step-num="${i+1}" style="display:none"><div class="step-header"><span class="step-tag">${step.tag}</span><span class="step-title">${step.title}</span></div><div class="step-body">${step.body}</div></div>`;
+    });
+    const subLabel = problem.subLabel ? `<span class="problem-sub-label">${problem.subLabel}</span>` : '';
+    const probTitle = '';
+    const keypointHTML = problem.keypoint ? `<div class="key-concept"><span class="concept-label">핵심</span><span>${problem.keypoint}</span></div>` : '';
+    return `<article class="problem-card" data-pid="${problem.id}" data-level="${problem.level}"><div class="card-inner"><div class="problem-section"><div><div class="problem-badge" style="background:${lc.bg};color:${lc.text};border-color:${lc.border}">${problem.levelLabel} ${problem.num}</div>${subLabel}</div>${probTitle}<div class="problem-text"><div class="problem-statement">${problem.question}</div>${choicesHTML}</div>${keypointHTML}</div><div class="scratch-area" aria-label="풀이 공간" role="button" tabindex="0" onclick="openScratchOverlay(event)" onkeydown="if(event.key==='Enter'||event.key===' ')openScratchOverlay(event)"><span class="scratch-label">풀이 공간</span></div><div class="solution-section"><div class="solution-toggle-bar"><span class="solution-title">단계별 해설</span><div class="step-buttons">${stepBtns}</div></div><div class="steps-container" id="steps-${problem.id}">${stepsHTML}</div></div></div></article>`;
+  }
+
+  function applyFilter(filter) {
+    currentFilter = filter;
+    filteredList = filter === 'all' ? [...PROBLEMS] : PROBLEMS.filter(p => p.level === filter);
+    currentIdx = 0;
+    showCard(0);
+    updateNav();
+    updateProgress();
+    updateFilterUI(filter);
+  }
+  function showCard(idx) {
+    currentIdx = Math.max(0, Math.min(idx, filteredList.length - 1));
+    const problem = filteredList[currentIdx];
+    viewport.innerHTML = renderCard(problem);
+    renderMath(viewport);
+    restoreStepState(problem.id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function goTo(idx) {
+    if (idx < 0 || idx >= filteredList.length) return;
+    showCard(idx); updateNav(); updateProgress();
+    if (document.getElementById('scratch-overlay')) renderScratchOverlay(false);
+  }
+  function updateNav() {
+    prevBtn.disabled = currentIdx === 0;
+    nextBtn.disabled = currentIdx === filteredList.length - 1;
+    currentNum.textContent = currentIdx + 1;
+    totalNum.textContent   = filteredList.length;
+  }
+  function updateProgress() {
+    const pct = Math.round(((currentIdx + 1) / filteredList.length) * 100);
+    progressBar.style.width = pct + '%';
+    progressLbl.textContent = (currentIdx + 1) + ' / ' + filteredList.length;
+  }
+  function updateFilterUI(active) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filter === active);
+    });
+  }
+  function showSteps(pid, targetStep) {
+    const container = document.getElementById('steps-' + pid);
+    if (!container) return;
+    if (targetStep === 0) {
+      stepState[pid] = new Set();
+      container.querySelectorAll('.step').forEach(el => { el.style.display = 'none'; });
+      [document.querySelector(`.problem-card[data-pid="${pid}"] .correct-choice`),
+       document.querySelector('#scratch-overlay .correct-choice')]
+        .filter(Boolean).forEach(el => {
+          el.classList.remove('revealed');
+          ['background','border','color','font-weight'].forEach(p => el.style.removeProperty(p));
+        });
+      document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`)?.classList.remove('active');
+      const overlayContainer = document.getElementById('overlay-steps-' + pid);
+      overlayContainer?.querySelectorAll('.step').forEach(el => { el.style.display = 'none'; });
+      updateStepBtns(pid);
+      return;
+    }
+    const stepEl = container.querySelector(`.step[data-step-num="${targetStep}"]`);
+    if (!stepEl) return;
+    if (!stepState[pid]) stepState[pid] = new Set();
+    const isOpen = stepEl.style.display !== 'none';
+    if (isOpen) {
+      stepEl.style.display = 'none';
+      stepState[pid].delete(targetStep);
+    } else {
+      stepEl.style.display = 'block';
+      stepEl.style.animation = 'none'; void stepEl.offsetWidth; stepEl.style.animation = '';
+      stepState[pid].add(targetStep);
+    }
+    updateStepBtns(pid);
+    renderMath(container);
+    if (!isOpen) setTimeout(() => stepEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+  }
+  function restoreStepState(pid) {
+    const saved = stepState[pid];
+    if (!saved || saved.size === 0) return;
+    const toOpen = [...saved].sort((a,b) => a-b);
+    stepState[pid] = new Set();
+    toOpen.forEach(n => showSteps(pid, n));
+  }
+  function updateStepBtns(pid) {
+    const card = document.querySelector(`.problem-card[data-pid="${pid}"]`);
+    const opened = stepState[pid] instanceof Set ? stepState[pid] : new Set();
+    card?.querySelectorAll('.step-btn').forEach(btn => {
+      if (btn.classList.contains('reset-btn') || btn.classList.contains('answer-btn')) return;
+      btn.classList.toggle('active', opened.has(parseInt(btn.dataset.step)));
+    });
+  }
+  function highlightAnswer(pid, problem) {
+    const card = document.querySelector(`.problem-card[data-pid="${pid}"]`);
+    const overlay = document.getElementById('scratch-overlay');
+    const targets = [];
+    if (card) targets.push(card.querySelector('.correct-choice'));
+    if (overlay) targets.push(overlay.querySelector('.correct-choice'));
+    targets.filter(Boolean).forEach(correct => { correct.classList.add('revealed'); });
+  }
+  function revealAnswerOnly(pid) {
+    const card = document.querySelector(`.problem-card[data-pid="${pid}"]`);
+    const btn = card?.querySelector('.answer-btn');
+    if (!card || !btn) return;
+    if (btn.classList.contains('active')) {
+      [card.querySelector('.correct-choice'),
+       document.querySelector('#scratch-overlay .correct-choice')]
+        .filter(Boolean).forEach(el => { el.classList.remove('revealed'); });
+      btn.classList.remove('active');
+      const ansBoxes = card.querySelectorAll('.answer-reveal-inline');
+      ansBoxes.forEach(b => b.remove());
+      document.querySelectorAll('#scratch-overlay .answer-reveal-inline').forEach(b => b.remove());
+    } else {
+      const problem = PROBLEMS.find(p => p.id === pid);
+      if (!problem) return;
+      if (problem.type === 'choice') {
+        highlightAnswer(pid, problem);
+      } else {
+        const ansHTML = `<div class="answer-reveal answer-reveal-inline"><span class="answer-label">정답</span><span class="answer-number">${problem.answerText || ''}</span></div>`;
+        const sec = card.querySelector('.problem-section');
+        if (sec && !sec.querySelector('.answer-reveal-inline')) { sec.insertAdjacentHTML('beforeend', ansHTML); renderMath(sec); }
+        const overlayProb = document.querySelector('#scratch-overlay .scratch-overlay-problem');
+        if (overlayProb && !overlayProb.querySelector('.answer-reveal-inline')) { overlayProb.insertAdjacentHTML('beforeend', ansHTML); renderMath(overlayProb); }
+      }
+      btn.classList.add('active');
+    }
+  }
+  function renderMath(el) {
+    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).catch(() => {});
+  }
+  const printModal    = document.getElementById('print-modal');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  const printArea     = document.getElementById('print-area');
+  document.getElementById('btn-print').addEventListener('click', () => {
+    printModal.setAttribute('aria-hidden', 'false');
+    printModal.classList.add('open'); modalBackdrop.classList.add('open');
+  });
+  document.getElementById('modal-cancel').addEventListener('click', closePrintModal);
+  modalBackdrop.addEventListener('click', closePrintModal);
+  function closePrintModal() {
+    printModal.classList.remove('open'); modalBackdrop.classList.remove('open');
+    printModal.setAttribute('aria-hidden', 'true');
+  }
+  document.getElementById('modal-confirm').addEventListener('click', () => {
+    const rangeVal = document.querySelector('input[name="print-range"]:checked').value;
+    const printMode = document.querySelector('input[name="print-mode"]:checked').value;
+    let targetProblems;
+    if (rangeVal === 'current') targetProblems = [filteredList[currentIdx]];
+    else if (rangeVal === 'filter') targetProblems = [...filteredList];
+    else targetProblems = [...PROBLEMS];
+    buildPrintArea(targetProblems, printMode);
+    closePrintModal();
+    setTimeout(() => { window.print(); }, 600);
+  });
+  function buildPrintArea(problems, mode) {
+    printArea.innerHTML = problems.map(p => {
+      const nums = ['①','②','③','④','⑤'];
+      let choicesHTML = '';
+      if (p.type === 'choice' && p.choices) {
+        choicesHTML = `<ol class="print-choices">` +
+          p.choices.map((c, i) => `<li class="${(mode === 'solution' && i === p.answer) ? 'print-correct' : ''}">${nums[i]} ${c}</li>`).join('') + `</ol>`;
+      } else {
+        choicesHTML = `<div class="print-short-label">단답형${mode === 'solution' && p.answerText ? ' — 정답: ' + p.answerText : ''}</div>`;
+      }
+      let extraHTML = '';
+      if (mode === 'solution') {
+        extraHTML = `<div class="print-solution"><div class="print-solution-title">해설</div>` +
+          p.steps.map(s => `<div class="print-step"><span class="print-step-tag">${s.tag}</span><span class="print-step-title">${s.title}</span><div class="print-step-body">${s.body}</div></div>`).join('') +
+          (p.keypoint ? `<div class="key-concept"><span class="concept-label">핵심</span>${p.keypoint}</div>` : '') + `</div>`;
+      }
+      if (mode === 'blank') {
+        return `<div class="print-card print-mode-blank"><div class="print-content-area"><div class="print-badge">${p.levelLabel} ${p.num}</div><div class="print-question">${p.question}</div>${choicesHTML}</div><div class="print-blank-space" aria-hidden="true"></div></div>`;
+      }
+      return `<div class="print-card print-mode-${mode}"><div class="print-badge">${p.levelLabel} ${p.num}</div><div class="print-question">${p.question}</div>${choicesHTML}${extraHTML}</div>`;
+    }).join('');
+    renderMath(printArea);
+  }
+  prevBtn.addEventListener('click', () => goTo(currentIdx - 1));
+  nextBtn.addEventListener('click', () => goTo(currentIdx + 1));
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+  });
+  document.addEventListener('click', e => {
+    const stepBtn = e.target.closest('.step-btn');
+    if (stepBtn) {
+      const pid = stepBtn.dataset.pid;
+      if (stepBtn.classList.contains('answer-btn')) revealAnswerOnly(pid);
+      else showSteps(pid, parseInt(stepBtn.dataset.step));
+      if (typeof window.syncOverlayStepUI === 'function') window.syncOverlayStepUI(pid);
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goTo(currentIdx + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(currentIdx - 1); }
+    if (['1','2','3','4','5','6'].includes(e.key)) {
+      const pid = filteredList[currentIdx]?.id;
+      if (pid) { showSteps(pid, parseInt(e.key)); window.syncOverlayStepUI?.(pid); }
+    }
+    if (e.key === '0') {
+      const pid = filteredList[currentIdx]?.id;
+      if (pid) { showSteps(pid, 0); window.syncOverlayStepUI?.(pid); }
+    }
+    if (e.key === 'a' || e.key === 'A') {
+      const pid = filteredList[currentIdx]?.id;
+      if (pid) { revealAnswerOnly(pid); window.syncOverlayStepUI?.(pid); }
+    }
+    if (e.key === 'Escape' && document.getElementById('scratch-overlay')) {
+      e.preventDefault(); closeScratchOverlay();
+    }
+  });
+  let tx = 0, ty = 0, tt = 0, swipeActive = false;
+  mainArea.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) { swipeActive = false; return; }
+    swipeActive = true; tx = e.touches[0].clientX; ty = e.touches[0].clientY; tt = Date.now();
+  }, { passive: true });
+  mainArea.addEventListener('touchmove', e => { if (e.touches.length > 1) swipeActive = false; }, { passive: true });
+  mainArea.addEventListener('touchend', e => {
+    if (!swipeActive) return;
+    swipeActive = false;
+    const dx = e.changedTouches[0].clientX - tx;
+    const dy = e.changedTouches[0].clientY - ty;
+    const dt = Date.now() - tt;
+    if (Math.abs(dx) > 100 && Math.abs(dx) > Math.abs(dy) * 2 && dt < 600) {
+      goTo(dx < 0 ? currentIdx + 1 : currentIdx - 1);
+    }
+  }, { passive: true });
+  (function () {
+    const toggle = document.querySelector('[data-theme-toggle]');
+    const html = document.documentElement;
+    let dark = matchMedia('(prefers-color-scheme: dark)').matches;
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    setIcon(toggle, dark);
+    toggle?.addEventListener('click', () => {
+      dark = !dark;
+      html.setAttribute('data-theme', dark ? 'dark' : 'light');
+      setIcon(toggle, dark);
+    });
+    function setIcon(btn, isDark) {
+      if (!btn) return;
+      btn.innerHTML = isDark
+        ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+        : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    }
+  })();
+  window.openScratchOverlay = function(e) {
+    if (e) e.stopPropagation();
+    renderScratchOverlay(true);
+  };
+  function renderScratchOverlay(animateIn) {
+    const existing = document.getElementById('scratch-overlay');
+    if (existing) existing.remove();
+    const problem = filteredList[currentIdx];
+    if (!problem) return;
+    const nums = ['①','②','③','④','⑤'];
+    let choicesHTML = '';
+    if (problem.type === 'choice' && problem.choices) {
+      choicesHTML = `<ol class="choices" role="list">` +
+        problem.choices.map((c, i) =>
+          `<li class="${i === problem.answer ? 'correct-choice' : ''}">${nums[i]} ${c}</li>`).join('') +
+        `</ol>`;
+    } else {
+      choicesHTML = `<div class="short-answer-label">단답형 (서술)</div>`;
+    }
+    const titleSuffix = `${problem.levelLabel} ${problem.num} · `;
+    const _lvc = {
+      basic:    { bg:'var(--level-basic-bg)',    text:'var(--level-basic-text)',    border:'var(--level-basic-border)' },
+      example:  { bg:'var(--level-example-bg)',  text:'var(--level-example-text)',  border:'var(--level-example-border)' },
+      exercise: { bg:'var(--level-exercise-bg)', text:'var(--level-exercise-text)', border:'var(--level-exercise-border)' },
+      standard: { bg:'var(--level-standard-bg)', text:'var(--level-standard-text)', border:'var(--level-standard-border)' },
+      advanced: { bg:'var(--level-advanced-bg)', text:'var(--level-advanced-text)', border:'var(--level-advanced-border)' },
+      kihul:    { bg:'var(--level-kihul-bg)',    text:'var(--level-kihul-text)',    border:'var(--level-kihul-border)' },
+    };
+    const lc = _lvc[problem.level] || _lvc.basic;
+    const badgeHTML = `<div class="problem-badge" style="background:${lc.bg};color:${lc.text};border-color:${lc.border}">${problem.levelLabel} ${problem.num}</div>`;
+    const problemHTML = `${badgeHTML}<div class="problem-statement">${problem.question}</div>${choicesHTML}`;
+    const maxStep = problem.steps.length;
+    let stepBtns = '';
+    for (let s = 1; s <= maxStep; s++) {
+      stepBtns += `<button class="step-btn" data-pid="${problem.id}" data-step="${s}">STEP ${s}</button>`;
+    }
+    stepBtns += `<button class="step-btn answer-btn" data-pid="${problem.id}" data-step="answer">정답</button>`;
+    stepBtns += `<button class="step-btn reset-btn" data-pid="${problem.id}" data-step="0">초기화</button>`;
+    let stepsHTML = '';
+    problem.steps.forEach((step, i) => {
+      stepsHTML += `<div class="step" data-step-num="${i+1}" style="display:none"><div class="step-header"><span class="step-tag">${step.tag}</span><span class="step-title">${step.title}</span></div><div class="step-body">${step.body}</div></div>`;
+    });
+    const total = filteredList.length;
+    const prevDisabled = currentIdx === 0 ? 'disabled' : '';
+    const nextDisabled = currentIdx === total - 1 ? 'disabled' : '';
+    const overlay = document.createElement('div');
+    overlay.className = 'scratch-overlay';
+    overlay.id = 'scratch-overlay';
+    if (!animateIn) overlay.style.animation = 'none';
+    overlay.innerHTML = `<div class="scratch-overlay-header"><span class="scratch-overlay-title">${titleSuffix}풀이 공간</span><div class="overlay-nav"><button class="overlay-nav-btn" id="overlay-prev" ${prevDisabled} aria-label="이전 문제">← 이전</button><span class="overlay-nav-label">${currentIdx+1} / ${total}</span><button class="overlay-nav-btn" id="overlay-next" ${nextDisabled} aria-label="다음 문제">다음 →</button></div><button class="scratch-overlay-close" id="scratch-overlay-close" aria-label="닫기">&times;</button></div><div class="scratch-overlay-body"><div class="scratch-overlay-problem">${problemHTML}</div><div class="scratch-overlay-canvas"><div class="overlay-step-bar">${stepBtns}</div><div class="overlay-steps-container" id="overlay-steps-${problem.id}">${stepsHTML}</div></div></div>`;
+    document.body.appendChild(overlay);
+    renderMath(overlay);
+    document.getElementById('scratch-overlay-close').addEventListener('click', closeScratchOverlay);
+    document.getElementById('overlay-prev').addEventListener('click', () => { if (currentIdx > 0) goTo(currentIdx - 1); });
+    document.getElementById('overlay-next').addEventListener('click', () => { if (currentIdx < filteredList.length - 1) goTo(currentIdx + 1); });
+    syncOverlayStepUI(problem.id);
+  }
+  function closeScratchOverlay() {
+    const overlay = document.getElementById('scratch-overlay');
+    if (!overlay) return;
+    overlay.style.animation = 'overlayOut 180ms cubic-bezier(0.4,0,1,1) both';
+    overlay.addEventListener('animationend', () => overlay.remove(), { once: true });
+  }
+  function syncOverlayStepUI(pid) {
+    const overlay = document.getElementById('scratch-overlay');
+    if (!overlay) return;
+    const container = document.getElementById('overlay-steps-' + pid);
+    if (!container) return;
+    const opened = stepState[pid] instanceof Set ? stepState[pid] : new Set();
+    container.querySelectorAll('.step').forEach(stepEl => {
+      const n = parseInt(stepEl.dataset.stepNum, 10);
+      stepEl.style.display = opened.has(n) ? 'block' : 'none';
+    });
+    overlay.querySelectorAll('.overlay-step-bar .step-btn').forEach(btn => {
+      if (btn.classList.contains('reset-btn')) return;
+      const s = btn.dataset.step;
+      if (s === 'answer') {
+        const mainAnswerBtn = document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`);
+        btn.classList.toggle('active', !!mainAnswerBtn?.classList.contains('active'));
+      } else {
+        btn.classList.toggle('active', opened.has(parseInt(s, 10)));
+      }
+    });
+  }
+  window.syncOverlayStepUI = syncOverlayStepUI;
+  (function(){
+    if(!document.getElementById('overlay-out-style')){
+      const s=document.createElement('style');
+      s.id='overlay-out-style';
+      s.textContent='@keyframes overlayOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.97)}}';
+      document.head.appendChild(s);
+    }
+  })();
+  (function setupDownload() {
+    const dlBtn = document.getElementById('btn-download');
+    if (!dlBtn) return;
+    dlBtn.addEventListener('click', function () {
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '수능특강_미적분I_미분계수와도함수_해설.html';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+    });
+  })();
+  function jumpToAnchor() {
+    const hash = (location.hash || '').replace(/^#/, '');
+    if (!hash) return false;
+    const idx = PROBLEMS.findIndex(p => p.id === hash);
+    if (idx < 0) return false;
+    applyFilter('all');
+    currentIdx = idx;
+    showCard(idx); updateNav(); updateProgress();
+    return true;
+  }
+  window.addEventListener('hashchange', jumpToAnchor);
+  function init() {
+    applyFilter('all');
+    if (location.hash) setTimeout(jumpToAnchor, 50);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+<script>
+document.addEventListener('keydown', (e) => {
+  if (e.isComposing) return;
+  const t = e.target;
+  if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+  if (e.key === 'h' || e.key === 'H') {
+    e.preventDefault();
+    const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+  }
+});
+</script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body></html>

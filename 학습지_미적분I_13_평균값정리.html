@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-2 도함수의 활용 · 차시 13 평균값 정리 · Agent A5 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 평균값 정리</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_13';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "13차시 평균값 정리";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">13차시: 평균값 정리</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_미적분I_12_접선의방정식.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_미적분I_14_함수의증가와감소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">함수 \(f(x) = -\dfrac{1}{3}x^2 + 12\)의 그래프 위의 두 점 \(\mathrm{A}(-3, 9)\), \(\mathrm{B}(3, 9)\)을 잇는 직선을 생각하자. 직선 \(\mathrm{AB}\)의 기울기는 \(\dfrac{9 - 9}{3 - (-3)} = 0\)이다.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 직선 \(\mathrm{AB}\)와 <strong>평행</strong>한 (즉, 기울기가 \(0\)인) <strong>접선</strong>이 곡선 \(y = f(x)\) 위 어딘가에 반드시 존재할까? 존재한다면 그 접점의 \(x\)좌표는 어디일까?</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 그래프를 그려 보면 정점 \((0, 12)\)에서 \(f'(0) = 0\) — 기울기 \(0\)인 접선이 정확히 존재한다. 이 단순한 관찰을 <strong>일반화</strong>한 것이 오늘의 두 정리: <span class="calc-accent font-bold">롤의 정리</span>(\(f(a)=f(b)\)일 때 \(f'(c)=0\)인 \(c\)가 존재) → <span class="calc-accent font-bold">평균값 정리</span>(\(f(a)=f(b)\) 조건을 떼면 \(f'(c) = \dfrac{f(b)-f(a)}{b-a}\)가 됨).</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 롤의 정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        롤의 정리 (Rolle's Theorem)
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 닫힌구간 \([a, b]\)에서 <strong>연속</strong>이고 열린구간 \((a, b)\)에서 <strong>미분가능</strong>하며 \(f(a) = f(b)\)이면, 다음을 만족시키는 \(c\)가 적어도 하나 존재한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( f'(c) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 0 \)</span></span>, &nbsp; \( c \in (a, b) \)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>기하학적 의미:</strong> 양 끝의 함숫값이 같으면 그 사이 어딘가에서 <strong>\(x\)축에 평행한 접선</strong>이 존재한다. <span class="calc-accent font-bold">세 가지 조건(연속·미분가능·\(f(a)=f(b)\))</span>이 모두 갖춰져야 한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.73~74 · 롤의 정리 참고)</span></p>
+                </div>
+
+                <!-- 2. 롤의 정리 반례 점검 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        세 조건 — 빠지면 결론도 무너진다
+                    </h3>
+                    <p class="mb-3 text-slate-700">조건 한 가지라도 빠지면 결론(존재성)이 보장되지 않는다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ul class="space-y-2 text-base">
+                            <li>① <strong>연속이지만 미분 불가능 반례:</strong> \(f(x) = |x|\), 닫힌구간 \([-1, 1]\). \(f(-1) = f(1) = 1\)이지만 \(x = 0\)에서 미분 불가능. \(f'(c) = 0\)인 \(c \in (-1, 1)\)이 <strong>존재하지 않는다</strong>.</li>
+                            <li>② <strong>\(f(a) \neq f(b)\) 반례:</strong> \(f(x) = x\)는 \([0, 1]\)에서 모든 조건이 좋으나 \(f(0)=0 \neq 1 = f(1)\). \(f'(x) = 1\)로 \(0\)이 되는 점이 없다.</li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 정리를 적용하기 전에 <strong>"세 조건을 모두 확인"</strong>하는 습관. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.75 · 본문 옆 활동 + \(f(x)=|x|\) 반례 참고)</span></p>
+                </div>
+
+                <!-- 3. 평균값 정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        평균값 정리 (Mean Value Theorem)
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 닫힌구간 \([a, b]\)에서 연속이고 열린구간 \((a, b)\)에서 미분가능할 때, 다음을 만족시키는 \(c\)가 적어도 하나 존재한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( \dfrac{f(b) - f(a)}{b - a} = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(c) \)</span></span>, &nbsp; \( c \in (a, b) \)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>기하학적 의미:</strong> 두 점 \((a, f(a))\), \((b, f(b))\)를 잇는 <strong>평균 변화율</strong>(= 직선 \(\mathrm{AB}\)의 기울기)과 같은 <strong>순간 변화율</strong>(= 접선의 기울기)을 갖는 점 \(c\)가 구간 안에 존재한다.</p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>롤의 정리와의 관계:</strong> 평균값 정리에서 \(f(a) = f(b)\)인 특수 경우가 롤의 정리. 즉 <span class="calc-accent font-bold">롤 \(\subset\) 평균값</span>의 일반화 구조. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.75~76 · 평균값 정리 참고)</span></p>
+                </div>
+
+                <!-- 4. 평균값 정리 응용: f'=0 ⇒ 상수함수 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        응용 — "\(f'(x) = 0 \Rightarrow f\)는 상수함수"의 증명
+                    </h3>
+                    <p class="mb-3 text-slate-700">"상수함수의 도함수는 \(0\)"은 자명. 그 <strong>역</strong>도 참인가? 평균값 정리로 증명한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base"><strong>주장:</strong> \(f(x)\)가 \([a, b]\)에서 연속이고 \((a, b)\)에서 미분가능하며, \((a, b)\)의 모든 \(x\)에 대해 \(f'(x) = 0\)이면, \(f(x)\)는 \([a, b]\)에서 <strong>상수함수</strong>이다.</p>
+                        <p class="text-base mt-3"><strong>증명:</strong> 임의의 \(a \lt x \leq b\)에 대해 평균값 정리를 \([a, x]\)에 적용 \(\Rightarrow\) \(\dfrac{f(x) - f(a)}{x - a} = f'(c)\)인 \(c \in (a, x)\) 존재. 가정에서 \(f'(c) = 0 \Rightarrow f(x) = f(a)\). 모든 \(x\)에 대해 같으므로 상수함수. \(\blacksquare\)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>따름정리:</strong> 같은 구간에서 \(f'(x) = g'(x)\)이면 \(f(x) = g(x) + k\) (상수 \(k\)). 부정적분(차시 22)의 모든 일반해가 "\(+ C\)"를 갖는 이유의 핵심 정당화. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.77 · 예제 3 + 문제 04 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">정리의 \(c\)값 직접 계산 — 정의식 그대로</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-롤의 정리의 \(c\) 구하기</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) = x^2 - 4x + 3 \)에 대하여 닫힌구간 \([1, 3]\)에서 롤의 정리를 만족시키는 실수 \(c\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.74 · 본문 + 예제 1 변형 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> ① 조건 확인: \(f(1) = 1 - 4 + 3 = 0\), \(f(3) = 9 - 12 + 3 = 0\), 연속·미분가능 ✓. ② \(f'(x) = 2x - 4\), \(f'(c) = 0 \Rightarrow c = 2 \in (1, 3)\) ✓.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-평균값 정리의 \(c\) 구하기</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 구간에서 평균값 정리를 만족시키는 실수 \(c\)의 값을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.76 · 문제 03 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = -2x^2 + 4x \), \([0, 4]\) &nbsp;&nbsp;
+                                (2) \( f(x) = x^3 \), \([-3, 3]\)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 공식 \(\dfrac{f(b) - f(a)}{b - a} = f'(c)\) 대입. (1) \(f(0) = 0\), \(f(4) = -16\). 평균변화율 \(= -4\). \(f'(x) = -4x + 4\), \(-4c + 4 = -4 \Rightarrow c = 2\). (2) \(f(-3) = -27\), \(f(3) = 27\). 평균변화율 \(= 9\). \(f'(x) = 3x^2\), \(3c^2 = 9 \Rightarrow c = \pm\sqrt{3}\). 둘 다 \((-3, 3)\)에 속함.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-롤의 정리 적용 가능성 판단</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \( f(x) = |x| \)가 닫힌구간 \([-1, 1]\)에서 롤의 정리를 만족시키지 <strong>않는</strong> 이유를 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.75 · 본문 옆 활동 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 롤의 정리의 세 조건 중 ① 연속 (\([-1, 1]\)에서 ✓), ③ \(f(-1) = 1 = f(1)\) (✓). 그러나 ② <strong>미분가능</strong>이 \(x = 0\)에서 깨진다 (좌미분 \(-1\), 우미분 \(+1\)). 따라서 정리 적용 불가. 실제로 \(f'(x) = \pm 1\)이 \(0\)이 되는 점이 없다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">정리의 \(c\)에 추가 조건 / 정리의 응용 (구간 단속, 부등식)</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-\(c\)가 주어졌을 때 미지수 결정</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = x^3 + x + 1 \)에 대하여 닫힌구간 \([-1, a]\)에서 평균값 정리를 만족시키는 실수 \(c\)의 값이 \(1\)일 때, 실수 \(a\)의 값을 구하시오. (단, \(a \gt 1\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 05번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 평균값 정리 식 \(\dfrac{f(a) - f(-1)}{a + 1} = f'(1)\). \(f(-1) = -1\), \(f'(x) = 3x^2 + 1\), \(f'(1) = 4\). \(a^3 + a + 1 + 1 = 4(a + 1) \Rightarrow a^3 - 3a - 2 = 0\). 인수분해 \((a - 2)(a + 1)^2 = 0 \Rightarrow a = 2\) (조건 \(a \gt 1\)).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-구간 단속 (평균값 정리의 현실 응용)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 구간 단속제는 구간의 시작과 종료 지점에 카메라를 설치하여 자동차의 구간 평균속도를 측정해 제한 속도 준수 여부를 판정한다. 제한 속도가 \(80\,\mathrm{km/h}\)인 도로의 \(15\,\mathrm{km}\) 구간을 어느 자동차가 통과하는 데 \(10\)분 걸렸을 때, 이 자동차의 속도가 <strong>제한 속도를 초과한 순간</strong>이 있었는지 평균값 정리를 이용해 판정하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 14번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 평균속도 \(= \dfrac{15}{10/60} = 90\,\mathrm{km/h}\). 시각 \(t\)에 대한 위치 \(f(t)\)는 연속·미분가능 (현실적). 평균값 정리에 의해 \(f'(c) = 90\)인 \(c\)가 존재 \(\Rightarrow\) 어느 순간 순간속도 \(= 90\,\mathrm{km/h}\). <strong>제한속도 \(80\,\mathrm{km/h}\)를 초과한 순간이 반드시 있었다.</strong> 핵심 슬로건: <strong>"평균이 \(M\)이면 어느 순간 속도도 \(M\)인 점이 존재"</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-부등식 증명에 평균값 정리 적용</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 자연수 \(n \geq 2\)에 대하여 함수 \(f(x) = x^2\)에 닫힌구간 \([n - 1,\ n]\)에서 평균값 정리를 적용하여 \[ 2(n - 1) \lt n^2 - (n - 1)^2 \lt 2n \] 이 성립함을 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.77 · 평균값 정리 응용 변형)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f(x) = x^2\)는 \([n - 1, n]\)에서 연속·미분가능, \(f'(x) = 2x\). 평균값 정리 \(\Rightarrow n^2 - (n - 1)^2 = 2c \cdot 1 = 2c\), \(c \in (n - 1, n)\). \(n - 1 \lt c \lt n \Rightarrow 2(n - 1) \lt 2c \lt 2n\). \(\blacksquare\) <strong>패턴:</strong> "함수의 차분 = 미분계수 × 구간 길이", \(c\)의 위치 정보로 부등식 양변을 묶는다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 평균값 정리의 \(c\) — 존재성 vs 유일성·특정성 혼동</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-수리 언어 소양: 카드의 참/거짓</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 모든 실수 \(x\)에서 미분가능하고 그래프가 세 점 \((0, 0)\), \((2, 2)\), \((4, 0)\)을 지나는 임의의 함수 \(f(x)\)에 대하여 다음 각 카드의 명제가 <strong>항상 참인지</strong> 판정하고 그 이유를 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.77 · 수리 언어 소양 참고)</span>
+                            <div class="mt-3 flex justify-center">
+                                <img src="images/calc_13_q5_threepoints.png" alt="P.77 세 점 통과 함수 카드 1·2·3" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:300px;">
+                            </div>
+                            <ul class="ml-6 mt-3 space-y-1 text-base font-medium list-disc">
+                                <li><strong>카드 1:</strong> \(x\)축에 평행한 접선이 존재한다.</li>
+                                <li><strong>카드 2:</strong> 기울기가 \(-1\)인 접선이 존재한다.</li>
+                                <li><strong>카드 3:</strong> 점 \((2, 2)\)에서의 접선은 \(x\)축과 평행하다.</li>
+                            </ul>
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                많은 학생이 카드 3을 "\((2, 2)\)가 두 끝점 사이에 있으니 거기서 기울기가 \(0\)일 것"이라고 단정한다. <strong>평균값 정리·롤의 정리는 "어떤 \(c\)가 존재한다"만 보장</strong>한다 — <strong>그 \(c\)가 정확히 어디인지·몇 개인지는 알려주지 않는다</strong>. 존재성 \(\neq\) 유일성·특정성.<br><br>
+                                <strong>STEP 1 — 카드 1 (참):</strong> \(f(0) = f(4) = 0\)이고 \([0, 4]\)에서 연속·미분가능이므로 롤의 정리 \(\Rightarrow\) \(f'(c) = 0\)인 \(c \in (0, 4)\) 존재. <strong>\(x\)축 평행 접선이 존재 ✓</strong>.<br><br>
+                                <strong>STEP 2 — 카드 2 (참):</strong> 구간 \([2, 4]\)에서 \(f(2) = 2\), \(f(4) = 0\). 평균변화율 \(= \dfrac{0 - 2}{4 - 2} = -1\). 평균값 정리 \(\Rightarrow\) \(f'(c) = -1\)인 \(c \in (2, 4)\) 존재. <strong>기울기 \(-1\) 접선 존재 ✓</strong>.<br><br>
+                                <strong>STEP 3 — 카드 3 (거짓):</strong> 카드 1에서 \(f'(c) = 0\)인 \(c\)의 <strong>존재</strong>는 보장되지만, 그 \(c\)가 <strong>\(2\)인지 다른 값인지는 모른다</strong>. 반례: 세 점을 지나면서 \(f'(2) \neq 0\)인 다항함수를 쉽게 만들 수 있다 (예: 적당히 비대칭인 4차 함수). <strong>카드 3은 항상 참은 아니다 ✗</strong>.<br><br>
+                                <strong>핵심 통찰:</strong> 평균값 정리·롤의 정리는 <strong>"어떤 \(c\) ∈ 열린구간"의 존재성만 보장</strong>한다. 그 \(c\)가 어디·몇 개·특정 점인지에 대한 정보는 주지 않는다. "존재성 정리"라는 본질을 놓치면 카드 3 같은 함정에 빠진다.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 두 함수 \(f(x), g(x)\)가 닫힌구간 \([a, b]\)에서 연속이고 열린구간 \((a, b)\)에서 미분가능할 때, 열린구간 \((a, b)\)에 속하는 모든 \(x\)에 대하여 \(f'(x) = g'(x)\)이면 \(f(x) = g(x) + k\) (\(k\)는 상수)임을 평균값 정리(또는 그 따름정리)를 이용하여 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.77 · 문제 04 참고)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> \(h(x) = f(x) - g(x)\)로 두면 \(h\)는 \([a, b]\)에서 연속·\((a, b)\)에서 미분가능하며 \(h'(x) = f'(x) - g'(x) = 0\) (모든 \(x \in (a, b)\)). 차시 내 응용 결과 "\(h'(x) = 0 \Rightarrow h\)는 상수함수"에 의해 \(h(x) = k\). 따라서 \(f(x) - g(x) = k \Rightarrow f(x) = g(x) + k\). \(\blacksquare\) <strong>의미:</strong> 두 함수의 도함수가 같으면 두 함수는 상수 차이일 뿐 — 부정적분(차시 22) "\(+ C\)"의 정당화.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 도함수의 활용 1 유제 3 [26009-0077]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_도함수의활용1"
+                 data-aft-source-id="c4-ex3"
+                 data-aft-source-label="수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 3">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 3 [26009-0077]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 평균값 정리로 \(f(x) - f(0) = x f'(c)\) 변환 → 부등식 (가)와 (나)의 결합으로 \(2p \leq f'\)의 최솟값</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                다음 조건을 만족시키는 모든 다항함수 \(f(x)\)에 대하여 실수 \(p\)의 최댓값을 구하시오.
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl mb-6">
+                <p class="text-lg text-slate-800 mb-2">(가) 모든 양의 실수 \(x\)에 대하여 \(f(x) - f(0) \geq 2px\)이다.</p>
+                <p class="text-lg text-slate-800">(나) \(x \gt 0\)에서 함수 \(f'(x)\)의 최솟값이 \(4\)이다.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose text-slate-600">
+                    ※ 답안 형식: 단답형 (자연수)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 평균값 정리 적용</strong>: 다항함수 \(f\)는 실수 전체에서 연속·미분가능. 임의의 \(x \gt 0\)에 대해 \([0,\ x]\)에서 평균값 정리 \(\Rightarrow\) \(\dfrac{f(x) - f(0)}{x - 0} = f'(c)\)인 \(c \in (0,\ x)\)가 존재. 즉 \(f(x) - f(0) = x f'(c)\).</li>
+                    <li><strong>STEP 2 — (가) 부등식과 결합 ⇒ \(f'(c) \geq 2p\)</strong>: \(x f'(c) \geq 2px\), \(x \gt 0\)이므로 양변을 \(x\)로 나누면 \(f'(c) \geq 2p\). 임의의 \(x \gt 0\)에 대해 대응되는 \(c \in (0,\ x)\)에서 성립하므로 \(x \gt 0\) 영역의 \(f'\) 전체에 대해 \(2p\) 이상 — 즉 \(f'\)의 최솟값 \(\geq 2p\).</li>
+                    <li><strong>STEP 3 — (나) \(\Rightarrow 4 \geq 2p\)</strong>: \(x \gt 0\)에서 \(f'\)의 최솟값 \(= 4 \geq 2p \Rightarrow p \leq 2\).</li>
+                    <li><strong>STEP 4 — 최종</strong>: \(p\)의 최댓값 \(= 2\) (예: \(f(x) = 4x + C\)일 때 등호 성립). <span class="text-red-600 font-bold">정답: \(2\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "전 구간 부등식 \(f(x) - f(0) \geq g(x)\)" 형식은 평균값 정리로 \(f'(c)\)에 대한 조건으로 변환 — 차시 13의 표준 응용. 평균값 정리가 "어떤 \(c\)가 존재"라는 정보를 주므로, 임의의 \(x\)에 대해 대응되는 \(c\)를 모두 모으면 \(f'\)의 최솟·최댓값과 직결된다.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_도함수의활용1_해설.html#c4-ex3" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 3</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2005학년도 9월 모의평가 가형 28번 — 평균값 정리 직접 응용) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분활용"
+                 data-aft-source-id="g_ws13_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 미분 활용 · 2005학년도 9월 모의평가 가형 28번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2005학년도 9월 모의평가 수학영역 가형 28번 [4점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 평균값 정리를 다항함수의 양 끝점 평균변화율에 직접 적용하여, 도함수 \(f'(c)\)가 특정값을 갖는 \(c\)의 존재를 보장 + 합성함수의 연쇄법칙과 결합</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                <p class="mb-4">오른쪽 그림은 직선 \(y = x\)와 다항함수 \(y = f(x)\)의 그래프의 일부이다. 모든 실수 \(x\)에 대하여 \(f'(x) \geq 0\)이고 \(f(0) = \dfrac{1}{5}\), \(f(1) = 1\)일 때, &lt;보기&gt;에서 옳은 것을 모두 고른 것은?</p>
+                <img src="images/calc_13_chal2_kichul.png" alt="직선 y=x와 다항함수 y=f(x)의 그래프. (0, 1/5)에서 시작하여 (1, 1)에서 직선 y=x와 만남" class="block mx-auto max-w-xs w-full my-4" />
+                <div class="bg-slate-50 border-2 border-slate-300 rounded-xl p-4 my-4">
+                    <p class="text-center font-bold mb-2 text-base">&lt; 보 기 &gt;</p>
+                    <p class="mb-2 text-base">ㄱ. \(f'(x) = \dfrac{4}{5}\)인 \(x\)가 개구간 \((0,\ 1)\)에 존재한다.</p>
+                    <p class="mb-2 text-base text-slate-500">ㄴ. \(\displaystyle\int_0^1 f(x)\,dx + \int_{1/5}^{1} f^{-1}(x)\,dx = 1\) <span class="text-xs">(※ 적분 — 미적분I 2학기 진도, 차시 13에서는 평가 보류)</span></p>
+                    <p class="text-base">ㄷ. \(g(x) = (f \circ f)(x)\)일 때, \(g'(x) = 1\)인 \(x\)가 개구간 \((0,\ 1)\)에 존재한다.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① ㄱ &nbsp;&nbsp; ② ㄷ &nbsp;&nbsp; ③ ㄱ, ㄴ &nbsp;&nbsp; ④ ㄴ, ㄷ &nbsp;&nbsp; ⑤ ㄱ, ㄴ, ㄷ
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — ㄱ. 평균값 정리 직접 적용</strong>: \(f\)는 다항함수이므로 \([0, 1]\)에서 연속·미분가능. 평균값 정리에 의하여 \[ f'(c) = \dfrac{f(1) - f(0)}{1 - 0} = \dfrac{1 - \tfrac{1}{5}}{1} = \dfrac{4}{5} \] 인 \(c \in (0,\ 1)\)이 적어도 하나 존재. 따라서 ㄱ은 <strong>참</strong>.</li>
+                    <li><strong>STEP 2 — ㄴ. 적분의 기하적 해석(2학기 진도, 참고)</strong>: \(\int_0^1 f(x)\,dx\)와 \(\int_{1/5}^1 f^{-1}(x)\,dx\)의 합은 함수 \(y = f(x)\) 아래의 영역과 그 역함수 \(y = f^{-1}(x)\) 아래의 영역(곧 \(y\)축으로 본 \(f(x)\) 영역)을 합한 것으로, 두 점 \((0,\tfrac{1}{5})\)와 \((1,1)\)을 잇는 단위 직사각형 \([0,1]\times[\tfrac{1}{5}, 1]\) 너비 \(\tfrac{4}{5}\) + 정사각형 \([0,\tfrac{1}{5}]\times[0,\tfrac{1}{5}]\) 넓이 \(\tfrac{1}{25}\) 등을 통합하면 결국 단위정사각형 일부와 같음. 정밀 계산하면 \(= 1\). ㄴ도 <strong>참</strong>. (※ 본 차시는 적분 학습 전이므로 풀이 보류.)</li>
+                    <li><strong>STEP 3 — ㄷ. 합성함수 + 평균값 정리</strong>: \(g = f \circ f\)로 두면 \(g(0) = f(f(0)) = f(\tfrac{1}{5})\), \(g(1) = f(f(1)) = f(1) = 1\). 그림에서 \(0 \lt f(\tfrac{1}{5}) \lt 1\)이다. 평균값 정리에 의해 \[ g'(c) = \dfrac{g(1) - g(0)}{1 - 0} = 1 - f(\tfrac{1}{5}) \] 인 \(c \in (0, 1)\) 존재. 또한 연쇄법칙 \(g'(x) = f'(f(x))\cdot f'(x)\)로 도함수 \(g'\)이 연속함수이고, 그래프상 \(f'(0)\)이 작고(직선 아래) \(f'(1)\) 부근에서 \(f'\)이 \(1\)보다 큰 값을 가지므로 \(g'\)의 변역에 \(1\)이 포함됨이 사잇값정리로 보장. 따라서 ㄷ도 <strong>참</strong>.</li>
+                    <li><strong>STEP 4 — 핵심 통찰</strong>: 차시 13의 평균값 정리는 단순 적용을 넘어 (i) 다항함수에 직접 적용(ㄱ), (ii) 적분과의 결합(ㄴ), (iii) 합성함수의 연쇄법칙과 결합(ㄷ)의 3중 통합으로 평가원에서 4점 4점 출제된다. <strong>"도함수가 어떤 특정값을 갖는 점의 존재"</strong>를 보장하는 강력한 도구.</li>
+                    <li><strong>STEP 5 — 최종 정답</strong>: ㄱ, ㄴ, ㄷ 모두 참. <span class="text-red-600 font-bold">정답: ⑤</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 평균값 정리는 <strong>"양 끝점의 평균변화율과 같은 도함수 값을 갖는 점의 존재"</strong>를 보장한다. 본 문항은 평균값 정리가 평가원 4점 ㄱㄴㄷ 보기 문제에서 어떻게 단일·합성·적분과 통합되어 출제되는지를 보여주는 대표 사례. 차시 13에서는 ㄱ과 ㄷ을 표적으로 학습하고, ㄴ은 미적분I 2학기 적분 단원 학습 이후 재방문하면 자연스럽다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (존재성 정리의 본질)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">롤의 정리·평균값 정리가 "어떤 \(c\)가 <strong>존재한다</strong>"만 보장하는 존재성 정리임을 강조하고, "\(c\)가 어디 있는가 / 몇 개 있는가 / 무엇인가"에 대해 정리가 무엇을 말하고 무엇을 말하지 않는지 자신의 언어로 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"처음엔 롤의 정리·평균값 정리가 '\(c\)가 어디 있는지 알려주는 정리'인 줄 알았는데, 사실은 '그런 \(c\)가 존재한다는 사실만 보장하는 존재성 정리'라는 걸 알게 됐다. '\((2, 2)\)에서 접선이 \(x\)축과 평행이다' 같은 함정 문장에 속을 뻔했지만, 정리의 결론은 '존재'까지일 뿐 위치는 직접 풀어야 한다는 점을 노트에 굵게 적어뒀다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (구간 단속 사례 정착)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"평균속도가 \(M\)이면 어느 순간 속도도 \(M\)인 점이 존재한다"는 평균값 정리의 현실 응용(구간 단속)을 다른 일상 사례(등산, 비행, 마라톤 평균 페이스 등)에 직접 적용해 보고, 정리의 핵심 발상을 자신만의 슬로건으로 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"구간 단속 예시가 재밌었다. \(15\,\mathrm{km}\)를 \(10\)분에 지났으면 평균속도가 \(90\,\mathrm{km/h}\)니까, 평균값 정리에 의해 그 사이 어느 순간 속도계가 정확히 \(90\,\mathrm{km/h}\)였던 순간이 있다는 결론. 제한속도 \(80\,\mathrm{km/h}\)를 넘었다는 게 직접 확정된다. '평균이 곧 어느 순간 실제로 일어난 값'이라는 슬로건으로 정리해두니 마라톤 평균 페이스 같은 상황에도 그대로 쓰였다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (\(f' = 0 \Rightarrow\) 상수함수 → 부정적분의 \(+C\))</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">평균값 정리의 따름정리 "\(f'(x) = g'(x) \Rightarrow f(x) = g(x) + k\)"가 다음 단원(차시 22 부정적분)에서 모든 부정적분이 "\(+ C\)"를 갖는 이유를 어떻게 정당화하는지 가설을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"평균값 정리의 따름정리 \(f' = g' \Rightarrow f = g + k\)가 신기했다. 도함수가 같으면 두 함수는 상수 차이만 난다는 얘기인데, 이게 곧 부정적분에 \(+ C\)가 붙는 이유라는 게 와닿았다. 다음 단원 \(\int f(x)\,dx = F(x) + C\)에서 그 \(C\)가 그냥 약속이 아니라 평균값 정리에서 보장되는 거라는 가설을 세워뒀다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 13차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 FAB -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

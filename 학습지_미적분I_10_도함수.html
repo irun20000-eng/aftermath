@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-1 미분계수와 도함수 · 차시 10 도함수 · Agent A4 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 도함수</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_10';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        /* 미적분 I 톤 — 메인은 teal, 강조는 cyan/emerald */
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
+        const LESSON_NAME = "10차시 도함수";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">10차시: 도함수</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_미적분I_09_미분계수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_미적분I_11_중단원마무리_II_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">차시 09에서 우리는 한 점 \(x = a\)에서의 미분계수 \(f'(a)\)를 정의했다. 그렇다면 \(x = 1, 2, 3, \cdots\) 각 점마다 매번 정의식 극한을 따로 계산해야 할까?</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 함수 \(f(x) = x^2\)에 대하여 \(f'(1), f'(2), f'(3), f'(a)\)를 차례로 계산해 보고, 거기서 발견되는 <strong>규칙(공식)</strong>을 추측해 보자.</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 모든 \(x\)에서 미분계수가 존재한다면 "\(x \mapsto f'(x)\)"는 그 자체로 <span class="calc-accent font-bold">새로운 함수</span>가 된다. 오늘 이 함수를 <strong>도함수</strong>라 부르고, \((x^n)' = nx^{n-1}\), \((cf)' = cf'\), \((f \pm g)' = f' \pm g'\), 곱의 미분 같은 <strong>"공식 카드"</strong>를 만들어 매번 극한 계산 없이 빠르게 미분할 도구를 손에 넣는다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 도함수의 정의 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        도함수의 정의 — \(x\)를 변수로 본 미분계수
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 정의역 \(X\)에서 미분가능할 때, 각 \(x \in X\)에 미분계수 \(f'(x)\)를 대응시킨 함수를 \(f(x)\)의 <span class="calc-accent font-bold">도함수</span>라 한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{\Delta x \to 0}\dfrac{f(x+\Delta x) - f(x)}{\Delta x} = \lim_{h \to 0}\dfrac{f(x+h) - f(x)}{h} \)</span></span></p>
+                    </div>
+                    <p class="mt-2 text-slate-700">도함수의 표기는 모두 같은 의미이다.</p>
+                    <div class="bg-white p-3 rounded-xl border border-teal-100 text-center">
+                        <p class="text-lg font-bold">\( f'(x), \;\; y', \;\; \dfrac{dy}{dx}, \;\; \dfrac{d}{dx} f(x) \)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> \(f'(a)\)는 도함수 \(f'(x)\)에 \(x = a\)를 대입한 값. 즉 <span class="calc-accent font-bold">"미분계수 = 도함수의 함숫값"</span>. 도함수를 한 번 구해 두면 모든 점의 미분계수를 즉시 얻는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.58~59 · 도함수 정의 참고)</span></p>
+                </div>
+
+                <!-- 2. x^n의 도함수 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        \(x^n\)과 상수함수의 도함수 — 첫 번째 공식 카드
+                    </h3>
+                    <p class="mb-3 text-slate-700">자연수 \(n\)에 대하여 \(f(x) = x^n\)의 도함수는 정의식 + \(a^n - b^n\) 인수분해 공식으로 도출된다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \( f(x) = x^n \) (\(n \geq 2\)인 정수)이면 \(f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(n x^{n-1}\)</span></span></li>
+                            <li>② \( f(x) = x \)이면 \(f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1\)</span></span></li>
+                            <li>③ \( f(x) = c \) (상수)이면 \(f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(0\)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "\(x\)의 거듭제곱 \(\Rightarrow\) 지수 내려서 곱하고, 지수는 \(1\) 감소". 즉 <span class="calc-accent font-bold">\((x^n)' = n x^{n-1}\)</span>. 상수의 도함수는 항상 \(0\) — 상수는 변하지 않으므로 변화율도 \(0\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.60 · \(x^n\)·상수함수의 도함수 참고)</span></p>
+                </div>
+
+                <!-- 3. 실수배·합·차의 미분법 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        실수배·합·차의 미분법 — 미분은 "분배"된다
+                    </h3>
+                    <p class="mb-3 text-slate-700">미분가능한 두 함수 \(f(x), g(x)\)에 대하여 (단 \(k\)는 실수)</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \( \{k f(x)\}' = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( k f'(x) \)</span></span> &nbsp; (실수배는 그대로)</li>
+                            <li>② \( \{f(x) + g(x)\}' = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(x) + g'(x) \)</span></span></li>
+                            <li>③ \( \{f(x) - g(x)\}' = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(x) - g'(x) \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 미분계수 정의 + 극한의 사칙연산. 단원 I에서 배운 \(\lim(f+g) = \lim f + \lim g\)가 한 줄 위로 옮겨졌을 뿐. ②, ③은 항이 3개 이상일 때에도 그대로 성립. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.61 · 실수배·합·차의 미분법 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 즉시 활용 — 다항함수의 미분</p>
+                        <p class="text-sm text-cyan-800">\( y = x^3 - 5x^2 + 2x - 6 \)의 도함수는 \(\Rightarrow\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( y' = 3x^2 - 10x + 2 \)</span></span>. 한 줄로 끝!</p>
+                    </div>
+                </div>
+
+                <!-- 4. 곱의 미분법 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        곱의 미분법 — "한 쪽씩 미분, 두 항 합"
+                    </h3>
+                    <p class="mb-3 text-slate-700">미분가능한 두 함수 \(f(x), g(x)\)에 대하여</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( \{f(x) g(x)\}' = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(x) g(x) + f(x) g'(x) \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700">세 함수의 곱에 대해서도 같은 패턴으로 확장된다.</p>
+                    <div class="bg-white p-3 rounded-xl border border-teal-100 text-center">
+                        <p class="text-base font-medium">\( \{f g h\}' = f' g h + f g' h + f g h' \) &nbsp; (각 위치에 차례로 미분)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의 — 잘못된 직관:</strong> \(\{f g\}' \neq f' \cdot g'\). 합·차에서는 분배되지만, <strong>곱·몫에서는 분배되지 않는다</strong>. 곱의 미분은 반드시 두 항의 합 형태. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.62~63 · 곱의 미분법 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 응용 — \(\{f(x)\}^2\)의 미분</p>
+                        <p class="text-sm text-cyan-800">\(y = \{f(x)\}^2 = f(x) \cdot f(x)\)에 곱의 미분 적용 \(\Rightarrow\) \(y' = f'(x) f(x) + f(x) f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 2 f(x) f'(x) \)</span></span>. (다항함수 합성의 첫 사례)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">기본 미분 공식을 익혀 다항함수를 빠르게 미분하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-도함수 정의로 계산</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 도함수를 정의에 따라 구하고, \(x = -2\)에서의 미분계수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.59 · 문제 01 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = -5x \) &nbsp;&nbsp;
+                                (2) \( f(x) = 2x^2 - x \) &nbsp;&nbsp;
+                                (3) \( f(x) = x^3 \) &nbsp;&nbsp;
+                                (4) \( f(x) = 100 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 정의 \(f'(x) = \lim_{h \to 0}\dfrac{f(x+h) - f(x)}{h}\). (1) \(f'(x) = -5\), \(f'(-2) = -5\). (2) \(f'(x) = 4x - 1\), \(f'(-2) = -9\). (3) \(f'(x) = 3x^2\), \(f'(-2) = 12\). (4) \(f'(x) = 0\) (상수), \(f'(-2) = 0\). — 모두 \((x^n)' = n x^{n-1}\) 공식과 일치함을 확인.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-공식으로 단번에 미분</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 도함수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.60·61 · 문제 02·03 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( y = x^2 \) &nbsp;&nbsp;
+                                (2) \( y = x^{10} \) &nbsp;&nbsp;
+                                (3) \( y = 7 \) &nbsp;&nbsp;
+                                (4) \( y = x^3 + x - 5 \) &nbsp;&nbsp;
+                                (5) \( y = -x^4 + 2x^2 + x + 1 \) &nbsp;&nbsp;
+                                (6) \( y = 2x^5 - 3x^3 - 3 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 모두 \((x^n)' = n x^{n-1}\), \((cf)' = c f'\), \((f \pm g)' = f' \pm g'\)의 직접 적용. (1) \(2x\). (2) \(10 x^9\). (3) \(0\). (4) \(3x^2 + 1\). (5) \(-4x^3 + 4x + 1\). (6) \(10 x^4 - 9 x^2\). — 항별로 미분, 상수항은 \(0\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-곱의 미분법</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 곱의 미분법을 이용하여 다음 함수를 미분하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.63 · 문제 05 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( y = (x + 6)(3x - 1) \) &nbsp;&nbsp;
+                                (2) \( y = (4x + 5)(x^2 - x) \) &nbsp;&nbsp;
+                                (3) \( y = (3x^2 + 2)(2 - x^2) \) &nbsp;&nbsp;
+                                (4) \( y = x(x + 2)(2x - 1) \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \( \{f g\}' = f' g + f g' \) 적용. (1) \(y' = 1 \cdot (3x-1) + (x+6) \cdot 3 = 6x + 17\). (2) \(y' = 4(x^2 - x) + (4x+5)(2x - 1) = 12 x^2 + 2 x - 5\). (3) \(y' = 6x(2 - x^2) + (3x^2+2)(-2x) = -12 x^3 + 8x\). (4) 세 함수 곱: \(y' = (x+2)(2x-1) + x(2x-1) + 2x(x+2) = 6x^2 + 6x - 2\). 전개해서 검산해도 좋다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">도함수를 매개로 함수와 그 미분계수를 동시에 다루는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-자기참조형 다항함수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다항함수 \(f(x)\)가 \( f(x) = 2x^3 - 3x \, f'(2) \) 를 만족시킬 때, \(f'(1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.65 · 중단원 기본 08번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(2)\)는 상수 \(=k\)로 두자. \(f(x) = 2x^3 - 3kx\) \(\Rightarrow\) \(f'(x) = 6x^2 - 3k\). \(x = 2\) 대입: \(f'(2) = 24 - 3k = k\) \(\Rightarrow\) \(24 = 4k\) \(\Rightarrow\) \(k = 6\). 따라서 \(f'(x) = 6x^2 - 18\). \(f'(1) = 6 - 18 = -12\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-곱의 미분으로 \(g'(1)\) 구하기</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 미분가능한 두 함수 \(f(x), g(x)\)가 \( g(x) = (x^3 - x + 1) f(x) \) 를 만족시킨다. \(f(1) = 1\), \(f'(1) = 5\)일 때, \(g'(1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.66 · 중단원 기본 10번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(p(x) = x^3 - x + 1\)로 두면 \(p'(x) = 3x^2 - 1\), \(p(1) = 1\), \(p'(1) = 2\). 곱의 미분: \(g'(x) = p'(x) f(x) + p(x) f'(x)\). \(x = 1\): \(g'(1) = p'(1) f(1) + p(1) f'(1) = 2 \cdot 1 + 1 \cdot 5 = 7\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-극한식 \(\to\) 미분계수 변환</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 함수 \( f(x) = 3x^3 - x + 2 \)에 대하여 \( \displaystyle \lim_{h \to 0}\dfrac{f(1 + 3h) - f(1)}{2h} \) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.65 · 중단원 기본 06번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 분모 \(2h\)를 분자의 변화량 \(3h\)와 맞추기. \(\dfrac{f(1+3h) - f(1)}{2h} = \dfrac{f(1+3h)-f(1)}{3h} \cdot \dfrac{3}{2}\) \(\to\) \(\dfrac{3}{2} f'(1)\). \(f'(x) = 9x^2 - 1\), \(f'(1) = 8\). 답: \(\dfrac{3}{2} \cdot 8 = 12\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 곱의 미분 \(\neq\) 미분의 곱 — 구조 혼동 정면 대응</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-나머지정리 + 곱의 미분</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 다항식 \( x^{10} \) 을 \( (x - 1)^2 \) 으로 나누었을 때의 나머지를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.63 · 문제 05 (수리 언어 소양) 참고)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                많은 학생이 "\(x = 1\) 대입해서 나머지 \(= 1\)"까지만 하고 끝낸다. 그러나 나머지는 <strong>\((x-1)^2\)로 나눈 나머지이므로 일반적으로 1차식</strong>이다. 즉 \(R(x) = ax + b\) 모양. 두 미지수를 찾으려면 한 가지 조건이 더 필요하다.<br><br>
+                                <strong>STEP 1 — 항등식 세우기:</strong> \(x^{10} = (x - 1)^2 Q(x) + R(x) = (x-1)^2 Q(x) + ax + b\). 양변에 \(x = 1\) 대입: \(1 = a + b\) — ①<br><br>
+                                <strong>STEP 2 — 양변 미분:</strong> 좌변 \(\to 10 x^9\). 우변 \(\to\) 곱의 미분으로 \(2(x-1) Q(x) + (x-1)^2 Q'(x) + a\). \(x = 1\) 대입: \(10 = 0 + 0 + a\) \(\Rightarrow\) \(a = 10\). ①에서 \(b = -9\). <br><br>
+                                <strong>결론:</strong> \(R(x) = 10x - 9\). <br><br>
+                                <strong>핵심 통찰:</strong> "양변을 미분한다"는 발상은 도함수가 <strong>모든 \(x\)에 대해 작동하는 새로운 함수</strong>임을 인식해야 가능하다. \((x-1)^2 Q(x)\)의 미분에서 곱의 미분법으로 \(2(x-1)Q\) 항이 생기지만 \(x=1\)에서 \(0\)이 되어 사라지는 것이 핵심.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 미분가능한 함수 \(f(x)\)에 대하여 \( y = \{f(x)\}^2 \)의 도함수가 \( y' = 2 f(x) f'(x) \) 임을 곱의 미분법으로 직접 보이시오. 또한 \(f(x) = x^2 + 1\)일 때 \(\{f(x)\}^2\)의 도함수를 두 가지 방법(① 전개 후 미분, ② 위 공식 사용)으로 구해 결과를 비교하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.63 · 문제 06 참고)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> \(y = f(x) \cdot f(x)\)에 곱의 미분법 적용 \(\Rightarrow\) \(y' = f'(x) f(x) + f(x) f'(x) = 2 f(x) f'(x)\). 검증: \(f(x) = x^2 + 1\), ① \(y = (x^2+1)^2 = x^4 + 2x^2 + 1\) \(\Rightarrow\) \(y' = 4x^3 + 4x\). ② \(y' = 2(x^2+1)(2x) = 4x^3 + 4x\). 일치 ✓.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 미분계수와 도함수 유제 6 [26009-0056]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_미분계수와도함수"
+                 data-aft-source-id="c3-ex6"
+                 data-aft-source-label="수능특강 수학Ⅱ · 미분계수와 도함수 · 유제 6">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 미분계수와 도함수 · 유제 6 [26009-0056]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 함수방정식 + 도함수 사칙 — 양변 차수 비교로 \(f\)의 차수 결정 후 계수 비교로 \(f(x)\) 확정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                상수함수가 아닌 다항함수 \(f(x)\)가 모든 실수 \(x\)에 대하여 \[ 4 f(x^2 + 1) = 2 x^3 f'(x) + 3 x^2 - 1 \] 을 만족시킬 때, \(f(0)\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(-\dfrac{5}{8}\) &nbsp;&nbsp; ② \(-\dfrac{1}{2}\) &nbsp;&nbsp; ③ \(-\dfrac{3}{8}\) &nbsp;&nbsp; ④ \(-\dfrac{1}{4}\) &nbsp;&nbsp; ⑤ \(-\dfrac{1}{8}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 차수 비교로 \(f\)의 차수 결정</strong>: \(f\)의 차수를 \(n\)이라 하면 좌변 \(4f(x^2+1)\)의 차수는 \(2n\), 우변 \(2x^3 f'(x)\)의 차수는 \((n-1)+3 = n+2\). 양변 차수 일치 ⇒ \(2n = n + 2 \Rightarrow n = 2\).</li>
+                    <li><strong>STEP 2 — \(f(x)=ax^2+bx+c\) 가정 후 양변 전개</strong>: \(f'(x)=2ax+b\). 좌변 \(4f(x^2+1)=4a(x^2+1)^2+4b(x^2+1)+4c = 4ax^4 + (8a+4b)x^2 + (4a+4b+4c)\). 우변 \(2x^3(2ax+b) + 3x^2 - 1 = 4ax^4 + 2bx^3 + 3x^2 - 1\).</li>
+                    <li><strong>STEP 3 — 계수 비교로 \(a,b,c\) 확정</strong>: \(x^3\)항: \(0 = 2b \Rightarrow b = 0\). \(x^2\)항: \(8a + 4b = 3 \Rightarrow a = \dfrac{3}{8}\). 상수항: \(4a + 4b + 4c = -1 \Rightarrow \dfrac{3}{2} + 4c = -1 \Rightarrow c = -\dfrac{5}{8}\).</li>
+                    <li><strong>STEP 4 — 최종</strong>: \(f(0) = c = -\dfrac{5}{8}\). <span class="text-red-600 font-bold">정답: ①</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 함수방정식이 나오면 ① <strong>양변 차수 비교</strong>로 \(f\)의 차수를 먼저 확정한 뒤 ② 일반항 \(ax^2+bx+c\)로 두고 ③ <strong>도함수 사칙 (\(f'(x)=2ax+b\))</strong>을 적용해 양변을 전개하고 ④ 계수 비교. 차시 10의 도함수 사칙(다항함수 미분법) 패턴을 함수방정식으로 확장한 형태이다.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_미분계수와도함수_해설.html#c3-ex6" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 6</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2000학년도 수능 나형 20번 — 미분계수 정의 + 곱미분 결합) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분"
+                 data-aft-source-id="g_ws10_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 미분 · 2000학년도 수능 나형 20번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2000학년도 수능 수학영역 나형 20번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 분수 극한 두 식에서 함숫값 \(f(3),\ g(3)\)과 미분계수 \(f'(3),\ g'(3)\)을 분리 추출 \(\to\) 곱의 미분법으로 \(\{fg\}'(3)\) 결정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                다항함수 \(f(x),\ g(x)\)가 \[ \lim_{x \to 3} \dfrac{f(x) - 2}{x - 3} = 1,\quad \lim_{x \to 3} \dfrac{g(x) - 1}{x - 3} = 2 \] 를 만족시킬 때, 함수 \(y = f(x)\,g(x)\)의 \(x = 3\)에서의 미분계수는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(5\) &nbsp;&nbsp; ② \(6\) &nbsp;&nbsp; ③ \(7\) &nbsp;&nbsp; ④ \(8\) &nbsp;&nbsp; ⑤ \(9\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 분자 \(\to 0\) 조건으로 \(f(3),\ g(3)\) 결정</strong>: 다항함수는 연속이고 분모 \(\to 0\)인데 극한이 유한이므로 분자도 \(\to 0\). 첫 식에서 \(f(3) - 2 = 0\) \(\Rightarrow\) \(f(3) = 2\). 둘째 식에서 \(g(3) - 1 = 0\) \(\Rightarrow\) \(g(3) = 1\).</li>
+                    <li><strong>STEP 2 — 정의식 인식으로 \(f'(3),\ g'(3)\) 추출</strong>: 첫 식은 \(\displaystyle\lim_{x \to 3}\dfrac{f(x) - f(3)}{x - 3} = 1\) — 즉 미분계수 정의식이므로 \(f'(3) = 1\). 마찬가지로 \(g'(3) = 2\).</li>
+                    <li><strong>STEP 3 — 곱의 미분법 적용</strong>: \(\{f(x)g(x)\}' = f'(x)g(x) + f(x)g'(x)\). \(x = 3\) 대입하면 \(\{fg\}'(3) = f'(3)\,g(3) + f(3)\,g'(3)\).</li>
+                    <li><strong>STEP 4 — 수치 대입</strong>: \(= 1 \cdot 1 + 2 \cdot 2 = 1 + 4 = 5\).</li>
+                    <li><strong>STEP 5 — 최종</strong>: \(\{fg\}'(3) = 5\). <span class="text-red-600 font-bold">정답: ①</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 평가원 기출의 표준 패턴 — ① 분수 극한이 유한이고 분모 \(\to 0\)이면 분자도 \(\to 0\) (\(\Rightarrow\) 함숫값 결정), ② 그 뒤 분자에 \(f(3),\ g(3)\)을 회수해 보면 정의식이 그대로 드러나 미분계수가 즉시 추출됨, ③ 함숫값 두 개 + 미분계수 두 개를 곱의 미분법 \(\{fg\}' = f'g + fg'\)에 대입. 차시 10의 Level 3 핵심 함정인 "곱의 미분 \(\neq\) 미분의 곱"이 평가원 출제에서 어떻게 결합되는지를 보여주는 대표 사례. 미분계수 정의(차시 09)와 곱의 미분(차시 10)이 한 문항에서 자연스럽게 통합된다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (공식의 정당화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">\((x^n)' = n x^{n-1}\) 공식이 \(a^n - b^n\) 인수분해 또는 정의식 전개에서 어떻게 자연스럽게 도출되는지 자신의 언어로 설명하고, 단지 "암기 공식"이 아닌 "정의식의 일반화"임을 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\((x^n)' = n x^{n-1}\)을 공식으로만 외웠는데, \(\dfrac{(x + h)^n - x^n}{h}\)을 이항정리로 직접 전개해보니 \(h\)가 한 번 약분되고 \(h \to 0\)에서는 \(n x^{n-1}\) 항만 남는다는 게 눈에 보였다. 공식이 그냥 외울 것이 아니라 정의식의 자연스러운 결과라는 걸 알고 나니 새로운 공식이 와도 정의로 돌아갈 자신감이 생겼다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (곱의 미분 오류 분석)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">\(\{f g\}' = f' g'\)이라는 잘못된 등식에 빠진 경험이 있었다면, 어떤 반례(예: \(f = g = x\) \(\to\) \(\{x \cdot x\}' = 2x \neq 1 \cdot 1\))로 자기 점검 루틴을 만들 수 있을지 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"처음엔 \(\{f g\}' = f' g'\)인 줄 알고 \((x \cdot x)' = 1 \cdot 1 = 1\)이라고 적었는데, 실제로는 \((x^2)' = 2x\)였다. 반례 하나가 직관을 단번에 깨줬다. 그 뒤로는 곱의 미분이 나오면 무조건 \(f' g + f g'\) 두 항의 합이라는 걸 떠올리고, 헷갈리면 \(f = g = x\) 카드를 꺼내 검산한다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (도함수의 활용)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">도함수가 그래프의 어떤 정보(접선의 기울기·증감·극값)를 알려주는지 자신의 가설을 적어 보고, 다음 단원(접선의 방정식·평균값 정리·증감과 극값)에서 어떻게 활용될지 예측해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"도함수 \(f'(x)\)가 각 \(x\)에서의 접선의 기울기를 모아둔 함수라고 생각하니까, \(f'(x) &gt; 0\)인 구간에서는 함수가 올라가고 \(f'(x) = 0\)인 점은 봉우리·골짜기 후보일 것 같았다. 다음 차시들에서 접선의 방정식·증감·극값을 다룬다는데, 결국 도함수의 부호 한 줄에서 다 나올 것 같아 미리 흐름이 잡혔다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 10차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index-calc.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 I 함수의 극한과 연속 · 차시 08 대단원 평가 I · Agent A3 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 대단원 평가 I (함수의 극한·연속)</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_08';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 220px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-type { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-hard { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+
+        /* 미적분 I 톤 — 메인은 teal */
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 160px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
+        const LESSON_NAME = "08차시 대단원 평가 I (함수의 극한·연속)";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I. 함수의 극한과 연속</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">08차시: 대단원 평가</span>
+            </div>
+            <p class="mt-4 text-slate-600 font-bold bg-teal-50 p-3 rounded-lg inline-block border border-teal-200">💡 비상 미적분 I 교과서 대단원 평가 I (함수의 극한·연속 종합) 문항. 정확한 논리로 풀이를 적어보세요.</p>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_미적분I_07_중단원마무리_I_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_미적분I_09_미분계수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 01. 실전 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
+            <h2 class="section-title">01. 실전 훈련 (Textbook Training)</h2>
+            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 대단원 학습 평가(P.44~P.46) 1~13번. 단원 I 함수의 극한·연속 종합 점검.</p>
+
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Q1 -->
+                <div>
+                    <span class="badge badge-type">[표준-극한의 사칙연산]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">1. 두 함수 \(f(x), g(x)\)에 대하여 \( \displaystyle \lim_{x \to 2} f(x) = 3,\ \lim_{x \to 2} g(x) = a \) 이고 \( \displaystyle \lim_{x \to 2} f(x)g(x) = -6 \)일 때, 극한값 \( \displaystyle \lim_{x \to 2}\{3f(x) + 2g(x)\} \)을 구하시오. (단, \(a\)는 실수) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.44 대단원 평가 01번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 곱의 극한 \( = 3 \cdot a = -6\) → \(a = -2\). 사칙으로 \(3 \cdot 3 + 2 \cdot (-2) = 9 - 4 = 5\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div>
+                    <span class="badge badge-type">[표준-옳지 않은 것 고르기]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 중 옳지 않은 것은? <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.44 대단원 평가 02번)</span>
+                        <div class="ml-6 mt-2 text-lg font-medium space-y-1">
+                            ① \( \displaystyle \lim_{x \to 1}(x^2 - 4x + 1) = -2 \) <br>
+                            ② \( \displaystyle \lim_{x \to 1}\dfrac{3x^2 - 2x - 1}{x - 1} = 4 \) <br>
+                            ③ \( \displaystyle \lim_{x \to 0}\dfrac{1 - \sqrt{1 - x}}{x} = \dfrac{1}{2} \) <br>
+                            ④ \( \displaystyle \lim_{x \to \infty}\dfrac{2x^2 - 5x + 7}{x^2 + 1} = 2 \) <br>
+                            ⑤ \( \displaystyle \lim_{x \to \infty}\!\left(\sqrt{x^2 - 2x} - x\right) = 1 \)
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 각 항을 차례로 계산해 옳지 않은 것을 찾는다. ① 대입 \(1 - 4 + 1 = -2\) ✓. ② 분자 인수분해 \((3x+1)(x-1)\) → 약분 후 \(\lim(3x+1) = 4\) ✓. ③ 유리화 \(\dfrac{x}{x(1+\sqrt{1-x})}\) → \(\dfrac{1}{2}\) ✓. ④ 최고차 비 \(\dfrac{2}{1} = 2\) ✓. ⑤ 유리화 \(\dfrac{-2x}{\sqrt{x^2-2x}+x} \to \dfrac{-2}{1+1} = -1 \neq 1\) → <strong>옳지 않음</strong>.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q3 -->
+                <div>
+                    <span class="badge badge-type">[표준-미정계수 결정]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \(f(x) = ax + b\)가 \( \displaystyle \lim_{x \to 1}\dfrac{(x^2 + 1)\,f(x)}{x^4 - 1} = 2 \) 를 만족시킬 때, 실수 \(a, b\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.44 대단원 평가 03번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 분모 \(x^4 - 1 = (x-1)(x+1)(x^2+1)\). \(x \to 1\)일 때 분모 \(\to 0\), 극한이 실수 → 분자도 \(\to 0\) → \(f(1) = a + b = 0\). 약분 후 \( \dfrac{f(x)}{(x-1)(x+1)} \to \dfrac{a}{2 \cdot 2} \cdot ? \). 실제로 \(f(x) = a(x-1)\)이라야 약분 가능. 다시 정리하면 분자 \((x^2+1) \cdot a(x-1)\), 분모 \((x-1)(x+1)(x^2+1)\) → \( \dfrac{a}{x+1}\) → \(\dfrac{a}{2} = 2 \Rightarrow a = 4, b = -4\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q4 -->
+                <div>
+                    <span class="badge badge-type">[표준-원·곡선 도형 극한]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">4. 양수 \(a\)에 대하여 원 \(x^2 + (y - a)^2 = a^2\)이 곡선 \(y = -x^2 + a\)와 만나는 점 중 제1사분면 위의 점을 \(P\)라 하자. 점 \(P\)에서 \(y\)축에 내린 수선의 발을 \(Q\)라 하고, 원의 중심을 \(C\)라고 할 때, 극한값 \( \displaystyle \lim_{a \to 0^+}\dfrac{\overline{OQ}}{\overline{OC}} \)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.44 대단원 평가 04번)</span>
+                        <div class="ml-6 mt-3 flex justify-center">
+                            <img src="images/calc_08_q4.png" alt="문제 4번 그림 — 원, 곡선 y=-x^2+a, 점 P/Q/C 표시" class="block mx-auto max-w-md w-full" />
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 두 식 연립 — \(x^2 = a - y\)를 원에 대입 → \((a - y) + (y - a)^2 = a^2\). \(u = a - y\) 치환 → \(u^2 + u - a^2 = 0\). 양수 근 \(u = \dfrac{-1 + \sqrt{1 + 4a^2}}{2}\). 작은 \(a\)에서 \(\sqrt{1 + 4a^2} \approx 1 + 2a^2\)이므로 \(u \approx a^2\). 따라서 \(y_P = a - u \approx a - a^2\), \(\overline{OQ} = y_P\), \(\overline{OC} = a\). 비율 \(\dfrac{\overline{OQ}}{\overline{OC}} \approx \dfrac{a - a^2}{a} = 1 - a \to \mathbf{1}\) (\(a \to 0^+\)). 핵심 직관: \(u\)가 \(a^2\) 차수라 \(a\)에 대한 일차 보정만 살고 비율은 1로 수렴.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q5 -->
+                <div>
+                    <span class="badge badge-type">[표준-샌드위치 정리]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \(f(x)\)가 모든 실수 \(x\)에 대하여 \( -3x^2 + 2x \leq f(x) \leq x^2 + 2x \) 를 만족시킬 때, 극한값 \( \displaystyle \lim_{x \to 0^+}\dfrac{\{f(x)\}^2}{3x^2 - x f(x)} \)을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.44 대단원 평가 05번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 양변을 \(x\)로 나누면 \( -3x + 2 \leq \dfrac{f(x)}{x} \leq x + 2\) → 샌드위치로 \(\dfrac{f(x)}{x} \to 2\). 분자 \(\{f(x)\}^2 / x^2 \to 4\), 분모 \(3 - \dfrac{f(x)}{x} \to 1\). 답 \(= \dfrac{4}{1} = 4\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q6 -->
+                <div>
+                    <span class="badge badge-type">[표준-x=0에서 연속 보기 판정]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 보기 중 \(x = 0\)에서 연속인 함수를 모두 고르시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.45 대단원 평가 06번)</span>
+                        <div class="ml-6 mt-3 text-base bg-slate-50 border border-slate-200 rounded-lg p-4">
+                            <strong>&lt;보기&gt;</strong>
+                            ㄱ. \( f(x) = |x| \) <br>
+                            ㄴ. \( f(x) = \dfrac{x}{x^2 - x} \) <br>
+                            ㄷ. \( f(x) = \begin{cases} \dfrac{1}{x} &amp; (x \neq 0) \\ 1 &amp; (x = 0) \end{cases} \) <br>
+                            ㄹ. \( f(x) = \begin{cases} 2x &amp; (x \geq 0) \\ \sqrt{-x} &amp; (x \lt 0) \end{cases} \)
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ㄱ — 절댓값은 모든 실수 연속 ✓. ㄴ — 분모 \(x(x-1)\), \(x=0\)에서 정의 안 됨 → 불연속. ㄷ — \(\lim_{x \to 0} 1/x\) 존재하지 않음 → 불연속. ㄹ — 좌극한 \(\lim \sqrt{-x} = 0\), 우극한·함숫값 \(2 \cdot 0 = 0\) → 일치 → 연속 ✓. 정답: <strong>ㄱ, ㄹ</strong>.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q7 -->
+                <div>
+                    <span class="badge badge-type">[표준-곱 함수의 연속 + 미정계수]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">7. 모든 실수 \(x\)에서 연속인 함수 \(f(x)\)가 \( (x^2 - 1)\,f(x) = a x^3 + b x^2 - a x - b \) 를 만족시키고 \(f(-1) = 1\), \(f(1) = 2\)일 때, 실수 \(a, b\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.45 대단원 평가 07번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 우변 \(= a x(x^2 - 1) + b(x^2 - 1) = (x^2 - 1)(ax + b)\). 좌변 \((x^2 - 1) f(x)\)와 비교, \(x \neq \pm 1\)에서 \(f(x) = ax + b\). 연속성에 의해 \(f(-1) = -a + b = 1\), \(f(1) = a + b = 2\). 연립 → \(a = \dfrac{1}{2}, b = \dfrac{3}{2}\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q8 -->
+                <div>
+                    <span class="badge badge-type">[표준-닫힌구간 위 최대·최소 보기]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">8. 함수 \( f(x) = \dfrac{3x - 2}{x + 2} \)에 대하여 다음 보기 중 옳은 것을 모두 고르시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.45 대단원 평가 08번)</span>
+                        <div class="ml-6 mt-3 text-base bg-slate-50 border border-slate-200 rounded-lg p-4">
+                            <strong>&lt;보기&gt;</strong>
+                            ㄱ. \(f(x)\)는 닫힌구간 \([-4, 0]\)에서 최댓값을 갖지 않는다. <br>
+                            ㄴ. \(f(x)\)는 닫힌구간 \([-2, 0]\)에서 최솟값을 갖는다. <br>
+                            ㄷ. \(f(x)\)는 닫힌구간 \([0, 2]\)에서 최솟값을 갖는다.
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> \(f\)는 \(x = -2\)에서 분모 0 → 불연속. ㄱ — \([-4, 0]\)에 불연속점 포함, \(x \to -2^\pm\)에서 발산 → 최댓값 없음 ✓. ㄴ — \([-2, 0]\)의 좌끝 \(x=-2\)에서 정의 안 되므로 최댓값·최솟값 모두 갖지 못함 → ㄴ 거짓. ㄷ — \([0, 2]\)는 연속구간 → 최대최소 정리에 의해 둘 다 가짐 → ㄷ 참. 정답: <strong>ㄱ, ㄷ</strong>.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- ============ 서술형 (P.45~P.46) ============ -->
+                <div class="mt-6 mb-2">
+                    <h3 class="text-2xl font-black text-red-800 border-b-2 border-red-200 pb-2">서술형 문제 [09~13]</h3>
+                    <p class="text-sm text-slate-600 mt-1">아래 문제는 풀이 과정을 자세히 작성하시오.</p>
+                </div>
+
+                <!-- Q9 (서술형) -->
+                <div>
+                    <span class="badge badge-hard">[서술형-다항함수 결정 + 미정계수]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">9. 다항함수 \(f(x)\)가 \( \displaystyle \lim_{x \to 1}\dfrac{f(x)}{x - 1} = 2,\quad \lim_{x \to \infty}\dfrac{f(x) - 3x^2}{2x - 1} = k \) 를 만족시킬 때, 다음 물음에 답하시오. (단, \(k\)는 실수) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.45 대단원 평가 09번 서술형)</span>
+                        <div class="ml-6 mt-2 text-lg font-medium">
+                            (1) 함수 \(f(x)\)를 구하시오. &nbsp;&nbsp; (2) 실수 \(k\)의 값을 구하시오.
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> ② 식에서 분자·분모 차수 균형 → 분자 최고차항 \(3x^2\)이 소거되어야 분자 최고차가 분모와 같은 1차 → \(f(x)\)는 이차함수, 그것도 \(f(x) = 3x^2 + (\cdots)x + (\cdots)\). ① 식에서 분모 \(\to 0\), 극한 실수 → 분자 \(\to 0\) → \(f(1) = 0\). 따라서 \(f(x) = (x-1)(3x + c)\) 꼴. \(\lim_{x \to 1}\dfrac{f(x)}{x-1} = 3 \cdot 1 + c = 2 \Rightarrow c = -1\). 따라서 \(f(x) = (x-1)(3x-1)\). (2) \(f(x) - 3x^2 = -4x + 1\) → \(\lim\dfrac{-4x + 1}{2x - 1} = -2\). 답 \(k = -2\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q10 (서술형) -->
+                <div>
+                    <span class="badge badge-hard">[서술형-∞ 형 극한 + 사칙]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">10. 두 함수 \(f(x), g(x)\)가 \( \displaystyle \lim_{x \to \infty} f(x) = \infty,\quad \lim_{x \to \infty}\{4 f(x) - 2 g(x)\} = 1 \) 을 만족시킬 때, 극한값 \( \displaystyle \lim_{x \to \infty}\dfrac{3 g(x) - f(x)}{5 f(x)} \)을 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.45 대단원 평가 10번 서술형)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> \(h(x) = 4f(x) - 2g(x) \to 1\) → \(\dfrac{h(x)}{f(x)} \to 0\) (분자 유계, 분모 발산). 식 변형: \(\dfrac{g(x)}{f(x)} = 2 - \dfrac{h(x)}{2 f(x)} \to 2\). 따라서 \(\dfrac{3 g(x) - f(x)}{5 f(x)} = \dfrac{3 \cdot g/f - 1}{5} \to \dfrac{3 \cdot 2 - 1}{5} = 1\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q11 (서술형) -->
+                <div>
+                    <span class="badge badge-hard">[서술형-유리함수 연속과 a 범위]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">11. 두 함수 \( f(x) = 3x - 8 \), \( g(x) = x^2 + a x + 9 \) 에 대하여 함수 \( \dfrac{f(x)}{g(x)} \)가 모든 실수 \(x\)에서 연속일 때, 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.45 대단원 평가 11번 서술형)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> 모든 실수에서 연속 ⇔ 분모 \(g(x) = x^2 + ax + 9 \neq 0\) (모든 실수에 대해) ⇔ \(g\)의 판별식 \(\lt 0\). \(D = a^2 - 36 \lt 0 \Rightarrow -6 \lt a \lt 6\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q12 (서술형) -->
+                <div>
+                    <span class="badge badge-hard">[서술형-그래프 + 곱 함수의 연속]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">12. 함수 \(y = f(x)\)의 그래프가 다음 그림과 같다. 모든 실수 \(x\)에서 함수 \( g(x) = (x - a)\,f(x) \) 가 연속일 때, 실수 \(a\)의 값을 풀이 과정과 함께 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.46 대단원 평가 12번 서술형)</span>
+                        <div class="ml-6 mt-3 flex justify-center">
+                            <img src="images/calc_08_q12.png" alt="문제 12번 그래프 — y=f(x) 점프 불연속 그래프" class="block mx-auto max-w-md w-full" />
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> \(f(x)\)가 \(x = 1\)에서 점프 불연속(좌극한 \(L_1\), 우극한 \(L_2\), \(L_1 \neq L_2\)). \(g(x) = (x-a) f(x)\)가 \(x = 1\)에서 연속이려면 좌극한 = 우극한: \((1 - a) L_1 = (1 - a) L_2\) → \((1 - a)(L_1 - L_2) = 0\) → \(L_1 \neq L_2\)이므로 \(a = 1\). 그림 좌표 읽기 결과에 따라 답 확정. <br><strong>서술 채점 포인트:</strong> \(f\)의 불연속점 식별, 좌·우극한 식 명시, \((x - a)\)의 영점이 불연속점과 일치해야 한다는 결론.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q13 (서술형) -->
+                <div>
+                    <span class="badge badge-hard">[서술형-사잇값 정리로 정수 \(a\) 개수 결정]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">13. 모든 실수 \(x\)에서 연속인 함수 \(f(x)\)가 \( f(-1) = a,\ f(1) = a - 4 \) 를 만족시킨다. 방정식 \(f(x) = x^3\)이 열린구간 \((-1, 1)\)에서 <strong>반드시 실근</strong>을 갖도록 하는 정수 \(a\)의 개수를 풀이 과정과 함께 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.46 대단원 평가 13번 서술형)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> ① 보조함수 \(h(x) = f(x) - x^3\) 정의. \(f\) 연속, \(x^3\) 연속 → \(h\) 연속. ② 양 끝점 값: \(h(-1) = f(-1) - (-1)^3 = a + 1\), \(h(1) = f(1) - 1 = a - 5\). ③ 사잇값 정리로 <strong>반드시</strong> 실근을 가지려면 양 끝점이 부호가 달라야 충분: \(h(-1) \cdot h(1) \lt 0 \Rightarrow (a + 1)(a - 5) \lt 0 \Rightarrow -1 \lt a \lt 5\). ④ 정수 \(a \in \{0, 1, 2, 3, 4\}\) → <strong>5개</strong>. <br><strong>서술 채점 포인트:</strong> 보조함수 정의, 연속성 명시, 양 끝점 부호곱 \(\lt 0\) 조건 도출, 정수 개수 셈.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 대단원 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">02. 대단원 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 단원 I (함수의 극한·연속) 전체에 대한 자기점검을 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 단원 종합 통찰 (극한 → 연속의 흐름)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">단원 I에서 학습한 두 축 (함수의 극한 / 함수의 연속)이 어떻게 하나의 명제 \(\lim_{x \to a} f(x) = f(a)\)로 연결되는지, 그리고 이 명제가 사잇값 정리·최대최소 정리로 어떻게 확장되는지 자신의 언어로 사고 흐름도를 그려 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"단원 I 전체를 정리하면서 극한과 연속이 결국 '극한값 = 함숫값'이라는 한 줄로 묶인다는 걸 알게 됐다. 이 한 줄이 사잇값 정리에서는 '부호 변화 → 실근 존재'의 전제로, 최대·최소 정리에서는 '닫힌구간 + 연속 → 극값 존재'의 전제로 쓰인다는 흐름도를 그려보니, 단원이 따로따로가 아니라 정의 한 줄을 중심으로 부채꼴처럼 펼쳐져 있다는 게 보였다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 실수 분석 (단원 전체에서 가장 자주 틀린 유형)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">7차시에 걸쳐 가장 반복적으로 틀린 유형(예: 좌·우극한 일치 점검, \(x \to -\infty\) 부호 처리, 미정계수 결정 순서, 곱 함수 연속 조건)이 무엇이었는지 정리하고, 자신만의 자기점검 체크리스트를 만들어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"단원 I에서 가장 자주 틀린 건 ① \(|x|\) 같은 좌·우 분기 빠뜨리기, ② \(x \to -\infty\)에서 \(\sqrt{x^2}\) 부호 헷갈리기 두 가지였다. 그래서 '① 좌·우 분기 확인 → ② 절댓값·근호 부호 처리 → ③ 약분 또는 유리화 → ④ 연속 조건 점검' 4단계 체크리스트를 만들어 시험지 여백에 적어두고 풀고 있다. 이렇게 하니 비슷한 실수가 거의 없어졌다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 다음 단원으로의 확장 (미분으로의 다리)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">단원 I에서 학습한 사고가 다음 단원 II (미분계수·도함수)와 어떻게 연결될지 가설을 적어 보자. 특히 미분계수 정의식 \(\lim_{h \to 0}\dfrac{f(a+h) - f(a)}{h}\)의 어떤 부분이 본 단원의 어떤 개념과 맞닿아 있는가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"미분계수 \(\lim_{h \to 0} \dfrac{f(a+h) - f(a)}{h}\)를 보면 \(h \to 0\)일 때 분자도 \(0\)으로 가는 전형적인 \(\dfrac{0}{0}\) 모양이라, 이번 단원에서 익힌 인수분해·약분이 그대로 쓰일 것 같다. 또 '미분가능하면 연속'이라는 명제도 결국 연속이 더 약한 조건이라는 얘기라, 단원 I의 연속 정의가 단원 II의 기반으로 들어간다는 가설을 세웠다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 08차시 (단원 I 대단원 평가)</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index-calc.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

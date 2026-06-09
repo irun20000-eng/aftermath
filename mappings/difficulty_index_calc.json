@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "semester": "2",
+  "subject": "미적분 I",
+  "description": "2학기 미적분 I problem-evaluator의 평가 결과 누적 캐시. 1학기(difficulty_index.json)와 키 네임스페이스 분리. 키 = '<source>#<problem_id>'.",
+  "updated_at": "2026-05-21 (골격 생성 — 학습지·수능특강 본문 확정 후 채움)",
+  "items": {}
+}

@@ -213,16 +213,40 @@
         html.dark .text-purple-700 { color: #d8b4fe !important; }
         html.dark .border-purple-200 { border-color: #6b21a8 !important; }
         html.dark .bg-slate-50 { background: #1e293b !important; }
+        /* 학기 전환 탭 — 1학기 → 2학기 */
+        .semester-switch {
+            position: absolute; top: 1rem; left: 1rem;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px;
+            background: white;
+            border: 2px solid #5eead4;
+            border-radius: 999px;
+            color: #0f766e;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.15s;
+            z-index: 10;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .semester-switch:hover { border-color: #0f766e; transform: translateY(-1px); }
+        html.dark .semester-switch { background: #1e293b; border-color: #475569; color: #5eead4; }
+        html.dark .semester-switch:hover { border-color: #5eead4; }
     </style>
 </head>
 <body class="p-6 md:p-10 relative">
     <div class="max-w-4xl mx-auto">
+        <!-- 2학기 미적분 I로 이동 -->
+        <a href="index-calc.html" target="aftermath_main_calc" class="semester-switch" title="2학기 미적분 I 학습지로 이동">
+            <span>2학기 미적분 I</span><span>→</span>
+        </a>
+
         <!-- 다크 모드 토글 -->
         <button id="themeToggle" class="theme-toggle" title="다크/칠판 모드 전환" aria-label="테마 전환">
             <span id="themeIcon">🌙</span>
         </button>
 
-        <header class="text-center mb-8">
+        <header class="text-center mb-8 pt-8">
             <p class="text-slate-500 font-bold text-xs tracking-[0.3em] mb-2 uppercase">2026학년도 1학기</p>
             <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-3 tracking-tight">대수 학습지</h1>
             <p class="text-slate-600 font-medium">"틀려야 는다" — 차시별 학습지를 클릭하여 확인하시오.</p>
@@ -663,6 +687,16 @@ document.addEventListener('keydown', (e) => {
             if (sec > 0) startTimer(sec);
         }
     }
+});
+</script>
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
 });
 </script>
 </body>

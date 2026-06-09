@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 I-2 함수의 연속 · 차시 06 연속함수의 성질 · Agent A3 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 연속함수의 성질</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_06';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        /* 미적분 I 톤 — 메인은 teal, 강조는 cyan/emerald */
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
+        const LESSON_NAME = "06차시 연속함수의 성질";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I. 함수의 극한과 연속</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">06차시: 연속함수의 성질</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_미적분I_05_함수의연속.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_미적분I_07_중단원마무리_I_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">독도의 동도 선착장(해발 \(0\,\text{m}\))에 있던 괭이갈매기가 정상(해발 약 \(98.6\,\text{m}\))까지 <strong>날아오르는 도중</strong>, 해발 \(50\,\text{m}\)인 지점을 지나는 순간이 반드시 있을까?</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> "반드시 있다" 또는 "꼭 그렇지는 않다" 중 어느 쪽이라고 생각하는가? 그 이유를 적어 보자. 만약 갈매기가 헬리콥터처럼 점프하며 날아간다면 결론은 달라질까?</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 5차시에서 <em>연속의 정의</em>를 배웠다면, 오늘은 그 정의가 만들어 내는 <span class="calc-accent font-bold">두 가지 강력한 정리</span>를 만난다. 직관적으로 당연해 보이지만, 직관의 정체를 정확히 짚어두는 것이 다음 단원(미분)으로 가는 다리가 된다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 최대·최소 정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        최대·최소 정리 (Extreme Value Theorem)
+                    </h3>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="font-bold text-slate-800 mb-2">📌 정리</p>
+                        <p class="text-base text-slate-700">함수 \(f(x)\)가 <strong>닫힌구간 \([a, b]\)에서 연속</strong>이면, \(f(x)\)는 그 구간에서 반드시 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">최댓값과 최솟값을 가진다</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>두 가지 가정이 모두 필요:</strong> ① 구간이 <strong>닫혀</strong> 있을 것 (양끝점 포함), ② 함수가 <strong>그 구간에서 연속</strong>일 것. 둘 중 하나라도 빠지면 결론이 깨질 수 있다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.37 · 최대·최소 정리 참고)</span></p>
+                    <div class="mt-4 grid md:grid-cols-2 gap-3">
+                        <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+                            <p class="text-sm font-bold text-yellow-900 mb-1">⚠ 반례 1 — 열린구간</p>
+                            <p class="text-xs text-yellow-800">\(f(x) = x^2\), 구간 \((-1, 2)\). \(x = 2\)에 무한히 가까워지지만 도달은 못 함. <strong>최댓값 없음</strong>.</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+                            <p class="text-sm font-bold text-yellow-900 mb-1">⚠ 반례 2 — 불연속</p>
+                            <p class="text-xs text-yellow-800">\(f(x) = \dfrac{1}{x}\), 구간 \((0, 1]\). \(x \to 0^+\)에서 무한대로 발산. <strong>최댓값 없음</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 사잇값 정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        사잇값 정리 (Intermediate Value Theorem)
+                    </h3>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="font-bold text-slate-800 mb-2">📌 정리</p>
+                        <p class="text-base text-slate-700">함수 \(f(x)\)가 <strong>닫힌구간 \([a, b]\)에서 연속</strong>이고 <strong>\(f(a) \neq f(b)\)</strong>일 때, \(f(a)\)와 \(f(b)\) 사이의 임의의 값 \(k\)에 대하여 \(f(c) = k\)인 \(c\)가 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">열린구간 \((a, b)\)에 적어도 하나 존재</span></span>한다.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>직관:</strong> 종이에서 펜을 떼지 않고 그린 그래프가 \(y = f(a)\)와 \(y = f(b)\) 두 수평선 사이를 모두 훑고 지나간다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.38 · 사잇값 정리 참고)</span></p>
+                </div>
+
+                <!-- 3. 사잇값 정리의 응용 — 방정식의 실근 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        사잇값 정리의 응용 — 방정식 \(f(x)=0\)의 실근
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 \([a, b]\)에서 연속이고 \(f(a)\)와 \(f(b)\)의 부호가 <strong>서로 다를 때</strong> (즉 \(f(a) \cdot f(b) \lt 0\)), 사잇값 정리에서 \(k = 0\)을 택하면 다음이 성립.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-base font-bold text-teal-800">방정식 \(f(x) = 0\)은 열린구간 \((a, b)\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">적어도 하나의 실근</span></span>을 가진다.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> "적어도 하나"이지 "정확히 하나"가 아니다. 그래프가 출렁이면 여러 개의 실근이 있을 수 있다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.39 · 예제 2 참고)</span></p>
+                </div>
+
+                <!-- 4. 합성함수의 연속 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        합성함수의 연속
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(g(x)\)가 \(x = a\)에서 연속이고, \(f(x)\)가 \(x = g(a)\)에서 연속이면, 합성함수 \( (f \circ g)(x) = f(g(x)) \)도 \(x = a\)에서 <strong>연속</strong>이다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center text-lg">
+                        \( \displaystyle \lim_{x \to a} f(g(x)) = f\!\left(\lim_{x \to a} g(x)\right) = f(g(a)) \)
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>활용:</strong> \(g(x) = x^2 - 3\)이 연속이고 \(f(t) = \sqrt{t}\)가 \(t \geq 0\)에서 연속이므로, \(h(x) = \sqrt{x^2 - 3}\)은 정의역 \(\{x \mid x^2 - 3 \geq 0\}\)에서 연속.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">정리의 가정을 확인하고 결론을 직접 도출하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-최대·최소 정리 직접 적용</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 닫힌구간에서 함수의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.37·40 · 문제 03, 중단원 기초 04 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = x^2 - 4x + 5 \), &nbsp;\([1, 4]\) &nbsp;&nbsp;
+                                (2) \( f(x) = \sqrt{x - 2} \), &nbsp;\([3, 6]\)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> (1) 다항함수, 꼭짓점 \((2, 1)\)이 구간 내부 → 최솟값 \(1\). 양 끝점 비교 \(f(1)=2, f(4)=5\) → 최댓값 \(5\). (2) 증가함수, \(f(3)=1\), \(f(6)=2\) → 최솟값 1, 최댓값 2.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-사잇값 정리로 실근 존재성 증명</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 방정식 \( x^3 - x - 1 = 0 \)이 열린구간 \((-1, 2)\)에서 적어도 하나의 실근을 가짐을 사잇값 정리를 이용하여 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.39 · 예제 2 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> ① \(f(x) = x^3 - x - 1\)이 다항함수 \(\Rightarrow\) \([-1, 2]\)에서 연속. ② \(f(-1) = -1 \lt 0\), \(f(2) = 5 \gt 0\). ③ 부호가 다르므로 사잇값 정리에 의해 \(f(c) = 0\)인 \(c \in (-1, 2)\)가 존재.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">실근이 존재하는 구간을 식별하고 분수함수 최댓값 구하기</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-실근 존재 구간 식별</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 방정식 \( 2x^3 - 3x^2 - x + 1 = 0 \)은 서로 다른 세 실근을 가진다. 다음 보기 중 이 실근이 존재하는 구간을 모두 고르시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.42 · 중단원 기본 12 참고)</span>
+                            <div class="ml-6 mt-3 text-base bg-slate-50 border border-slate-200 rounded-lg p-4">
+                                <strong>&lt;보기&gt;</strong> &nbsp;ㄱ. \((-1, 0)\) &nbsp;&nbsp; ㄴ. \((0, 1)\) &nbsp;&nbsp; ㄷ. \((1, 2)\) &nbsp;&nbsp; ㄹ. \((2, 3)\)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f(x) = 2x^3 - 3x^2 - x + 1\)에 대해 각 구간 끝점의 \(f\) 값 부호를 확인. \(f(-1) = -3 \lt 0\), \(f(0) = 1 \gt 0\), \(f(1) = -1 \lt 0\), \(f(2) = 3 \gt 0\), \(f(3) = 25 \gt 0\). 부호가 바뀌는 구간은 ㄱ, ㄴ, ㄷ. 세 실근이 정확히 이 세 구간에 1개씩.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-닫힌구간 위 분수함수의 최댓값</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 닫힌구간 \([1, 3]\)에서 함수 \( f(x) = \dfrac{a}{|x - 4|} \)의 최댓값이 \(8\)일 때, 양수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.42 · 중단원 기본 11 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \([1, 3]\)에서 \(x \lt 4\)이므로 \(|x - 4| = 4 - x\). \(f(x) = \dfrac{a}{4 - x}\). 분모가 작을수록 \(f\) 큼 → \(x = 3\)에서 분모 \(1\) → 최댓값 \(\dfrac{a}{1} = a = 8\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 정리의 가정·결론을 혼동하지 않기</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-역명제·약한 가정 판별</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">5. 다음 명제 중 <strong>참인 것을 모두 고르고</strong>, 거짓인 명제에 대해서는 반례를 제시하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 사잇값 정리 가정 점검)</span>
+                            <div class="ml-6 mt-2 text-lg font-medium space-y-1">
+                                ㄱ. \(f\)가 \([a, b]\)에서 연속이고 \(f(a) \cdot f(b) \lt 0\)이면 방정식 \(f(x) = 0\)은 \((a, b)\)에서 정확히 하나의 실근을 가진다.<br>
+                                ㄴ. \(f\)가 \([a, b]\)에서 연속이고 \(f(a) \cdot f(b) \geq 0\)이면 방정식 \(f(x) = 0\)은 \((a, b)\)에서 실근을 갖지 않는다.<br>
+                                ㄷ. \(f\)가 \([a, b]\)에서 연속이고 \(k\)가 \(f(a)\)와 \(f(b)\) 사이의 값이면 \(f(c) = k\)인 \(c \in (a, b)\)가 존재한다.
+                            </div>
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                <strong>ㄱ (거짓):</strong> 사잇값 정리는 <em>"적어도 하나"</em>이지 <em>"정확히 하나"</em>가 아니다. 반례: \(f(x) = x^3 - x\), \([-2, 2]\). \(f(-2) = -6\), \(f(2) = 6\) → 부호 다름. 그러나 실근은 \(x = -1, 0, 1\)로 <strong>3개</strong>.<br>
+                                <strong>ㄴ (거짓):</strong> 부호가 같아도 실근이 있을 수 있다. 반례: \(f(x) = x^2 - 1\), \([-2, 2]\). \(f(-2) = f(2) = 3 \gt 0\)이지만 실근은 \(x = \pm 1\) 둘 다 존재.<br>
+                                <strong>ㄷ (참):</strong> 사잇값 정리의 정확한 진술 (\(k\)가 \(f(a)\)와 \(f(b)\) "사이"의 값일 때 적어도 하나의 \(c\)에서 \(f(c)=k\)).
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">6. 두 함수 \(f(x), g(x)\)가 각각 \(x = a\)에서 연속일 때, 다음 보기 중 \(x = a\)에서 <strong>반드시 연속</strong>인 함수를 모두 고르시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.42 · 중단원 기본 10 참고)</span>
+                <div class="ml-6 mt-3 text-base bg-slate-50 border border-slate-200 rounded-lg p-4">
+                    <strong>&lt;보기&gt;</strong>
+                    ㄱ. \(2f(x) - g(x)\) &nbsp;&nbsp;
+                    ㄴ. \(\{f(x)\}^2\) &nbsp;&nbsp;
+                    ㄷ. \(\dfrac{f(x)}{g(x)}\) &nbsp;&nbsp;
+                    ㄹ. \(\dfrac{2}{\{f(x)\}^2 + 1}\)
+                </div>
+            </div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ㄱ 실수배·차 — 항상 연속. ㄴ 곱 — \(f \cdot f\)이므로 연속. ㄷ — \(g(a) = 0\)이면 정의되지 않으므로 <em>반드시</em>는 아님. ㄹ 분모 \(\{f(x)\}^2 + 1 \geq 1 \gt 0\)이므로 항상 연속. 정답: <strong>ㄱ, ㄴ, ㄹ</strong>.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 함수의 연속 예제 4) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_함수의연속"
+                 data-aft-source-id="c2-e4"
+                 data-aft-source-label="수능특강 수학Ⅱ · 함수의 연속 · 예제 4">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 함수의 연속 · 예제 4</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 사잇값 정리 — "연속 + 함숫값 부호반전" ⇒ 그 구간에 영점 존재. 부호 곱으로 영점 위치 두 곳 동시 결정.</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                함수 \( f(x) = x(x - a)(x - a^2) \) 이 \( f(3)f(6) \lt 0 \), \( f(3)f(20) \gt 0 \) 을 만족시키도록 하는 모든 실수 \(a\)의 값의 범위는 \( p \lt a \lt q \) 이다. \( p^2 + q^2 \) 의 값을 구하시오. (단, \(p, q\)는 상수)
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 부호 관계 정리</strong>: \(f(3)f(6) \lt 0\) → \(f(3), f(6)\) 부호 다름. \(f(3)f(20) \gt 0\) → \(f(3), f(20)\) 부호 같음. 따라서 \(f(6), f(20)\)은 부호 다름 ⇒ \( f(6)f(20) \lt 0 \).</li>
+                    <li><strong>STEP 2 — 사잇값 정리로 영점 위치 두 곳</strong>: \(f\)는 다항함수 ⇒ 연속. \([3, 6]\)에 영점 \(c_1\) 하나, \([6, 20]\)에 영점 \(c_2\) 하나 존재. \(f(x)\)의 실근은 \(0, a, a^2\)이므로 \(a \gt 3\)인 경우만 가능 (3보다 큰 영점 필요).</li>
+                    <li><strong>STEP 3 — \(a, a^2\)의 위치</strong>: \(a \gt 3\)이면 \(a^2 \gt a\). 따라서 \(a \in (3, 6)\), \(a^2 \in (6, 20)\). 즉 \(3 \lt a \lt 6\) 그리고 \(6 \lt a^2 \lt 20\).</li>
+                    <li><strong>STEP 4 — 두 부등식 교집합</strong>: \(a \gt 0\)이므로 \(6 \lt a^2 \lt 20\) ⇒ \(\sqrt{6} \lt a \lt 2\sqrt{5}\). \(\sqrt{6} \approx 2.45 \lt 3\), \(2\sqrt{5} \approx 4.47 \lt 6\)이므로 교집합은 \( 3 \lt a \lt 2\sqrt{5} \) ⇒ \(p = 3, q = 2\sqrt{5}\).</li>
+                    <li><strong>STEP 5 — 최종</strong>: \(p^2 + q^2 = 9 + 20 = 29\). <span class="text-red-600 font-bold">정답: 29</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 사잇값 정리 \(\Leftrightarrow\) "연속 + 함숫값 부호반전 ⇒ 영점 존재". 부호의 곱 부호로 두 구간에 영점이 있음을 끄집어낸 뒤, 삼차함수의 세 근 \(0, a, a^2\)의 대소관계로 위치를 결정. 차시 06 사잇값 정리의 직접 응용.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_함수의연속_해설.html#c2-e4" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 예제 4</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (1994학년도 수능1차 11번 — 사잇값·최대최소 정리 응용) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_함수의연속"
+                 data-aft-source-id="g_ws06_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 함수의 연속 · 1994학년도 수능 1차 11번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 1994학년도 수능 1차 수학영역 11번</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 우함수 + 닫힌구간 연속 + 사잇값 정리 + 최대·최소 정리를 한 문항에서 동시 점검 — 옳지 않은 보기 1개를 가려내기</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                모든 실수에서 정의된 함수 \(f(x)\)가 다음 &lt;보기&gt;에 있는 세 가지 조건을 만족시킨다.
+                <div class="text-base bg-slate-50 border border-slate-300 rounded-lg p-4 mt-3 leading-loose">
+                    <div class="text-center text-sm font-bold text-slate-600 mb-2">[ 보 기 ]</div>
+                    가. \(f(x)\)는 연속함수이고 \(f(x) = f(-x)\)이다.<br>
+                    나. \(|x| \gt 5\)이면 \(f(x) = 0\)이다.<br>
+                    다. \(|x| \lt 5\)이면 \(|f(x)| \leq 10\)이고 \(f(x) = 10\)이 되는 \(x\)는 오직 한 개 있다.
+                </div>
+                <div class="mt-3 text-xl">다음 중 옳지 <u>않은</u> 것은?</div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(f(5) = f(-5) = 0\)이다.<br>
+                    ② \(f(x)\)는 \(x = 0\)일 때 최대이다.<br>
+                    ③ \(f(x) = 5\)가 되는 \(x\)는 두 개 이상 있다.<br>
+                    ④ \(f(x)\)가 최소가 되는 \(x\)는 오직 한 개 있다.<br>
+                    ⑤ 모든 실수 \(x\)에 대하여 \(f(x + 5)\,f(x - 5) = 0\)이다.
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — ① 점검 (연속성 활용)</strong>: 조건 (나)로부터 \(|x| \gt 5\)에서 \(f = 0\). \(f\)는 연속이므로 좌극한·우극한·함숫값이 일치 \(\Rightarrow\) \(\displaystyle \lim_{x \to 5^+} f(x) = 0 = f(5)\). 마찬가지로 \(f(-5) = 0\). ① <strong>옳음</strong>.</li>
+                    <li><strong>STEP 2 — ② 점검 (우함수 + 다 조건)</strong>: 조건 (가) \(f(x) = f(-x)\) \(\Rightarrow\) \(f\)는 우함수. \(f(c) = 10\)이 되는 \(c\)가 오직 하나라면 \(f(-c) = f(c) = 10\)도 같은 점이어야 하므로 \(c = -c\) \(\Rightarrow\) \(c = 0\). 다시 (다)에서 \(|f| \leq 10\)이므로 최댓값은 \(f(0) = 10\). ② <strong>옳음</strong>.</li>
+                    <li><strong>STEP 3 — ③ 점검 (사잇값 정리)</strong>: \(f\)는 \([0, 5]\)에서 연속이고 \(f(0) = 10\), \(f(5) = 0\). 사잇값 정리에 의해 \(0 \lt 5 \lt 10\)인 \(5\)에 대해 \(f(c_1) = 5\)인 \(c_1 \in (0, 5)\)가 존재. 우함수이므로 \(f(-c_1) = 5\). 따라서 \(f(x) = 5\)인 \(x\)는 최소 두 개. ③ <strong>옳음</strong>.</li>
+                    <li><strong>STEP 4 — ④ 점검 (반례 탐색)</strong>: 만약 \(f(x) \geq 0\)이면 최솟값은 \(0\)이고, \(|x| \geq 5\) 전체 구간에서 \(f = 0\) \(\Rightarrow\) 최소가 되는 \(x\)는 무수히 많음. 또한 \(f\)가 음수 값을 가질 때 그 최솟값 점이 \(x = a\)이면 우함수에 의해 \(x = -a\)에서도 같은 최솟값 \(\Rightarrow\) "오직 한 개"는 일반적으로 거짓. ④ <strong>옳지 않음</strong>.</li>
+                    <li><strong>STEP 5 — ⑤ 점검</strong>: \(x\)가 임의의 실수일 때 \(x+5\)와 \(x-5\)는 거리 10 떨어진 두 점. \(|x+5| \gt 5\) 또는 \(|x-5| \gt 5\) 중 적어도 하나는 항상 성립 (두 구간 \([-5,5]\)의 합집합은 길이 10인 구간, 두 점은 거리 10이므로 한 점은 반드시 밖). 따라서 \(f(x+5) = 0\) 또는 \(f(x-5) = 0\) \(\Rightarrow\) 곱은 항상 \(0\). ⑤ <strong>옳음</strong>. 결론: <span class="text-red-600 font-bold">정답: ④</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 사잇값 정리(③)와 최대·최소 정리(②, ④)를 동시에 활용하는 종합형. 추상 조건만 주어졌을 때 <strong>구체적 그래프를 머릿속으로 그려보는 능력</strong>이 결정적. ④의 반례는 "최솟값이 0일 때 최소를 만드는 점이 무수히 많다" 또는 "음수 최솟값일 때 우함수에 의해 짝으로 나타난다"의 두 가지를 모두 떠올려야 한다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (정리의 가정 분석)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">최대·최소 정리와 사잇값 정리에서 "<strong>닫힌구간</strong>"과 "<strong>연속</strong>" 두 가정이 각각 어떤 역할을 하는지, 그 가정이 빠지면 어떤 식으로 결론이 무너지는지 반례와 함께 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"처음엔 '닫힌구간 + 연속'이라는 가정을 그냥 외웠는데, 직접 반례를 만들어보니 이유가 분명해졌다. \(f(x) = x^2\)를 열린구간 \((-1, 2)\)에서 보면 \(x \to 2\)인데 \(2\)를 안 포함해서 최댓값이 없고, \(f(x) = \dfrac{1}{x}\)를 \((0, 1]\)에서 보면 \(0\) 근처에서 발산해 최댓값이 없다. '닫힘'은 끝점을 잡아주고 '연속'은 발산을 막는 역할이라는 걸 알게 됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (실근 존재 증명 루틴)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"방정식 \(f(x) = g(x)\)의 실근 존재 증명"이라는 문제 유형을 어떤 표준 절차(보조함수 정의 → 연속성 → 양 끝점 부호 → 결론)로 풀면 좋을지 자신만의 점검 리스트를 작성해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"'\(f(x) = g(x)\)의 실근이 존재함을 보여라' 같은 서술형에서 처음에는 무얼 먼저 적어야 할지 헤맸다. 그래서 '① \(h(x) = f(x) - g(x)\)로 옮기기 → ② \(h\)가 \([a, b]\)에서 연속이라고 명시 → ③ \(h(a) \cdot h(b) &lt; 0\) 보이기 → ④ 사잇값 정리로 마무리' 4단계 틀을 만들어뒀다. 이제는 그 틀에 숫자만 채우면 돼서 답안이 깔끔해졌다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (정리의 일반화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">사잇값 정리를 응용할 수 있는 실생활 상황(예: 등반·온도·운동·경제)을 하나 만들어 보고, 그 상황을 수학적으로 어떻게 모델링할 수 있을지 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"같은 산을 첫째 날엔 오전 10시에 올라가고 둘째 날엔 같은 시간에 반대로 내려오는 두 사람을 가정하면, 두 사람의 위치 함수가 같아지는 시각이 반드시 존재한다는 고전 문제를 떠올렸다. 두 위치 함수의 차 \(h(t)\)가 양 끝에서 부호가 반대니 \(h(c) = 0\)인 \(c\)가 있다는 식으로 풀면 사잇값 정리가 일상 상황에도 그대로 쓰인다는 게 재밌었다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 06차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index-calc.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-2 도함수의 활용 · 차시 12 접선의 방정식 · Agent A5 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 접선의 방정식</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_12';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
+        const LESSON_NAME = "12차시 접선의 방정식";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">12차시: 접선의 방정식</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_미적분I_11_중단원마무리_II_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_미적분I_13_평균값정리.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">단원 II-1에서 우리는 <strong>미분계수 \(f'(a)\)가 곡선 \(y=f(x)\) 위의 점 \((a, f(a))\)에서의 접선의 기울기</strong>임을 확인했다. 그렇다면 "접선의 방정식"을 어떻게 한 줄로 쓸 수 있을까?</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 함수 \(f(x) = -x^2 + 3\)의 그래프 위의 점 \((1, 2)\)에서의 접선을 그려 본 뒤, "기울기 \(m\), 한 점 \((x_1, y_1)\)을 지나는 직선의 방정식"을 떠올려 보고, 미분계수 \(f'(1) = -2\)를 이용하여 접선의 방정식을 직접 써 보자.</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 공통수학 2에서 배운 "점 \((x_1, y_1)\)을 지나고 기울기가 \(m\)인 직선의 방정식: \(y - y_1 = m(x - x_1)\)"에 \((x_1, y_1) = (a, f(a))\), \(m = f'(a)\)를 그대로 대입하면 끝. 오늘은 (1) 접점이 주어진 경우 (2) 기울기가 주어진 경우 (3) <span class="calc-accent font-bold">곡선 밖의 한 점</span>에서 그은 접선 — 세 가지 표준 시나리오를 손에 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 접선의 방정식 — 한 줄 공식 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        접선의 방정식 — \((a, f(a))\)에서의 접선
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 \(x = a\)에서 미분가능할 때, 곡선 \(y = f(x)\) 위의 점 \((a, f(a))\)에서의 접선의 방정식은 다음과 같다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( y - f(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(a)(x - a) \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>두 가지 정보:</strong> 접선은 ① <strong>지나는 점</strong>이 \((a, f(a))\)이고 ② <strong>기울기</strong>가 \(f'(a)\). 두 정보를 "점-기울기 공식"에 그대로 꽂으면 끝. <span class="calc-accent font-bold">"접점 + 미분계수"</span>가 접선의 두 축이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.70 · 접선의 방정식 정의 참고)</span></p>
+                </div>
+
+                <!-- 2. 시나리오 ① — 접점이 주어진 경우 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        시나리오 ① — 접점이 주어진 경우 (가장 단순)
+                    </h3>
+                    <p class="mb-3 text-slate-700">곡선 \(y = x^2 + x\) 위의 점 \((1, 2)\)에서의 접선을 구해 보자.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① \(f(x) = x^2 + x\) \(\Rightarrow\) \(f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(2x + 1\)</span></span></li>
+                            <li>② 기울기 \(f'(1) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(3\)</span></span></li>
+                            <li>③ 접선의 방정식: \( y - 2 = 3(x - 1) \) \(\Rightarrow\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( y = 3x - 1 \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>3단계 루틴:</strong> "도함수 \(\to\) 기울기 \(\to\) 직선식". 점이 곡선 위에 있는지 \(y\)좌표 검증은 보너스 점검. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.70 · 예제 1 참고)</span></p>
+                </div>
+
+                <!-- 3. 시나리오 ② — 기울기가 주어진 경우 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        시나리오 ② — 기울기가 주어진 경우 (접점을 거꾸로 찾기)
+                    </h3>
+                    <p class="mb-3 text-slate-700">곡선 \(y = -x^2 + x + 5\)에 접하고 <strong>기울기가 \(-3\)</strong>인 접선을 구해 보자.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① 접점을 \((t,\ -t^2 + t + 5)\)로 놓으면 \(f'(x) = -2x + 1\)이므로 기울기 = \(f'(t) = -2t + 1\)</li>
+                            <li>② \(f'(t) = -3\)에서 \(-2t + 1 = -3\) \(\Rightarrow\) \(t = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(2\)</span></span></li>
+                            <li>③ 접점 \((2, 3)\), 접선: \( y - 3 = -3(x - 2) \) \(\Rightarrow\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( y = -3x + 9 \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>발상:</strong> "접점을 모르겠으면 매개변수 \(t\)로 두고 조건에서 \(t\)를 결정". 시나리오 ②·③의 공통 도구가 바로 이 <span class="calc-accent font-bold">"매개변수 접점"</span> 기법이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.71 · 예제 2 참고)</span></p>
+                </div>
+
+                <!-- 4. 시나리오 ③ — 곡선 밖의 점 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        시나리오 ③ — 곡선 밖의 한 점에서 그은 접선
+                    </h3>
+                    <p class="mb-3 text-slate-700">점 \((1, 3)\)에서 곡선 \(y = -x^2 + 2x + 1\)에 그은 접선을 구해 보자. <strong>주의:</strong> 점 \((1, 3)\)이 곡선 위에 있는지 확인하면 \(-1 + 2 + 1 = 2 \neq 3\) — <strong>곡선 밖의 점</strong>이다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① 접점을 \((t,\ -t^2 + 2t + 1)\), 기울기는 \(f'(t) = -2t + 2\). 접선식: \( y - (-t^2 + 2t + 1) = (-2t + 2)(x - t) \)</li>
+                            <li>② 이 접선이 점 \((1, 3)\)을 지나므로 \(3 - (-t^2 + 2t + 1) = (-2t + 2)(1 - t)\) \(\Rightarrow\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( t^2 - 2t = 0 \Rightarrow t = 0 \text{ 또는 } 2 \)</span></span></li>
+                            <li>③ \(t\)별로 접선이 두 개: \(t = 0\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( y = 2x + 1 \)</span></span>, \(t = 2\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( y = -2x + 5 \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 곡선 밖의 점에서 그은 접선의 개수 = \(t\)에 대한 방정식의 실근 개수. 일반적으로 이차함수에 곡선 밖 점이면 접선이 <strong>2개</strong>, 삼차함수에 곡선 밖 점이면 최대 <strong>3개</strong>가 가능하다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.72 · 예제 3 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 두 곡선의 공통 접선</p>
+                        <p class="text-sm text-cyan-800">두 곡선 \(y = f(x)\), \(y = g(x)\)가 점 \((p, q)\)에서 만나고 <strong>공통 접선</strong>을 가지면 ① <strong>점이 공통</strong>: \(f(p) = g(p) = q\) ② <strong>접선의 기울기 일치</strong>: \(f'(p) = g'(p)\). 두 조건을 연립하면 미지수가 결정된다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 04번 참고)</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">접점이 주어진 경우 / 기울기가 주어진 경우 — 표준 공식 적용</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-접점 주어진 접선</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 곡선 위의 점에서의 접선의 방정식을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.71 · 문제 01 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( y = -2x^2 + 3x - 1 \), 점 \((2, -3)\) &nbsp;&nbsp;
+                                (2) \( y = x^3 + 2x^2 - 1 \), 점 \((-1, 0)\)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> "도함수 \(\to\) 기울기 \(\to\) 점-기울기 공식". (1) \(f'(x) = -4x + 3\), \(f'(2) = -5\). 접선: \(y + 3 = -5(x - 2)\) \(\Rightarrow\) \(y = -5x + 7\). (2) \(f'(x) = 3x^2 + 4x\), \(f'(-1) = 3 - 4 = -1\). 접선: \(y - 0 = -1(x + 1)\) \(\Rightarrow\) \(y = -x - 1\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-기울기 주어진 접선</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 곡선에 접하고 <strong>기울기가 \(1\)</strong>인 접선의 방정식을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.71 · 문제 02 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( y = 2x^2 - 7x + 3 \) &nbsp;&nbsp;
+                                (2) \( y = x^3 - 2x + 1 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 접점을 \((t, f(t))\)로 두고 \(f'(t) = 1\)에서 \(t\)를 구한다. (1) \(f'(x) = 4x - 7\), \(4t - 7 = 1 \Rightarrow t = 2\). 접점 \((2, -3)\), 접선 \(y = x - 5\). (2) \(f'(x) = 3x^2 - 2\), \(3t^2 - 2 = 1 \Rightarrow t = \pm 1\). \(t = 1\)에서 접점 \((1, 0)\), 접선 \(y = x - 1\). \(t = -1\)에서 접점 \((-1, 2)\), 접선 \(y = x + 3\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-점에서 곡선의 접선의 기울기 단순 계산</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 곡선 \(y = x^3 - 3x^2 + 4\) 위의 점 \((1, 2)\)에서의 접선의 방정식을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.96 · 기초 01번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 먼저 점이 곡선 위에 있는지 확인: \(1 - 3 + 4 = 2\) ✓. \(f'(x) = 3x^2 - 6x\), \(f'(1) = 3 - 6 = -3\). 접선: \(y - 2 = -3(x - 1) \Rightarrow y = -3x + 5\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">곡선 밖의 점 / 두 곡선의 공통 접선 — 매개변수 \(t\) 기법 정착</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-곡선 밖의 점에서의 접선</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 점에서 곡선에 그은 접선의 방정식을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.72 · 문제 03 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( y = x^2 - 4x \), 점 \((-2, 3)\) &nbsp;&nbsp;
+                                (2) \( y = -x^3 + 2x + 7 \), 점 \((0, 5)\)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 접점을 \((t, f(t))\)로 두고 접선식 작성 \(\to\) 주어진 점을 대입 \(\to\) \(t\)에 대한 방정식 풀기. (1) \(f'(x) = 2x - 4\). 접선: \(y - (t^2 - 4t) = (2t - 4)(x - t)\). 점 \((-2, 3)\) 대입: \(3 - t^2 + 4t = (2t - 4)(-2 - t) \Rightarrow t^2 + 4t - 5 = 0 \Rightarrow t = 1\ \text{또는}\ -5\). \(t = 1\): 기울기 \(-2\), 접점 \((1, -3)\), 접선 \(y = -2x - 1\). \(t = -5\): 기울기 \(-14\), 접점 \((-5, 45)\), 접선 \(y = -14x - 25\). (2) \(f'(x) = -3x^2 + 2\). 접점 \((t,\ -t^3 + 2t + 7)\). 점 \((0, 5)\) 대입 후 정리하면 \(2t^3 = -2 \Rightarrow t = -1\). 기울기 \(-1\), 접점 \((-1, 6)\), 접선 \(y = -x + 5\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-두 곡선의 공통 접선</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 두 곡선 \( f(x) = x^3 + ax + b \), \( g(x) = c x^2 + 1 \) 이 점 \((1, 2)\)에서 만나고 이 점에서 <strong>공통인 접선</strong>을 가질 때, 실수 \(a, b, c\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 04번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> "공통 접선 조건 두 개"를 분리해서 세운다. ① 점이 공통: \(f(1) = 2 \Rightarrow 1 + a + b = 2\), \(g(1) = 2 \Rightarrow c + 1 = 2 \Rightarrow c = 1\). ② 접선의 기울기 일치: \(f'(x) = 3x^2 + a\), \(g'(x) = 2cx = 2x\). \(f'(1) = g'(1)\)에서 \(3 + a = 2 \Rightarrow a = -1\). ①에서 \(b = 2 - 1 - a = 2\). 답: \(a = -1\), \(b = 2\), \(c = 1\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-수리 언어 소양: 다리 최소 길이 (\(y\)축에 수직인 두 도형 사이)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 오른쪽 그림은 어느 섬과 육지를 좌표평면 위에 나타낸 것이다. 섬의 경계는 곡선 \(y = x^2 - 4x + 3\), 육지의 경계는 직선 \(y = 2x - 11\)의 모양이다. 섬과 육지를 연결하는 다리를 그 길이가 <strong>최소</strong>가 되도록 건설하려고 할 때, 다리의 최소 길이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.72 · 수리 언어 소양 참고)</span>
+                            <div class="mt-3 flex justify-center">
+                                <img src="images/calc_12_q5_island.png" alt="P.72 섬과 육지 사이 다리 최소 길이 그림" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:320px;">
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 다리가 직선 \(y = 2x - 11\)에 수직일 때 거리가 최소. 곡선 \(y = x^2 - 4x + 3\)에서 <strong>기울기가 \(2\)인 접선</strong>이 직선과 평행하므로, 그 접점에서 직선까지의 거리가 다리의 최소 길이. \(f'(x) = 2x - 4 = 2 \Rightarrow x = 3\), 접점 \((3, 0)\). 점 \((3, 0)\)과 직선 \(2x - y - 11 = 0\) 사이의 거리 \(= \dfrac{|2 \cdot 3 - 0 - 11|}{\sqrt{5}} = \dfrac{5}{\sqrt{5}} = \sqrt{5}\). 답: \(\sqrt{5}\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 접점이 주어졌는지 vs 곡선 밖 점인지 — 구조 혼동 정면 대응</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-곡선 위 점인지 검증 필수</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 점 \((0, 2)\)에서 곡선 \(y = -x^3 + x + 4\)에 그은 접선과 \(x\)축, \(y\)축으로 둘러싸인 부분의 넓이를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 03번 참고)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                많은 학생이 "\(x = 0\)이니까 \(f'(0)\)을 그대로 기울기로 쓰면 되는 거 아닌가?"라고 점프한다. <strong>먼저 \((0, 2)\)가 곡선 위에 있는지 검증</strong>해야 한다. \(f(0) = -0 + 0 + 4 = 4 \neq 2\) — <strong>곡선 밖의 점</strong>이다! 따라서 접점을 매개변수 \(t\)로 두어야 한다.<br><br>
+                                <strong>STEP 1 — 곡선 위/밖 검증:</strong> \(f(0) = 4 \neq 2\) \(\Rightarrow\) 점 \((0, 2)\)는 곡선 밖. "곡선 밖의 점 \(\Rightarrow\) 시나리오 ③ (매개변수 \(t\))" 적용.<br><br>
+                                <strong>STEP 2 — 접점 \((t,\ -t^3 + t + 4)\)로 두기:</strong> \(f'(x) = -3x^2 + 1\), 기울기 \(f'(t) = -3t^2 + 1\). 접선식: \( y - (-t^3 + t + 4) = (-3t^2 + 1)(x - t) \).<br><br>
+                                <strong>STEP 3 — 점 \((0, 2)\) 대입으로 \(t\) 결정:</strong> \(2 + t^3 - t - 4 = (-3t^2 + 1)(0 - t) = 3t^3 - t\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2t^3 = 2\) \(\Rightarrow\) \(t = -1\). 접점 \((-1, 2)\), 기울기 \(-3 + 1 = -2\). 접선: \(y - 2 = -2(x + 1) \Rightarrow y = -2x\). (점 \((0, 2)\) 대입 확인: \(y = 2\) ✓ — 잠깐, \(-2 \cdot 0 = 0 \neq 2\). 다시 계산: 접선 \(y - 2 = -2(x - (-1))\), 즉 \(y = -2x\). 그런데 \((0, 2)\)를 지나려면 \(y\)절편 \(= 2\)여야 함. \(y = -2x + 0\)은 \((0, 0)\)을 지남. 식 점검 필요!)<br><br>
+                                <strong>STEP 3 (재정리):</strong> 정확한 식: \(y - (-t^3 + t + 4) = (-3t^2 + 1)(x - t)\)에 \(x = 0\), \(y = 2\) 대입. \(2 - (-t^3 + t + 4) = (-3t^2 + 1)(-t)\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2 = 2t^3\) \(\Rightarrow\) \(t^3 = -1\) \(\Rightarrow\) \(t = -1\). 접점 \((-1,\ 1 + (-1) + 4) = (-1, 4)\). 기울기 \(-3 + 1 = -2\). 접선: \(y - 4 = -2(x + 1) \Rightarrow y = -2x + 2\). 점 \((0, 2)\) 대입: \(2 = 2\) ✓.<br><br>
+                                <strong>STEP 4 — 둘러싸인 넓이:</strong> 접선 \(y = -2x + 2\)는 \(x\)축과 \((1, 0)\), \(y\)축과 \((0, 2)\)에서 만남. 둘러싸인 직각삼각형의 넓이 \(= \dfrac{1}{2} \cdot 1 \cdot 2 = 1\). <span class="text-red-600 font-bold">답: \(1\).</span><br><br>
+                                <strong>핵심 통찰:</strong> "주어진 점이 곡선 위/밖인지 먼저 검증"하는 한 줄 습관이 시나리오 ① vs ③의 분기점. 곡선 밖이면 반드시 접점을 \(t\)로 놓아야 한다. 식 정리 시에는 부호 실수에 매우 주의.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 곡선 \(y = x^3 - 3x^2 + 2x + 1\) 위의 점 \((0, 1)\)에서의 접선이 곡선과 만나는 다른 한 점의 좌표를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.96 · 기초 01번 응용)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① 접선 구하기: \(f'(x) = 3x^2 - 6x + 2\), \(f'(0) = 2\). 접선 \(y = 2x + 1\). ② 곡선과 접선의 교점: \(x^3 - 3x^2 + 2x + 1 = 2x + 1 \Rightarrow x^3 - 3x^2 = 0 \Rightarrow x^2(x - 3) = 0\). \(x = 0\) (접점, 중근)과 \(x = 3\). ③ \(x = 3\)에서 \(y = 2 \cdot 3 + 1 = 7\). 답: \((3, 7)\). <strong>핵심:</strong> 접점에서는 \(x\)값이 중근으로 나타남 — 인수분해에서 \(x^2\)이 나오는 이유.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 도함수의 활용 1 유제 1 [26009-0075]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_도함수의활용1"
+                 data-aft-source-id="c4-ex1"
+                 data-aft-source-label="수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 1">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 1 [26009-0075]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 곡선 위의 점에서의 접선의 기울기 \(=f'(t)\) — 접선식 세우고 외부점 대입으로 미지의 상수 결정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                곡선 \(y = -2x^4 + 3x^2 + a\) 위의 점 \((1,\ a+1)\)에서의 접선이 점 \((0,\ -3)\)을 지날 때, 상수 \(a\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(-6\) &nbsp;&nbsp; ② \(-7\) &nbsp;&nbsp; ③ \(-8\) &nbsp;&nbsp; ④ \(-9\) &nbsp;&nbsp; ⑤ \(-10\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — \(f'(x)\) 계산 + 접선 기울기</strong>: \(f(x) = -2x^4 + 3x^2 + a\), \(f'(x) = -8x^3 + 6x\). 점 \((1,\ a+1)\)에서의 접선 기울기 \(= f'(1) = -8 + 6 = -2\).</li>
+                    <li><strong>STEP 2 — 접선의 방정식</strong>: \(y - (a+1) = -2(x - 1) \Rightarrow y = -2x + a + 3\).</li>
+                    <li><strong>STEP 3 — 점 \((0,\ -3)\) 대입</strong>: \(-3 = -2 \cdot 0 + a + 3 \Rightarrow a = -6\).</li>
+                    <li><strong>STEP 4 — 최종</strong>: \(a = -6\). <span class="text-red-600 font-bold">정답: ① \(-6\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "곡선 위의 점 \((t,\ f(t))\)에서의 접선이 외부의 한 점 \((p,\ q)\)를 지난다"형 — ① 접선 기울기 \(= f'(t)\) ② 접선식 \(y - f(t) = f'(t)(x - t)\) ③ 외부점 대입 — 차시 12 시나리오 ②(곡선 위의 점에서의 접선)의 정공법. 사차함수도 다항함수이므로 미분 공식이 그대로 적용된다.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_도함수의활용1_해설.html#c4-ex1" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 1</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (1998학년도 수능 자연계 나형 9번 — 접선과 좌표축이 둘러싸인 삼각형의 넓이) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분활용"
+                 data-aft-source-id="g_ws12_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 미분 활용 · 1998학년도 수능 나형 9번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 1998학년도 대학수학능력시험 수학영역 나형 9번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 곡선 위의 한 점에서의 접선식을 정확히 세운 뒤 \(x\)절편·\(y\)절편을 구해 좌표축과 만들어지는 삼각형의 넓이를 절댓값으로 정확히 계산</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                포물선 \(y = -\dfrac{1}{4}x^2\)의 점 \((2,\ -1)\)에서의 접선과 \(x\)축, \(y\)축으로 둘러싸인 삼각형의 넓이는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(\dfrac{1}{2}\) &nbsp;&nbsp; ② \(\dfrac{1}{4}\) &nbsp;&nbsp; ③ \(\dfrac{3}{4}\) &nbsp;&nbsp; ④ \(\dfrac{3}{2}\) &nbsp;&nbsp; ⑤ \(\dfrac{5}{4}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 도함수 계산</strong>: \(f(x) = -\dfrac{1}{4}x^2\)이므로 \(f'(x) = -\dfrac{1}{2}x\). 접점 \(x = 2\)에서의 기울기 \(m = f'(2) = -1\).</li>
+                    <li><strong>STEP 2 — 접선의 방정식</strong>: 점 \((2,\ -1)\)을 지나고 기울기 \(-1\)이므로 \[ y - (-1) = -1\cdot(x - 2) \;\Longrightarrow\; y = -x + 1. \]</li>
+                    <li><strong>STEP 3 — 두 축과의 교점</strong>: \(x\)축 교점은 \(y = 0\) \(\Rightarrow x = 1\), 즉 \((1,\ 0)\). \(y\)축 교점은 \(x = 0\) \(\Rightarrow y = 1\), 즉 \((0,\ 1)\). 두 절편이 모두 <strong>양수</strong>이므로 삼각형이 제1사분면에 생긴다.</li>
+                    <li><strong>STEP 4 — 삼각형 넓이</strong>: 직각삼각형의 두 직각변이 \(x\)절편 \(1\)과 \(y\)절편 \(1\)이므로 넓이는 \[ S = \dfrac{1}{2}\cdot|1|\cdot|1| = \dfrac{1}{2}. \]</li>
+                    <li><strong>STEP 5 — 결론</strong>: \(S = \dfrac{1}{2}\). <span class="text-red-600 font-bold">정답: ①</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "곡선의 접선이 좌표축으로 둘러싸는 도형의 넓이"는 평가원·수능에서 반복 출제되는 표준형이다. 절차는 ① 도함수로 기울기 \(\to\) ② 점-기울기 접선식 \(\to\) ③ \(x\)절편·\(y\)절편 \(\to\) ④ \(S = \tfrac{1}{2}|\text{x절편}|\cdot|\text{y절편}|\)의 4단 분해. 차시 12 Level 2~3의 풀이 패턴이 평가원 표준 기출에서 어떻게 출제되는지를 보여주는 대표 사례.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (점-기울기 공식의 일반화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">공통수학 2의 "점-기울기 공식 \(y - y_1 = m(x - x_1)\)"이 미적분 I에서 "접선의 방정식 \(y - f(a) = f'(a)(x - a)\)"로 어떻게 자연스럽게 확장되는지 자신의 언어로 설명하고, 두 공식 사이의 연결을 시각화해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"공통수학 2에서 배운 점-기울기 공식 \(y - y_1 = m(x - x_1)\)에 점은 \((a, f(a))\), 기울기는 \(f'(a)\)를 넣으면 그게 바로 접선의 방정식이라는 걸 알게 됐다. 새 공식을 외울 게 아니라 직선 정보 두 개(점·기울기)를 곡선의 미분 정보로 바꿔 끼우는 것뿐이라는 게 보이고 나니, 접선 문제가 한 줄로 정리됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (시나리오 분기 점검)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"접점이 주어졌는지 / 기울기가 주어졌는지 / 곡선 밖의 점인지"를 풀이 시작 단계에서 분기하는 자기 점검 카드(예: 주어진 점 \((x_0, y_0)\)을 곡선식에 대입해 보고 \(y_0 = f(x_0)\)인지 검증)를 만들고 자신의 풀이 루틴에 통합한 사례를 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"점 \((0, 2)\)에서 \(y = -x^3 + x + 4\)에 접선을 긋는 문제에서 \(x = 0\)이 곡선 위 점인 줄 알고 그냥 \(f'(0)\)을 기울기로 적었다가 틀렸다. \(f(0) = 4 \neq 2\)니까 곡선 밖 점인데, 그러면 접점을 \((t, f(t))\)로 잡고 분기해야 했다. 이제는 풀기 전에 '점이 곡선 위인지 검증 → 위/밖으로 분기' 2단계를 먼저 한다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (접선 → 공통 접선 → 평균값 정리)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">두 곡선의 공통 접선 조건이 ① 점 공통 ② 기울기 일치의 두 조건임을 정리하고, 다음 차시(평균값 정리)에서 "어떤 \(c\)에서의 접선이 어떤 직선과 평행한가?"라는 질문이 본 차시의 어떤 부분과 연결될지 가설을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"두 곡선의 공통 접선이 '점 공통 + 기울기 일치' 두 조건이라는 걸 정리하다 보니, 다음 차시의 평균값 정리에서 '직선 \(\mathrm{AB}\)에 평행한 접선 \(f'(c)\)가 존재한다'는 명제도 결국 같은 발상 같다는 생각이 들었다. 도함수의 활용 단원이 '접선의 기울기'라는 한 가지 의미로 관통될 것 같아 미리 로드맵을 잡아뒀다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 12차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index-calc.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>
