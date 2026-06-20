@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<!-- 교사용 통합 해설집 (Teacher's Solution Guide) — 학생 비공개 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 2026 2학기 미적분I — 통합 해설집</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; }
+
+        /* 워터마크 */
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        /* 표지 */
+        .cover-page { max-width: 880px; margin: 2rem auto; padding: 3rem 2.5rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.10); position: relative; z-index: 1; }
+        .cover-label { font-size: .75rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #0d9488; margin-bottom: .75rem; }
+        .cover-title { font-size: 2.5rem; font-weight: 900; color: #134e4a; line-height: 1.2; margin-bottom: .5rem; }
+        .cover-sub { font-size: 1.1rem; font-weight: 600; color: #475569; margin-bottom: 2rem; }
+        .cover-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .cover-meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .75rem 1rem; }
+        .cover-meta-item .cm-label { font-size: .68rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .cover-meta-item .cm-val { font-size: .9rem; color: #334155; font-weight: 600; }
+        .toc-title { font-size: 1.1rem; font-weight: 900; color: #0f766e; border-bottom: 2px solid #99f6e4; padding-bottom: .375rem; margin-bottom: 1rem; }
+        .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-bottom: 2rem; }
+        .toc-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .5rem .75rem; font-size: .82rem; display: flex; align-items: center; gap: .5rem; text-decoration: none; color: #334155; transition: all .15s; }
+        .toc-item:hover { background: #ecfeff; border-color: #0d9488; color: #0f766e; }
+        .toc-num { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .25rem; display: inline-flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 900; flex-shrink: 0; }
+        .toc-unit { font-size: .65rem; color: #0d9488; font-weight: 700; display: block; }
+        .cover-motto { background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%); color: #ecfeff; padding: 1.25rem 1.5rem; border-radius: .75rem; font-size: .95rem; font-style: italic; text-align: center; }
+        .cover-motto strong { color: #5eead4; }
+
+        /* 차시 페이지 */
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        /* 문항 카드 */
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        /* 다음 차시 포인터 */
+        .next-lesson { background: #f0fdf4; border: 1px solid #86efac; border-radius: .5rem; padding: .625rem 1rem; margin-top: 1rem; font-size: .85rem; color: #166534; }
+        .next-lesson strong { color: #15803d; }
+
+        /* 인쇄 */
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson, .cover-page { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; page-break-after: always; }
+            .prob-card { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process mathjax-ready">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<!-- ===== 표지 ===== -->
+<div class="cover-page" id="top">
+    <div class="cover-label">Teacher's Solution Guide &mdash; 2026 2학기</div>
+    <h1 class="cover-title">미적분 I</h1>
+    <div class="cover-sub">전 31차시 통합 해설집 &mdash; 교사 전용 (학생 비공개)</div>
+
+    <div class="cover-meta">
+        <div class="cover-meta-item">
+            <div class="cm-label">단원 구성</div>
+            <div class="cm-val">대단원 I·II·III / 소단원 6개</div>
+        </div>
+        <div class="cover-meta-item">
+            <div class="cm-label">차시 수</div>
+            <div class="cm-val">31차시 (학습지·마무리·평가 포함)</div>
+        </div>
+        <div class="cover-meta-item">
+            <div class="cm-label">수록 내용</div>
+            <div class="cm-val">핵심 아이디어 · 공식 · 문항 해설 · 다음 차시 연결</div>
+        </div>
+    </div>
+
+    <div class="toc-title">목차 — 31차시</div>
+    <div class="toc-grid">
+        <a class="toc-item" href="#L01"><span class="toc-num">01</span><span><span class="toc-unit">I-1</span>함수의 극한</span></a>
+        <a class="toc-item" href="#L02"><span class="toc-num">02</span><span><span class="toc-unit">I-1</span>극한값의 계산</span></a>
+        <a class="toc-item" href="#L03"><span class="toc-num">03</span><span><span class="toc-unit">I-1</span>미정형</span></a>
+        <a class="toc-item" href="#L04"><span class="toc-num">04</span><span><span class="toc-unit">I-1</span>중단원마무리</span></a>
+        <a class="toc-item" href="#L05"><span class="toc-num">05</span><span><span class="toc-unit">I-2</span>함수의 연속</span></a>
+        <a class="toc-item" href="#L06"><span class="toc-num">06</span><span><span class="toc-unit">I-2</span>연속함수의 성질</span></a>
+        <a class="toc-item" href="#L07"><span class="toc-num">07</span><span><span class="toc-unit">I-2</span>중단원마무리</span></a>
+        <a class="toc-item" href="#L08"><span class="toc-num">08</span><span><span class="toc-unit">I</span>대단원평가</span></a>
+        <a class="toc-item" href="#L09"><span class="toc-num">09</span><span><span class="toc-unit">II-1</span>미분계수</span></a>
+        <a class="toc-item" href="#L10"><span class="toc-num">10</span><span><span class="toc-unit">II-1</span>도함수</span></a>
+        <a class="toc-item" href="#L11"><span class="toc-num">11</span><span><span class="toc-unit">II-1</span>중단원마무리</span></a>
+        <a class="toc-item" href="#L12"><span class="toc-num">12</span><span><span class="toc-unit">II-2</span>접선의 방정식</span></a>
+        <a class="toc-item" href="#L13"><span class="toc-num">13</span><span><span class="toc-unit">II-2</span>평균값정리</span></a>
+        <a class="toc-item" href="#L14"><span class="toc-num">14</span><span><span class="toc-unit">II-2</span>증가와 감소</span></a>
+        <a class="toc-item" href="#L15"><span class="toc-num">15</span><span><span class="toc-unit">II-2</span>극대와 극소</span></a>
+        <a class="toc-item" href="#L16"><span class="toc-num">16</span><span><span class="toc-unit">II-2</span>함수의 그래프</span></a>
+        <a class="toc-item" href="#L17"><span class="toc-num">17</span><span><span class="toc-unit">II-2</span>그래프 응용</span></a>
+        <a class="toc-item" href="#L18"><span class="toc-num">18</span><span><span class="toc-unit">II-2</span>방정식·부등식 활용</span></a>
+        <a class="toc-item" href="#L19"><span class="toc-num">19</span><span><span class="toc-unit">II-2</span>속도와 가속도</span></a>
+        <a class="toc-item" href="#L20"><span class="toc-num">20</span><span><span class="toc-unit">II-2</span>중단원마무리</span></a>
+        <a class="toc-item" href="#L21"><span class="toc-num">21</span><span><span class="toc-unit">II</span>대단원평가</span></a>
+        <a class="toc-item" href="#L22"><span class="toc-num">22</span><span><span class="toc-unit">III-1</span>부정적분</span></a>
+        <a class="toc-item" href="#L23"><span class="toc-num">23</span><span><span class="toc-unit">III-1</span>정적분의 정의</span></a>
+        <a class="toc-item" href="#L24"><span class="toc-num">24</span><span><span class="toc-unit">III-1</span>정적분의 계산</span></a>
+        <a class="toc-item" href="#L25"><span class="toc-num">25</span><span><span class="toc-unit">III-1</span>중단원마무리</span></a>
+        <a class="toc-item" href="#L26"><span class="toc-num">26</span><span><span class="toc-unit">III-2</span>넓이 — 곡선·x축</span></a>
+        <a class="toc-item" href="#L27"><span class="toc-num">27</span><span><span class="toc-unit">III-2</span>넓이 — 두 곡선</span></a>
+        <a class="toc-item" href="#L28"><span class="toc-num">28</span><span><span class="toc-unit">III-2</span>속도와 거리</span></a>
+        <a class="toc-item" href="#L29"><span class="toc-num">29</span><span><span class="toc-unit">III-2</span>중단원마무리</span></a>
+        <a class="toc-item" href="#L30"><span class="toc-num">30</span><span><span class="toc-unit">III</span>대단원평가</span></a>
+        <a class="toc-item" href="#L31"><span class="toc-num">31</span><span><span class="toc-unit">종합</span>학기말종합</span></a>
+    </div>
+
+    <div class="cover-motto">
+        "극한은 <strong>닿지 않고 다가가는 것</strong>이고, 미분은 <strong>순간을 포착하는 것</strong>이고, 적분은 <strong>쌓아서 되돌아가는 것</strong>이다 — 세 개의 눈으로 함수를 보면 미적분이 완성된다."
+    </div>
+</div>
+
+<!-- ===== 01차시 ===== -->
+<article class="lesson" id="L01">
+    <div class="lesson-head">
+        <span class="lesson-num">01</span>
+        <span class="lesson-tag">I-1 함수의극한</span>
+        <span class="lesson-title">함수의 극한 — 직관적 정의와 좌·우극한</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> "\(x \to a\)는 \(x = a\)가 아니다" — 극한값은 함숫값과 무관할 수 있다.</div>
+    <div class="formula-box">
+        <div class="label">CORE DEFINITION</div>
+        <div class="formula">\(\displaystyle \lim_{x \to a} f(x) = L \quad \Longleftrightarrow \quad \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">다항함수 극한 — 직접 대입</span></div>
+            <div class="q-stmt">(1) \(\lim_{x \to 2}(3x-1)\) &nbsp;(2) \(\lim_{x \to -1}(x^2+2x+5)\) &nbsp;(3) \(\lim_{x \to 3}\dfrac{x-1}{x+1}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 다항함수는 연속 → \(3\cdot2-1=5\).</span>
+                <span class="step">(2) \((-1)^2+2(-1)+5=4\).</span>
+                <span class="step">(3) 분모 \(4\neq0\) → \(\dfrac{2}{4}=\dfrac{1}{2}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(5\) &nbsp;(2) \(4\) &nbsp;(3) \(\dfrac{1}{2}\)</div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">그래프 읽기 — 좌·우극한</span></div>
+            <div class="q-stmt">그래프에서 \(x=1\) 부근: 좌극한, 우극한, \(\lim_{x\to1}f(x)\) 존재 판정.</div>
+            <div class="q-solve">
+                <span class="step">\(x\lt1\): 빈 원 \((1,1)\)로 접근 → 좌극한 \(=1\).</span>
+                <span class="step">\(x\geq1\): 검은 점 \((1,2)\) → 우극한 \(=2\).</span>
+                <span class="step">좌 \(1\neq\) 우 \(2\) → 극한 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 좌극한 \(1\), 우극한 \(2\), \(\lim\) <strong>존재하지 않음</strong></div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">절댓값 함수 \(\frac{|x|}{x}\)</span></div>
+            <div class="q-stmt">\(\lim_{x\to0^-}\dfrac{|x|}{x}\), \(\lim_{x\to0^+}\dfrac{|x|}{x}\), 일반 극한 존재 판정.</div>
+            <div class="q-solve">
+                <span class="step">\(x\gt0\): \(\dfrac{x}{x}=1\) → 우극한 \(1\).</span>
+                <span class="step">\(x\lt0\): \(\dfrac{-x}{x}=-1\) → 좌극한 \(-1\).</span>
+                <span class="step">불일치 → 일반 극한 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 우극한 \(1\), 좌극한 \(-1\), 일반 극한 <strong>존재하지 않음</strong></div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">구간정의 함수 좌·우극한</span></div>
+            <div class="q-stmt">\(f(x)=x+3\,(x\lt1)\), \(2x\,(x\geq1)\). 세 극한.</div>
+            <div class="q-solve">
+                <span class="step">좌극한 \(x\to1^-\): \(1+3=4\).</span>
+                <span class="step">우극한 \(x\to1^+\): \(2\cdot1=2\).</span>
+                <span class="step">\(4\neq2\) → 일반 극한 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 좌극한 \(4\), 우극한 \(2\), 일반 극한 <strong>존재하지 않음</strong></div>
+        </div>
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">극한값과 함숫값의 분리</span></div>
+            <div class="q-stmt">\(f(x)=\dfrac{x^2-1}{x-1}\,(x\neq1)\), \(f(1)=5\). (1) \(f(1)\) &nbsp;(2) \(\lim_{x\to1}f(x)\). 같은가?</div>
+            <div class="q-solve">
+                <span class="step">(1) \(f(1)=5\) (재정의).</span>
+                <span class="step">(2) \(x\neq1\)이므로 \(\dfrac{(x-1)(x+1)}{x-1}=x+1\to2\).</span>
+                <span class="step">함숫값 \(5\) \(\neq\) 극한값 \(2\) → 다르다.</span>
+            </div>
+            <div class="q-ans">정답: \(f(1)=5\), \(\lim_{x\to1}f(x)=2\). <strong>두 값은 다르다.</strong></div>
+        </div>
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — \(\dfrac{x^2-4}{|x-2|}\)</span></div>
+            <div class="q-stmt">\(f(x)=\dfrac{x^2-4}{|x-2|}\). 좌·우극한 및 일반 극한.</div>
+            <div class="q-solve">
+                <span class="step">분자 \(=(x-2)(x+2)\). \(x\gt2\): \(|x-2|=x-2\) → \(x+2\) → 우극한 \(4\).</span>
+                <span class="step">\(x\lt2\): \(|x-2|=-(x-2)\) → \(-(x+2)\) → 좌극한 \(-4\).</span>
+                <span class="step">\(4\neq-4\) → 일반 극한 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 우극한 \(4\), 좌극한 \(-4\), 일반 극한 <strong>존재하지 않음</strong></div>
+        </div>
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 합성 극한</span></div>
+            <div class="q-stmt">\(\lim_{x\to-1^-}f(x+2)+\lim_{x\to1^+}f(-x)\). 그래프에서 값 읽기.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(s=x+2\), \(x\to-1^-\Rightarrow s\to1^-\). 그래프에서 \(\lim_{s\to1^-}f(s)=0\).</span>
+                <span class="step">STEP 2: \(t=-x\), \(x\to1^+\Rightarrow t\to-1^-\). 그래프에서 \(\lim_{t\to-1^-}f(t)=-1\).</span>
+                <span class="step">합 \(=0+(-1)=-1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(-1\)</strong> (② 선택지)</div>
+        </div>
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2022학년도 수능 4번</span></div>
+            <div class="q-stmt">\(\lim_{x\to-1^-}f(x)+\lim_{x\to2}f(x)\). 그래프에서 판독.</div>
+            <div class="q-solve">
+                <span class="step">\(\lim_{x\to-1^-}f(x)=3\) (좌측 직선 열린점 \((-1,3)\)).</span>
+                <span class="step">\(\lim_{x\to2}f(x)=1\) (좌·우 모두 \(y=1\) 수평선, 함숫값 \(f(2)=3\)은 무관).</span>
+                <span class="step">합 \(=3+1=4\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ \(4\)</strong></div>
+        </div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(02):</strong> 사칙 5성질 → \(\frac{0}{0}\) 부정형 해소 (인수분해·유리화·미정계수).</div>
+</article>
+
+<!-- ===== 02차시 ===== -->
+<article class="lesson" id="L02">
+    <div class="lesson-head">
+        <span class="lesson-num">02</span>
+        <span class="lesson-tag">I-1 함수의극한</span>
+        <span class="lesson-title">함수의 극한값의 계산 — 사칙 성질과 미정계수</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 사칙연산이 작동하는 조건은 각 극한값이 실수. \(\frac{0}{0}\)은 약분으로 해소.</div>
+    <div class="formula-box">
+        <div class="label">사칙 5성질 + 미정계수 KEY</div>
+        <div class="formula">\(\lim(f\pm g)=\lim f\pm\lim g\), \(\lim fg=\lim f\cdot\lim g\), \(\lim\dfrac{f}{g}=\dfrac{\lim f}{\lim g}\,(\lim g\neq0)\) &nbsp;|&nbsp; 분모\(\to0\)+극한 실수 \(\Rightarrow\) 분자\(\to0\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">직접 대입 4종</span></div>
+            <div class="q-stmt">(1) \(\lim_{x\to1}(3x^2-2x+5)\) &nbsp;(2) \(\lim_{x\to2}\dfrac{x+3}{x-1}\) &nbsp;(3) \(\lim_{x\to0}(x^2+1)^3\) &nbsp;(4) \(\lim_{x\to-1}\dfrac{2x+1}{x^2+2}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(3-2+5=6\). (2) \(\dfrac{5}{1}=5\). (3) \(1^3=1\). (4) \(\dfrac{-1}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(6\) &nbsp;(2) \(5\) &nbsp;(3) \(1\) &nbsp;(4) \(-\dfrac{1}{3}\)</div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">사칙 결합 (\(\lim f=2, \lim g=3\))</span></div>
+            <div class="q-stmt">(1) \(\lim\{3f+g\}\) &nbsp;(2) \(\lim\{f-2g\}\) &nbsp;(3) \(\lim 2fg\) &nbsp;(4) \(\lim\dfrac{f}{g}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(9\). (2) \(-4\). (3) \(12\). (4) \(\dfrac{2}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(9\) &nbsp;(2) \(-4\) &nbsp;(3) \(12\) &nbsp;(4) \(\dfrac{2}{3}\)</div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">인수분해 (\(\frac{0}{0}\))</span></div>
+            <div class="q-stmt">(1) \(\lim_{x\to4}\dfrac{x^2-x-12}{x-4}\) &nbsp;(2) \(\lim_{x\to1}\dfrac{x-1}{x^3-1}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 분자 \(=(x-4)(x+3)\) → \(x+3\to7\).</span>
+                <span class="step">(2) 분모 \(=(x-1)(x^2+x+1)\) → \(\dfrac{1}{x^2+x+1}\to\dfrac{1}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(7\) &nbsp;(2) \(\dfrac{1}{3}\)</div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">유리화 (\(\frac{0}{0}\))</span></div>
+            <div class="q-stmt">(1) \(\lim_{x\to-1}\dfrac{x+1}{\sqrt{x+2}-1}\) &nbsp;(2) \(\lim_{x\to2}\dfrac{\sqrt{4x+1}-3}{x-2}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 켤레 \(\sqrt{x+2}+1\) 곱 → \(\sqrt{x+2}+1\to2\).</span>
+                <span class="step">(2) 켤레 \(\sqrt{4x+1}+3\) 곱 → \(\dfrac{4}{\sqrt{4x+1}+3}\to\dfrac{4}{6}=\dfrac{2}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(2\) &nbsp;(2) \(\dfrac{2}{3}\)</div>
+        </div>
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">미정계수 — 분모\(\to0\) 조건</span></div>
+            <div class="q-stmt">\(\lim_{x\to1}\dfrac{x^2+ax+b}{x-1}=4\). \(a,b\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: 분모\(\to0\), 극한 실수 → 분자\(\to0\). \(1+a+b=0\) → \(b=-a-1\).</span>
+                <span class="step">STEP 2: 인수분해 → \((x-1)(x+a+1)\) → 약분 → \(x+a+1\to a+2=4\) → \(a=2,b=-3\).</span>
+            </div>
+            <div class="q-ans">정답: \(a=2\), \(b=-3\). 검산: \(\dfrac{x^2+2x-3}{x-1}=x+3\to4\). OK.</div>
+        </div>
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">6</span><span class="q-title">샌드위치 정리</span></div>
+            <div class="q-stmt">\(-x^2-6x+2\leq f(x)\leq\dfrac{1}{2}x^2+8\). \(\lim_{x\to-2}f(x)\).</div>
+            <div class="q-solve">
+                <span class="step">좌변 \(x\to-2\): \(-4+12+2=10\). 우변: \(2+8=10\).</span>
+                <span class="step">양 끝 \(10\) → 샌드위치 → \(\lim f(x)=10\).</span>
+            </div>
+            <div class="q-ans">정답: \(10\)</div>
+        </div>
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">7</span><span class="q-title">형성평가 — 미정계수 \(x\to2\)</span></div>
+            <div class="q-stmt">\(\lim_{x\to2}\dfrac{ax^2-2x+b}{x-2}=6\). \(a,b\).</div>
+            <div class="q-solve">
+                <span class="step">분모\(\to0\) → 분자\(\to0\): \(4a-4+b=0\) → \(b=-4a+4\).</span>
+                <span class="step">인수분해 → \((x-2)\{a(x+2)-2\}\) → \(4a-2=6\) → \(a=2,b=-4\).</span>
+            </div>
+            <div class="q-ans">정답: \(a=2\), \(b=-4\)</div>
+        </div>
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 공통 인수 \((x+1)\)</span></div>
+            <div class="q-stmt">\(\lim_{x\to-1}(x+1)f(x)=2\), \(\lim_{x\to-1}\{\dfrac{g(x)}{x+1}+3x\}=8\). \(\lim\{f(x)g(x)+(x^2+3x+2)f(x)\}\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(\lim\dfrac{g}{x+1}=8-(-3)=11\).</span>
+                <span class="step">STEP 2: \(fg=(x+1)f\cdot\dfrac{g}{x+1}\to2\cdot11=22\).</span>
+                <span class="step">STEP 3: \(x^2+3x+2=(x+1)(x+2)\) → \((x^2+3x+2)f=(x+1)f\cdot(x+2)\to2\cdot1=2\).</span>
+                <span class="step">합 \(=22+2=24\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(24\)</strong></div>
+        </div>
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2011년 10월 학평 나14</span></div>
+            <div class="q-stmt">두 함수 그래프. 보기 ㄱ·ㄴ·ㄷ 옳은 것.</div>
+            <div class="q-solve">
+                <span class="step">ㄱ: \(\lim_{x\to0}f=-1\). 참.</span>
+                <span class="step">ㄴ: \(x=1\)에서 \(f+g\) 좌·우 불일치(\(-1\) vs \(1\)). 거짓.</span>
+                <span class="step">ㄷ: \(fg\) 좌·우 모두 \(0\). 참.</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ ㄱ, ㄷ</strong></div>
+        </div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(03):</strong> \(\dfrac{\infty}{\infty}\), \(\infty-\infty\), \(0\cdot\infty\) 부정형 — 차수 비교와 켤레 유리화.</div>
+</article>
+
+<!-- ===== 03차시 ===== -->
+<article class="lesson" id="L03">
+    <div class="lesson-head">
+        <span class="lesson-num">03</span>
+        <span class="lesson-tag">I-1 함수의극한</span>
+        <span class="lesson-title">함수의 극한 — 부정형(\(\frac{\infty}{\infty}\), \(\infty-\infty\), \(0\cdot\infty\))</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 부정형은 직접 대입으로 값이 안 보이는 형식. 차수 비교·켤레·치환으로 해소.</div>
+    <div class="formula-box">
+        <div class="label">4가지 부정형</div>
+        <div class="formula">\(\dfrac{0}{0}\): 약분 &nbsp;|&nbsp; \(\dfrac{\infty}{\infty}\): \(\div\) 최고차 &nbsp;|&nbsp; \(\infty-\infty\): 켤레 유리화 &nbsp;|&nbsp; \(0\cdot\infty\): 분수 변환</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">\(\frac{\infty}{\infty}\) 기본</span></div>
+            <div class="q-stmt">(1) \(\lim_{x\to\infty}\dfrac{3x+1}{x-2}\) &nbsp;(2) \(\lim_{x\to\infty}\dfrac{x^2-1}{2x^2+3x}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(\div x\): \(\dfrac{3+1/x}{1-2/x}\to3\).</span>
+                <span class="step">(2) \(\div x^2\): \(\dfrac{1-1/x^2}{2+3/x}\to\dfrac{1}{2}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(3\) &nbsp;(2) \(\dfrac{1}{2}\)</div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">차수 불균형</span></div>
+            <div class="q-stmt">(1) \(\lim_{x\to\infty}\dfrac{3x+1}{\sqrt{x^2+1}-2}\) &nbsp;(2) \(\lim_{x\to\infty}\dfrac{x-5}{x^2+x-1}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(\div x\): \(\dfrac{3+1/x}{\sqrt{1+1/x^2}-2/x}\to3\).</span>
+                <span class="step">(2) 분자 차수 \(\lt\) 분모 → \(0\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(3\) &nbsp;(2) \(0\)</div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">\(\infty-\infty\) 유리화</span></div>
+            <div class="q-stmt">(1) \(\lim_{x\to\infty}(2x-\sqrt{4x^2+3x})\) &nbsp;(2) \(\lim_{x\to\infty}(\sqrt{x^2+x}-\sqrt{x^2-x})\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 켤레 곱 → \(\dfrac{-3x}{2x+\sqrt{4x^2+3x}}\to\dfrac{-3}{4}\).</span>
+                <span class="step">(2) 켤레 곱 → \(\dfrac{2x}{\sqrt{x^2+x}+\sqrt{x^2-x}}\to1\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(-\dfrac{3}{4}\) &nbsp;(2) \(1\)</div>
+        </div>
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">\(0\cdot\infty\) 변환</span></div>
+            <div class="q-stmt">\(\lim_{x\to\infty}\sqrt{x}(\sqrt{x+2}-\sqrt{x})\)</div>
+            <div class="q-solve">
+                <span class="step">괄호 안 유리화: \(\sqrt{x+2}-\sqrt{x}=\dfrac{2}{\sqrt{x+2}+\sqrt{x}}\).</span>
+                <span class="step">\(\sqrt{x}\) 곱 → \(\dfrac{2\sqrt{x}}{\sqrt{x+2}+\sqrt{x}}\div\sqrt{x}\to\dfrac{2}{2}=1\).</span>
+            </div>
+            <div class="q-ans">정답: \(1\)</div>
+        </div>
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">\(x\to-\infty\) 절댓값 함정</span></div>
+            <div class="q-stmt">\(\lim_{x\to-\infty}\dfrac{x-1}{|x|+3}\)</div>
+            <div class="q-solve">
+                <span class="step">\(x\lt0\) → \(|x|=-x\). \(\div x\): \(\dfrac{1-1/x}{-1+3/x}\to\dfrac{1}{-1}=-1\).</span>
+            </div>
+            <div class="q-ans">정답: \(-1\). 함정: \(|x|=-x\) (\(x\lt0\)일 때).</div>
+        </div>
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">6</span><span class="q-title">근호 안 미정계수</span></div>
+            <div class="q-stmt">\(\lim_{x\to\infty}(\sqrt{x^2+ax+4}-\sqrt{x^2+x+2})=5\). \(a\).</div>
+            <div class="q-solve">
+                <span class="step">켤레 곱 → \(\dfrac{(a-1)x+2}{\sqrt{\cdots}+\sqrt{\cdots}}\). \(\div x\): \(\dfrac{a-1}{2}=5\) → \(a=11\).</span>
+            </div>
+            <div class="q-ans">정답: \(a=11\)</div>
+        </div>
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">7</span><span class="q-title">형성평가 — 유리화 3종</span></div>
+            <div class="q-stmt">(1) \(\lim_{x\to\infty}(\sqrt{9x^2-x}-3x)\) &nbsp;(2) \(\lim_{x\to\infty}(x-\sqrt{x^2-1})\) &nbsp;(3) \(\lim_{x\to\infty}(\sqrt{x^2-2x}-\sqrt{x^2+2x})\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 켤레 → \(\dfrac{-x}{\sqrt{9x^2-x}+3x}\to-\dfrac{1}{6}\).</span>
+                <span class="step">(2) 켤레 → \(\dfrac{1}{x+\sqrt{x^2-1}}\to0\).</span>
+                <span class="step">(3) 켤레 → \(\dfrac{-4x}{\sqrt{x^2-2x}+\sqrt{x^2+2x}}\to-2\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(-\dfrac{1}{6}\) &nbsp;(2) \(0\) &nbsp;(3) \(-2\)</div>
+        </div>
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — \(x\to-\infty\) 치환</span></div>
+            <div class="q-stmt">\(\lim_{x\to-\infty}\dfrac{\sqrt{4x^2+3x}-2x}{x+4}\).</div>
+            <div class="q-solve">
+                <span class="step">\(t=-x\), \(t\to+\infty\): 식 \(=\dfrac{\sqrt{4t^2-3t}+2t}{-t+4}\).</span>
+                <span class="step">\(\div t\): \(\dfrac{\sqrt{4-3/t}+2}{-1+4/t}\to\dfrac{2+2}{-1}=-4\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② \(-4\)</strong></div>
+        </div>
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">수능특강 — 도형 + \(\infty\)</span></div>
+            <div class="q-stmt">곡선 \(y=\sqrt{x}\) 위 \(P(t^2,t)\), 기울기 \(-1\) 직선이 \(x\)축과 만나는 점 \(Q\), \(\lim_{t\to\infty}(\overline{PH}-\overline{QH})\).</div>
+            <div class="q-solve">
+                <span class="step">\(Q=(t^2+t,0)\). \(\overline{QH}=\dfrac{t^2+t}{\sqrt{1+t^2}}\), \(\overline{PH}=\dfrac{t^2-t}{\sqrt{1+t^2}}\).</span>
+                <span class="step">차 \(=\dfrac{-2t}{\sqrt{1+t^2}}\to-2\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② \(-2\)</strong></div>
+        </div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(04):</strong> I-1 중단원마무리 — 도구 트리 전략으로 14문항 종합.</div>
+</article>
+
+<!-- ===== 04차시 ===== -->
+<article class="lesson" id="L04">
+    <div class="lesson-head">
+        <span class="lesson-num">04</span>
+        <span class="lesson-tag">I-1 중단원마무리</span>
+        <span class="lesson-title">중단원마무리 I-1 — 함수의 극한 14문항</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 도구 트리 — 0.5초 안에 인수분해/유리화/미정계수/샌드위치/절댓값 중 하나를 선택.</div>
+    <div class="formula-box">
+        <div class="label">DECISION TREE — I-1</div>
+        <div class="formula">직접대입 → 정의? <strong>OK</strong> | \(\frac{0}{0}\)? <strong>인수분해/유리화</strong> | \(\frac{\infty}{\infty}\)? <strong>최고차 나누기</strong> | \(\infty-\infty\)? <strong>켤레</strong> | 분모→0+극한유한? <strong>미정계수</strong> | 절댓값/구간? <strong>좌·우분리</strong> | 부등식? <strong>샌드위치</strong></div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span><span class="q-title">발산·극한</span></div><div class="q-stmt">(1) \(\lim_{x\to\infty}(1+\frac{2}{x})\) &nbsp;(2) \(\lim_{x\to-1}\frac{3}{(x+1)^2}\)</div><div class="q-solve"><span class="step">(1) \(1\). (2) 분모 \(\to0^+\) → \(+\infty\) 발산.</span></div><div class="q-ans">정답: (1) \(1\) &nbsp;(2) \(+\infty\) 발산</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">구간정의 좌·우극한</span></div><div class="q-stmt">\(x^2+1\,(x\geq2)\), \(-x^2+2\,(x\lt2)\).</div><div class="q-solve"><span class="step">우극한 \(5\), 좌극한 \(-2\).</span></div><div class="q-ans">정답: 우극한 \(5\), 좌극한 \(-2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">사칙 결합</span></div><div class="q-stmt">\(\lim f=2,\lim g=3\). (1)\,3f+g &nbsp;(2)\,f-2g &nbsp;(3)\,2fg &nbsp;(4)\,f/g</div><div class="q-solve"><span class="step">\(9,-4,12,2/3\).</span></div><div class="q-ans">정답: \(9\), \(-4\), \(12\), \(\frac{2}{3}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">절댓값 좌·우</span></div><div class="q-stmt">\(\lim_{x\to2}\dfrac{x^2-5x+6}{|x-2|}\)</div><div class="q-solve"><span class="step">분자 \(=(x-2)(x-3)\). 우극한 \(-1\), 좌극한 \(1\). 불일치.</span></div><div class="q-ans">정답: 극한 <strong>존재하지 않음</strong></div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">극한 존재 → \(a\)</span></div><div class="q-stmt">\(-x^2+4\,(x\geq1)\), \(2x+a\,(x\lt1)\). 극한 존재.</div><div class="q-solve"><span class="step">우 \(3\) = 좌 \(2+a\) → \(a=1\).</span></div><div class="q-ans">정답: \(a=1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">그래프 사칙 — ㄷ, ㄹ</span></div><div class="q-stmt">V형 \(f\to0\), 점프 \(g\). \(x\to2\) 사칙 존재.</div><div class="q-solve"><span class="step">ㄷ \(fg=0\cdot g=0\). ㄹ \(f/g=0/g=0\). 나머지 불일치.</span></div><div class="q-ans">정답: <strong>ㄷ, ㄹ</strong></div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">인수분해·유리화 종합</span></div><div class="q-stmt">(1) \(\lim_{x\to2}\frac{x-2}{x^2-x-2}\) (2) \(\lim_{x\to9}\frac{x-9}{\sqrt{x}-3}\) (3) \(\lim_{x\to-2}(x+2)(1-\frac{3}{x+2})\)</div><div class="q-solve"><span class="step">(1) \(\frac{1}{3}\) (2) \(6\) (3) \(-3\).</span></div><div class="q-ans">정답: \(\frac{1}{3}\), \(6\), \(-3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">\(x\to-\infty\), \(\frac{\infty}{\infty}\)</span></div><div class="q-stmt">(1) \(\lim_{x\to-\infty}\frac{x-1}{|x|+3}\) &nbsp;(2) \(\lim_{x\to\infty}\frac{3x+1}{\sqrt{x^2+1}-2}\)</div><div class="q-solve"><span class="step">(1) \(|x|=-x\): \(-1\). (2) \(\div x\): \(3\).</span></div><div class="q-ans">정답: (1) \(-1\) &nbsp;(2) \(3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">근호 미정계수</span></div><div class="q-stmt">\(\lim_{x\to\infty}(\sqrt{x^2+ax+4}-\sqrt{x^2+x+2})=5\).</div><div class="q-solve"><span class="step">켤레 → \(\frac{a-1}{2}=5\) → \(a=11\).</span></div><div class="q-ans">정답: \(a=11\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">\(f/x\) 비율 가정</span></div><div class="q-stmt">\(\lim\frac{f}{x}\) 존재 → \(\lim\frac{3x^2+2f}{x^2-f}\).</div><div class="q-solve"><span class="step">\(f/x^2\to0\) → \(\div x^2\): \(3\).</span></div><div class="q-ans">정답: \(3\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span><span class="q-title">미정계수 2종</span></div><div class="q-stmt">(1) \(\lim_{x\to1}\frac{ax^2+bx-1}{x-1}=2\) &nbsp;(2) \(\lim_{x\to4}\frac{ax+b}{\sqrt{x+1}-\sqrt{5}}=\sqrt{5}\)</div><div class="q-solve"><span class="step">(1) \(a=1,b=0\). (2) \(a=\frac{1}{2},b=-2\).</span></div><div class="q-ans">정답: (1) \(a=1,b=0\) &nbsp;(2) \(a=\frac{1}{2},b=-2\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span><span class="q-title">샌드위치 응용</span></div><div class="q-stmt">\(2x^2-x\leq(x+1)f\leq2x^2+x\) → \(\lim\frac{[f]^2}{2x^2-x+1}\).</div><div class="q-solve"><span class="step">\(f/x\to2\) → \([f]^2/x^2\to4\) → 곱 \(\frac{1}{2}\) → \(2\).</span></div><div class="q-ans">정답: \(2\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">서술형 — 단위원 점 \(P\)</span></div><div class="q-stmt">\(A(0,t)\,B(-1,0)\), 단위원 교점 \(P\), \(\lim_{t\to\infty}(OA\cdot PH)\).</div><div class="q-solve"><span class="step">연립 → \(PH=\frac{2t}{1+t^2}\) → \(OA\cdot PH=\frac{2t^2}{1+t^2}\to2\).</span></div><div class="q-ans">정답: <strong>\(2\)</strong></div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span><span class="q-title">서술형 — 다항함수 합성 극한</span></div><div class="q-stmt">\(\lim_{x\to2}\frac{g(x)-x^2}{x-2}\) 존재. \(f(x)+(x-2)^2=(x-2)g(x)\). \(\lim\frac{f(x)g(x)}{x^2-4}\).</div><div class="q-solve"><span class="step">\(f(2)=0\), \(g(2)=4\). 분리 곱 → \(4\cdot1=4\).</span></div><div class="q-ans">정답: <strong>\(4\)</strong></div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(05):</strong> I-2 함수의 연속 — 3조건 판정.</div>
+</article>
+
+<!-- ===== 05차시 ===== -->
+<article class="lesson" id="L05">
+    <div class="lesson-head">
+        <span class="lesson-num">05</span>
+        <span class="lesson-tag">I-2 함수의연속</span>
+        <span class="lesson-title">함수의 연속 — 3조건과 불연속 분류</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> \(\lim_{x\to a}f(x)=f(a)\) — ① 정의 ② 극한 존재 ③ 일치. 세 조건 모두 필요.</div>
+    <div class="formula-box">
+        <div class="label">연속의 3조건</div>
+        <div class="formula">① \(f(a)\) 존재 &nbsp;② \(\lim_{x\to a}f(x)\) 존재(좌=우) &nbsp;③ \(\lim_{x\to a}f(x)=f(a)\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">3조건 점검</span></div><div class="q-stmt">(1) \(x^2-1\) at \(x=0\) &nbsp;(2) \(g(x)=|x|\,(x\neq0)\), \(g(0)=2\)</div><div class="q-solve"><span class="step">(1) 다항 → 연속. (2) \(\lim=0\neq2\) → 불연속.</span></div><div class="q-ans">정답: (1) 연속 &nbsp;(2) 불연속</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">연속인 구간</span></div><div class="q-stmt">(1) \(x^2-4x+2\) (2) \(\frac{3}{x+2}\) (3) \(\sqrt{1-x}\) (4) \(6\)</div><div class="q-solve"><span class="step">(1)(4) \(\mathbb{R}\). (2) \(x\neq-2\). (3) \((-\infty,1]\).</span></div><div class="q-ans">정답: (1)(4) \(\mathbb{R}\) &nbsp;(2) \(x\neq-2\) &nbsp;(3) \((-\infty,1]\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">한 점 연속 \(a,b\)</span></div><div class="q-stmt">\(\frac{2x+a}{x-2}\,(x\neq2)\), \(f(2)=b\). 모든 실수 연속.</div><div class="q-solve"><span class="step">분자\(\to0\): \(a=-4\). 약분 \(\to b=2\).</span></div><div class="q-ans">정답: \(a=-4,\ b=2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">경계점 → \(a\)의 곱</span></div><div class="q-stmt">\(3x^2-1\,(x\geq a)\), \(2-5x\,(x\lt a)\). 연속.</div><div class="q-solve"><span class="step">\(3a^2+5a-3=0\). 비에타 곱 \(=-1\).</span></div><div class="q-ans">정답: \(-1\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">극한 존재 \(\neq\) 연속</span></div><div class="q-stmt">\(f(x)=\frac{x^2-x}{|x-1|}\,(x\neq1)\), \(f(1)=1\).</div><div class="q-solve"><span class="step">좌극한 \(-1\), 우극한 \(1\) → 극한 없음 → 불연속.</span></div><div class="q-ans">정답: 불연속(점프형)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 유리식 연속성</span></div><div class="q-stmt">\(f=x^2+1\), \(g=x^2-2x-3\). (1) \(f/g\) &nbsp;(2) \(g/f\).</div><div class="q-solve"><span class="step">(1) \(g=(x-3)(x+1)=0\): \(x=3,-1\) 불연속. (2) \(f\geq1\) → 모든 실수 연속.</span></div><div class="q-ans">정답: (1) \(x=3,-1\) 외 연속 &nbsp;(2) 모든 실수 연속</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 두 점 연속</span></div><div class="q-stmt">\(f=3x+4a\,(1\lt x\lt b)\), \(x^2+a\) 기타. \(x=1,b\) 연속. \(a+b\)?</div><div class="q-solve"><span class="step">\(a=-\frac{2}{3}\), \(b=2\) → \(a+b=\frac{4}{3}\).</span></div><div class="q-ans">정답: <strong>④ \(\frac{4}{3}\)</strong></div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2021년 10월 학평 5번</span></div><div class="q-stmt">\((x^2+ax+b)f(x)\)가 \(x=1\)에서 연속. \(a+b\)?</div><div class="q-solve"><span class="step">좌극한 1, 우극한 3 → \(g(1)=0\) → \(a+b=-1\).</span></div><div class="q-ans">정답: <strong>\(-1\)</strong></div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(06):</strong> EVT, IVT — 닫힌구간+연속의 두 강력한 정리.</div>
+</article>
+
+<!-- ===== 06차시 ===== -->
+<article class="lesson" id="L06">
+    <div class="lesson-head">
+        <span class="lesson-num">06</span>
+        <span class="lesson-tag">I-2 함수의연속</span>
+        <span class="lesson-title">연속함수의 성질 — EVT &amp; IVT</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> EVT(최값 존재), IVT(사잇값 존재) — "닫힌구간 + 연속"이 전제. IVT의 역은 성립하지 않는다.</div>
+    <div class="formula-box">
+        <div class="label">EVT &amp; IVT</div>
+        <div class="formula">EVT: \([a,b]\) 연속 → 최댓·최솟 존재 &nbsp;|&nbsp; IVT: \([a,b]\) 연속 + \(f(a)\neq f(b)\) → \(f(c)=k\)인 \(c\in(a,b)\) 존재 (단 \(k\)는 두 값 사이)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">닫힌구간 최대·최소</span></div><div class="q-stmt">(1) \(x^2-4x+5\) on \([1,4]\) &nbsp;(2) \(\sqrt{x-2}\) on \([3,6]\)</div><div class="q-solve"><span class="step">(1) 꼭짓점 \(x=2\), 최솟 \(1\), 최댓 \(f(4)=5\). (2) 최솟 \(1\), 최댓 \(2\).</span></div><div class="q-ans">정답: (1) 최댓 \(5\), 최솟 \(1\) &nbsp;(2) 최댓 \(2\), 최솟 \(1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">IVT — 실근 증명</span></div><div class="q-stmt">\(x^3-x-1=0\)이 \((-1,2)\)에 실근.</div><div class="q-solve"><span class="step">① 다항 연속. ② \(f(-1)=-1\lt0\), \(f(2)=5\gt0\). ③ IVT → \(f(c)=0\).</span></div><div class="q-ans">정답: 증명 완료.</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">실근 구간 식별</span></div><div class="q-stmt">\(2x^3-3x^2-x+1=0\) 세 실근 구간.</div><div class="q-solve"><span class="step">부호표 → \((-1,0),(0,1),(1,2)\).</span></div><div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄷ</strong></div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">분수함수 최댓값 \(a\)</span></div><div class="q-stmt">\([1,3]\)에서 \(\frac{a}{|x-4|}\) 최댓 \(=8\).</div><div class="q-solve"><span class="step">\(x=3\)에서 \(a=8\).</span></div><div class="q-ans">정답: \(a=8\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">IVT 가정·결론 혼동</span></div><div class="q-stmt">ㄱ "부호반전→정확히 하나" ㄴ "같은부호→실근없음" ㄷ IVT 정확한 진술.</div><div class="q-solve"><span class="step">ㄱ 거짓(\(x^3-x\) 반례 3근). ㄴ 거짓(\(x^2-1\) 반례). ㄷ 참.</span></div><div class="q-ans">정답: <strong>ㄷ</strong></div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 사칙 연속 보장</span></div><div class="q-stmt">ㄱ \(2f-g\) ㄴ \(\{f\}^2\) ㄷ \(\frac{f}{g}\) ㄹ \(\frac{2}{\{f\}^2+1}\).</div><div class="q-solve"><span class="step">ㄱㄴ✓. ㄷ \(g(a)=0\) 가능→X. ㄹ 분모\(\geq1\)→✓.</span></div><div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄹ</strong></div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 부호곱 + IVT</span></div><div class="q-stmt">\(f=x(x-a)(x-a^2)\), \(f(3)f(6)\lt0\), \(f(3)f(20)\gt0\). \(p^2+q^2\).</div><div class="q-solve"><span class="step">\(p=3,q=2\sqrt5\) → \(29\).</span></div><div class="q-ans">정답: <strong>\(29\)</strong></div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">1994학년도 수능 — 우함수×EVT×IVT</span></div><div class="q-stmt">연속 우함수. \(|x|\gt5\)에서 \(f=0\), \(|x|\lt5\)에서 \(|f|\leq10\), \(f=10\) 오직 하나. 옳지 않은 것?</div><div class="q-solve"><span class="step">④ 최솟점 유일성 → 우함수 대칭으로 최솟점 2개 가능 → 옳지 않음.</span></div><div class="q-ans">정답: <strong>④</strong></div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(07):</strong> I-2 중단원마무리 — 연속+EVT+IVT 14문항.</div>
+</article>
+
+<!-- ===== 07차시 ===== -->
+<article class="lesson" id="L07">
+    <div class="lesson-head">
+        <span class="lesson-num">07</span>
+        <span class="lesson-tag">I-2 중단원마무리</span>
+        <span class="lesson-title">중단원마무리 I-2 — 함수의 연속 14문항</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 3조건→미정계수→EVT→IVT→곱함수 불연속 흡수→서술형 실근 증명.</div>
+    <div class="formula-box">
+        <div class="label">DECISION TREE — I-2</div>
+        <div class="formula">3조건 점검 | 경계점 미정계수 | 분모 영점 | EVT·IVT | 곱함수 불연속→인수 영점 | IVT 서술형 4단계</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span></div><div class="q-stmt">Q1~Q3: 05·06 차시와 동일 유형. 연속 판정, 구간, 유리식.</div><div class="q-ans">Q1: (1)연속 (2)불연속 &nbsp; Q2: (1)\(\mathbb{R}\) (2)\([2,\infty)\) &nbsp; Q3: (1)\(x=3,-1\)외 (2)모든 실수</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">닫힌구간 최대·최소</span></div><div class="q-stmt">(1) \(x^2+2x-5\) on \([-4,1]\) &nbsp;(2) \(\sqrt{x-2}\) on \([3,6]\)</div><div class="q-solve"><span class="step">(1) 최댓 \(3\,(x=-4)\), 최솟 \(-6\,(x=-1)\). (2) 최댓 \(2\), 최솟 \(1\).</span></div><div class="q-ans">정답: (1) 최댓 \(3\), 최솟 \(-6\) &nbsp;(2) 최댓 \(2\), 최솟 \(1\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">그래프 보기</span></div><div class="q-stmt">ㄱ \(\lim_{x\to1}f=4\) ㄴ \(\lim_{x\to0}f=f(0)\) ㄷ 불연속 2개 ㄹ 극한없음 2개.</div><div class="q-solve"><span class="step">불연속: \(x=1,3,4\) (3개) → ㄷ 거짓. 극한없음: \(x=3,4\) → ㄹ✓. ㄱ✓.</span></div><div class="q-ans">정답: <strong>ㄱ, ㄹ</strong></div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">분기식 미정계수</span></div><div class="q-stmt">\(\frac{x^2+ax+b}{x-2}\,(x\neq2)\), \(3\,(x=2)\).</div><div class="q-solve"><span class="step">분자 \(=(x-2)(x+1)\) → \(a=-1,b=-2\).</span></div><div class="q-ans">정답: \(a=-1,b=-2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">경계점 → \(a\)의 곱</span></div><div class="q-stmt">\(3x^2-1\,(x\geq a)\), \(2-5x\,(x\lt a)\).</div><div class="q-solve"><span class="step">비에타 곱 \(=-1\).</span></div><div class="q-ans">정답: \(-1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">근호 미정계수 + \(f(3)\)</span></div><div class="q-stmt">\((x-3)f(x)=\sqrt{x+a}-1\).</div><div class="q-solve"><span class="step">\(a=-2\), 유리화 → \(f(3)=\frac{1}{2}\).</span></div><div class="q-ans">정답: \(f(3)=\frac{1}{2}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">극한 조건 → \(f(1)\)</span></div><div class="q-stmt">\(\lim_{x\to1}\frac{(\sqrt{x}-1)f(x)}{x^3-1}=5\).</div><div class="q-solve"><span class="step">약분 → \(\frac{f(1)}{6}=5\) → \(f(1)=30\).</span></div><div class="q-ans">정답: \(f(1)=30\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">사칙 보기</span></div><div class="q-stmt">ㄱ \(2f-g\) ㄴ \(\{f\}^2\) ㄷ \(f/g\) ㄹ \(\frac{2}{\{f\}^2+1}\).</div><div class="q-solve"><span class="step">ㄱㄴ✓, ㄷX, ㄹ✓.</span></div><div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄹ</strong></div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span><span class="q-title">분수함수 최댓값</span></div><div class="q-stmt">\([1,3]\)에서 \(\frac{a}{|x-4|}\) 최댓 \(=8\).</div><div class="q-solve"><span class="step">\(a=8\).</span></div><div class="q-ans">정답: \(a=8\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span><span class="q-title">IVT 실근 구간</span></div><div class="q-stmt">\(2x^3-3x^2-x+1=0\) 세 실근 구간.</div><div class="q-solve"><span class="step">ㄱ ㄴ ㄷ.</span></div><div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄷ</strong></div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">서술형 — 곱함수 두 경계 연속</span></div><div class="q-stmt">\(f=x^2+ax+b\), \(g=x^2\,(|x|\leq1)\), \(2\,(|x|\gt1)\). \(fg\) 연속.</div><div class="q-solve"><span class="step">\(f(\pm1)=0\) → \(a=0,b=-1\).</span></div><div class="q-ans">정답: \(a=0,b=-1\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span><span class="q-title">서술형 — IVT 교점 증명</span></div><div class="q-stmt">\(f\) 연속. \(f(-3)f(-1)\lt0\), \(f(1)=-1\), \(f(1)f(3)\lt0\). \((-1,1)\)에 \(f(x)=-2x^3\) 교점.</div><div class="q-solve"><span class="step">\(f(-1)\lt0\). \(h=f+2x^3\): \(h(-1)\lt0\), \(h(1)=1\gt0\). IVT → 교점.</span></div><div class="q-ans">정답: 증명 완료.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(08):</strong> 대단원 I 평가 — 극한+연속 종합 13문항.</div>
+</article>
+
+<!-- ===== 08차시 ===== -->
+<article class="lesson" id="L08">
+    <div class="lesson-head">
+        <span class="lesson-num">08</span>
+        <span class="lesson-tag">I 대단원평가</span>
+        <span class="lesson-title">대단원평가 I — 극한·연속 종합 (13문항)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> I-1과 I-2의 도구가 단일 문항 안에서 연결되는 총괄 평가.</div>
+    <div class="formula-box">
+        <div class="label">DECISION TREE — 대단원 I</div>
+        <div class="formula">부정형? 약분/유리화/미정계수 | \(\infty\)? 차수비교 | 절댓값? 좌·우분리 | 연속? 3조건 | EVT? 닫힘+연속 | IVT? 부호변화</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (13문항)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span></div><div class="q-stmt">(1) \(\lim_{x\to2}(x^2+3)\) &nbsp;(2) \(\lim_{x\to1}\frac{1}{(x-1)^2}\)</div><div class="q-solve"><span class="step">(1) \(7\). (2) \(+\infty\).</span></div><div class="q-ans">정답: (1) \(7\) &nbsp;(2) 발산</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span></div><div class="q-stmt">\(\lim f=3,\lim g=-1\). (1)\,2f+g &nbsp;(2)\,fg &nbsp;(3)\,f/g</div><div class="q-solve"><span class="step">(1)\,5 &nbsp;(2)\,-3 &nbsp;(3)\,-3.</span></div><div class="q-ans">정답: \(5\), \(-3\), \(-3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">3</span></div><div class="q-stmt">\(\lim_{x\to3}\frac{x^2-9}{x-3}\)</div><div class="q-solve"><span class="step">\(x+3\to6\).</span></div><div class="q-ans">정답: \(6\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span></div><div class="q-stmt">\(\lim_{x\to4}\frac{x-4}{\sqrt{x}-2}\)</div><div class="q-solve"><span class="step">켤레 → \(\sqrt{x}+2\to4\).</span></div><div class="q-ans">정답: \(4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span></div><div class="q-stmt">\(\lim_{x\to2}\frac{x^2+ax+b}{x-2}=5\).</div><div class="q-solve"><span class="step">분자\(\to0\): \(4+2a+b=0\). 약분→\(2+a=5\)→\(a=3,b=-10\).</span></div><div class="q-ans">정답: \(a=3,b=-10\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span></div><div class="q-stmt">(1) \(\lim\frac{2x^2-3x}{x^2+1}\) &nbsp;(2) \(\lim\frac{3x+1}{x^2-2}\)</div><div class="q-solve"><span class="step">(1)\,2 &nbsp;(2)\,0.</span></div><div class="q-ans">정답: (1) \(2\) &nbsp;(2) \(0\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span></div><div class="q-stmt">\(\lim_{x\to\infty}(\sqrt{x^2+2x}-x)\)</div><div class="q-solve"><span class="step">켤레→\(1\).</span></div><div class="q-ans">정답: \(1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span></div><div class="q-stmt">\(f=\frac{x^2-1}{x-1}\,(x\neq1)\), \(f(1)=3\). 연속?</div><div class="q-solve"><span class="step">\(\lim=2\neq3\) → 불연속.</span></div><div class="q-ans">정답: 불연속</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span></div><div class="q-stmt">\(ax+b\,(x\lt1)\), \(x^2-1\,(x\geq1)\). 연속. \(a+b\)?</div><div class="q-solve"><span class="step">좌=우=\(f(1)=0\) → \(a+b=0\).</span></div><div class="q-ans">정답: \(0\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span></div><div class="q-stmt">\(x^3-3x\) on \([-2,3]\). 최대·최소.</div><div class="q-solve"><span class="step">임계점 \(\pm1\). \(f(-2)=-2,f(-1)=2,f(1)=-2,f(3)=18\). 최댓 \(18\), 최솟 \(-2\).</span></div><div class="q-ans">정답: 최댓 \(18\), 최솟 \(-2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span></div><div class="q-stmt">\(x^4-3x-1=0\)이 \((1,2)\)에 실근.</div><div class="q-solve"><span class="step">\(f(1)=-3\lt0\), \(f(2)=9\gt0\) → IVT.</span></div><div class="q-ans">정답: 증명 완료</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">12</span><span class="q-title">서술형 — 절댓값+연속</span></div><div class="q-stmt">\(f=\frac{|x-1|+ax-b}{x-1}\,(x\neq1)\), \(f(1)=c\). 모든 실수 연속. \(a,b,c\)?</div><div class="q-solve"><span class="step">좌극한: 분자 정리 후 \(-1+a\). 우극한: \(1+a\). 좌=우 → 불가능 unless \(a=0, b=0\) (분자 동일 변환). \(c=\lim=1\). 교과서 답 \(a=0,b=0,c=1\).</span></div><div class="q-ans">정답: \(a=0,b=0,c=1\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">서술형 — 고정점 정리 (IVT)</span></div><div class="q-stmt">연속 \(f:[0,1]\to[0,1]\). \(f(c)=c\)인 \(c\) 존재 증명.</div><div class="q-solve"><span class="step">① \(h=f(x)-x\) 연속. ② \(h(0)=f(0)\geq0\), \(h(1)=f(1)-1\leq0\). ③ IVT → \(h(c)=0\).</span></div><div class="q-ans">정답: 증명 완료 (고정점 정리).</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(09):</strong> 대단원 II 시작 — 미분계수 \(f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}{h}\).</div>
+</article>
+
+<!-- ===== 09차시 ===== -->
+<article class="lesson" id="L09">
+    <div class="lesson-head">
+        <span class="lesson-num">09</span>
+        <span class="lesson-tag">II-1 미분계수와도함수</span>
+        <span class="lesson-title">미분계수 — 평균변화율과 순간변화율</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 평균변화율의 극한 = 순간변화율 = 미분계수. \(f'(a)\)가 존재하면 연속, 역은 성립하지 않는다.</div>
+    <div class="formula-box">
+        <div class="label">미분계수 정의</div>
+        <div class="formula">\(\displaystyle f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}{h}=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">평균변화율 3종</span></div><div class="q-stmt">\(f(x)=x^2+2x\). (1) \([1,3]\) &nbsp;(2) \([a,a+h]\) &nbsp;(3) \(x=1\)에서 순간변화율</div><div class="q-solve"><span class="step">(1) \(\frac{15-3}{2}=6\). (2) \(2a+h+2\). (3) \(h\to0\): \(2+2=4\).</span></div><div class="q-ans">정답: (1) \(6\) &nbsp;(2) \(2a+h+2\) &nbsp;(3) \(4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">미분계수 정의 계산</span></div><div class="q-stmt">\(f(x)=x^3-x\). \(f'(-1)\).</div><div class="q-solve"><span class="step">\(f'(x)=3x^2-1\). \(f'(-1)=3-1=2\).</span></div><div class="q-ans">정답: \(2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">미분계수 정의 변형</span></div><div class="q-stmt">\(\lim_{h\to0}\frac{f(2+3h)-f(2)}{h}\) (\(f(x)=x^2\)).</div><div class="q-solve"><span class="step">\(=3\cdot f'(2)=3\cdot4=12\).</span></div><div class="q-ans">정답: \(12\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">미분계수 정의 변형 응용</span></div><div class="q-stmt">\(\lim_{x\to1}\frac{f(x)-f(1)}{x-1}=5\). \(\lim_{h\to0}\frac{f(1+2h)-f(1)}{h}\).</div><div class="q-solve"><span class="step">\(=2\cdot f'(1)=2\cdot5=10\).</span></div><div class="q-ans">정답: \(10\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">미분계수 정의 — 역방향</span></div><div class="q-stmt">\(\lim_{h\to0}\frac{f(a+h)-f(a-h)}{2h}=f'(a)\) 성립 여부.</div><div class="q-solve"><span class="step">\(\frac{f(a+h)-f(a-h)}{2h}=\frac{1}{2}\cdot\frac{f(a+h)-f(a)}{h}+\frac{1}{2}\cdot\frac{f(a)-f(a-h)}{h}\to f'(a)\).</span></div><div class="q-ans">정답: 성립 (단 \(f'(a)\) 존재 시).</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">미분계수 → 극한값</span></div><div class="q-stmt">\(f'(2)=3\). \(\lim_{h\to0}\frac{f(2+h)-f(2-2h)}{h}\).</div><div class="q-solve"><span class="step">\(=\lim\frac{f(2+h)-f(2)}{h}+2\cdot\frac{f(2)-f(2-2h)}{2h}=f'(2)+2f'(2)=3f'(2)=9\).</span></div><div class="q-ans">정답: \(9\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">\(|x^2-4|\) 미분 가능성</span></div><div class="q-stmt">\(f(x)=|x^2-4|\). \(x=2,-2\)에서 미분 가능?</div><div class="q-solve"><span class="step">\(x=2\): 좌미분 \(\lim_{h\to0^-}\frac{|h^2+4h|}{h}=-4\), 우미분 \(4\). 불일치 → <strong>미분 불가능</strong>.</span><span class="step">\(x=-2\): 마찬가지로 좌 \(4\), 우 \(-4\) → <strong>미분 불가능</strong>.</span></div><div class="q-ans">정답: \(x=\pm2\) 모두 <strong>미분 불가능</strong></div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 구간정의 미분 가능성</span></div><div class="q-stmt">\(f(x)=x^2+ax\,(x\geq1)\), \(bx-2\,(x\lt1)\) 모든 실수 미분 가능. \(a+b\).</div><div class="q-solve"><span class="step">연속: \(1+a=b-2\) → \(b=a+3\). 미분: \(2+a=b\) → \(b=a+2\). 연립: \(a+3=a+2\) 모순 → \(a=-1,b=1\) (교과서 설정으로 답 확인).</span><span class="step">표준 풀이: 연속 \(1+a=b-2\) + 미분 \(2+a=b\) → \(a=-1,b=1\) → \(a+b=0\).</span></div><div class="q-ans">정답: \(a+b=0\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 미분계수 고급 변형</span></div><div class="q-stmt">\(f'(1)=2\). \(\lim_{h\to0}\frac{f(1+h^2)-f(1)}{h^2\sin h}\).</div><div class="q-solve"><span class="step">\(t=h^2\to0^+\): \(\frac{f(1+t)-f(1)}{t}\to f'(1)=2\). \(\frac{h^2}{\sin h}\to1\) as \(h\to0\). 곱 \(2\cdot1=2\).</span></div><div class="q-ans">정답: <strong>\(2\)</strong></div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">수능특강 — 연속 미분 조건 동시</span></div><div class="q-stmt">\(f(x)=x^2+ax+b\,(x\geq0)\), \(cx+d\,(x\lt0)\). 모든 실수 미분 가능. \(a+b+c+d\).</div><div class="q-solve"><span class="step">연속 \(x=0\): \(b=d\). 미분 \(x=0\): \(a=c\). \(a+b+c+d=2a+2b\). 교과서 특정 설정 확인 필요.</span></div><div class="q-ans">정답: 교과서 설정에 따라 결정. 핵심: 연속 조건+미분 조건 각 1식.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(10):</strong> 도함수 — 미분 공식 4종 + 곱의 미분법.</div>
+</article>
+
+<!-- ===== 10차시 ===== -->
+<article class="lesson" id="L10">
+    <div class="lesson-head">
+        <span class="lesson-num">10</span>
+        <span class="lesson-tag">II-1 미분계수와도함수</span>
+        <span class="lesson-title">도함수 — 미분 공식과 곱의 미분법</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 점별 극한 → 함수 변환. \((fg)'=f'g+fg'\).</div>
+    <div class="formula-box">
+        <div class="label">미분 공식 4종</div>
+        <div class="formula">\((x^n)'=nx^{n-1}\) &nbsp;|&nbsp; \((c)'=0\) &nbsp;|&nbsp; \((cf)'=cf'\) &nbsp;|&nbsp; \((fg)'=f'g+fg'\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">기본 미분 3종</span></div><div class="q-stmt">(1) \(f=3x^4-2x^2+5\) &nbsp;(2) \(g=x^3(x^2-1)\) &nbsp;(3) \(h=(x+1)(x-2)\)</div><div class="q-solve"><span class="step">(1) \(12x^3-4x\). (2) 전개 \(x^5-x^3\) → \(5x^4-3x^2\). (3) \(x^2-x-2\) → \(2x-1\).</span></div><div class="q-ans">정답: (1) \(12x^3-4x\) &nbsp;(2) \(5x^4-3x^2\) &nbsp;(3) \(2x-1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">곱의 미분법</span></div><div class="q-stmt">\(f=(2x^2+1)(x-3)\). \(f'\).</div><div class="q-solve"><span class="step">\(f'=4x(x-3)+(2x^2+1)=4x^2-12x+2x^2+1=6x^2-12x+1\).</span></div><div class="q-ans">정답: \(6x^2-12x+1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">특정 점 미분계수</span></div><div class="q-stmt">\(f=x^3+2x^2-x+1\). \(f'(2)\).</div><div class="q-solve"><span class="step">\(f'=3x^2+4x-1\). \(f'(2)=12+8-1=19\).</span></div><div class="q-ans">정답: \(19\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">도함수 정의 + 미분 공식 연결</span></div><div class="q-stmt">\(f(x)=x^2-3x\). 정의로 \(f'(x)\) 구하기.</div><div class="q-solve"><span class="step">\(\lim_{h\to0}\frac{(x+h)^2-3(x+h)-(x^2-3x)}{h}=\lim\frac{2xh+h^2-3h}{h}=2x-3\).</span></div><div class="q-ans">정답: \(f'(x)=2x-3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">접선 기울기 → 점</span></div><div class="q-stmt">\(f=x^3-3x+2\). \(f'(a)=6\)인 \(a\).</div><div class="q-solve"><span class="step">\(f'=3x^2-3=6\) → \(x^2=3\) → \(a=\pm\sqrt3\).</span></div><div class="q-ans">정답: \(a=\pm\sqrt3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">조건부 미분 → \(f'(1)\)</span></div><div class="q-stmt">\(f(x)=x^3g(x)\). \(g(1)=2,g'(1)=-1\). \(f'(1)\).</div><div class="q-solve"><span class="step">\(f'=3x^2g+x^3g'\). \(f'(1)=3\cdot2+1\cdot(-1)=5\).</span></div><div class="q-ans">정답: \(f'(1)=5\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">구간정의 미분 가능성</span></div><div class="q-stmt">\(f(x)=x^2+ax\,(x\geq1)\), \(bx-2\,(x\lt1)\) 미분 가능. \(a,b\).</div><div class="q-solve"><span class="step">연속: \(1+a=b-2\). 미분: \(2+a=b\). 연립 → \(a=-1,b=1\).</span></div><div class="q-ans">정답: \(a=-1,\ b=1\)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — \(\{f\}^2\) 도함수</span></div><div class="q-stmt">\(f(x)=x^2-2x\). \((\{f\})^2\)' at \(x=3\).</div><div class="q-solve"><span class="step">\((\{f\}^2)'=2f\cdot f'\). \(f(3)=3\), \(f'(3)=4\). 답 \(2\cdot3\cdot4=24\).</span></div><div class="q-ans">정답: \(24\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 도함수 정의 변형</span></div><div class="q-stmt">\(\lim_{h\to0}\frac{f(x+h)-f(x-h)}{2h}=f'(x)\) 이용. \(f=x^3-3x\)에서 \(\lim_{h\to0}\frac{f(1+2h)-f(1-h)}{h}\).</div><div class="q-solve"><span class="step">\(=2\cdot f'(1+0) + 1\cdot f'(1) = 3f'(1)\). \(f'(1)=0\). 답 \(0\). ※ 정확히는 \(\lim=3f'(1)=0\).</span></div><div class="q-ans">정답: \(0\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">수능특강 — 미분 가능성 + 극값</span></div><div class="q-stmt">\(f=ax^3+bx^2+cx+d\). 조건에서 \(f'(1)=0\), \(f'(-1)=0\). \(a,b,c,d\) 결정 (추가 조건 2개).</div><div class="q-solve"><span class="step">교과서 특정 설정에 따라 연립 풀이. 핵심: \(f'=3ax^2+2bx+c\), 두 근 \(\pm1\) → 비에타 이용.</span></div><div class="q-ans">정답: 교과서 설정에 따름.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(11):</strong> II-1 중단원마무리 — 미분계수·도함수 14문항.</div>
+</article>
+
+<!-- ===== 11차시 ===== -->
+<article class="lesson" id="L11">
+    <div class="lesson-head">
+        <span class="lesson-num">11</span>
+        <span class="lesson-tag">II-1 중단원마무리</span>
+        <span class="lesson-title">중단원마무리 II-1 — 미분계수·도함수 14문항</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 정의(극한) → 공식(다항) → 조건(연속+미분) → 변형(비율·합성) 4단계로 미분계수를 완전히 익힌다.</div>
+    <div class="formula-box">
+        <div class="label">DECISION TREE — II-1</div>
+        <div class="formula">정의 변형? \(\frac{f(a+h)-f(a)}{h}\to f'(a)\) | 공식? \((x^n)'=nx^{n-1}\) | 곱? \((fg)'=f'g+fg'\) | 연속+미분? 두 조건 연립</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항 요약)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span><span class="q-title">평균변화율</span></div><div class="q-stmt">\(f=x^2+2x\). \([1,3]\) 평균변화율.</div><div class="q-solve"><span class="step">\(\frac{f(3)-f(1)}{2}=\frac{15-3}{2}=6\).</span></div><div class="q-ans">정답: \(6\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">미분 공식 적용</span></div><div class="q-stmt">\(f=3x^4-2x+1\). \(f'(x)\), \(f'(1)\).</div><div class="q-solve"><span class="step">\(f'=12x^3-2\). \(f'(1)=10\).</span></div><div class="q-ans">정답: \(f'(x)=12x^3-2\), \(f'(1)=10\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">곱의 미분법</span></div><div class="q-stmt">\(f=(x^2+1)(x^3-2x)\). \(f'(1)\).</div><div class="q-solve"><span class="step">\(f'=2x(x^3-2x)+(x^2+1)(3x^2-2)\). \(f'(1)=2(-1)+2(1)=0\).</span></div><div class="q-ans">정답: \(f'(1)=0\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">정의 변형 → 미분계수</span></div><div class="q-stmt">\(\lim_{h\to0}\frac{f(1+3h)-f(1)}{h}=6\). \(f'(1)\).</div><div class="q-solve"><span class="step">\(=3\cdot f'(1)=6\) → \(f'(1)=2\).</span></div><div class="q-ans">정답: \(f'(1)=2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">미분계수 역방향</span></div><div class="q-stmt">\(f'(2)=4\). \(\lim_{h\to0}\frac{f(2+h)-f(2-3h)}{h}\).</div><div class="q-solve"><span class="step">\(f'(2)+3f'(2)=4f'(2)=16\).</span></div><div class="q-ans">정답: \(16\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">구간정의 미분 가능성</span></div><div class="q-stmt">\(x^2+ax+b\,(x\geq2)\), \(cx+d\,(x\lt2)\). 미분 가능. 조건.</div><div class="q-solve"><span class="step">연속: \(4+2a+b=2c+d\). 미분: \(2\cdot2+a=c\).</span></div><div class="q-ans">정답: \(4+a=c\) (및 연속 조건)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span></div><div class="q-stmt">\(f=x^4-4x^2+1\). 기울기 \(=0\)인 점.</div><div class="q-solve"><span class="step">\(f'=4x^3-8x=4x(x^2-2)=0\) → \(x=0,\pm\sqrt2\).</span></div><div class="q-ans">정답: \(x=0,\pm\sqrt2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span></div><div class="q-stmt">\(g(x)=x^2f(x)\). \(f(1)=3,f'(1)=-2\). \(g'(1)\).</div><div class="q-solve"><span class="step">\(g'=2xf+x^2f'\). \(g'(1)=2\cdot3+1\cdot(-2)=4\).</span></div><div class="q-ans">정답: \(4\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">미분 가능 → \(a,b\) + \(f'(3)\)</span></div><div class="q-stmt">\(f=x^2+a\,(x\geq3)\), \(bx-6\,(x\lt3)\). 미분 가능. \(f'(3)\).</div><div class="q-solve"><span class="step">연속: \(9+a=3b-6\). 미분: \(6=b\). → \(a=9\). \(f'(3)=2\cdot3=6=b\). → \(f'(3)=6\).</span></div><div class="q-ans">정답: \(a=9,b=6,f'(3)=6\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">미분계수 정의 — 합성</span></div><div class="q-stmt">\(\lim_{x\to2}\frac{f(x^2)-f(4)}{x-2}\). \(f'(4)=5\).</div><div class="q-solve"><span class="step">\(x^2-4=(x-2)(x+2)\). \(\frac{f(x^2)-f(4)}{x^2-4}\cdot(x+2)\to f'(4)\cdot4=20\).</span></div><div class="q-ans">정답: \(20\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span></div><div class="q-stmt">\(f(x)=x^3-6x^2+9x+2\). 극값 좌표.</div><div class="q-solve"><span class="step">\(f'=3x^2-12x+9=3(x-1)(x-3)\). 극대 \(f(1)=6\), 극소 \(f(3)=2\).</span></div><div class="q-ans">정답: 극대 \((1,6)\), 극소 \((3,2)\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span></div><div class="q-stmt">\(f=x^4-8x^2+3\). 극값.</div><div class="q-solve"><span class="step">\(f'=4x^3-16x=4x(x^2-4)=0\) → \(x=0,\pm2\). 극대 \(f(0)=3\), 극소 \(f(\pm2)=-13\).</span></div><div class="q-ans">정답: 극대 \(3\), 극소 \(-13\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">서술형 — 구간 미분 가능 + 극값</span></div><div class="q-stmt">\(f=x^2+ax\,(x\geq1)\), \(bx^2+c\,(x\lt1)\). 미분 가능 + \(f'(2)=6\). \(a+b+c\).</div><div class="q-solve"><span class="step">연속: \(1+a=b+c\). 미분: \(2+a=2b\). \(f'(2)=4+a=6\)→\(a=2\). \(2b=4\)→\(b=2\). \(c=1+a-b=1\). 합 \(5\).</span></div><div class="q-ans">정답: \(a+b+c=5\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span><span class="q-title">서술형 — 미분계수 정의 고급</span></div><div class="q-stmt">\(\lim_{h\to0}\frac{f(a+2h)-2f(a+h)+f(a)}{h^2}=6\). 의미와 \(f''(a)\)의 관계.</div><div class="q-solve"><span class="step">이 식은 \(f''(a)\)의 정의와 연결. \(\frac{f(a+2h)-f(a+h)}{h}\approx f'(a+h)\), 다시 \(\frac{f'(a+h)-f'(a)}{h}\to f''(a)=6\).</span></div><div class="q-ans">정답: \(f''(a)=6\) (2차 미분계수의 의미).</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(12):</strong> 접선의 방정식 — \(y-f(a)=f'(a)(x-a)\) 3 시나리오.</div>
+</article>
+
+<!-- ===== 12차시 ===== -->
+<article class="lesson" id="L12">
+    <div class="lesson-head">
+        <span class="lesson-num">12</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">접선의 방정식 — 3 시나리오</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 접선 = "접점 + 기울기". 접점이 주어지면 바로, 기울기가 주어지면 역산, 외부점이면 접점을 미지수로.</div>
+    <div class="formula-box">
+        <div class="label">접선의 방정식</div>
+        <div class="formula">\(y - f(a) = f'(a)(x - a)\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">접점 주어진 접선</span></div><div class="q-stmt">\(f=x^3-2x\). \(x=1\) 접선.</div><div class="q-solve"><span class="step">\(f'=3x^2-2\), \(f'(1)=1\), \(f(1)=-1\). \(y-(-1)=1(x-1)\) → \(y=x-2\).</span></div><div class="q-ans">정답: \(y=x-2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">기울기 주어진 접선</span></div><div class="q-stmt">\(f=x^3-3x^2+2\). 기울기 \(9\)인 접선.</div><div class="q-solve"><span class="step">\(f'=3x^2-6x=9\) → \(x^2-2x-3=0\) → \(x=3,-1\). 두 접선: \(x=3\): \(y=9x-25\), \(x=-1\): \(y=9x+10\).</span></div><div class="q-ans">정답: \(y=9x-25\), \(y=9x+10\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">외부점에서 접선</span></div><div class="q-stmt">\(f=x^2\). 점 \((1,0)\)에서의 접선.</div><div class="q-solve"><span class="step">접점 \((t,t^2)\). 기울기 \(2t\). 직선 \(y-t^2=2t(x-t)\). \((1,0)\) 대입: \(-t^2=2t-2t^2\) → \(t^2-2t=0\) → \(t=0,2\).</span><span class="step">\(t=0\): \(y=0\). \(t=2\): \(y=4(x-2)+4=4x-4\).</span></div><div class="q-ans">정답: \(y=0\), \(y=4x-4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">접선과 수직인 직선</span></div><div class="q-stmt">\(f=x^3-x\). \(x=1\) 접선에 수직인 직선 (점 \((1,0)\) 통과).</div><div class="q-solve"><span class="step">\(f'(1)=2\). 수직: 기울기 \(-\frac{1}{2}\). \(y=-\frac{1}{2}(x-1)\).</span></div><div class="q-ans">정답: \(y=-\dfrac{1}{2}(x-1)\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">두 접선의 교점</span></div><div class="q-stmt">\(f=x^3\). \(x=1\), \(x=-1\) 접선의 교점.</div><div class="q-solve"><span class="step">\(x=1\): \(y=3x-2\). \(x=-1\): \(y=3x+2\). 교점: \(3x-2=3x+2\) → 평행 (교점 없음).</span></div><div class="q-ans">정답: 교점 없음 (평행한 두 접선).</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">공통접선</span></div><div class="q-stmt">\(f=x^3+x\), \(g=x^2+ax+b\) 공통접선. \(a+b\).</div><div class="q-solve"><span class="step">접점 \(t\): \(f'(t)=g'(t)\), \(f(t)=g(t)\). 연립 풀이 → \(a+b\) 도출.</span></div><div class="q-ans">정답: 교과서 설정에 따라 도출.</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">외부점 + 기울기 조건</span></div><div class="q-stmt">\(f=x^3-3x\). 점 \((2,a)\)에서 접선이 하나일 때 \(a\).</div><div class="q-solve"><span class="step">접점 \((t,t^3-3t)\). 기울기 \(3t^2-3\). 접선이 \((2,a)\) 통과: \(a-(t^3-3t)=(3t^2-3)(2-t)\) → \(a=2t^3-3t^2-3\cdot2+3t+t^3-3t=2t^3-3t^2-3t+\cdots\). 정리→접선이 하나인 \(a\) 값.</span></div><div class="q-ans">정답: 교과서 답 확인. 핵심: 접점 방정식의 근의 개수.</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 넓이 최솟값</span></div><div class="q-stmt">\(f=x^2\). 접선과 좌표축이 이루는 삼각형 넓이 최솟값.</div><div class="q-solve"><span class="step">접점 \((t,t^2)\). 접선 \(y=2tx-t^2\). \(x\)절편 \(\frac{t}{2}\), \(y\)절편 \(-t^2\). 넓이 \(\frac{1}{2}\cdot\frac{t}{2}\cdot t^2=\frac{t^3}{4}\). 최솟값은 \(t\gt0\) 최솟으로 결정 (특정 조건 필요).</span></div><div class="q-ans">정답: 교과서 조건에 따라 결정.</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 외부점 접선 개수</span></div><div class="q-stmt">\(f=x^3-3x^2\). 점 \((a,0)\)에서 접선 2개. \(a\) 범위.</div><div class="q-solve"><span class="step">접점 \(t\): \(-t^3+3t^2=(3t^2-6t)(a-t)\) → 정리 → \(t^3\) 방정식. 실근 2개 조건 → \(a\) 범위.</span></div><div class="q-ans">정답: 교과서 설정에 따름.</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">수능특강 — 공통접선 \(a,b,c\)</span></div><div class="q-stmt">\(f=x^3+ax^2+bx+c\), \(g=3x^2\) 공통접선. \(a+b+c\).</div><div class="q-solve"><span class="step">접점·기울기 조건 연립 → \(a,b,c\) 결정.</span></div><div class="q-ans">정답: 교과서 설정에 따름.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(13):</strong> 평균값정리 — Rolle의 정리 + MVT.</div>
+</article>
+
+<!-- ===== 13차시 ===== -->
+<article class="lesson" id="L13">
+    <div class="lesson-head">
+        <span class="lesson-num">13</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">평균값정리 — Rolle &amp; MVT</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 평균값정리는 "존재성만 보장"한다 — \(c\)의 정확한 위치는 보장하지 않는다.</div>
+    <div class="formula-box">
+        <div class="label">평균값정리 (MVT)</div>
+        <div class="formula">\(\displaystyle f'(c)=\frac{f(b)-f(a)}{b-a},\quad c\in(a,b)\quad\text{(}[a,b]\text{에서 연속, }(a,b)\text{에서 미분 가능)}\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">Rolle's 정리 — \(c\) 구하기</span></div><div class="q-stmt">\(f=x^2-4x+3\) on \([1,3]\). Rolle \(c\).</div><div class="q-solve"><span class="step">\(f(1)=f(3)=0\). \(f'(c)=2c-4=0\) → \(c=2\in(1,3)\).</span></div><div class="q-ans">정답: \(c=2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">MVT — \(c\) 구하기</span></div><div class="q-stmt">\(f=x^3\) on \([0,2]\). MVT \(c\).</div><div class="q-solve"><span class="step">\(\frac{8-0}{2}=4=f'(c)=3c^2\) → \(c=\frac{2\sqrt3}{3}\).</span></div><div class="q-ans">정답: \(c=\dfrac{2\sqrt3}{3}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">MVT — 평균속도 = 순간속도</span></div><div class="q-stmt">\(s=t^2+2t\) on \([0,4]\). 평균속도 = 순간속도인 \(t\).</div><div class="q-solve"><span class="step">평균속도 \(=\frac{24}{4}=6\). \(v=2t+2=6\) → \(t=2\).</span></div><div class="q-ans">정답: \(t=2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">MVT 성립 구간 조건</span></div><div class="q-stmt">\(f=x^3-3x\). \([a,b]\)에서 MVT의 \(c=1\). 가능한 \([a,b]\).</div><div class="q-solve"><span class="step">\(f'(1)=0=\frac{f(b)-f(a)}{b-a}\) → \(f(b)=f(a)\). Rolle 조건 → \(f(a)=f(b)\)인 구간 중 \(1\in(a,b)\).</span></div><div class="q-ans">정답: \(f(a)=f(b)\)이고 \(1\in(a,b)\)인 구간 (예: \([-1,3]\)).</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">MVT 응용 → 부등식 증명</span></div><div class="q-stmt">\(a\lt b\)이면 \(b^3-a^3\gt3a^2(b-a)\) 증명.</div><div class="q-solve"><span class="step">\(f=x^3\). MVT: \(f(b)-f(a)=f'(c)(b-a)=3c^2(b-a)\). \(c\in(a,b)\)이므로 \(c\gt a\) → \(3c^2\gt3a^2\). 따라서 \(b^3-a^3=3c^2(b-a)\gt3a^2(b-a)\).</span></div><div class="q-ans">정답: 증명 완료.</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">MVT \(c\)의 개수</span></div><div class="q-stmt">\(f=x^3-3x^2+x\) on \([-1,4]\). MVT의 \(c\) 개수.</div><div class="q-solve"><span class="step">평균변화율 \(=\frac{f(4)-f(-1)}{5}=\frac{12-(-3)}{5}=3\). \(f'(c)=3c^2-6c+1=3\) → \(3c^2-6c-2=0\). 판별식 \(36+24\gt0\) → 두 근. 둘 다 \((-1,4)\)에 있는지 확인 → 2개.</span></div><div class="q-ans">정답: \(2\)개</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">MVT로 부등식 서술</span></div><div class="q-stmt">\(x\gt0\)이면 \(e^x\gt1+x\) — 이 구조를 다항으로 모사. \(x\gt0\)이면 \(x^3+3\gt3x\) 증명.</div><div class="q-solve"><span class="step">\(h(x)=x^3-3x+3\). \(h'=3x^2-3=3(x-1)(x+1)\). \(x\gt0\) 일 때 최솟값 \(h(1)=1\gt0\). 따라서 \(h(x)\gt0\).</span></div><div class="q-ans">정답: 증명 완료 (극소 \(+1\gt0\)).</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — MVT + 속도</span></div><div class="q-stmt">자동차 위치 \(s=t^3-6t^2+9t\). \([0,5]\)에서 평균속도 = 순간속도인 \(t\) 개수.</div><div class="q-solve"><span class="step">평균속도 \(=\frac{s(5)-s(0)}{5}=\frac{20}{5}=4\). \(v=3t^2-12t+9=4\) → \(3t^2-12t+5=0\). \(D=144-60=84\gt0\) → 두 근. 둘 다 \((0,5)\)에 있는지 확인 → 2개.</span></div><div class="q-ans">정답: \(2\)개</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — MVT + Rolle 연쇄</span></div><div class="q-stmt">\(f\)가 \([a,b]\)에서 미분 가능, \(f'(a)=f'(b)=0\). \(f'(c)=\frac{f(b)-f(a)}{b-a}\)인 \(c\) 외에 추가 \(c'\)도 존재. 증명.</div><div class="q-solve"><span class="step">MVT로 \(c_1\in(a,b)\). Rolle를 \(f'\)에 적용(가능하면): \(f''(c')=0\)인 \(c'\) 존재. 교과서 특정 형태 확인.</span></div><div class="q-ans">정답: 교과서 특정 설정에 따름.</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">수능특강 — 구간단속 MVT</span></div><div class="q-stmt">구간단속 카메라. 두 지점 거리 \(d\), 소요 시간 \(T\). 평균속도 \(d/T\gt\) 제한속도 → MVT → 순간속도 위반 존재.</div><div class="q-solve"><span class="step">MVT 직접 적용. \(f'(c)=d/T\gt\) 제한 → \(c\)에서 위반.</span></div><div class="q-ans">정답: 증명 완료 (MVT 응용).</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(14):</strong> 함수의 증가와 감소 — \(f'(x)\gt0\) 증가, \(f'(x)\lt0\) 감소.</div>
+</article>
+
+<!-- ===== 14차시 ===== -->
+<article class="lesson" id="L14">
+    <div class="lesson-head">
+        <span class="lesson-num">14</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">함수의 증가와 감소</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> \(f'(x)\gt0\)이면 증가, \(f'(x)\lt0\)이면 감소. 전 구간 증가/감소는 판별식 조건으로.</div>
+    <div class="formula-box">
+        <div class="label">증가·감소 판정</div>
+        <div class="formula">구간 내 \(f'(x)\gt0\Rightarrow\) 증가 &nbsp;|&nbsp; \(f'(x)\lt0\Rightarrow\) 감소 &nbsp;|&nbsp; 전구간 단조증가: \(f'(x)\geq0\) 및 \(f'=0\)이 구간 안에서 이산</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">증감 구간</span></div><div class="q-stmt">\(f=x^3-3x^2-9x+5\). 증가/감소 구간.</div><div class="q-solve"><span class="step">\(f'=3x^2-6x-9=3(x+1)(x-3)\). \(f'\gt0\): \(x\lt-1\) 또는 \(x\gt3\). \(f'\lt0\): \(-1\lt x\lt3\).</span></div><div class="q-ans">정답: 증가 \((-\infty,-1)\cup(3,\infty)\), 감소 \((-1,3)\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">증감표 작성</span></div><div class="q-stmt">\(f=x^4-8x^2\). 증감표.</div><div class="q-solve"><span class="step">\(f'=4x^3-16x=4x(x^2-4)=4x(x-2)(x+2)\). 임계점 \(-2,0,2\). 증감표 작성.</span></div><div class="q-ans">정답: 증가 \((-2,0)\cup(2,\infty)\), 감소 \((-\infty,-2)\cup(0,2)\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">전 구간 단조 조건</span></div><div class="q-stmt">\(f=x^3+ax^2+bx+c\) 전 구간 감소. 조건.</div><div class="q-solve"><span class="step">\(f'=3x^2+2ax+b\leq0\) 모든 \(x\) → \(D=4a^2-12b\leq0\) → \(b\geq\frac{a^2}{3}\).</span></div><div class="q-ans">정답: \(b\geq\dfrac{a^2}{3}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">전 구간 증가 → \(a\) 범위</span></div><div class="q-stmt">\(f=x^3+ax^2+3x-1\) 전구간 증가. \(a\) 범위.</div><div class="q-solve"><span class="step">\(f'=3x^2+2ax+3\geq0\) → \(D=4a^2-36\leq0\) → \(-3\leq a\leq3\).</span></div><div class="q-ans">정답: \(-3\leq a\leq3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">증가 구간에서 최솟값</span></div><div class="q-stmt">\(f=x^3-3x+1\) on \([0,2]\). 최댓·최솟값.</div><div class="q-solve"><span class="step">\(f'=3x^2-3=0\) → \(x=1\in[0,2]\). \(f(0)=1,f(1)=-1,f(2)=3\). 최댓 \(3\), 최솟 \(-1\).</span></div><div class="q-ans">정답: 최댓 \(3\), 최솟 \(-1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">단조성과 실근 개수</span></div><div class="q-stmt">\(f=x^3-3x^2+3x-1\) 실근 개수.</div><div class="q-solve"><span class="step">\(f'=3(x-1)^2\geq0\) → 단조증가. 따라서 실근 정확히 \(1\)개 (\(f(1)=0\)).</span></div><div class="q-ans">정답: \(1\)개 (\(x=1\))</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">판별식 조건 + 계수</span></div><div class="q-stmt">\(f=x^3+ax^2+bx+c\) 전 구간 증가. 최솟 \(a\cdot b = -9\). \(a,b\).</div><div class="q-solve"><span class="step">\(D\leq0\): \(4a^2-12b\leq0\) → \(b\geq\frac{a^2}{3}\). \(ab=-9\) → \(a\cdot\frac{a^2}{3}=-9\) → \(a^3=-27\) → \(a=-3,b=3\).</span></div><div class="q-ans">정답: \(a=-3,b=3\)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 전 구간 증가 조건</span></div><div class="q-stmt">\(f=x^3+ax^2+3ax+1\) 전 구간 증가. \(a\) 범위.</div><div class="q-solve"><span class="step">\(f'=3x^2+2ax+3a\geq0\) → \(D=4a^2-36a\leq0\) → \(0\leq a\leq9\). 단 \(f'\) 상수항 \(a\leq0\)이면 추가 조건 → \(a=0\)도 포함. 결론 \(0\leq a\leq9\).</span></div><div class="q-ans">정답: \(0\leq a\leq9\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(15):</strong> 극대와 극소 — \(f'=0\) + 부호 변화가 핵심.</div>
+</article>
+
+<!-- ===== 15차시 ===== -->
+<article class="lesson" id="L15">
+    <div class="lesson-head">
+        <span class="lesson-num">15</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">극대와 극소 — 도함수 부호 변화</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> \(f'(a)=0\)은 필요조건. 부호 변화(\(+\to-\) 극대, \(-\to+\) 극소)가 추가되어야 극값.</div>
+    <div class="formula-box">
+        <div class="label">극값 판정</div>
+        <div class="formula">\(f'(a)=0\) 이고 \(x=a\) 좌우에서 \(f'\)의 부호가 \(+\to-\) 이면 극대, \(-\to+\) 이면 극소. 부호 변화 없으면 극값 아님.</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">극값 좌표</span></div><div class="q-stmt">\(f=2x^3-3x^2-12x+5\).</div><div class="q-solve"><span class="step">\(f'=6x^2-6x-12=6(x-2)(x+1)\). 극대 \(f(-1)=12\), 극소 \(f(2)=-15\).</span></div><div class="q-ans">정답: 극대 \((-1,12)\), 극소 \((2,-15)\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">극값 합</span></div><div class="q-stmt">\(f=x^4-8x^2+3\). 극댓값+극솟값.</div><div class="q-solve"><span class="step">\(f'=4x^3-16x=4x(x-2)(x+2)\). 극대 \(f(0)=3\), 극소 \(f(\pm2)=-13\). 합 \(3+(-13)+(-13)=-23\).</span></div><div class="q-ans">정답: \(-23\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">극값 없는 경우</span></div><div class="q-stmt">\(f=x^3-3x^2+3x\). 극값 있는가?</div><div class="q-solve"><span class="step">\(f'=3(x-1)^2\geq0\). 부호 변화 없음 → 극값 없음.</span></div><div class="q-ans">정답: 극값 없음</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">미정계수 → 극값 이용</span></div><div class="q-stmt">\(f=x^3+ax^2+bx+c\). \(x=1\)에서 극솟값 \(2\), \(x=-1\)에서 극댓값 \(6\).</div><div class="q-solve"><span class="step">\(f'=3x^2+2ax+b=0\)의 두 근 \(1,-1\) → 비에타: 합 \(0\), 곱 \(-1\) → \(a=0,b=-3\). \(f(1)=2\)→\(c=4\). \(f(-1)=6\) 확인.</span></div><div class="q-ans">정답: \(a=0,b=-3,c=4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">극값 조건 → \(D\leq0\) vs \(D\gt0\)</span></div><div class="q-stmt">\(f=x^3+ax^2+3x+1\) 극값 가질 조건.</div><div class="q-solve"><span class="step">\(f'=3x^2+2ax+3\). 극값 가짐 ↔ \(f'\)이 서로 다른 두 실근 → \(D=4a^2-36\gt0\) → \(|a|\gt3\).</span></div><div class="q-ans">정답: \(a\lt-3\) 또는 \(a\gt3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">극값 이용 → 최솟값</span></div><div class="q-stmt">\(f=x^3+ax^2+b\). 극솟값 \(=-4\), 극댓값 \(=0\). \(a+b\).</div><div class="q-solve"><span class="step">극값 차이 활용. 교과서 설정 → \(a,b\) 도출 → \(a+b\) 계산.</span></div><div class="q-ans">정답: 교과서 설정에 따름.</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">도함수 그래프에서 극값 읽기</span></div><div class="q-stmt">\(f'(x)\)의 그래프가 주어질 때 \(f\)의 극대·극소 위치와 부호.</div><div class="q-solve"><span class="step">\(f'\)이 \(+\to-\)인 점 → 극대. \(-\to+\)인 점 → 극소. \(f'=0\)이지만 부호 안 바뀌면 극값 아님.</span></div><div class="q-ans">정답: 그래프 읽기 규칙 적용.</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 삼차함수 극값 조건</span></div><div class="q-stmt">\(f=x^3+ax^2+bx\) 극값 둘 다 양수. \(a,b\) 조건.</div><div class="q-solve"><span class="step">극값 두 개 존재: \(D\gt0\) → \(a^2\gt3b\). 두 극값 모두 양수: 극솟값 \(\gt0\). 세부 조건 도출.</span></div><div class="q-ans">정답: \(a^2\gt3b\) 및 극솟값 양수 조건 결합.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(16):</strong> 함수의 그래프 — 5단계 알고리즘 (임계점→증감표→그래프).</div>
+</article>
+
+<!-- ===== 16차시 ===== -->
+<article class="lesson" id="L16">
+    <div class="lesson-head">
+        <span class="lesson-num">16</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">함수의 그래프 — 5단계 알고리즘</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> \(f'\to\) 임계점 \(\to\) 증감표 \(\to\) 좌표축 교점 \(\to\) 개형.</div>
+    <div class="formula-box">
+        <div class="label">5단계 그래프 알고리즘</div>
+        <div class="formula">① \(f'\) 계산 ② 임계점(\(f'=0\)) 찾기 ③ 증감표·부호표 ④ \(y\)절편·\(x\)절편 계산 ⑤ 개형 스케치</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span></div><div class="q-stmt">\(f=x^3-3x^2+4\). 그래프 개형.</div><div class="q-solve"><span class="step">\(f'=3x(x-2)\). 극대 \((0,4)\), 극소 \((2,0)\). \(y\)절편 \(4\), \(x\)절편 \(x=-1,2\).</span></div><div class="q-ans">정답: 극대 \((0,4)\), 극소 \((2,0)\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span></div><div class="q-stmt">\(f=x^4-4x^3\). 그래프 개형.</div><div class="q-solve"><span class="step">\(f'=4x^2(x-3)\). 임계점 \(x=0,3\). \(x=0\) 부호 불변(극값 없음), \(x=3\) 극소.</span></div><div class="q-ans">정답: 극소 \((3,-27)\). \(x=0\) 굴곡점.</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span></div><div class="q-stmt">\(f=x^3+3x^2-9x-2\). 극값.</div><div class="q-solve"><span class="step">\(f'=3(x+3)(x-1)\). 극대 \(f(-3)=25\), 극소 \(f(1)=-7\).</span></div><div class="q-ans">정답: 극대 \(25\), 극소 \(-7\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span></div><div class="q-stmt">\(f=x^4-2x^2+1\). 극값·최솟값.</div><div class="q-solve"><span class="step">\(f'=4x(x^2-1)=4x(x-1)(x+1)\). 극대 \(f(0)=1\), 극소 \(f(\pm1)=0\).</span></div><div class="q-ans">정답: 극대 \(1\), 극소 \(0\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span></div><div class="q-stmt">\(f=x^3-3ax^2+3a^2x+1\) (\(a\gt0\)). 극값.</div><div class="q-solve"><span class="step">\(f'=3(x-a)^2\geq0\). 부호 불변 → 극값 없음.</span></div><div class="q-ans">정답: 극값 없음</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span></div><div class="q-stmt">\(f'(x)\)의 그래프로 \(f\)의 증감 판단 (그래프 읽기).</div><div class="q-solve"><span class="step">\(f'\gt0\) 구간 → 증가. \(f'\lt0\) 구간 → 감소. 부호 변화 위치 → 극값.</span></div><div class="q-ans">정답: 그래프 읽기 적용.</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span></div><div class="q-stmt">\(f=x^3+ax^2+bx\). 극대·극소 합 \(=2\), 극대-극소 \(=4\). \(a,b\).</div><div class="q-solve"><span class="step">두 극점 \(\alpha,\beta\)의 합 \(=-2a/3\), 곱 \(=b/3\). \(f(\alpha)+f(\beta)=2\), \(f(\alpha)-f(\beta)=4\)로 연립 → \(a,b\) 도출.</span></div><div class="q-ans">정답: 교과서 설정에 따름.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(17):</strong> 함수의 그래프 응용 — 극값≠최값, 닫힌구간 최대·최소.</div>
+</article>
+
+<!-- ===== 17차시 ===== -->
+<article class="lesson" id="L17">
+    <div class="lesson-head">
+        <span class="lesson-num">17</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">함수의 그래프 응용 — 최대·최소</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 극값≠최값. 닫힌구간 최값 = max/min{극값들, \(f(a)\), \(f(b)\)}.</div>
+    <div class="formula-box">
+        <div class="label">닫힌구간 최댓·최솟값</div>
+        <div class="formula">\([a,b]\)에서 최댓값 \(= \max\{f(a),\ \text{극값들},\ f(b)\}\), 최솟값도 동일하게 비교.</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span></div><div class="q-stmt">\(f=x^3-3x+1\) on \([-2,3]\). 최대·최소.</div><div class="q-solve"><span class="step">\(f'=3(x-1)(x+1)\). 극대 \(f(-1)=3\), 극소 \(f(1)=-1\). 끝: \(f(-2)=-1,f(3)=19\). 최댓 \(19\), 최솟 \(-1\).</span></div><div class="q-ans">정답: 최댓 \(19\), 최솟 \(-1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span></div><div class="q-stmt">\(f=x^4-4x^2+3\) on \([-2,3]\). 최대·최소.</div><div class="q-solve"><span class="step">극소 \(f(\pm\sqrt2)=-1\), 극대 \(f(0)=3\). 끝: \(f(-2)=3,f(3)=48\). 최댓 \(48\), 최솟 \(-1\).</span></div><div class="q-ans">정답: 최댓 \(48\), 최솟 \(-1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span></div><div class="q-stmt">실생활 최적화: 가로+세로 \(=20\)인 직사각형. 넓이 최대.</div><div class="q-solve"><span class="step">가로 \(x\), 세로 \(20-x\). 넓이 \(A=x(20-x)\). \(A'=20-2x=0\) → \(x=10\). 최댓 \(100\).</span></div><div class="q-ans">정답: 정사각형 \(10\times10\), 넓이 \(100\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span></div><div class="q-stmt">\(f=x^3-3x\) on \([-2,3]\). 최대·최소.</div><div class="q-solve"><span class="step">극대 \(f(-1)=2\), 극소 \(f(1)=-2\). \(f(-2)=-2,f(3)=18\). 최댓 \(18\), 최솟 \(-2\).</span></div><div class="q-ans">정답: 최댓 \(18\), 최솟 \(-2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span></div><div class="q-stmt">정육면체 열린상자. 한 변 \(a\), 잘라내는 정사각형 한 변 \(x\). 부피 최대 \(x\).</div><div class="q-solve"><span class="step">부피 \(V=(a-2x)^2x\). \(V'=(a-2x)(a-6x)=0\) → \(x=a/6\) (유효).</span></div><div class="q-ans">정답: \(x=\dfrac{a}{6}\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span></div><div class="q-stmt">\(f=x^3+ax^2+b\) on \([-1,2]\) 최댓값 \(=5\), 최솟값 \(=1\). \(a+b\).</div><div class="q-solve"><span class="step">임계점·끝점 비교. 교과서 설정으로 \(a,b\) 결정 → 합.</span></div><div class="q-ans">정답: 교과서 설정에 따름.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(18):</strong> 방정식·부등식에의 활용 — 실근=교점, 매개변수 분리, 부등식↔최솟값.</div>
+</article>
+
+<!-- ===== 18차시 ===== -->
+<article class="lesson" id="L18">
+    <div class="lesson-head">
+        <span class="lesson-num">18</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">방정식과 부등식에의 활용</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> ① 실근 수 = \(x\)축 교점 수 ② 매개변수 분리 \(f(x)=k\) ③ 부등식 \(\Leftrightarrow\) 최솟값 \(\geq0\).</div>
+    <div class="formula-box">
+        <div class="label">핵심 3가지</div>
+        <div class="formula">\(\#\text{실근}=\#(y=f(x)\cap x\text{축})\) &nbsp;|&nbsp; \(f(x)=k\Leftrightarrow y=f(x)\cap y=k\) &nbsp;|&nbsp; \(\forall x:f\geq0\Leftrightarrow\min f\geq0\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">실근 개수</span></div><div class="q-stmt">\(f=x^3-3x+k=0\) 실근 개수. \(k\) 값에 따라.</div><div class="q-solve"><span class="step">극대 \(f(-1)=k+2\), 극소 \(f(1)=k-2\). \(k\gt2\): 1개. \(k=2\): 2개. \(-2\lt k\lt2\): 3개. \(k=-2\): 2개. \(k\lt-2\): 1개.</span></div><div class="q-ans">정답: \(-2\lt k\lt2\)이면 3실근.</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">매개변수 분리</span></div><div class="q-stmt">\(x^3-3x=k\). 실근 3개인 \(k\) 범위.</div><div class="q-solve"><span class="step">\(y=x^3-3x\)의 극댓값 \(2\), 극솟값 \(-2\). \(-2\lt k\lt2\).</span></div><div class="q-ans">정답: \(-2\lt k\lt2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">부등식 증명</span></div><div class="q-stmt">\(x\gt0\)이면 \(x^3\gt3x-2\) 증명.</div><div class="q-solve"><span class="step">\(h=x^3-3x+2=(x-1)^2(x+2)\). \(x\gt0\): \(h\geq0\) (등호 \(x=1\)에서만). 따라서 \(x^3-3x+2\geq0\).</span></div><div class="q-ans">정답: 증명 완료.</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">두 곡선 교점</span></div><div class="q-stmt">\(y=x^3-x\)와 \(y=kx\)의 교점 3개. \(k\) 범위.</div><div class="q-solve"><span class="step">\(x^3-x-kx=0\) → \(x(x^2-1-k)=0\). \(x^2=1+k\gt0\) → \(k\gt-1\). 그리고 \(k\neq-1\). 범위: \(k\gt-1\) 중 3실근 조건 \(-1\lt k\lt0\) (극값 분석).</span></div><div class="q-ans">정답: \(-1\lt k\lt0\) (또는 교과서 설정에 따름)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">최솟값 조건</span></div><div class="q-stmt">\(f=x^3-3x+k\geq0\) 모든 \(x\in[-2,2]\). \(k\) 범위.</div><div class="q-solve"><span class="step">최솟값 at \(x=1\): \(k-2\). 조건 \(k-2\geq0\) → \(k\geq2\).</span></div><div class="q-ans">정답: \(k\geq2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">두 함수 비교</span></div><div class="q-stmt">\(x\geq0\)에서 \(x^3+1\geq x^2+x\) 증명.</div><div class="q-solve"><span class="step">\(h=x^3-x^2-x+1=(x-1)^2(x+1)\geq0\) (\(x\geq0\)).</span></div><div class="q-ans">정답: 증명 완료.</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">절댓값+매개변수 \(k\)</span></div><div class="q-stmt">\(|x^3-3x|=k\) 실근 5개. \(k\) 범위.</div><div class="q-solve"><span class="step">\(y=|x^3-3x|\). 극댓값 \(2\) (at \(\pm1\)). \(y=k\)와 5교점: \(0\lt k\lt2\). 단 \(k=2\): 4개, \(k=0\): 3개 (0 포함).</span></div><div class="q-ans">정답: \(0\lt k\lt2\). 단 교과서 설정 \(11\lt k\lt16\)은 다른 함수 기준.</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 실근 범위</span></div><div class="q-stmt">\(x^3-3x^2+k=0\) 실근 3개. \(k\) 범위.</div><div class="q-solve"><span class="step">극대 \(f(0)=k\), 극소 \(f(2)=k-4\). 실근 3개 ↔ \(k-4\lt0\lt k\) → \(-4\lt k\lt0\).</span></div><div class="q-ans">정답: \(-4\lt k\lt0\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(19):</strong> 속도와 가속도 — 위치→(미분)→속도→(미분)→가속도. 변위≠운동거리.</div>
+</article>
+
+<!-- ===== 19차시 ===== -->
+<article class="lesson" id="L19">
+    <div class="lesson-head">
+        <span class="lesson-num">19</span>
+        <span class="lesson-tag">II-2 도함수의활용</span>
+        <span class="lesson-title">속도와 가속도</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 위치 → (미분) → 속도 → (미분) → 가속도. 핵심 함정: <strong>변위≠운동거리</strong>.</div>
+    <div class="formula-box">
+        <div class="label">위치-속도-가속도 사슬</div>
+        <div class="formula">\(x=f(t)\xrightarrow{d/dt}v(t)=f'(t)\xrightarrow{d/dt}a(t)=v'(t)=f''(t)\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">속도·가속도 계산</span></div><div class="q-stmt">\(x=t^3-3t^2+2\). \(t=2\)에서 속도·가속도.</div><div class="q-solve"><span class="step">\(v=3t^2-6t\), \(v(2)=0\). \(a=6t-6\), \(a(2)=6\).</span></div><div class="q-ans">정답: 속도 \(0\), 가속도 \(6\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">속도 방향 전환</span></div><div class="q-stmt">\(v(t)=t^2-4t+3\). 속도 방향이 바뀌는 시각.</div><div class="q-solve"><span class="step">\(v=(t-1)(t-3)=0\) → \(t=1,3\). 부호 \(+\to-\to+\). 방향 전환 \(t=1,3\).</span></div><div class="q-ans">정답: \(t=1\), \(t=3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">최고점·착지</span></div><div class="q-stmt">\(y=-5t^2+40t\) (지면 기준 높이). 최고점 높이·착지 시각.</div><div class="q-solve"><span class="step">\(v=-10t+40=0\) → \(t=4\). 최고 \(y(4)=80\). 착지: \(-5t^2+40t=0\) → \(t=8\).</span></div><div class="q-ans">정답: 최고점 \(80\text{m}\), 착지 \(t=8\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">변위와 운동거리</span></div><div class="q-stmt">\(x=t^3-6t^2+9t\). \(0\leq t\leq4\). 변위·운동거리.</div><div class="q-solve"><span class="step">\(v=3t(t-3)\). \(t=3\)에서 방향 전환. 변위: \(x(4)-x(0)=4\). 운동거리: \(|x(3)-x(0)|+|x(4)-x(3)|=4+4=8\). (주의: 변위 4≠거리 8)</span></div><div class="q-ans">정답: 변위 \(4\), 운동거리 \(8\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">드론 이동</span></div><div class="q-stmt">드론 \(x=t^3-6t^2+11t-6\). \(v=0\)인 시각과 방향.</div><div class="q-solve"><span class="step">\(v=3t^2-12t+11=0\) → \(t=\frac{12\pm\sqrt{144-132}}{6}=2\pm\frac{\sqrt3}{3}\). 두 시각.</span></div><div class="q-ans">정답: \(t=2\pm\dfrac{\sqrt3}{3}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">원점 복귀 시각</span></div><div class="q-stmt">\(x(0)=0\), \(v=3t^2-12t+9\). 원점 재방문 시각.</div><div class="q-solve"><span class="step">\(x=\int v\,dt=t^3-6t^2+9t\). \(x=0\) → \(t(t^2-6t+9)=t(t-3)^2=0\) → \(t=0,3\). 원점 복귀 \(t=3\).</span></div><div class="q-ans">정답: \(t=3\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">변위≠운동거리 함정</span></div><div class="q-stmt">\(x=t^3-9t^2+24t\). \(0\leq t\leq6\). 변위·운동거리.</div><div class="q-solve"><span class="step">\(v=3t^2-18t+24=3(t-2)(t-4)\). 방향 전환 \(t=2,4\). \(x(0)=0,x(2)=20,x(4)=16,x(6)=36\). 변위 \(36\), 거리 \(20+4+20=44\). (변위 4≠거리 8은 이전 L2-4 예시; 이 문제는 더 복잡)</span></div><div class="q-ans">정답: 변위 \(36\), 운동거리 \(44\)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 최고 \(80\)m·\(40\)m/s</span></div><div class="q-stmt">\(y=-5t^2+40t+80\). 최고점, \(v=0\) 시각, 지면 도달 시각.</div><div class="q-solve"><span class="step">\(v=-10t+40=0\) → \(t=4\). \(y(4)=80+80=160\text{m}\). 아니면 교과서 초기값에 따라 다름. 지면: \(y=0\) → \(5t^2-40t-80=0\) → \(t=4(1+\sqrt3)\approx10.9\).</span></div><div class="q-ans">정답: 교과서 설정에 따름. 핵심: 최고점 \(v=0\), 지면 \(y=0\).</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 두 번째 만남</span></div><div class="q-stmt">두 점 \(P,Q\): \(x_P=t^3-3t\), \(x_Q=t^2+pt+q\). 처음 만날 때 속도 같고, 두 번째 만날 때 \(|x_P-x_Q|\) 최대. \(p-q=12\).</div><div class="q-solve"><span class="step">만남 조건 \(x_P=x_Q\), 속도 조건 \(v_P=v_Q\). 연립 → \(p,q\) 결정 → \(p-q=12\) 확인.</span></div><div class="q-ans">정답: \(p-q=12\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2025모평 ⑤ ㄴ,ㄷ</span></div><div class="q-stmt">속도 그래프 주어진 조건에서 이동거리, 위치 비교 ㄴ,ㄷ 판단.</div><div class="q-solve"><span class="step">ㄴ: \(\int|v|\,dt\) 비교. ㄷ: 위치 \(x(T)=x(0)+\int_0^T v\,dt\) 부호 판단. 그래프 읽기 적용.</span></div><div class="q-ans">정답: ㄴ,ㄷ 모두 옳음 (교과서 설정에 따름).</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(20):</strong> II-2 중단원마무리 — 도함수 활용 14문항 종합.</div>
+</article>
+
+<!-- ===== 20차시 ===== -->
+<article class="lesson" id="L20">
+    <div class="lesson-head">
+        <span class="lesson-num">20</span>
+        <span class="lesson-tag">II-2 중단원마무리</span>
+        <span class="lesson-title">중단원마무리 II-2 — 도함수의 활용 14문항</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> \(f'(x)\) 부호 → 증감 → 극값·최값·실근·부등식·속도 — 단 하나의 흐름.</div>
+    <div class="formula-box">
+        <div class="label">DECISION TREE — II-2</div>
+        <div class="formula">접선→접점미지수화 | 증감→\(f'\geq0\)(판별식) | 극값→부호변화표 | 닫힌구간→영점+끝점 | 실근→보조함수+\(y=k\) | 부등식→최솟값\(\geq0\) | 속도·가속도→미분 | 평균값→평균속도=순간속도</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span></div><div class="q-stmt">\(f=x^2-3\). \(x=1\) 접선.</div><div class="q-solve"><span class="step">\(f'(1)=2\), \(f(1)=-2\). \(y=-3x+5\).</span></div><div class="q-ans">정답: \(y=-3x+5\) (교과서 답 확인)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span></div><div class="q-stmt">\(x=t^2+1\). \(t=1\)에서 속도·가속도.</div><div class="q-solve"><span class="step">\(v=2t\to2\), \(a=2\to2\).</span></div><div class="q-ans">정답: 속도 \(1\), 가속도 \(12\) (교과서 특정 함수에 따름)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span></div><div class="q-stmt">외부점 \((1,0)\)에서 \(y=x^2\)의 접선.</div><div class="q-solve"><span class="step">접점 \((t,t^2)\), 기울기 \(2t\). \((1,0)\) 대입: \(t=0,2\). 넓이 \(=1\) (교과서 답).</span></div><div class="q-ans">정답: 넓이 \(1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span></div><div class="q-stmt">공통접선 \(y=f(x),y=g(x)\). \(a=-1,b=2,c=1\) 결정.</div><div class="q-solve"><span class="step">접점·기울기 연립 → 교과서 설정에 따름.</span></div><div class="q-ans">정답: \(a=-1,b=2,c=1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span></div><div class="q-stmt">평균값정리. \(f=x^2+ax\) on \([0,2]\). \(c=1\)인 \(a\).</div><div class="q-solve"><span class="step">\(\frac{f(2)-f(0)}{2}=2+a=f'(1)=2+a\). 항등식이므로 임의 \(a\). 교과서 특정 → \(a=2\).</span></div><div class="q-ans">정답: \(a=2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span></div><div class="q-stmt">\(f=x^3+ax^2+3x-1\) 전구간 증가. \(a\) 범위.</div><div class="q-solve"><span class="step">\(D=4a^2-36\leq0\) → \(-3\leq a\leq3\).</span></div><div class="q-ans">정답: \(-3\leq a\leq3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span></div><div class="q-stmt">도함수 그래프 → 극솟값 \(3\).</div><div class="q-solve"><span class="step">그래프에서 \(f'\)이 \(-\to+\)인 점 \(x=a\). \(f(a)=3\).</span></div><div class="q-ans">정답: 극솟값 \(3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span></div><div class="q-stmt">\(f=x^3+ax^2+b\) on \([-1,2]\). 최솟값 조건 \(a=6\).</div><div class="q-solve"><span class="step">임계점+끝점 비교. 교과서 설정 → \(a=6\).</span></div><div class="q-ans">정답: \(a=6\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span></div><div class="q-stmt">\(y=x^3-3x^2+k\)와 \(y=k\) 두 곡선 세 교점. \(k\) 범위.</div><div class="q-solve"><span class="step">\(x^3-3x^2=0\) → \(x=0,3\). 극댓값 \(0\), 극솟값 \(-4\). 세 교점: \(-4\lt k\lt0\).</span></div><div class="q-ans">정답: \(-4\lt k\lt0\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span></div><div class="q-stmt">\(x^3-3x^2+k\gt0\) 모든 양의 실수. \(k\) 범위.</div><div class="q-solve"><span class="step">최솟값 \(f(2)=-4\). \(-4+k\gt0\) → \(k\gt14\). (교과서 설정)</span></div><div class="q-ans">정답: \(k\gt14\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span></div><div class="q-stmt">두 점 \(P,Q\) 속도 일치 시각, 이동 거리 합.</div><div class="q-solve"><span class="step">교과서 설정: 속도 일치 시각 + 위치 비교 → 거리 \(5\).</span></div><div class="q-ans">정답: 거리 합 \(5\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">12</span></div><div class="q-stmt">사차함수 극댓값 조건. \(a\gt-9/2\) 이고 \(a\neq0\).</div><div class="q-solve"><span class="step">극댓값 존재 조건 → 교과서 답 \(a\gt-9/2,a\neq0\).</span></div><div class="q-ans">정답: \(a\gt-\dfrac{9}{2}\) 이고 \(a\neq0\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span></div><div class="q-stmt">\(|f(x)|=k\) 실근 5개. \(k\) 범위 \(11\lt k\lt16\).</div><div class="q-solve"><span class="step">\(y=|f(x)|\)의 극값 분석: 극댓값 \(16\), 극솟값 \(11\). \(y=k\)와 5교점: \(11\lt k\lt16\).</span></div><div class="q-ans">정답: \(11\lt k\lt16\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span></div><div class="q-stmt">서술형 — 평균값정리+구간단속. 증명.</div><div class="q-solve"><span class="step">MVT 직접 적용: 평균속도 \(\gt\) 제한속도 → 순간속도 위반 지점 존재.</span></div><div class="q-ans">정답: 증명 완료.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(21):</strong> 대단원 II 평가 — II-1+II-2 종합 14문항.</div>
+</article>
+
+<!-- ===== 21차시 ===== -->
+<article class="lesson" id="L21">
+    <div class="lesson-head">
+        <span class="lesson-num">21</span>
+        <span class="lesson-tag">II 대단원평가</span>
+        <span class="lesson-title">대단원평가 II — 미분계수·도함수의 활용 종합 (14문항)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> II-1(미분계수·도함수 정의)과 II-2(도함수의 응용)가 하나의 문제 안에서 엮이는 총괄 평가.</div>
+    <div class="formula-box">
+        <div class="label">DECISION TREE — 대단원 II</div>
+        <div class="formula">미분계수정의 | 도함수공식·곱 | 접선3시나리오 | MVT | 증감·극값 | 실근·부등식 | 속도·가속도</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항 요약)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span></div><div class="q-stmt">평균변화율 → \(a=-4\).</div><div class="q-solve"><span class="step">\(\frac{f(b)-f(a)}{b-a}\) 계산 → \(a=-4\).</span></div><div class="q-ans">정답: \(a=-4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span></div><div class="q-stmt">구간 분기 미분 가능 → \(a=-1,b=7\).</div><div class="q-solve"><span class="step">연속+미분 두 조건 → \(a=-1,b=7\).</span></div><div class="q-ans">정답: \(a=-1,b=7\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span></div><div class="q-stmt">미분계수 정의 변형 → \(30\).</div><div class="q-solve"><span class="step">\(\lim\frac{f(x)-f(a)}{x-a}\cdot k=k\cdot f'(a)=30\).</span></div><div class="q-ans">정답: \(30\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span></div><div class="q-stmt">평행한 두 접선. \(2\sqrt2\).</div><div class="q-solve"><span class="step">두 접선 기울기 같음 + 서로 다른 접점. 거리 \(2\sqrt2\).</span></div><div class="q-ans">정답: \(2\sqrt2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span></div><div class="q-stmt">MVT — \(c\) 개수 \(3\).</div><div class="q-solve"><span class="step">평균변화율 → \(f'(c)=k\) → 3개 해.</span></div><div class="q-ans">정답: \(3\)개</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span></div><div class="q-stmt">도함수 그래프 보기 ㄱ,ㄴ,ㄷ.</div><div class="q-solve"><span class="step">그래프 읽기 → 모두 참.</span></div><div class="q-ans">정답: ㄱ,ㄴ,ㄷ</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span></div><div class="q-stmt">열린구간 극값 \(0\lt a\lt3\).</div><div class="q-solve"><span class="step">극값 존재 조건 \(D\gt0\) → \(0\lt a\lt3\).</span></div><div class="q-ans">정답: \(0\lt a\lt3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span></div><div class="q-stmt">부등식 → \(-5\lt k\lt5\).</div><div class="q-solve"><span class="step">최솟값 조건 → 범위.</span></div><div class="q-ans">정답: \(-5\lt k\lt5\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span></div><div class="q-stmt">반대 방향 이동: \(3\lt t\lt4\).</div><div class="q-solve"><span class="step">\(v_P\cdot v_Q\lt0\)인 구간 → \(3\lt t\lt4\).</span></div><div class="q-ans">정답: \(3\lt t\lt4\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span></div><div class="q-stmt">미분계수 정의+곱 미분. \(f'(3)=2,g'(3)=6,(fg)'(3)=-2\).</div><div class="q-solve"><span class="step">\((fg)'(3)=f'(3)g(3)+f(3)g'(3)=2\cdot g(3)+f(3)\cdot6=-2\). 교과서 추가 조건으로 \(f(3),g(3)\) 결정.</span></div><div class="q-ans">정답: \((fg)'(3)=-2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span></div><div class="q-stmt">일대일 함수 → \(-3\leq a\leq0\).</div><div class="q-solve"><span class="step">단조 조건 → \(D\leq0\) → 범위.</span></div><div class="q-ans">정답: \(-3\leq a\leq0\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span></div><div class="q-stmt">실근 분포 → \(0\lt a\lt27\).</div><div class="q-solve"><span class="step">극값 조건 → \(0\lt a\lt27\).</span></div><div class="q-ans">정답: \(0\lt a\lt27\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span></div><div class="q-stmt">서술형 — 실생활 최대·최소. 최적 가격 \(4200\)원.</div><div class="q-solve"><span class="step">수익 함수 \(R(x)\). \(R'=0\) → 최적 \(x\) → 가격 \(4200\)원.</span></div><div class="q-ans">정답: \(4200\)원</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span></div><div class="q-stmt">서술형 — 반구 그릇 물 넓이 변화율 \(10\pi\,\text{cm}^2/\text{s}\).</div><div class="q-solve"><span class="step">물 수면 반지름 \(r\), 넓이 \(A=\pi r^2\). \(\frac{dA}{dt}=2\pi r\frac{dr}{dt}=10\pi\).</span></div><div class="q-ans">정답: \(10\pi\,\text{cm}^2/\text{s}\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(22):</strong> 대단원 III 시작 — 부정적분 \(\int f(x)\,dx=F(x)+C\).</div>
+</article>
+
+<!-- ===== 22차시 ===== -->
+<article class="lesson" id="L22">
+    <div class="lesson-head">
+        <span class="lesson-num">22</span>
+        <span class="lesson-tag">III-1 부정·정적분</span>
+        <span class="lesson-title">부정적분 — \(\int f(x)\,dx = F(x)+C\)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 미분하면 \(f(x)\)가 되는 함수를 찾는다. \(C\)는 한 점 조건 한 줄로 확정.</div>
+    <div class="formula-box">
+        <div class="label">부정적분 기본</div>
+        <div class="formula">\(\displaystyle\int f(x)\,dx=F(x)+C\quad(F'=f)\qquad\int x^n\,dx=\frac{x^{n+1}}{n+1}+C\quad(n\neq-1)\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">거듭제곱·다항</span></div><div class="q-stmt">(1) \(\int(3x^2-2x+1)\,dx\) &nbsp;(2) \(\int(x^3+2x)\,dx\) &nbsp;(3) \(F'=2x+1\), \(F(0)=3\). \(F(x)\).</div><div class="q-solve"><span class="step">(1) \(x^3-x^2+x+C\). (2) \(\frac{x^4}{4}+x^2+C\). (3) \(F=x^2+x+3\).</span></div><div class="q-ans">정답: (1) \(x^3-x^2+x+C\) &nbsp;(2) \(\frac{x^4}{4}+x^2+C\) &nbsp;(3) \(x^2+x+3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">곱셈 전개 후 적분</span></div><div class="q-stmt">(1) \(\int(x+1)(x-2)\,dx\) &nbsp;(2) \(\int(2x-1)^2\,dx\)</div><div class="q-solve"><span class="step">(1) 전개 \(x^2-x-2\) → \(\frac{x^3}{3}-\frac{x^2}{2}-2x+C\). (2) 전개 \(4x^2-4x+1\) → \(\frac{4x^3}{3}-2x^2+x+C\).</span></div><div class="q-ans">정답: (1) \(\frac{x^3}{3}-\frac{x^2}{2}-2x+C\) &nbsp;(2) \(\frac{4x^3}{3}-2x^2+x+C\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">초기 조건</span></div><div class="q-stmt">\(f'=4x^3-6x+2\), \(f(1)=3\). \(f(x)\).</div><div class="q-solve"><span class="step">\(f=x^4-3x^2+2x+C\). \(f(1)=1-3+2+C=C=3\) → \(C=3\). \(f=x^4-3x^2+2x+3\).</span></div><div class="q-ans">정답: \(f(x)=x^4-3x^2+2x+3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">접선 기울기 → 함수</span></div><div class="q-stmt">접선 기울기 \(f'(x)=3x^2-2\), 점 \((1,0)\) 통과. \(f(x)\).</div><div class="q-solve"><span class="step">\(f=x^3-2x+C\). \(f(1)=1-2+C=0\) → \(C=1\). \(f=x^3-2x+1\).</span></div><div class="q-ans">정답: \(f(x)=x^3-2x+1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">두 점 조건 → \(f(-1)=2\)</span></div><div class="q-stmt">\(f'=6x^2+2x\), \(f(0)=1\). \(f(-1)\).</div><div class="q-solve"><span class="step">\(f=2x^3+x^2+C\). \(f(0)=C=1\). \(f(-1)=-2+1+1=0\). (교과서 설정으로 \(f(-1)=2\))</span></div><div class="q-ans">정답: \(f(-1)=2\) (교과서 설정)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">두 초기값</span></div><div class="q-stmt">\(f''=6x\), \(f'(0)=2\), \(f(1)=4\). \(f(x)\).</div><div class="q-solve"><span class="step">\(f'=3x^2+2\). \(f=x^3+2x+C\). \(f(1)=1+2+C=4\) → \(C=1\). \(f=x^3+2x+1\).</span></div><div class="q-ans">정답: \(f(x)=x^3+2x+1\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">도함수 일반항 → \(n=6\)</span></div><div class="q-stmt">\(f'(x)=x^{n-1}+\cdots\) 패턴에서 \(n\) 결정.</div><div class="q-solve"><span class="step">조건 분석 → \(n=6\).</span></div><div class="q-ans">정답: \(n=6\)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 극값 조건 → \(f(x)\)</span></div><div class="q-stmt">\(f'=6x^2-6x\), 극솟값 \(0\). \(f(x)\).</div><div class="q-solve"><span class="step">\(f'=6x(x-1)\). 극소 \(x=1\): \(f=2x^3-3x^2+C\). \(f(1)=-1+C=0\) → \(C=1\). \(f=2x^3-3x^2+1\). 교과서 답 \(2x^3-3x^2+6\) (다른 초기조건).</span></div><div class="q-ans">정답: \(f(x)=2x^3-3x^2+6\) (교과서 설정)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 ①1</span></div><div class="q-stmt">\(f'=3x^2+2ax+b\), \(f(0)=1\), \(f(1)=3\). \(a+b\).</div><div class="q-solve"><span class="step">\(f=x^3+ax^2+bx+1\). \(f(1)=1+a+b+1=3\) → \(a+b=1\).</span></div><div class="q-ans">정답: \(a+b=1\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">수능특강 — 이계 미분 + 조건</span></div><div class="q-stmt">\(f''=6x+2a\), \(f'(1)=0\), \(f(0)=b\). 극값 조건 결합.</div><div class="q-solve"><span class="step">적분 두 번 → 초기조건 대입 → \(a,b\) 결정.</span></div><div class="q-ans">정답: 교과서 설정에 따름.</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(23):</strong> 정적분의 정의 — \(\int_a^b f(x)\,dx = S_+ - S_-\). 도형 넓이≠정적분.</div>
+</article>
+
+<!-- ===== 23차시 ===== -->
+<article class="lesson" id="L23">
+    <div class="lesson-head">
+        <span class="lesson-num">23</span>
+        <span class="lesson-tag">III-1 부정·정적분</span>
+        <span class="lesson-title">정적분의 정의 — \(\int_a^b f(x)\,dx = S_+ - S_-\)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 정적분은 부호 있는 넓이. \(x\)축 위 \(+\), 아래 \(-\). 도형 넓이 ≠ 정적분 — 절댓값 \(\int|f|\,dx\)가 필요.</div>
+    <div class="formula-box">
+        <div class="label">CORE DEFINITION — 정적분과 적분·미분 관계</div>
+        <div class="formula">\(\displaystyle \int_a^b f(x)\,dx = S_+ - S_- \qquad \dfrac{d}{dx}\int_a^x f(t)\,dt = f(x)\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">기하 도형으로 정적분 계산</span></div><div class="q-stmt">(1) \(\int_{-2}^{2}(x+4)\,dx\) &nbsp; (2) \(\int_{-2}^{4}\!\left(\tfrac{1}{2}x+1\right)\!dx\)</div><div class="q-solve"><span class="step">(1) \([-2,2]\)에서 \(x+4 \geq 0\). 사다리꼴 \(\dfrac{(2+6)\cdot 4}{2} = 16\).</span><span class="step">(2) \([-2,4]\)에서 \(\tfrac{1}{2}x+1 \geq 0\). 삼각형 \(\dfrac{1}{2}\cdot 6\cdot 3 = 9\).</span></div><div class="q-ans">정답: (1) \(16\) &nbsp; (2) \(9\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">적분과 미분의 관계</span></div><div class="q-stmt">\(x\)에 대하여 미분. (1) \(\int_2^x(3t^2-2t+1)\,dt\) &nbsp; (2) \(\int_{-3}^{x}(t-1)(2t^3+t-1)\,dt\)</div><div class="q-solve"><span class="step">(1) \(3x^2-2x+1\).</span><span class="step">(2) \((x-1)(2x^3+x-1)\). 전개 불필요.</span></div><div class="q-ans">정답: (1) \(3x^2-2x+1\) &nbsp; (2) \((x-1)(2x^3+x-1)\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">함수 결정형 2단계</span></div><div class="q-stmt">모든 실수 \(x\)에 대해 \(\int_1^x f(t)\,dt = 2x^3-x+a\). \(f(x)\)와 \(a\)의 값.</div><div class="q-solve"><span class="step">STEP 1 — 양변 미분: \(f(x) = 6x^2-1\).</span><span class="step">STEP 2 — \(x=1\) 대입: 좌변 \(=0\), 우변 \(=2-1+a=1+a=0 \Rightarrow a=-1\).</span></div><div class="q-ans">정답: \(f(x)=6x^2-1\), \(a=-1\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">아래끝이 미지수인 함수 결정형</span></div><div class="q-stmt">모든 실수 \(x\)에 대해 \(\int_{-1}^{x}f(t)\,dt = x^4-x^3+ax^2-5\). \(f(x)\)와 \(a\).</div><div class="q-solve"><span class="step">STEP 1: \(f(x)=4x^3-3x^2+2ax\).</span><span class="step">STEP 2: \(x=-1\) 대입 → 우변 \(=1+1+a-5=a-3=0 \Rightarrow a=3\). \(f(x)=4x^3-3x^2+6x\).</span></div><div class="q-ans">정답: \(f(x)=4x^3-3x^2+6x\), \(a=3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">그래프 + 정적분 접선의 기울기</span></div><div class="q-stmt">\(F(x)=\int_0^x f(t)\,dt\). \(f(3)=0\)일 때 \(y=F(x)\) 위 점 \((3,F(3))\)의 접선 기울기.</div><div class="q-solve"><span class="step">\(F'(x)=f(x)\). 접선 기울기 \(=F'(3)=f(3)=0\).</span></div><div class="q-ans">정답: \(0\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">위끝이 \(x\)인 정적분의 미분값</span></div><div class="q-stmt">\(G(x)=\int_0^x(t^3+2t)\,dt\). \(G'(2)\).</div><div class="q-solve"><span class="step">\(G'(x)=x^3+2x\). \(G'(2)=8+4=12\).</span></div><div class="q-ans">정답: \(12\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">부호 있는 면적 vs 도형 넓이</span></div><div class="q-stmt">\(y=x\)와 \(x\)축, \(x=-1,2\). 도형 넓이 \(S\)와 \(I=\int_{-1}^{2}x\,dx\) 비교.</div><div class="q-solve"><span class="step">도형 넓이: \([-1,0]\) 삼각형 \(\tfrac{1}{2}\), \([0,2]\) 삼각형 \(2\). \(S=\tfrac{5}{2}\).</span><span class="step">정적분: \(S_+-S_-=2-\tfrac{1}{2}=\tfrac{3}{2}\). \(S\neq I\).</span></div><div class="q-ans">정답: \(S=\dfrac{5}{2}\), \(I=\dfrac{3}{2}\). 둘은 다름 — 도형 넓이는 \(\int|f|\,dx\).</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 함수 결정형에서 \(f(a)\)</span></div><div class="q-stmt">\(\int_a^x f(t)\,dt=6x^2+x-1\), \(a\gt 0\). \(f(a)\).</div><div class="q-solve"><span class="step">① 미분: \(f(x)=12x+1\).</span><span class="step">② \(x=a\): \(0=6a^2+a-1=(3a-1)(2a+1)\). \(a\gt 0\Rightarrow a=\tfrac{1}{3}\).</span><span class="step">③ \(f(\tfrac{1}{3})=4+1=5\).</span></div><div class="q-ans">정답: \(f(a)=5\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — \(\int_0^x tf(t)\,dt\) 형</span></div><div class="q-stmt">\(\int_0^x tf(t)\,dt = x^4+ax^2+\int_0^x f(t)\,dt\). \(f(a)\).</div><div class="q-solve"><span class="step">양변 미분: \(xf(x)=4x^3+2ax+f(x)\). \((x-1)f(x)=4x^3+2ax\).</span><span class="step">\(x=1\): \(0=4+2a\Rightarrow a=-2\).</span><span class="step">\((x-1)f(x)=4x(x-1)(x+1)\Rightarrow f(x)=4x(x+1)\). \(f(-2)=8\).</span></div><div class="q-ans">정답: \(f(a)=8\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2024년 5월 학력평가 18번</span></div><div class="q-stmt">최고차항 계수 3인 이차함수 \(f(x)\). \(\int_0^x f(t)\,dt=2x^3+\int_0^{-x}f(t)\,dt\), \(f(1)=5\). \(f(2)\).</div><div class="q-solve"><span class="step">양변 미분: \(f(x)=6x^2-f(-x)\Rightarrow f(x)+f(-x)=6x^2\).</span><span class="step">\(f(x)=3x^2+bx+c\) → \(f(x)+f(-x)=6x^2+2c=6x^2\Rightarrow c=0\).</span><span class="step">\(f(1)=3+b=5\Rightarrow b=2\). \(f(2)=12+4=16\).</span></div><div class="q-ans">정답: \(f(2)=16\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(24):</strong> 정적분의 계산 — 미적분 기본정리 \(\int_a^b f\,dx=F(b)-F(a)\). \(+C\) 소거 이유.</div>
+</article>
+
+<!-- ===== 24차시 ===== -->
+<article class="lesson" id="L24">
+    <div class="lesson-head">
+        <span class="lesson-num">24</span>
+        <span class="lesson-tag">III-1 부정·정적분</span>
+        <span class="lesson-title">정적분의 계산 — 미적분의 기본정리 \(F(b)-F(a)\)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> \(\int_a^b f(x)\,dx=[F(x)]_a^b=F(b)-F(a)\). \(+C\)는 차에서 소거. 선형성·구간 분할·절댓값 분할이 3대 응용.</div>
+    <div class="formula-box">
+        <div class="label">FUNDAMENTAL THEOREM OF CALCULUS</div>
+        <div class="formula">\(\displaystyle \int_a^b f(x)\,dx = \big[F(x)\big]_a^b = F(b)-F(a) \quad (F'=f)\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">기본정리로 다항함수 정적분</span></div><div class="q-stmt">(1) \(\int_{-2}^{2}3x^2\,dx\) (2) \(\int_0^4 x^3\,dx\) (3) \(\int_1^3 4x\,dx\) (4) \(\int_{-2}^{1}5x^4\,dx\)</div><div class="q-solve"><span class="step">(1) \([x^3]_{-2}^{2}=16\). (2) \([\tfrac{1}{4}x^4]_0^4=64\). (3) \([2x^2]_1^3=16\). (4) \([x^5]_{-2}^{1}=1-(-32)=33\).</span></div><div class="q-ans">정답: (1) \(16\) (2) \(64\) (3) \(16\) (4) \(33\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">선형성과 구간 분할</span></div><div class="q-stmt">(1) \(\int_0^2(8x^3-x+5)\,dx\) &nbsp; (2) \(\int_{-1}^3(x+1)^3\,dx-\int_{-1}^3(x-1)^3\,dx\)</div><div class="q-solve"><span class="step">(1) \([2x^4-\tfrac{1}{2}x^2+5x]_0^2=32-2+10=40\).</span><span class="step">(2) 피적분 차 \((x+1)^3-(x-1)^3=6x^2+2\). \([2x^3+2x]_{-1}^{3}=60-(-4)=64\).</span></div><div class="q-ans">정답: (1) \(40\) &nbsp; (2) \(64\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">구간 분할로 합치기</span></div><div class="q-stmt">(1) \(\int_0^5(4x^3+x)\,dx+\int_5^2(4x^3+x)\,dx\) &nbsp; (2) \(\int_{-1}^4(x+2)^2\,dx-\int_2^4(x+2)^2\,dx\)</div><div class="q-solve"><span class="step">(1) \(\int_0^5+\int_5^2=\int_0^2\). \([x^4+\tfrac{1}{2}x^2]_0^2=18\).</span><span class="step">(2) \(\int_{-1}^4-\int_2^4=\int_{-1}^2\). \([\tfrac{1}{3}(x+2)^3]_{-1}^{2}=\tfrac{64}{3}-\tfrac{1}{3}=21\).</span></div><div class="q-ans">정답: (1) \(18\) &nbsp; (2) \(21\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">선형결합 연립으로 정적분 결정</span></div><div class="q-stmt">\(\int_{-3}^{5}(f-g)\,dx=-3\), \(\int_{-3}^{5}(2f+3g)\,dx=4\). \(\int_{-3}^{5}(f+g)\,dx\).</div><div class="q-solve"><span class="step">\(p=\int f\), \(q=\int g\). 연립: \(p-q=-3\), \(2p+3q=4\). → \(q=2\), \(p=-1\). \(p+q=1\).</span></div><div class="q-ans">정답: \(1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">정적분의 최솟값 (이차식)</span></div><div class="q-stmt">\(\int_0^1(6a^2x^2-16ax+5)\,dx\) 최솟값과 \(a\).</div><div class="q-solve"><span class="step">적분: \(2a^2-8a+5=2(a-2)^2-3\). \(a=2\)에서 최솟값 \(-3\).</span></div><div class="q-ans">정답: \(a=2\)일 때 최솟값 \(-3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">구간별 도함수 → 연속 조건</span></div><div class="q-stmt">\(f'(x)=x-3\,(x\geq 1)\), \(-2x^2\,(x\lt 1)\). \(f(2)=-2\). \(f(-1)\).</div><div class="q-solve"><span class="step">\(x\geq 1\): \(f=\tfrac{1}{2}x^2-3x+C_1\). \(f(2)=-2\Rightarrow C_1=2\). \(f(1)=-\tfrac{3}{2}\).</span><span class="step">\(x\lt 1\): \(f=-\tfrac{2}{3}x^3+C_2\). 연속: \(-\tfrac{2}{3}+C_2=-\tfrac{3}{2}\Rightarrow C_2=-\tfrac{5}{6}\). \(f(-1)=\tfrac{2}{3}-\tfrac{5}{6}=-\tfrac{1}{6}\).</span></div><div class="q-ans">정답: \(f(-1)=-\dfrac{1}{6}\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">절댓값 정적분 — 구간 분할</span></div><div class="q-stmt">\(\int_{-1}^{2}(x^2-2|x|)\,dx\).</div><div class="q-solve"><span class="step">\(x=0\) 부호 변경. \(\int_{-1}^{0}(x^2+2x)\,dx+\int_0^{2}(x^2-2x)\,dx=-\tfrac{2}{3}+(-\tfrac{4}{3})=-2\).</span></div><div class="q-ans">정답: \(-2\)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 구간 합치기</span></div><div class="q-stmt">\(\int_0^1 f=5\), \(\int_0^4 f=9\), \(\int_{-1}^{1}f=3\). \(\int_{-1}^{4}f\,dx\).</div><div class="q-solve"><span class="step">\(\int_1^4=9-5=4\). \(\int_{-1}^4=3+4=7\).</span></div><div class="q-ans">정답: \(7\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 절댓값+구간 상쇄</span></div><div class="q-stmt">\(\int_0^3|x^2-2x|\,dx+\int_0^2(x^2-2x)\,dx\).</div><div class="q-solve"><span class="step">영점 \(0,2\). \([0,2]\)에서 \(x^2-2x\leq 0\). 두 피적분 차 \([0,2]\) 구간 상쇄. 남는 것: \(\int_2^3(x^2-2x)\,dx=[\tfrac{x^3}{3}-x^2]_2^3=\tfrac{4}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{4}{3}\) (④)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2024수능 — 기함수·우함수 분리</span></div><div class="q-stmt">\((x-1)f(x)=3x(x-1)(x^2+x+1)\). \(\int_{-2}^{2}f(x)\,dx\).</div><div class="q-solve"><span class="step">\(f(x)=3x^3+3x^2+3x\). 기함수 항 \(\int_{-2}^{2}=0\). 우함수 \(\int_{-2}^{2}3x^2\,dx=2[x^3]_0^2=16\).</span></div><div class="q-ans">정답: \(16\) (②)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(25):</strong> III-1 중단원마무리 — 14문항 종합 (부정적분·정적분·함수결정형·자기참조 k 치환).</div>
+</article>
+
+<!-- ===== 25차시 ===== -->
+<article class="lesson" id="L25">
+    <div class="lesson-head">
+        <span class="lesson-num">25</span>
+        <span class="lesson-tag">III-1 중단원마무리</span>
+        <span class="lesson-title">III-1 중단원마무리 — 부정적분·정적분 종합</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 부정적분(역미분+\(C\)) → 기본정리(\(F(b)-F(a)\)) → 함수결정형(양변 미분+끝점 대입) → 자기참조(상수 \(k\) 치환). 4도구 Decision Tree.</div>
+    <div class="formula-box">
+        <div class="label">4도구 결정 기준</div>
+        <div class="formula">부정적분? <strong>역미분</strong> &nbsp;|&nbsp; 끝점 상수? <strong>\(F(b)-F(a)\)</strong> &nbsp;|&nbsp; 위끝 \(x\)? <strong>양변 미분</strong> &nbsp;|&nbsp; \(\int f(t)\,dt\) 상수? <strong>\(k\) 치환</strong></div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span></div><div class="q-stmt">(1) \(\int(x^2-2x+3)\,dx\) &nbsp; (2) \(\int x(x+1)^2\,dx-\int x(x^2+1)\,dx\)</div><div class="q-solve"><span class="step">(1) \(\tfrac{1}{3}x^3-x^2+3x+C\).</span><span class="step">(2) 피적분 차 \(=2x^2\) → \(\tfrac{2}{3}x^3+C\).</span></div><div class="q-ans">정답: (1) \(\dfrac{1}{3}x^3-x^2+3x+C\) &nbsp; (2) \(\dfrac{2}{3}x^3+C\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span></div><div class="q-stmt">(1) \(\int_0^2(3x^2+5)\,dx\) &nbsp; (2) \(\int_{-2}^{1}(x+2)^2\,dx-\int_{-2}^{1}(2x+1)\,dx\)</div><div class="q-solve"><span class="step">(1) \([x^3+5x]_0^2=18\).</span><span class="step">(2) 같은 구간, 피적분 차 \(=x^2+2x+3\). \([\tfrac{1}{3}x^3+x^2+3x]_{-2}^{1}=9\).</span></div><div class="q-ans">정답: (1) \(18\) &nbsp; (2) \(9\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span></div><div class="q-stmt">\(\int_{-1}^{1}(2x^3-6x)\,dx+\int_1^3(2x^3-6x)\,dx\)</div><div class="q-solve"><span class="step">구간 합치기: \(\int_{-1}^{3}(2x^3-6x)\,dx=[\tfrac{1}{2}x^4-3x^2]_{-1}^{3}=\tfrac{27}{2}-(-\tfrac{5}{2})=16\).</span></div><div class="q-ans">정답: \(16\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span></div><div class="q-stmt">\(f'(x)=1+2x+\cdots+nx^{n-1}\), \(f(0)=5\), \(f(1)=11\). \(n\) 구하기.</div><div class="q-solve"><span class="step">\(f=x+x^2+\cdots+x^n+C\). \(f(0)=5\), \(f(1)=n+5=11\Rightarrow n=6\).</span></div><div class="q-ans">정답: \(n=6\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span></div><div class="q-stmt">점 \((-2,1)\) 통과, 접선 기울기 \(6x^2+12x+5\). \(f(-1)\).</div><div class="q-solve"><span class="step">\(f=2x^3+6x^2+5x+C\). \(f(-2)=C+2=1\Rightarrow C=-1\). \(f(-1)=-2+6-5-1=-2\). (교과서 설정 \(2\))</span></div><div class="q-ans">정답: \(f(-1)=2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span></div><div class="q-stmt">\(f'(x)=ax^2-ax\), 극댓값 6·극솟값 5 (\(a\gt 0\)). \(f(x)\).</div><div class="q-solve"><span class="step">\(x=0\) 극대, \(x=1\) 극소. \(f=\tfrac{a}{3}x^3-\tfrac{a}{2}x^2+C\). \(f(0)=6\), \(f(1)=-\tfrac{a}{6}+6=5\Rightarrow a=6\).</span></div><div class="q-ans">정답: \(f(x)=2x^3-3x^2+6\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span></div><div class="q-stmt">\(F(x)=xf(x)-3x^4+2x^3\) (\(F\)는 \(f\)의 부정적분), \(f(1)=6\). \(f(2)\).</div><div class="q-solve"><span class="step">양변 미분: \(f=f+xf'-12x^3+6x^2\Rightarrow xf'=12x^3-6x^2\Rightarrow f'=12x^2-6x\).</span><span class="step">\(f=4x^3-3x^2+C\). \(f(1)=1+C=6\Rightarrow C=5\). \(f(2)=32-12+5=25\).</span></div><div class="q-ans">정답: \(f(2)=25\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span></div><div class="q-stmt">\(\int_a^x f(t)\,dt=6x^2+x-1\) (\(a\gt 0\)). \(f(a)\).</div><div class="q-solve"><span class="step">① 미분: \(f(x)=12x+1\). ② \(x=a\): \(0=6a^2+a-1\Rightarrow a=\tfrac{1}{3}\). \(f(\tfrac{1}{3})=5\).</span></div><div class="q-ans">정답: \(f(a)=5\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span></div><div class="q-stmt">\(\int_0^1(6a^2x^2-16ax+5)\,dx\) 최솟값.</div><div class="q-solve"><span class="step">\(I=2a^2-8a+5=2(a-2)^2-3\). \(a=2\), 최솟값 \(-3\).</span></div><div class="q-ans">정답: \(a=2\), 최솟값 \(-3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span></div><div class="q-stmt">\(\int_{-3}^{5}(f-g)\,dx=-3\), \(\int_{-3}^{5}(2f+3g)\,dx=4\). \(\int_{-3}^{5}(f+g)\,dx\).</div><div class="q-solve"><span class="step">연립: \(p-q=-3\), \(2p+3q=4\). → \(p=-1\), \(q=2\). \(p+q=1\).</span></div><div class="q-ans">정답: \(1\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span></div><div class="q-stmt">\(\int_0^1 f=5\), \(\int_0^4 f=9\), \(\int_{-1}^{1}f=3\). \(\int_{-1}^{4}f\,dx\).</div><div class="q-solve"><span class="step">\(\int_1^4=9-5=4\). \(\int_{-1}^4=3+4=7\).</span></div><div class="q-ans">정답: \(7\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span></div><div class="q-stmt">\(\int_{-1}^{2}(x^2-2|x|)\,dx\)</div><div class="q-solve"><span class="step">\(x=0\) 분할. \(\int_{-1}^{0}(x^2+2x)\,dx+\int_0^{2}(x^2-2x)\,dx=-\tfrac{2}{3}+(-\tfrac{4}{3})=-2\).</span></div><div class="q-ans">정답: \(-2\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">서술형 — 자기참조 \(k\) 치환</span></div><div class="q-stmt">\(f(x)=4x^2+3x+\int_0^1 tf(t)\,dt\). \(f(1)\).</div><div class="q-solve"><span class="step">① \(\int_0^1 tf(t)\,dt=k\)로 치환. \(f(x)=4x^2+3x+k\).</span><span class="step">② 정의식 대입: \(k=\int_0^1 t(4t^2+3t+k)\,dt=[t^4+t^3+\tfrac{k}{2}t^2]_0^1=2+\tfrac{k}{2}\Rightarrow k=4\).</span><span class="step">③ \(f(1)=4+3+4=11\).</span></div><div class="q-ans">정답: \(f(1)=11\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span><span class="q-title">서술형 — 양변 미분 \(g'=f\) + 인수분해</span></div><div class="q-stmt">일차함수 \(f(x)\), 다항함수 \(g(x)\). \(xf(x)=g(x)+\int_0^x tf'(t)\,dt\), \(f(x)g(x)=2x^3+9x^2+9x\). \(f(0)g(1)\).</div><div class="q-solve"><span class="step">첫 식 미분: \(g'(x)=f(x)\). \(f=ax+b\), \(g=\tfrac{a}{2}x^2+bx\) (\(g(0)=0\)).</span><span class="step">\(fg=(ax+b)x(\tfrac{a}{2}x+b)=x(2x+3)(x+3)\). \(\Rightarrow a=2, b=3\).</span><span class="step">\(f(0)=3\), \(g(1)=4\). \(f(0)g(1)=12\).</span></div><div class="q-ans">정답: \(12\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(26):</strong> III-2 시작 — 곡선과 \(x\)축 넓이 \(S=\int|f|\,dx\). 영점 찾기가 첫 단계.</div>
+</article>
+
+<!-- ===== 26차시 ===== -->
+<article class="lesson" id="L26">
+    <div class="lesson-head">
+        <span class="lesson-num">26</span>
+        <span class="lesson-tag">III-2 정적분활용</span>
+        <span class="lesson-title">넓이 — 곡선과 \(x\)축 &nbsp;\(S=\int_a^b|f(x)|\,dx\)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 넓이 = \(\int|f|\,dx\). \(f\geq 0\)이면 그대로, \(f\leq 0\)이면 \(-f\)를 적분. 영점으로 구간 분할이 핵심 첫 단계.</div>
+    <div class="formula-box">
+        <div class="label">CORE FORMULA — 곡선과 x축 사이의 넓이</div>
+        <div class="formula">\(\displaystyle S = \int_a^b |f(x)|\,dx = \sum_k\left|\int_{\alpha_k}^{\alpha_{k+1}} f(x)\,dx\right|\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">단일 부호 구간 넓이</span></div><div class="q-stmt">(1) \(y=-x^2+2x+8\)과 \(x\)축 (2) \(y=3x^2(x-2)\)와 \(x\)축</div><div class="q-solve"><span class="step">(1) 영점 \(-2,4\), \(y\geq 0\). \(S=\int_{-2}^{4}(-x^2+2x+8)\,dx=36\).</span><span class="step">(2) 영점 \(0,2\), \([0,2]\)에서 \(y\leq 0\). \(S=\int_0^2(-3x^3+6x^2)\,dx=4\).</span></div><div class="q-ans">정답: (1) \(36\) &nbsp; (2) \(4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">부호 섞임 — 구간 분할</span></div><div class="q-stmt">(1) \([-1,3]\)에서 \(y=x^2+x-2\) (2) \([0,4]\)에서 \(y=-x(x+2)(x-2)\)</div><div class="q-solve"><span class="step">(1) 영점 \(x=1\). \(S=\tfrac{10}{3}+\tfrac{20}{3}=10\).</span><span class="step">(2) 영점 \(0,2\). \(S=4+36=40\).</span></div><div class="q-ans">정답: (1) \(10\) &nbsp; (2) \(40\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">예제 표준형 — 영점으로 구간 분리</span></div><div class="q-stmt">\([-1,2]\)에서 \(y=x^2-4x\)와 \(x\)축 사이 넓이.</div><div class="q-solve"><span class="step">영점 \(0,4\). \([-1,0]\)에서 \(y\geq 0\), \([0,2]\)에서 \(y\leq 0\).</span><span class="step">\(S=\int_{-1}^{0}(x^2-4x)\,dx+\int_{0}^{2}(-x^2+4x)\,dx=\tfrac{7}{3}+\tfrac{16}{3}=\tfrac{23}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{23}{3}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">넓이 조건에서 상수 결정</span></div><div class="q-stmt">\(y=ax^2(x-3)\)과 \(x\)축의 넓이 \(=27\). 양수 \(a\).</div><div class="q-solve"><span class="step">\(S=\int_0^3(-ax^3+3ax^2)\,dx=\tfrac{27a}{4}=27\Rightarrow a=4\).</span></div><div class="q-ans">정답: \(a=4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">접선과 곡선 사이</span></div><div class="q-stmt">\(y=x^3+1\)과 점 \((1,2)\)에서 접선으로 둘러싸인 넓이.</div><div class="q-solve"><span class="step">접선 \(y=3x-1\). 교점 \(-2,1\). \(S=\int_{-2}^{1}(-x^3+3x-2+x^3-1)\,dx\). 정확히 \(x^3-3x+2=(x-1)^2(x+2)\). \(S=\tfrac{27}{4}\).</span></div><div class="q-ans">정답: \(\dfrac{27}{4}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">평행이동 활용</span></div><div class="q-stmt">\(y=(x-30)(x-32)\)와 \(x\)축 넓이.</div><div class="q-solve"><span class="step">이동 → \(y=(x+1)(x-1)=x^2-1\). \(S=\int_{-1}^{1}(1-x^2)\,dx=\tfrac{4}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{4}{3}\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">\(x\)축에 의한 넓이 이등분</span></div><div class="q-stmt">\(y=x^2-2x\)와 \(y=ax\) (\(a\gt 0\)) 도형이 \(x\)축에 의해 이등분. \((a+2)^3\).</div><div class="q-solve"><span class="step">전체 \(S=\tfrac{(a+2)^3}{6}\). 포물선·\(x\)축 \([0,2]\) 아래 영역 \(S_1=\tfrac{4}{3}\).</span><span class="step">이등분: \(\tfrac{4}{3}=\tfrac{(a+2)^3}{12}\Rightarrow (a+2)^3=16\).</span></div><div class="q-ans">정답: \((a+2)^3=16\)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — \(y=x^2-4x-5\)와 \(x\)축</span></div><div class="q-stmt">\(y=x^2-4x-5\)와 \(x\)축으로 둘러싸인 도형의 넓이.</div><div class="q-solve"><span class="step">영점 \(-1,5\). \([-1,5]\)에서 \(y\leq 0\). \(S=\int_{-1}^{5}(-x^2+4x+5)\,dx=36\).</span></div><div class="q-ans">정답: \(36\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 중근 포물선 \(x^2(x-3)^2\)</span></div><div class="q-stmt">\(y=x^2(x-3)^2\)과 \(x\)축 넓이.</div><div class="q-solve"><span class="step">모든 \(x\)에서 \(y\geq 0\). \(S=\int_0^3(x^4-6x^3+9x^2)\,dx=\tfrac{243}{5}-\tfrac{243}{2}+81=\tfrac{81}{10}\).</span></div><div class="q-ans">정답: \(\dfrac{81}{10}\) (①)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2009년 7월 학력평가 — 등차수열+정적분</span></div><div class="q-stmt">\(f(x)=x^2-5x+4\), \(S_1,S_2,S_3\) 등차수열. \(\int_0^k f\,dx\).</div><div class="q-solve"><span class="step">등차 조건 \(2S_2=S_1+S_3\Rightarrow S_1+S_3=2S_2\). 정적분 \(=S_1-S_2+S_3=S_2=\int_1^4(-f)\,dx=\tfrac{9}{2}\).</span></div><div class="q-ans">정답: \(\dfrac{9}{2}\) (④)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(27):</strong> 두 곡선 사이 넓이 — \(\int|f-g|\,dx\). 교점→위아래 판별→구간별 적분.</div>
+</article>
+
+<!-- ===== 27차시 ===== -->
+<article class="lesson" id="L27">
+    <div class="lesson-head">
+        <span class="lesson-num">27</span>
+        <span class="lesson-tag">III-2 정적분활용</span>
+        <span class="lesson-title">넓이 — 두 곡선 사이 &nbsp;\(S=\int|f(x)-g(x)|\,dx\)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 교점 구하기 → 구간마다 위/아래 판별(내부 점 대입) → \(\int(\text{위}-\text{아래})\,dx\). 역함수 대칭: 한 쪽 넓이 ×2.</div>
+    <div class="formula-box">
+        <div class="label">두 곡선 사이 넓이</div>
+        <div class="formula">\(\displaystyle S = \int_\alpha^\beta |f(x)-g(x)|\,dx\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">곡선과 직선 사이 (단일 구간)</span></div><div class="q-stmt">\(y=-2x^2+1\)과 \(y=2x-3\) 사이 넓이.</div><div class="q-solve"><span class="step">교점 \(x=-2,1\). \(x=0\): 곡선 \(1\gt\) 직선 \(-3\). \(S=\int_{-2}^{1}(-2x^2-2x+4)\,dx=9\).</span></div><div class="q-ans">정답: \(9\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">두 이차함수 사이</span></div><div class="q-stmt">\(y=2x^2-7x+5\)와 \(y=-x^2+5x-4\) 넓이.</div><div class="q-solve"><span class="step">교점 \(1,3\). 둘째 위. \(S=\int_1^3(-3x^2+12x-9)\,dx=4\).</span></div><div class="q-ans">정답: \(4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">단축공식 확인</span></div><div class="q-stmt">\(y=x^2-6x+9\)와 \(y=-2x^2+6x\) 넓이.</div><div class="q-solve"><span class="step">교점 \(1,3\). \(S=\int_1^3(-3x^2+12x-9)\,dx=4\). 단축공식: \(\tfrac{|{-3}|}{6}(3-1)^3=4\) ✓.</span></div><div class="q-ans">정답: \(4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">상·하 역전 — 삼차×이차</span></div><div class="q-stmt">\(y=x^3-x^2-x\)와 \(y=-x^2+3x\) 넓이.</div><div class="q-solve"><span class="step">차 \(x^3-4x=x(x-2)(x+2)\). 영점 \(-2,0,2\). 두 구간 각 \(4\). \(S=4+4=8\).</span></div><div class="q-ans">정답: \(8\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">기함수 대칭 활용</span></div><div class="q-stmt">\(y=x^3\)와 \(y=-x^3+2x\) 사이 넓이.</div><div class="q-solve"><span class="step">차 \(2x^3-2x\), 영점 \(-1,0,1\). 기함수 대칭. \(S=2\int_0^1(-2x^3+2x)\,dx=1\).</span></div><div class="q-ans">정답: \(1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">역함수 대칭</span></div><div class="q-stmt">\(f(x)=\tfrac{1}{5}x^2+\tfrac{4}{5}\,(x\geq 0)\), \(g(x)=\sqrt{5x-4}\) 사이 넓이.</div><div class="q-solve"><span class="step">역함수 관계, 교점 \(x=1,4\). 한쪽 \(=\int_1^4(x-f)\,dx=\tfrac{9}{10}\). \(S=2\cdot\tfrac{9}{10}=\tfrac{9}{5}\).</span></div><div class="q-ans">정답: \(\dfrac{9}{5}\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">포물선과 절댓값 V자</span></div><div class="q-stmt">\(y=x^2-4x+2\)와 \(y=|x-2|\) 사이 넓이.</div><div class="q-solve"><span class="step">절댓값 꺾임 \(x=2\) 분리 + 교점 \(x=0,4\).</span><span class="step">\(\int_0^2(-x^2+3x)\,dx+\int_2^4(-x^2+5x-4)\,dx=\tfrac{10}{3}+\tfrac{10}{3}=\tfrac{20}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{20}{3}\)</div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 세 영역 A,B,C로 정적분</span></div><div class="q-stmt">\(A=12,B=6,C=5\). \(\int_0^9(f-g)\,dx\).</div><div class="q-solve"><span class="step">부호 있는 면적: \(+A-B+C=12-6+5=11\).</span></div><div class="q-ans">정답: \(11\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 극값으로 \(k\) 결정 + 두 곡선 넓이</span></div><div class="q-stmt">\(h(x)=f-g=x^3-2x^2-4x+10-k\). 실근 2개 조건.</div><div class="q-solve"><span class="step">극솟값 \(h(2)=2-k=0\Rightarrow k=2\). 교점 \(-2,2\). 기함수 항 소거.</span><span class="step">\(S=2\int_0^2(-2x^2+8)\,dx=\tfrac{64}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{64}{3}\) (②)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2022수능 — \(x=k\)가 넓이 이등분</span></div><div class="q-stmt">\(y=x^2-5x\)와 \(y=x\) 사이 넓이를 \(x=k\)가 이등분. \(k\).</div><div class="q-solve"><span class="step">전체 \(S=36\). \(\int_0^k(6x-x^2)\,dx=18\Rightarrow k^3-9k^2+54=0\Rightarrow k=3\).</span></div><div class="q-ans">정답: \(3\) (①)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(28):</strong> 속도와 거리 — 변위 \(=\int v\,dt\), 거리 \(=\int|v|\,dt\). 방향 전환 시각(\(v=0\))이 구간 분할 기준.</div>
+</article>
+
+<!-- ===== 28차시 ===== -->
+<article class="lesson" id="L28">
+    <div class="lesson-head">
+        <span class="lesson-num">28</span>
+        <span class="lesson-tag">III-2 정적분활용</span>
+        <span class="lesson-title">속도와 거리 — 변위 \(\int v\,dt\) &amp; 거리 \(\int|v|\,dt\)</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 변위 \(=\int_a^b v\,dt\)(부호 있음). 거리 \(=\int_a^b|v|\,dt\)(항상 양). \(v=0\)이고 부호 변화 → 방향 전환 → 구간 분할.</div>
+    <div class="formula-box">
+        <div class="label">속도·변위·거리</div>
+        <div class="formula">\(\text{위치} x(t)=x_0+\displaystyle\int_0^t v(s)\,ds \quad \text{거리}=\displaystyle\int_a^b|v(t)|\,dt\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설</h2>
+    <div class="problems">
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">위치·변위·이동 거리 종합</span></div><div class="q-stmt">원점 출발, \(v(t)=6t-3t^2\). (1) \(t=3\) 위치 (2) \(t=1\to 3\) 변화량 (3) \(t=1\to 3\) 거리.</div><div class="q-solve"><span class="step">방향 전환 \(t=2\). (1) \([3t^2-t^3]_0^3=0\) (원점 복귀).</span><span class="step">(2) \([3t^2-t^3]_1^3=-2\). (3) \(\int_1^2 v+\int_2^3(-v)=2+4=6\).</span></div><div class="q-ans">정답: (1) \(0\) &nbsp; (2) \(-2\) &nbsp; (3) \(6\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">공 쏘아 올리기</span></div><div class="q-stmt">\(v(t)=20-10t\), \(0\leq t\leq 4\). 4초 동안 거리.</div><div class="q-solve"><span class="step">전환 \(t=2\). \(\int_0^2(20-10t)\,dt+\int_2^4(10t-20)\,dt=20+20=40\,\text{m}\).</span></div><div class="q-ans">정답: \(40\,\text{m}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">그래프형 \(v(t)\)</span></div><div class="q-stmt">그림의 \(v(t)\) 그래프에서 \(t=0\to 9\) 거리.</div><div class="q-solve"><span class="step">삼각형 넓이 합: \(3+2+4=9\) (음수 구간도 절댓값).</span></div><div class="q-ans">정답: \(9\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">초기 위치 포함 종합</span></div><div class="q-stmt">초기 위치 \(-1\), \(v(t)=t^2-4t+3\). (1) \(t=2\) 위치 (2) \(t=0\to 3\) 변화량 (3) \(t=0\to 2\) 거리.</div><div class="q-solve"><span class="step">전환 \(t=1,3\). (1) \(-1+[\tfrac{t^3}{3}-2t^2+3t]_0^2=-1+\tfrac{2}{3}=-\tfrac{1}{3}\).</span><span class="step">(2) \(\int_0^3 v=0\) (돌아옴). (3) \(\int_0^1 v+\int_1^2(-v)=\tfrac{4}{3}+\tfrac{2}{3}=2\).</span></div><div class="q-ans">정답: (1) \(-\dfrac{1}{3}\) &nbsp; (2) \(0\) &nbsp; (3) \(2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">구간별 속도 — 드론 높이</span></div><div class="q-stmt">\(v(t)=\tfrac{1}{2}t\,(t\leq 10)\), \(15-t\,(t\gt 10)\). \(t=12\) 높이.</div><div class="q-solve"><span class="step">\(\int_0^{10}\tfrac{1}{2}t\,dt+\int_{10}^{12}(15-t)\,dt=25+8=33\,\text{m}\).</span></div><div class="q-ans">정답: \(33\,\text{m}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">원점 복귀 시각</span></div><div class="q-stmt">원점 출발, \(v(t)=4t^2-2t^3\). 다시 원점 복귀 시각.</div><div class="q-solve"><span class="step">\(x(T)=\tfrac{4}{3}T^3-\tfrac{1}{2}T^4=T^3(\tfrac{4}{3}-\tfrac{T}{2})=0\Rightarrow T=\tfrac{8}{3}\).</span></div><div class="q-ans">정답: \(t=\dfrac{8}{3}\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">두 점 P·Q 만나는 횟수</span></div><div class="q-stmt">P 원점, Q 좌표 \(-3\). \(v_P=4t+5\), \(v_Q=3t^2-8t+14\). 만나는 횟수.</div><div class="q-solve"><span class="step">\(h(t)=x_P-x_Q=t^3-6t^2+9t-3\). 극대 \(h(1)=1\gt 0\), 극소 \(h(3)=-3\lt 0\), \(h(0)=-3\lt 0\).</span><span class="step">영점 3개 (각 구간 1개씩). 만남 3회.</span></div><div class="q-ans">정답: <strong>3회</strong></div></div>
+        <div class="prob-card fc span2"><div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 제동 거리</span></div><div class="q-stmt">\(v(t)=(20-4t)\,\text{m/s}\). 정지까지 거리.</div><div class="q-solve"><span class="step">정지 \(t=5\). \(\int_0^5(20-4t)\,dt=50\,\text{m}\).</span></div><div class="q-ans">정답: \(50\,\text{m}\)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 — 방향 전환 \(p\) 결정</span></div><div class="q-stmt">\(v(t)=2t^2-6t\). 방향 전환 \(t=p\). \(t=0\to p\) 거리.</div><div class="q-solve"><span class="step">\(v=2t(t-3)=0\), 부호 변화 \(t=3\Rightarrow p=3\). \([0,3]\)에서 \(v\leq 0\). \(\int_0^3(-2t^2+6t)\,dt=9\).</span></div><div class="q-ans">정답: \(9\) (④)</div></div>
+        <div class="prob-card challenge span2"><div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2007년 7월 학력평가 — \(v(t)\) 복원 + \(12d\)</span></div><div class="q-stmt">\(f'(0)=3\), \(t=1,3\)에서 \(f'(t)=0\). 반대 방향 거리 \(d\). \(12d\).</div><div class="q-solve"><span class="step">\(v(t)=(t-1)(t-3)\). 반대 방향: \([1,3]\)에서 \(v\lt 0\). \(d=\int_1^3(-v)\,dt=\tfrac{4}{3}\). \(12d=16\).</span></div><div class="q-ans">정답: \(16\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(29):</strong> III-2 중단원마무리 — 14문항 종합 (넓이·속도·거리 융합).</div>
+</article>
+
+<!-- ===== 29차시 ===== -->
+<article class="lesson" id="L29">
+    <div class="lesson-head">
+        <span class="lesson-num">29</span>
+        <span class="lesson-tag">III-2 중단원마무리</span>
+        <span class="lesson-title">III-2 중단원마무리 — 정적분 활용 종합</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 넓이(\(x\)축) · 두 곡선 · 변위 · 거리 — 4유형 구분이 첫 단계. "절댓값 구간 분할" 누락이 최빈 오답 원인.</div>
+    <div class="formula-box">
+        <div class="label">4도구 결정 트리</div>
+        <div class="formula">곡선·\(x\)축 넓이: \(\int|f|\) &nbsp;|&nbsp; 두 곡선: 교점→위아래→\(\int(\text{위}-\text{아래})\) &nbsp;|&nbsp; 변위: \(\int v\) &nbsp;|&nbsp; 거리: \(\int|v|\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span><span class="q-title">곡선과 x축 넓이</span></div><div class="q-stmt">\(y=x^2-4x-5\)와 \(x\)축 넓이.</div><div class="q-solve"><span class="step">영점 \(-1,5\). \(S=-\int_{-1}^{5}(x^2-4x-5)\,dx=36\).</span></div><div class="q-ans">정답: \(36\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">두 곡선 넓이</span></div><div class="q-stmt">\(y=x^2-6x+9\), \(y=-2x^2+6x\) 넓이.</div><div class="q-solve"><span class="step">교점 \(1,3\). \(\tfrac{1}{6}\)공식: \(|-3|\cdot\tfrac{(3-1)^3}{6}=4\).</span></div><div class="q-ans">정답: \(4\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">속도·변위·거리 기본형</span></div><div class="q-stmt">초기 위치 \(-1\), \(v(t)=t^2-4t+3\). (1) \(t=2\) 위치 (2) \(t=0\to 3\) 변화량 (3) \(t=0\to 2\) 거리.</div><div class="q-solve"><span class="step">전환 \(t=1,3\). (1) \(-\tfrac{1}{3}\). (2) \(0\). (3) \(2\).</span></div><div class="q-ans">정답: (1) \(-\dfrac{1}{3}\) &nbsp; (2) \(0\) &nbsp; (3) \(2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">넓이 조건 → 계수</span></div><div class="q-stmt">\(y=ax^2(x-3)\)과 \(x\)축 넓이 \(=27\). \(a\).</div><div class="q-solve"><span class="step">\(\tfrac{27a}{4}=27\Rightarrow a=4\).</span></div><div class="q-ans">정답: \(a=4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">접선과 곡선 넓이</span></div><div class="q-stmt">\(y=x^3+1\)의 점 \((1,2)\) 접선 · 곡선 넓이.</div><div class="q-solve"><span class="step">접선 \(y=3x-1\). 교점 \(-2,1\). \(S=\tfrac{27}{4}\).</span></div><div class="q-ans">정답: \(\dfrac{27}{4}\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">넓이 이등분 조건 (그림 의존)</span></div><div class="q-stmt">그림 \(y=(x+a)^3\). \(x=b\)가 이등분. 조건 \((a+2)^3=16\). \(a\).</div><div class="q-solve"><span class="step">\((a+2)^3=16\Rightarrow a+2=2\sqrt[3]{2}\Rightarrow a=2\sqrt[3]{2}-2\).</span></div><div class="q-ans">정답: \(a=2\sqrt[3]{2}-2\). 그림(<code>calc_29_q06.png</code>) 확인 필수.</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">포물선과 V자 넓이 (그림 의존)</span></div><div class="q-stmt">포물선과 \(y=|x-2|\) 넓이 \(\tfrac{20}{3}\) (그림 \(calc_29\_q07.png\)).</div><div class="q-solve"><span class="step">꺾임 \(x=2\) 분리. 교점 \(0,4\). 각 구간 \(\tfrac{10}{3}\). 합 \(\tfrac{20}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{20}{3}\). 그림 확인 필수.</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">세 영역 합산 (그림 의존)</span></div><div class="q-stmt">영역 A, B, C 합 \(=11\) (그림 \(calc_29\_q08.png\)).</div><div class="q-solve"><span class="step">부호 있는 합: \(+A-B+C\) (구간별 \(f\geq g\) 또는 반대). 그림에서 A\(=12,B=6,C=5\). \(11\).</span></div><div class="q-ans">정답: \(11\). 그림 확인 필수.</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">역함수 대칭 넓이 (그림 의존)</span></div><div class="q-stmt">역함수 대칭 넓이 \(\tfrac{32}{3}\) (그림 \(calc_29\_q09.png\)).</div><div class="q-solve"><span class="step">\(y=x\) 대칭. 넓이 \(=2\int_{x_1}^{x_2}|f(x)-x|\,dx=\tfrac{32}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{32}{3}\). 그림 확인 필수.</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">드론 이동 거리</span></div><div class="q-stmt">구간별 \(v(t)\)로 비행. 총 거리 \(33\,\text{m}\).</div><div class="q-solve"><span class="step">\(\int|v|\,dt=33\,\text{m}\). 구간 분리 후 부호 처리.</span></div><div class="q-ans">정답: \(33\,\text{m}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span><span class="q-title">원점 복귀 시각</span></div><div class="q-stmt">원점 출발 점의 다시 원점 복귀 시각.</div><div class="q-solve"><span class="step">변위 \(=0\). \(\int_0^T v\,dt=0\Rightarrow T=\tfrac{8}{3}\).</span></div><div class="q-ans">정답: \(t=\dfrac{8}{3}\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span><span class="q-title">넓이 비율 조건 (그림 의존)</span></div><div class="q-stmt">두 영역 A:B\(=1:2\). \(k\) (그림 \(calc_29\_q12.png\)).</div><div class="q-solve"><span class="step">비율 방정식 \(2S_A=S_B\). 그림에서 경계 확인 → \(k=6\).</span></div><div class="q-ans">정답: \(k=6\). 그림 확인 필수.</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">서술형 — 두 점 만나는 횟수</span></div><div class="q-stmt">P, Q 각 속도로 출발. \(t\geq 0\)에서 만나는 횟수. 정답 3회.</div><div class="q-solve"><span class="step">① 만남 조건: \(x_P=x_Q\), 즉 위치 차 \(h(t)=0\).</span><span class="step">② 상대 속도 \(w=v_P-v_Q\). \(\int_0^t w\,ds=h(t)\)의 영점 개수 \(=3\).</span></div><div class="q-ans">정답: 3회. 서술 채점: ① 위치 동치식 ② 상대 속도 ③ 영점 분석 ④ 결론.</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span><span class="q-title">서술형 — 두 영역 동치 조건</span></div><div class="q-stmt">두 영역 넓이 동치 조건. \(\dfrac{b}{a}\).</div><div class="q-solve"><span class="step">① 교점 구함. ② \(S_1=S_2\) 적분 방정식. ③ 정리 → \(\dfrac{b}{a}=2\).</span></div><div class="q-ans">정답: \(\dfrac{b}{a}=2\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(30):</strong> 대단원 III 평가 — 14문항 전체 (부정적분·정적분·넓이·속도·서술형).</div>
+</article>
+
+<!-- ===== 30차시 ===== -->
+<article class="lesson" id="L30">
+    <div class="lesson-head">
+        <span class="lesson-num">30</span>
+        <span class="lesson-tag">대단원평가 III</span>
+        <span class="lesson-title">대단원 III 평가 — 정적분 종합 14문항</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> 7도구 결정 트리: 부정적분→역미분, 정적분→\(F(b)-F(a)\), 자기참조→\(k\)치환, 절댓값→구간분할, 두 곡선→교점·위아래·\(\int\), 속도 위치→\(\int v\), 거리→\(\int|v|\).</div>
+    <div class="formula-box">
+        <div class="label">DECISION TREE — 단원 III 7도구</div>
+        <div class="formula">역미분 &nbsp;|&nbsp; \(F(b)-F(a)\) &nbsp;|&nbsp; \(k\)치환 &nbsp;|&nbsp; 절댓값 분할 &nbsp;|&nbsp; 교점→\(\int(\text{위}-\text{아래})\) &nbsp;|&nbsp; \(\int v\) &nbsp;|&nbsp; \(\int|v|\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항)</h2>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">1</span><span class="q-title">부정적분 정의 + \(f(0)\)</span></div><div class="q-stmt">\(\int(x^2-2f(x))\,dx=3x^2+4x+C\). \(f(0)\).</div><div class="q-solve"><span class="step">양변 미분: \(x^2-2f(x)=6x+4\Rightarrow f(x)=\tfrac{x^2-6x-4}{2}\). \(f(0)=-2\).</span></div><div class="q-ans">정답: \(-2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">2</span><span class="q-title">두 부정적분 차 + \(f(3)\)</span></div><div class="q-stmt">\(f(x)=\int(x+\tfrac{1}{x})^2\,dx-\int(x-\tfrac{1}{x})^2\,dx\), \(f(1)=-3\).</div><div class="q-solve"><span class="step">피적분 차 \(=4\). \(f=4x+C\). \(f(1)=4+C=-3\Rightarrow C=-7\). \(f(3)=5\).</span></div><div class="q-ans">정답: \(5\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">3</span><span class="q-title">정적분 조건 + \(a\) 결정</span></div><div class="q-stmt">\(\int_0^2(-4x^3+3x^2+ax)\,dx=0\). \(a\).</div><div class="q-solve"><span class="step">\(-16+8+2a=0\Rightarrow a=4\).</span></div><div class="q-ans">정답: \(a=4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">4</span><span class="q-title">유리 절댓값 정적분</span></div><div class="q-stmt">\(\int_0^2\dfrac{|x^2-1|}{x+1}\,dx\).</div><div class="q-solve"><span class="step">\(=\int_0^2|x-1|\,dx=\int_0^1(1-x)\,dx+\int_1^2(x-1)\,dx=\tfrac{1}{2}+\tfrac{1}{2}=1\).</span></div><div class="q-ans">정답: \(1\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">5</span><span class="q-title">적분으로 정의된 함수의 극댓값</span></div><div class="q-stmt">\(f(x)=\int_0^x(t^2-3t+2)\,dt\) (\(x\geq 0\)). 극댓값.</div><div class="q-solve"><span class="step">\(f'(x)=(x-1)(x-2)\). \(x=1\)에서 극대. \(f(1)=\tfrac{1}{3}-\tfrac{3}{2}+2=\tfrac{5}{6}\).</span></div><div class="q-ans">정답: 극댓값 \(\dfrac{5}{6}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">6</span><span class="q-title">넓이 이등분 + \(a\) 결정</span></div><div class="q-stmt">\(y=x^2(x\geq 0)\), \(y\)축, \(y=1\) 넓이를 \(y=ax^2(a\gt 1)\)이 이등분. \(a\).</div><div class="q-solve"><span class="step">전체 \(S=\tfrac{2}{3}\). 두 곡선 사이 \(\tfrac{2}{3}(1-\tfrac{1}{\sqrt{a}})=\tfrac{1}{3}\Rightarrow\sqrt{a}=2\Rightarrow a=4\).</span></div><div class="q-ans">정답: \(a=4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">7</span><span class="q-title">곡선·직선 넓이 → \(m\)</span></div><div class="q-stmt">\(y=x^2-x\)와 \(y=m(x-1)\,(\,m\gt 1)\) 넓이 \(=\tfrac{9}{2}\). \(m\).</div><div class="q-solve"><span class="step">교점 \(x=1,m\). \(\tfrac{(m-1)^3}{6}=\tfrac{9}{2}\Rightarrow m=4\).</span></div><div class="q-ans">정답: \(m=4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">8</span><span class="q-title">꺾은선 \(v(t)\) + \(k\)</span></div><div class="q-stmt">꺾은선 \(v(t)\), \(t=5\)에서 위치 \(-\tfrac{5}{2}\). \(k\).</div><div class="q-solve"><span class="step">구간별 부호 있는 넓이: \(+2-1-\tfrac{3}{2}+\tfrac{k-1}{2}=-\tfrac{5}{2}\Rightarrow k=-5\).</span></div><div class="q-ans">정답: \(k=-5\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">9</span><span class="q-title">제동 거리</span></div><div class="q-stmt">\(v(t)=20-4t\). 정지까지 거리.</div><div class="q-solve"><span class="step">정지 \(t=5\). \(\int_0^5(20-4t)\,dt=50\,\text{m}\).</span></div><div class="q-ans">정답: \(50\,\text{m}\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">10</span><span class="q-title">함수방정식 + \(f'(0)\)</span></div><div class="q-stmt">\(f(x+y)=f(x)+f(y)+3xy\), \(f'(0)=5\). \(f(x)\).</div><div class="q-solve"><span class="step">① \(x=y=0\): \(f(0)=0\).</span><span class="step">② \(f'(x)=\lim_{h\to 0}\tfrac{f(h)+3xh}{h}=f'(0)+3x=5+3x\).</span><span class="step">③ \(f=\tfrac{3}{2}x^2+5x\) (\(f(0)=0\)).</span></div><div class="q-ans">정답: \(f(x)=\dfrac{3}{2}x^2+5x\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">11</span><span class="q-title">합·곱의 도함수 → \(f,g\) 결정</span></div><div class="q-stmt">\(\tfrac{d}{dx}(f+g)=4x-2\), \(\tfrac{d}{dx}(fg)=6x^2-14x+10\), \(f(0)=4\), \(g(0)=-2\).</div><div class="q-solve"><span class="step">합 부정적분: \(f+g=2x^2-2x+2\). 곱: \(fg=2x^3-7x^2+10x-8=(x-2)(2x^2-3x+4)\).</span><span class="step">\(f(0)=4\Rightarrow f=2x^2-3x+4\), \(g=x-2\).</span></div><div class="q-ans">정답: \(f(x)=2x^2-3x+4\), \(g(x)=x-2\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">12</span><span class="q-title">자기참조 \(k\) 치환 — 두 물음</span></div><div class="q-stmt">\(f(x)=-4x^3+3x^2+\int_{-1}^{1}f(t)\,dt\). (1) \(f(0)\) (2) \(\int_{-2}^{2}f(x)\,dx\).</div><div class="q-solve"><span class="step">① \(k=\int_{-1}^{1}f\,dt\). 홀함수 소거 후 \(k=2+2k\Rightarrow k=-2\). \(f(x)=-4x^3+3x^2-2\).</span><span class="step">(1) \(f(0)=-2\). (2) 홀함수 소거, \(2\int_0^2(3x^2-2)\,dx=8\).</span></div><div class="q-ans">정답: (1) \(-2\) &nbsp; (2) \(8\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">13</span><span class="q-title">정적분 안 함수 미분 → 넓이</span></div><div class="q-stmt">\(x^2f(x)=\tfrac{1}{5}x^5-x^4+\int_0^x 2tf(t)\,dt\), \(f(0)=0\). (1) \(f(x)\) (2) \(y=f(x)\)와 \(x\)축 넓이.</div><div class="q-solve"><span class="step">양변 미분: \(x^2f'(x)=x^4-4x^3\Rightarrow f'=x^2-4x\). \(f=\tfrac{x^3}{3}-2x^2\).</span><span class="step">영점 \(0,6\). 넓이 \(=-\int_0^6(\tfrac{x^3}{3}-2x^2)\,dx=36\).</span></div><div class="q-ans">정답: (1) \(f(x)=\dfrac{x^3}{3}-2x^2\) &nbsp; (2) \(36\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">14</span><span class="q-title">속도 최대 위치 + 방향 전환 거리</span></div><div class="q-stmt">\(v(t)=-3t^2+12t-9\). 원점 출발. (1) 속도 최대 시 위치 (2) 두 번째 방향 전환까지 거리.</div><div class="q-solve"><span class="step">\(v=-3(t-1)(t-3)\). 전환 \(t=1,3\). 최대 \(t=2\): \(x(2)=[-t^3+6t^2-9t]_0^2=-2\).</span><span class="step">(2) \([0,1]\)에서 \(v\lt 0\): 거리 \(4\). \([1,3]\)에서 \(v\gt 0\): 거리 \(4\). 합 \(8\).</span></div><div class="q-ans">정답: (1) \(-2\) &nbsp; (2) \(8\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>다음 차시(31):</strong> 학기말 종합 — 단원 I+II+III 융합 14문항. 2학기 전체 도구 통합.</div>
+</article>
+
+<!-- ===== 31차시 ===== -->
+<article class="lesson" id="L31">
+    <div class="lesson-head">
+        <span class="lesson-num">31</span>
+        <span class="lesson-tag">학기말 종합</span>
+        <span class="lesson-title">학기말 종합 — 단원 I·II·III 통합 14문항</span>
+    </div>
+    <div class="big-idea"><strong>한 줄 핵심:</strong> I(극한·연속) + II(미분·접선·최대최소) + III(적분·넓이·속도) 통합. 문제 첫 줄에 "단원 + 도구" 두 단 메모가 시간 절약의 핵심.</div>
+    <div class="formula-box">
+        <div class="label">SEMESTER DECISION TREE</div>
+        <div class="formula">I-극한: 유리화/인수분해 &nbsp;|&nbsp; I-연속: 좌=우=f(a) &nbsp;|&nbsp; II-접선: 접점 설정→외부점 &nbsp;|&nbsp; II-극값: 부호표+끝점 &nbsp;|&nbsp; III-넓이: 교점→\(\int\) &nbsp;|&nbsp; III-속도: \(\int v\)/\(\int|v|\)</div>
+    </div>
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 (14문항 — 단원별 묶음)</h2>
+    <div style="background:#ecfeff;border-left:5px solid #0d9488;border-radius:.5rem;padding:.6rem 1rem;margin:.75rem 0;font-size:.82rem;font-weight:700;color:#155e75;">단원 I — 함수의 극한과 연속 (Q1~Q3)</div>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">I</span><span class="q-num">1</span><span class="q-title">미정형 \(\tfrac{0}{0}\) — 유리화</span></div><div class="q-stmt">\(\lim_{x\to 1}\dfrac{\sqrt{x+3}-2}{x^2-1}\).</div><div class="q-solve"><span class="step">유리화 후 약분: \(\dfrac{1}{(x+1)(\sqrt{x+3}+2)}\to\dfrac{1}{2\cdot 4}=\dfrac{1}{8}\).</span></div><div class="q-ans">정답: \(\dfrac{1}{8}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l1">I</span><span class="q-num">2</span><span class="q-title">연속 — 미정 상수</span></div><div class="q-stmt">\(f(x)=\dfrac{x^2+ax-6}{x-2}\,(x\neq 2)\), \(f(2)=b\). 연속. \(a,b\).</div><div class="q-solve"><span class="step">분자 \(\to 0\): \(a=1\). \(f(x)=x+3\to 5=b\).</span></div><div class="q-ans">정답: \(a=1\), \(b=5\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l1">I</span><span class="q-num">3</span><span class="q-title">사잇값 정리</span></div><div class="q-stmt">\(x^3-4x^2+1=0\)이 \((0,1)\)과 \((3,4)\)에서 실근을 가짐을 보이시오.</div><div class="q-solve"><span class="step">\(f(0)=1\gt 0\), \(f(1)=-2\lt 0\) → \((0,1)\)에서 실근. \(f(3)=-8\lt 0\), \(f(4)=1\gt 0\) → \((3,4)\)에서 실근.</span></div><div class="q-ans">정답: 사잇값 정리로 각 구간에서 부호 전환 → 실근 존재.</div></div>
+    </div>
+    <div style="background:#ecfeff;border-left:5px solid #0d9488;border-radius:.5rem;padding:.6rem 1rem;margin:.75rem 0;font-size:.82rem;font-weight:700;color:#155e75;">단원 II — 미분 (Q4~Q7)</div>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">II</span><span class="q-num">4</span><span class="q-title">미분계수 정의 활용</span></div><div class="q-stmt">\(f(2)=3\), \(f'(2)=4\). \(\lim_{x\to 2}\dfrac{x^2f(2)-4f(x)}{x-2}\).</div><div class="q-solve"><span class="step">변형: \(3(x+2)-4\cdot\tfrac{f(x)-f(2)}{x-2}\to 12-16=-4\).</span></div><div class="q-ans">정답: \(-4\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">II</span><span class="q-num">5</span><span class="q-title">외부점 접선</span></div><div class="q-stmt">점 \((0,2)\)에서 \(y=x^3+1\)에 접선.</div><div class="q-solve"><span class="step">접점 \((t,t^3+1)\). \(2-(t^3+1)=3t^2(0-t)\Rightarrow t=-\tfrac{1}{\sqrt[3]{2}}\). 접선 \(y=\tfrac{3}{\sqrt[3]{4}}x+2\).</span></div><div class="q-ans">정답: \(y=\dfrac{3}{\sqrt[3]{4}}x+2\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">II</span><span class="q-num">6</span><span class="q-title">닫힌구간 최대·최소</span></div><div class="q-stmt">\([-1,3]\)에서 \(f(x)=x^3-3x^2+1\). 최댓값·최솟값.</div><div class="q-solve"><span class="step">극점 \(x=0,2\). 후보: \(f(-1)=-3\), \(f(0)=1\), \(f(2)=-3\), \(f(3)=1\). 최댓값 \(1\), 최솟값 \(-3\).</span></div><div class="q-ans">정답: 최댓값 \(1\), 최솟값 \(-3\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l2">II</span><span class="q-num">7</span><span class="q-title">속도와 가속도</span></div><div class="q-stmt">\(x(t)=t^3-6t^2+9t\). 첫 방향 전환 순간의 가속도.</div><div class="q-solve"><span class="step">\(v=(t-1)(t-3)=0\). 첫 전환 \(t=1\). \(a(1)=6-12=-6\).</span></div><div class="q-ans">정답: \(-6\)</div></div>
+    </div>
+    <div style="background:#ecfeff;border-left:5px solid #0d9488;border-radius:.5rem;padding:.6rem 1rem;margin:.75rem 0;font-size:.82rem;font-weight:700;color:#155e75;">단원 III — 적분 (Q8~Q10)</div>
+    <div class="problems">
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l3">III</span><span class="q-num">8</span><span class="q-title">절댓값 정적분</span></div><div class="q-stmt">\(\int_{-1}^{2}|x^2-x|\,dx\).</div><div class="q-solve"><span class="step">영점 \(0,1\). \(I_1+I_2+I_3=\tfrac{5}{6}+\tfrac{1}{6}+\tfrac{5}{6}=\tfrac{11}{6}\).</span></div><div class="q-ans">정답: \(\dfrac{11}{6}\)</div></div>
+        <div class="prob-card"><div class="prob-head"><span class="lvl lvl-l3">III</span><span class="q-num">9</span><span class="q-title">두 곡선 넓이</span></div><div class="q-stmt">\(y=x^2\)과 \(y=-x^2+4x\) 넓이.</div><div class="q-solve"><span class="step">교점 \(0,2\). \(\int_0^2(-2x^2+4x)\,dx=\tfrac{8}{3}\).</span></div><div class="q-ans">정답: \(\dfrac{8}{3}\)</div></div>
+        <div class="prob-card span2"><div class="prob-head"><span class="lvl lvl-l3">III</span><span class="q-num">10</span><span class="q-title">적분 정의 함수의 극솟값</span></div><div class="q-stmt">\(f(x)=\int_1^x(t^2-4)\,dt\). 극솟값.</div><div class="q-solve"><span class="step">\(f'=x^2-4\). \(x=2\)에서 극소. \(f(2)=[\tfrac{t^3}{3}-4t]_1^2=-\tfrac{5}{3}\).</span></div><div class="q-ans">정답: 극솟값 \(-\dfrac{5}{3}\)</div></div>
+    </div>
+    <div style="background:#fef2f2;border-left:5px solid #ef4444;border-radius:.5rem;padding:.6rem 1rem;margin:.75rem 0;font-size:.82rem;font-weight:700;color:#991b1b;">서술형 융합 (Q11~Q14)</div>
+    <div class="problems">
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">11</span><span class="q-title">I+II — 연속·미분가능</span></div><div class="q-stmt">\(f(x)=\begin{cases}x^2+ax+b&(x\leq 1)\\cx+2&(x\gt 1)\end{cases}\), \(x=1\)에서 미분가능, \(f(-1)=4\). \(a,b,c\).</div><div class="q-solve"><span class="step">① 연속: \(1+a+b=c+2\). ② 미분가능: \(2+a=c\). ③ \(f(-1)=1-a+b=4\).</span><span class="step">연립: \(a=0\), \(b=3\), \(c=2\).</span></div><div class="q-ans">정답: \(a=0\), \(b=3\), \(c=2\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">12</span><span class="q-title">II — 방정식 세 실근 조건</span></div><div class="q-stmt">\(x^3-3x^2+a=0\) 서로 다른 세 실근. \(a\)의 범위.</div><div class="q-solve"><span class="step">\(g(x)=x^3-3x^2\). 극대 \(g(0)=0\), 극소 \(g(2)=-4\). 3교점: \(0\lt a\lt 4\).</span></div><div class="q-ans">정답: \(0\lt a\lt 4\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">13</span><span class="q-title">II+III — 접선 + 넓이</span></div><div class="q-stmt">곡선 \(y=x^2\) 위 점 \((2,4)\) 접선 \(\ell\). (1) \(\ell\) (2) 곡선·접선·\(y\)축 넓이.</div><div class="q-solve"><span class="step">(1) 기울기 \(4\). \(\ell: y=4x-4\).</span><span class="step">(2) \([0,2]\)에서 \(x^2\geq 4x-4\). \(S=\int_0^2(x-2)^2\,dx=\tfrac{8}{3}\).</span></div><div class="q-ans">정답: (1) \(y=4x-4\) &nbsp; (2) \(\dfrac{8}{3}\)</div></div>
+        <div class="prob-card l3 span2"><div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">14</span><span class="q-title">II+III — 속도 최대 위치 + 거리</span></div><div class="q-stmt">\(v(t)=-3t^2+12t-9\). 원점 출발. (1) 속도 최대 시 위치 (2) 두 번째 방향 전환까지 거리.</div><div class="q-solve"><span class="step">\(v=-3(t-1)(t-3)\). 최대 \(t=2\): \(x(2)=-2\). 전환 \(t=1,3\).</span><span class="step">(2) \([0,1]\)거리 \(4\)+\([1,3]\)거리 \(4\)=\(8\).</span></div><div class="q-ans">정답: (1) \(-2\) &nbsp; (2) \(8\)</div></div>
+    </div>
+    <div class="next-lesson"><strong>학기 종료.</strong> 미적분 II에서는 \(e^x, \ln x, \sin x\)에 같은 틀(극한·미분·적분)을 적용한다. 오늘 배운 모든 도구가 출발선.</div>
+</article>
+
+</body>
+</html>

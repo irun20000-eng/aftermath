@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 31차시 학기말 종합 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        /* TEACHER'S GUIDE 워터마크 */
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        /* 차시 페이지 */
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        /* 50분 타임라인 */
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        /* 생각 열기 운영 */
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        /* 공식 박스 */
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        /* 문항 카드 */
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-card.unit-i { background: #eff6ff; border-color: #bfdbfe; }
+        .prob-card.unit-ii { background: #f0fdf4; border-color: #a7f3d0; }
+        .prob-card.unit-iii { background: #faf5ff; border-color: #ddd6fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .lvl-ui { background: #dbeafe; color: #1e3a8a; }
+        .lvl-uii { background: #d1fae5; color: #064e3b; }
+        .lvl-uiii { background: #ede9fe; color: #581c87; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        /* 단원 구분 헤더 (학습지_31 unit-divider 패턴 동기화) */
+        .unit-divider { background: linear-gradient(90deg, #f0fdfa 0%, #e0f2fe 100%); border-radius: .75rem; padding: .875rem 1.25rem; margin: 1.25rem 0 .75rem 0; border-left: 6px solid #0d9488; }
+        .unit-divider.unit-ii-bar { background: linear-gradient(90deg, #f0fdf4 0%, #ecfdf5 100%); border-left-color: #16a34a; }
+        .unit-divider.unit-iii-bar { background: linear-gradient(90deg, #faf5ff 0%, #f3e8ff 100%); border-left-color: #7c3aed; }
+        .unit-divider h3 { font-size: 1rem; font-weight: 900; color: #0f766e; margin-bottom: .2rem; }
+        .unit-divider.unit-ii-bar h3 { color: #15803d; }
+        .unit-divider.unit-iii-bar h3 { color: #6b21a8; }
+        .unit-divider p { font-size: .8rem; color: #475569; }
+
+        /* 형성평가 루브릭 */
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        /* 성찰 우수 예시 */
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        /* 메모 영역 */
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        /* 네비 / 인쇄 버튼 */
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_30_대단원평가_III.html">← 대단원 평가 III 가이드</a>
+        <a href="교사용_학습지_미적분I_31_학기말종합.html" target="aftermath_ws_calc_31" class="ws-link">학습지 보기 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">31</span>
+        <span class="lesson-tag">학기말 종합 I·II·III</span>
+        <span class="lesson-title">학기말 종합 — 단원 I·II·III 통합 14문항 (객관 10 + 서술형 4)</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> 30차시의 도구가 단원별로 묶여 있었다면, 오늘은 <strong>단원 구분 없이 어떤 도구든 즉각 꺼낼 수 있는가</strong>를 묻는 학기 최종 점검. 융합 서술형(I+II, II+III)이 핵심.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-01~03] 단원 I·II·III 전체 종합 + 서술형 풀이 문장 구성 능력.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">01~30차시 전체. 특히 연속·미분가능 조건(I+II), 접선+넓이(II+III), 속도와 거리(II+III).</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 단원 tag 보고 도구 즉각 선택 ② 단원 I·II·III 통합 사고 ③ 서술형 4단계 논리 전개 + 검증.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> "단원 I·II·III 도구 트리"를 칠판에 요약 판서. 학기 전체 흐름도 (극한→미분→적분) 한 줄로 정리 후 단원별 배지(badge) 색 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 펼치고 단원 구분 badge 색 확인 (파란=I, 초록=II, 보라=III).</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">풀이 42'</div>
+            <div class="tl-t"><strong>교사:</strong> 단원 I (Q1~3) 7분: 유리화·연속·사잇값. 단원 II (Q4~7) 14분: 미분계수·접선·최대최소·속도. 단원 III (Q8~10) 7분: 절댓값 정적분·두 곡선 넓이·적분 극값. 서술형 (Q11~14) 14분: I+II 연속·미분가능, 방정식 실근, II+III 접선+넓이, 속도·거리.</div>
+            <div class="tl-s"><strong>학생:</strong> 각 문항 첫 줄에 "단원 + 도구" 2단 메모 후 풀이. 서술형은 "근거→식→결론" 3단 구성 의식.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 학기 전체 오답률 Top 3 요약 (I: 미정형 유리화 누락, II: 부호표 끝점 비교 누락, III: 절댓값 구간 분할 누락). 학기말 성찰 QR + 미적분 II 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 학기말 종합 성찰 3유형 중 하나 이상 체크.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 학기 회고 발문 (학기말 종합 도입)</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "2학기 30차시에 걸쳐 배운 단원 I·II·III의 도구 중, 오늘 학기말 종합에서 가장 자신 있는 도구 하나와 가장 불안한 도구 하나를 각각 골라보자. 그 차이는 어디에서 생겼을까?"</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"자신 있는 건 부정적분 기계적 계산, 불안한 건 I+II 연속·미분가능 조건 연립."</span><br><span class="fb"><strong>피드백:</strong> 연속 조건(좌=우, 함숫값 일치)과 미분가능(좌도함수=우도함수) 두 조건식을 번호 매겨 동시 쓰는 습관을 오늘 만들기.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"극한 미정형은 자신 있지만, 적분 정의된 함수의 극값은 미분 후 부호표 단계가 헷갈린다."</span><br><span class="fb"><strong>피드백:</strong> 미분 기본정리 → \(f'(x)=\) 피적분함수 → 인수분해 → 부호표 → 극점. 이 5단계 흐름이 오늘 Q10의 핵심.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"II+III 융합인 접선+넓이가 생소하다."</span><br><span class="fb"><strong>피드백:</strong> 접선식(미분) 먼저 → 영역 경계 확정 → 위아래 판별 → 정적분. 두 단원이 순서대로 나열될 뿐.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>미적분 II 예고:</strong> 오늘 배운 극한·미분·적분의 정의는 다항함수에서만 통하는 게 아니다 — \(e^x, \ln x, \sin x\) 모두 같은 틀로 확장된다. 학기말 종합이 미적분 II로의 출발선.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 학기 전체 통합 도구 트리 + 융합 포인트</h2>
+
+    <div class="formula-box">
+        <div class="label">SEMESTER DECISION TREE — 단원 tag 보고 0.5초 선택</div>
+        <div class="formula">
+            I-극한: <strong>유리화/인수분해/미정계수</strong> &nbsp;|&nbsp;
+            I-연속: <strong>좌=우=f(a)</strong> &nbsp;|&nbsp;
+            II-미분계수: <strong>\(\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}\) 변형</strong> &nbsp;|&nbsp;
+            II-접선: <strong>접점 설정→기울기→외부점 대입</strong> &nbsp;|&nbsp;
+            II-극값/최대: <strong>도함수 부호표+끝점</strong> &nbsp;|&nbsp;
+            III-정적분: <strong>원함수 대입+절댓값 분할</strong> &nbsp;|&nbsp;
+            III-넓이: <strong>교점→위아래→\(\int\)</strong> &nbsp;|&nbsp;
+            III-속도거리: <strong>\(\int v\) 위치 / \(\int|v|\) 거리</strong>
+        </div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 융합 서술형 판서 시연 — 단원 I+II (연속·미분가능):</strong>
+        <ol>
+            <li>연속 조건: \(\lim_{x\to a^-}f(x) = \lim_{x\to a^+}f(x) = f(a)\) → 등식 (가) 도출.</li>
+            <li>미분가능 조건: 좌도함수 = 우도함수 → 등식 (나) 도출.</li>
+            <li>추가 조건 (예: \(f(-1)=4\)) → 등식 (다) 도출.</li>
+            <li>(가)+(나)+(다) 연립 → \(a, b, c\) 유일 결정. 검증 (대입 확인) 필수.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>융합 포인트 ①:</strong> I+II 연속·미분가능 — "연속은 함숫값 일치, 미분가능은 도함수 일치"를 두 조건 식으로 각각 쓴다. 하나만 쓰면 감점.</div>
+    <div class="q-warn"><strong>융합 포인트 ②:</strong> II+III 접선+넓이 — 접선식 도출(II 미분)이 먼저, 그다음 정적분으로 넓이(III). 순서 바꾸면 식 구성 불가.</div>
+    <div class="q-warn"><strong>융합 포인트 ③:</strong> II+III 속도·거리 — 속도 인수분해+부호표(II)는 III 구간 분할의 전제. 부호표 없이 \(\int|v|\) 구간 분할은 불가.</div>
+
+    <!-- E. 문항별 해설 카드 — 단원별 묶음 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (14문항 — 단원별 묶음 + 서술형)</h2>
+
+    <!-- 단원 I 구분 -->
+    <div class="unit-divider">
+        <h3>📘 단원 I. 함수의 극한과 연속 — Q1~Q3</h3>
+        <p>극한 유리화 · 연속 미정 상수 · 사잇값 정리</p>
+    </div>
+
+    <div class="problems">
+        <!-- Q1 단원 I -->
+        <div class="prob-card unit-i">
+            <div class="prob-head"><span class="lvl lvl-ui">I</span><span class="q-num">1</span><span class="q-title">미정형 \(\dfrac{0}{0}\) — 유리화</span></div>
+            <div class="q-stmt">\(\displaystyle\lim_{x\to 1}\dfrac{\sqrt{x+3}-2}{x^2-1}\).</div>
+            <div class="q-solve">
+                <span class="step">분자 유리화: \(\dfrac{(\sqrt{x+3}-2)(\sqrt{x+3}+2)}{(x^2-1)(\sqrt{x+3}+2)} = \dfrac{x-1}{(x-1)(x+1)(\sqrt{x+3}+2)}\).</span>
+                <span class="step">약분 후 \(x\to 1\): \(\dfrac{1}{2\cdot 4} = \dfrac{1}{8}\).</span>
+            </div>
+            <div class="q-ans">정답: \(\dfrac{1}{8}\)</div>
+        </div>
+
+        <!-- Q2 단원 I -->
+        <div class="prob-card unit-i">
+            <div class="prob-head"><span class="lvl lvl-ui">I</span><span class="q-num">2</span><span class="q-title">연속 — 미정 상수 \(a, b\)</span></div>
+            <div class="q-stmt">\(f(x)=\begin{cases}\dfrac{x^2+ax-6}{x-2}&(x\neq 2)\\b&(x=2)\end{cases}\) \(x=2\)에서 연속. \(a, b\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">분모→0, 극한 유한 → 분자→0: \(4+2a-6=0\) → \(a=1\).</span>
+                <span class="step">분자 \(=x^2+x-6=(x-2)(x+3)\). 극한 \(=\lim_{x\to 2}(x+3)=5=b\).</span>
+            </div>
+            <div class="q-ans">정답: \(a=1\), \(b=5\)</div>
+        </div>
+
+        <!-- Q3 단원 I (span2) -->
+        <div class="prob-card unit-i span2">
+            <div class="prob-head"><span class="lvl lvl-ui">I</span><span class="q-num">3</span><span class="q-title">사잇값 정리 — 실근 존재 증명</span></div>
+            <div class="q-stmt">\(x^3-4x^2+1=0\)이 \((0,1)\)과 \((3,4)\)에서 각각 실근을 가짐을 사잇값 정리로 보이시오.</div>
+            <div class="q-solve">
+                <span class="step">\(f(x)=x^3-4x^2+1\) 다항함수 → 연속. \(f(0)=1\gt 0\), \(f(1)=-2\lt 0\). → \((0,1)\)에서 실근 존재.</span>
+                <span class="step">\(f(3)=27-36+1=-8\lt 0\), \(f(4)=64-64+1=1\gt 0\). → \((3,4)\)에서 실근 존재.</span>
+            </div>
+            <div class="q-ans">정답: 사잇값 정리 적용. \((0,1)\)에서 부호 \(+\to-\), \((3,4)\)에서 부호 \(-\to+\). 각 구간에서 실근 존재.</div>
+        </div>
+    </div>
+
+    <!-- 단원 II 구분 -->
+    <div class="unit-divider unit-ii-bar">
+        <h3>📗 단원 II. 미분 — Q4~Q7</h3>
+        <p>미분계수 변형 · 접선(외부점) · 닫힌구간 최대최소 · 속도와 가속도</p>
+    </div>
+
+    <div class="problems">
+        <!-- Q4 단원 II -->
+        <div class="prob-card unit-ii">
+            <div class="prob-head"><span class="lvl lvl-uii">II</span><span class="q-num">4</span><span class="q-title">미분계수 정의 활용</span></div>
+            <div class="q-stmt">\(f(2)=3\), \(f'(2)=4\). \(\displaystyle\lim_{x\to 2}\dfrac{x^2 f(2)-4f(x)}{x-2}\).</div>
+            <div class="q-solve">
+                <span class="step">분자 \(=3x^2-4f(x)\). \(x=2\) 대입 시 \(12-12=0\) (부정형).</span>
+                <span class="step">변형: \(3(x-2)(x+2)-4(f(x)-f(2))\). 나누면 \(3(x+2)-4\cdot\dfrac{f(x)-f(2)}{x-2}\).</span>
+                <span class="step">\(x\to 2\): \(3\cdot 4-4\cdot 4=12-16=-4\).</span>
+            </div>
+            <div class="q-ans">정답: \(-4\)</div>
+        </div>
+
+        <!-- Q5 단원 II -->
+        <div class="prob-card unit-ii">
+            <div class="prob-head"><span class="lvl lvl-uii">II</span><span class="q-num">5</span><span class="q-title">접선의 방정식 — 외부점</span></div>
+            <div class="q-stmt">점 \((0,2)\)에서 곡선 \(y=x^3+1\)에 그은 접선 구하기.</div>
+            <div class="q-solve">
+                <span class="step">접점 \((t, t^3+1)\), 기울기 \(3t^2\). 점 \((0,2)\) 통과: \(2-(t^3+1)=3t^2(0-t)\).</span>
+                <span class="step">\(1-t^3=-3t^3\) → \(2t^3=-1\) → \(t=-\dfrac{1}{\sqrt[3]{2}}\). 기울기 \(=\dfrac{3}{\sqrt[3]{4}}\).</span>
+                <span class="step">접선: \(y=\dfrac{3}{\sqrt[3]{4}}x+2\) (단 한 개).</span>
+            </div>
+            <div class="q-ans">정답: \(y=\dfrac{3}{\sqrt[3]{4}}\,x+2\)</div>
+            <div class="q-warn"><strong>판서 포인트:</strong> 외부점 접선은 접점 \(t\) 설정→외부점 대입 방정식 풀기. 이 문항은 실수 근이 1개.</div>
+        </div>
+
+        <!-- Q6 단원 II -->
+        <div class="prob-card unit-ii">
+            <div class="prob-head"><span class="lvl lvl-uii">II</span><span class="q-num">6</span><span class="q-title">닫힌구간 최대·최소</span></div>
+            <div class="q-stmt">\([-1,3]\)에서 \(f(x)=x^3-3x^2+1\). 최댓값·최솟값.</div>
+            <div class="q-solve">
+                <span class="step">\(f'(x)=3x(x-2)=0\) → \(x=0, 2\). 후보: \(f(-1)=-3\), \(f(0)=1\), \(f(2)=-3\), \(f(3)=1\).</span>
+                <span class="step">최댓값 \(1\) (x=0 또는 x=3), 최솟값 \(-3\) (x=-1 또는 x=2).</span>
+            </div>
+            <div class="q-ans">정답: 최댓값 \(1\), 최솟값 \(-3\)</div>
+        </div>
+
+        <!-- Q7 단원 II -->
+        <div class="prob-card unit-ii">
+            <div class="prob-head"><span class="lvl lvl-uii">II</span><span class="q-num">7</span><span class="q-title">속도와 가속도 — 첫 방향 전환</span></div>
+            <div class="q-stmt">\(x(t)=t^3-6t^2+9t\). 처음 방향 전환 순간의 가속도.</div>
+            <div class="q-solve">
+                <span class="step">\(v(t)=3t^2-12t+9=3(t-1)(t-3)\). 부호: \(0\lt t\lt 1\) 양, \(t\gt 1\) 음. 첫 전환 \(t=1\).</span>
+                <span class="step">\(a(t)=6t-12\). \(a(1)=6-12=-6\).</span>
+            </div>
+            <div class="q-ans">정답: 가속도 \(-6\)</div>
+        </div>
+    </div>
+
+    <!-- 단원 III 구분 -->
+    <div class="unit-divider unit-iii-bar">
+        <h3>📕 단원 III. 적분 — Q8~Q10</h3>
+        <p>절댓값 정적분 · 두 곡선 넓이 · 적분으로 정의된 함수의 극값</p>
+    </div>
+
+    <div class="problems">
+        <!-- Q8 단원 III -->
+        <div class="prob-card unit-iii">
+            <div class="prob-head"><span class="lvl lvl-uiii">III</span><span class="q-num">8</span><span class="q-title">절댓값 정적분 — 3구간 분할</span></div>
+            <div class="q-stmt">\(\displaystyle\int_{-1}^{2}|x^2-x|\,dx\).</div>
+            <div class="q-solve">
+                <span class="step">부호 변환점: \(x(x-1)=0\) → \(x=0, 1\). 3구간 분할.</span>
+                <span class="step">\(I_1=\int_{-1}^{0}(x^2-x)\,dx=\dfrac{5}{6}\), \(I_2=\int_0^1(x-x^2)\,dx=\dfrac{1}{6}\), \(I_3=\int_1^2(x^2-x)\,dx=\dfrac{5}{6}\).</span>
+                <span class="step">합 \(=\dfrac{5}{6}+\dfrac{1}{6}+\dfrac{5}{6}=\dfrac{11}{6}\).</span>
+            </div>
+            <div class="q-ans">정답: \(\dfrac{11}{6}\)</div>
+        </div>
+
+        <!-- Q9 단원 III -->
+        <div class="prob-card unit-iii">
+            <div class="prob-head"><span class="lvl lvl-uiii">III</span><span class="q-num">9</span><span class="q-title">두 곡선 사이의 넓이</span></div>
+            <div class="q-stmt">\(y=x^2\)과 \(y=-x^2+4x\) 사이 넓이.</div>
+            <div class="q-solve">
+                <span class="step">교점: \(2x^2-4x=0\) → \(x=0, 2\). \([0,2]\)에서 \(-x^2+4x\gt x^2\).</span>
+                <span class="step">\(\int_0^2(-2x^2+4x)\,dx=\left[-\dfrac{2x^3}{3}+2x^2\right]_0^2=-\dfrac{16}{3}+8=\dfrac{8}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: \(\dfrac{8}{3}\)</div>
+        </div>
+
+        <!-- Q10 단원 III (span2) -->
+        <div class="prob-card unit-iii span2">
+            <div class="prob-head"><span class="lvl lvl-uiii">III</span><span class="q-num">10</span><span class="q-title">적분으로 정의된 함수의 극솟값</span></div>
+            <div class="q-stmt">\(f(x)=\displaystyle\int_1^x (t^2-4)\,dt\). 극솟값.</div>
+            <div class="q-solve">
+                <span class="step">\(f'(x)=x^2-4=(x-2)(x+2)=0\) → \(x=\pm 2\). 부호: \(x\lt -2\) 양, \(-2\lt x\lt 2\) 음, \(x\gt 2\) 양.</span>
+                <span class="step">\(x=-2\)에서 극대, \(x=2\)에서 극소.</span>
+                <span class="step">\(f(2)=\left[\dfrac{t^3}{3}-4t\right]_1^2=\left(\dfrac{8}{3}-8\right)-\left(\dfrac{1}{3}-4\right)=\dfrac{7}{3}-4=-\dfrac{5}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: 극솟값 \(-\dfrac{5}{3}\)</div>
+        </div>
+    </div>
+
+    <!-- 서술형 구분 -->
+    <div style="background:#fef2f2;border-left:6px solid #ef4444;border-radius:.75rem;padding:.875rem 1.25rem;margin:1.25rem 0 .75rem 0;">
+        <h3 style="font-size:1rem;font-weight:900;color:#991b1b;margin-bottom:.2rem;">✍️ 서술형 문제 [Q11~Q14] — 단원 간 융합</h3>
+        <p style="font-size:.8rem;color:#475569;">I+II 연속·미분가능 / II 방정식 실근 / II+III 접선+넓이 / II+III 속도·거리. "근거→식→결론" 3단 구성 필수.</p>
+    </div>
+
+    <div class="problems">
+        <!-- Q11 서술형 I+II (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">11</span><span class="q-title">I+II 융합 — 연속·미분가능 조건 → \(a,b,c\)</span></div>
+            <div class="q-stmt">\(f(x)=\begin{cases}x^2+ax+b&(x\leq 1)\\cx+2&(x\gt 1)\end{cases}\) \(x=1\)에서 미분가능, \(f(-1)=4\). \(a,b,c\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">① 연속: \(1+a+b=c+2\) → \(a+b-c=1\) ...(가).</span>
+                <span class="step">② 미분가능: 좌도함수 \(f'_-(1)=2+a\), 우도함수 \(f'_+(1)=c\). 같음: \(c=a+2\) ...(나).</span>
+                <span class="step">③ \(f(-1)=1-a+b=4\) → \(b-a=3\) ...(다).</span>
+                <span class="step">(나)→(가): \(a+(a+3)-(a+2)=1\) → \(a+1=1\) → \(a=0\). 따라서 \(b=3\), \(c=2\).</span>
+                <span class="step">검증: \(f(1^-)=4\), \(f(1^+)=4\) ✓, \(f'_-(1)=2\), \(f'_+(1)=2\) ✓, \(f(-1)=4\) ✓.</span>
+            </div>
+            <div class="q-ans">정답: \(a=0\), \(b=3\), \(c=2\)</div>
+            <div class="q-warn"><strong>서술 채점 포인트:</strong> ① 연속 조건식 ② 미분가능 조건식 ③ \(f(-1)=4\) 조건식 ④ 연립 풀이+검증 — 4단계 모두 명시.</div>
+        </div>
+
+        <!-- Q12 서술형 II 중심 (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">12</span><span class="q-title">II 중심 — 방정식 세 실근 조건</span></div>
+            <div class="q-stmt">\(x^3-3x^2+a=0\)이 서로 다른 세 실근. \(a\)의 범위.</div>
+            <div class="q-solve">
+                <span class="step">보조함수 \(g(x)=x^3-3x^2\), 수평선 \(y=-a\)가 3점 교점 조건.</span>
+                <span class="step">\(g'(x)=3x(x-2)=0\) → 극대 \(g(0)=0\), 극소 \(g(2)=-4\).</span>
+                <span class="step">3교점: \(-4\lt -a\lt 0\) → \(0\lt a\lt 4\).</span>
+            </div>
+            <div class="q-ans">정답: \(0 \lt a \lt 4\)</div>
+            <div class="q-warn"><strong>서술 채점 포인트:</strong> 보조함수 정의, 극값 좌표 명시, 극값 사이 수평선 교점 3개 조건 → 부등식 도출.</div>
+        </div>
+
+        <!-- Q13 서술형 II+III (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">13</span><span class="q-title">II+III 융합 — 접선 + 넓이</span></div>
+            <div class="q-stmt">곡선 \(y=x^2\) 위 점 \((2,4)\)에서 접선 \(\ell\). (1) \(\ell\)의 방정식 (2) 곡선·접선·\(y\)축으로 둘러싼 넓이.</div>
+            <div class="q-solve">
+                <span class="step">(1) \(y'=2x\), \(x=2\) 기울기 \(4\). 접선: \(y=4x-4\).</span>
+                <span class="step">(2) 영역 \(x\in[0,2]\). \(x^2-(4x-4)=(x-2)^2\geq 0\) → 곡선이 항상 위.</span>
+                <span class="step">넓이 \(=\int_0^2(x-2)^2\,dx=\left[\dfrac{(x-2)^3}{3}\right]_0^2=0-\left(-\dfrac{8}{3}\right)=\dfrac{8}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(y=4x-4\) &nbsp; (2) \(\dfrac{8}{3}\)</div>
+            <div class="q-warn"><strong>서술 채점 포인트:</strong> 접선식 도출, 위아래 판별 (제곱 차 \(\geq 0\)), 정적분 계산 — 3단계 명시.</div>
+        </div>
+
+        <!-- Q14 서술형 II+III (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">14</span><span class="q-title">II+III 융합 — 속도·위치·거리</span></div>
+            <div class="q-stmt">\(v(t)=t^2-6t+8\). 원점 출발. (1) \(t=5\) 위치 (2) \(t=5\)까지 움직인 거리.</div>
+            <div class="q-solve">
+                <span class="step">인수분해: \(v(t)=(t-2)(t-4)\). 부호: \(0\lt t\lt 2\) 양, \(2\lt t\lt 4\) 음, \(t\gt 4\) 양.</span>
+                <span class="step">(1) \(x(5)=\int_0^5 v\,dt=\left[\dfrac{t^3}{3}-3t^2+8t\right]_0^5=\dfrac{125}{3}-75+40=\dfrac{20}{3}\).</span>
+                <span class="step">(2) \(\int_0^2 v\,dt=\dfrac{20}{3}\). \(\int_2^4 v\,dt=-\dfrac{4}{3}\) (절댓값 \(\dfrac{4}{3}\)). \(\int_4^5 v\,dt=\dfrac{4}{3}\).</span>
+                <span class="step">거리 \(=\dfrac{20}{3}+\dfrac{4}{3}+\dfrac{4}{3}=\dfrac{28}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) 위치 \(\dfrac{20}{3}\) &nbsp; (2) 거리 \(\dfrac{28}{3}\)</div>
+            <div class="q-warn"><strong>서술 채점 포인트:</strong> \(v\) 인수분해+부호표, 위치 정적분 계산, 구간 분할 움직인 거리 \(\int|v|\) — 4단계.</div>
+        </div>
+    </div>
+
+    <!-- F. 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 채점 루브릭 — 학기말 종합 서술형 Q11~Q14 (각 25점, 합 100점)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 학기말 서술형 채점 기준</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">4문항 모두 채점 포인트 전체 명시 + 정확한 계산 + 검증.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">75~90</div><div class="desc">3~4문항 핵심 단계 도달. 1문항 계산 실수 또는 검증 누락.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">2~3문항 접근 성공, 나머지 전제 도출만 진행. 답 틀려도 조건식 명시 시 부분점.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">25</div><div class="desc">1문항만 접근 시도.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "학기말 서술형은 조건식 + 식 변형 + 결론 3단계만 있어도 부분점. 백지 절대 금지."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 학기말 종합 성찰 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 학기 전체 통합 통찰 (극한 → 미분 → 적분)</span>
+            <span class="rtbody">"2학기 미적분 I 전체를 정리하면서 '극한 → 미분 → 적분 → 활용'이라는 한 줄의 흐름으로 묶을 수 있다는 게 보였다. 단원 I의 극한 정의가 단원 II의 미분계수 \(\lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h}\)와 단원 III의 구분구적법 정적분을 동시에 떠받치는 도구였고, 미분과 적분이 \(\dfrac{d}{dx}\int_a^x f(t)\,dt=f(x)\)와 \(\int_a^b f'(x)\,dx=f(b)-f(a)\)로 역연산 관계를 이룬다는 게 흐름도로 한눈에 잡혔다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 학기 전체 실수 분석 Top 3</span>
+            <span class="rtbody">"학기 30차시 일지를 분석해보니 ① 단원 I에서 \(\dfrac{0}{0}\) 미정형이면 인수분해·유리화 안 한 채 대입, ② 단원 II에서 도함수 부호표·양 끝점 비교 빠뜨림, ③ 단원 III에서 \(|f|\) 정적분에서 부호 변환점 구간 분할 빠뜨림 세 가지였다. '① 미정형 확인 → ② 미분 후 부호표 + 끝점 → ③ \(|f|\)면 변환점에서 구간 분할' 3단계 체크리스트를 학기말 직전에 반복한다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 학기 마무리 — 미적분 II로의 다리</span>
+            <span class="rtbody">"미분·적분의 정의 \(\lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h}\)나 정적분이 다항함수에서만 통하는 게 아니라 보편적인 정의라는 걸 알게 됐다. 미적분 II에서 \(e^x, \ln x, \sin x\)로 확장돼도 같은 틀이 그대로 통할 것 같다. 학기에서 가장 인상적이었던 건 미적분의 기본정리였고, 미분과 적분이 역연산이라는 한 줄로 두 단원이 묶이는 게 깔끔했다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록 + 학기 종강 소감)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

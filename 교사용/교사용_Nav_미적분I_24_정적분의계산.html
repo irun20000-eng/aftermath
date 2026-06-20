@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 24차시 정적분의 계산 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_23_정적분의정의.html">← 이전 차시</a>
+        <a href="교사용_학습지_미적분I_24_정적분의계산.html" target="aftermath_ws_calc_24" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_미적분I_25_중단원마무리_III_1.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">24</span>
+        <span class="lesson-tag">III-1 부정적분과 정적분</span>
+        <span class="lesson-title">정적분의 계산 — 미적분의 기본정리와 절댓값 정적분</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> \(\displaystyle\int_a^b f(x)\,dx = F(b) - F(a)\) — 부정적분의 차로 정적분을 계산하는 <strong>미적분의 기본정리</strong>가 오늘 단원의 정점.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-03-03] 미적분의 기본정리를 이해하고 정적분을 계산한다.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">22차시 부정적분 공식, 23차시 정의·약속·적분미분 관계. 절댓값의 부호 분기(단원 I).</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 기본정리 \([F(x)]_a^b\) 표기법 ② 선형성·구간 분할 ③ 절댓값 정적분 4단계 ④ 연립으로 정적분 결정.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "23차시 정의로 \(\int_0^1 x^2\,dx\)를 어떻게 구하겠는가?" — 도형으로는 불가능함을 확인 후 부정적분 \(\dfrac{1}{3}x^3\)으로 연결. \(F(1) - F(0) = \dfrac{1}{3}\) 판서.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 Thinking Space에 \(\dfrac{1}{3}x^3 + C\)에서 \(C\)가 소거됨을 직접 확인.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 기본정리 → \([F(x)]_a^b\) 표기법 → 선형성(부정적분과 동일) → 구간 분할 → 절댓값 포함 정적분 순서. 영점 찾기 → 구간 나누기 → 부호 살리기 → 합산의 4단계를 색깔로 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 개념 구성 4블록에서 각 reveal-box 직접 클릭. 블록 4의 예시 \(\int_{-2}^{1}|x+1|\,dx\)를 단계별로 따라 계산.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~3번) 짝활동 5분 — 1번 각 4항 순서대로 \([F]_a^b\) 표기 연습. 2번은 전개 후 합치기, 3번은 구간 분할 직관. L2(4~6번) 10분 — 4번 연립, 5번 \(a\)에 관한 이차함수 완전제곱, 6번 연속 조건 활용.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 계산 후 검산(미분으로 역방향). 6번은 \(f(1^-) = f(1)\) 연속 조건 명시.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(절댓값 정적분 함정) — "통째로 적분하려다 막힌다"는 패턴을 먼저 말하게 한 뒤 함정 경고 클릭. \(x=0\) 분할을 색깔로 판서. 8번은 구간 합치기 연습.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 \(-\tfrac{2}{3} + (-\tfrac{4}{3}) = -2\) 검산. 8번 \(\int_{-1}^4 = \int_{-1}^1 + \int_1^4\) 분할 경로 명시.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "적분상수 \(C\)가 왜 정적분에서 사라지는가?" 1명 발표. 도전 1·2 과제 및 25차시(중단원 마무리) 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰지 3유형 중 하나 이상. 도전 1·2 과제.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "22차시 부정적분 \(F(x) = \dfrac{1}{3}x^3\)와 23차시 적분미분 관계 \(S'(x) = f(x)\)를 합치면 어떤 한 줄 공식이 나올 것 같은가?"</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"\(\int_0^1 x^2\,dx = \dfrac{1}{3}\)일 것 같다."</span><br><span class="fb"><strong>피드백:</strong> 정확! \(F(1) - F(0) = \dfrac{1}{3} - 0 = \dfrac{1}{3}\). 오늘 배울 기본정리가 이것. 곡선 아래 면적을 도형 없이 단 한 줄로 계산.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"\(+C\)가 결과에 남을 것 같다."</span><br><span class="fb"><strong>피드백:</strong> 실제로는 \(F(b)+C - (F(a)+C)\)에서 \(C\)가 소거됨. 오늘 개념 블록 1에서 직접 확인하자.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"아직 잘 모르겠다."</span><br><span class="fb"><strong>피드백:</strong> 22차시 부정적분 공식 \(\int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C\)에 \(x=1, x=0\)을 대입하여 차를 구하면 된다. 오늘 그 과정을 체계화한다.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>23차시 연결:</strong> \(S(x) = \int_a^x f(t)\,dt\)가 \(f\)의 부정적분이므로 \(S(b) = F(b) - F(a)\). 기본정리는 23차시 적분미분 관계의 직접적 귀결.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
+
+    <div class="formula-box">
+        <div class="label">FUNDAMENTAL THEOREM OF CALCULUS — 미적분의 기본정리</div>
+        <div class="formula">\( \displaystyle \int_a^b f(x)\,dx = \big[F(x)\big]_a^b = F(b) - F(a) \quad (F'(x) = f(x)) \)</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 5단계:</strong>
+        <ol>
+            <li>\(\big[F(x)\big]_a^b = F(b) - F(a)\) 표기법과 "위끝 먼저, 아래끝 나중"을 확실히 각인.</li>
+            <li>\(\int_1^3 x\,dx = \big[\tfrac{1}{2}x^2\big]_1^3 = \tfrac{9}{2} - \tfrac{1}{2} = 4\). 적분상수 \(C\)를 쓰지 않아도 되는 이유 설명.</li>
+            <li>선형성: \(\int_a^b kf = k\int_a^b f\), \(\int_a^b(f+g) = \int_a^b f + \int_a^b g\). 부정적분과 동일.</li>
+            <li>구간 분할: \(\int_a^c + \int_c^b = \int_a^b\) — \(F(c)-F(a) + F(b)-F(c) = F(b)-F(a)\) 대수적 증명.</li>
+            <li>절댓값: \(\int_{-2}^{1}|x+1|\,dx\) → 영점 \(x=-1\) → \([-2,-1]\)과 \([-1,1]\) 분할 → 부호별 적분 → 합산.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>오개념 ①:</strong> "\(\int_a^b f\,dx = F(a) - F(b)\)" — 위끝 \(b\)가 먼저, 아래끝 \(a\)가 나중. 순서 반전 실수 잦음.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "\(\int_{-1}^{2}|x|\,dx = \int_{-1}^{2}x\,dx\)" — 절댓값 \(\neq\) 그냥 \(x\). \(x \lt 0\) 구간에서 \(|x| = -x\).</div>
+    <div class="q-warn"><strong>오개념 ③:</strong> "구간 분할 시 \(c\)가 \([a,b]\) 안에 있어야 한다" — \(c\)가 바깥에 있어도 자동 성립.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (L1 1~3 · L2 4~6 · L3 7 · 형성 8 · 도전 1·2)</h2>
+
+    <div class="problems">
+        <!-- L1 1번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">기본정리로 다항함수 정적분</span></div>
+            <div class="q-stmt">(1) \(\int_{-2}^{2}3x^2\,dx\) (2) \(\int_0^4 x^3\,dx\) (3) \(\int_1^3 4x\,dx\) (4) \(\int_{-2}^{1}5x^4\,dx\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \([x^3]_{-2}^{2} = 8 - (-8) = 16\).</span>
+                <span class="step">(2) \([\tfrac{1}{4}x^4]_0^4 = 64 - 0 = 64\).</span>
+                <span class="step">(3) \([2x^2]_1^3 = 18 - 2 = 16\).</span>
+                <span class="step">(4) \([x^5]_{-2}^{1} = 1 - (-32) = 33\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(16\) (2) \(64\) (3) \(16\) (4) \(33\)</div>
+        </div>
+
+        <!-- L1 2번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">선형성과 구간 분할</span></div>
+            <div class="q-stmt">(1) \(\int_0^2(8x^3-x+5)\,dx\) &nbsp; (2) \(\int_{-1}^3(x+1)^3\,dx - \int_{-1}^3(x-1)^3\,dx\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \([2x^4 - \tfrac{1}{2}x^2 + 5x]_0^2 = 32 - 2 + 10 = 40\).</span>
+                <span class="step">(2) 피적분 차: \((x+1)^3 - (x-1)^3 = 6x^2 + 2\). \([2x^3 + 2x]_{-1}^{3} = 60 - (-4) = 64\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(40\) &nbsp; (2) \(64\)</div>
+        </div>
+
+        <!-- L1 3번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">구간 분할로 합치기</span></div>
+            <div class="q-stmt">(1) \(\int_0^5(4x^3+x)\,dx + \int_5^2(4x^3+x)\,dx\) &nbsp; (2) \(\int_{-1}^4(x+2)^2\,dx - \int_2^4(x+2)^2\,dx\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(\int_0^5 + \int_5^2 = \int_0^2\). \([x^4+\tfrac{1}{2}x^2]_0^2 = 16 + 2 = 18\).</span>
+                <span class="step">(2) \(\int_{-1}^4 - \int_2^4 = \int_{-1}^2\). \([\tfrac{1}{3}(x+2)^3]_{-1}^{2} = \tfrac{64}{3} - \tfrac{1}{3} = 21\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(18\) &nbsp; (2) \(21\)</div>
+        </div>
+
+        <!-- L2 4번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">선형결합 연립으로 정적분 결정</span></div>
+            <div class="q-stmt">\(\int_{-3}^{5}\{f-g\}\,dx = -3\), \(\int_{-3}^{5}\{2f+3g\}\,dx = 4\). \(\int_{-3}^{5}\{f+g\}\,dx\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">\(p = \int_{-3}^{5}f\), \(q = \int_{-3}^{5}g\)로 치환. ① \(p - q = -3\), ② \(2p + 3q = 4\).</span>
+                <span class="step">연립: \(①\times2: 2p - 2q = -6\). ②-①×2: \(5q = 10 \Rightarrow q = 2\), \(p = -1\).</span>
+                <span class="step">답: \(p + q = 1\).</span>
+            </div>
+            <div class="q-ans">정답: \(1\)</div>
+        </div>
+
+        <!-- L2 5번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">정적분의 최솟값 (\(a\)에 관한 이차함수)</span></div>
+            <div class="q-stmt">\(\int_0^1(6a^2x^2-16ax+5)\,dx\) 최솟값과 그때의 \(a\).</div>
+            <div class="q-solve">
+                <span class="step">적분: \([2a^2x^3-8ax^2+5x]_0^1 = 2a^2-8a+5\).</span>
+                <span class="step">\(I(a) = 2(a-2)^2 - 3\). 최솟값: \(a = 2\), \(I = -3\).</span>
+            </div>
+            <div class="q-ans">정답: \(a = 2\)일 때 최솟값 \(-3\)</div>
+        </div>
+
+        <!-- L2 6번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">구간별 도함수 → 연속 조건으로 \(f(-1)\)</span></div>
+            <div class="q-stmt">\(f'(x) = x - 3\,\,(x \geq 1)\), \(-2x^2\,\,(x \lt 1)\). \(f(2) = -2\)일 때 \(f(-1)\).</div>
+            <div class="q-solve">
+                <span class="step">\(x \geq 1\): \(f(x) = \tfrac{1}{2}x^2 - 3x + C_1\). \(f(2) = 2-6+C_1=-2 \Rightarrow C_1=2\). \(f(1) = \tfrac{1}{2}-3+2 = -\tfrac{3}{2}\).</span>
+                <span class="step">\(x \lt 1\): \(f(x) = -\tfrac{2}{3}x^3 + C_2\). 연속: \(-\tfrac{2}{3}+C_2 = -\tfrac{3}{2} \Rightarrow C_2 = -\tfrac{5}{6}\).</span>
+                <span class="step">\(f(-1) = \tfrac{2}{3} - \tfrac{5}{6} = -\tfrac{1}{6}\).</span>
+            </div>
+            <div class="q-ans">정답: \(f(-1) = -\dfrac{1}{6}\)</div>
+        </div>
+
+        <!-- L3 7번 (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 절댓값 정적분 — 구간 분할 함정</span></div>
+            <div class="q-stmt">\(\int_{-1}^{2}(x^2-2|x|)\,dx\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(x = 0\)에서 부호 변경. \(\int_{-1}^0 + \int_0^2\)로 분할.</span>
+                <span class="step">STEP 2: \(x \in [-1,0]\): \(|x| = -x\) → 피적분 \(= x^2 + 2x\). \(x \in [0,2]\): \(|x| = x\) → 피적분 \(= x^2 - 2x\).</span>
+                <span class="step">STEP 3: \([\tfrac{1}{3}x^3+x^2]_{-1}^0 = 0 - (-\tfrac{1}{3}+1) = -\tfrac{2}{3}\).</span>
+                <span class="step">STEP 4: \([\tfrac{1}{3}x^3-x^2]_0^2 = \tfrac{8}{3}-4 = -\tfrac{4}{3}\). 합: \(-\tfrac{2}{3} - \tfrac{4}{3} = -2\).</span>
+            </div>
+            <div class="q-ans">정답: \(-2\). 핵심: 절댓값 → 부호 바뀌는 점 찾기 → 구간 분할 → 부호별 적분 → 합산.</div>
+            <div class="q-warn"><strong>발표 포인트:</strong> "왜 \(x = 0\)에서 나누는가?"를 학생에게 묻는다. "\(|x|\)가 \(x \lt 0\)이면 \(-x\), \(x \geq 0\)이면 \(x\)이므로 부호 경계에서 나눠야 한다."</div>
+        </div>
+
+        <!-- 형성평가 8번 (span2 fc) -->
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 구간 합치기로 정적분 계산</span></div>
+            <div class="q-stmt">\(\int_0^1 f = 5\), \(\int_0^4 f = 9\), \(\int_{-1}^{1}f = 3\). \(\int_{-1}^{4}f\,dx\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">① \(\int_1^4 = \int_0^4 - \int_0^1 = 9 - 5 = 4\).</span>
+                <span class="step">② \(\int_{-1}^4 = \int_{-1}^1 + \int_1^4 = 3 + 4 = 7\).</span>
+            </div>
+            <div class="q-ans">정답: \(7\). 핵심: 구간을 자유롭게 끊어 잇는 발상이 핵심.</div>
+        </div>
+
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 부정적분과 정적분 유제 5</span></div>
+            <div class="q-stmt">\(\int_0^3|x^2-2x|\,dx + \int_0^2(x^2-2x)\,dx\)의 값은? ① \(\dfrac{1}{3}\) ② \(\dfrac{2}{3}\) ③ \(1\) ④ \(\dfrac{4}{3}\) ⑤ \(\dfrac{5}{3}\)</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: 영점 \(x(x-2)=0 \Rightarrow x=0,2\). \([0,2]\)에서 \(x^2-2x \leq 0\), \([2,3]\)에서 \(\geq 0\).</span>
+                <span class="step">STEP 2: \(\int_0^3|x^2-2x|\,dx = -\int_0^2(x^2-2x)\,dx + \int_2^3(x^2-2x)\,dx\).</span>
+                <span class="step">STEP 3: 원식 \(= -\int_0^2(x^2-2x)\,dx + \int_2^3(x^2-2x)\,dx + \int_0^2(x^2-2x)\,dx = \int_2^3(x^2-2x)\,dx\).</span>
+                <span class="step">STEP 4: \([\tfrac{x^3}{3}-x^2]_2^3 = (9-9) - (\tfrac{8}{3}-4) = \dfrac{4}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ \(\dfrac{4}{3}\)</strong>. 핵심: \([0,2]\) 구간의 두 정적분이 부호 반대로 상쇄 → \(\int_2^3\)만 남음.</div>
+        </div>
+
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2024학년도 수능 공통 8번 [3점]</span></div>
+            <div class="q-stmt">삼차함수 \(f(x)\)가 \(xf(x) - f(x) = 3x^4 - 3x\). \(\int_{-2}^{2}f(x)\,dx\)는? ① \(12\) ② \(16\) ③ \(20\) ④ \(24\) ⑤ \(28\)</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \((x-1)f(x) = 3x(x-1)(x^2+x+1)\) → \(f(x) = 3x(x^2+x+1) = 3x^3+3x^2+3x\).</span>
+                <span class="step">STEP 2: \(3x^3, 3x\)는 기함수 → \(\int_{-2}^{2} = 0\). \(3x^2\)은 우함수.</span>
+                <span class="step">STEP 3: \(\int_{-2}^{2}3x^2\,dx = 2\int_0^2 3x^2\,dx = 2[x^3]_0^2 = 2 \cdot 8 = 16\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② 16</strong>. 핵심: 공통 인수 \((x-1)\) 약분 → 기함수·우함수 분리 → 대칭 구간 정적분.</div>
+        </div>
+    </div>
+
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">\(\int_1^4 = \int_0^4 - \int_0^1 = 4\) 도출 + \(\int_{-1}^4 = 3 + 4 = 7\) 두 단계 모두 근거 명시.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">\(\int_1^4\) 계산은 맞으나 \(\int_{-1}^1\)과 합치는 분할 경로 서술 누락.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">답은 맞으나 근거 없이 "더하면 된다"로만 서술.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">주어진 세 정적분을 단순 합산 시도 (\(5+9+3\) 등).</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "구간 분할 성질 \(\int_a^c + \int_c^b = \int_a^b\)를 써서 \(\int_1^4\)부터 따로 구해야 한다."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화</span>
+            <span class="rtbody">"\(S(x) = \int_a^x f(t)\,dt\)가 \(f\)의 부정적분이므로 \(S(a) = 0\)에서 \(C = -F(a)\). 따라서 \(S(b) = F(b) - F(a)\). 기본정리가 23차시의 귀결이라는 게 보였다. \(+C\)가 차로 인해 자동 소거되는 것도 이제 당연하게 느껴진다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 결정적 실수와 극복</span>
+            <span class="rtbody">"\(\int_0^3|x^2-1|\,dx\)를 통째로 넣으려다 막혔다. '① 영점 \(x=\pm1\) → ② 구간 분할 \([0,1], [1,3]\) → ③ 음수 구간에 \(-\) 붙이기 → ④ 합산' 4단계 카드를 만들었다. 절댓값이 나오면 반드시 1단계부터 시작."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성</span>
+            <span class="rtbody">"기본정리로 정적분이 \(F(b)-F(a)\) 한 줄로 정리됐다. 다음 단원에서 곡선 아래 넓이·두 곡선 사이·속도-거리에 이게 쓰일 텐데, 미분 단원의 속도가 적분에서 거리로 연결되는 큰 그림이 미리 보인다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

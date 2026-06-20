@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-2 도함수의 활용 · 차시 14 함수의 증가와 감소 · Agent A5 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 함수의 증가와 감소</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_14';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        .sign-table { border-collapse: collapse; margin: 1rem auto; font-size: 1rem; }
+        .sign-table th, .sign-table td { border: 1.5px solid #94a3b8; padding: 0.5rem 1rem; text-align: center; font-weight: 700; }
+        .sign-table th { background: #f1f5f9; color: #0f172a; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "14차시 함수의 증가와 감소";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">14차시: 함수의 증가와 감소</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_미적분I_13_평균값정리.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_미적분I_15_극대와극소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">롤러코스터의 레일을 떠올려 보자. <strong>"높이가 높아지는 구간"</strong>과 <strong>"낮아지는 구간"</strong>이 번갈아 나타난다. 이를 좌표평면 위 함수의 <strong>증가·감소</strong>로 옮기면, 그 판정 도구가 무엇일까?</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 함수 \(f(x) = x^3 - 3x^2 + 1\)의 그래프를 머릿속에 그려 보자. 어디서 증가하고 어디서 감소하는가? 그 판정에 <strong>도함수 \(f'(x)\)의 부호</strong>를 어떻게 사용할 수 있을지 추측해 보자.</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 차시 13의 <strong>평균값 정리</strong>에 의하면 \(\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)\). 양변의 부호가 같으므로 <span class="calc-accent font-bold">\(f'(c) \gt 0\)이면 함수의 값이 증가, \(f'(c) \lt 0\)이면 감소</span>. 평균값 정리가 "증감 판정 정리"의 정당화 도구 그 자체임을 오늘 정착시킨다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 증가·감소의 정의 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        함수의 증가와 감소 — 정의
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 어떤 구간에 속하는 임의의 두 실수 \(x_1, x_2\)에 대하여</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ul class="space-y-2 text-lg font-medium">
+                            <li>① \(x_1 \lt x_2\)일 때 \(f(x_1) \lt f(x_2)\) \(\Rightarrow\) \(f\)는 그 구간에서 <span class="calc-accent font-bold">증가</span>한다.</li>
+                            <li>② \(x_1 \lt x_2\)일 때 \(f(x_1) \gt f(x_2)\) \(\Rightarrow\) \(f\)는 그 구간에서 <span class="calc-accent font-bold">감소</span>한다.</li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 증가·감소는 <strong>"구간 단위"</strong>로 말한다. \(x = a\)라는 한 점 자체가 "증가"한다고 말하지 않는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.78 · 증가·감소의 정의 참고)</span></p>
+                </div>
+
+                <!-- 2. 정의에 의한 증감 보이기 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        정의에 의한 증감 보이기 — \(f(x) = x^2\) 예시
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x) = x^2\)이 구간 \([0, \infty)\)에서 증가함을 보이자.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base">\(0 \leq x_1 \lt x_2\)인 임의의 두 실수에 대해</p>
+                        <p class="text-base mt-2 text-center">\( f(x_2) - f(x_1) = x_2^2 - x_1^2 = (x_2 - x_1)(x_2 + x_1) \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \gt 0 \)</span></span></p>
+                        <p class="text-base mt-2">이므로 \(f(x_1) \lt f(x_2)\). 따라서 \(f\)는 \([0, \infty)\)에서 증가한다. \(\blacksquare\)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한계:</strong> 함수가 복잡해지면 \(f(x_2) - f(x_1)\)의 부호를 인수분해로 보이기 어렵다. 일반적인 도구가 필요 \(\to\) <strong>도함수의 부호</strong>. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.79 · 예제 1 참고)</span></p>
+                </div>
+
+                <!-- 3. 도함수 부호 판정 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        도함수 부호로 증감 판정 — 평균값 정리의 따름정리
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 어떤 열린구간 \((a, b)\)에서 미분가능할 때:</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① 그 구간의 모든 \(x\)에 대해 \(f'(x) \gt 0\)이면 \(f\)는 그 구간에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">증가</span></span>한다.</li>
+                            <li>② 그 구간의 모든 \(x\)에 대해 \(f'(x) \lt 0\)이면 \(f\)는 그 구간에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">감소</span></span>한다.</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>정당화:</strong> 평균값 정리에서 \(\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)\) (\(c \in (x_1, x_2)\)). 분모 \(x_2 - x_1 \gt 0\)이므로 분자 \(f(x_2) - f(x_1)\)의 부호와 \(f'(c)\)의 부호가 일치.</p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>⚠ 역은 일반적으로 거짓:</strong> \(f(x) = x^3\)은 \((-\infty, \infty)\)에서 증가하지만 \(f'(0) = 0\). 즉 "증가하면 \(f' \gt 0\)"은 항상 참은 아니다 — <strong>"\(f' \geq 0\)이고 등호가 고립된 점에서만 성립"</strong>까지 확장해야 정확. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.79~80 · 증가·감소의 판정 + \(x^3\) 반례 참고)</span></p>
+                </div>
+
+                <!-- 4. 증감표 작성 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        증감표(Sign Table) 작성법 — 함수 \(f(x) = x^3 - 3x^2 + 1\)
+                    </h3>
+                    <p class="mb-3 text-slate-700">3단계 루틴: ① \(f'(x)\) 구하기 ② \(f'(x) = 0\)의 해 찾기 ③ \(f'\)의 부호를 영역별로 조사하여 표 작성.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-2">\(f'(x) = 3x^2 - 6x = 3x(x - 2)\). \(f'(x) = 0 \Rightarrow x = 0\) 또는 \(x = 2\).</p>
+                        <table class="sign-table">
+                            <thead>
+                                <tr>
+                                    <th>\(x\)</th><th>\(\cdots\)</th><th>\(0\)</th><th>\(\cdots\)</th><th>\(2\)</th><th>\(\cdots\)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>\(f'(x)\)</th><td>\(+\)</td><td>\(0\)</td><td>\(-\)</td><td>\(0\)</td><td>\(+\)</td>
+                                </tr>
+                                <tr>
+                                    <th>\(f(x)\)</th><td>↗</td><td>\(1\)</td><td>↘</td><td>\(-3\)</td><td>↗</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-base mt-3">따라서 \(f\)는 구간 \((-\infty, 0]\), \([2, \infty)\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">증가</span></span>하고, 구간 \([0, 2]\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">감소</span></span>한다.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 증감표는 단원 II-2 전체(증감·극값·그래프·방정식과 부등식)의 <strong>공통 작업판</strong>. 매번 정확히 작성하는 습관이 후속 차시 15~18 전체의 기반. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.80 · 예제 2 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">증감표 직접 작성 — 도함수 부호 판정의 기본 루틴</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-증감 조사 (삼차·사차함수)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 증가와 감소를 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.81 · 문제 02 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = -2x^3 + 3x^2 + 12x - 3 \) &nbsp;&nbsp;
+                                (2) \( f(x) = 2x^3 + 6x^2 + 6x + 7 \) &nbsp;&nbsp;
+                                (3) \( f(x) = -x^3 - 6x + 1 \) &nbsp;&nbsp;
+                                (4) \( f(x) = x^4 - 2x^2 + 5 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> ① \(f'(x) = -6x^2 + 6x + 12 = -6(x - 2)(x + 1)\). \(f' = 0 \Rightarrow x = -1, 2\). 증감: \([-1, 2]\) 증가, \((-\infty, -1]\)·\([2, \infty)\) 감소. ② \(f'(x) = 6x^2 + 12x + 6 = 6(x + 1)^2 \geq 0\) (등호 \(x = -1\)에서만) \(\Rightarrow\) 모든 실수에서 증가. ③ \(f'(x) = -3x^2 - 6 \lt 0\) (항상 음) \(\Rightarrow\) 모든 실수에서 감소. ④ \(f'(x) = 4x^3 - 4x = 4x(x - 1)(x + 1)\). \(f' = 0 \Rightarrow x = -1, 0, 1\). 증감: \([-1, 0]\)·\([1, \infty)\) 증가, \((-\infty, -1]\)·\([0, 1]\) 감소.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-구간 한정 증감</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \(f(x) = x^3 - 12x + 5\)가 구간 \([-2, 2]\)에서 증가하는 구간과 감소하는 구간을 각각 찾으시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.80 · 예제 2 변형 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)\). \(f'(x) = 0 \Rightarrow x = \pm 2\). 구간 \([-2, 2]\) 내부에서 \(f'(x) \lt 0\) 일관 \(\Rightarrow\) 전 구간 감소. 따라서 \([-2, 2]\)에서 \(f\)는 감소하고, 증가 구간은 없다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-증감과 현실 (전하량)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 시각 \(t\)에서 어느 전선의 한 단면을 지나는 전하량 \(Q(t)\,\mathrm{C}\)이 \( Q(t) = t^3 - 6t^2 + 9t + 2 \) (단, \(t \geq 0\))일 때, 전하량이 <strong>감소하는</strong> 시각 \(t\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.81 · 문제 03 (수학+과학) 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(Q'(t) = 3t^2 - 12t + 9 = 3(t - 1)(t - 3)\). 감소 \(\Leftrightarrow Q'(t) \lt 0 \Leftrightarrow 1 \lt t \lt 3\). 따라서 \(1 \lt t \lt 3\)에서 전하량이 감소.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">매개변수 + "항상 증가" 조건 — \(f' \geq 0\)의 판별식 활용</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-실수 전체에서 증가하는 삼차함수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 삼차함수 \( f(x) = x^3 + ax^2 + 3x + 1 \)이 구간 \((-\infty, \infty)\)에서 증가하도록 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 06번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 3x^2 + 2ax + 3\). 실수 전체에서 증가 \(\Leftrightarrow f'(x) \geq 0\) (모든 \(x\)). \(f'\)는 위로 볼록한 포물선이 아닌 <strong>아래로 볼록</strong>한 이차함수이므로 판별식 \(D \leq 0\). \(D/4 = a^2 - 9 \leq 0 \Rightarrow -3 \leq a \leq 3\). <strong>핵심:</strong> 삼차의 일계도함수는 이차 \(\Rightarrow\) "모든 \(x\)에서 \(\geq 0\)" 조건은 <strong>최고차계수 \(\gt 0\) + 판별식 \(\leq 0\)</strong>의 결합. (등호 포함은 \(f'(x) = 0\)이 고립된 점에서만 성립할 때 함수가 여전히 증가함을 활용.)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-구간 한정 + 매개변수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \( f(x) = 2x^3 - 9x^2 + 12x + k \)가 구간 \([0, 3]\)에서 <strong>감소</strong>하는 구간이 존재하지 않도록 하는 실수 \(k\)의 값의 범위를 구하시오. (단, "감소하는 구간이 존재하지 않음"은 그 구간에서 함수가 일관 증가함을 뜻한다.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 3 함정 기반 변형)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2)\). 구간 \([0, 3]\) 내부에 \(f'(x) = 0\)인 점 \(x = 1, 2\)가 있고 \(1 \lt x \lt 2\)에서 \(f'(x) \lt 0\) — <strong>이 부분이 감소 구간</strong>. \(k\)의 값과 무관하게 \(f'\)의 부호 분포는 동일하므로, "감소 구간이 존재하지 않도록 하는 \(k\)"는 <strong>존재하지 않는다</strong>. 핵심: 도함수의 부호는 평행이동 \(k\)와 무관 \(\Rightarrow\) <strong>"이런 \(k\)는 없다"가 정답</strong>. (수업 중 함정 분석으로 사용 가능. 학생들은 "\(k\) 범위가 있다"고 가정하기 쉽다.)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-수리 언어 소양: 도함수의 그래프로 증감 읽기</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림은 이차함수 \(f(x)\)와 삼차함수 \(g(x)\)의 <strong>도함수</strong> \(y = f'(x)\), \(y = g'(x)\)의 그래프이다. 두 함수 \(f(x), g(x)\)의 증가와 감소를 조사하고 그 이유를 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.81 · 문제 04 (수리 언어 소양) 참고)</span>
+                            <div class="mt-3 flex justify-center">
+                                <img src="images/calc_14_q5_derivgraph.png" alt="P.81 f'(x), g'(x) 그래프" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:260px;">
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> <strong>\(f'(x)\) 그래프(직선·증가형)</strong>: \(x = a\)에서 \(f'(x) = 0\), \(x \lt a\)에서 \(f' \lt 0\), \(x \gt a\)에서 \(f' \gt 0\) \(\Rightarrow\) \(f\)는 \((-\infty, a]\)에서 감소, \([a, \infty)\)에서 증가. <strong>\(g'(x)\) 그래프(아래로 볼록한 포물선이 뒤집힌 형태)</strong>: \(x = b, c\)에서 \(g'(x) = 0\) (\(b \lt 0 \lt c\)). \(g'\)은 \(b \lt x \lt c\)에서 양, 그 밖에서 음 \(\Rightarrow\) \(g\)는 \([b, c]\)에서 증가, \((-\infty, b]\)·\([c, \infty)\)에서 감소. <strong>핵심:</strong> 함수의 그래프 모양이 아니라 <strong>"도함수"의 그래프</strong>가 주어졌으므로, \(y = 0\)인 \(x\)와 \(y\)의 부호만 읽으면 본 함수의 증감이 즉시 결정된다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 증가 \(\Leftrightarrow f' \gt 0\)인가? — 단조성과 도함수의 미묘한 관계</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-수리 언어 소양: 학생의 주장 판정</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 최고차항의 계수가 양수인 삼차함수 \(f(x)\)에 대하여 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고 그 이유를 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.81 · 본문 옆 학생 활동 참고)</span>
+                            <div class="mt-3 p-4 bg-white rounded-xl border-2 border-orange-200">
+                                <p class="text-base text-slate-700">📢 학생: "열린구간 \((a, b)\)에서 함수 \(f(x)\)가 <strong>증가</strong>하면 이 구간에서 <strong>\(f'(x) \gt 0\)</strong>이야!"</p>
+                            </div>
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                대다수 학생이 "증가이면 \(f' \gt 0\)"을 직관적으로 참이라고 단정한다. 그러나 본 차시의 개념 구성 3에서 다룬 대로 <strong>"역은 일반적으로 거짓"</strong>이다. 결론: <strong>학생의 말은 거짓</strong>.<br><br>
+                                <strong>STEP 1 — 반례 만들기:</strong> \(f(x) = x^3\)을 보자. 이 함수는 모든 실수 \(x\)에서 정의역 전체에서 <strong>증가</strong>한다 (정의에 의해 \(x_1 \lt x_2 \Rightarrow x_1^3 \lt x_2^3\)). 하지만 \(f'(x) = 3x^2\)이므로 \(f'(0) = 0\). 즉 <strong>증가하지만 \(f'(0) \gt 0\)이 아닌 점</strong>이 존재.<br><br>
+                                <strong>STEP 2 — 정확한 명제로 다듬기:</strong> 미분가능한 함수의 증가에 관한 정확한 명제는<br>
+                                ① <strong>\(f'(x) \gt 0 \Rightarrow f\) 증가</strong> (참)<br>
+                                ② <strong>\(f\) 증가 \(\Rightarrow f'(x) \geq 0\)</strong> (참, 등호 허용)<br>
+                                ③ <strong>\(f\) 증가 \(\Rightarrow f'(x) \gt 0\) (모든 \(x\)에서)</strong> (<span class="text-red-700 font-bold">거짓</span>)<br><br>
+                                ②와 ③의 미묘한 차이가 핵심. 증가는 "\(f'(x) \geq 0\)이고 \(f'(x) = 0\)인 점이 고립된 점들"이라는 조건과 동치.<br><br>
+                                <strong>STEP 3 — 삼차함수 한정 분석:</strong> 최고차항의 계수가 양수인 삼차함수 \(f(x) = x^3 + bx^2 + cx + d\)가 실수 전체에서 증가하면 \(f'(x) = 3x^2 + 2bx + c \geq 0\) (모든 \(x\)) \(\Leftrightarrow\) 판별식 \(D = 4b^2 - 12c \leq 0\). 등호 \(f'(x_0) = 0\)이 어떤 \(x_0\)에서 성립하더라도 \(f\)는 여전히 증가 — 단 그 \(x_0\)는 고립된 점이어야 함. <strong>결론:</strong> 학생의 말 "증가이면 모든 \(x\)에서 \(f' \gt 0\)"은 거짓이며, 정확한 명제는 "\(f'(x) \geq 0\)이고 등호가 고립된 점에서만 성립"이다.<br><br>
+                                <strong>핵심 통찰:</strong> "충분조건"과 "필요조건"의 구분이 핵심. \(f' \gt 0\)은 증가의 <strong>충분조건</strong>이지만 <strong>필요조건이 아니다</strong>. \(f' \geq 0\) (모든 \(x\), 등호 고립)이 증가의 정확한 동치 조건. 차시 14의 핵심 함정이며, 차시 15(극대·극소)에서 \(f'(a) = 0\)이 극값을 보장하지 않는 함정(예: \(f(x) = x^3\)에서 \(x = 0\))으로 직접 연결된다.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(f(x) = x^3 - 3ax^2 + 3(a^2 - 1)x + 1\)이 구간 \((-\infty, \infty)\)에서 <strong>증가</strong>하도록 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 2 문제 4번 일반화)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> \(f'(x) = 3x^2 - 6ax + 3(a^2 - 1) = 3(x^2 - 2ax + a^2 - 1)\). 실수 전체 증가 \(\Leftrightarrow f'(x) \geq 0\) (모든 \(x\)) \(\Leftrightarrow\) 판별식 \(D \leq 0\). \(D/4 = a^2 - (a^2 - 1) = 1 \gt 0\) — 항상! \(\Rightarrow\) 어떤 \(a\)에 대해서도 \(f'(x) \geq 0\)이 모든 \(x\)에서 성립하지 않는다. 따라서 <strong>그러한 \(a\)는 존재하지 않는다</strong>. <strong>의미:</strong> 매개변수 형태가 항상 "유효한 \(a\) 범위"를 만들어 주는 것은 아니다. 판별식이 양수 일정이면 도함수에 항상 음의 구간이 존재 — Level 2 문제 5의 일반화 패턴.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 도함수의 활용 1 유제 5 [26009-0079]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_도함수의활용1"
+                 data-aft-source-id="c4-ex5"
+                 data-aft-source-label="수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 5">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 도함수의 활용 1 · 유제 5 [26009-0079]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 증가의 동치조건 \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\) 해석 → 실수 전체에서 \(f' \geq 0\) → 이차식 판별식 \(\leq 0\)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                함수 \(f(x) = x^3 - ax^2 + 4ax\)가 다음 조건을 만족시키도록 하는 정수 \(a\)의 개수는?
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl mb-6">
+                <p class="text-lg text-slate-800">\(x_1 \lt x_2\)인 모든 실수 \(x_1,\ x_2\)에 대하여 \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\)이다.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(11\) &nbsp;&nbsp; ② \(12\) &nbsp;&nbsp; ③ \(13\) &nbsp;&nbsp; ④ \(14\) &nbsp;&nbsp; ⑤ \(15\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 조건 해석 ⇒ \(f\)는 실수 전체에서 증가</strong>: \(x_1 \lt x_2 \Rightarrow x_1 - x_2 \lt 0\). 곱이 양수이므로 \(f(x_1) - f(x_2) \lt 0\), 즉 \(f(x_1) \lt f(x_2)\). 따라서 \(f\)는 실수 전체에서 (순)증가.</li>
+                    <li><strong>STEP 2 — \(f'(x) \geq 0\) (모든 \(x\))</strong>: 다항함수가 실수 전체에서 증가 \(\Leftrightarrow\) \(f'(x) \geq 0\) 모든 \(x\)에서. \(f'(x) = 3x^2 - 2ax + 4a\).</li>
+                    <li><strong>STEP 3 — 판별식 \(\leq 0\)</strong>: 이차식 \(3x^2 - 2ax + 4a \geq 0\) 항상 성립 \(\Leftrightarrow\) \(\dfrac{D}{4} = a^2 - 12a \leq 0\) \(\Rightarrow\) \(a(a - 12) \leq 0 \Rightarrow 0 \leq a \leq 12\).</li>
+                    <li><strong>STEP 4 — 정수 \(a\) 개수</strong>: \(a \in \{0,\ 1,\ 2,\ \ldots,\ 12\} \Rightarrow 13\)개. <span class="text-red-600 font-bold">정답: ③ \(13\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\)는 "증가함수"의 동치 표현. 다항함수의 실수 전체 증가 조건은 \(f'(x) \geq 0\)이며, 이차 \(f'\)이면 판별식 \(\leq 0\)으로 즉시 환원된다 — 차시 14의 핵심 응용 패턴.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="교사용_수능특강_미적분I_도함수의활용1_해설.html#c4-ex5" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 5</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2003년 6월 모의평가 가/나형 11번 — 삼차함수가 극값을 갖지 않을 조건) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분활용"
+                 data-aft-source-id="g_ws14_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 미분 활용 · 2003년 6월 모의평가 가/나형 11번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2003년 6월 모의평가 수학영역 가/나형 11번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: "극값을 갖지 않는다" \(\Leftrightarrow\) "도함수가 부호 변화 없이 모든 실수에서 \(\geq 0\)" \(\Leftrightarrow\) "이차식 도함수의 판별식 \(\leq 0\)" — 매개변수 \(a\)에 대한 부등식 풀이</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                삼차함수 \(f(x) = x^3 + (a - 1)x^2 + (a - 1)x + 1\)이 <strong>극값을 갖지 않도록</strong> 하는 실수 \(a\)의 값의 범위는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(-1 \leq a \leq 2\) &nbsp;&nbsp; ② \(0 \leq a \leq 3\) &nbsp;&nbsp; ③ \(1 \leq a \leq 4\) &nbsp;&nbsp; ④ \(2 \leq a \leq 5\) &nbsp;&nbsp; ⑤ \(3 \leq a \leq 6\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 극값 없을 조건의 도함수 해석</strong>: 삼차함수 \(f\)가 극값을 갖지 않을 \(\Leftrightarrow\) 도함수 \(f'(x)\)가 부호 변화 없이 모든 실수에서 \(f'(x) \geq 0\). 최고차계수 \(1 \gt 0\)이므로 \(f\)가 실수 전체에서 증가함수.</li>
+                    <li><strong>STEP 2 — \(f'(x)\) 계산</strong>: \[ f'(x) = 3x^2 + 2(a - 1)x + (a - 1). \] 이차함수 \(f'(x)\)의 최고차계수 \(3 \gt 0\)이므로 위로 열린 포물선. 따라서 \(f'(x) \geq 0\) (모든 \(x\)) \(\Leftrightarrow\) 판별식 \(D \leq 0\).</li>
+                    <li><strong>STEP 3 — 판별식 조건</strong>: \[ \dfrac{D}{4} = (a - 1)^2 - 3(a - 1) = (a - 1)\{(a - 1) - 3\} = (a - 1)(a - 4) \leq 0. \] 두 근 사이 \(\Rightarrow 1 \leq a \leq 4\).</li>
+                    <li><strong>STEP 4 — 검증</strong>: 경계값 검증: \(a = 1\)이면 \(f'(x) = 3x^2 \geq 0\) (등호 \(x = 0\)에서만), 극값 없음 ✓. \(a = 4\)이면 \(f'(x) = 3x^2 + 6x + 3 = 3(x + 1)^2 \geq 0\) (등호 \(x = -1\)에서만), 극값 없음 ✓. 두 경계 모두 도함수가 중근 \(\to\) 부호 변화 없음 \(\to\) 극값 없음.</li>
+                    <li><strong>STEP 5 — 결론</strong>: \(1 \leq a \leq 4\). <span class="text-red-600 font-bold">정답: ③</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "삼차함수가 극값을 갖지 않는다" \(\Leftrightarrow\) "도함수(이차함수)의 판별식 \(\leq 0\)"은 차시 14의 가장 표준적인 공식. 본 평가원 기출은 (i) 극값 조건의 도함수 해석, (ii) 이차식 판별식, (iii) 매개변수에 대한 부등식 풀이를 3단계로 통합한다. 학습지 14 Level 2~3의 핵심 사고법이 평가원 3점 기출에서 어떻게 출제되는지를 보여주는 대표 사례. <strong>경계값 등호</strong>를 포함하는 것이 함정 포인트(도함수의 중근에서는 부호 변화가 없으므로 극값이 발생하지 않음).</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (평균값 정리 → 증감 판정)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">차시 13의 평균값 정리 \(\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)\)에서 분모 부호가 \(\gt 0\)이라는 점에 착안해, "\(f' \gt 0 \Rightarrow\) 증가"가 어떻게 평균값 정리의 직접 따름인지를 자신의 언어로 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"'\(f' &gt; 0\)이면 증가'를 그냥 공식으로 외웠는데, 평균값 정리 \(\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)\)를 보니 분모는 양수라 분자 부호와 \(f'(c)\) 부호가 같다는 게 보였다. 증감 판정이 사실 평균값 정리의 자연스러운 따름이라는 걸 알게 된 뒤로는 단원 II-2의 정리들이 한 줄기로 이어진다는 게 느껴졌다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (충분조건 vs 필요조건 구분)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"\(f' \gt 0 \Rightarrow\) 증가"는 충분조건이고, "\(f\) 증가 \(\Rightarrow f' \geq 0\)"는 필요조건임을 정확히 구분하여, \(f(x) = x^3\)이 \(f'(0) = 0\)임에도 증가함수인 사례로 자기 점검 카드를 만들어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"'증가 \(\Leftrightarrow f' &gt; 0\)'이 맞는 줄 알았다가 \(f(x) = x^3\) 반례에서 깨졌다. \(x = 0\)에서 \(f' = 0\)이지만 함수는 여전히 증가한다. 그래서 정확히는 '증가 \(\Leftrightarrow f' \geq 0\)이고 등호는 고립된 점에서만'이라는 걸 점검 카드로 적어뒀다. 다음 차시 '\(f' = 0\)이라고 다 극값은 아니다'로 자연스럽게 이어질 것 같다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (증감표 → 극값 → 그래프 → 방정식·부등식)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">증감표 작성이 차시 15~18(극대·극소, 그래프, 방정식과 부등식에의 활용, 속도와 가속도)에서 어떻게 공통 작업판으로 사용될지 예측해 보고, "증감표 → \(\cdots\) → 그래프 개형 → 실근의 개수 / 부등식"의 단원 II-2 로드맵을 자신의 노트에 그려 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"증감표가 단순한 표가 아니라 단원 II-2 전체(증감·극값·그래프·방정식·부등식·속도)에서 공통으로 쓰는 작업판이라는 게 보였다. '증감표 → 극값 → 그래프 개형 → 실근의 개수·부등식 증명'으로 이어지는 로드맵을 노트 첫 장에 그려두니, 다음 차시들이 새로운 도구를 배우는 게 아니라 같은 표를 다른 각도에서 읽는 일일 것 같았다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 14차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_Nav_All_index_미적분I.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 FAB -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 12차시 접선의 방정식 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_학습지_미적분I_12_접선의방정식.html" target="aftermath_ws_calc_12" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_미적분I_13_평균값정리.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">12</span>
+        <span class="lesson-tag">II-2a 도함수의 활용 1</span>
+        <span class="lesson-title">접선의 방정식 — 점-기울기 공식의 미분 확장</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> "공통수학 2의 \(y - y_1 = m(x - x_1)\)에 \((x_1, y_1) = (a, f(a))\), \(m = f'(a)\)를 그대로 꽂으면 끝" — <strong>접선식 \(y - f(a) = f'(a)(x - a)\)</strong>는 새 공식이 아니라 직선식의 미분 버전이다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-02-04] 접선의 방정식을 구하고, 곡선 위의 점에서/곡선 밖의 점에서의 접선을 분기 풀이한다.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">II-1 미분계수 \(f'(a)\)의 기하적 의미(접선의 기울기), 공통수학 2 점-기울기 직선식, 인수분해.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 접점 주어진 경우 직접 적용 ② 기울기 주어진 경우 매개변수 \(t\) ③ 곡선 밖 점 → 검증 후 \(t\) 분기.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> \(y = -x^2 + 3\) 위의 \((1, 2)\)에서 접선을 칠판에 직접 그리고 "기울기 \(-2\)는 어디서 나왔지?"를 묻는다. \(f'(1) = -2\)로 자연스럽게 연결.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 발문 1분 자유 작성 → 짝과 30초 공유. 점-기울기 공식 떠올리기.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 시나리오 ①(접점) → ②(기울기) → ③(곡선 밖) 순으로 판서. 각 reveal-box를 학생이 직접 클릭하도록 안내. ③에서 "점이 곡선 위/밖인지 검증" 1분 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 개념 1~4의 reveal-box 8개 모두 클릭, 노트에 "도함수→기울기→직선식" 3단 루틴 적기.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~3번)은 짝활동, L2(4~6번)는 개별 풀이 후 무작위 호명. 4번에서 매개변수 \(t\) 기법 칠판 시연, 6번 섬·육지는 "기울기 \(2\)인 접선" 발상 유도.</div>
+            <div class="tl-s"><strong>학생:</strong> 1·2·3번 6분, 4·5·6번 9분. 4번 매개변수 풀이는 색깔로 단계 구분해 노트 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(오답률 1위)에서 "\(x = 0\)이니까 \(f'(0)\)이지?"라고 묻는 학생 함정을 표면화 → \(f(0) = 4 \neq 2\) 검증으로 곡선 밖 점 확정. 형성 8번은 모두에게 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 곡선 위/밖 검증을 빨간펜으로 한 줄 적기. 8번은 4분 안에 접선식 → 곡선과의 교점 풀이.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 새로 알게 된 한 가지"를 무작위 3명 발표. QR 성찰지 안내 + 도전 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 문제 사전 시도.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 곡선 \(y = -x^2 + 3\) 위의 \((1, 2)\)에서의 접선을 한 줄로 쓰려면 어떤 정보가 필요할까? 미분계수 \(f'(1) = -2\)를 어떻게 활용할까?</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"기울기는 \(-2\)인데 직선식이 뭐였더라…"</span><br><span class="fb"><strong>피드백:</strong> 공통수학 2의 "점-기울기 공식 \(y - y_1 = m(x - x_1)\)"을 직접 떠올리게 유도. 외운 공식이 아니라 직선의 두 정보(점·기울기)임을 강조.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"\(y = -2x + b\)에 점을 대입하면 \(b = 4\)니까 \(y = -2x + 4\)다."</span><br><span class="fb"><strong>피드백:</strong> 정답. 다만 점-기울기 공식 \(y - 2 = -2(x - 1) \Rightarrow y = -2x + 4\)가 한 줄에 끝남을 보이고, 미적분에서는 이 표준형을 쓰자고 약속.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"\(f'(1) = -2\)는 그냥 미분한 값인데 그게 왜 기울기야?"</span><br><span class="fb"><strong>피드백:</strong> II-1 미분계수의 기하적 의미("접선의 기울기")를 5초 복습. 단원 II-1 \(\to\) II-2의 연결 고리임을 명시.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>1학기 연결 & II-1 연결:</strong> 1학기에서 \(\dfrac{f(x) - f(a)}{x - a}\)의 극한이 접선의 기울기였고, II-1 차시 9·10에서 그 극한을 \(f'(a)\)로 정의했다. 본 차시는 \(f'(a)\)를 "값"이 아니라 "직선식의 기울기"로 적극 활용하는 첫 차시.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
+
+    <div class="formula-box">
+        <div class="label">CORE FORMULA</div>
+        <div class="formula">\( y - f(a) = f'(a)(x - a) \) &nbsp;&nbsp; (접점 \((a, f(a))\), 기울기 \(f'(a)\))</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 5단계 (시나리오 ③ 곡선 밖 점):</strong>
+        <ol>
+            <li>주어진 점 \((p, q)\)를 곡선식에 대입 → \(q = f(p)\)인지 검증. 같으면 시나리오 ①, 다르면 시나리오 ③.</li>
+            <li>곡선 밖이면 접점을 \((t, f(t))\)로 매개변수화. \(f'(t)\)가 기울기.</li>
+            <li>접선식 \(y - f(t) = f'(t)(x - t)\) 작성.</li>
+            <li>주어진 점 \((p, q)\)를 접선식에 대입 → \(t\)에 대한 방정식 풀이.</li>
+            <li>각 \(t\) 값별로 접선식 작성 (이차함수 → 최대 2개, 삼차함수 → 최대 3개).</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>오개념 ①:</strong> "주어진 점이 곡선 위인지 무조건 검증 없이 \(f'(p)\)를 기울기로 쓴다." → L3 7번의 함정. \(f(p) \neq q\)이면 곡선 밖. 매개변수 \(t\) 필수.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "이차함수에 곡선 밖 점은 접선이 1개." → 일반적으로 <strong>2개</strong> (특수 경우만 1개). 삼차함수는 최대 3개.</div>
+    <div class="q-warn"><strong>오개념 ③:</strong> "공통 접선은 점만 같으면 된다." → 점 \(\cdot\) 기울기 두 조건이 동시에 만족되어야 한다.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+
+    <div class="problems">
+        <!-- L1 1번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">접점 주어진 접선 — 직접 적용</span></div>
+            <div class="q-stmt">(1) \(y = -2x^2 + 3x - 1\), 점 \((2, -3)\) &nbsp;&nbsp; (2) \(y = x^3 + 2x^2 - 1\), 점 \((-1, 0)\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(f'(x) = -4x + 3\), \(f'(2) = -5\). 접선: \(y + 3 = -5(x - 2) \Rightarrow y = -5x + 7\).</span>
+                <span class="step">(2) \(f'(x) = 3x^2 + 4x\), \(f'(-1) = 3 - 4 = -1\). 접선: \(y - 0 = -1(x + 1) \Rightarrow y = -x - 1\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(y = -5x + 7\) &nbsp; (2) \(y = -x - 1\)</div>
+        </div>
+
+        <!-- L1 2번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">기울기 주어진 접선 — 매개변수 \(t\)</span></div>
+            <div class="q-stmt">기울기 \(1\)인 접선. (1) \(y = 2x^2 - 7x + 3\) &nbsp; (2) \(y = x^3 - 2x + 1\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(f'(x) = 4x - 7\), \(4t - 7 = 1 \Rightarrow t = 2\). 접점 \((2, -3)\), 접선 \(y = x - 5\).</span>
+                <span class="step">(2) \(f'(x) = 3x^2 - 2\), \(3t^2 - 2 = 1 \Rightarrow t = \pm 1\). \(t=1\): 접점 \((1, 0)\), 접선 \(y = x - 1\). \(t=-1\): 접점 \((-1, 2)\), 접선 \(y = x + 3\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(y = x - 5\) &nbsp; (2) \(y = x - 1\) 또는 \(y = x + 3\)</div>
+        </div>
+
+        <!-- L1 3번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">곡선 위 점에서의 접선 단순 계산</span></div>
+            <div class="q-stmt">\(y = x^3 - 3x^2 + 4\), 점 \((1, 2)\)에서 접선.</div>
+            <div class="q-solve">
+                <span class="step">검증: \(f(1) = 1 - 3 + 4 = 2\) ✓ (곡선 위).</span>
+                <span class="step">\(f'(x) = 3x^2 - 6x\), \(f'(1) = -3\). 접선: \(y - 2 = -3(x - 1) \Rightarrow y = -3x + 5\).</span>
+            </div>
+            <div class="q-ans">정답: \(y = -3x + 5\)</div>
+        </div>
+
+        <!-- L2 4번 (span2) -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">곡선 밖의 점에서의 접선 — 매개변수 \(t\) 정착</span></div>
+            <div class="q-stmt">(1) \(y = x^2 - 4x\), 점 \((-2, 3)\) &nbsp;&nbsp; (2) \(y = -x^3 + 2x + 7\), 점 \((0, 5)\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 검증: \(f(-2) = 4 + 8 = 12 \neq 3\) → 곡선 밖. \(f'(x) = 2x - 4\), 접점 \((t, t^2 - 4t)\). 접선 \(y - (t^2 - 4t) = (2t - 4)(x - t)\)에 \((-2, 3)\) 대입:</span>
+                <span class="step">\(3 - t^2 + 4t = (2t - 4)(-2 - t) = -4t - 2t^2 + 8 + 4t = -2t^2 + 8\). \(\Rightarrow t^2 + 4t - 5 = 0 \Rightarrow (t+5)(t-1) = 0 \Rightarrow t = 1, -5\).</span>
+                <span class="step">\(t=1\): 기울기 \(-2\), 접점 \((1, -3)\), 접선 \(y = -2x - 1\). \(t=-5\): 기울기 \(-14\), 접점 \((-5, 45)\), 접선 \(y = -14x - 25\).</span>
+                <span class="step">(2) 검증: \(f(0) = 7 \neq 5\) → 곡선 밖. \(f'(x) = -3x^2 + 2\), 접점 \((t, -t^3 + 2t + 7)\). 접선에 \((0, 5)\) 대입: \(5 - (-t^3 + 2t + 7) = (-3t^2 + 2)(-t) = 3t^3 - 2t\). \(\Rightarrow t^3 - 2t - 2 = 3t^3 - 2t \Rightarrow -2 = 2t^3 \Rightarrow t = -1\).</span>
+                <span class="step">기울기 \(-3 + 2 = -1\), 접점 \((-1, 1 - 2 + 7) = (-1, 6)\), 접선 \(y = -x + 5\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(y = -2x - 1\), \(y = -14x - 25\) (2개) &nbsp; (2) \(y = -x + 5\) (1개)</div>
+            <div class="q-warn"><strong>판서 포인트:</strong> (1)에서 접선이 2개 나오는 것이 일반적. (2)에서 \(t = -1\) 한 개만 나오는 이유는 \(t^3 = -1\)이 실근 1개만 가지기 때문 — 삼차 곡선이지만 외부점 위치에 따라 접선 개수가 달라짐을 보임.</div>
+        </div>
+
+        <!-- L2 5번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">두 곡선의 공통 접선</span></div>
+            <div class="q-stmt">\(f(x) = x^3 + ax + b\), \(g(x) = cx^2 + 1\)이 \((1, 2)\)에서 공통 접선. \(a, b, c\) 구하라.</div>
+            <div class="q-solve">
+                <span class="step">조건 ① 점 공통: \(f(1) = 1 + a + b = 2\), \(g(1) = c + 1 = 2 \Rightarrow c = 1\).</span>
+                <span class="step">조건 ② 기울기 일치: \(f'(1) = 3 + a\), \(g'(1) = 2c = 2\). \(3 + a = 2 \Rightarrow a = -1\).</span>
+                <span class="step">①에서 \(b = 2 - 1 + 1 = 2\).</span>
+            </div>
+            <div class="q-ans">정답: \(a = -1\), \(b = 2\), \(c = 1\).</div>
+        </div>
+
+        <!-- L2 6번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">섬·육지 다리 최소 길이 (수리 언어 소양)</span></div>
+            <div class="q-stmt">섬 곡선 \(y = x^2 - 4x + 3\), 육지 직선 \(y = 2x - 11\). 다리 최소 길이?</div>
+            <div class="q-solve">
+                <span class="step">최소 거리는 곡선의 접선이 직선과 평행할 때. \(f'(x) = 2x - 4 = 2 \Rightarrow x = 3\), 접점 \((3, 0)\).</span>
+                <span class="step">직선 \(2x - y - 11 = 0\)에서 점 \((3, 0)\)까지의 거리: \(\dfrac{|2 \cdot 3 - 0 - 11|}{\sqrt{4 + 1}} = \dfrac{5}{\sqrt{5}} = \sqrt{5}\).</span>
+            </div>
+            <div class="q-ans">정답: \(\sqrt{5}\).</div>
+        </div>
+
+        <!-- L3 7번 (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 곡선 위/밖 검증 필수</span></div>
+            <div class="q-stmt">점 \((0, 2)\)에서 \(y = -x^3 + x + 4\)에 그은 접선과 \(x\)축, \(y\)축으로 둘러싸인 부분의 넓이.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1 검증: \(f(0) = 4 \neq 2\) → 곡선 밖. 시나리오 ③.</span>
+                <span class="step">STEP 2: 접점 \((t, -t^3 + t + 4)\), \(f'(t) = -3t^2 + 1\). 접선식 \(y - (-t^3 + t + 4) = (-3t^2 + 1)(x - t)\).</span>
+                <span class="step">STEP 3: \((0, 2)\) 대입. \(2 - (-t^3 + t + 4) = (-3t^2 + 1)(-t) = 3t^3 - t\). \(\Rightarrow t^3 - t - 2 = 3t^3 - t \Rightarrow -2 = 2t^3 \Rightarrow t^3 = -1 \Rightarrow t = -1\).</span>
+                <span class="step">STEP 4: 접점 \((-1, 1 - 1 + 4) = (-1, 4)\), 기울기 \(-3 + 1 = -2\). 접선 \(y - 4 = -2(x + 1) \Rightarrow y = -2x + 2\). \((0, 2)\) 검증 ✓.</span>
+                <span class="step">STEP 5: 접선과 축의 교점 \((1, 0)\), \((0, 2)\). 직각삼각형 넓이 \(= \tfrac{1}{2} \cdot 1 \cdot 2 = 1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(1\)</strong>.</div>
+            <div class="q-warn"><strong>발표 유도:</strong> "왜 \(f'(0)\)을 바로 못 쓰지?" 학생에게 직접 발표. "곡선 위가 아니라서, \(f'(0)\)은 \((0, 4)\)에서의 기울기일 뿐 \((0, 2)\)에서의 정보가 아니다"가 정답.</div>
+        </div>
+
+        <!-- 형성 8번 (span2 fc) -->
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 접선이 곡선과 만나는 다른 한 점</span></div>
+            <div class="q-stmt">\(y = x^3 - 3x^2 + 2x + 1\) 위의 \((0, 1)\)에서의 접선이 곡선과 만나는 다른 한 점.</div>
+            <div class="q-solve">
+                <span class="step">\(f'(x) = 3x^2 - 6x + 2\), \(f'(0) = 2\). 접선 \(y = 2x + 1\).</span>
+                <span class="step">교점: \(x^3 - 3x^2 + 2x + 1 = 2x + 1 \Rightarrow x^3 - 3x^2 = 0 \Rightarrow x^2(x - 3) = 0\).</span>
+                <span class="step">\(x = 0\)은 접점(중근), \(x = 3\)이 다른 한 점. \(y = 2 \cdot 3 + 1 = 7\).</span>
+            </div>
+            <div class="q-ans">정답: \((3, 7)\). <strong>핵심:</strong> 접점은 인수분해에서 <strong>중근</strong>으로 나타남 (\(x^2\) 인수).</div>
+        </div>
+
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 도함수의 활용 1 유제 1 [26009-0075]</span></div>
+            <div class="q-stmt">\(y = -2x^4 + 3x^2 + a\) 위의 \((1, a+1)\)에서의 접선이 \((0, -3)\)을 지날 때 \(a\)는? ① \(-6\) ② \(-7\) ③ \(-8\) ④ \(-9\) ⑤ \(-10\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f'(x) = -8x^3 + 6x\), \(f'(1) = -2\). (검증: \(f(1) = -2 + 3 + a = a + 1\) ✓ — 곡선 위.)</span>
+                <span class="step">STEP 2: 접선 \(y - (a+1) = -2(x - 1) \Rightarrow y = -2x + a + 3\).</span>
+                <span class="step">STEP 3: \((0, -3)\) 대입. \(-3 = a + 3 \Rightarrow a = -6\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>① \(-6\)</strong>. <strong>핵심:</strong> 곡선 위의 점에서의 접선이 외부의 한 점을 지나는 표준 유형. 사차함수도 다항함수이므로 미분 공식 그대로 적용.</div>
+        </div>
+
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 1998학년도 수능 나형 9번 [3점]</span></div>
+            <div class="q-stmt">포물선 \(y = -\tfrac{1}{4}x^2\)의 \((2, -1)\)에서의 접선과 \(x\)축, \(y\)축으로 둘러싸인 삼각형의 넓이는? ① \(\tfrac{1}{2}\) ② \(\tfrac{1}{4}\) ③ \(\tfrac{3}{4}\) ④ \(\tfrac{3}{2}\) ⑤ \(\tfrac{5}{4}\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f'(x) = -\tfrac{1}{2}x\), \(f'(2) = -1\).</span>
+                <span class="step">STEP 2: 접선 \(y - (-1) = -1(x - 2) \Rightarrow y = -x + 1\).</span>
+                <span class="step">STEP 3: \(x\)절편 \((1, 0)\), \(y\)절편 \((0, 1)\). 둘 다 양 → 제1사분면 직각삼각형.</span>
+                <span class="step">STEP 4: 넓이 \(= \tfrac{1}{2} \cdot 1 \cdot 1 = \tfrac{1}{2}\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>①</strong> \(\tfrac{1}{2}\). <strong>핵심:</strong> "접선이 좌표축으로 둘러싸는 넓이"는 평가원·수능 단골. 4단 분해(도함수→접선→두 절편→넓이) 정확히.</div>
+        </div>
+    </div>
+
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">\(f'(0) = 2\) 계산 + 접선 \(y = 2x + 1\) + 교점 방정식 \(x^2(x - 3) = 0\) 인수분해 + \((3, 7)\) 명시.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">접선 \(y = 2x + 1\)까지 정확하나 교점 방정식에서 \(x = 0\)을 다른 점으로 잘못 명시하거나, \(x = 3\)만 적고 \(y\)좌표 누락.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">접선식까지는 맞으나 곡선식과의 연립에서 계산 오류 (\(x^3 - 3x^2 + 0 = 0\) 등 부호 실수).</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">접선 기울기 \(f'(0) = 2\)는 맞으나 점-기울기 공식 적용 시 부호 오류 (\(y - 1 = 2(x + 0)\) 등).</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "① 접선 먼저 ② 곡선과 접선 연립 ③ 접점은 중근으로 나타남. 인수분해 결과에 \(x^2\)이 보이면 정상."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화 (점-기울기 공식의 일반화)</span>
+            <span class="rtbody">"공통수학 2의 \(y - y_1 = m(x - x_1)\)에 \((x_1, y_1) = (a, f(a))\), \(m = f'(a)\)를 그대로 꽂으면 접선식이라는 게 보였다. 새 공식이 아니라 직선의 두 정보를 곡선의 미분 정보로 바꿔 끼우는 것뿐. 외울 게 줄었다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 문제해결력 (시나리오 분기 점검)</span>
+            <span class="rtbody">"7번에서 \(x = 0\)이 곡선 위인 줄 알고 \(f'(0)\)을 바로 썼다가 틀렸다. \(f(0) = 4 \neq 2\)이니 곡선 밖이라 매개변수 \(t\)로 분기해야 했다. 이제는 푸는 시작 전에 '점이 곡선 위인지 검증' 한 줄 먼저 적는다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성 (접선 → 공통접선 → 평균값 정리)</span>
+            <span class="rtbody">"공통 접선 조건이 '점 공통 + 기울기 일치' 두 개라는 게 정리되니, 다음 차시 평균값 정리에서 '직선 AB에 평행한 접선이 존재'한다는 명제도 같은 발상 같다. 도함수 활용 단원이 '접선의 기울기' 한 가지로 이어진다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

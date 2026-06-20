@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 II-2b 도함수의 활용 2 · 차시 17 함수의 그래프 응용 (최댓값·최솟값) · Agent A7 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 함수의 그래프 응용 (최댓값·최솟값)</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_17';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        .sign-table { border-collapse: collapse; margin: 1rem auto; font-size: 1rem; }
+        .sign-table th, .sign-table td { border: 1.5px solid #94a3b8; padding: 0.5rem 1rem; text-align: center; font-weight: 700; }
+        .sign-table th { background: #f1f5f9; color: #0f172a; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "17차시 함수의 그래프 응용 (최댓값·최솟값)";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">17차시: 함수의 그래프 응용 (최댓값·최솟값)</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_미적분I_16_함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">한 변이 \(12\,\text{cm}\)인 정사각형 종이의 네 귀퉁이를 잘라내 뚜껑 없는 직육면체 상자를 만든다. <strong>잘라낼 정사각형의 한 변</strong>이 \(0\)에 가까우면 바닥은 넓지만 높이가 거의 \(0\). 너무 크면 바닥이 거의 \(0\). 따라서 부피가 <strong>가장 큰 순간</strong>이 그 사이 어딘가에 있다. 이 "가장 큰 순간"을 찾는 도구가 차시 17의 주제 — <span class="calc-accent font-bold">최댓값·최솟값</span>.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> "극값과 최댓값·최솟값은 같은 말인가?" 닫힌구간 \([-1, 2]\)에서 \(f(x) = 2x^3 - 3x^2 + 2\)의 극댓값은 \(f(0) = 2\)이지만 그 구간의 최댓값은 \(f(2) = 6\)이다. 왜 극값이 최댓값보다 작을 수 있는가? <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 개념 탐구 참고)</span></p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 차시 15에서 익힌 <strong>극값</strong>은 "지역적" 봉우리/골짜기. 차시 17에서 다루는 <strong>최댓값·최솟값</strong>은 "전역적" 최고/최저. 닫힌구간 \([a, b]\)에서는 극값과 <strong>구간 끝 점의 값</strong> \(f(a),\ f(b)\)를 모두 비교해야 한다. 또한 실생활(상자 부피, 도형 넓이, 비용)에서 변수의 정의역을 정확히 설정하는 것이 핵심 — 이 부분에서 학생들이 가장 많이 실수한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88~89 · 최댓값·최솟값과 실생활 활용 참고)</span></p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 닫힌구간 최대·최소 정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        닫힌구간에서의 최댓값·최솟값 정리 (최대·최소 정리)
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 닫힌구간 \([a, b]\)에서 <strong>연속</strong>이면, 이 구간에서 \(f\)는 반드시 <span class="calc-accent font-bold">최댓값과 최솟값을 갖는다</span>(차시 06의 최대·최소 정리).</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-center text-lg font-bold">최댓값 = \(\max\{\text{극댓값들},\ f(a),\ f(b)\}\), 최솟값 = \(\min\{\text{극솟값들},\ f(a),\ f(b)\}\).</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 닫힌구간에서 최대/최소 후보는 (i) 구간 내부의 <strong>극값</strong>과 (ii) <strong>구간 끝점</strong> 두 가지뿐. 이 두 종류만 모두 모아 그 중 가장 큰/작은 것을 고르면 끝. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 최댓값·최솟값 정의 참고)</span></p>
+                    <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                        <p class="text-sm text-red-900 font-bold mb-1">⚠ 극값 ≠ 최댓값·최솟값!</p>
+                        <p class="text-sm text-slate-700">극댓값이 반드시 최댓값이 되는 것은 <strong>아니다</strong>. 예: \([-1, 2]\)에서 \(f(x) = 2x^3 - 3x^2 + 2\)의 극댓값 \(f(0) = 2\)는 구간 끝점 \(f(2) = 6\)보다 작다 \(\to\) 최댓값은 \(6\). 또한 열린구간에서는 최댓값·최솟값이 존재하지 않을 수 있다(연속성 + 닫힘 둘 다 필요).</p>
+                    </div>
+                </div>
+
+                <!-- 2. 닫힌구간 최댓값 예제 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        예제 — 닫힌구간 \([-1, 2]\)에서 \(f(x) = 2x^3 - 3x^2 + 2\)
+                    </h3>
+                    <p class="mb-3 text-slate-700">"내부 극값 + 구간 끝점" 4단계 루틴.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-1"><strong>STEP 1·2:</strong> \(f'(x) = 6x^2 - 6x = 6x(x - 1)\). \(f' = 0 \Rightarrow x = 0,\ 1\). 둘 다 구간 \([-1, 2]\) 내부.</p>
+                        <p class="text-base mb-1"><strong>STEP 3 (증감표 + 후보값):</strong></p>
+                        <table class="sign-table">
+                            <thead><tr><th>\(x\)</th><th>\(-1\)</th><th>\(\cdots\)</th><th>\(0\)</th><th>\(\cdots\)</th><th>\(1\)</th><th>\(\cdots\)</th><th>\(2\)</th></tr></thead>
+                            <tbody>
+                                <tr><th>\(f'(x)\)</th><td></td><td>\(+\)</td><td>\(0\)</td><td>\(-\)</td><td>\(0\)</td><td>\(+\)</td><td></td></tr>
+                                <tr><th>\(f(x)\)</th><td>\(-3\)</td><td>↗</td><td>\(2\)</td><td>↘</td><td>\(1\)</td><td>↗</td><td>\(6\)</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="text-base mb-1"><strong>STEP 4 (후보 비교):</strong> 후보값 \(\{f(-1), f(0), f(1), f(2)\} = \{-3, 2, 1, 6\}\). 최댓값 = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(f(2) = 6\)</span></span>, 최솟값 = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(f(-1) = -3\)</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 극댓값 \(f(0) = 2\)는 구간 내부의 봉우리지만 구간 끝 \(f(2) = 6\)이 더 크다 \(\Rightarrow\) <strong>최댓값은 구간 끝</strong>에서. 이처럼 "극값 따로 끝점 따로" 모두 보는 것이 차시 17의 핵심 절차. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 예제 3 참고)</span></p>
+                </div>
+
+                <!-- 3. 실생활 활용 — 상자 부피 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        실생활 활용 — 정사각형 종이로 상자 부피 최대화
+                    </h3>
+                    <p class="mb-3 text-slate-700">한 변 \(12\,\text{cm}\) 정사각형 종이 네 귀퉁이에서 한 변 \(x\,\text{cm}\)의 정사각형을 잘라내 뚜껑 없는 상자.</p>
+                    <div class="mt-2 mb-3 flex justify-center">
+                        <img src="images/calc_17_ex_box.png" alt="P.89 12cm 정사각형 종이 + 귀퉁이 x cm 자른 후 직육면체 상자" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:200px;">
+                        <!-- TODO: 위 이미지는 P.89 예제 4 자동 크롭. 사용자가 정밀 크롭 필요 시 재조정. -->
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-1"><strong>STEP 1 — 변수 + 정의역:</strong> 잘라낼 한 변 \(x\,\text{cm}\), 부피 \(V(x)\,\text{cm}^3\)라 하면 \(V(x) = x(12 - 2x)^2 = 4x^3 - 48x^2 + 144x\) (단 \(0 \lt x \lt 6\)).</p>
+                        <p class="text-base mb-1"><strong>STEP 2 — 도함수:</strong> \(V'(x) = 12x^2 - 96x + 144 = 12(x - 2)(x - 6)\).</p>
+                        <p class="text-base mb-1"><strong>STEP 3 — 임계점:</strong> \(V'(x) = 0 \Rightarrow x = 2\) (정의역 \(0 \lt x \lt 6\)에서 유일).</p>
+                        <p class="text-base mb-1"><strong>STEP 4 — 증감표:</strong> \(0 \lt x \lt 2\)에서 \(V' \gt 0\), \(2 \lt x \lt 6\)에서 \(V' \lt 0\) \(\Rightarrow x = 2\)에서 극대 = 최대. 최댓값 \(V(2) = 2 \cdot 8^2 = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(128\,\text{cm}^3\)</span></span>.</p>
+                        <p class="text-base"><strong>답:</strong> 잘라낼 정사각형의 한 변의 길이 = <span class="calc-accent font-bold">\(2\,\text{cm}\)</span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-red-700"><strong>⚠ 학생 오류 1순위:</strong> 정의역 \(0 \lt x \lt 6\) 설정을 생략하면 \(x = 6\) 근방에서 식이 \(0\)에 가까운데도 "부피가 최대"라 잘못 추측. 실생활 문항은 <strong>물리적 의미가 있는 변수 범위</strong>를 명시해야 한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 예제 4 참고)</span></p>
+                </div>
+
+                <!-- 4. 열린구간에서의 최댓값·최솟값 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        열린구간 / 정의역 전체에서의 최대·최소 — 단조성 활용
+                    </h3>
+                    <p class="mb-3 text-slate-700">실생활 문제에서는 정의역이 <strong>열린구간</strong>(끝점 미포함)이거나 <strong>무한구간</strong>인 경우가 많다. 이때는 다음을 점검한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ul class="space-y-2 text-base font-medium">
+                            <li>① <strong>임계점이 정확히 하나</strong>이고 그곳에서 극값이면 \(\Rightarrow\) 그 극값이 곧 <strong>최대(또는 최소)</strong>가 된다. (실생활 활용의 대부분이 이 패턴.)</li>
+                            <li>② <strong>임계점이 여러 개</strong>이면 \(\to\) 일반 함수 분석 + 양 끝의 극한 거동(\(\lim_{x\to a^+}\), \(\lim_{x\to b^-}\)) 비교.</li>
+                            <li>③ <strong>닫힌구간이 아닌 한, 최대(또는 최소)가 존재하지 않을 수도 있다</strong>. 예: \((0, 6)\)에서 \(V(x)\)의 최댓값은 존재하지만 (내부 극대), \(g(x) = x\)는 \((0, 6)\)에서 최댓값 없음(끝점 \(6\)은 포함되지 않으므로 \(g(x) \lt 6\)이지만 도달 불가).</li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 실생활 문항의 95%는 ① 패턴 — "임계점 한 개 + 극값 = 최값". 이 사고 패턴이 본 차시의 핵심 무기. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 문제 04·05 + 자체 정리)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">닫힌구간에서 최댓값·최솟값 직접 구하기</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-닫힌구간 최대·최소</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 구간에서 함수의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 문제 03 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = x^3 - 3x^2 - 9x + 5,\ x \in [-2, 4] \) &nbsp;&nbsp;
+                                (2) \( f(x) = x^4 - 8x^3 + 16x^2 + 1,\ x \in [-1, 2] \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong><br>
+                            <strong>(1)</strong> \(f'(x) = 3x^2 - 6x - 9 = 3(x - 3)(x + 1)\). 구간 내부 임계점 \(x = -1, 3\). 후보값 \(f(-2) = -8 - 12 + 18 + 5 = 3,\ f(-1) = -1 - 3 + 9 + 5 = 10,\ f(3) = 27 - 27 - 27 + 5 = -22,\ f(4) = 64 - 48 - 36 + 5 = -15\). 최댓값 \(10\) (\(x = -1\)), 최솟값 \(-22\) (\(x = 3\)).<br>
+                            <strong>(2)</strong> \(f'(x) = 4x^3 - 24x^2 + 32x = 4x(x - 2)(x - 4)\). 구간 \([-1, 2]\) 내부 임계점 \(x = 0, 2\) (\(2\)는 끝점). 후보값 \(f(-1) = 1 + 8 + 16 + 1 = 26,\ f(0) = 1,\ f(2) = 16 - 64 + 64 + 1 = 17\). 최댓값 \(26\) (\(x = -1\)), 최솟값 \(1\) (\(x = 0\)).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-매개변수 + 최솟값</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 닫힌구간 \([0, 3]\)에서 함수 \( f(x) = 2x^3 - 3x^2 + a \)의 최솟값이 \(5\)일 때, 실수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 도전 08 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 6x^2 - 6x = 6x(x - 1)\). 구간 \([0, 3]\) 내부 임계점 \(x = 1\). 후보값 \(f(0) = a,\ f(1) = 2 - 3 + a = a - 1,\ f(3) = 54 - 27 + a = a + 27\). 최솟값 = \(\min\{a, a - 1, a + 27\} = a - 1 = 5 \Rightarrow a = 6\). 정답 \(a = 6\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-실생활: 상자 부피</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 한 변의 길이가 \(18\,\text{cm}\)인 정사각형 종이의 네 귀퉁이에서 같은 크기의 정사각형을 잘라내고 남은 부분을 접어 뚜껑이 없는 직육면체 상자를 만들 때, 부피의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.89 예제 4 변형)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 잘라낸 한 변 \(x\,\text{cm}\), \(0 \lt x \lt 9\). \(V(x) = x(18 - 2x)^2\). \(V'(x) = (18 - 2x)^2 + x \cdot 2(18 - 2x)(-2) = (18 - 2x)\bigl[(18 - 2x) - 4x\bigr] = (18 - 2x)(18 - 6x)\). \(V' = 0 \Rightarrow x = 9\) (정의역 밖) 또는 \(x = 3\). 부호: \(0 \lt x \lt 3\) \(+\), \(3 \lt x \lt 9\) \(-\) \(\Rightarrow x = 3\)에서 극대 = 최대. \(V(3) = 3 \cdot 12^2 = 432\,\text{cm}^3\). 정답: \(432\,\text{cm}^3\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">도형 + 미분 결합 — 변수 설정과 정의역 추론</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-도형 넓이 최대화 (포물선 위 직사각형)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 그림과 같이 꼭짓점 \(\mathrm{A,\ B}\)는 곡선 \(y = -x^2 + 9\) 위에 있고, 꼭짓점 \(\mathrm{C,\ D}\)는 \(x\)축 위에 있는 직사각형 \(\mathrm{ABCD}\)의 넓이의 최댓값을 구하시오. (단, 점 \(\mathrm{A}\)는 제1사분면 위의 점.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 문제 04 참고)</span>
+                            <div class="mt-3 flex justify-center">
+                                <img src="images/calc_17_q_rect_parabola.png" alt="P.89 포물선 y=-x^2+9 위 직사각형 ABCD" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:220px;">
+                                <!-- TODO: 위 이미지는 P.89 문제 04 자동 크롭. -->
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 제1사분면 점 \(\mathrm{A} = (x, -x^2 + 9)\), \(0 \lt x \lt 3\). 대칭에 의해 직사각형 가로 길이 \(2x\), 세로 길이 \(-x^2 + 9\). 넓이 \(S(x) = 2x(-x^2 + 9) = -2x^3 + 18x\). \(S'(x) = -6x^2 + 18 = -6(x^2 - 3)\). \(S' = 0 \Rightarrow x = \sqrt{3}\) (정의역 내). 부호 \((+,-)\) \(\Rightarrow x = \sqrt{3}\)에서 극대 = 최대. \(S(\sqrt{3}) = 2\sqrt{3} \cdot 6 = 12\sqrt{3}\). 정답: \(12\sqrt{3}\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-원뿔 내접 원기둥 (부피)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 그림과 같이 밑면의 반지름의 길이가 \(5\,\text{cm}\)이고 높이가 \(10\,\text{cm}\)인 원뿔에 내접하는 원기둥 중에서 부피가 최대인 원기둥의 밑면의 반지름의 길이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 문제 05 참고)</span>
+                            <div class="mt-3 flex justify-center">
+                                <img src="images/calc_17_q_cone_cylinder.png" alt="P.89 원뿔 내접 원기둥" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:240px;">
+                                <!-- TODO: 위 이미지는 P.89 문제 05 자동 크롭. -->
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 내접 원기둥의 밑면 반지름 \(r\,\text{cm}\), \(0 \lt r \lt 5\). 닮은꼴 비례 \(\Rightarrow\) 원기둥 높이 \(h = 10 \cdot \dfrac{5 - r}{5} = 2(5 - r)\). 부피 \(V(r) = \pi r^2 \cdot 2(5 - r) = 2\pi(5r^2 - r^3)\). \(V'(r) = 2\pi(10r - 3r^2) = 2\pi r(10 - 3r)\). \(V' = 0 \Rightarrow r = \dfrac{10}{3}\) (정의역 내). 부호 \((+,-)\) \(\Rightarrow r = \dfrac{10}{3}\)에서 극대 = 최대. 정답: <strong>\(r = \dfrac{10}{3}\,\text{cm}\)</strong>, 최대 부피 \(V\left(\dfrac{10}{3}\right) = 2\pi \cdot \dfrac{100}{9} \cdot \dfrac{5}{3} = \dfrac{1000\pi}{27}\,\text{cm}^3\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-닫힌구간 최댓값 = 최솟값 + \(k\)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 닫힌구간 \([-2, 1]\)에서 함수 \(f(x) = x^3 + 3x^2 + a\)의 최댓값과 최솟값의 차가 \(4\)가 되도록 하는 실수 \(a\)의 값과, 그때의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.88 예제 3 변형)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 3x^2 + 6x = 3x(x + 2)\). 구간 \([-2, 1]\) 내부 임계점 \(x = -2\)(끝점), \(x = 0\). \(x = 0\)이 유일 내부 임계점. 후보값 \(f(-2) = -8 + 12 + a = a + 4,\ f(0) = a,\ f(1) = 1 + 3 + a = a + 4\). 최댓값 = \(a + 4\) (\(x = -2\) 또는 \(x = 1\)), 최솟값 = \(a\) (\(x = 0\)). 차 = \(4\)는 \(a\)와 무관하게 항상 성립 \(\Rightarrow\) 모든 실수 \(a\)에 대해 조건 만족. 추가 조건이 필요한 경우라면 (예) "최댓값 = \(8\)" \(\Rightarrow a + 4 = 8 \Rightarrow a = 4\). 핵심: 닫힌구간 양 끝과 내부 임계점을 <strong>전부 후보로 모으는 것</strong>이 결정적.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 정의역 함정 + 단조함수의 최댓값</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-단조함수의 닫힌구간 최댓값</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x) = x^3 + 3x^2 + a x + 1\)이 닫힌구간 \([-1, 2]\)에서 <strong>최댓값이 \(15\), 최솟값이 \(0\)</strong>이 되도록 하는 실수 \(a\)의 값과 그때의 임계점 위치를 구하시오. (단조 케이스와 극값 존재 케이스를 모두 분류해 답하라.) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 P.97 도전 06·08 통합 변형 + 학생 오답 함정)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "극값 = 최댓값"으로 자동 동일시하는 학생 오답을 정조준하는 차시 17의 핵심 함정. <br><br>
+                                <strong>STEP 1 — 도함수 분석:</strong> \(f'(x) = 3x^2 + 6x + a\). 극값 존재 \(\Leftrightarrow D/4 = 9 - 3a \gt 0 \Rightarrow a \lt 3\). 단조 \(\Leftrightarrow a \geq 3\).<br><br>
+                                <strong>STEP 2 — 경우 분류 (단조):</strong> \(a \geq 3\)이면 \(f'(x) \geq 0\) 항상 \(\Rightarrow f\) 단조증가. 닫힌구간 \([-1, 2]\) 최솟값 \(f(-1) = -1 + 3 - a + 1 = 3 - a\), 최댓값 \(f(2) = 8 + 12 + 2a + 1 = 21 + 2a\). 조건 \(3 - a = 0,\ 21 + 2a = 15\) \(\Rightarrow\) 첫 식에서 \(a = 3\), 둘째 식 검증 \(21 + 6 = 27 \neq 15\) — 모순. 단조 케이스 해 없음.<br><br>
+                                <strong>STEP 3 — 경우 분류 (극값 존재):</strong> \(a \lt 3\)이면 임계점 두 개. \(f'(x) = 0\)의 두 근을 \(\alpha = \dfrac{-3 - \sqrt{9 - 3a}}{3},\ \beta = \dfrac{-3 + \sqrt{9 - 3a}}{3}\). \(\alpha + \beta = -2,\ \alpha\beta = \dfrac{a}{3}\). 후보 4개를 \(a\)로 정리 후 \(\max = 15,\ \min = 0\) 조건으로 \(a\) 결정. (구체 풀이는 본 문제의 학습 목표 — 경우 분류 + 후보값 모두 점검.) 예시: \(a = 0\)이면 임계점 \(0, -2\) (\(-2\)는 끝점), 후보 \(\{f(-1), f(0), f(2)\} = \{3, 1, 21\}\), \(\max = 21\) 조건 불일치. \(a = -9\)면 임계점 \(\dfrac{-3 \pm 6}{3} = 1, -3\), 내부 \(x = 1\). 후보 \(\{f(-1) = 12, f(1) = 1 + 3 - 9 + 1 = -4, f(2) = 8 + 12 - 18 + 1 = 3\}\), \(\max = 12 \neq 15\). 본 문제는 일반적으로 정수해가 깔끔하지 않음 — <strong>학습 목표는 "절차"</strong>.<br><br>
+                                <strong>STEP 4 — 학생들이 자주 빠지는 3가지 오답 패턴:</strong><br>
+                                ① "극댓값 = 최댓값"으로 자동 처리 (정답: 구간 끝점도 후보!).<br>
+                                ② 단조함수일 때 후보를 끝점만 보지 않고 "극값이 없으니 답 없음"으로 잘못 결론.<br>
+                                ③ 임계점이 구간 <strong>밖</strong>일 때 그 점의 함숫값을 후보에 포함시키는 실수.<br><br>
+                                <strong>핵심 통찰:</strong> 닫힌구간의 최대·최소 후보는 "(구간 내부의) 임계점에서의 값 + 구간 끝점의 값" 모두. 이 절차를 4단계 체크리스트로 외워 두면 함정에 빠지지 않는다.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 그림과 같이 좌표평면에서 곡선 \(y = -x^2 + 4\) (\(-2 \leq x \leq 2\))와 \(x\)축으로 둘러싸인 영역에 내접하는 직사각형 중 둘레가 최대인 것의 둘레의 길이를 구하시오. (단, 직사각형의 두 변은 좌표축에 평행이다.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.89 문제 04 변형 — 넓이 \(\to\) 둘레)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략 (4단계):</strong><br>
+                <strong>STEP 1 — 변수 설정:</strong> 제1사분면 점 \((x, -x^2 + 4)\), \(0 \lt x \lt 2\). 대칭으로 가로 \(2x\), 세로 \(-x^2 + 4\).<br>
+                <strong>STEP 2 — 둘레 함수:</strong> \(L(x) = 2(2x) + 2(-x^2 + 4) = -2x^2 + 4x + 8\) (\(0 \lt x \lt 2\)).<br>
+                <strong>STEP 3 — 도함수:</strong> \(L'(x) = -4x + 4 = -4(x - 1)\). \(L' = 0 \Rightarrow x = 1\). 부호 \((+,-)\) \(\Rightarrow x = 1\)에서 극대 = 최대.<br>
+                <strong>STEP 4 — 최댓값:</strong> \(L(1) = -2 + 4 + 8 = 10\). <strong>정답: 둘레의 최댓값 = \(10\)</strong>. (가로 \(2\), 세로 \(3\)인 직사각형.) <em>(차시 17의 핵심 — 변수 설정, 정의역 \(0 \lt x \lt 2\), 임계점 1개, 극값 = 최값.)</em>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 도함수의 활용 2 유제 1 [26009-0099]) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_도함수의활용2"
+                 data-aft-source-id="c5-ex1"
+                 data-aft-source-label="수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 1">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 도함수의 활용 2 · 유제 1 [26009-0099]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 극값 조건으로 매개변수 결정 → 닫힌구간에서 이차함수의 최댓값(축에서 먼 끝점에서 발생) — 차시 17 응용 시나리오의 정공법</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                함수 \(f(x) = 2x^2 + ax\)에 대하여 함수 \(g(x) = f(x) + f(x - a)\)가 \(x = 1\)에서 극값을 가질 때, 닫힌구간 \([-2,\ 2]\)에서 함수 \(g(x)\)의 <strong>최댓값</strong>을 구하시오. (단, \(a\)는 상수이다.)
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose text-slate-600">
+                    (단답형 — 정수)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — \(g(x)\) 전개</strong>: \(g(x) = (2x^2 + ax) + \bigl[2(x - a)^2 + a(x - a)\bigr] = 4x^2 - 2ax + a^2\) (이차함수).</li>
+                    <li><strong>STEP 2 — 극값 조건으로 \(a\) 결정</strong>: \(g'(x) = 8x - 2a\). \(g'(1) = 8 - 2a = 0 \Rightarrow a = 4\). 따라서 \(g(x) = 4x^2 - 8x + 16 = 4(x - 1)^2 + 12\) (축 \(x = 1\), 위로 볼록 아님).</li>
+                    <li><strong>STEP 3 — \([-2, 2]\)에서 후보 값</strong>: 이차함수의 축이 \(x = 1\)이므로 닫힌구간 양 끝 중 축에서 먼 \(x = -2\)에서 최댓값. \(g(-2) = 16 + 16 + 16 = 48\), \(g(1) = 12\) (최소), \(g(2) = 16\).</li>
+                    <li><strong>STEP 4 — 최종</strong>: 최댓값 \(= g(-2) = 48\). <span class="text-red-600 font-bold">정답: \(48\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-purple-700"><strong>핵심:</strong> "극값 조건 \(g'(c) = 0\)으로 매개변수를 정한 뒤 닫힌구간 양 끝값 비교"는 차시 17 함수의 그래프 응용 시나리오의 정공법. 이차함수로 환원되는 경우 — 축으로부터 먼 끝점에서 최댓값(아래로 볼록일 때) — 을 활용하면 풀이가 단축된다.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="교사용_수능특강_미적분I_도함수의활용2_해설.html#c5-ex1" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 1</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2011년 4월 학력평가 가형 28번 — 직사각형 종이로 만든 상자 부피 최댓값) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_미분활용"
+                 data-aft-source-id="g_ws17_d2"
+                 data-aft-source-label="평가원·교육청 기출 · 수학Ⅱ · 미분 활용 · 2011년 4월 학력평가 가형 28번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2011년 4월 학력평가 수학영역 가형 28번 [4점] (단답형)</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 실생활 도형의 부피 최대화 — 변수 설정 \(\to\) 부피 함수 \(\to\) 미분 \(\to\) 정의역 내 임계점에서 최댓값 검증</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                [그림 1]과 같이 가로의 길이가 \(12\,\text{cm}\), 세로의 길이가 \(6\,\text{cm}\)인 직사각형 모양의 종이가 있다. 네 모퉁이에서 크기가 같은 정사각형 모양의 종이를 잘라 낸 후 남는 부분을 접어서 [그림 2]와 같이 뚜껑이 없는 직육면체 모양의 상자를 만들려고 한다. 이 상자의 부피의 최댓값을 \(M\,\text{cm}^3\)이라 할 때, \(\dfrac{\sqrt{3}}{3} M\)의 값을 구하시오. (단, 종이의 두께는 무시한다.)
+            </div>
+
+            <div class="my-6">
+                <img src="images/calc_17_chal2_kichul.png" alt="[그림 1] 가로 12cm 세로 6cm 직사각형 종이의 네 모퉁이에서 같은 크기의 정사각형을 잘라낸 모습 + [그림 2] 잘라낸 후 접어서 만든 뚜껑이 없는 직육면체 상자" class="block mx-auto max-w-md w-full border border-slate-200 rounded-lg" />
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <p class="text-base text-slate-700"><strong>답:</strong> 자연수로 답하시오. (서답형 단답)</p>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 변수 설정 + 부피 식</strong>: 잘라낸 정사각형의 한 변을 \(x\,\text{cm}\)라 하면 상자의 밑면은 \((12 - 2x) \times (6 - 2x)\), 높이는 \(x\). \[ V(x) = x(12 - 2x)(6 - 2x). \]</li>
+                    <li><strong>STEP 2 — 정의역</strong>: \(12 - 2x \gt 0\)이고 \(6 - 2x \gt 0\)이고 \(x \gt 0\) \(\Rightarrow 0 \lt x \lt 3\).</li>
+                    <li><strong>STEP 3 — 전개 + 미분</strong>: \(V(x) = 4x(6 - x)(3 - x) = 4x(x^2 - 9x + 18) = 4x^3 - 36x^2 + 72x\). \[ V'(x) = 12x^2 - 72x + 72 = 12(x^2 - 6x + 6). \]</li>
+                    <li><strong>STEP 4 — 임계점</strong>: \(V'(x) = 0 \Rightarrow x = \dfrac{6 \pm \sqrt{36 - 24}}{2} = 3 \pm \sqrt{3}\). 정의역 \(0 \lt x \lt 3\) 안의 임계점은 \(x = 3 - \sqrt{3}\). 부호 \((+, -)\) \(\Rightarrow\) 극대 = 최대.</li>
+                    <li><strong>STEP 5 — 최댓값 계산 + 답</strong>: \(x = 3 - \sqrt{3}\)에서 \[ M = V(3 - \sqrt{3}) = (3 - \sqrt{3}) \cdot (12 - 2(3 - \sqrt{3})) \cdot (6 - 2(3 - \sqrt{3})) = (3 - \sqrt{3})(6 + 2\sqrt{3})(2\sqrt{3}). \] 정리하면 \(M = 24\sqrt{3}\). 따라서 \(\dfrac{\sqrt{3}}{3} M = \dfrac{\sqrt{3}}{3} \cdot 24\sqrt{3} = \dfrac{24 \cdot 3}{3} = \) <span class="text-red-600 font-bold">\(24\)</span>.</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 차시 17의 표준 절차(변수 설정 \(\to\) 제약 \(\to\) 정의역 \(\to\) 미분 \(\to\) 임계점 검증)를 그대로 적용한 평가원 4점 기출. 본 차시 Level 2 문제 5(직육면체 상자)의 정답 패턴과 동일하지만, 임계점이 무리수(\(3 - \sqrt{3}\))로 등장하여 무리수 대입과 \(M\)을 \(\sqrt{3}\)의 배수로 정확히 정리하는 능력을 추가로 요구한다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (극값 vs 최값)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"극값과 최댓값·최솟값은 일반적으로 같지 않다"는 명제를 자신만의 반례와 함께 정리하라. 닫힌구간에서 최대·최소 후보를 모두 모으는 4단계 체크리스트(도함수→임계점→내부값+끝점값→비교)를 자신의 언어로 압축해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"극값이랑 최값이 같은 줄 알았는데, \(f(x) = 2x^3 - 3x^2 + 2\)를 \([-1, 2]\)에서 보면 극댓값은 \(2\)인데 끝점 \(x = 2\)에서의 값 \(6\)이 더 커서 최댓값은 \(6\)이라는 걸 직접 보고 확실히 구분됐다. '극값은 동네 안에서의 일등, 최값은 전체에서의 일등'이라는 걸 기억하고, 끝점도 꼭 비교 후보에 넣게 됐다. 차시 06의 최대·최소 정리가 여기서 그대로 쓰인다는 게 연결됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (실생활 모델링 4단계)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">상자 부피(예제 4), 직사각형 넓이(문제 4), 원뿔 내접 원기둥 부피(문제 5)에서 공통으로 등장한 4단계 모델링(변수 설정 → 제약식 → 목적 함수 → 미분 + 정의역)을 자신의 언어로 정리하라. 정의역 설정의 함정도 한 줄로 요약하자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"실생활 최적화 문제(상자 부피, 도형 넓이 등)에서 처음엔 식만 세우고 미분만 했는데, 정의역을 빼먹어 답이 음수로 나온 적이 많았다. '① 변수 설정 → ② 제약식 → ③ 목적 함수 → ④ 미분 + 정의역(\(0 &lt; x &lt; 6\) 같은 물리적 범위 명시)' 4단계로 정리하고 나서는 길이가 음수로 나오는 어처구니 없는 실수가 사라졌다. 정의역을 명시하는 게 수학과 현실을 잇는 다리라는 걸 알게 됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (최솟값 \(\to\) 부등식 증명)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"어떤 구간에서 \(f(x) \geq 0\)임을 보이려면 \(f\)의 그 구간에서의 최솟값이 \(\geq 0\)임을 보이면 된다"는 사실을 차시 18(부등식 증명)에서 어떻게 활용할지 예측해 보자. 차시 17의 최솟값 사고가 차시 18의 부등식 증명·매개변수 결정으로 일반화되는 흐름을 정리하라.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"오늘 익힌 최솟값 분석이 다음 차시 부등식 증명에서 '\(f(x) \geq 0\)이 항상 성립 \(\Leftrightarrow f\)의 최솟값 \(\geq 0\)'로 바로 이어질 것 같다. 즉 부등식 문제도 결국 최솟값 구하는 문제로 환원되는 셈이다. 미분이 그래프 그리는 도구를 넘어 부등식 증명 도구로 진화한다는 게 단원의 큰 그림으로 보였다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 17차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_Nav_All_index_미적분I.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 FAB -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

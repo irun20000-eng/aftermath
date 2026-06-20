@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>교사용 인덱스 — 2026 2학기 미적분 I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+  body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.6; margin: 0; opacity: 1; }
+
+  .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 6rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.15em; white-space: nowrap; }
+
+  .page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; position: relative; z-index: 1; }
+
+  .cover { background: white; padding: 3rem 2.5rem; border-radius: 1rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center; }
+  .cover .label { color: #0d9488; font-weight: 800; letter-spacing: 0.3em; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem; }
+  .cover h1 { font-size: 2.25rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -0.025em; }
+  .cover .sub { color: #64748b; font-size: 1.05rem; font-weight: 600; }
+
+  .units-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+  .unit-card { background: white; border-radius: 0.875rem; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 5px solid #0d9488; }
+  .unit-card.unit-i { border-top-color: #06b6d4; }
+  .unit-card.unit-ii { border-top-color: #0d9488; }
+  .unit-card.unit-iii { border-top-color: #0f766e; }
+
+  .unit-head { display: flex; align-items: center; gap: 0.625rem; margin-bottom: 1rem; padding-bottom: 0.625rem; border-bottom: 2px solid #e2e8f0; }
+  .unit-num { background: #0d9488; color: white; font-weight: 900; font-size: 0.75rem; padding: 0.35rem 0.625rem; border-radius: 0.375rem; letter-spacing: 0.05em; }
+  .unit-card.unit-i .unit-num { background: #06b6d4; }
+  .unit-card.unit-iii .unit-num { background: #0f766e; }
+  .unit-title { font-weight: 900; color: #0f172a; font-size: 1.1rem; letter-spacing: -0.015em; }
+
+  .lesson-row { display: grid; grid-template-columns: 2.25rem 1fr auto; gap: 0.75rem; align-items: center; padding: 0.625rem 0.5rem; border-bottom: 1px dashed #e2e8f0; }
+  .lesson-row:last-child { border-bottom: none; }
+  .lesson-row .lnum { background: #f1f5f9; color: #475569; font-weight: 800; font-size: 0.85rem; padding: 0.25rem 0; text-align: center; border-radius: 0.375rem; }
+  .lesson-row .ltitle { font-weight: 700; color: #1e293b; font-size: 0.9rem; line-height: 1.35; }
+  .lesson-row .llinks { display: flex; gap: 0.375rem; flex-wrap: wrap; }
+  .lesson-row .llinks a { font-size: 0.7rem; font-weight: 800; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-decoration: none; transition: all 0.15s; white-space: nowrap; }
+  .lesson-row .llinks .l-nav { background: #ecfeff; color: #0f766e; border: 1px solid #5eead4; }
+  .lesson-row .llinks .l-ws { background: #f0f9ff; color: #075985; border: 1px solid #7dd3fc; }
+  .lesson-row .llinks .l-sol { background: #faf5ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+  .lesson-row .llinks a:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+  .footer-bar { text-align: center; color: #64748b; font-size: 0.85rem; padding: 2rem 0 1rem; }
+  .footer-bar a { color: #0d9488; font-weight: 700; text-decoration: none; }
+  .footer-bar a:hover { text-decoration: underline; }
+  .footer-sep { margin: 0 0.75rem; color: #cbd5e1; }
+
+  @media print {
+    @page { size: A4; margin: 10mm; }
+    .watermark { font-size: 4rem; }
+    .unit-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="watermark">TEACHER'S NAVIGATION INDEX</div>
+<div class="page">
+
+  <!-- 표지 -->
+  <div class="cover">
+    <div class="label">Teacher's Navigation Index</div>
+    <h1>2026 2학기 미적분 I — 교사용 인덱스</h1>
+    <div class="sub">전 31차시 가이드 종합</div>
+  </div>
+
+  <!-- 단원 카드 그리드 -->
+  <div class="units-grid">
+
+    <!-- I-1 함수의 극한 (차시 01–04) -->
+    <div class="unit-card unit-i">
+      <div class="unit-head">
+        <span class="unit-num">I-1</span>
+        <span class="unit-title">함수의 극한</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">01</span>
+        <span class="ltitle">함수의 극한</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_01_함수의극한.html" target="aftermath_nav_calc_01" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_01_함수의극한.html" target="aftermath_ws_calc_01" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_함수의극한_해설.html" target="aftermath_sol_calc_01" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">02</span>
+        <span class="ltitle">함수의 극한값의 계산</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html" target="aftermath_nav_calc_02" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_02_함수의극한값의계산.html" target="aftermath_ws_calc_02" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_함수의극한_해설.html" target="aftermath_sol_calc_02" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">03</span>
+        <span class="ltitle">함수의 극한 미정형</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_03_함수의극한_미정형.html" target="aftermath_nav_calc_03" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_03_함수의극한_미정형.html" target="aftermath_ws_calc_03" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_함수의극한_해설.html" target="aftermath_sol_calc_03" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">04</span>
+        <span class="ltitle">중단원 마무리 I-1</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_04_중단원마무리_I_1.html" target="aftermath_nav_calc_04" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_04_중단원마무리_I_1.html" target="aftermath_ws_calc_04" class="l-ws">학습지</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- I-2 함수의 연속 (차시 05–08) -->
+    <div class="unit-card unit-i">
+      <div class="unit-head">
+        <span class="unit-num">I-2</span>
+        <span class="unit-title">함수의 연속</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">05</span>
+        <span class="ltitle">함수의 연속</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_05_함수의연속.html" target="aftermath_nav_calc_05" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_05_함수의연속.html" target="aftermath_ws_calc_05" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_함수의연속_해설.html" target="aftermath_sol_calc_05" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">06</span>
+        <span class="ltitle">연속함수의 성질</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_06_연속함수의성질.html" target="aftermath_nav_calc_06" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_06_연속함수의성질.html" target="aftermath_ws_calc_06" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_함수의연속_해설.html" target="aftermath_sol_calc_06" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">07</span>
+        <span class="ltitle">중단원 마무리 I-2</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_07_중단원마무리_I_2.html" target="aftermath_nav_calc_07" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html" target="aftermath_ws_calc_07" class="l-ws">학습지</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">08</span>
+        <span class="ltitle">대단원 평가 I</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_08_대단원평가_I.html" target="aftermath_nav_calc_08" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_08_대단원평가_I.html" target="aftermath_ws_calc_08" class="l-ws">학습지</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- II-1 미분계수와 도함수 (차시 09–11) -->
+    <div class="unit-card unit-ii">
+      <div class="unit-head">
+        <span class="unit-num">II-1</span>
+        <span class="unit-title">미분계수와 도함수</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">09</span>
+        <span class="ltitle">미분계수</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_09_미분계수.html" target="aftermath_nav_calc_09" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_09_미분계수.html" target="aftermath_ws_calc_09" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_미분계수와도함수_해설.html" target="aftermath_sol_calc_09" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">10</span>
+        <span class="ltitle">도함수</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_10_도함수.html" target="aftermath_nav_calc_10" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_10_도함수.html" target="aftermath_ws_calc_10" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_미분계수와도함수_해설.html" target="aftermath_sol_calc_10" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">11</span>
+        <span class="ltitle">중단원 마무리 II-1</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_11_중단원마무리_II_1.html" target="aftermath_nav_calc_11" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_11_중단원마무리_II_1.html" target="aftermath_ws_calc_11" class="l-ws">학습지</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- II-2a 도함수의 활용 1 (차시 12–15) -->
+    <div class="unit-card unit-ii">
+      <div class="unit-head">
+        <span class="unit-num">II-2a</span>
+        <span class="unit-title">도함수의 활용 1</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">12</span>
+        <span class="ltitle">접선의 방정식</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_12_접선의방정식.html" target="aftermath_nav_calc_12" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_12_접선의방정식.html" target="aftermath_ws_calc_12" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용1_해설.html" target="aftermath_sol_calc_12" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">13</span>
+        <span class="ltitle">평균값 정리</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_13_평균값정리.html" target="aftermath_nav_calc_13" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_13_평균값정리.html" target="aftermath_ws_calc_13" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용1_해설.html" target="aftermath_sol_calc_13" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">14</span>
+        <span class="ltitle">함수의 증가와 감소</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_14_함수의증가와감소.html" target="aftermath_nav_calc_14" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_14_함수의증가와감소.html" target="aftermath_ws_calc_14" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용1_해설.html" target="aftermath_sol_calc_14" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">15</span>
+        <span class="ltitle">극대와 극소</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_15_극대와극소.html" target="aftermath_nav_calc_15" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_15_극대와극소.html" target="aftermath_ws_calc_15" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용1_해설.html" target="aftermath_sol_calc_15" class="l-sol">해설</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- II-2b 도함수의 활용 2 (차시 16–19) -->
+    <div class="unit-card unit-ii">
+      <div class="unit-head">
+        <span class="unit-num">II-2b</span>
+        <span class="unit-title">도함수의 활용 2</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">16</span>
+        <span class="ltitle">함수의 그래프</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_16_함수의그래프.html" target="aftermath_nav_calc_16" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_16_함수의그래프.html" target="aftermath_ws_calc_16" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용2_해설.html" target="aftermath_sol_calc_16" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">17</span>
+        <span class="ltitle">함수의 그래프 응용</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_17_함수의그래프_응용.html" target="aftermath_nav_calc_17" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_17_함수의그래프_응용.html" target="aftermath_ws_calc_17" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용2_해설.html" target="aftermath_sol_calc_17" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">18</span>
+        <span class="ltitle">방정식과 부등식에의 활용</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_18_방정식과부등식에의활용.html" target="aftermath_nav_calc_18" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html" target="aftermath_ws_calc_18" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용2_해설.html" target="aftermath_sol_calc_18" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">19</span>
+        <span class="ltitle">속도와 가속도</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_19_속도와가속도.html" target="aftermath_nav_calc_19" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_19_속도와가속도.html" target="aftermath_ws_calc_19" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_도함수의활용2_해설.html" target="aftermath_sol_calc_19" class="l-sol">해설</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- II-2c 마감 (차시 20–21) -->
+    <div class="unit-card unit-ii">
+      <div class="unit-head">
+        <span class="unit-num">II-2c</span>
+        <span class="unit-title">마감 (중·대단원)</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">20</span>
+        <span class="ltitle">중단원 마무리 II-2</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_20_중단원마무리_II_2.html" target="aftermath_nav_calc_20" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_20_중단원마무리_II_2.html" target="aftermath_ws_calc_20" class="l-ws">학습지</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">21</span>
+        <span class="ltitle">대단원 평가 II</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_21_대단원평가_II.html" target="aftermath_nav_calc_21" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_21_대단원평가_II.html" target="aftermath_ws_calc_21" class="l-ws">학습지</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- III-1 부정적분·정적분 (차시 22–25) -->
+    <div class="unit-card unit-iii">
+      <div class="unit-head">
+        <span class="unit-num">III-1</span>
+        <span class="unit-title">부정적분·정적분</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">22</span>
+        <span class="ltitle">부정적분</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_22_부정적분.html" target="aftermath_nav_calc_22" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_22_부정적분.html" target="aftermath_ws_calc_22" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_부정적분과정적분_해설.html" target="aftermath_sol_calc_22" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">23</span>
+        <span class="ltitle">정적분의 정의</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_23_정적분의정의.html" target="aftermath_nav_calc_23" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_23_정적분의정의.html" target="aftermath_ws_calc_23" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_부정적분과정적분_해설.html" target="aftermath_sol_calc_23" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">24</span>
+        <span class="ltitle">정적분의 계산</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_24_정적분의계산.html" target="aftermath_nav_calc_24" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_24_정적분의계산.html" target="aftermath_ws_calc_24" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_부정적분과정적분_해설.html" target="aftermath_sol_calc_24" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">25</span>
+        <span class="ltitle">중단원 마무리 III-1</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_25_중단원마무리_III_1.html" target="aftermath_nav_calc_25" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_25_중단원마무리_III_1.html" target="aftermath_ws_calc_25" class="l-ws">학습지</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- III-2 정적분의 활용 (차시 26–29) -->
+    <div class="unit-card unit-iii">
+      <div class="unit-head">
+        <span class="unit-num">III-2</span>
+        <span class="unit-title">정적분의 활용</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">26</span>
+        <span class="ltitle">넓이 — 곡선과 x축</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_26_넓이_곡선과x축.html" target="aftermath_nav_calc_26" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_26_넓이_곡선과x축.html" target="aftermath_ws_calc_26" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_정적분의활용_해설.html" target="aftermath_sol_calc_26" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">27</span>
+        <span class="ltitle">넓이 — 두 곡선 사이</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_27_넓이_두곡선사이.html" target="aftermath_nav_calc_27" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_27_넓이_두곡선사이.html" target="aftermath_ws_calc_27" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_정적분의활용_해설.html" target="aftermath_sol_calc_27" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">28</span>
+        <span class="ltitle">속도와 거리</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_28_속도와거리.html" target="aftermath_nav_calc_28" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_28_속도와거리.html" target="aftermath_ws_calc_28" class="l-ws">학습지</a>
+          <a href="교사용_수능특강_미적분I_정적분의활용_해설.html" target="aftermath_sol_calc_28" class="l-sol">해설</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">29</span>
+        <span class="ltitle">중단원 마무리 III-2</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_29_중단원마무리_III_2.html" target="aftermath_nav_calc_29" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_29_중단원마무리_III_2.html" target="aftermath_ws_calc_29" class="l-ws">학습지</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- III-3 마감 (차시 30–31) -->
+    <div class="unit-card unit-iii">
+      <div class="unit-head">
+        <span class="unit-num">III-3</span>
+        <span class="unit-title">마감</span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">30</span>
+        <span class="ltitle">대단원 평가 III</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_30_대단원평가_III.html" target="aftermath_nav_calc_30" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_30_대단원평가_III.html" target="aftermath_ws_calc_30" class="l-ws">학습지</a>
+        </span>
+      </div>
+
+      <div class="lesson-row">
+        <span class="lnum">31</span>
+        <span class="ltitle">학기말 종합</span>
+        <span class="llinks">
+          <a href="교사용_Nav_미적분I_31_학기말종합.html" target="aftermath_nav_calc_31" class="l-nav">Nav</a>
+          <a href="교사용_학습지_미적분I_31_학기말종합.html" target="aftermath_ws_calc_31" class="l-ws">학습지</a>
+        </span>
+      </div>
+    </div>
+
+  </div><!-- /.units-grid -->
+
+  <!-- 푸터 -->
+  <div class="footer-bar">
+    <a href="교사용_index-calc.html" target="_blank">학습지 메인 (교사용_index-calc.html)</a>
+    <span class="footer-sep">|</span>
+    <a href="교사용_Solutions_All_미적분I.html" target="_blank">통합 해설집 (교사용_Solutions_All_미적분I.html)</a>
+    <br><br>
+    <span>2026 · 2학기 미적분 I · 교사용 내부 자료</span>
+  </div>
+
+</div><!-- /.page -->
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 01차시 함수의 극한 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        /* TEACHER'S GUIDE 워터마크 */
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        /* 차시 페이지 */
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        /* 50분 타임라인 */
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        /* 생각 열기 운영 */
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        /* 공식 박스 */
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        /* 문항 카드 */
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        /* 형성평가 루브릭 */
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        /* 성찰 우수 예시 */
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        /* 메모 영역 */
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        /* 네비 / 인쇄 버튼 */
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_학습지_미적분I_01_함수의극한.html" target="aftermath_ws_calc_01" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">01</span>
+        <span class="lesson-tag">I-1 함수의 극한</span>
+        <span class="lesson-title">함수의 극한 — 직관적 정의와 좌·우극한</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> "\(x \to a\)는 \(x = a\)가 아니다" — <strong>극한값은 함숫값과 무관할 수 있다</strong>는 한 줄로 미적분 전체의 출발점을 찍는다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-01-01] 함수의 극한의 뜻을 이해하고 좌극한·우극한·극한 존재를 판정한다.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">수학 I 수열의 극한 직관(\(n \to \infty\)), 함수의 그래프 읽기(절댓값·구간정의).</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① \(\lim\) 기호의 의미를 자기 말로 설명 ② 좌·우극한을 분리해서 계산 ③ 극한 존재 조건 판정.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "버스가 정류장에 닿는 순간의 속도"를 묻는다. 칠판에 키워드 "직전 vs 닿음"만 적고 정답을 주지 않는다.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00. Warm-up 발문에 1분간 자유 메모 → 짝과 30초 공유.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 직관 정의 → 좌·우극한 → 존재 조건 순으로 판서. 각 단계 reveal-box를 학생이 직접 클릭하도록 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01번 4개 박스에 자기 언어로 핵심 단어를 적고, 빈칸을 채워가며 정의를 내면화.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~2번)은 짝활동, L2(3~4번)는 개별 풀이 후 무작위 호명 발표. 4번 풀이는 칠판 분기 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 1·2번 3분, 3·4번 5분. 4번에서 좌·우 풀이를 색깔로 분리하여 노트 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 5번(오답률 1위 함정) 먼저 학생에게 "답이 5라고 생각하는 사람?"부터 물어 오개념을 표면화 → 트랩 박스 공개. 형성 6번은 모두에게 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 5번에서 \(f(1)\)과 \(\lim f(x)\)를 색깔로 분리 표기. 6번은 4분 안에 좌·우극한·존재 판정 세 줄로 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 새로 알게 된 한 가지"를 무작위 3명 발표. QR 성찰지 안내 + 도전 문제 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 문제 사전 시도.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "도착 직전"과 "도착한 순간"은 무엇이 다를까? 수학적으로 어떻게 표현할까?</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"도착한 순간은 속도가 0이다."</span><br><span class="fb"><strong>피드백:</strong> 옳지만, "도착 직전"은 0이 아닌데 어떻게 가까워지는지를 묻자. \(t \to t_0\)이라는 표기로 자연스럽게 유도.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"평균 속도를 점점 짧은 시간으로 잡으면 된다."</span><br><span class="fb"><strong>피드백:</strong> 정답에 가깝다 — \(\Delta t \to 0\)이 미분의 핵심임을 미리 예고. 다음 단원 미분계수로 연결.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"속도계 바늘이 가리키는 값이 속도다."</span><br><span class="fb"><strong>피드백:</strong> 일상 직관 인정. 그런데 속도계는 어떻게 그 값을 계산할까? "찰나의 변화율"이라는 수학적 정의 필요성으로 연결.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>1학기 연결:</strong> 수열에서는 "\(n\)이 한없이 커질 때"였고, 오늘부터는 "\(x\)가 \(a\)에 한없이 가까워질 때"로 정의역이 이산 → 연속으로 확장된다.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
+
+    <div class="formula-box">
+        <div class="label">CORE DEFINITION</div>
+        <div class="formula">\( \displaystyle \lim_{x \to a} f(x) = L \quad \Longleftrightarrow \quad \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L \)</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 5단계:</strong>
+        <ol>
+            <li>수직선 위에 점 \(a\)와 화살표 두 개(왼쪽·오른쪽)를 그리고 "둘 다 닿지는 않음"을 강조.</li>
+            <li>함수 \(f(x) = x + 1\)의 \(x \to 2\) 극한을 그래프로 시각화 → \(L = 3\)을 점선으로 표시.</li>
+            <li>구간정의 함수(\(x &lt; 1\)에서 \(x+3\), \(x \geq 1\)에서 \(2x\))를 그려 좌·우극한이 일치하는 경우를 확인.</li>
+            <li>점프 함수(\(\frac{|x|}{x}\))를 그려 좌·우극한이 다른 경우 → \(\lim_{x \to 0}\)이 존재하지 않음.</li>
+            <li>구멍 뚫린 그래프(\(\frac{x^2-1}{x-1}\), \(x=1\)만 5로 재정의)로 \(f(1) \neq \lim_{x \to 1} f(x)\) 강조.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>오개념 ①:</strong> "\(\lim_{x \to a} f(x)\)는 \(f(a)\)와 같다." → 03차시까지 반복적으로 부수어야 할 1순위 오개념.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "좌·우극한 중 하나만 있으면 극한이 존재한다." → 둘 다 존재 + 일치할 때만 존재.</div>
+    <div class="q-warn"><strong>오개념 ③:</strong> "\(\infty\)는 큰 수다." → \(\infty\)는 수가 아니라 "한없이 커지는 상태"의 약속 기호.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+
+    <div class="problems">
+        <!-- L1 1번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">다항함수 극한 — 직접 대입</span></div>
+            <div class="q-stmt">(1) \(\lim_{x \to 2}(3x-1)\) &nbsp; (2) \(\lim_{x \to -1}(x^2+2x+5)\) &nbsp; (3) \(\lim_{x \to 3}\dfrac{x-1}{x+1}\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 다항함수는 연속이므로 \(x=2\) 대입: \(3\cdot 2 - 1 = 5\).</span>
+                <span class="step">(2) \((-1)^2 + 2(-1) + 5 = 1 - 2 + 5 = 4\).</span>
+                <span class="step">(3) 분모 \(x+1\)이 \(x=3\)에서 \(4 \neq 0\)이므로 직접 대입: \(\dfrac{3-1}{3+1} = \dfrac{1}{2}\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(5\) &nbsp; (2) \(4\) &nbsp; (3) \(\dfrac{1}{2}\)</div>
+        </div>
+
+        <!-- L1 2번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">그래프 읽기 — 좌·우극한 + 존재 판정</span></div>
+            <div class="q-stmt">그래프(<code>images/calc_01_q2.png</code>, 비상 PDF P.16 원본)에서 \(x=1\) 부근의 좌·우극한과 \(\lim_{x \to 1} f(x)\) 판정.</div>
+            <div class="q-solve">
+                <span class="step">그림: \(x \lt 1\) 구간은 곡선이 빈 원 \((1, 1)\)로 접근 → 좌극한 \(=1\).</span>
+                <span class="step">\(x \geq 1\) 구간은 검은 점 \((1, 2)\)에서 시작하는 수평선 \(y=2\) → 우극한 \(=2\), 정의값 \(f(1)=2\).</span>
+                <span class="step">좌극한 \(1 \neq\) 우극한 \(2\) → \(\lim_{x \to 1} f(x)\)는 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 좌극한 \(=1\), 우극한 \(=2\), \(\lim_{x \to 1} f(x)\) <strong>존재하지 않음</strong>. (참고: \(f(1)=2\)이지만 좌극한과 같지 않으므로 일반 극한 없음.)</div>
+            <div class="q-warn"><strong>판서 포인트:</strong> 빈 원 \(\circ\)은 "그 점은 값이 없지만 함수가 그 점에 수렴한다"는 의미. 검은 점 \(\bullet\)은 정의값. 둘을 혼동하면 좌·우극한이 뒤바뀜.</div>
+        </div>
+
+        <!-- L2 3번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">절댓값 함수 \(\frac{|x|}{x}\)</span></div>
+            <div class="q-stmt">\(\lim_{x \to 0^-} \dfrac{|x|}{x}\), \(\lim_{x \to 0^+} \dfrac{|x|}{x}\), \(\lim_{x \to 0} \dfrac{|x|}{x}\) 존재 판정.</div>
+            <div class="q-solve">
+                <span class="step">\(x \gt 0\)이면 \(|x| = x\) → \(\dfrac{x}{x} = 1\). 우극한 \(= 1\).</span>
+                <span class="step">\(x \lt 0\)이면 \(|x| = -x\) → \(\dfrac{-x}{x} = -1\). 좌극한 \(= -1\).</span>
+                <span class="step">좌·우 불일치 → \(\lim_{x \to 0} \dfrac{|x|}{x}\) 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 우극한 \(1\), 좌극한 \(-1\), 일반 극한 <strong>존재하지 않음</strong>.</div>
+        </div>
+
+        <!-- L2 4번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">구간정의 함수 좌·우극한</span></div>
+            <div class="q-stmt">\(f(x)=x+3\,(x\lt 1)\), \(f(x)=2x\,(x\geq 1)\). 세 극한 구하기.</div>
+            <div class="q-solve">
+                <span class="step">좌극한 (\(x \to 1^-\)): \(x \lt 1\) 식 사용 → \(1 + 3 = 4\).</span>
+                <span class="step">우극한 (\(x \to 1^+\)): \(x \geq 1\) 식 사용 → \(2 \cdot 1 = 2\).</span>
+                <span class="step">좌극한 \(4 \neq\) 우극한 \(2\) → \(\lim_{x \to 1} f(x)\) 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 좌극한 \(4\), 우극한 \(2\), 일반 극한 <strong>존재하지 않음</strong>.</div>
+        </div>
+
+        <!-- L3 5번 (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — 극한값과 함숫값의 분리</span></div>
+            <div class="q-stmt">\(f(x)=\dfrac{x^2-1}{x-1}\,(x \neq 1)\), \(f(1) = 5\). (1) \(f(1)\) &nbsp; (2) \(\lim_{x \to 1} f(x)\). 같은가 다른가?</div>
+            <div class="q-solve">
+                <span class="step">(1) 정의에 의해 \(f(1) = 5\) (재정의된 값).</span>
+                <span class="step">(2) \(x \to 1\)은 \(x \neq 1\)인 영역만 보므로 \(\dfrac{x^2-1}{x-1} = \dfrac{(x-1)(x+1)}{x-1} = x+1\) 사용.</span>
+                <span class="step">\(\lim_{x \to 1}(x+1) = 2\). 함숫값 \(5\)와 극한값 \(2\)는 다름.</span>
+            </div>
+            <div class="q-ans">정답: \(f(1) = 5\), \(\lim_{x \to 1} f(x) = 2\). <strong>두 값은 다르다.</strong></div>
+            <div class="q-warn"><strong>발표 유도:</strong> "왜 다를 수 있는가?"를 학생에게 직접 한 문장으로 말하게 한다 — "극한은 \(x = 1\)이 아닌 주변만 보기 때문". 이 한 문장이 미적분 전체의 출발점.</div>
+        </div>
+
+        <!-- 형성 6번 (span2 fc) -->
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — \(\dfrac{x^2-4}{|x-2|}\) 좌·우극한</span></div>
+            <div class="q-stmt">\(f(x) = \dfrac{x^2-4}{|x-2|}\). \(\lim_{x \to 2^-} f(x)\), \(\lim_{x \to 2^+} f(x)\), \(\lim_{x \to 2} f(x)\) 존재 판정.</div>
+            <div class="q-solve">
+                <span class="step">분자 \(= (x-2)(x+2)\). \(x \gt 2\): \(|x-2| = x-2\) → \(\dfrac{(x-2)(x+2)}{x-2} = x+2\). 우극한 \(= 2+2 = 4\).</span>
+                <span class="step">\(x \lt 2\): \(|x-2| = -(x-2)\) → \(\dfrac{(x-2)(x+2)}{-(x-2)} = -(x+2)\). 좌극한 \(= -4\).</span>
+                <span class="step">좌·우 불일치 (\(4 \neq -4\)) → \(\lim_{x \to 2} f(x)\) 존재하지 않음.</span>
+            </div>
+            <div class="q-ans">정답: 우극한 \(4\), 좌극한 \(-4\), 일반 극한 <strong>존재하지 않음</strong>.</div>
+        </div>
+
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 함수의극한 유제 2 — 합성 극한</span></div>
+            <div class="q-stmt">그래프 \(y=f(x)\)에서 \(\lim_{x \to -1^-} f(x+2) + \lim_{x \to 1^+} f(-x)\). 선택지 ① \(-2\) ② \(-1\) ③ \(0\) ④ \(1\) ⑤ \(2\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(s = x+2\) 치환. \(x \to -1^-\) ⇒ \(s \to 1^-\). 따라서 \(\lim_{x \to -1^-} f(x+2) = \lim_{s \to 1^-} f(s)\).</span>
+                <span class="step">STEP 2: 그래프에서 \(s=1\) 왼쪽 좌극한 \(= 0\).</span>
+                <span class="step">STEP 3: \(t = -x\) 치환. \(x \to 1^+\) ⇒ \(t \to -1^-\) (부호·방향 동시 반전). \(\lim_{x \to 1^+} f(-x) = \lim_{t \to -1^-} f(t) = -1\).</span>
+                <span class="step">STEP 4: 합 \(= 0 + (-1) = -1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② \(-1\)</strong>. 핵심: 합성 극한은 안쪽 변수의 접근 방향(±)까지 추적.</div>
+        </div>
+
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2022학년도 수능 4번 [3점]</span></div>
+            <div class="q-stmt">그래프 \(y=f(x)\)에서 \(\lim_{x \to -1^-} f(x) + \lim_{x \to 2} f(x)\). 선택지 ① 1 ② 2 ③ 3 ④ 4 ⑤ 5.</div>
+            <div class="q-solve">
+                <span class="step">그래프 구조: \(x \lt -1\) 우하향 직선이 \((-1, 3)\) 열린점으로, \(-1 \lt x \lt 1\) 대각선이 \((-1, 0)\)·\((1, 3)\) 열린점, \(1 \le x\)에서 \(y=1\) 수평선 (단 \(x=2\)는 열린점). 함숫값 \(f(-1) = 2\), \(f(2) = 3\)은 고립 닫힌점.</span>
+                <span class="step">\(\lim_{x \to -1^-} f(x) = 3\) (좌측 직선이 열린점 \((-1,3)\)에 접근).</span>
+                <span class="step">\(\lim_{x \to 2^-} f(x) = 1\), \(\lim_{x \to 2^+} f(x) = 1\) → \(\lim_{x \to 2} f(x) = 1\). 함숫값 \(f(2) = 3\)은 무관.</span>
+                <span class="step">합 \(= 3 + 1 = 4\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ \(4\)</strong>. 핵심: 함숫값(●)과 극한값(○)이 다른 위치에 있어도 극한 계산에 함숫값을 쓰지 않는다.</div>
+        </div>
+    </div>
+
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (6번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">분자 인수분해 + 절댓값 좌·우 분기 + 좌극한 \(-4\)·우극한 \(4\)·존재하지 않음을 모두 정확히 서술.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">좌·우극한 값은 옳으나 "존재하지 않음" 결론 누락, 또는 절댓값 분기 근거가 명시되지 않음.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">개념(좌·우 분리)은 이해했으나 부호 실수(좌·우 바꿈) 또는 인수분해 계산 오류.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">절댓값을 무시하고 \(x \to 2\) 직접 대입 시도(\(\dfrac{0}{0}\)에서 멈춤). 부분 시도 점수.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "\(|x-2|\)는 \(x\)의 부호에 따라 다른 식이 된다. 좌·우를 분리해 두 번 계산하자."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화</span>
+            <span class="rtbody">"\(x \to 1\)이 \(x = 1\)이 아니라는 게 처음엔 말장난 같았는데, 5번 문제에서 \(f(1) = 5\)인데 극한값은 \(2\)인 걸 보고 정말 다르다는 걸 체감했다. 극한은 '주변의 행동', 함숫값은 '그 점의 값'이라는 차이."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 결정적 실수와 극복</span>
+            <span class="rtbody">"\(\dfrac{|x|}{x}\)에서 좌극한을 \(+1\)로 쓴 실수. \(x \lt 0\)이면 \(|x|\)는 \(x\)의 부호를 뒤집어야 한다는 걸 잊었다. 앞으로 절댓값이 보이면 부호 분기부터 적기로 했다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성</span>
+            <span class="rtbody">"가우스 함수 \([x]\)도 정수점마다 좌·우가 다를 것 같다. 일반화하면 '계단함수'는 모든 점프 지점에서 극한이 없겠다. 다음 시간 사칙연산 성질로 어떻게 처리할지 궁금."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

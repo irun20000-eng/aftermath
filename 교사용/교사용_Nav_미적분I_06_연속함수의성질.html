@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 06차시 연속함수의 성질 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_05_함수의연속.html">← 이전 차시 가이드</a>
+        <a href="교사용_학습지_미적분I_06_연속함수의성질.html" target="aftermath_ws_calc_06" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_미적분I_07_중단원마무리_I_2.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">06</span>
+        <span class="lesson-tag">I-2 함수의 연속</span>
+        <span class="lesson-title">연속함수의 성질 — 최대·최소·사잇값 정리</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> "닫힌구간 + 연속" 두 가정이 모이면 <strong>최댓값·최솟값이 존재</strong>(EVT)하고 <strong>중간 값을 모두 훑는다</strong>(IVT). 직관적이지만 두 가정 중 하나만 빠져도 결론이 무너진다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-01-02] 연속함수의 성질(최대·최소 정리, 사잇값 정리)을 이해하고 활용한다.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">05차시 함수의 연속 정의 + 사칙, 구간에서의 연속, 다항함수의 연속성.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① EVT 가정·결론 구분 ② IVT로 방정식 실근 존재 증명 ③ 보조함수 정의로 두 그래프 교점 증명.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "독도 동도 선착장(0 m) → 정상(98.6 m), 도중에 50 m 지점을 반드시 지나는가?" 발문. 정답 없이 직관 표집.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00. Warm-up에 1분 자유 메모 → "헬리콥터 점프" 단서로 연속의 필요성 자각.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> EVT → IVT → IVT 응용(실근 존재) → 합성함수의 연속 순으로 판서. 각 정리의 "가정 2개"를 색깔로 강조. 반례 박스를 함께 시연.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01의 4개 박스에 reveal-box를 클릭하며 정리의 결론 부분을 자기 언어로 메모.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1·2번)은 짝활동, L2(3·4번)는 개별 풀이 후 무작위 호명. 3번은 부호 표를 칠판에 함께 작성.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 꼭짓점·끝점 비교, 2번 "연속 → 부호 변화 → 실근" 4단계 표준 답안 작성. 3번 부호표.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 5번(오답률 1위 함정) — "사잇값 정리 = 정확히 한 개?"로 오개념 표면화 → 트랩 박스 공개. 형성 6번은 보기별 사칙 점검.</div>
+            <div class="tl-s"><strong>학생:</strong> ㄱ·ㄴ 반례 직접 작성. 6번 "분모 \(\neq 0\) 보장" 한 줄 명시.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 정리의 "가정 → 결론" 구조를 도식으로 마무리. QR 성찰지 안내 + 도전 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 갈매기가 선착장(0 m) → 정상(98.6 m)으로 날 때, 해발 50 m 지점을 반드시 지나는가? 헬리콥터처럼 점프하면?</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"당연히 지난다. 0에서 98까지 가려면."</span><br><span class="fb"><strong>피드백:</strong> 옳다. 그러나 그 직관을 수학적 가정으로 풀면 무엇이 필요할까? "끊김 없이" = "연속". 사잇값 정리의 핵심 가정.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"꼭 그렇지 않다. 갑자기 위로 점프할 수도 있다."</span><br><span class="fb"><strong>피드백:</strong> 좋은 비판적 시각. "점프 = 불연속"이고, 사잇값 정리는 연속이라는 가정이 있어야 성립한다. 가정의 중요성 자각.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"높이를 단계별로 측정하면 50 m를 놓칠 수도 있다."</span><br><span class="fb"><strong>피드백:</strong> 이산화의 한계 vs 연속의 강함. 수학에서는 "함수가 연속"이라는 가정 하나로 모든 중간 값을 보장. 사잇값 정리의 위력.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>05차시 연결:</strong> 어제 배운 "연속 = 끊김 없음"이라는 정의에서 오늘은 그 정의가 만들어내는 두 가지 강력한 정리(EVT, IVT)를 만난다. 정리는 정의로부터 자동으로 따라온다.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
+
+    <div class="formula-box">
+        <div class="label">EVT &amp; IVT</div>
+        <div class="formula">
+        <strong>EVT:</strong> \(f\)가 \([a,b]\)에서 연속 \(\Rightarrow\) 최댓값·최솟값 존재. &nbsp;|&nbsp;
+        <strong>IVT:</strong> \(f\)가 \([a,b]\)에서 연속, \(f(a) \neq f(b)\), \(k\)가 그 사이 값 \(\Rightarrow\) \(f(c) = k\)인 \(c \in (a, b)\) 적어도 하나.
+        </div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 5단계:</strong>
+        <ol>
+            <li>EVT 반례 — 열린구간 \((-1, 2)\)에서 \(f(x) = x^2\): \(x \to 2\)에 가까워지지만 도달 못 함. 최댓값 없음.</li>
+            <li>EVT 반례 — \(\frac{1}{x}\)를 \((0, 1]\)에서: \(x \to 0^+\) 발산. 최댓값 없음. → "닫힘 + 연속" 둘 다 필수.</li>
+            <li>IVT 시연 — \(f(x) = x^3 - x - 1\)이 \([-1, 2]\)에서 연속, \(f(-1) = -1 \lt 0\), \(f(2) = 5 \gt 0\) → \((-1, 2)\)에 실근 적어도 하나.</li>
+            <li>"적어도 하나"의 의미 — \(f(x) = x^3 - x\), \([-2, 2]\)에서 부호 변화하지만 실근은 \(x = -1, 0, 1\) 3개. "정확히 하나"가 아님.</li>
+            <li>합성의 연속 — \(g(x) = x^2 - 3\)이 연속, \(f(t) = \sqrt{t}\)가 \(t \geq 0\)에서 연속 → \(\sqrt{x^2 - 3}\)이 정의역에서 연속.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>오개념 ①:</strong> "IVT는 실근이 정확히 한 개임을 보장한다." → "적어도 하나"일 뿐. 출렁이는 그래프는 여러 실근 가능.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "\(f(a) f(b) \geq 0\)이면 실근이 없다." → IVT 역명제는 거짓. 같은 부호여도 \(x^2 - 1\)처럼 실근 가능.</div>
+    <div class="q-warn"><strong>오개념 ③:</strong> "열린구간 \((a, b)\)에서도 EVT가 성립한다." → 닫힌이 깨지면 최댓값 미존재 가능 (반례 1·2).</div>
+    <div class="q-warn"><strong>오개념 ④:</strong> "방정식 \(f = g\)의 실근 증명에 사잇값 정리를 직접 쓴다." → <strong>보조함수 \(h = f - g\)</strong>를 정의한 뒤 IVT 적용이 표준 절차.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+
+    <div class="problems">
+        <!-- L1 1번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">닫힌구간 최댓값·최솟값</span></div>
+            <div class="q-stmt">(1) \(x^2 - 4x + 5\) on \([1, 4]\) &nbsp;(2) \(\sqrt{x-2}\) on \([3, 6]\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 꼭짓점 \(x = 2 \in [1, 4]\), \(f(2) = 1\) (최솟). 양 끝 \(f(1) = 2, f(4) = 5\) → 최댓 \(5\).</span>
+                <span class="step">(2) 증가함수, \(f(3) = 1\) (최솟), \(f(6) = 2\) (최댓).</span>
+            </div>
+            <div class="q-ans">정답: (1) 최댓 \(5\), 최솟 \(1\) &nbsp;(2) 최댓 \(2\), 최솟 \(1\)</div>
+        </div>
+
+        <!-- L1 2번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">IVT로 실근 존재 증명</span></div>
+            <div class="q-stmt">\(x^3 - x - 1 = 0\)이 \((-1, 2)\)에 적어도 하나의 실근을 가짐을 보이시오.</div>
+            <div class="q-solve">
+                <span class="step">① \(f(x) = x^3 - x - 1\)은 다항함수 → \([-1, 2]\)에서 연속.</span>
+                <span class="step">② \(f(-1) = -1 - (-1) - 1 = -1 \lt 0\), \(f(2) = 8 - 2 - 1 = 5 \gt 0\).</span>
+                <span class="step">③ 부호 변화 \(\Rightarrow\) IVT(\(k = 0\) 적용)에 의해 \(f(c) = 0\)인 \(c \in (-1, 2)\) 적어도 하나 존재.</span>
+            </div>
+            <div class="q-ans">정답: 위 ①②③을 답안으로 작성. <strong>표준 4단계 (연속 + 두 끝 부호 + IVT 인용)</strong>.</div>
+        </div>
+
+        <!-- L2 3번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">실근 구간 식별 — 부호표</span></div>
+            <div class="q-stmt">\(2x^3 - 3x^2 - x + 1 = 0\)은 서로 다른 세 실근. \((-1,0), (0,1), (1,2), (2,3)\) 중?</div>
+            <div class="q-solve">
+                <span class="step">\(f(-1) = -2 - 3 + 1 + 1 = -3\), \(f(0) = 1\), \(f(1) = 2 - 3 - 1 + 1 = -1\), \(f(2) = 16 - 12 - 2 + 1 = 3\), \(f(3) = 54 - 27 - 3 + 1 = 25\).</span>
+                <span class="step">부호 변화: \((-1,0)\) − → +, \((0,1)\) + → −, \((1,2)\) − → + (3개). \((2,3)\) + → +(없음).</span>
+            </div>
+            <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄷ</strong>. 세 실근이 정확히 이 세 구간에 1개씩 분배됨을 명시.</div>
+        </div>
+
+        <!-- L2 4번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">분수함수 최댓값 — 절댓값 분기</span></div>
+            <div class="q-stmt">\([1, 3]\)에서 \(f(x) = \frac{a}{|x-4|}\)의 최댓값 \(= 8\). 양수 \(a\)?</div>
+            <div class="q-solve">
+                <span class="step">\([1, 3]\)에서 \(x \lt 4\) → \(|x-4| = 4 - x\). 따라서 \(f(x) = \frac{a}{4 - x}\).</span>
+                <span class="step">\(x\) 증가 → 분모 감소 → \(f\) 증가. 최댓값은 \(x = 3\)에서 \(\frac{a}{1} = a\).</span>
+                <span class="step">\(a = 8\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(a = 8\)</strong>.</div>
+        </div>
+
+        <!-- L3 5번 (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — IVT의 가정·결론 혼동</span></div>
+            <div class="q-stmt">참인 명제 모두 + 거짓 명제는 반례. ㄱ "연속+부호반전 \(\Rightarrow\) 정확히 하나의 실근" ㄴ "연속+같은 부호 \(\Rightarrow\) 실근 없음" ㄷ "연속+\(k\) 사이 \(\Rightarrow\) \(f(c)=k\)인 \(c\) 존재".</div>
+            <div class="q-solve">
+                <span class="step"><strong>ㄱ (거짓):</strong> IVT는 "적어도 하나". 반례 \(f(x) = x^3 - x\), \([-2, 2]\): \(f(-2) = -6, f(2) = 6\) → 부호 다름. 실근 \(x = -1, 0, 1\) <strong>3개</strong>.</span>
+                <span class="step"><strong>ㄴ (거짓):</strong> 같은 부호여도 실근 가능. 반례 \(f(x) = x^2 - 1\), \([-2, 2]\): \(f(\pm 2) = 3 \gt 0\) 같은 부호. 실근 \(x = \pm 1\) <strong>2개</strong>.</span>
+                <span class="step"><strong>ㄷ (참):</strong> IVT의 정확한 진술 그대로.</span>
+            </div>
+            <div class="q-ans">정답: 참 = <strong>ㄷ</strong>. ㄱ 반례 \(x^3 - x\), ㄴ 반례 \(x^2 - 1\).</div>
+            <div class="q-warn"><strong>발표 유도:</strong> "IVT가 '적어도 하나'라고 진술하는 이유는?"을 학생에게 직접 말하게 한다 — "그래프가 출렁이면 더 많이 만날 수 있기 때문". 추후 미분 단원의 "도함수 부호 → 실근 개수 정확 결정"의 동기.</div>
+        </div>
+
+        <!-- 형성 6번 (span2 fc) -->
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 사칙으로 연속 보장되는 함수 식별</span></div>
+            <div class="q-stmt">\(f, g\)가 \(x=a\)에서 연속. ㄱ \(2f - g\) &nbsp;ㄴ \(\{f\}^2\) &nbsp;ㄷ \(\frac{f}{g}\) &nbsp;ㄹ \(\frac{2}{\{f\}^2 + 1}\). 반드시 연속?</div>
+            <div class="q-solve">
+                <span class="step">ㄱ 실수배 + 차 → 사칙에 의해 항상 연속 ✓.</span>
+                <span class="step">ㄴ \(f \cdot f\) 곱 → 항상 연속 ✓.</span>
+                <span class="step">ㄷ \(g(a) = 0\)일 수 있어 보장 X — 반례 \(g(x) = x\), \(a = 0\).</span>
+                <span class="step">ㄹ 분모 \(\{f\}^2 + 1 \geq 1 \gt 0\) (항상 양수) → 분모 \(\neq 0\) 보장 → 항상 연속 ✓.</span>
+            </div>
+            <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄹ</strong>.</div>
+        </div>
+
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 함수의연속 예제 4 — 부호곱 + IVT</span></div>
+            <div class="q-stmt">\(f(x) = x(x-a)(x-a^2)\), \(f(3)f(6) \lt 0\), \(f(3)f(20) \gt 0\). \(a \in (p, q)\). \(p^2 + q^2\)?</div>
+            <div class="q-solve">
+                <span class="step">STEP 1 \(f(3), f(6)\) 부호 다름 + \(f(3), f(20)\) 같음 ⇒ \(f(6), f(20)\) 부호 다름 ⇒ \(f(6)f(20) \lt 0\).</span>
+                <span class="step">STEP 2 IVT: \([3,6]\)에 영점 \(c_1\), \([6,20]\)에 영점 \(c_2\) 존재. \(f\)의 실근은 \(\{0, a, a^2\}\).</span>
+                <span class="step">STEP 3 \(a \gt 3\)이면 \(a^2 \gt a\). 따라서 \(a \in (3, 6)\), \(a^2 \in (6, 20)\) — 두 영점이 자연스럽게 배치.</span>
+                <span class="step">STEP 4 \(6 \lt a^2 \lt 20\) ⇒ \(\sqrt{6} \lt a \lt 2\sqrt{5}\). 교집합 \(3 \lt a \lt 2\sqrt{5}\) ⇒ \(p = 3, q = 2\sqrt{5}\).</span>
+                <span class="step">STEP 5 \(p^2 + q^2 = 9 + 20 = 29\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(29\)</strong>. 핵심: 부호의 곱 부호 → 두 구간에 영점 → 삼차의 세 근 \(\{0,a,a^2\}\) 위치 결정.</div>
+        </div>
+
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 1994학년도 수능 1차 11번 — 우함수 × IVT × EVT 종합</span></div>
+            <div class="q-stmt">조건 (가) 연속 + 우함수, (나) \(|x| \gt 5\)에서 \(f = 0\), (다) \(|x| \lt 5\)에서 \(|f| \leq 10\) 및 \(f = 10\)인 \(x\)가 오직 한 개. 옳지 <u>않은</u> 것은?</div>
+            <div class="q-solve">
+                <span class="step">① \(f(\pm 5) = 0\): 연속 + (나)에 의해 \(\lim_{x\to 5^+} f = 0 = f(5)\). 우함수로 \(f(-5) = 0\). <strong>옳음</strong>.</span>
+                <span class="step">② 최대 = \(f(0) = 10\): 우함수 + \(f(c) = 10\)이 오직 하나 ⇒ \(c = -c\) ⇒ \(c = 0\). (다)에 의해 \(|f| \leq 10\) ⇒ 최대 \(= 10 = f(0)\). <strong>옳음</strong>.</span>
+                <span class="step">③ \(f(x) = 5\)인 \(x\)가 두 개 이상: \([0,5]\)에서 \(f(0) = 10, f(5) = 0\), 연속 → IVT로 \(f(c_1) = 5\)인 \(c_1 \in (0, 5)\). 우함수 → \(f(-c_1) = 5\). 최소 2개. <strong>옳음</strong>.</span>
+                <span class="step">④ 최솟값을 갖는 \(x\)가 오직 하나? — 만약 최솟값 \(= 0\)이면 \(|x| \geq 5\) 전체에서 \(f = 0\) → 최솟점 무수히 많음. 음수 최솟이라도 우함수 → 짝으로 발생. <strong>옳지 않음</strong>.</span>
+                <span class="step">⑤ \(f(x+5)f(x-5) = 0\): \(x+5\)와 \(x-5\)는 거리 10. \(|x+5| \gt 5\) 또는 \(|x-5| \gt 5\) 중 적어도 하나 성립 → 한쪽이 0 → 곱 0. <strong>옳음</strong>.</span>
+            </div>
+            <div class="q-ans">정답: <strong>④</strong>. 핵심: ④는 EVT의 "최댓·최솟 존재"만 보장하지 "유일성"은 보장 안 함 + 우함수 대칭성.</div>
+        </div>
+    </div>
+
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (6번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">정답 ㄱ·ㄴ·ㄹ 모두 식별 + ㄷ 거짓의 이유 "\(g(a) = 0\)일 가능성 배제 못 함" 명시 + ㄹ 참의 이유 "\(\{f\}^2 + 1 \geq 1 \gt 0\)" 명시.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">정답은 ㄱ·ㄴ·ㄹ로 옳으나 ㄷ가 거짓인 근거 또는 ㄹ가 참인 근거 중 하나 누락.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">ㄱ·ㄴ만 식별 + ㄹ 누락, 또는 ㄷ를 참으로 잘못 선택.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">사칙 정리 자체는 알지만 분모 영점 조건을 누락.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "사칙 4공식에서 유일한 추가 조건은 '분수의 분모 \(\neq 0\)'. 분모가 항상 양수임을 보일 수 있다면 보장된다."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화 — 정리의 가정 분석</span>
+            <span class="rtbody">"EVT·IVT의 가정 '닫힌구간 + 연속'을 그냥 외우다가 직접 반례를 만들어보고 나서 이유가 보였다. \((-1, 2)\)에서 \(x^2\)은 끝점을 안 잡아서 최댓값이 없고, \((0, 1]\)에서 \(1/x\)는 발산해서 최댓값이 없다. '닫힘'은 끝점을 잡아주고 '연속'은 발산을 막는다 — 두 가정은 역할이 다르다는 점이 인상적이었다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 문제해결력 — 실근 존재 증명 루틴</span>
+            <span class="rtbody">"\(f(x) = g(x)\)의 실근 증명에서 처음에는 무엇을 적어야 할지 헤맸다. '① 보조함수 \(h = f - g\) 정의 → ② \([a, b]\)에서 연속 명시 → ③ \(h(a)h(b) \lt 0\) 보이기 → ④ IVT 인용' 4단계 루틴을 만들어 두니 어떤 형태의 실근 문제도 같은 틀로 풀린다. 7차시 도전 14번도 같은 패턴이었다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성 — 정리의 일반화</span>
+            <span class="rtbody">"같은 산을 첫째 날 10시에 올라가고 둘째 날 같은 시간에 내려오는 두 사람의 위치 함수가 같아지는 시각이 반드시 존재한다는 고전 문제를 떠올렸다. 두 위치의 차 \(h(t)\)에 IVT를 쓰면 풀린다. 정리가 일상 상황에서도 그대로 쓰인다는 점이 재미있었다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

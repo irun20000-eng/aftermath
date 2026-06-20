@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 III-2 정적분의 활용 · 차시 28 속도와 거리 · Agent A10 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 속도와 거리</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_28';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "28차시 속도와 거리";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-2. 정적분의 활용</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">28차시: 속도와 거리</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_미적분I_27_넓이_두곡선사이.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_미적분I_29_중단원마무리_III_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">차시 19에서 위치 \(x(t)\)의 도함수가 속도 \(v(t)\)임을 배웠다. 즉 \(v(t) = x'(t)\). 그렇다면 그 역연산 — <strong>속도 \(v(t)\)로부터 위치 \(x(t)\)를 복원</strong>하는 것은 어떤 연산일까?</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 지상에서 출발하여 수직 방향으로 올라가는 열기구의 \(t\)초 후 높이가 \(x = 2t\,\,(0 \leq t \leq 10)\)이고 속도가 \(v(t) = 2\,\text{m/s}\)일 때:</p>
+                    <ul class="list-disc ml-6 mt-1 space-y-1">
+                        <li>① 10초 후 열기구의 높이는? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 20\,\text{m} \)</span></span></li>
+                        <li>② 정적분 \(\displaystyle\int_0^{10} v(t)\,dt = \int_0^{10} 2\,dt = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 20 \)</span></span></li>
+                        <li>③ ①과 ②의 결과를 비교해 보면? — <strong>속도를 시간에 대해 적분하면 위치(거리)가 나온다!</strong></li>
+                    </ul>
+                    <p class="text-base text-slate-600">이는 \(x'(t) = v(t)\)의 양변을 \([0, 10]\)에서 적분 \(\Rightarrow x(10) - x(0) = \int_0^{10} v(t)\,dt\). 미적분 기본정리(차시 24)가 운동학에 즉시 적용됨. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.132 · 개념 탐구 참고)</span></p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 그런데 \(v(t)\)가 음수가 되면 — 점이 뒤로 움직이면 — 위치는 줄어들지만 "이동한 거리"는 계속 늘어난다. 즉 <strong>변위(위치 변화) \(\neq\) 이동 거리</strong>. 차시 27의 두 곡선 사이 넓이에서 절댓값이 위·아래 부호를 통합했듯이, 운동학에서도 절댓값 \(|v(t)|\)가 부호 있는 변위와 항상 양수인 거리의 차이를 메운다. 오늘 우리는 ① 위치 \(x(t) = x_0 + \int_{t_0}^t v(s)\,ds\), ② 위치 변화량(변위) \(\int_a^b v(t)\,dt\), ③ 이동 거리 \(\int_a^b |v(t)|\,dt\) — 세 가지를 명확히 구분하고 ④ 방향 전환 시점(\(v = 0\)) 기준 구간 분할로 거리를 정확히 구하는 절차를 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 위치 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        시각 \(t\)에서의 위치 \(x(t)\) — 초기 위치 + 변위 누적
+                    </h3>
+                    <p class="mb-3 text-slate-700">수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t)\)이고, 시각 \(t_0\)에서 위치가 \(x_0\)일 때:</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( x(t) = x_0 + \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_{t_0}^{t} v(s)\,ds \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-slate-700"><strong>유도:</strong> \(x'(t) = v(t)\)의 양변을 \([t_0, t]\)에서 적분 \(\Rightarrow x(t) - x(t_0) = \int_{t_0}^t v(s)\,ds\). 미적분 기본정리(차시 24).</p>
+                    <p class="mt-3 text-sm text-slate-600">적분 변수에 \(t\)를 쓰면 위 끝과 충돌하므로 \(s\)로 바꾸어 표기. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.132 · 위치 공식 참고)</span></p>
+                </div>
+
+                <!-- 2. 위치 변화량(변위) -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        위치 변화량(변위) — 부호 있는 양
+                    </h3>
+                    <p class="mb-3 text-slate-700">시각 \(t = a\)에서 \(t = b\)까지 점 P의 <strong>위치 변화량</strong>(변위):</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( x(b) - x(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b v(t)\,dt \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-slate-700"><strong>핵심:</strong> 변위는 부호를 가짐. \(v \gt 0\)이면 앞으로 진행하여 \(+\), \(v \lt 0\)이면 뒤로 진행하여 \(-\). 출발점과 도착점의 직선 거리·방향을 함께 나타낸다.</p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 변위 \(= 0\)은 점이 정지했다는 뜻이 아니라 <strong>"출발점과 도착점이 같다"</strong>는 뜻. 도중에 멀리 갔다가 되돌아온 경우 가능. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.132 · 위치의 변화량 참고)</span></p>
+                </div>
+
+                <!-- 3. 이동 거리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        이동 거리 — 항상 양수, 절댓값으로 통합
+                    </h3>
+                    <div class="flex justify-center my-3">
+                        <img src="images/calc_28_vt_concept.png" alt="v(t) 그래프 — [a,c]에서 v(t)≥0이고 색칠된 양의 영역, [c,b]에서 v(t)≤0이고 색칠된 음의 영역. 이동 거리는 두 영역 넓이의 합" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
+                    </div>
+                    <p class="mb-3 text-slate-700">속도 \(v(t)\)가 \([a, b]\) 안에서 부호를 바꿀 때 (예: \([a, c]\)에서 \(v \geq 0\), \([c, b]\)에서 \(v \leq 0\)):</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base mb-2"><strong>유도:</strong></p>
+                        <ul class="list-disc ml-6 text-base space-y-1">
+                            <li>① \([a, c]\)에서 진행 거리 \(= x(c) - x(a) = \int_a^c v(t)\,dt\) (양수).</li>
+                            <li>② \([c, b]\)에서 후진 거리 \(= x(c) - x(b) = -\int_c^b v(t)\,dt = \int_c^b \{-v(t)\}\,dt\) (양수).</li>
+                            <li>③ 총 이동 거리 \(= \int_a^c v\,dt + \int_c^b (-v)\,dt = \int_a^c |v|\,dt + \int_c^b |v|\,dt = \int_a^b |v(t)|\,dt\).</li>
+                        </ul>
+                    </div>
+                    <div class="bg-cyan-50 p-4 rounded-xl border-2 border-cyan-300 mt-3">
+                        <p class="text-center text-2xl font-black text-teal-700">총 이동 거리 \(= \displaystyle\int_a^b |v(t)|\,dt\)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>실전 절차:</strong> ① \(v(t) = 0\)의 해(\(\to\) 방향 전환 시점) ② 각 구간의 부호 ③ 부호별로 \(v\) 또는 \(-v\) 적분 ④ 합산. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.133 · 이동 거리 정리 참고)</span></p>
+                </div>
+
+                <!-- 4. 변위 vs 이동 거리 비교 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        변위 vs. 이동 거리 — 절대 혼동 금지
+                    </h3>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ul class="space-y-2 text-base">
+                            <li>📌 <strong>변위</strong> \(\int_a^b v(t)\,dt\): 부호 있음. 출발 \(\to\) 도착 직선 변화. 음수 또는 \(0\) 가능.</li>
+                            <li>📌 <strong>이동 거리</strong> \(\int_a^b |v(t)|\,dt\): 항상 \(\geq 0\). 실제로 움직인 총 길이. 후진 거리도 더함.</li>
+                            <li>📌 \(v(t) \geq 0\)인 구간에서만 두 값이 일치. 그 외에는 \(|\text{변위}| \leq \text{이동 거리}\).</li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>예 (예제 1 P.134):</strong> 좌표 2에서 출발, \(v(t) = 3 - t\). \(v = 0 \Rightarrow t = 3\). \([2, 6]\) 변위 \(= \int_2^6 (3 - t)\,dt = -4\) (4만큼 뒤로). 이동 거리 \(= \int_2^3 (3 - t)\,dt + \int_3^6 (t - 3)\,dt = \tfrac{1}{2} + \tfrac{9}{2} = 5\) (총 5만큼 움직임). 두 값이 명확히 다름. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 예제 1 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">위치·변위·거리의 표준 절차 — 다항 속도 함수</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-위치·변위·거리 종합</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 6t - 3t^2\)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 문제 01 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) 시각 \(t = 3\)에서 점 P의 위치 &nbsp;&nbsp;
+                                (2) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P의 위치의 변화량 &nbsp;&nbsp;
+                                (3) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P가 움직인 거리
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(v(t) = 3t(2 - t)\). \(v = 0 \Rightarrow t = 0, 2\). \([0, 2]\)에서 \(v \geq 0\), \([2, 3]\)에서 \(v \leq 0\).<br>
+                            (1) \(x(3) = 0 + \int_0^3 (6t - 3t^2)\,dt = \big[3t^2 - t^3\big]_0^3 = 27 - 27 = 0\). <strong>답: 0</strong> (원점으로 돌아옴).<br>
+                            (2) \(\int_1^3 (6t - 3t^2)\,dt = \big[3t^2 - t^3\big]_1^3 = 0 - 2 = -2\). <strong>답: \(-2\)</strong>.<br>
+                            (3) \(\int_1^2 (6t - 3t^2)\,dt + \int_2^3 (3t^2 - 6t)\,dt = \big[3t^2 - t^3\big]_1^2 + \big[t^3 - 3t^2\big]_2^3 = (4 - 2) + (0 - (-4)) = 2 + 4 = 6\). <strong>답: 6</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-실생활 (제동 거리)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 지면으로부터 1\,m 높이에서 20\,m/s의 속도로 지면과 수직으로 쏘아 올린 공의 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = 20 - 10t\quad (0 \leq t \leq 4) \] 인 관계가 성립한다. 공을 쏘아 올린 후 4초 동안 공이 움직인 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 문제 03 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(v = 0 \Rightarrow t = 2\). \([0, 2]\)에서 \(v \geq 0\) (위로 올라감), \([2, 4]\)에서 \(v \leq 0\) (떨어짐). 이동 거리 \(= \int_0^2 (20 - 10t)\,dt + \int_2^4 (10t - 20)\,dt = \big[20t - 5t^2\big]_0^2 + \big[5t^2 - 20t\big]_2^4 = 20 + 20 = 40\). <strong>답: 40\,m</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-그래프형 v(t) → 거리</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도 \(v(t)\)의 그래프가 오른쪽 그림과 같다. 시각 \(t = 0\)에서 \(t = 9\)까지 점 P가 움직인 거리를 구하시오. (단, \(0 \leq t \leq 9\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 문제 02 참고)</span></div>
+                        <div class="flex justify-center my-3">
+                            <img src="images/calc_28_q02_vt.png" alt="문제 02 v(t) 그래프 — 꺾은선 형태. (0,0) → (2,2) → (3,0) → (4,-2) → (5,0) → (6,2) → (9,0) 형태로 정삼각형 4개" class="block mx-auto max-w-md w-full rounded-lg border border-slate-200" />
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 이동 거리 \(= \int_0^9 |v(t)|\,dt = |v(t)|\) 그래프 아래 영역의 넓이 합. 그림에서 4개의 삼각형 영역 — \([0, 3]\) (밑변 3, 높이 2), \([3, 5]\) (음수 영역, \(|v|\) 그리면 밑변 2, 높이 2), \([5, 9]\) (밑변 4, 높이 2). 각각 \(= \tfrac{1}{2} \cdot 3 \cdot 2 = 3,\ \tfrac{1}{2} \cdot 2 \cdot 2 = 2,\ \tfrac{1}{2} \cdot 4 \cdot 2 = 4\). 합 \(= 3 + 2 + 4 = 9\). <strong>답: 9</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">구간별 정의·드론 등 결합형 응용</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-위치·변위·거리 종합 (3·4차 식)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 좌표가 \(-1\)인 점에서 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \[ v(t) = t^2 - 4t + 3 \] 일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.135 · 중단원 기초 03번 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) 시각 \(t = 2\)에서 점 P의 위치 &nbsp;&nbsp;
+                                (2) 시각 \(t = 0\)에서 \(t = 3\)까지 점 P의 위치의 변화량 &nbsp;&nbsp;
+                                (3) 시각 \(t = 0\)에서 \(t = 2\)까지 점 P가 움직인 거리
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(v(t) = (t - 1)(t - 3)\). \(v = 0 \Rightarrow t = 1, 3\). \([0, 1]\)에서 \(v \geq 0\), \([1, 3]\)에서 \(v \leq 0\).<br>
+                            (1) \(x(2) = -1 + \int_0^2 (t^2 - 4t + 3)\,dt = -1 + \big[\tfrac{1}{3}t^3 - 2t^2 + 3t\big]_0^2 = -1 + \tfrac{2}{3} = -\tfrac{1}{3}\).<br>
+                            (2) \(\int_0^3 (t^2 - 4t + 3)\,dt = \big[\tfrac{1}{3}t^3 - 2t^2 + 3t\big]_0^3 = 9 - 18 + 9 = 0\). <strong>답: 0</strong> (변위 \(= 0\)).<br>
+                            (3) \(\int_0^1 (t^2 - 4t + 3)\,dt + \int_1^2 -(t^2 - 4t + 3)\,dt = \tfrac{4}{3} + \tfrac{2}{3} = 2\). <strong>답: 2</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-구간별 속도 정의 (드론)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 지면에 정지해 있던 드론이 지면과 수직 방향으로 출발한 지 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = \begin{cases} \dfrac{1}{2} t & (0 \leq t \leq 10) \\ 15 - t & (10 \lt t \leq 15) \end{cases} \] 라고 한다. 출발한 지 \(12\)초 후의 드론의 높이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.137 · 중단원 기본 10번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 두 구간 모두 \(0 \leq t \leq 12\) 범위에서 \(v(t) \geq 0\) (드론이 계속 올라감). 따라서 높이 \(=\) 변위 \(= \int_0^{12} v\,dt\). 두 구간으로 나누어 적분:<br>
+                            \(\int_0^{10} \tfrac{1}{2}t\,dt + \int_{10}^{12}(15 - t)\,dt = \big[\tfrac{1}{4}t^2\big]_0^{10} + \big[15t - \tfrac{1}{2}t^2\big]_{10}^{12}\)<br>
+                            \(= 25 + \{(180 - 72) - (150 - 50)\} = 25 + (108 - 100) = 25 + 8 = 33\). <strong>답: 33\,m</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-원점 복귀 시각</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 4t^2 - 2t^3\)일 때, 점 P가 다시 원점으로 돌아오는 시각을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.137 · 중단원 기본 11번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 원점 복귀 \(\Leftrightarrow x(T) = 0\) (단, \(T \gt 0\)). \(x(T) = 0 + \int_0^T (4t^2 - 2t^3)\,dt = \big[\tfrac{4}{3}t^3 - \tfrac{1}{2}t^4\big]_0^T = \tfrac{4}{3}T^3 - \tfrac{1}{2}T^4 = T^3 \cdot (\tfrac{4}{3} - \tfrac{T}{2})\). \(x(T) = 0 \Rightarrow T = 0\) 또는 \(\tfrac{4}{3} = \tfrac{T}{2} \Rightarrow T = \tfrac{8}{3}\). <strong>답: \(t = \dfrac{8}{3}\)</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 두 점의 만남 — 두 점의 위치 함수 비교</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-두 점 P, Q의 만남 횟수</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 점 P는 원점에서, 점 Q는 좌표가 \(-3\)인 점에서 동시에 출발하여 수직선 위를 움직이고 있다. 두 점 P, Q의 시각 \(t\)에서 속도가 각각 \[ v_\text{P}(t) = 4t + 5,\quad v_\text{Q}(t) = 3t^2 - 8t + 14 \] 일 때, 두 점 P, Q가 만나는 횟수를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.137 · 중단원 도전 13번 참고)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "두 점이 만난다"는 말 때문에 속도 \(v_\text{P} = v_\text{Q}\)로 푸는 함정에 빠지기 쉽다. 핵심은 <strong>"같은 시각에 같은 위치"</strong> — 즉 위치 함수 \(x_\text{P}(t) = x_\text{Q}(t)\)를 풀어야 한다.<br><br>
+                                <strong>STEP 1 — 위치 함수 구성</strong>: <br>
+                                \(x_\text{P}(t) = 0 + \int_0^t (4s + 5)\,ds = 2t^2 + 5t\). <br>
+                                \(x_\text{Q}(t) = -3 + \int_0^t (3s^2 - 8s + 14)\,ds = -3 + t^3 - 4t^2 + 14t\).<br><br>
+                                <strong>STEP 2 — 만남 조건 \(x_\text{P}(t) = x_\text{Q}(t)\)</strong>: <br>
+                                \(2t^2 + 5t = -3 + t^3 - 4t^2 + 14t\)<br>
+                                \(\Rightarrow t^3 - 6t^2 + 9t - 3 = 0\)? 다시 정리: \(0 = t^3 - 4t^2 + 14t - 3 - 2t^2 - 5t = t^3 - 6t^2 + 9t - 3\).<br><br>
+                                <strong>STEP 3 — 삼차방정식 \(f(t) = t^3 - 6t^2 + 9t - 3\)의 양의 실근 개수</strong>: <br>
+                                \(f'(t) = 3t^2 - 12t + 9 = 3(t - 1)(t - 3)\). 극대 \(t = 1\), 극소 \(t = 3\). \(f(1) = 1 - 6 + 9 - 3 = 1 \gt 0\), \(f(3) = 27 - 54 + 27 - 3 = -3 \lt 0\), \(f(0) = -3 \lt 0\), \(f(4) = 64 - 96 + 36 - 3 = 1 \gt 0\).<br><br>
+                                <strong>STEP 4 — 부호 변화로 근의 위치 파악</strong>: \(f(0) \lt 0,\ f(1) \gt 0\) \(\Rightarrow\) \((0, 1)\)에 근 1개. \(f(1) \gt 0,\ f(3) \lt 0\) \(\Rightarrow\) \((1, 3)\)에 근 1개. \(f(3) \lt 0,\ f(4) \gt 0\) \(\Rightarrow\) \((3, 4)\)에 근 1개. 양의 실근 <strong>3개</strong>.<br><br>
+                                <strong>결론:</strong> 두 점이 만나는 횟수 \(= 3\)회.<br><br>
+                                <strong>핵심 통찰:</strong> 운동학에서 "만난다 \(=\) 같은 위치", "스친다 \(=\) 같은 속도"는 전혀 다른 조건. 위치 비교는 ① 속도를 적분해 위치 함수 작성 ② 초기 위치(\(x_0\)) 빠뜨리지 말 것 ③ \(x_\text{P} = x_\text{Q}\) 방정식을 푼다. 차시 18(방정식과 부등식에의 활용 — 삼차함수 극값 분석)이 결합되는 종합 문제. 평가원·내신 단골 출제.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 직선 도로를 초속 \(20\,\text{m}\)로 달리고 있는 자동차가 있다. 이 자동차가 제동을 걸고 \(t\)초 후의 속도가 \(v(t) = (20 - 4t)\,\text{m/s}\)일 때, 제동을 건 순간부터 자동차가 정지할 때까지 달린 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.141 · 대단원평가 09번 참고)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> 정지 시점 \(v = 0 \Rightarrow 20 - 4t = 0 \Rightarrow t = 5\). \([0, 5]\)에서 \(v \geq 0\)이므로 변위 \(=\) 이동 거리 \(= \int_0^5 (20 - 4t)\,dt = \big[20t - 2t^2\big]_0^5 = 100 - 50 = 50\). <strong>답: 50\,m</strong>.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 정적분의 활용 유제 4) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_정적분의활용"
+                 data-aft-source-id="c7-ex4"
+                 data-aft-source-label="수능특강 수학Ⅱ · 정적분의 활용 · 유제 4">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 정적분의 활용 · 유제 4</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 6분) · 핵심: 방향 전환 시각 \(p\)는 \(v(p) = 0\)이면서 \(v\)의 부호가 변하는 시점. 이동 거리는 \(\int_0^p |v|\,dt\) — 차시 28 핵심 절차의 직접 응용</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                수직선 위를 움직이는 점 P의 시각 \(t\) (\(t \geq 0\))에서의 속도 \(v(t)\)가 \(v(t) = 2t^2 - 6t\)이다. 시각 \(t = p\) (\(p \gt 0\))에서 점 P가 움직이는 방향이 바뀔 때, 시각 \(t = 0\)에서 \(t = p\)까지 점 P가 움직인 거리는?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(6\) &nbsp;&nbsp; ② \(7\) &nbsp;&nbsp; ③ \(8\) &nbsp;&nbsp; ④ \(9\) &nbsp;&nbsp; ⑤ \(10\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 방향 전환 시각 \(p\)</strong>: \(v(t) = 2t^2 - 6t = 2t(t - 3) = 0 \Rightarrow t = 0\) 또는 \(t = 3\). \(t = 0\)은 출발 시점이므로 방향 전환은 \(t = 3\)에서 발생 ⇒ \(p = 3\).</li>
+                    <li><strong>STEP 2 — \([0, 3]\)에서 부호 확인</strong>: \(0 \lt t \lt 3\)일 때 \(t \gt 0\), \(t - 3 \lt 0\) ⇒ \(v(t) = 2t(t - 3) \lt 0\). \(t \gt 3\)일 때 \(v \gt 0\). \(t = 3\) 전후로 부호가 변하므로 방향 전환 조건 만족.</li>
+                    <li><strong>STEP 3 — 이동 거리 식</strong>: \([0, 3]\)에서 \(v \leq 0\)이므로 \(|v(t)| = -v(t) = -2t^2 + 6t\). \(\displaystyle\int_0^3 |v(t)|\,dt = \int_0^3 (-2t^2 + 6t)\,dt\).</li>
+                    <li><strong>STEP 4 — 정적분 계산</strong>: \(\big[-\tfrac{2t^3}{3} + 3t^2\big]_0^3 = -\tfrac{2 \cdot 27}{3} + 27 = -18 + 27 = 9\). <span class="text-red-600 font-bold">정답: ④ \(9\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "방향 전환" = \(v = 0\)이고 부호가 바뀌는 시점. 출발점 \(t = 0\)은 제외. 이동 거리는 항상 \(\int|v|\,dt\)이므로 \(v \lt 0\) 구간에서는 부호를 뒤집어 적분. 변위(\(\int v\,dt = -9\), 음수)와 거리(\(9\))의 차이에 주의. 차시 28의 핵심 절차 ① 방향 전환 시각 ② 부호 분석 ③ \(\int|v|\) 계산이 그대로 적용되는 수능특강 표준형.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="교사용_수능특강_미적분I_정적분의활용_해설.html#c7-ex4" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 4</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (기출 수학Ⅱ 적분 — 운동학) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_적분"
+                 data-aft-source-id="g_ws28_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 적분 · 2007년 7월 학력평가 가형 21번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2007년 7월 학력평가 가형 21번</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 8분) · 핵심: 그래프에서 \(v(t) = f'(t)\)의 부호를 읽어 "출발할 때의 운동 방향(\(v(0)\)의 부호) vs. 반대 방향" 구간을 식별하고, 그 구간에서 \(|v|\)의 정적분으로 거리 \(d\)를 계산</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서의 위치 \(f(t)\)에 대하여 이차함수 \(y = f'(t)\)의 그래프는 다음과 같다. \(y = f'(t)\)는 \(f'(0) = 3\)이고 \(t\)축과 \(t = 1,\ t = 3\)에서 만난다. 점 P가 출발할 때의 운동 방향에 대하여 반대 방향으로 움직인 거리를 \(d\)라 할 때, \(12d\)의 값을 구하시오.
+            </div>
+
+            <div class="flex justify-center my-3">
+                <img src="images/calc_28_chal2_kichul.png" alt="2007년 7월 학평 가21 그림 — 이차함수 y=f'(t) 그래프. (0, 3)에서 시작해 t=1, t=3에서 t축과 만남. [1, 3] 구간에서 f'(t) < 0 (반대 방향), [0, 1] 및 t > 3에서 f'(t) > 0 (출발 방향)" class="block mx-auto max-w-md w-full rounded-lg border border-slate-200" />
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 속도 함수 \(v(t) = f'(t)\) 결정</strong>: 그래프에서 \(f'(t)\)는 \(t = 1, 3\)을 두 영점으로 갖는 이차함수이며 \(f'(0) = 3\). 따라서 \(f'(t) = a(t - 1)(t - 3)\) 꼴. \(f'(0) = a \cdot (-1) \cdot (-3) = 3a = 3 \Rightarrow a = 1\). 결론: \(v(t) = (t - 1)(t - 3) = t^2 - 4t + 3\).</li>
+                    <li><strong>STEP 2 — 출발 방향 파악</strong>: \(v(0) = 3 \gt 0\). 점 P는 출발할 때 <strong>양의 방향</strong>(\(+\))으로 움직임. 따라서 "반대 방향"은 \(v(t) \lt 0\)인 구간 — 음의 방향 운동.</li>
+                    <li><strong>STEP 3 — 반대 방향 구간 식별</strong>: \(v(t) = (t - 1)(t - 3) \lt 0 \Leftrightarrow 1 \lt t \lt 3\). 그래프에서도 \(y = f'(t)\)가 \(t\)축 아래에 있는 구간이 정확히 \([1, 3]\). 이 구간에서 점 P가 반대 방향(음의 방향)으로 움직임.</li>
+                    <li><strong>STEP 4 — 거리 \(d\) 계산</strong>: 반대 방향으로 움직인 거리는 \([1, 3]\)에서 \(|v(t)|\)의 정적분. \(v \lt 0\)이므로 \(|v| = -v\). \[ d = \int_1^3 -v(t)\,dt = \int_1^3 (-t^2 + 4t - 3)\,dt. \] 부정적분: \(\big[-\tfrac{1}{3}t^3 + 2t^2 - 3t\big]_1^3\). \(t = 3\): \(-9 + 18 - 9 = 0\). \(t = 1\): \(-\tfrac{1}{3} + 2 - 3 = -\tfrac{4}{3}\). 따라서 \(d = 0 - \big(-\tfrac{4}{3}\big) = \tfrac{4}{3}\).</li>
+                    <li><strong>STEP 5 — \(12d\)</strong>: \(12d = 12 \times \tfrac{4}{3} = 16\). <span class="text-red-600 font-bold">정답: \(16\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 그래프에서 (1) 영점 → 속도 함수의 인수, (2) 초깃값 \(f'(0)\) → 최고차항 계수, 두 정보로 \(v(t)\) 완전 복원. "출발할 때의 반대 방향" = \(v(0)\)의 부호 반대 = \(v(t)\)의 부호 음(또는 양)인 구간. 이 구간의 \(|v|\) 정적분이 곧 반대 방향 이동 거리. 차시 28의 핵심 절차 — 부호 분기 → 절댓값 정적분 — 그대로 적용되는 평가원의 모범 ★★★ 문제.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (위치 vs. 변위 vs. 이동 거리)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">위치 \(x(t) = x_0 + \int_{t_0}^t v\,ds\), 변위 \(\int_a^b v\,dt\), 이동 거리 \(\int_a^b |v|\,dt\) 세 개념이 어떻게 구분되고 또 어떻게 통합되는지 자신의 언어로 정리하고, 도형 넓이와의 유비(차시 26·27 절댓값 발상)를 도식으로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"위치 \(x(t)\), 변위 \(\int v\,dt\), 이동 거리 \(\int |v|\,dt\) 세 개념을 미적분 기본정리로 정리해보니, 차시 26·27에서 본 '절댓값으로 부호 뒤집기' 발상이 그대로 쓰였다. 부호 있는 변위와 항상 양수인 거리의 차이를 절댓값 하나가 메워주는 셈이라 단원 III-2 전체가 같은 도구로 묶인다는 게 보였다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (이동 거리 4단계 절차)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">이동 거리 문제의 4단계 절차 ① 방향 전환 시점 \(v = 0\)의 해 ② 각 구간의 부호 ③ 부호별 \(v\) 또는 \(-v\) 적분 ④ 합산을 자기점검 카드로 만들고, "두 점의 만남"이 위치 함수 비교임을 카드 마지막에 강조해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"이동 거리 \(\int |v|\,dt\)를 그냥 \(\int v\,dt\)로 적었다가 자주 틀렸다. '① 방향 전환 \(v = 0\) 찾기 → ② 구간별 부호 → ③ \(v\) 또는 \(-v\) 적분 → ④ 합산' 4단계로 정리하니 깔끔해졌다. 그리고 '두 점 P, Q가 만난다'는 \(v_P = v_Q\)가 아니라 \(x_P = x_Q\)라는 위치 비교라는 점도 카드 마지막에 적어두니 함정에 안 빠지게 됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (단원 III-2 통합 + 미적분 II로의 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">단원 III-2 세 차시(넓이·두 곡선·속도와 거리)가 모두 "차의 절댓값 정적분"으로 통합되는 미적분 활용의 근간이며, 미적분 II에서는 평면 운동·곡면 적분으로 확장된다는 가설을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"단원 III-2의 세 차시(곡선과 \(x\)축 · 두 곡선 사이 · 속도와 거리)가 다 \(\int |f - g|\,dx\) 아니면 \(\int |v|\,dt\) 형태의 '절댓값 정적분' 한 가지로 묶인다는 걸 알게 됐다. 미적분 II에서 평면 운동의 속도 벡터나 곡선의 길이로 확장된다는데, 같은 발상이 차원만 올라가는 거라는 가설로 다음 학년 로드맵까지 미리 잡아뒀다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 28차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_Nav_All_index_미적분I.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 FAB -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

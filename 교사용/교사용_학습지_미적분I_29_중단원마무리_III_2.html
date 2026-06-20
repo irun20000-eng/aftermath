@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 III-2 정적분의 활용 · 차시 29 중단원 마무리 III-2 · Agent A10 작성 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 중단원 마무리 — 정적분의 활용</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_29';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 200px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 150px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "29차시 중단원 마무리 (III-2 정적분의 활용)";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-2. 정적분의 활용</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">29차시: 중단원 마무리</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_미적분I_28_속도와거리.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_미적분I_30_대단원평가_III.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 01. 실전 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
+            <h2 class="section-title">01. 실전 훈련 (Textbook Mastery)</h2>
+            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 중단원 마무리(P.135~P.137) 13문항 + 익힘책 P.158 보강 1문항 = 14문항을 그대로 학습지화. <span class="text-teal-600">기초 1~3</span> · <span class="text-yellow-600">기본 4~12</span> · <span class="text-red-600">도전 13·14 (서술형 킬러)</span></p>
+
+            <div class="grid grid-cols-1 gap-12">
+                <!-- ============ 기초 (P.135 기초 01·02·03) ============ -->
+
+                <!-- Q1 기초 01 -->
+                <div>
+                    <span class="badge badge-l1">[기초-곡선과 \(x\)축 사이의 넓이]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">1. 곡선 \(y = x^2 - 4x - 5\)와 \(x\)축으로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.135 중단원 기초 01번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① 영점: \(x^2 - 4x - 5 = (x - 5)(x + 1) = 0 \Rightarrow x = -1, 5\). ② \([-1, 5]\)에서 \(y \leq 0\). ③ \(S = \int_{-1}^{5}(-x^2 + 4x + 5)\,dx = [-\tfrac{1}{3}x^3 + 2x^2 + 5x]_{-1}^{5} = (-\tfrac{125}{3} + 50 + 25) - (\tfrac{1}{3} + 2 - 5) = \tfrac{100}{3} - (-\tfrac{8}{3}) = \tfrac{108}{3} = 36\). 답: \(36\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q2 기초 02 -->
+                <div>
+                    <span class="badge badge-l1">[기초-두 곡선 사이 넓이]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">2. 두 곡선 \(y = x^2 - 6x + 9\), \(y = -2x^2 + 6x\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.135 중단원 기초 02번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① 교점: \(x^2 - 6x + 9 = -2x^2 + 6x \Rightarrow 3x^2 - 12x + 9 = 0 \Rightarrow x^2 - 4x + 3 = (x-1)(x-3) = 0 \Rightarrow x = 1, 3\). ② \([1, 3]\)에서 \(-2x^2 + 6x \geq x^2 - 6x + 9\). ③ 1/6 공식: \(S = \int_1^3 \{-3x^2 + 12x - 9\}\,dx = -3\int_1^3 (x-1)(x-3)\,dx = -3 \cdot \left(-\tfrac{(3-1)^3}{6}\right) = -3 \cdot (-\tfrac{4}{3}) = 4\). 답: \(4\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q3 기초 03 -->
+                <div>
+                    <span class="badge badge-l1">[기초-위치·변위·이동거리 (속도와 거리)]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">3. 좌표가 \(-1\)인 점에서 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \( v(t) = t^2 - 4t + 3 \)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.135 중단원 기초 03번)</span>
+                        <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                            (1) 시각 \(t = 2\)에서 점 P의 위치 <br>
+                            (2) 시각 \(t = 0\)에서 \(t = 3\)까지 점 P의 위치의 변화량 <br>
+                            (3) 시각 \(t = 0\)에서 \(t = 2\)까지 점 P가 움직인 거리
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① \(\int v\,dt = \tfrac{1}{3}t^3 - 2t^2 + 3t + C\). <br>
+                        (1) 위치 \(= -1 + \int_0^2 v(t)\,dt = -1 + [\tfrac{1}{3}t^3 - 2t^2 + 3t]_0^2 = -1 + (\tfrac{8}{3} - 8 + 6) = -1 + \tfrac{2}{3} = -\tfrac{1}{3}\). <br>
+                        (2) 변화량 \(= \int_0^3 v(t)\,dt = [\tfrac{1}{3}t^3 - 2t^2 + 3t]_0^3 = 9 - 18 + 9 = 0\). <br>
+                        (3) 이동거리 \(= \int_0^2 |v(t)|\,dt\). \(v(t) = (t - 1)(t - 3) = 0 \Rightarrow t = 1, 3\). \([0, 1]\)에서 \(v \geq 0\), \([1, 2]\)에서 \(v \leq 0\). \(\int_0^1 v\,dt = \tfrac{1}{3} - 2 + 3 = \tfrac{4}{3}\). \(\int_1^2 (-v)\,dt = -[\tfrac{8}{3} - 8 + 6] + [\tfrac{4}{3}] = -\tfrac{2}{3} + \tfrac{4}{3} = \tfrac{2}{3}\). 합: \(\tfrac{4}{3} + \tfrac{2}{3} = 2\). 답: (1) \(-\tfrac{1}{3}\) (2) \(0\) (3) \(2\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- ============ 기본 (P.136~137) ============ -->
+
+                <!-- Q4 기본 04 -->
+                <div>
+                    <span class="badge badge-l2">[기본-넓이 조건에서 계수 결정]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">4. 곡선 \(y = ax^2(x - 3)\)과 \(x\)축으로 둘러싸인 도형의 넓이가 \(27\)일 때, 양수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.136 중단원 기본 04번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① 영점: \(x = 0, 3\). ② \([0, 3]\)에서 \(x^2(x - 3) \leq 0\) (\(a \gt 0\)) \(\Rightarrow y \leq 0\). ③ \(S = a\int_0^3 (3x^2 - x^3)\,dx = a[x^3 - \tfrac{1}{4}x^4]_0^3 = a(27 - \tfrac{81}{4}) = \tfrac{27a}{4} = 27 \Rightarrow a = 4\). 답: \(4\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q5 기본 05 -->
+                <div>
+                    <span class="badge badge-l2">[기본-접선과 곡선 사이의 넓이]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">5. 곡선 \(y = x^3 + 1\)과 이 곡선 위의 점 \((1, 2)\)에서의 접선으로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.136 중단원 기본 05번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① 접선 기울기 \(y'(1) = 3\). 접선: \(y - 2 = 3(x - 1) \Rightarrow y = 3x - 1\). ② 교점: \(x^3 + 1 = 3x - 1 \Rightarrow x^3 - 3x + 2 = (x - 1)^2(x + 2) = 0 \Rightarrow x = 1, -2\). ③ \([-2, 1]\)에서 \(x^3 + 1 \leq 3x - 1\)임을 확인 (\(x = 0\) 대입: \(1 \leq -1\)? 거짓. 다시: \(x = 0 \Rightarrow x^3 + 1 = 1, 3x - 1 = -1\), \(1 \geq -1\)이므로 곡선이 위). \(\int_{-2}^{1}(x^3 + 1 - 3x + 1)\,dx = \int_{-2}^{1}(x^3 - 3x + 2)\,dx = [\tfrac{1}{4}x^4 - \tfrac{3}{2}x^2 + 2x]_{-2}^{1} = (\tfrac{1}{4} - \tfrac{3}{2} + 2) - (4 - 6 - 4) = \tfrac{3}{4} - (-6) = \tfrac{27}{4}\). 답: \(\tfrac{27}{4}\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q6 기본 06 -->
+                <div>
+                    <span class="badge badge-l2">[기본-x축에 의한 넓이 이등분]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림과 같이 곡선 \(y = x^2 - 2x\)와 직선 \(y = ax\)로 둘러싸인 도형의 넓이가 \(x\)축에 의하여 이등분될 때, \((a + 2)^3\)의 값을 구하시오. (단, \(a \gt 0\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.136 중단원 기본 06번)</span>
+                        <div class="mt-3 flex justify-center">
+                            <img src="images/calc_29_q06.png" alt="문제 06 그림 — 포물선 y=x²-2x와 직선 y=ax, 둘이 둘러싼 영역이 x축에 의해 위·아래 두 부분으로 분할" class="block max-w-xs w-full rounded-lg border border-slate-200" />
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① 교점: \(x^2 - 2x = ax \Rightarrow x^2 - (a+2)x = 0 \Rightarrow x = 0, a+2\). ② 전체 넓이 \(S_{\text{전}} = \int_0^{a+2}(ax - x^2 + 2x)\,dx = \int_0^{a+2}((a+2)x - x^2)\,dx = \tfrac{(a+2)^3}{6}\) (1/6 공식). ③ \(x\)축 아래 부분 (포물선과 \(x\)축이 둘러싼 \([0, 2]\) 영역) \(S_{\text{하}} = \int_0^2 (2x - x^2)\,dx = \tfrac{4}{3}\). ④ 이등분 조건: \(S_{\text{전}} = 2 S_{\text{하}} \Rightarrow \tfrac{(a+2)^3}{6} = 2 \cdot \tfrac{4}{3} = \tfrac{8}{3} \Rightarrow (a+2)^3 = 16\). 답: \(16\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q7 기본 07 -->
+                <div>
+                    <span class="badge badge-l2">[기본-이차함수와 절댓값 함수 사이의 넓이]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">7. 다음 그림과 같이 두 함수 \(y = x^2 - 4x + 2\), \(y = |x - 2|\)의 그래프로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.136 중단원 기본 07번)</span>
+                        <div class="mt-3 flex justify-center">
+                            <img src="images/calc_29_q07.png" alt="문제 07 그림 — 아래로 볼록한 포물선 y=x²-4x+2와 V자 모양 y=|x-2|가 만나 둘러싼 도형" class="block max-w-xs w-full rounded-lg border border-slate-200" />
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① \(x \geq 2\): \(|x-2| = x - 2\). 교점: \(x^2 - 4x + 2 = x - 2 \Rightarrow x^2 - 5x + 4 = (x-1)(x-4) = 0\). \(x \geq 2\) 조건에서 \(x = 4\). ② \(x \lt 2\): \(|x-2| = -(x-2) = -x + 2\). 교점: \(x^2 - 4x + 2 = -x + 2 \Rightarrow x^2 - 3x = x(x-3) = 0\). \(x \lt 2\) 조건에서 \(x = 0\). ③ 도형 영역 \([0, 4]\). 두 부분 \([0, 2]\)와 \([2, 4]\) 분할. \(\int_0^2 (-x + 2 - x^2 + 4x - 2)\,dx + \int_2^4 (x - 2 - x^2 + 4x - 2)\,dx = \int_0^2 (-x^2 + 3x)\,dx + \int_2^4 (-x^2 + 5x - 4)\,dx\). <br>
+                        앞: \([-\tfrac{1}{3}x^3 + \tfrac{3}{2}x^2]_0^2 = -\tfrac{8}{3} + 6 = \tfrac{10}{3}\). <br>
+                        뒤: \([-\tfrac{1}{3}x^3 + \tfrac{5}{2}x^2 - 4x]_2^4 = (-\tfrac{64}{3} + 40 - 16) - (-\tfrac{8}{3} + 10 - 8) = \tfrac{8}{3} - (-\tfrac{2}{3}) = \tfrac{10}{3}\). <br>
+                        합: \(\tfrac{20}{3}\). 답: \(\tfrac{20}{3}\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q8 기본 08 -->
+                <div>
+                    <span class="badge badge-l2">[기본-세 도형 넓이로 정적분 계산]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">8. 다음 그림과 같이 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 세 도형의 넓이를 각각 \(A, B, C\)라고 할 때, \(A = 12, B = 6, C = 5\)이다. 정적분 \(\displaystyle\int_0^9 \{f(x) - g(x)\}\,dx\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.136 중단원 기본 08번)</span>
+                        <div class="mt-3 flex justify-center">
+                            <img src="images/calc_29_q08.png" alt="문제 08 그림 — 두 곡선 y=f(x), y=g(x)가 만나 [0,4]에 A, [4,7]에 B, [7,9]에 C 세 영역 형성. A, C에서는 f가 위, B에서는 g가 위" class="block max-w-xs w-full rounded-lg border border-slate-200" />
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 정적분 \(\int (f - g)\,dx\)는 부호 있는 면적의 합. ① \([0, 4]\)에서 \(f \geq g \Rightarrow \int (f-g) = +A = 12\). ② \([4, 7]\)에서 \(f \leq g \Rightarrow \int (f-g) = -B = -6\). ③ \([7, 9]\)에서 \(f \geq g \Rightarrow \int (f-g) = +C = 5\). 합: \(12 - 6 + 5 = 11\). 답: \(11\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q9 기본 09 -->
+                <div>
+                    <span class="badge badge-l2">[기본-역함수 그래프와 둘러싸인 넓이]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">9. 다음 그림과 같이 함수 \( f(x) = (x - 2)^2 \) (\(x \geq 2\))의 역함수를 \(g(x)\)라고 할 때, 두 곡선 \(y = f(x), y = g(x)\)와 \(x\)축 및 \(y\)축으로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 기본 09번)</span>
+                        <div class="mt-3 flex justify-center">
+                            <img src="images/calc_29_q09.png" alt="문제 09 그림 — 곡선 y=f(x)=(x-2)² (x≥2)는 (2,0)에서 시작해 위로 증가. 역함수 y=g(x)는 (0,2)에서 시작해 \(y=x\)에 대칭. 두 곡선과 두 축으로 둘러싸인 영역" class="block max-w-xs w-full rounded-lg border border-slate-200" />
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① \(f(x) = (x - 2)^2\) (\(x \geq 2\))의 역함수: \(y = (x-2)^2 \Rightarrow x - 2 = \sqrt{y}\) (\(x \geq 2\)) \(\Rightarrow g(y) = \sqrt{y} + 2\). 즉 \(g(x) = \sqrt{x} + 2\) (\(x \geq 0\)). <br>
+                        ② 교점: \(f, g\) 모두 \(y = x\)에 대칭. \((x - 2)^2 = x \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow x = 1, 4\). \(x \geq 2\)에서 \(x = 4\). 즉 \(f(4) = g(4) = 4\). <br>
+                        ③ 영역 분할: \(x \in [0, 2]\)에서는 윗변 \(g(x)\), 아랫변 \(x\)축. \(x \in [2, 4]\)에서는 윗변 \(g(x)\), 아랫변 \(f(x)\). <br>
+                        ④ \(S = \int_0^2 (\sqrt{x} + 2)\,dx + \int_2^4 (\sqrt{x} + 2 - (x-2)^2)\,dx\). <br>
+                        앞: \([\tfrac{2}{3}x^{3/2} + 2x]_0^2 = \tfrac{4\sqrt{2}}{3} + 4\). <br>
+                        뒤: \([\tfrac{2}{3}x^{3/2} + 2x - \tfrac{(x-2)^3}{3}]_2^4 = (\tfrac{16}{3} + 8 - \tfrac{8}{3}) - (\tfrac{4\sqrt{2}}{3} + 4 - 0) = \tfrac{32}{3} - \tfrac{4\sqrt{2}}{3} - 4 = \tfrac{20}{3} - \tfrac{4\sqrt{2}}{3}\). <br>
+                        합: \((\tfrac{4\sqrt{2}}{3} + 4) + (\tfrac{20}{3} - \tfrac{4\sqrt{2}}{3} - 4) \cdot 1 = \tfrac{20}{3} + 4 = \tfrac{32}{3}\). 답: \(\tfrac{32}{3}\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q10 기본 10 -->
+                <div>
+                    <span class="badge badge-l2">[기본-구간별 속도 함수 + 위치 누적]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">10. 지면에 정지해 있던 드론이 지면과 수직 방향으로 출발한 지 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = \begin{cases} \tfrac{1}{2}t &amp; (0 \leq t \leq 10) \\ 15 - t &amp; (10 \leq t \leq 15) \end{cases} \]라고 한다. 출발한 지 \(12\)초 후의 드론의 높이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 기본 10번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> \([0, 10]\)과 \([10, 12]\)에서 모두 \(v \geq 0\)이므로 높이 \(= \int_0^{12} v(t)\,dt = \int_0^{10}\tfrac{1}{2}t\,dt + \int_{10}^{12}(15 - t)\,dt\). 앞: \([\tfrac{1}{4}t^2]_0^{10} = 25\). 뒤: \([15t - \tfrac{1}{2}t^2]_{10}^{12} = (180 - 72) - (150 - 50) = 108 - 100 = 8\). 합: \(25 + 8 = 33\). 답: \(33\,\text{m}\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q11 기본 11 -->
+                <div>
+                    <span class="badge badge-l2">[기본-원점으로 돌아오는 시각]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">11. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 4t^2 - 2t^3\)일 때, 점 P가 다시 원점으로 돌아오는 시각을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 기본 11번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 위치 \(x(t) = \int_0^t (4s^2 - 2s^3)\,ds = \tfrac{4}{3}t^3 - \tfrac{1}{2}t^4\). 원점 복귀: \(x(t) = 0 \Rightarrow t^3(\tfrac{4}{3} - \tfrac{1}{2}t) = 0 \Rightarrow t = 0\) 또는 \(t = \tfrac{8}{3}\). 답: \(t = \tfrac{8}{3}\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q12 기본 12 -->
+                <div>
+                    <span class="badge badge-l2">[기본-이차함수 + 넓이 비 \(A:B = 1:2\)]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">12. 이차함수 \(f(x) = x^2 - 6x + k\)에 대하여 다음 그림과 같이 곡선 \(y = f(x)\)와 \(x\)축 및 \(y\)축으로 둘러싸인 도형의 넓이를 \(A\)라 하고, 곡선 \(y = f(x)\)와 \(x\)축으로 둘러싸인 도형의 넓이를 \(B\)라고 할 때, \(A : B = 1 : 2\)이다. 이때 실수 \(k\)의 값을 구하시오. (단, \(0 \lt k \lt 9\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 기본 12번)</span>
+                        <div class="mt-3 flex justify-center">
+                            <img src="images/calc_29_q12.png" alt="문제 12 그림 — 아래로 볼록 포물선 y=x²-6x+k, y절편 k. y축·x축과 둘러싼 작은 영역 A (좌측 위), 곡선과 x축이 둘러싼 큰 영역 B (꼭지점 부근)" class="block max-w-xs w-full rounded-lg border border-slate-200" />
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> ① \(f(x) = 0\)의 두 근을 \(\alpha, \beta\) (\(0 \lt \alpha \lt \beta\))라 하면 \(\alpha + \beta = 6\), \(\alpha\beta = k\). 한편 \(k = 6\alpha - \alpha^2\) (\(f(\alpha) = 0\)). <br>
+                        ② \(A = \displaystyle\int_0^\alpha f(x)\,dx\) ( \([0, \alpha]\)에서 \(f \geq 0\) ). \([\tfrac{1}{3}x^3 - 3x^2 + kx]_0^\alpha = \tfrac{\alpha^3}{3} - 3\alpha^2 + k\alpha\). \(k = 6\alpha - \alpha^2\) 대입 → \(A = -\tfrac{2\alpha^3}{3} + 3\alpha^2 = \tfrac{\alpha^2(9 - 2\alpha)}{3}\). <br>
+                        ③ \(B = \displaystyle\int_\alpha^\beta \{-f(x)\}\,dx = \tfrac{(\beta - \alpha)^3}{6}\) (1/6 공식). \(\beta - \alpha = 6 - 2\alpha\)이므로 \(B = \tfrac{(6 - 2\alpha)^3}{6} = \tfrac{4(3 - \alpha)^3}{3}\). <br>
+                        ④ 비례 조건 \(A : B = 1 : 2 \Rightarrow 2A = B\): \(\tfrac{2\alpha^2(9 - 2\alpha)}{3} = \tfrac{4(3 - \alpha)^3}{3} \Rightarrow \alpha^2(9 - 2\alpha) = 2(3 - \alpha)^3\). 전개 정리: \(9\alpha^2 - 2\alpha^3 = 2(27 - 27\alpha + 9\alpha^2 - \alpha^3) = 54 - 54\alpha + 18\alpha^2 - 2\alpha^3 \Rightarrow 9\alpha^2 = 54 - 54\alpha + 18\alpha^2 \Rightarrow 9\alpha^2 - 54\alpha + 54 = 0 \Rightarrow \alpha^2 - 6\alpha + 6 = 0 \Rightarrow \alpha = 3 - \sqrt{3}\) (작은 근). <br>
+                        ⑤ \(k = 6\alpha - \alpha^2 = 6(3 - \sqrt{3}) - (3 - \sqrt{3})^2 = 18 - 6\sqrt{3} - (12 - 6\sqrt{3}) = 6\). 답: \(k = 6\) (\(0 \lt k \lt 9\) 조건 만족, 검산: \(\alpha \approx 1.27, \beta \approx 4.73, A \approx 3.46, B \approx 6.93, A:B = 1:2\) ✓).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- ============ 도전 (P.137 도전 13 + 익힘책 P.158 도전 06) ============ -->
+
+                <!-- Q13 도전 13 (서술형) -->
+                <div>
+                    <span class="badge badge-l3">[도전-두 점 P, Q가 만나는 횟수 (서술형)]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4">13. 점 P는 원점에서, 점 Q는 좌표가 \(-3\)인 점에서 동시에 출발하여 수직선 위를 움직이고 있다. 두 점 P, Q의 시각 \(t\)에서 속도가 각각 \[ v_{\text P}(t) = 4t + 5,\qquad v_{\text Q}(t) = 3t^2 - 8t + 14 \] 일 때, 두 점 P, Q가 만나는 횟수를 풀이 과정과 함께 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.137 중단원 도전 13번)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 (5단계):</strong> <br>
+                        ① 위치 함수: \(x_{\text P}(t) = 0 + \int_0^t (4s + 5)\,ds = 2t^2 + 5t\). \(x_{\text Q}(t) = -3 + \int_0^t (3s^2 - 8s + 14)\,ds = -3 + t^3 - 4t^2 + 14t\). <br>
+                        ② 만남 조건: \(x_{\text P}(t) = x_{\text Q}(t) \Rightarrow 2t^2 + 5t = -3 + t^3 - 4t^2 + 14t \Rightarrow t^3 - 6t^2 + 9t - 3 = 0\). <br>
+                        ③ 함수 \(h(t) = t^3 - 6t^2 + 9t - 3\)의 부호 분석: \(h'(t) = 3t^2 - 12t + 9 = 3(t - 1)(t - 3)\). \(t = 1\) 극대 \(h(1) = 1 - 6 + 9 - 3 = 1 \gt 0\). \(t = 3\) 극소 \(h(3) = 27 - 54 + 27 - 3 = -3 \lt 0\). <br>
+                        ④ \(h(0) = -3 \lt 0\). \(h(1) = 1 \gt 0\), \(h(3) = -3 \lt 0\), \(h(5) = 125 - 150 + 45 - 3 = 17 \gt 0\). 중간값 정리: \([0, 1]\), \([1, 3]\), \([3, 5]\) 각각 한 실근. \(t \geq 0\) 조건에서 총 3개. <br>
+                        ⑤ 답: <strong>두 점이 만나는 횟수는 \(3\)회</strong>. <br>
+                        <strong>채점 포인트:</strong> 위치 함수 도출 / 만남 방정식 \(h(t) = 0\) / \(h\)의 증감 분석 / 중간값 정리 적용 / 최종 횟수.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q14 도전 (익힘책 P.158 도전 06) -->
+                <div>
+                    <span class="badge badge-l3">[도전-두 부분 넓이가 서로 같은 조건 (서술형)]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4">14. 곡선 \(y = x(x - a)(x - b)\)와 \(x\)축으로 둘러싸인 두 부분의 넓이가 서로 같을 때, \(\dfrac{b}{a}\)의 값을 풀이 과정과 함께 구하시오. (단, \(0 \lt a \lt b\)) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 익힘책 P.158 도전 06번 — 보강)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 (5단계):</strong> <br>
+                        ① 영점: \(x = 0, a, b\). 두 부분: \([0, a]\)와 \([a, b]\). <br>
+                        ② 부호 분석: \(0 \lt x \lt a\)에서 \(x \gt 0\), \(x - a \lt 0\), \(x - b \lt 0 \Rightarrow y \gt 0\) (위 영역 \(S_1\)). \(a \lt x \lt b\)에서 \(x \gt 0\), \(x - a \gt 0\), \(x - b \lt 0 \Rightarrow y \lt 0\) (아래 영역 \(S_2\)). <br>
+                        ③ 두 부분 넓이가 같으므로 \(\int_0^a y\,dx + \int_a^b y\,dx = S_1 - S_2 = 0\) (부호 있는 합). 즉 \(\int_0^b x(x-a)(x-b)\,dx = 0\). <br>
+                        ④ 전개: \(\int_0^b (x^3 - (a+b)x^2 + abx)\,dx = [\tfrac{1}{4}x^4 - \tfrac{a+b}{3}x^3 + \tfrac{ab}{2}x^2]_0^b = \tfrac{b^4}{4} - \tfrac{(a+b)b^3}{3} + \tfrac{ab^3}{2}\). <br>
+                        ⑤ \(b^3 \ne 0\)이므로 \(b^3\)로 나누고 정리: \(\tfrac{b}{4} - \tfrac{a+b}{3} + \tfrac{a}{2} = 0\). 공통분모 \(12\): \(3b - 4(a+b) + 6a = 0 \Rightarrow -b + 2a = 0 \Rightarrow b = 2a\). 따라서 \(\dfrac{b}{a} = 2\). <br>
+                        <strong>채점 포인트:</strong> 영점 분석 / 부호 분기 / 두 넓이 같다는 조건 → 부호 있는 정적분 \(=0\) / 다항식 전개 + 적분 / \(b/a\) 결정.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 중단원 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">02. 중단원 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 정적분의 활용 단원 전체에 대한 자기점검을 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 단원 종합 통찰</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">단원 III-2의 핵심 세 줄 — 곡선과 \(x\)축 넓이 \(\int |f|\,dx\), 두 곡선 사이 넓이 \(\int |f - g|\,dx\), 이동 거리 \(\int |v|\,dt\) — 가 어떻게 절댓값 정적분 하나의 패턴으로 통합되는지 자신의 언어로 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"중단원을 마무리하면서 단원 III-2의 세 공식이 다 \(\int |\,\,\,|\,dx\) 형태로 통일된다는 게 보였다. 곡선과 \(x\)축은 \(\int |f|\), 두 곡선은 \(\int |f - g|\), 이동 거리는 \(\int |v|\). 절댓값이 부호를 뒤집어 양수로 만든다는 차시 24의 의미 하나가 세 차시 전체에 똑같이 작동한다는 게 깔끔했다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 가장 자주 틀린 유형의 분석</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">차시 26~28에 걸쳐 반복적으로 틀린 유형(예: 정적분 \(\int f\,dx\)와 넓이 \(\int |f|\,dx\)를 혼동, 두 곡선의 위·아래 판단 누락, 변위와 이동거리 혼동)이 무엇이었는지, 어떤 자기점검 루틴을 만들 수 있는지 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"단원 III-2에서 가장 자주 헷갈린 게 ① '넓이를 구하라'와 '정적분을 구하라'를 같게 쓴 것, ② 두 곡선의 위·아래가 교점에서 바뀌는 걸 놓친 것, ③ 변위와 이동 거리를 혼동한 것 세 가지였다. 점검 카드 3장으로 만들어두고 풀이 첫 단계에서 '이건 부호 있는 합이야, 절댓값이야?'를 묻는 습관을 들였더니 실수가 줄었다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 대단원 평가로의 확장</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">III-1(부정적분과 정적분)과 III-2(정적분의 활용)의 학습 내용이 어떻게 한 흐름으로 연결되는지, 다음 차시 대단원 평가에서 어떤 통합형 문제가 출제될지 가설을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"III-1의 미적분 기본정리가 III-2의 도형 넓이·이동 거리 계산에 핵심 도구로 쓰인다는 게 보였다. 대단원 평가에서는 \(\int_a^x f(t)\,dt = g(x)\)로 함수를 결정한 뒤 그 함수로 넓이·거리를 계산하는 통합형이 나올 것 같다는 가설을 세워뒀다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 29차시 (III-2 중단원 마무리)</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_Nav_All_index_미적분I.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 FAB -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

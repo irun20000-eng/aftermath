@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 I-1 함수의 극한 · 차시 03 함수의 극한 미정형 · Agent A 작성 (병렬 처리) -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 2학기 미적분 I 학습지: 함수의 극한 — 미정형</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_calc_03';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        /* 미적분 I 톤 — 메인은 teal, 강조는 cyan/emerald */
+        .calc-accent { color: #0d9488; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
+        const LESSON_NAME = "03차시 함수의 극한 — 미정형";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I. 함수의 극한과 연속</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">03차시: 함수의 극한 — 미정형</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_미적분I_02_함수의극한값의계산.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_미적분I_04_중단원마무리_I_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">\(x \to \infty\)일 때 \( \dfrac{3x^2 - x + 1}{x^2 + 2x - 5} \)의 값은 어디로 갈까? 분자와 분모가 둘 다 \(\infty\)로 발산하는 상황에서, "\(\infty / \infty\) 니까 답도 \(\infty\) 또는 1"이라고 답하면 거의 항상 틀린다.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 큰 수에 비해 작은 수는 "무시"해도 될까? 예를 들어 \(x = 1000\)일 때 \(3x^2 = 3{,}000{,}000\)이고 \(-x + 1 \approx -999\). 두 항의 <em>상대적</em> 크기를 비교해 보고, 무한대로 가는 식에서 "지배하는 항"을 식별해 보자.</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 지난 시간(02차시)에 \( \dfrac{0}{0} \)을 인수분해·유리화로 해체했다. 오늘은 그보다 더 까다로운 <span class="calc-accent font-bold">\( \dfrac{\infty}{\infty} \), \( \infty - \infty \), \( 0 \cdot \infty \)</span> 세 가지 부정형(미정형, indeterminate form)을 다룬다. 핵심 전략은 단 하나 — <strong>식을 동등 변형해 사칙 성질을 적용 가능한 형태로 바꾸는 것</strong>.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 부정형의 종류 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        부정형 (indeterminate form) — 네 가지 얼굴
+                    </h3>
+                    <p class="mb-3 text-slate-700">극한값을 그대로 대입했을 때 <strong>그 자체로는 값을 결정할 수 없는 형식</strong>을 부정형이라 한다. 본 차시에서 다루는 네 가지는 다음과 같다.</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-teal-100">
+                            <p class="font-bold text-teal-700">① \( \dfrac{0}{0} \) 형</p>
+                            <p class="text-sm text-slate-600 mt-1">분자·분모 모두 \(0\)으로 수렴. <strong>인수분해 · 유리화</strong>.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-teal-100">
+                            <p class="font-bold text-teal-700">② \( \dfrac{\infty}{\infty} \) 형</p>
+                            <p class="text-sm text-slate-600 mt-1">분자·분모 모두 \(\infty\)로 발산. <strong>분모의 최고차항으로 분자·분모를 나누기</strong>.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-teal-100">
+                            <p class="font-bold text-teal-700">③ \( \infty - \infty \) 형</p>
+                            <p class="text-sm text-slate-600 mt-1">두 발산항의 차. <strong>유리화(켤레 곱)</strong> 또는 통분.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-teal-100">
+                            <p class="font-bold text-teal-700">④ \( 0 \cdot \infty \) 형</p>
+                            <p class="text-sm text-slate-600 mt-1">0으로 가는 항 × 무한대 항. <strong>분수 형태로 변환</strong>해 ①②로 환원.</p>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600 italic"><strong>📌 핵심 자세:</strong> 부정형은 <em>값이 정해지지 않은 형식</em>일 뿐, <em>극한이 존재하지 않는다</em>는 의미가 아니다. 식 변형 후 진짜 극한값이 드러난다.</p>
+                </div>
+
+                <!-- 2. ∞/∞ 처리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        \(\dfrac{\infty}{\infty}\) 형 — 분모의 최고차항으로 나누기
+                    </h3>
+                    <p class="mb-3 text-slate-700">유리식 \( \dfrac{f(x)}{g(x)} \)에서 분자·분모를 <strong>분모의 최고차항</strong>으로 나눈 뒤 \( \dfrac{1}{x^k} \to 0 \) (\(k > 0\), \(x \to \pm\infty\))을 사용한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-base">
+                        <p class="font-bold mb-2">예제:</p>
+                        <p>\( \displaystyle \lim_{x \to \infty}\dfrac{3x^2 - x + 1}{x^2 + 2x - 5} = \lim_{x \to \infty}\dfrac{3 - \tfrac{1}{x} + \tfrac{1}{x^2}}{1 + \tfrac{2}{x} - \tfrac{5}{x^2}} = \dfrac{3 - 0 + 0}{1 + 0 - 0} = 3 \)</p>
+                    </div>
+                    <div class="mt-3 bg-cyan-50 p-4 rounded-xl border border-cyan-200 text-sm">
+                        <p class="font-bold text-cyan-800 mb-2">🚀 한눈 판정 (다항식의 분수 극한, \(x \to \infty\))</p>
+                        <ul class="ml-4 space-y-1 list-disc text-slate-700">
+                            <li>(분자 차수) &lt; (분모 차수): 극한값 = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">0</span></span></li>
+                            <li>(분자 차수) = (분모 차수): 극한값 = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">최고차항 계수의 비</span></span></li>
+                            <li>(분자 차수) &gt; (분모 차수): <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">발산 (\(\pm\infty\))</span></span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. ∞-∞ 처리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        \(\infty - \infty\) 형 — 유리화 (켤레 곱)
+                    </h3>
+                    <p class="mb-3 text-slate-700">근호가 포함된 차 \( \sqrt{A} - \sqrt{B} \) 또는 \( \sqrt{A} - C \) 꼴은 분모를 \(1\)로 두고 분자에 <strong>켤레식</strong>을 곱·나눠 합리화한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-base">
+                        <p class="font-bold mb-2">예제:</p>
+                        <p>\( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 + x} - x\right) = \lim_{x \to \infty}\dfrac{(\sqrt{x^2+x}-x)(\sqrt{x^2+x}+x)}{\sqrt{x^2+x}+x} \)</p>
+                        <p class="mt-2">\( = \displaystyle \lim_{x \to \infty}\dfrac{x}{\sqrt{x^2+x}+x} = \lim_{x \to \infty}\dfrac{1}{\sqrt{1+\tfrac{1}{x}}+1} = \dfrac{1}{2} \)</p>
+                    </div>
+                </div>
+
+                <!-- 4. 부호 주의 (x→-∞) -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        \(x \to -\infty\) — 근호 안의 부호 주의
+                    </h3>
+                    <p class="mb-3 text-slate-700">\(x \to -\infty\)에서 \(\sqrt{x^2} = |x| = -x\)이므로, 무리식을 \(x^k\)로 나눌 때 부호가 뒤집힌다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-base">
+                        <p class="font-bold mb-2">예: \( \displaystyle \lim_{x \to -\infty}\dfrac{x - 1}{|x| + 3} \)</p>
+                        <p>\(x \to -\infty\)에서 \(|x| = -x > 0\). 분자·분모를 \(x\)로 나누면 \( \dfrac{1 - \tfrac{1}{x}}{\tfrac{|x|}{x} + \tfrac{3}{x}} = \dfrac{1 - 0}{-1 + 0} = -1 \)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600 italic"><strong>⚠ 함정:</strong> \( \dfrac{|x|}{x} \)는 \(x > 0\)이면 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">+1</span></span>, \(x &lt; 0\)이면 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">-1</span></span>. \(x \to -\infty\)는 후자.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">최고차항 비교로 \(\dfrac{\infty}{\infty}\) 처리</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-차수 비교</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.21 · 문제 05 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \lim_{x \to \infty}\dfrac{x^2 + x + 4}{2x^2 - x + 1} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\dfrac{(2x+1)(3x-1)}{6x^2 + x + 1} \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-400 bg-green-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 분자·분모 모두 \(x^2\)으로 나눠 보자. (2)는 분자를 먼저 전개해 \(6x^2 + \cdots\) 꼴로.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-차수 불균형</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 극한값을 구하시오 (수렴하지 않으면 "발산"이라 쓰시오). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.26 · 도전 08(2) 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \lim_{x \to \infty}\dfrac{3x + 1}{\sqrt{x^2 + 1} - 2} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\dfrac{x - 5}{x^2 + x - 1} \)
+                            </div>
+                        </div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">\(\infty - \infty\) 유리화 + \(0 \cdot \infty\) 변환</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-유리화 처리</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.21 · 예제 2(2) + 문제 05(3)(4) 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \lim_{x \to \infty}\left(2x - \sqrt{4x^2 + 3x}\right) \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 + x} - \sqrt{x^2 - x}\right) \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 분모를 1로 둔 후 켤레식을 곱·나눠 \(\dfrac{(2x)^2 - (4x^2+3x)}{2x + \sqrt{4x^2+3x}}\) 꼴로 정리. \((-3x)/(\cdots)\)에서 \(x\)로 나누는 단계까지 진행.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-\(0 \cdot \infty\) 변환</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 극한값 \( \displaystyle \lim_{x \to \infty} \sqrt{x}\left(\sqrt{x+2} - \sqrt{x}\right) \)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I 문제북 P.8 · 02번(8) 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \( 0 \cdot \infty \) 꼴. 괄호 안을 유리화해 \( \dfrac{2}{\sqrt{x+2}+\sqrt{x}} \)로 만든 뒤 \( \sqrt{x} \)를 곱해 \( \dfrac{2\sqrt{x}}{\sqrt{x+2}+\sqrt{x}} \) — 다시 \(\dfrac{\infty}{\infty}\) 형이지만 분자·분모를 \(\sqrt{x}\)로 나누면 끝.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" \(x \to -\infty\) 부호 함정</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">절댓값 함정!</div>
+                        <span class="badge badge-l3">심화-음의 무한대 + 절댓값</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">5. 극한값 \( \displaystyle \lim_{x \to -\infty}\dfrac{x - 1}{|x| + 3} \)을 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.26 · 도전 08(1) 참고)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "절댓값은 그냥 양수니까 \(|x| \approx x\)로 두고 \( \dfrac{x}{x} = 1\)이지!"라고 답하면 <strong>틀린다</strong>.<br>
+                                \(x \to -\infty\)에서 \(x &lt; 0\)이므로 \(|x| = -x\). 분자·분모를 \(x\)로 나누면 \( \dfrac{1 - 1/x}{|x|/x + 3/x} \), 여기서 \( \dfrac{|x|}{x} = \dfrac{-x}{x} = -1 \).<br>
+                                따라서 극한값은 \( \dfrac{1}{-1} = -1 \). 절댓값과 부호의 동시 처리는 음의 무한대 문제의 시그니처.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative mt-6">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">근호 미정계수</div>
+                        <span class="badge badge-l3">심화-근호 안 미정계수</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">6. \( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 + ax + 4} - \sqrt{x^2 + x + 2}\right) = 5 \)일 때, 실수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.26 · 도전 09번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 켤레식을 곱하면 분자 = \((a-1)x + 2\), 분모 = \(\sqrt{x^2+ax+4} + \sqrt{x^2+x+2}\). 분자·분모를 \(x\)로 나누면 분모는 \(\to 2\)로 수렴하므로 분자의 \(x\) 계수만 살아남는 비 \( \dfrac{a-1}{2} = 5 \) → \(a = 11\).
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">7. 다음 극한값을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I 문제북 P.8 · 02번(5)(6)(7) 참고)</span>
+                <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                    (1) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{9x^2 - x} - 3x\right) \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\left(x - \sqrt{x^2 - 1}\right) \) &nbsp;&nbsp; (3) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 - 2x} - \sqrt{x^2 + 2x}\right) \)
+                </div>
+            </div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                <strong>🎯 전략:</strong> 모두 \(\infty - \infty\) 꼴 → 켤레 유리화. 유리화 후 분자·분모를 \(x\) (또는 \(\sqrt{x^2}=|x|=x\) 양수 영역이므로 그대로 \(x\))로 나눠 정리. 최고차항 계수의 비로 판정. (예상 답: \( -\dfrac{1}{6},\ 0,\ -2 \).)
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 함수의 극한 유제 6) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_함수의극한"
+                 data-aft-source-id="c1-ex6"
+                 data-aft-source-label="수능특강 수학Ⅱ · 함수의 극한 · 유제 6">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 함수의 극한 · 유제 6</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: \(x \to -\infty\) 무리식 — 치환 \(t=-x\)로 양의 무한대 환원</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \( \displaystyle \lim_{x \to -\infty}\dfrac{\sqrt{4x^2+3x}-2x}{x+4} \)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(-5\) &nbsp; ② \(-4\) &nbsp; ③ \(-3\) &nbsp; ④ \(-2\) &nbsp; ⑤ \(-1\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 치환 도입</strong>: \(x \to -\infty\) 무리식은 부호 실수를 줄이기 위해 \(t = -x\)로 치환. \(x \to -\infty\) ⇒ \(t \to +\infty\).</li>
+                    <li><strong>STEP 2 — 식 변환</strong>: \(x = -t\), \(x^2 = t^2\)이므로 \(\sqrt{4x^2+3x} = \sqrt{4t^2-3t}\), \(-2x = 2t\), \(x+4 = -t+4\). 식은 \( \dfrac{\sqrt{4t^2-3t}+2t}{-t+4} \).</li>
+                    <li><strong>STEP 3 — 최고차로 나누기</strong>: 분자·분모를 \(t\)로 나누면 \( \dfrac{\sqrt{4-3/t}+2}{-1+4/t} \).</li>
+                    <li><strong>STEP 4 — \(t \to \infty\) 대입</strong>: \( \dfrac{\sqrt{4}+2}{-1+0} = \dfrac{4}{-1} = -4 \).</li>
+                    <li><strong>STEP 5 — 검증</strong>: \(x<0\)에서 \(\sqrt{x^2}=|x|=-x\)임을 유의. 치환 없이 풀면 부호 실수 위험. <span class="text-red-600 font-bold">정답: ②</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \(x \to -\infty\) 무리식은 \(t = -x\) 치환으로 \(t \to +\infty\) 문제로 환원해 부호 실수를 방지. 분자에 무리식이 있을 때 특히 효과적.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="교사용_수능특강_미적분I_함수의극한_해설.html#c1-ex6" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 6</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 수학Ⅱ 함수의 극한 기본 7) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_함수의극한"
+                 data-aft-source-id="c1-s7"
+                 data-aft-source-label="수능특강 수학Ⅱ · 함수의 극한 · 기본 7">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 함수의 극한 · 기본 7</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+2, 9분) · 핵심: 도형 + \(\infty\) 극한 — 길이를 \(t\)의 함수로 표현 후 차수 비교</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                그림과 같이 \(t > 1\)인 실수 \(t\)에 대하여 곡선 \(y = \sqrt{x}\) 위의 점 \(P(t^2,\,t)\)를 지나고 기울기가 \(-1\)인 직선이 \(x\)축과 만나는 점을 \(Q\), 점 \(Q\)에서 직선 \(OP\)에 내린 수선의 발을 \(H\)라 하자. \( \displaystyle \lim_{t \to \infty} (\overline{PH} - \overline{QH}) \)의 값은? (단, \(O\)는 원점.)
+            </div>
+
+            <div class="bg-slate-100 p-6 rounded-2xl mb-6 border-2 border-slate-200 text-center">
+                <img src="images/calc_sol_c1-s7.png" alt="기본 7 그림 — 곡선 y=√x 위의 점 P, x축과 만나는 점 Q, OP에 내린 수선의 발 H 도형" class="block mx-auto max-w-md w-full" />
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(-\dfrac{5}{2}\) &nbsp; ② \(-2\) &nbsp; ③ \(-\dfrac{3}{2}\) &nbsp; ④ \(-1\) &nbsp; ⑤ \(-\dfrac{1}{2}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 점 \(Q\) 좌표</strong>: 기울기 \(-1\) 직선이 \(P(t^2,\,t)\)에서 \(x\)축으로 내려갈 때, \(x\)를 \(t\)만큼 증가시키면 \(y=0\). → \(Q(t^2+t,\,0)\). 이때 \(\overline{PQ} = \sqrt{2}\,t\).</li>
+                    <li><strong>STEP 2 — \(\overline{QH}\) (점-직선 거리)</strong>: 직선 \(OP\): \(x - ty = 0\). 점 \(Q\)에서 거리 \( \overline{QH} = \dfrac{|t^2+t|}{\sqrt{1+t^2}} = \dfrac{t^2+t}{\sqrt{1+t^2}} \).</li>
+                    <li><strong>STEP 3 — \(\overline{PH}\) (피타고라스)</strong>: \( \overline{PH}^2 = \overline{PQ}^2 - \overline{QH}^2 \). 정리하면 \( \overline{PH} = \dfrac{t^2-t}{\sqrt{1+t^2}} \) (\(t > 1\)이므로 양수).</li>
+                    <li><strong>STEP 4 — 차의 식</strong>: \( \overline{PH} - \overline{QH} = \dfrac{(t^2-t) - (t^2+t)}{\sqrt{1+t^2}} = \dfrac{-2t}{\sqrt{1+t^2}} \).</li>
+                    <li><strong>STEP 5 — 극한</strong>: 분자·분모를 \(t\)로 나누면 \( \dfrac{-2}{\sqrt{1/t^2 + 1}} \to \dfrac{-2}{\sqrt{1}} = -2 \). <span class="text-red-600 font-bold">정답: ②</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 도형 + \(\infty\) 극한은 "변수 \(t\)로 길이 정확 정리 → 분모·분자 차수 비교"가 정형. 피타고라스와 점-직선 거리 공식이 두 도구.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="교사용_수능특강_미적분I_함수의극한_해설.html#c1-s7" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 기본 7</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"부정형(\(\infty/\infty\), \(\infty - \infty\), \(0 \cdot \infty\))은 값이 정해지지 않은 형식일 뿐"이라는 명제를 자신의 언어로 설명하고, 각 형식이 어떤 식 변형으로 환원되는지 사고 지도를 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"처음엔 \(\dfrac{\infty}{\infty}\)나 \(\infty - \infty\)가 '극한이 없다'는 뜻인 줄 알았는데, \(\dfrac{x^2 + 1}{2x^2 - 3}\) 같은 식도 분모 최고차로 나누면 \(\dfrac{1}{2}\)가 나오는 걸 보고 부정형은 '값이 없는 게 아니라 직접 대입으로 못 본다'는 뜻임을 알게 됐다. \(\infty - \infty\)는 유리화, \(\dfrac{\infty}{\infty}\)는 최고차 분할, \(0 \cdot \infty\)는 분수 변환으로 정리해두니 머릿속이 깔끔해졌다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">\(x \to -\infty\)에서 \(\sqrt{x^2} = -x\)임을 놓쳤거나, \(|x|/x = -1\)을 양수로 처리한 실수가 있었는지, 어떻게 점검 절차를 만들었는가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\lim_{x \to -\infty} \dfrac{\sqrt{x^2 + 1}}{x}\)에서 \(\sqrt{x^2} = x\)로 무심코 적었다가 답이 \(1\)이 나와 틀렸다. 알고 보니 \(x &lt; 0\)이면 \(\sqrt{x^2} = -x\)라서 답은 \(-1\)이었다. 그 뒤로는 \(x \to -\infty\)가 보이면 식을 만지기 전에 먼저 부호를 결정하는 습관을 들였다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">좌표평면 위 도형과 극한이 결합된 문제(도전 2)를 풀며 떠올린 새로운 호기심이나, 다음 단원(함수의 연속)과의 연결고리를 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"점 \(P\)를 매개변수 \(t\)로 잡고 거리의 곱이 어떤 값으로 수렴하는지 따져보다가, 극한이 단순 숫자 계산이 아니라 도형이 '어디로 가는지'를 보는 도구라는 느낌이 들었다. 다음 단원에서 \(\lim f(x) = f(a)\)라는 연속의 정의를 배운다는데, 그게 결국 '함수의 도착 위치 = 정의된 값'이라는 같은 발상일 것 같아 기대된다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 03차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → 교사용_Nav_All_index_미적분I.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_Nav_All_index_미적분I.html', 'aftermath_main_calc'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
+      <span class="aft-fab-icon">📚</span>
+      <span>문제 모아보기</span>
+    </button>
+
+    <div id="aft-problems-modal" class="aft-modal" role="dialog" aria-labelledby="aft-modal-title" aria-hidden="true">
+      <div class="aft-modal-overlay"></div>
+      <div class="aft-modal-content">
+        <div class="aft-modal-head">
+          <h2 id="aft-modal-title">📚 문제 모아보기 — 단계별 도전</h2>
+          <button type="button" id="aft-problems-close" class="aft-modal-close" aria-label="닫기">✕ 닫기</button>
+        </div>
+        <div class="aft-modal-body">
+          <div id="aft-problems-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+</body>
+</html>

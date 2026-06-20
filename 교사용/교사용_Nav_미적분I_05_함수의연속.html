@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 05차시 함수의 연속 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        /* TEACHER'S GUIDE 워터마크 */
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        /* 차시 페이지 */
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        /* 50분 타임라인 */
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        /* 생각 열기 운영 */
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        /* 공식 박스 */
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        /* 문항 카드 */
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        /* 형성평가 루브릭 */
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        /* 성찰 우수 예시 */
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        /* 메모 영역 */
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        /* 네비 / 인쇄 버튼 */
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_04_중단원마무리_I_1.html">← 이전 차시 가이드</a>
+        <a href="교사용_학습지_미적분I_05_함수의연속.html" target="aftermath_ws_calc_05" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_미적분I_06_연속함수의성질.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">05</span>
+        <span class="lesson-tag">I-2 함수의 연속</span>
+        <span class="lesson-title">함수의 연속 — 정의·분류·사칙</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> "\(\displaystyle\lim_{x \to a} f(x) = f(a)\)" — 지난 4차시에서 <strong>다를 수 있다</strong>고 배운 두 값이 <strong>같을 때</strong>를 "연속"이라 이름 붙인다. 한 줄에 단원 I-1 전부가 압축된다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-01-02] 함수의 연속을 이해하고 연속함수의 성질을 활용한다 (이번 차시는 정의·분류·사칙까지).</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">01~04차시 좌·우극한, 극한값과 함숫값의 분리, 극한의 사칙연산.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 한 점 연속 3조건 점검 ② 불연속 3유형 분류 ③ 사칙으로 빌드된 함수의 연속 구간 판정.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "식물의 키 vs 매월 받는 용돈" 발문. 정답을 주지 않고 "끊김"이라는 단어가 학생 입에서 나오게 유도.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00. Warm-up에 1분 자유 메모 → 짝과 30초 공유.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 연속 3조건(①정의 ②극한 존재 ③두 값 일치)을 순차 판서. reveal-box를 학생이 직접 클릭. 불연속 3유형(점프·제거 가능·무한)을 그래프로 시연.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01의 4개 박스에 자기 언어로 핵심 단어 적기. 사칙 4공식 빈칸을 채워 정의 내면화.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1·2번)은 짝활동, L2(3·4번)는 개별 풀이 후 무작위 호명 발표. 3·4번은 칠판 분기 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 1·2번 3분, 3·4번 7분. 4번에서 "경계점에서만 점검" 한 줄을 색깔로 표시.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 5번(오답률 1위 함정) — "정답을 1번으로 골랐는데 연속이라고 생각한 사람?"으로 오개념 표면화 → 트랩 박스 공개. 형성 6번은 모두 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 5번 \(|x-1|\) 좌·우 분기 표시. 6번 분모 영점 두 개를 한 줄로 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 새로 알게 된 한 가지"를 무작위 3명 발표. QR 성찰지 안내 + 도전 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 문제 사전 시도.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 식물의 키(시간 따라 부드럽게)와 매월 받는 용돈(1일에 불쑥)은 그래프로 그렸을 때 어떻게 다른가?</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"용돈은 계단처럼 생겼고 식물은 곡선이다."</span><br><span class="fb"><strong>피드백:</strong> 좋은 시각화. 계단의 "꺾이는 순간"이 곧 좌·우극한이 다른 지점임을 4차시 \(\frac{|x|}{x}\) 그래프로 연결.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"식물은 끊어지지 않고 용돈은 갑자기 뛴다."</span><br><span class="fb"><strong>피드백:</strong> 정답에 가깝다 — "끊어지지 않음"을 수학적으로 어떻게 표현할지 묻고 \(\lim_{x \to a} f(x) = f(a)\)로 유도.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"용돈도 누적하면 부드러워 보일 수 있다."</span><br><span class="fb"><strong>피드백:</strong> 측정 단위에 따라 다르게 보이는 통찰. 그래도 1일 0시 0분 0초의 "그 순간"은 점프임을 강조 — 수학적 정의는 모든 점에서 일관되어야 함.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>1~4차시 연결:</strong> "극한값과 함숫값이 다를 수 있다"를 부수었다면, 오늘은 그 둘이 "같을 때"를 약속 용어로 정한다. 단원 I-1 전체가 한 줄 \(\lim = f(a)\)에 압축된다.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
+
+    <div class="formula-box">
+        <div class="label">CORE DEFINITION</div>
+        <div class="formula">\( f(x) \)가 \( x = a \)에서 연속 \(\Longleftrightarrow\) ① \( f(a) \) 존재 &nbsp;&amp;&nbsp; ② \( \displaystyle \lim_{x \to a} f(x) \) 존재 &nbsp;&amp;&nbsp; ③ \( \displaystyle \lim_{x \to a} f(x) = f(a) \)</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 5단계:</strong>
+        <ol>
+            <li>다항함수 \(f(x) = x^2 - 1\)을 그리고 \(x = 0\)에서 \(f(0) = -1 = \lim_{x \to 0} f(x)\) → <strong>연속</strong>의 모범 예.</li>
+            <li>제거 가능 불연속: \(g(x) = \frac{x^2 - 1}{x - 1}\) (단, \(g(1) = 5\))를 그려 ②는 성립하지만 ③이 깨짐을 색깔로 표시.</li>
+            <li>점프 불연속: \(\frac{|x|}{x}\)에서 좌극한 \(-1\), 우극한 \(1\) → ② 깨짐.</li>
+            <li>무한 불연속: \(\frac{1}{x-2}\)에서 \(x \to 2^\pm\)로 \(\pm\infty\) 발산 → 점근선.</li>
+            <li>구간 분기 함수: \(f(x) = 3x^2-1\,(x\geq a),\,2-5x\,(x\lt a)\)를 그려 "경계점에서만 점검" 원리 시연.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>오개념 ①:</strong> "함숫값만 있으면 연속이다." → 극한 존재(②)와 일치(③)가 별도로 필요.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "극한값과 함숫값이 같으면 그 점에서만 연속이라고 한다." → 극한 자체가 존재(③ ⊃ ②)해야 비교 가능. 좌·우극한 불일치면 ③은 가짓수조차 없음.</div>
+    <div class="q-warn"><strong>오개념 ③:</strong> "분수함수는 항상 불연속이다." → 분모가 \(0\)이 되는 점만 불연속. 그 외에서는 연속.</div>
+    <div class="q-warn"><strong>오개념 ④:</strong> "닫힌구간 끝점에서 양쪽 극한이 필요하다." → 끝점 바깥은 정의되지 않으므로 <strong>한쪽 극한</strong>만 일치하면 충분.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+
+    <div class="problems">
+        <!-- L1 1번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">3조건 직접 점검</span></div>
+            <div class="q-stmt">(1) \(f(x) = x^2 - 1\) — \(x=0\) 연속? &nbsp;(2) \(g(x) = |x|\,(x\neq 0)\), \(g(0)=2\) — \(x=0\) 연속?</div>
+            <div class="q-solve">
+                <span class="step">(1) 다항함수 → 모든 실수 연속. \(f(0) = -1\), \(\lim_{x\to 0} f(x) = -1\) → 일치 → <strong>연속</strong>.</span>
+                <span class="step">(2) 좌극한 = 우극한 = \(\lim_{x\to 0}|x| = 0\). 그러나 \(g(0) = 2 \neq 0\) → ③ 깨짐 → <strong>제거 가능 불연속</strong>.</span>
+            </div>
+            <div class="q-ans">정답: (1) 연속 (2) 불연속(제거 가능형)</div>
+        </div>
+
+        <!-- L1 2번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">연속인 구간 (정의역 자체가 연속구간)</span></div>
+            <div class="q-stmt">(1) \(x^2 - 4x + 2\) &nbsp;(2) \(\frac{3}{x+2}\) &nbsp;(3) \(\sqrt{1-x}\) &nbsp;(4) \(6\)</div>
+            <div class="q-solve">
+                <span class="step">(1) 다항 → \((-\infty, \infty)\). (4) 상수 → \((-\infty, \infty)\).</span>
+                <span class="step">(2) 유리 → 분모 \(\neq 0\) → \(x \neq -2\) → \((-\infty, -2) \cup (-2, \infty)\).</span>
+                <span class="step">(3) 근호 안 \(\geq 0\) → \(x \leq 1\). 끝점 \(x=1\) 우극한 없음, 좌극한 = \(f(1) = 0\) → \((-\infty, 1]\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \((-\infty, \infty)\) &nbsp;(2) \((-\infty,-2)\cup(-2,\infty)\) &nbsp;(3) \((-\infty, 1]\) &nbsp;(4) \((-\infty, \infty)\)</div>
+        </div>
+
+        <!-- L2 3번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">한 점 연속 미정계수 \(a, b\)</span></div>
+            <div class="q-stmt">\(f(x) = \frac{2x+a}{x-2}\,(x\neq 2)\), \(f(2)=b\). 모든 실수 연속.</div>
+            <div class="q-solve">
+                <span class="step">모든 실수 연속 ⇒ \(x=2\)에서 연속 ⇒ \(\lim_{x\to 2}\frac{2x+a}{x-2} = b\).</span>
+                <span class="step">분모 \(\to 0\), 극한 실수 ⇒ 분자 \(\to 0\) ⇒ \(4 + a = 0\) ⇒ \(a = -4\).</span>
+                <span class="step">\(\frac{2x-4}{x-2} = \frac{2(x-2)}{x-2} = 2\). \(\lim = 2 = b\).</span>
+            </div>
+            <div class="q-ans">정답: \(a = -4,\ b = 2\)</div>
+        </div>
+
+        <!-- L2 4번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">구간 분기 연속 — 모든 \(a\)의 곱</span></div>
+            <div class="q-stmt">\(f(x) = 3x^2 - 1\,(x \geq a)\), \(2 - 5x\,(x \lt a)\). 모든 실수 연속.</div>
+            <div class="q-solve">
+                <span class="step">두 다항식은 각 구간 연속 → 경계 \(x=a\)에서만 점검.</span>
+                <span class="step">좌극한 \(= 2 - 5a\), 우극한·함숫값 \(= 3a^2 - 1\). 일치 조건 \(3a^2 + 5a - 3 = 0\).</span>
+                <span class="step">비에타: 두 근의 곱 \(= \frac{-3}{3} = -1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(-1\)</strong>. (실제 근을 구할 필요 없이 계수만으로 곱 도출.)</div>
+        </div>
+
+        <!-- L3 5번 (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — 극한 존재 \(\neq\) 연속</span></div>
+            <div class="q-stmt">\(f(x) = \frac{x^2 - x}{|x-1|}\,(x \neq 1)\), \(f(1) = 1\). \(f(1)\), 좌·우극한, 극한 존재 여부, 연속/불연속.</div>
+            <div class="q-solve">
+                <span class="step">(1) \(f(1) = 1\) (정의).</span>
+                <span class="step">(2) \(x \lt 1\): \(|x-1| = -(x-1)\) → \(\frac{x(x-1)}{-(x-1)} = -x\) → 좌극한 \(= -1\).</span>
+                <span class="step">(3) \(x \gt 1\): \(|x-1| = x-1\) → \(\frac{x(x-1)}{x-1} = x\) → 우극한 \(= 1\).</span>
+                <span class="step">(4) 좌(\(-1\)) \(\neq\) 우(\(1\)) → \(\lim_{x\to 1} f(x)\) <strong>존재하지 않음</strong>. ② 깨짐 → <strong>불연속(점프형)</strong>.</span>
+                <span class="step">함정 풀이: 함숫값 \(f(1) = 1\)이 우극한과 우연히 같다고 해서 연속이 아님! ②가 깨지면 ③은 비교조차 불가.</span>
+            </div>
+            <div class="q-ans">정답: \(f(1) = 1\), 좌 \(=-1\), 우 \(=1\), 극한 <strong>존재 X</strong>, <strong>불연속</strong>.</div>
+            <div class="q-warn"><strong>발표 유도:</strong> "왜 \(f(1) = 1\)과 우극한이 같은데도 연속이 아닌가?"를 학생에게 직접 한 문장으로 말하게 한다 — "양쪽이 모두 같지 않으면 극한 자체가 없기 때문." 02차시 \(\frac{|x|}{x}\)의 확장판임을 환기.</div>
+        </div>
+
+        <!-- 형성 6번 (span2 fc) -->
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 유리식 연속성 조사</span></div>
+            <div class="q-stmt">\(f(x) = x^2+1\), \(g(x) = x^2 - 2x - 3\). (1) \(\frac{f}{g}\) &nbsp;(2) \(\frac{g}{f}\) — 연속/불연속 판정 (불연속이면 \(x\) 모두).</div>
+            <div class="q-solve">
+                <span class="step">\(f, g\) 모두 다항함수 → 분자·분모 모두 모든 실수에서 연속. 유리식의 연속성은 분모의 영점만 점검.</span>
+                <span class="step">(1) \(g(x) = (x-3)(x+1) = 0\) ⇒ \(x = 3, -1\)에서 불연속, 그 외 연속.</span>
+                <span class="step">(2) \(f(x) = x^2 + 1 \geq 1 \gt 0\) → 분모 \(= 0\)인 실수 없음 → 모든 실수 연속.</span>
+            </div>
+            <div class="q-ans">정답: (1) \(x = 3, -1\)에서 불연속 &nbsp; (2) 모든 실수에서 연속.</div>
+        </div>
+
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 함수의연속 유제 2 — 두 점 동시 연속</span></div>
+            <div class="q-stmt">\(f(x) = 3x + 4a\,(1 \lt x \lt b)\), \(x^2 + a\,(x \leq 1\ \text{또는}\ x \geq b)\). \(x=1, x=b\)에서 연속, \(b \gt 1\). \(a+b\)는? ① \(\tfrac13\) ② \(\tfrac23\) ③ \(1\) ④ \(\tfrac43\) ⑤ \(\tfrac53\)</div>
+            <div class="q-solve">
+                <span class="step">STEP 1 \(x=1\) 연속: 좌극한 \(= 1+a\) (\(x\leq 1\) 식), 우극한 \(= 3+4a\) (\(1\lt x\lt b\) 식), \(f(1) = 1+a\). 일치: \(1+a = 3+4a\) ⇒ \(a = -\tfrac{2}{3}\).</span>
+                <span class="step">STEP 2 \(x=b\) 연속: 좌극한 \(= 3b + 4a = 3b - \tfrac{8}{3}\), 우극한·함숫값 \(= b^2 + a = b^2 - \tfrac{2}{3}\). 일치: \(b^2 - 3b + 2 = 0\) ⇒ \((b-1)(b-2) = 0\).</span>
+                <span class="step">STEP 3 \(b \gt 1\) ⇒ \(b = 2\).</span>
+                <span class="step">STEP 4 \(a+b = -\tfrac{2}{3} + 2 = \tfrac{4}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ \(\frac{4}{3}\)</strong>. 핵심: 두 경계에서 각각 좌·우극한 식을 어느 구간 식으로 잡는지가 결정적.</div>
+        </div>
+
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2021년 10월 학평 5번 [3점] — 그래프 × 곱 연속</span></div>
+            <div class="q-stmt">그래프 \(y=f(x)\) (images/calc_05_chal2_kichul.png)에서 \((x^2+ax+b)f(x)\)가 \(x=1\)에서 연속. \(a+b\)는?</div>
+            <div class="q-solve">
+                <span class="step">STEP 1 그래프 읽기: \(\lim_{x\to 1^-} f(x) = 1\) (수평선 \(y=1\), \(-1\leq x \lt 1\)). \(\lim_{x\to 1^+} f(x) = 3\) (우하향 직선 ○에서 시작). \(f(1) = 1\) (●). \(f\)는 \(x=1\)에서 점프 불연속.</span>
+                <span class="step">STEP 2 \(g(x) = x^2 + ax + b\)는 다항 → 모든 점 연속. 곱 \((g \cdot f)\)가 \(x=1\)에서 연속이려면 좌극한 = 우극한: \(g(1) \cdot 1 = g(1) \cdot 3\).</span>
+                <span class="step">STEP 3 \(g(1)(1 - 3) = 0\) ⇒ \(g(1) = 0\). 즉 \(f\)의 좌·우극한이 다른 점에서 곱이 연속이려면 다항 인수가 그 점에서 영점이어야 함.</span>
+                <span class="step">STEP 4 \(g(1) = 1 + a + b = 0\) ⇒ \(a + b = -1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② \(-1\)</strong>. 핵심: ●(함숫값)과 ○(극한 위치) 구분 + "불연속 흡수" 영점 전략.</div>
+        </div>
+    </div>
+
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (6번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">(1) \(g(x) = (x-3)(x+1)\) 인수분해 + 영점 \(x=3,-1\)에서 불연속, 그 외 연속. (2) \(f(x) = x^2+1 \geq 1 \gt 0\) 근거로 모든 실수 연속. 두 항 모두 정확.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">(1) 영점은 옳으나 "그 외 연속" 누락, 또는 (2)에서 결론은 옳으나 \(x^2+1 \gt 0\) 근거가 명시되지 않음.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">"다항함수의 비 → 분모 영점만 점검"이라는 원리는 적었으나 (1)에서 한 근만 찾거나 부호 실수.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">(1)·(2) 중 하나만 시도. 또는 두 함수 모두 연속이라고 결론.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "두 다항함수의 비는 분모가 0이 되는 곳에서만 불연속. \(g\)를 인수분해하고, \(f\)는 항상 양수임을 보여라."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화</span>
+            <span class="rtbody">"연속이 \(\lim = f(a)\) 한 줄이지만 사실 ① 정의 ② 극한 존재 ③ 두 값 일치 세 조건을 한꺼번에 요구한다는 걸 알게 됐다. 5번 문제에서 좌극한 \(-1\), 우극한 \(1\), \(f(1)=1\)이 우극한과 같음에도 연속이 아닌 이유는 ②가 깨지면 ③ 비교가 불가능하기 때문이라는 점이 강렬했다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 결정적 실수와 극복</span>
+            <span class="rtbody">"3번 \(\frac{2x+a}{x-2} = b\)에서 \(a, b\) 둘을 한꺼번에 풀려다 실패. '분모 \(\to 0\) + 극한 실수 → 분자 \(\to 0\)' 순서로 \(a\)를 먼저 확정한 뒤 \(b\)를 구하는 루틴을 노트에 적어뒀다. 이 순서가 4차시 \(\frac{0}{0}\) 부정형 처리와 동일하다는 게 보였다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성</span>
+            <span class="rtbody">"두 연속함수의 합성 \(f(g(x))\)도 연속일까 궁금했다. 다항 \(g\) + 근호 \(f\)의 합성을 \(\sqrt{x^2-3}\)으로 보니 \(g\) 정의역의 일부에서만 \(f\)가 정의됨이 보였다. 다음 차시 사잇값 정리에서 합성·합성의 합으로 어디까지 끌고 갈 수 있을지 기대된다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

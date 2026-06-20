@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 23차시 정적분의 정의 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_22_부정적분.html">← 이전 차시</a>
+        <a href="교사용_학습지_미적분I_23_정적분의정의.html" target="aftermath_ws_calc_23" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_미적분I_24_정적분의계산.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">23</span>
+        <span class="lesson-tag">III-1 부정적분과 정적분</span>
+        <span class="lesson-title">정적분의 정의 — 부호 있는 면적과 함수 결정형</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> \(\displaystyle\int_a^b f(x)\,dx\)는 "부호 있는 면적" — \(x\)축 <strong>위는 \(+\), 아래는 \(-\)</strong>. 도형 넓이와 정적분은 다르다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-03-02] 정적분의 뜻을 알고 기하적 의미(부호 있는 면적)와 적분·미분 관계를 이해한다.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">22차시 부정적분 정의·공식. 삼각형·사다리꼴 넓이(중학). 합성함수 미분(단원 II).</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 정적분의 기하적 정의 3경우 ② \(a=b\), \(a \gt b\) 약속 ③ \(\dfrac{d}{dx}\int_a^x f(t)\,dt = f(x)\) ④ 함수 결정 2단계.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> \(y = x\)와 \(y = -x\)의 삼각형 그림을 칠판에 그린다. "\(S_1\)과 \(S_2\)는 같은가? 정적분도 같은가?"를 물으며 부호 있는 면적 개념 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 Thinking Space에 \(S_1 = S_2 = 2\)를 먼저 쓰고, \(\int_0^2(-x)\,dx\)가 \(-2\)인지를 예측.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 정의 3경우(① \(f \geq 0\) ② \(f \leq 0\) ③ 혼합) → \(a=b, a \gt b\) 약속 → \(\dfrac{d}{dx}\int_a^x = f(x)\) 도출 → 함수 결정 2단계. 각 reveal-box 학생이 클릭.</div>
+            <div class="tl-s"><strong>학생:</strong> 개념 구성 4블록 채우기. 특히 블록 3 "즉시 활용"의 \(\dfrac{d}{dx}\int_2^x(3t^2-2t+1)\,dt\)를 직접 풀어봄.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~3번) 5분 — 1번 도형 계산은 그림 그리게, 2번은 "\(t\)를 \(x\)로 바꿔 적기만", 3번은 2단계 절차 구두 설명. L2(4~6번) 10분 — 5번 그래프 \(f(3) = 0\) 읽기 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 사다리꼴·삼각형 도형화, 2번 전개 없이 \(t \to x\) 치환, 3번 ① 미분 → ② \(x=1\) 대입 2단계.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(L3 함정) — "S와 I가 같다"는 반응을 예상하고 함정 경고 클릭. \([-1,0]\)과 \([0,2]\) 부호를 색깔로 분리해 판서. 8번 형성평가는 2단계 절차 루틴 점검.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 \(S = \dfrac{5}{2}\), \(I = \dfrac{3}{2}\)를 구분하여 기입. 8번 ① \(f(x) = 12x + 1\) ② \(a = \dfrac{1}{3}\) ③ \(f(a) = 5\) 세 줄 서술.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "정적분과 도형 넓이의 차이"를 3명에게 한 문장으로 발표. 도전 1·2 과제 안내. 24차시 기본정리 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰지 3유형 중 하나 이상 체크 + 통합 서술. 도전 문제 사전 시도.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "\(y = x\)와 \(x\)축, \(x = 2\)로 둘러싸인 삼각형 넓이 \(S_1\)과 \(y = -x\)로 둘러싸인 \(S_2\)의 값은? \(\int_0^2(-x)\,dx\)는 \(S_2\)와 같은가?"</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"\(S_1 = S_2 = 2\), 정적분도 \(2\)."</span><br><span class="fb"><strong>피드백:</strong> 넓이는 맞지만 \(\int_0^2(-x)\,dx = -2\). 정적분은 "\(x\)축 아래에서 음수"라는 약속이 있기 때문. 도형 넓이 \(\neq\) 정적분이 오늘의 핵심.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"\(-x\)가 음수이니 정적분도 음수일 것."</span><br><span class="fb"><strong>피드백:</strong> 정확한 직관. 구체적으로 \(-\dfrac{1}{2} \cdot 2 \cdot 2 = -2\). 도형 넓이를 구하려면 \(\int |f|\,dx\)가 필요하다는 차이점으로 연결.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"삼각형 넓이 공식이 먼저 보인다."</span><br><span class="fb"><strong>피드백:</strong> 좋다. 오늘 L1은 바로 이 도형 계산으로 정적분을 구한다. 다음 차시(미적분 기본정리)에서는 도형을 그리지 않아도 된다.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>22차시 연결:</strong> 부정적분은 함수족 \(F(x) + C\)를 반환. 오늘의 정적분 \(\int_a^b f\,dx\)는 한 개의 수를 반환. 두 개념이 다음 차시 기본정리에서 \(F(b) - F(a)\)로 합쳐진다.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
+
+    <div class="formula-box">
+        <div class="label">CORE DEFINITION — 정적분과 적분·미분 관계</div>
+        <div class="formula">\( \displaystyle \int_a^b f(x)\,dx = S_+ - S_- \qquad \dfrac{d}{dx}\int_a^x f(t)\,dt = f(x) \)</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 5단계:</strong>
+        <ol>
+            <li>\(y = f(x)\)가 \([a, b]\)에서 양인 경우 그래프 → 도형 넓이 \(S\) → \(\int_a^b f\,dx = S\).</li>
+            <li>\(y = f(x)\)가 음인 경우: 같은 도형이 \(x\)축 아래 → \(\int_a^b f\,dx = -S\). 부호만 다름.</li>
+            <li>혼합 경우: \(x\)축 위쪽 \(S_+\), 아래쪽 \(S_-\) → 정적분 \(= S_+ - S_-\). 삼각형 두 개로 시각화.</li>
+            <li>\(\int_a^a f = 0\), \(\int_a^b = -\int_b^a\) 약속 — "폭이 0이면 넓이 0", "끝점을 바꾸면 부호 반전".</li>
+            <li>함수 결정형: \(\int_a^x f(t)\,dt = g(x)\) → ① 양변 미분 \(f(x) = g'(x)\) → ② \(x = a\) 대입 \(g(a) = 0\).</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>오개념 ①:</strong> "정적분 = 도형 넓이" — 음수 구간이 있으면 다르다. 넓이는 \(\int |f|\,dx\).</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "\(\dfrac{d}{dx}\int_a^x f(t)\,dt = f(t)\)" — 결과는 \(f(x)\). \(t\)를 \(x\)로 바꾼다.</div>
+    <div class="q-warn"><strong>오개념 ③:</strong> "함수 결정형에서 \(g(a) = 0\)이 아니라 상수" — 좌변 \(\int_a^a f(t)\,dt = 0\)이므로 반드시 \(g(a) = 0\).</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (L1 1~3 · L2 4~6 · L3 7 · 형성 8 · 도전 1·2)</h2>
+
+    <div class="problems">
+        <!-- L1 1번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">기하 도형으로 정적분 계산</span></div>
+            <div class="q-stmt">(1) \(\int_{-2}^{2}(x+4)\,dx\) &nbsp; (2) \(\int_{-2}^{4}\!\left(\tfrac{1}{2}x+1\right)\!dx\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \([-2,2]\)에서 \(x+4 \geq 0\). \(x=-2\)에서 \(2\), \(x=2\)에서 \(6\). 사다리꼴 \(\dfrac{(2+6)\cdot4}{2} = 16\).</span>
+                <span class="step">(2) \([-2,4]\)에서 \(\tfrac{1}{2}x+1 \geq 0\). \(x=-2\)에서 \(0\), \(x=4\)에서 \(3\). 삼각형 \(\dfrac{1}{2}\cdot6\cdot3 = 9\).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(16\) &nbsp; (2) \(9\)</div>
+            <div class="q-warn"><strong>판서 포인트:</strong> 그래프의 \(x\)절편 위치 확인 필수. \([-2,4]\)에서 \(\tfrac{1}{2}x+1=0 \Rightarrow x=-2\)이 구간 왼쪽 끝이므로 전체가 양수.</div>
+        </div>
+
+        <!-- L1 2번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">적분과 미분의 관계</span></div>
+            <div class="q-stmt">\(x\)에 대하여 미분. (1) \(\int_2^x(3t^2-2t+1)\,dt\) &nbsp; (2) \(\int_{-3}^{x}(t-1)(2t^3+t-1)\,dt\)</div>
+            <div class="q-solve">
+                <span class="step">공식: \(\dfrac{d}{dx}\int_a^x f(t)\,dt = f(x)\). \(t\)를 \(x\)로 바꾸기만.</span>
+                <span class="step">(1) \(3x^2 - 2x + 1\).</span>
+                <span class="step">(2) \((x-1)(2x^3+x-1)\). — 전개 불필요.</span>
+            </div>
+            <div class="q-ans">정답: (1) \(3x^2-2x+1\) &nbsp; (2) \((x-1)(2x^3+x-1)\)</div>
+        </div>
+
+        <!-- L1 3번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">함수 결정형 2단계</span></div>
+            <div class="q-stmt">모든 실수 \(x\)에 대해 \(\int_1^x f(t)\,dt = 2x^3 - x + a\). \(f(x)\)와 \(a\)의 값 구하기.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1 — 양변 미분: \(f(x) = 6x^2 - 1\).</span>
+                <span class="step">STEP 2 — \(x = 1\) 대입: 좌변 \(= 0\). 우변 \(= 2 - 1 + a = 1 + a = 0 \Rightarrow a = -1\).</span>
+            </div>
+            <div class="q-ans">정답: \(f(x) = 6x^2 - 1\), \(a = -1\)</div>
+        </div>
+
+        <!-- L2 4번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">아래끝이 미지수인 함수 결정형</span></div>
+            <div class="q-stmt">모든 실수 \(x\)에 대해 \(\int_{-1}^{x}f(t)\,dt = x^4 - x^3 + ax^2 - 5\). \(f(x)\)와 \(a\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f(x) = 4x^3 - 3x^2 + 2ax\).</span>
+                <span class="step">STEP 2: \(x = -1\) 대입 → 좌변 \(= 0\), 우변 \(= 1 + 1 + a - 5 = a - 3 = 0 \Rightarrow a = 3\).</span>
+                <span class="step">따라서 \(f(x) = 4x^3 - 3x^2 + 6x\).</span>
+            </div>
+            <div class="q-ans">정답: \(f(x) = 4x^3 - 3x^2 + 6x\), \(a = 3\)</div>
+        </div>
+
+        <!-- L2 5번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">그래프 + 정적분 접선의 기울기</span></div>
+            <div class="q-stmt">\(F(x) = \int_0^x f(t)\,dt\). 그래프에서 \(f(3) = 0\)일 때, \(y = F(x)\) 위 점 \((3, F(3))\)의 접선의 기울기.</div>
+            <div class="q-solve">
+                <span class="step">접선의 기울기 \(= F'(3)\).</span>
+                <span class="step">적분·미분 관계: \(F'(x) = f(x) \Rightarrow F'(3) = f(3)\).</span>
+                <span class="step">그래프에서 \(f(3) = 0\) (영점).</span>
+            </div>
+            <div class="q-ans">정답: 접선의 기울기 \(= 0\)</div>
+            <div class="q-warn"><strong>판서 포인트:</strong> \(F(x)\)의 접선 기울기는 \(F'(x)\), 이것이 그래프 \(f(x)\)의 값. 그래프를 읽어내는 능력이 핵심.</div>
+        </div>
+
+        <!-- L2 6번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">위끝이 \(x\)인 정적분의 미분값</span></div>
+            <div class="q-stmt">\(G(x) = \int_0^x(t^3+2t)\,dt\). \(G'(2)\) 구하기.</div>
+            <div class="q-solve">
+                <span class="step">\(G'(x) = x^3 + 2x\).</span>
+                <span class="step">\(G'(2) = 8 + 4 = 12\). — 적분 없이 피적분함수에 대입.</span>
+            </div>
+            <div class="q-ans">정답: \(G'(2) = 12\)</div>
+        </div>
+
+        <!-- L3 7번 (span2) -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 부호 있는 면적 vs 도형 넓이</span></div>
+            <div class="q-stmt">\(y = x\)와 \(x\)축, \(x = -1, 2\)로 둘러싸인 도형 넓이 \(S\). \(I = \int_{-1}^{2}x\,dx\). \(S\)와 \(I\) 비교.</div>
+            <div class="q-solve">
+                <span class="step">도형 넓이 \(S\): \([-1,0]\) 삼각형 \(\dfrac{1}{2}\), \([0,2]\) 삼각형 \(2\). \(S = \dfrac{5}{2}\).</span>
+                <span class="step">정적분 \(I\): \(S_+ - S_- = 2 - \dfrac{1}{2} = \dfrac{3}{2}\). (검산: \(\big[\tfrac{1}{2}x^2\big]_{-1}^{2} = 2 - \dfrac{1}{2} = \dfrac{3}{2}\) ✓)</span>
+                <span class="step">\(S = \dfrac{5}{2} \neq I = \dfrac{3}{2}\). 다르다.</span>
+            </div>
+            <div class="q-ans">정답: \(S = \dfrac{5}{2}\), \(I = \dfrac{3}{2}\). 둘은 다름. 도형 넓이는 \(\int |f|\,dx\)로 구해야 한다.</div>
+            <div class="q-warn"><strong>발표 유도:</strong> "정적분과 도형 넓이가 왜 다른지" 한 문장으로. "정적분은 부호 있는 면적이어서 \(x\)축 아래는 음수로 계산하기 때문."</div>
+        </div>
+
+        <!-- 형성평가 8번 (span2 fc) -->
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 함수 결정형에서 \(f(a)\)</span></div>
+            <div class="q-stmt">다항함수 \(f(x)\)가 \(\int_a^x f(t)\,dt = 6x^2 + x - 1\)을 만족. \(a \gt 0\)일 때 \(f(a)\).</div>
+            <div class="q-solve">
+                <span class="step">① 미분: \(f(x) = 12x + 1\).</span>
+                <span class="step">② \(x = a\): 좌변 \(= 0\), 우변 \(= 6a^2 + a - 1 = (3a-1)(2a+1) = 0\). \(a \gt 0 \Rightarrow a = \dfrac{1}{3}\).</span>
+                <span class="step">③ \(f\!\left(\dfrac{1}{3}\right) = 12 \cdot \dfrac{1}{3} + 1 = 5\).</span>
+            </div>
+            <div class="q-ans">정답: \(f(a) = 5\)</div>
+        </div>
+
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 부정적분과 정적분 유제 3</span></div>
+            <div class="q-stmt">다항함수 \(f(x)\)가 \(\int_0^x tf(t)\,dt = x^4 + ax^2 + \int_0^x f(t)\,dt\)를 만족. \(f(a) = ?\)</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: 양변 미분 → \(xf(x) = 4x^3 + 2ax + f(x)\) → \((x-1)f(x) = 4x^3 + 2ax\).</span>
+                <span class="step">STEP 2: \(x = 1\) 대입 → \(0 = 4 + 2a \Rightarrow a = -2\).</span>
+                <span class="step">STEP 3: \((x-1)f(x) = 4x^3 - 4x = 4x(x-1)(x+1)\) → \(f(x) = 4x(x+1)\).</span>
+                <span class="step">STEP 4: \(f(-2) = 4(-2)(-1) = 8\).</span>
+            </div>
+            <div class="q-ans">정답: \(f(a) = 8\). 핵심: 양변 미분 → \(x=1\) 대입으로 \(a\) 결정 → \(f(x)\) 인수분해 복원.</div>
+        </div>
+
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2024년 5월 학력평가 공통 18번 [3점]</span></div>
+            <div class="q-stmt">최고차항의 계수가 \(3\)인 이차함수 \(f(x)\)가 \(\int_0^x f(t)\,dt = 2x^3 + \int_0^{-x}f(t)\,dt\)를 만족. \(f(1)=5\)일 때 \(f(2)\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: 양변 미분 → \(f(x) = 6x^2 - f(-x)\) → \(f(x) + f(-x) = 6x^2\).</span>
+                <span class="step">STEP 2: \(f(x) = 3x^2 + bx + c\)로 두면 \(f(x) + f(-x) = 6x^2 + 2c = 6x^2 \Rightarrow c = 0\).</span>
+                <span class="step">STEP 3: \(f(1) = 3 + b = 5 \Rightarrow b = 2\). \(f(x) = 3x^2 + 2x\).</span>
+                <span class="step">STEP 4: \(f(2) = 12 + 4 = 16\).</span>
+            </div>
+            <div class="q-ans">정답: \(f(2) = 16\). 핵심: 위끝 \(-x\) 미분 시 합성함수 미분으로 \(-1\) 발생 → 대칭식 분리.</div>
+        </div>
+    </div>
+
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">① 양변 미분으로 \(f(x) = 12x+1\) ② \(g(a) = 0\) 조건으로 \(a = \dfrac{1}{3}\) ③ \(f(a) = 5\) 세 단계 모두 명시.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">\(f(x)\)는 맞으나 \(a \gt 0\) 조건 적용 누락 또는 인수분해 과정 생략.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">양변 미분은 했으나 \(x = a\) 대입 단계(STEP 2)를 수행하지 않음.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">정적분 항등식을 보고 멈춤. "양변 미분" 시도만 있음.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "\(\int_a^x f(t)\,dt = g(x)\) 꼴은 ① 양변 미분 → ② \(x=a\) 대입 2단계만 하면 된다."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화</span>
+            <span class="rtbody">"\(\int_0^2(-x)\,dx = -2\)인데 도형 넓이는 \(2\)인 게 처음엔 모순처럼 보였다. 정적분은 '\(x\)축 위쪽은 \(+\), 아래쪽은 \(-\)'로 부호를 살리는 약속이라 음수가 나온다는 걸 알았다. 도형 넓이를 구하려면 \(\int |f|\,dx\)가 필요하다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 결정적 실수와 극복</span>
+            <span class="rtbody">"\(\dfrac{d}{dx}\int_a^x f(t)\,dt\)에서 결과로 \(f(t)\)를 써서 틀렸다. '\(t\)를 \(x\)로 바꿔야 한다'는 걸 강조한 뒤, '위끝이 \(x\)이면 피적분함수의 변수를 \(x\)로 교체'라는 카드를 만들었다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성</span>
+            <span class="rtbody">"\(S(x) = \int_a^x f(t)\,dt\)를 미분하면 \(f(x)\)이므로 \(S\)도 결국 \(f\)의 부정적분. 다음 차시의 \(\int_a^b f\,dx = F(b)-F(a)\) 한 줄이 이것에서 나올 것 같다는 가설을 세웠다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

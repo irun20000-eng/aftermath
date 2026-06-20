@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 (Teacher's Navigation Guide) — 학생 비공개. .gitignore Nav_*.html 패턴으로 자동 untrack. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 미적분 I 19차시 속도와 가속도 — 수업 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; }
+        .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; }
+        .tl-s strong { color: #334155; font-weight: 800; }
+
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_학습지_미적분I_19_속도와가속도.html" target="aftermath_ws_calc_19" class="ws-link">학습지 보기 →</a>
+        <a href="Nav_미적분I_20_중단원마무리_II_2b.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">19</span>
+        <span class="lesson-tag">II-2b 도함수 활용 2</span>
+        <span class="lesson-title">속도와 가속도 — 도함수의 물리적 해석</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> "<strong>위치 \(\to\) (미분) \(\to\) 속도 \(\to\) (미분) \(\to\) 가속도</strong>" 사슬로 미분이 물리량을 잇는 언어가 됨을 깨닫는다. 핵심 함정: <strong>변위 \(\neq\) 운동 거리</strong>.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적I-02-11] 속도와 가속도에 대한 문제를 도함수를 이용하여 해결할 수 있다.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">차시 09(미분계수), 차시 13(평균값 정리), 차시 14·15(증감·극값), 일차·이차함수 미분.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 속도 = \(f'(t)\), 가속도 = \(f''(t)\) 정의 ② 운동 방향 전환 = \(v = 0\) + 부호 변화 ③ 변위 vs 운동 거리 분리.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 헬기 영상 또는 자동차 속도계 사진 제시. "속도계는 어떻게 그 값을 계산하는가?" → "<strong>찰나의 위치 변화율</strong>"이라는 답으로 차시 09 미분계수 복습 + 본 차시로 연결.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 Warm-up 발문에 1분 메모. "방향 전환 = 속도 0" 직관 발견.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 정의식 \(v = dx/dt = f'(t)\), \(a = dv/dt = f''(t)\)를 칠판에 사슬 그림으로 표현. 예제 \(x = -t^3 + 6t^2\)로 \(t = 4\) 방향 전환 시연.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01의 5섹션 노트화. reveal-box 클릭해 \(v(1) = 9, a(1) = 6\) 직접 확인. "최고점 = \(v = 0\)인 순간" 일상 직관과 연결.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1·2·3번)은 짝활동 — 2번 자유낙하 시연 후 발표. L2(4·5·6번)는 두 점 운동 + 그래프 해석 개별 풀이. 5번 학생 A·B·C 모두 정답 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 4분, 2~3번 4분, 4~6번 7분. 4번에서 \((t-3)^2 = 0\) 중근 → "딱 한 순간만 만남" 의미 노트.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(변위 \(\neq\) 운동 거리)을 그래프로 시연 → 학생이 "왜 다른지" 한 문장 발표 → 트랩 박스 공개. 형성 8번은 모두 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 위치 그래프 \(x(t)\)를 직접 그리고 방향 전환점 \(t = 1, 3\) 식별 → 운동 거리 = 4 + 4 + 4 = 12 계산. 8번은 4분 안에 최고높이 80, 운동 거리 80.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "차시 23(정적분의 활용)에서 운동 거리 = \(\int |v| dt\)로 자동화됨" 예고. QR 성찰지 안내 + 도전 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 사전 시도.</div>
+        </div>
+    </div>
+
+    <!-- C. 생각 열기 운영 가이드 -->
+    <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 운동 방향이 "양 \(\to\) 음"으로 바뀌는 순간 속도는 어떤 값이어야 할까? 가속도가 \(0\)이라는 것의 물리적 의미는?</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"방향 전환 시 속도는 \(0\)이다."</span><br><span class="fb"><strong>피드백:</strong> 정답에 매우 가까움. 단 \(v = 0\)만으로는 부족 — <strong>부호 변화</strong>까지 필요(예: \(v(t) = t^2 - 2t + 1 = (t-1)^2\)은 \(t = 1\)에서 \(v = 0\)이지만 부호 안 바뀌어 방향 전환 아님). 차시 15 극값 규칙과 동일 구조.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"가속도 \(0\)이면 멈춘다."</span><br><span class="fb"><strong>피드백:</strong> 흔한 오답. 정정 — <strong>가속도 \(0\) = 속도가 일정한 순간</strong>(등속). 멈춤은 \(v = 0\). 가속도와 속도를 혼동하지 말 것을 강조.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"가속도 \(0\)이면 속도가 최대/최소이다."</span><br><span class="fb"><strong>피드백:</strong> 정확한 직관 — \(a(t) = v'(t) = 0\)이고 부호 변화면 \(v\)의 극값. Level 2 문제 6에서 직접 확인할 수 있음을 예고.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>차시 14·15 연결:</strong> "도함수 부호 변화 = 함수 증감"이 본 차시에서 "<strong>속도 부호 변화 = 운동 방향 전환</strong>"으로 자연 확장. 동일한 수학 구조의 물리적 재해석.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
+
+    <div class="formula-box">
+        <div class="label">CORE CHAIN</div>
+        <div class="formula">\( x = f(t) \xrightarrow{\,\dfrac{d}{dt}\,} v(t) = f'(t) \xrightarrow{\,\dfrac{d}{dt}\,} a(t) = v'(t) = f''(t) \)</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 — 예제 \(x = -t^3 + 6t^2\) (\(t \geq 0\)):</strong>
+        <ol>
+            <li>속도 \(v(t) = -3t^2 + 12t = -3t(t - 4)\). 가속도 \(a(t) = -6t + 12\).</li>
+            <li>\(t = 1\)에서 \(v(1) = 9 \gt 0\) (양 방향 운동), \(a(1) = 6 \gt 0\) (가속 중).</li>
+            <li>방향 전환 시각: \(v(t) = 0 \Rightarrow t = 0, 4\). \(t \gt 0\)이므로 \(t = 4\) 유일. 부호 \((+, -)\) 변화 확인 → 방향 전환.</li>
+            <li>\(x(4) = -64 + 96 = 32\) → 운동의 최고 도달 지점(위치 함수의 극댓값과 일치).</li>
+            <li>\(a(t) = 0 \Rightarrow t = 2\) → 이 순간 속도 \(v(2) = -12 + 24 = 12\)가 속도 함수의 극댓값(최대 속도 순간).</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>오개념 ①:</strong> "위치 변화량 = 운동 거리" → <strong>1순위 함정 (Level 3 핵심)</strong>. 방향 전환이 있으면 둘이 다름. 변위 = \(x(\text{끝}) - x(\text{시작})\), 운동 거리 = 각 구간의 변위 절댓값 합.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "\(v(t) = 0\) ⇔ 방향 전환" → 부호 변화 필수. 예: \(v = (t - 1)^2\)은 \(t = 1\)에서 \(v = 0\)이지만 부호 동일 → 방향 그대로.</div>
+    <div class="q-warn"><strong>오개념 ③:</strong> "가속도 = 속도의 크기" → 가속도는 <strong>속도의 변화율</strong>. 등속운동(가속도 \(0\))에서도 속도는 \(0\)이 아닐 수 있다.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+
+    <div class="problems">
+        <!-- L1 1번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">속도·가속도 + 방향 전환</span></div>
+            <div class="q-stmt">\(x = t^3 - t^2 - 8t\)에서 (1) \(t = 3\)일 때 속도·가속도 (2) 운동 방향 전환 시각.</div>
+            <div class="q-solve">
+                <span class="step">\(v(t) = 3t^2 - 2t - 8 = (3t + 4)(t - 2)\), \(a(t) = 6t - 2\).</span>
+                <span class="step">(1) \(v(3) = 27 - 6 - 8 = 13\), \(a(3) = 18 - 2 = 16\).</span>
+                <span class="step">(2) \(v(t) = 0 \Rightarrow t = -4/3\) (제외) 또는 \(t = 2\). 부호 검증: \(v(1) = -7 \lt 0\), \(v(3) = 13 \gt 0\) → 부호 \(- \to +\) 변화 → \(t = 2\)에서 방향 전환.</span>
+            </div>
+            <div class="q-ans">정답: (1) 속도 \(13\), 가속도 \(16\) &nbsp; (2) \(t = 2\) (음 → 양)</div>
+        </div>
+
+        <!-- L1 2번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">자유낙하 — 특정 높이의 속도</span></div>
+            <div class="q-stmt">\(h = -5t^2 + 3000\). 높이 \(2500\) m에서의 속도.</div>
+            <div class="q-solve">
+                <span class="step">\(-5t^2 + 3000 = 2500 \Rightarrow t^2 = 100 \Rightarrow t = 10\) (양수).</span>
+                <span class="step">\(v(t) = -10t\). \(v(10) = -100\) m/s.</span>
+            </div>
+            <div class="q-ans">정답: \(-100\) m/s (속력 \(100\) m/s, 음 부호는 아래 방향)</div>
+        </div>
+
+        <!-- L1 3번 -->
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">수직선 운동 — 속도·가속도 직접</span></div>
+            <div class="q-stmt">\(x = 2t^3 - 5t\)에서 \(t = 1\) 속도·가속도.</div>
+            <div class="q-solve">
+                <span class="step">\(v(t) = 6t^2 - 5\), \(a(t) = 12t\).</span>
+                <span class="step">\(v(1) = 1\), \(a(1) = 12\).</span>
+            </div>
+            <div class="q-ans">정답: 속도 \(1\), 가속도 \(12\)</div>
+        </div>
+
+        <!-- L2 4번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">두 점의 속도 일치 — 중근의 의미</span></div>
+            <div class="q-stmt">\(x_P = \dfrac{2}{3}t^3 + 18t - 20\), \(x_Q = 6t^2 - 7\). 속도 일치 시각의 두 점 거리.</div>
+            <div class="q-solve">
+                <span class="step">\(v_P = 2t^2 + 18\), \(v_Q = 12t\). \(2t^2 + 18 = 12t \Rightarrow t^2 - 6t + 9 = (t - 3)^2 = 0 \Rightarrow t = 3\) (중근).</span>
+                <span class="step">\(x_P(3) = 18 + 54 - 20 = 52\), \(x_Q(3) = 54 - 7 = 47\). 거리 \(|52 - 47| = 5\).</span>
+            </div>
+            <div class="q-ans">정답: 거리 \(= 5\)</div>
+            <div class="q-warn"><strong>판서 포인트:</strong> 중근 \((t - 3)^2 = 0\)의 물리적 의미 — 두 점의 속도가 일치하는 순간이 <strong>딱 한 번</strong>만 발생(접함). 두 속도 그래프가 \(t = 3\)에서 접한다고 시각화.</div>
+        </div>
+
+        <!-- L2 5번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">위치 그래프 해석 — 학생 대화</span></div>
+            <div class="q-stmt">위치 함수가 이차함수일 때 학생 A("꼭짓점에서 \(v = 0\)"), B("평균속도 = 두 끝 연결 직선 기울기"), C("가속도는 항상 같다") 중 옳은 학생.</div>
+            <div class="q-solve">
+                <span class="step">이차함수 \(x(t) = at^2 + bt + c\)이면 \(v(t) = 2at + b\) (일차), \(a(t) = 2a\) (상수).</span>
+                <span class="step">A: 꼭짓점은 위치의 극값 → \(v = 0\) ✓.</span>
+                <span class="step">B: 평균변화율 = 시컨트 기울기 ✓.</span>
+                <span class="step">C: \(a(t) = 2a\) 상수 ✓.</span>
+            </div>
+            <div class="q-ans">정답: <strong>A, B, C 모두 옳음</strong>.</div>
+            <div class="q-warn"><strong>발표 유도:</strong> 각 학생의 주장을 다른 학생이 검증하게 한다. 특히 C에 대해 "이차함수의 2계 도함수는 상수"라는 일반 원리로 설명하게 함.</div>
+        </div>
+
+        <!-- L2 6번 -->
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">가속도 0 시각의 물리적 의미</span></div>
+            <div class="q-stmt">\(x = t^3 - 6t^2 + 9t + 1\)에서 (1) 모든 방향 전환 시각 (2) 가속도 \(0\)인 시각 + 그때 속도.</div>
+            <div class="q-solve">
+                <span class="step">\(v(t) = 3(t - 1)(t - 3)\), \(a(t) = 6(t - 2)\).</span>
+                <span class="step">(1) \(v = 0 \Rightarrow t = 1, 3\). 부호 \((+, -, +)\) → 두 시각 모두 방향 전환.</span>
+                <span class="step">(2) \(a(t) = 0 \Rightarrow t = 2\). \(v(2) = 12 - 24 + 9 = -3\). 속도가 음수 중 절댓값 최대 = "감속 → 가속" 전환점(속도 함수의 극솟값).</span>
+            </div>
+            <div class="q-ans">정답: (1) \(t = 1, 3\) 두 번 &nbsp; (2) \(t = 2\), 속도 \(-3\). 핵심: \(a = 0\)은 속도의 극값 시각.</div>
+        </div>
+
+        <!-- L3 7번 span2 -->
+        <div class="prob-card l3 span2">
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 변위 vs 운동 거리</span></div>
+            <div class="q-stmt">\(x(t) = t^3 - 6t^2 + 9t\) (\(0 \leq t \leq 4\)). (1) 변위 (2) 운동 거리(왕복 포함). 두 값이 다른 이유.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(v(t) = 3(t-1)(t-3)\). 방향 전환 시각 \(t = 1, 3\). 부호 \(+, -, +\).</span>
+                <span class="step">STEP 2: \(x(0) = 0, x(1) = 4, x(3) = 0, x(4) = 4\).</span>
+                <span class="step">STEP 3 — (1) 변위: \(x(4) - x(0) = 4\).</span>
+                <span class="step">STEP 4 — (2) 운동 거리: \(|x(1) - x(0)| + |x(3) - x(1)| + |x(4) - x(3)| = 4 + 4 + 4 = 12\).</span>
+                <span class="step">STEP 5: 변위는 단순 끝-시작 차이, 운동 거리는 왕복을 포함한 누적. \(t = 1\)에서 후진, \(t = 3\)에서 다시 전진 → 운동 거리가 더 큼.</span>
+            </div>
+            <div class="q-ans">정답: 변위 \(= 4\), 운동 거리 \(= 12\). 핵심: <strong>변위 \(\neq\) 이동 거리</strong>(물리·수학 공통 원리).</div>
+            <div class="q-warn"><strong>발표 유도:</strong> 학생이 위치 그래프를 칠판에 직접 그리게 한다 — \(t = 0 \to 1 \to 3 \to 4\)에서 \(x\)값 \(0 \to 4 \to 0 \to 4\)의 등산-하산-재등산 패턴을 시각화. 차시 23 적분 공식(\(\int |v|\,dt\)) 예고.</div>
+        </div>
+
+        <!-- 형성 8번 span2 fc -->
+        <div class="prob-card fc span2">
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 자유낙하 종합</span></div>
+            <div class="q-stmt">\(h = -5t^2 + 40t\). (1) 최고 높이·시각 (2) 지면 도착 속도 (3) 최고점~지면 운동 거리.</div>
+            <div class="q-solve">
+                <span class="step">\(v(t) = -10t + 40\). (1) \(v = 0 \Rightarrow t = 4\), \(h(4) = -80 + 160 = 80\) m.</span>
+                <span class="step">(2) \(h(t) = 0 \Rightarrow -5t(t - 8) = 0 \Rightarrow t = 8\). \(v(8) = -80 + 40 = -40\) m/s.</span>
+                <span class="step">(3) \(t = 4 \to 8\)에서 \(v \lt 0\) 일관(단조 하강, 방향 전환 없음). 운동 거리 = \(|h(8) - h(4)| = |0 - 80| = 80\) m.</span>
+            </div>
+            <div class="q-ans">정답: (1) 최고 \(80\) m, \(t = 4\)초 &nbsp; (2) \(-40\) m/s &nbsp; (3) \(80\) m</div>
+            <div class="q-warn"><strong>학생 함정:</strong> (3)에서 "쏘아 올린 직후부터 지면까지" 운동 거리를 묻는다면 \(0 \to 4\) 80 m 상승 + \(4 \to 8\) 80 m 하강 = <strong>160 m</strong>. 본 문제는 "최고점부터"이므로 80 m. 시작 시각을 정확히 읽을 것.</div>
+        </div>
+
+        <!-- 도전 1 span2 challenge -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 도함수 활용 2 유제 7 — 두 번째 만남 시각</span></div>
+            <div class="q-stmt">\(x_1 = t^3 - 4t^2\), \(x_2 = t^2 - 4t\). 두 번째 만남에서 속도 \(p, q\)의 차 \(p - q\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(x_1 = x_2 \Rightarrow t^3 - 5t^2 + 4t = t(t-1)(t-4) = 0\). 만남 시각 \(t = 0, 1, 4\).</span>
+                <span class="step">STEP 2: 출발이 \(t = 0\)이므로 첫 만남 \(t = 1\), 두 번째 만남 \(t = 4\).</span>
+                <span class="step">STEP 3: \(v_1(t) = 3t^2 - 8t\), \(v_2(t) = 2t - 4\). \(v_1(4) = 48 - 32 = 16\), \(v_2(4) = 4\).</span>
+                <span class="step">STEP 4: \(p - q = 16 - 4 = 12\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(12\)</strong>. 핵심: 동시 출발 \(\Rightarrow t = 0\) 자동 일치 → 두 번째 만남은 그 이후 두 번째 근.</div>
+        </div>
+
+        <!-- 도전 2 span2 challenge -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2025학년도 6월 모평 공통 11번 [4점] — 보기 ㄱㄴㄷ 종합</span></div>
+            <div class="q-stmt">\(x = t^3 - t^2 - t + 1\). ㄱ. \(t = 1\)에서 위치 \(= 1\) &nbsp; ㄴ. \(t = 1\)에서 속도 \(= 0\) &nbsp; ㄷ. 방향 전환 시각의 가속도 \(= 4\). ① ㄱ ② ㄴ ③ ㄷ ④ ㄱ,ㄷ ⑤ ㄴ,ㄷ</div>
+            <div class="q-solve">
+                <span class="step">\(v(t) = 3t^2 - 2t - 1 = (3t + 1)(t - 1)\), \(a(t) = 6t - 2\).</span>
+                <span class="step">ㄱ: \(x(1) = 1 - 1 - 1 + 1 = 0 \neq 1\) → <strong>거짓</strong>.</span>
+                <span class="step">ㄴ: \(v(1) = 4 \cdot 0 = 0\) → <strong>참</strong>.</span>
+                <span class="step">ㄷ: \(t \geq 0\) 범위의 \(v\) 영점은 \(t = 1\) (\(t = -1/3\) 제외). 부호 \(- \to +\)로 변화 → 방향 전환 시각 \(t = 1\). \(a(1) = 6 - 2 = 4\) → <strong>참</strong>.</span>
+            </div>
+            <div class="q-ans">정답: <strong>⑤ ㄴ, ㄷ</strong>. 핵심: ㄱ의 "위치"와 ㄴ의 "속도"를 혼동 금지. ㄷ에서 "\(v = 0\) AND 부호 변화"라는 두 조건 동시 확인.</div>
+        </div>
+    </div>
+
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">(1) 최고 높이 80 m, \(t = 4\)초 + (2) \(-40\) m/s + (3) 최고점~지면 단조 하강(방향 전환 없음) 확인 + 80 m. 세 부분 모두 정확.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">75</div><div class="desc">(1)(2)는 정확하나 (3)에서 "최고점부터"라는 시작 시각 누락하고 전체 운동 거리 160 m로 답.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">(1) 최고점 옳고 (2)의 속도 부호 누락(\(40\) m/s만 답), (3) 변위와 운동 거리 혼동.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">25</div><div class="desc">속도 식 \(v(t) = -10t + 40\)은 유도했으나 \(v = 0\) → 최고점 시각 추론 누락.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0~10</div><div class="desc"><strong>피드백:</strong> "위치 \(h(t)\)를 미분하면 속도 \(v(t)\). 최고점은 \(v = 0\)인 순간. 지면 도착은 \(h = 0\)을 풀 것. 운동 거리는 방향 전환 여부 확인 후 계산."</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 우수 답안 -->
+    <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화 (도함수 사슬)</span>
+            <span class="rtbody">"<strong>위치 → 속도 → 가속도</strong>가 미분의 2단계 사슬이라는 게 핵심이었다. 차시 09에서 배운 미분계수가 결국 '순간속도'와 같은 식이라는 게 연결되니, 수학 공식이 물리 현실을 그대로 묘사한다는 게 실감 났다. \(v = f'(t), a = f''(t)\)라는 두 식이 단원 전체를 압축한다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 문제해결력 (방향 전환과 변위·운동 거리)</span>
+            <span class="rtbody">"방향 전환 시각을 '\(v = 0\)'만으로 잡았다가 부호 변화 없는 케이스에서 틀린 적이 있다. '\(v = 0\) AND 부호 변화'라는 두 조건 체크리스트로 정리하니 실수가 사라졌다. 또 Level 3에서 변위 \(\neq\) 운동 거리라는 함정을 직접 체험하니 '시작-끝 차이'가 아닌 '왕복 포함 누적'을 자동으로 떠올리게 됐다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성 (적분의 활용 예고)</span>
+            <span class="rtbody">"운동 거리를 손으로 구간 나눠 합하는 게 번거로웠는데, 선생님 말씀대로 차시 23에서 \(\int |v(t)|\,dt\)라는 적분 공식으로 자동화된다니 미분과 적분이 서로 짝을 이룬다는 단원의 큰 그림이 보였다. 평균값 정리(차시 13)가 구간 단속의 수학적 근거라는 것도 일상과 수학이 연결되는 인상적인 사례였다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>
