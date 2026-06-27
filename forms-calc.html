@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성찰지 폼 모음 — 2026 미적분 I</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>window.name = 'aftermath_forms_calc';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%); min-height: 100vh; color: #0f172a; }
+
+        .page { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+        .hero { text-align: center; padding: 2rem 1rem 1.5rem; }
+        .hero .label { color: #0d9488; font-weight: 800; letter-spacing: 0.3em; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.75rem; }
+        .hero h1 { font-size: 2rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -0.025em; }
+        .hero .sub { color: #475569; font-size: 1rem; font-weight: 600; }
+        .hero .hint { margin-top: 0.875rem; font-size: 0.82rem; color: #64748b; line-height: 1.6; }
+
+        .topbar { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .topbar a { font-size: 0.85rem; font-weight: 700; padding: 0.5rem 1rem; background: white; border: 1px solid #99f6e4; border-radius: 999px; color: #0f766e; text-decoration: none; transition: all 0.15s; }
+        .topbar a:hover { background: #0d9488; color: white; border-color: #0d9488; }
+
+        .unit { margin-bottom: 2rem; }
+        .unit-head { font-size: 1.25rem; font-weight: 900; color: #134e4a; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid #5eead4; display: flex; align-items: center; gap: 0.5rem; }
+
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+        .form-card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem 1rem 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.15s, box-shadow 0.15s; }
+        .form-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.15); border-color: #5eead4; }
+        .form-card.review { background: linear-gradient(135deg, #fffbeb 0%, #fef9c3 100%); border-color: #fde68a; }
+
+        .fc-no { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #0d9488; color: white; font-weight: 900; font-size: 0.85rem; border-radius: 0.5rem; margin-bottom: 0.625rem; flex-shrink: 0; }
+        .form-card.review .fc-no { background: #d97706; }
+        .fc-name { font-weight: 800; color: #1e293b; font-size: 0.95rem; line-height: 1.35; margin-bottom: 0.875rem; min-height: 2.6rem; display: flex; align-items: center; }
+        .fc-qr { width: 150px; height: 150px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.625rem; padding: 6px; margin-bottom: 0.875rem; }
+        .fc-qr img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .fc-btn { width: 100%; padding: 0.625rem; background: #0d9488; color: white; font-weight: 800; font-size: 0.875rem; border-radius: 0.625rem; text-decoration: none; transition: background 0.15s; }
+        .fc-btn:hover { background: #0f766e; }
+        .form-card.review .fc-btn { background: #d97706; }
+        .form-card.review .fc-btn:hover { background: #b45309; }
+
+        .footer { text-align: center; color: #64748b; font-size: 0.85rem; padding-top: 1.5rem; margin-top: 1rem; border-top: 1px solid #cbd5e1; }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .form-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .fc-qr { width: 120px; height: 120px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="hero">
+        <div class="label">Reflection Forms · 성찰지 제출</div>
+        <h1>📋 성찰지 폼 모음</h1>
+        <div class="sub">2026 2학기 · 미적분 I · 전체 31차시</div>
+        <div class="hint">원하는 차시의 <strong>QR을 스캔</strong>하거나 <strong>폼 열기</strong>를 눌러 성찰지를 작성·제출하세요.<br>차시명은 폼에 자동으로 채워집니다.</div>
+    </div>
+
+    <div class="topbar">
+        <a href="index-calc.html" target="aftermath_main_calc">🏠 학습지 메인</a>
+        <a href="index.html" target="aftermath_main">📘 1학기 대수</a>
+    </div>
+
+    <div id="unitsContainer"></div>
+
+    <div class="footer">
+        2026 · 2학기 미적분 I · 교사용 내부 자료<br>
+        성찰지는 차시별 통합 구글 폼으로 수집됩니다.
+    </div>
+
+</div>
+
+<script>
+    // 모든 차시가 공유하는 통합 성찰지 구글 폼 (entry.359855343 = 차시명 사전채우기)
+    const FORM_BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+
+    // 차시 데이터 — name은 학습지의 LESSON_NAME과 정확히 동일 (폼 사전채우기 일치)
+    const UNITS = [
+        {
+            title: "I. 함수의 극한과 연속", icon: "📊",
+            lessons: [
+                { no: "01", name: "01차시 함수의 극한",                         short: "함수의 극한" },
+                { no: "02", name: "02차시 함수의 극한값의 계산",                 short: "극한값의 계산" },
+                { no: "03", name: "03차시 함수의 극한 — 미정형",                 short: "극한 — 미정형" },
+                { no: "04", name: "04차시 중단원 마무리 (I-1 함수의 극한)",      short: "중단원 마무리 I-1", review: true },
+                { no: "05", name: "05차시 함수의 연속",                         short: "함수의 연속" },
+                { no: "06", name: "06차시 연속함수의 성질",                     short: "연속함수의 성질" },
+                { no: "07", name: "07차시 중단원 마무리 (I-2 함수의 연속)",      short: "중단원 마무리 I-2", review: true },
+                { no: "08", name: "08차시 대단원 평가 I (함수의 극한·연속)",     short: "대단원 평가 I", review: true },
+            ]
+        },
+        {
+            title: "II. 미분", icon: "📉",
+            lessons: [
+                { no: "09", name: "09차시 미분계수",                            short: "미분계수" },
+                { no: "10", name: "10차시 도함수",                             short: "도함수" },
+                { no: "11", name: "11차시 중단원 마무리 (II-1 미분계수와 도함수)", short: "중단원 마무리 II-1", review: true },
+                { no: "12", name: "12차시 접선의 방정식",                       short: "접선의 방정식" },
+                { no: "13", name: "13차시 평균값 정리",                         short: "평균값 정리" },
+                { no: "14", name: "14차시 함수의 증가와 감소",                   short: "증가와 감소" },
+                { no: "15", name: "15차시 극대와 극소",                         short: "극대와 극소" },
+                { no: "16", name: "16차시 함수의 그래프",                       short: "함수의 그래프" },
+                { no: "17", name: "17차시 함수의 그래프 응용 (최댓값·최솟값)",    short: "그래프 응용" },
+                { no: "18", name: "18차시 방정식과 부등식에의 활용",             short: "방정식·부등식 활용" },
+                { no: "19", name: "19차시 속도와 가속도",                       short: "속도와 가속도" },
+                { no: "20", name: "20차시 중단원 마무리 II-2 (도함수의 활용)",   short: "중단원 마무리 II-2", review: true },
+                { no: "21", name: "21차시 대단원 평가 II (미분)",               short: "대단원 평가 II", review: true },
+            ]
+        },
+        {
+            title: "III. 적분", icon: "∫",
+            lessons: [
+                { no: "22", name: "22차시 부정적분",                            short: "부정적분" },
+                { no: "23", name: "23차시 정적분의 정의",                       short: "정적분의 정의" },
+                { no: "24", name: "24차시 정적분의 계산",                       short: "정적분의 계산" },
+                { no: "25", name: "25차시 중단원 마무리 (III-1 부정적분과 정적분)", short: "중단원 마무리 III-1", review: true },
+                { no: "26", name: "26차시 넓이 — 곡선과 x축 사이",              short: "넓이 — 곡선과 x축" },
+                { no: "27", name: "27차시 넓이 — 두 곡선 사이",                 short: "넓이 — 두 곡선" },
+                { no: "28", name: "28차시 속도와 거리",                         short: "속도와 거리" },
+                { no: "29", name: "29차시 중단원 마무리 (III-2 정적분의 활용)",   short: "중단원 마무리 III-2", review: true },
+                { no: "30", name: "30차시 대단원 평가 III (적분)",              short: "대단원 평가 III", review: true },
+                { no: "31", name: "31차시 학기말 종합 평가",                    short: "학기말 종합 평가", review: true },
+            ]
+        }
+    ];
+
+    function formUrl(name) {
+        return FORM_BASE + encodeURIComponent(name);
+    }
+    function qrUrl(url) {
+        return "https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=" + encodeURIComponent(url);
+    }
+
+    function render() {
+        const container = document.getElementById('unitsContainer');
+        UNITS.forEach(unit => {
+            const section = document.createElement('div');
+            section.className = 'unit';
+
+            const head = document.createElement('h2');
+            head.className = 'unit-head';
+            head.innerHTML = '<span>' + unit.icon + '</span> ' + unit.title;
+            section.appendChild(head);
+
+            const grid = document.createElement('div');
+            grid.className = 'form-grid';
+
+            unit.lessons.forEach(les => {
+                const url = formUrl(les.name);
+                const card = document.createElement('div');
+                card.className = 'form-card' + (les.review ? ' review' : '');
+
+                const no = document.createElement('div');
+                no.className = 'fc-no';
+                no.textContent = les.no;
+                card.appendChild(no);
+
+                const nm = document.createElement('div');
+                nm.className = 'fc-name';
+                nm.textContent = les.short;
+                card.appendChild(nm);
+
+                const qr = document.createElement('div');
+                qr.className = 'fc-qr';
+                const img = document.createElement('img');
+                img.src = qrUrl(url);
+                img.loading = 'lazy';
+                img.alt = les.no + '차시 성찰지 QR';
+                qr.appendChild(img);
+                card.appendChild(qr);
+
+                const btn = document.createElement('a');
+                btn.className = 'fc-btn';
+                btn.href = url;
+                btn.target = '_blank';
+                btn.rel = 'noopener noreferrer';
+                btn.textContent = '폼 열기 ↗';
+                card.appendChild(btn);
+
+                grid.appendChild(card);
+            });
+
+            section.appendChild(grid);
+            container.appendChild(section);
+        });
+    }
+
+    render();
+</script>
+</body>
+</html>
