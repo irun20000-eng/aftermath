@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 I-2 함수의 연속 · 차시 05 함수의 연속 · Agent A3 작성 -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -19,30 +20,51 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
         body.mathjax-ready { opacity: 1; }
+
         .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
         .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
-        .placeholder-body {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
-            border: 3px dashed #ca8a04;
-            border-radius: 1rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #713f12;
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
         }
-        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
-        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        /* 미적분 I 톤 — 메인은 teal, 강조는 cyan/emerald */
+        .calc-accent { color: #0d9488; }
+
         @media print {
             .no-print { display: none !important; }
             body { opacity: 1; background: white; }
             .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
-        const GOOGLE_FORM_BASE_URL = ""; // 차시별 구글 폼 URL 확정 후 채움
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
         const LESSON_NAME = "05차시 함수의 연속";
         const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
     </script>
@@ -68,18 +90,380 @@
             </div>
         </nav>
 
-        <section class="card placeholder-body">
-            <h2>📝 학습지 작성 예정</h2>
-            <div class="ph-row">I. 함수의 극한과 연속</div>
-            <div class="ph-row">05차시 · 함수의 연속</div>
-            <p class="ph-meta">사용자의 차시별 자료(교과서·수능특강 PDF) 제공 후 본문(Warm-up · 공식 · Level 1/2/3 · 형성평가 · 도전 · 성찰)이 작성됩니다.</p>
-            <p class="ph-meta">수능특강 매핑: 02. 함수의 연속</p>
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">강의실 천장에 매달린 식물의 키, 자라나는 동안 시간에 따라 <strong>한 번도 끊어지지 않고 부드럽게</strong> 변한다. 반면 매달 받는 용돈은 매월 1일에 <strong>불쑥</strong> 값이 바뀐다.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 두 변화의 결정적 차이는 무엇일까? 함수 그래프로 그렸을 때 어떻게 다르게 보일지 자유롭게 적어 보자.</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 1~4차시에서 우리는 <em>극한값</em> \(\lim_{x \to a} f(x)\)과 <em>함숫값</em> \(f(a)\)이 <strong>서로 다를 수 있다</strong>는 사실을 배웠다. 오늘은 <span class="calc-accent font-bold">이 둘이 같을 때(\( \lim_{x \to a} f(x) = f(a) \))를 함수가 \(x=a\)에서 "연속"이다</span>라고 부르기로 약속한다. 단 한 줄의 정의 안에 지난 4차시의 모든 학습이 압축되어 있다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 연속의 정의 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        한 점에서의 연속 — 세 가지 조건
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 실수 \(a\)에 대하여 다음 <strong>세 가지 조건을 모두</strong> 만족시킬 때, \(f(x)\)는 \(x=a\)에서 <span class="calc-accent font-bold">연속(continuous)</span>이라 한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① 함수 \(f(x)\)가 \(x=a\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">정의되어 있다 (\(f(a)\) 존재)</span></span></li>
+                            <li>② 극한값 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to a} f(x) \)가 존재한다</span></span></li>
+                            <li>③ <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to a} f(x) = f(a) \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> 세 값 \(f(a)\), 좌극한, 우극한이 <strong>모두 존재</strong>하고 <strong>한 값으로 일치</strong>해야 연속. 셋 중 어느 하나라도 어긋나면 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">불연속</span></span>이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.32 · 함수의 연속 정의 참고)</span></p>
+                </div>
+
+                <!-- 2. 불연속 분류 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        불연속의 세 가지 유형
+                    </h3>
+                    <p class="mb-3 text-slate-700">세 조건 중 <strong>어느 것이 깨졌는가</strong>에 따라 불연속의 모습이 달라진다.</p>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-teal-100">
+                            <p class="font-bold text-teal-700 mb-2">① 점프 불연속</p>
+                            <p class="text-sm text-slate-600">좌극한 \(\neq\) 우극한.<br>극한 자체가 존재하지 않음.</p>
+                            <p class="text-xs text-slate-500 mt-2"><em>예:</em> \(f(x) = \dfrac{|x|}{x}\) (\(x=0\))</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-teal-100">
+                            <p class="font-bold text-teal-700 mb-2">② 제거 가능 불연속</p>
+                            <p class="text-sm text-slate-600">극한은 존재하지만 \( \lim f \neq f(a) \).<br>한 점만 "튀어 있다".</p>
+                            <p class="text-xs text-slate-500 mt-2"><em>예:</em> 비상 P.31 \(g(x)\) 케이스</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-teal-100">
+                            <p class="font-bold text-teal-700 mb-2">③ 무한 불연속</p>
+                            <p class="text-sm text-slate-600">극한이 \(\pm\infty\)로 발산.<br>점근선을 가진 모양.</p>
+                            <p class="text-xs text-slate-500 mt-2"><em>예:</em> \(f(x) = \dfrac{1}{x-a}\)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 좌·우 연속과 구간 연속 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        구간에서의 연속 — 연속함수
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(x)\)가 <strong>어떤 열린구간</strong>에 속하는 모든 \(x\)에서 연속이면 \(f(x)\)는 그 구간에서 <strong>연속</strong>이라 한다.</p>
+                    <p class="mb-3 text-slate-700">닫힌구간 \([a, b]\)에서 정의된 \(f(x)\)가 다음 두 조건을 모두 만족할 때 \([a, b]\)에서 연속이라 한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-2 text-base font-medium">
+                            <li>① 열린구간 \((a, b)\)에서 연속</li>
+                            <li>② <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to a^+} f(x) = f(a) \)</span></span>, &nbsp; <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to b^-} f(x) = f(b) \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 끝점에서는 <span class="calc-accent font-bold">한쪽 극한(우극한 또는 좌극한)</span>만 일치하면 충분. 구간 바깥은 정의되어 있지 않으므로 양쪽 극한을 요구할 수 없다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.33 · 연속함수 정의 참고)</span></p>
+                </div>
+
+                <!-- 4. 연속함수의 사칙 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        연속함수의 사칙 — 연속은 "전염"된다
+                    </h3>
+                    <p class="mb-3 text-slate-700">두 함수 \(f(x), g(x)\)가 \(x=a\)에서 연속이면, 다음 함수들도 모두 \(x=a\)에서 연속이다.</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-teal-100 text-center">
+                            <p class="text-lg font-bold text-teal-700">\(k \cdot f(x)\) &nbsp; (\(k\)는 실수)</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-teal-100 text-center">
+                            <p class="text-lg font-bold text-teal-700">\(f(x) \pm g(x)\)</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-teal-100 text-center">
+                            <p class="text-lg font-bold text-teal-700">\(f(x) \cdot g(x)\)</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-teal-100 text-center">
+                            <p class="text-lg font-bold text-teal-700">\(\dfrac{f(x)}{g(x)}\) &nbsp; (단, <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(g(a) \neq 0\)</span></span>)</p>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 극한의 사칙연산 + 연속의 정의. \( \lim_{x \to a} \{f(x) \pm g(x)\} = f(a) \pm g(a) \)이고 우변이 곧 \((f \pm g)(a)\)이므로 좌변 = 우변. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.35 · 연속함수의 성질 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 응용 — 어떤 함수들이 모든 실수에서 연속인가?</p>
+                        <p class="text-sm text-cyan-800">상수함수와 \(y = x\)가 연속 \(\Rightarrow\) 사칙으로 빌드되는 <strong>모든 다항함수</strong>는 모든 실수에서 연속. 또 두 다항함수 \(f, g\)의 유리함수 \(\dfrac{f}{g}\)는 \(g(x) \neq 0\)인 모든 \(x\)에서 연속.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">세 조건을 직접 점검하여 연속/불연속을 판정하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-정의 직접 적용</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수가 \(x=0\)에서 연속인지 불연속인지 판정하시오. 세 조건 ①②③을 순서대로 확인하라. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.32 · 예제 1 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = x^2 - 1 \) &nbsp;&nbsp;
+                                (2) \( g(x) = \begin{cases} |x| &amp; (x \neq 0) \\ 2 &amp; (x = 0) \end{cases} \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> (1) 다항함수이므로 모든 \(x\)에서 연속. \(f(0) = -1, \lim_{x \to 0} f(x) = -1\) 일치 → 연속. (2) 좌·우극한 모두 0이지만 \(g(0)=2\). 극한값과 함숫값이 다르므로 <em>제거 가능 불연속</em>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-구간 연속</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수가 연속인 구간을 구간의 기호로 나타내시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.34 · 문제 03 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( f(x) = x^2 - 4x + 2 \) &nbsp;&nbsp;
+                                (2) \( f(x) = \dfrac{3}{x+2} \) &nbsp;&nbsp;
+                                (3) \( f(x) = \sqrt{1-x} \) &nbsp;&nbsp;
+                                (4) \( f(x) = 6 \)
+                            </div>
+                        </div>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">미정계수를 결정하여 연속이 되도록 만드는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-한 점 연속 미정계수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \( f(x) = \begin{cases} \dfrac{2x + a}{x - 2} &amp; (x \neq 2) \\ b &amp; (x = 2) \end{cases} \) 가 모든 실수 \(x\)에서 연속이 되도록 하는 실수 \(a, b\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.34 · 예제 2 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 모든 실수에서 연속 \(\Rightarrow\) \(x=2\)에서 연속 \(\Rightarrow\) \(\lim_{x \to 2}\dfrac{2x+a}{x-2} = b\). 분모 \(\to 0\)이고 극한값이 실수 \(\Rightarrow\) 분자도 \(\to 0\) \(\Rightarrow\) \(4 + a = 0\). 답: \(a = -4, b = 2\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-구간 분기 함수의 연속</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = \begin{cases} 3x^2 - 1 &amp; (x \geq a) \\ 2 - 5x &amp; (x \lt a) \end{cases} \) 가 모든 실수 \(x\)에서 연속이 되도록 하는 모든 실수 \(a\)의 값의 곱을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.41 · 중단원 기본 07 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 두 다항식은 각 구간에서 연속이므로 경계 \(x=a\)에서만 점검. 좌극한 \(2 - 5a\) = 우극한·함숫값 \(3a^2 - 1\). 방정식 \(3a^2 + 5a - 3 = 0\). 두 근의 곱 = 비에타에 의해 \(\dfrac{-3}{3} = -1\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 극한 존재 \(\neq\) 연속 오개념 정면 대응</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-극한 존재와 연속의 분리</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - x}{|x - 1|} &amp; (x \neq 1) \\ 1 &amp; (x = 1) \end{cases} \) 에 대하여 다음을 모두 구하고, \(x=1\)에서 <strong>연속/불연속</strong>을 판정하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.32 · 문제 01 (2) 참고)</span>
+                            <div class="ml-6 mt-2 text-lg font-medium">(1) \(f(1)\) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 1^-} f(x) \) &nbsp;&nbsp; (3) \( \displaystyle \lim_{x \to 1^+} f(x) \) &nbsp;&nbsp; (4) \( \displaystyle \lim_{x \to 1} f(x) \) 존재 여부</div>
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                많은 학생이 분자 \(x^2 - x = x(x-1)\)을 보고 곧장 약분하려 한다. 그러나 분모는 <strong>절댓값 \(|x-1|\)</strong>이므로 부호 처리가 필요하다.<br>
+                                \(x \gt 1\)일 때 \(|x-1| = x-1\), \(\dfrac{x(x-1)}{x-1} = x\) → 우극한 \(\to 1\).<br>
+                                \(x \lt 1\)일 때 \(|x-1| = -(x-1)\), \(\dfrac{x(x-1)}{-(x-1)} = -x\) → 좌극한 \(\to -1\).<br>
+                                <strong>좌·우극한이 다르므로 극한이 존재하지 않음</strong> → 연속의 ② 조건이 깨짐 → <strong>불연속(점프형)</strong>. \(f(1)=1\)이라는 사실은 연속 판정에 아무 도움이 안 된다.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">6. 두 함수 \(f(x) = x^2 + 1\), \(g(x) = x^2 - 2x - 3\)에 대하여 다음 함수의 연속성을 조사하시오 (불연속이라면 그 \(x\)의 값을 모두 답하시오). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.40 · 중단원 기본 03 참고)</span>
+                <div class="ml-6 mt-2 text-lg font-medium">
+                    (1) \( \dfrac{f(x)}{g(x)} \) &nbsp;&nbsp; (2) \( \dfrac{g(x)}{f(x)} \)
+                </div>
+            </div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> \(f, g\) 모두 다항함수 \(\Rightarrow\) 모든 실수에서 연속. 따라서 유리식의 연속성은 분모의 영점만 점검하면 된다. (1) \(g(x) = (x-3)(x+1) = 0\) → \(x=3, x=-1\)에서 불연속. (2) \(f(x) = x^2 + 1 \geq 1 \gt 0\)이므로 분모가 0이 되는 실수 없음 → 모든 실수에서 연속.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 함수의 연속 유제 2) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_함수의연속"
+                 data-aft-source-id="c2-ex2"
+                 data-aft-source-label="수능특강 수학Ⅱ · 함수의 연속 · 유제 2">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 함수의 연속 · 유제 2 [26009-0028]</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 두 점 \(x=1, x=b\)에서 동시 연속 — 두 연속 방정식 + 비물리해 거르기</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                함수 \( f(x) = \begin{cases} 3x + 4a &amp; (1 \lt x \lt b) \\ x^2 + a &amp; (x \leq 1\ \text{또는}\ x \geq b) \end{cases} \) 가 \(x = 1\)과 \(x = b\)에서 연속일 때, \(a + b\)의 값은? (단, \(a, b\)는 상수, \(b \gt 1\))
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(\dfrac{1}{3}\) &nbsp;&nbsp; ② \(\dfrac{2}{3}\) &nbsp;&nbsp; ③ \(1\) &nbsp;&nbsp; ④ \(\dfrac{4}{3}\) &nbsp;&nbsp; ⑤ \(\dfrac{5}{3}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — \(x=1\)에서 연속</strong>: \(\displaystyle \lim_{x \to 1^-} f(x) = 1 + a\), \(\displaystyle \lim_{x \to 1^+} f(x) = 3 + 4a\), \(f(1) = 1 + a\). 연속 조건 \(1 + a = 3 + 4a\) → \(3a = -2\) → \(a = -\dfrac{2}{3}\).</li>
+                    <li><strong>STEP 2 — \(x=b\)에서 연속</strong>: \(\displaystyle \lim_{x \to b^-} f(x) = 3b + 4a = 3b - \dfrac{8}{3}\), \(\displaystyle \lim_{x \to b^+} f(x) = b^2 + a = b^2 - \dfrac{2}{3}\). 두 값이 같으면 \(b^2 - 3b + 2 = 0\) → \((b-1)(b-2) = 0\).</li>
+                    <li><strong>STEP 3 — 비물리해 거르기</strong>: 조건 \(b \gt 1\)이므로 \(b = 1\)은 부적합 → <strong>\(b = 2\)</strong>.</li>
+                    <li><strong>STEP 4 — 최종</strong>: \(a + b = -\dfrac{2}{3} + 2 = \dfrac{4}{3}\). <span class="text-red-600 font-bold">정답: ④</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 두 경계 모두에서 연속이려면 <strong>두 방정식</strong>을 동시에 만족. 차시 05의 핵심 컨셉(분기 함수의 연속)을 두 점으로 확장한 패턴. 함정은 \(b = 1\) 같은 비물리해를 답에서 제거하는 것.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_함수의연속_해설.html#c2-ex2" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 2</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2021년 10월 학평 5번 — 그래프 + 곱함수 연속) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_함수의연속"
+                 data-aft-source-id="g_ws05_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 함수의 연속 · 2021년 10월 학력평가 공통 5번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2021년 10월 학력평가 수학영역 공통 5번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 그래프에서 \(x=1\)의 좌·우극한·함숫값을 읽은 뒤, 곱 함수가 연속이 되도록 한 인수가 \(0\)이 되는 미정계수를 결정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                함수 \(y = f(x)\)의 그래프가 그림과 같다. 함수 \((x^2 + ax + b)\,f(x)\)가 \(x = 1\)에서 연속일 때, \(a + b\)의 값은? (단, \(a, b\)는 실수이다.)
+            </div>
+
+            <div class="bg-slate-100 p-6 rounded-2xl mb-6 border-2 border-slate-200 text-center">
+                <img src="images/calc_05_chal2_kichul.png" alt="2021년 10월 학평 5번 — y=f(x)의 그래프. x≤-1에서 우하향 직선이 (-1, 1)로 수렴, -1≤x≤1에서 y=1(수평선, x=1에서 닫힌점 ●), x≥1에서 (1, 3) 열린점(○)에서 시작해 (2, 1) 지나 우하향." class="block mx-auto max-w-md w-full" />
+            </div>
+
+            <div class="text-base text-slate-700 mb-6">
+                <span class="font-bold">선택지</span>: ① \(-2\) &nbsp;&nbsp; ② \(-1\) &nbsp;&nbsp; ③ \(0\) &nbsp;&nbsp; ④ \(1\) &nbsp;&nbsp; ⑤ \(2\)
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 그래프에서 \(x=1\) 주변 정보 읽기</strong>: 좌극한 \(\displaystyle \lim_{x \to 1^-} f(x) = 1\) (\(-1 \leq x \lt 1\) 구간이 수평선 \(y=1\)). 우극한 \(\displaystyle \lim_{x \to 1^+} f(x) = 3\) (열린점 ○). 함숫값 \(f(1) = 1\) (닫힌점 ●). 좌극한 \(\ne\) 우극한이므로 \(f(x)\) 자체는 \(x=1\)에서 불연속.</li>
+                    <li><strong>STEP 2 — 곱 함수의 연속 조건</strong>: \(g(x) = x^2 + ax + b\)라 하면 \(g\)는 다항함수로 모든 점에서 연속. 곱 \((g \cdot f)(x)\)가 \(x=1\)에서 연속이려면 좌극한 = 우극한 = 함숫값. \(\lim_{x \to 1^-}(g \cdot f) = g(1) \cdot 1\), \(\lim_{x \to 1^+}(g \cdot f) = g(1) \cdot 3\), \((g \cdot f)(1) = g(1) \cdot 1\).</li>
+                    <li><strong>STEP 3 — \(g(1) = 0\) 도출</strong>: 좌극한 = 우극한이려면 \(g(1) = 3 \cdot g(1)\) \(\Rightarrow\) \(2g(1) = 0\) \(\Rightarrow\) \(g(1) = 0\). 즉 \(f\)의 좌·우극한이 다른 점에서 곱이 연속이 되려면 다항 인수가 그 점에서 <strong>영점</strong>이어야 한다.</li>
+                    <li><strong>STEP 4 — 최종</strong>: \(g(1) = 1 + a + b = 0\) \(\Rightarrow\) \(a + b = -1\). <span class="text-red-600 font-bold">정답: ②</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 도전 1과 동일한 "한 인수의 불연속을 다른 인수의 영점으로 흡수" 전략이지만, 본 문항은 분기식이 주어지지 않고 <strong>그래프</strong>에서 좌극한·우극한·함숫값을 직접 읽어야 한다는 점이 다르다. 그래프에서 ●(함숫값)과 ○(극한 위치)을 정확히 구분해 읽는 능력이 핵심.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">연속의 정의 세 조건이 1~4차시에서 학습한 어떤 개념들과 결합되어 있는지 자신의 언어로 풀어 쓰고, "왜 세 조건이 모두 필요한가?"를 반례 한 가지와 함께 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"연속이 한 줄 \(\lim_{x \to a} f(x) = f(a)\)이지만 사실 ① \(f(a)\) 정의, ② 극한 존재, ③ 두 값 일치 세 조건을 한꺼번에 요구한다는 걸 알게 됐다. \(g(x) = \dfrac{x^2 - 1}{x - 1}\) (단, \(g(1) = 5\))처럼 ①, ②는 통과해도 ③이 깨지면 불연속이라는 반례를 직접 만들어보고 나서야 세 조건이 모두 필요한 이유가 납득됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 미정계수를 결정하는 문제(예: P.34 예제 2 패턴)에서 어떤 실수를 했고, 어떤 사고 과정을 통해 바로잡았는가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\lim_{x \to 2} \dfrac{2x + a}{x - 2} = b\) 문제에서 \(a, b\)를 한꺼번에 풀려고 식 두 개를 세웠다가 답이 안 나왔다. 분모가 \(0\)으로 가는데 극한이 실수면 분자도 \(0\)이어야 한다는 걸 떠올리고 \(a = -4\)를 먼저 확정한 뒤 \(b\)를 구하니 깔끔했다. '분자 \(\to 0\) → \(a\) 결정 → \(b\) 계산' 순서를 노트에 적어뒀다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심(예: 연속함수의 합성도 연속일까? 함수의 정의역에서 한 점만 빼도 연속함수일까?)을 적어보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"다항함수랑 유리함수가 정의역에서 연속이라는 걸 배우다 보니 '그럼 \(f(g(x))\)처럼 두 연속함수를 합성하면 그것도 연속일까?' 하는 궁금증이 생겼다. 그래프 위에서 끊김 없이 따라가는 걸 두 번 이어붙이는 셈이라 직관적으로는 연속일 것 같은데, 다음 차시 사잇값 정리에서 어떤 식으로 활용될지 미리 기대된다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
             <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 05차시</p>
         </footer>
     </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
 
     <script>
         // 메인 단축키 (H/Esc → index-calc.html)
@@ -137,5 +521,16 @@
     </div>
 
     <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
 </body>
 </html>

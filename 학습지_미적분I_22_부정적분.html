@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 III-1 부정적분과 정적분 · 차시 22 부정적분 · Agent A9 작성 -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -19,30 +20,50 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
         body.mathjax-ready { opacity: 1; }
+
         .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
         .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
-        .placeholder-body {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
-            border: 3px dashed #ca8a04;
-            border-radius: 1rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #713f12;
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
         }
-        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
-        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
         @media print {
             .no-print { display: none !important; }
             body { opacity: 1; background: white; }
             .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
-        const GOOGLE_FORM_BASE_URL = ""; // 차시별 구글 폼 URL 확정 후 채움
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
         const LESSON_NAME = "22차시 부정적분";
         const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
     </script>
@@ -68,12 +89,367 @@
             </div>
         </nav>
 
-        <section class="card placeholder-body">
-            <h2>📝 학습지 작성 예정</h2>
-            <div class="ph-row">III. 적분</div>
-            <div class="ph-row">22차시 · 부정적분</div>
-            <p class="ph-meta">사용자의 차시별 자료(교과서·수능특강 PDF) 제공 후 본문(Warm-up · 공식 · Level 1/2/3 · 형성평가 · 도전 · 성찰)이 작성됩니다.</p>
-            <p class="ph-meta">수능특강 매핑: 06. 부정적분과 정적분</p>
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">단원 II에서 함수 \(f(x)\)에서 도함수 \(f'(x)\)를 얻는 길을 따라갔다. 이번 단원의 출발 질문은 그 <strong>역방향</strong>이다 — <em>"도함수를 알 때 원래 함수를 복원할 수 있을까?"</em></p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 미분하여 \(2x\)가 되는 함수를 떠오르는 대로 모두 적어 보자. 예: \(x^2,\; x^2 + 1,\; x^2 - 7,\; x^2 + \sqrt{3},\;\cdots\) — 이들은 모두 도함수가 \(2x\)이다. <strong>공통점</strong>과 <strong>차이점</strong>은 무엇일까?</p>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 도함수만 같으면 원래 함수는 <span class="calc-accent font-bold">상수 차이만큼만 다르다</span>. 이 미세한 차이를 한 글자 \(C\)로 묶어 표현하는 것이 <strong>부정적분</strong>이다. 오늘 우리는 ① 부정적분의 정의 \(\int f(x)\,dx = F(x) + C\), ② \(x^n\)의 부정적분 공식 \(\int x^n\,dx = \dfrac{1}{n+1}x^{n+1} + C\), ③ 실수배·합·차의 부정적분, ④ 적분상수를 초기조건으로 결정하는 절차를 손에 넣는다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 부정적분의 정의 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        부정적분의 정의 — 미분의 역연산
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(F(x)\)의 도함수가 \(f(x)\)일 때, 즉 \(F'(x) = f(x)\)일 때, \(F(x)\)를 \(f(x)\)의 <span class="calc-accent font-bold">부정적분</span>이라 한다. 같은 도함수를 가지는 두 함수는 상수만큼만 차이가 나므로, \(f(x)\)의 부정적분은 일반적으로 다음과 같이 나타낸다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( \displaystyle \int f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( F(x) + C \)</span></span> &nbsp;(\(C\)는 적분상수)</p>
+                    </div>
+                    <p class="mt-3 text-slate-700">또한 부정적분의 정의로부터 다음 관계가 곧장 따라온다.</p>
+                    <div class="bg-white p-3 rounded-xl border border-teal-100 text-center">
+                        <p class="text-lg font-bold">\( \displaystyle \dfrac{d}{dx}\int f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f(x) \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> "적분 \(\to\) 미분" 하면 원래로 돌아온다. \(f(x)\)를 적분한다 = \(f(x)\)의 부정적분을 구한다 = "<span class="calc-accent font-bold">미분하면 \(f(x)\)가 되는 함수</span>를 찾는다". <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.107~108 · 부정적분의 정의 참고)</span></p>
+                </div>
+
+                <!-- 2. x^n의 부정적분 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        \(x^n\)과 상수함수의 부정적분 — 첫 번째 공식 카드
+                    </h3>
+                    <p class="mb-3 text-slate-700">\(\left(\dfrac{1}{n+1}x^{n+1}\right)' = x^n\)이므로, 이 식이 \(\int x^n\,dx\)의 공식의 출발점이다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \(n\)이 양의 정수일 때 \( \displaystyle \int x^n\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \dfrac{1}{n+1}x^{n+1} + C \)</span></span></li>
+                            <li>② \(k\)가 상수일 때 \( \displaystyle \int k\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( kx + C \)</span></span></li>
+                            <li>③ 특히 \( \displaystyle \int 1\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x + C \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "지수를 \(1\) 올리고, 그 새 지수로 나눈다". 즉 \( \int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C \). 이는 미분 공식 \((x^n)' = n x^{n-1}\)의 정확한 역방향이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.109 · \(x^n\)·상수함수의 부정적분 참고)</span></p>
+                </div>
+
+                <!-- 3. 실수배·합·차의 부정적분 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        실수배·합·차의 부정적분 — 적분도 "분배"된다
+                    </h3>
+                    <p class="mb-3 text-slate-700">두 함수 \(f(x), g(x)\)가 부정적분을 가질 때 (단 \(k\)는 \(0\)이 아닌 실수)</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \( \displaystyle \int k f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( k\displaystyle\int f(x)\,dx \)</span></span></li>
+                            <li>② \( \displaystyle \int \{f(x) + g(x)\}\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int f(x)\,dx + \int g(x)\,dx \)</span></span></li>
+                            <li>③ \( \displaystyle \int \{f(x) - g(x)\}\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int f(x)\,dx - \int g(x)\,dx \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 미분의 \((kF)' = kF'\), \((F \pm G)' = F' \pm G'\)을 그대로 역방향으로 읽은 것. ②·③은 항이 3개 이상일 때도 성립. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.110 · 실수배·합·차의 부정적분 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 즉시 활용 — 다항함수의 부정적분</p>
+                        <p class="text-sm text-cyan-800">\( \displaystyle \int (3x^2 + 4x - 2)\,dx \) = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x^3 + 2x^2 - 2x + C \)</span></span>. 항별로 \(\int x^n\,dx\) 공식 적용 후 적분상수를 하나로 묶는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 예제 1 참고)</span></p>
+                    </div>
+                </div>
+
+                <!-- 4. 적분상수 결정 (초기조건) -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        적분상수 \(C\)의 결정 — "초기조건"이라는 단 한 줄
+                    </h3>
+                    <p class="mb-3 text-slate-700">부정적분 결과 \(F(x) + C\)에는 미지 상수 \(C\)가 남는다. <strong>한 점에서의 함숫값</strong> 같은 추가 조건이 한 줄 주어지면 \(C\)가 확정된다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <p class="text-base font-medium mb-2"><strong>예시:</strong> \(f'(x) = 6x^2 - 4x + 3\), \(f(0) = 4\)일 때 \(f(x)\)는?</p>
+                        <p class="text-base">\(f(x) = \displaystyle\int (6x^2 - 4x + 3)\,dx = 2x^3 - 2x^2 + 3x + C\). \(f(0) = 4\)에서 \(C = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 4 \)</span></span>. 따라서 \(f(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 2x^3 - 2x^2 + 3x + 4 \)</span></span>.</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>기하적 해석:</strong> 도함수가 같은 함수들 \(F(x) + C\)는 그래프가 모두 <strong>\(y\)축 방향 평행이동</strong> 관계. "한 점을 지난다"는 조건 한 줄이 평행이동 위치를 못박는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 예제 2 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 그래프형 응용 — 접선의 기울기</p>
+                        <p class="text-sm text-cyan-800">"곡선 \(y = f(x)\) 위 점 \((x, y)\)에서의 접선의 기울기가 \(g(x)\)이고, 곡선이 점 \((p, q)\)를 지난다" \(\Rightarrow\) \(f'(x) = g(x)\), \(f(p) = q\)로 옮기면 위 절차 그대로 적용된다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">공식 카드를 익혀 다항함수의 부정적분을 빠르게 구하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-거듭제곱·상수의 부정적분</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.109 · 문제 02 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int x^6\,dx \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int x^9\,dx \) &nbsp;&nbsp;
+                                (3) \( \displaystyle \int 10\,dx \) &nbsp;&nbsp;
+                                (4) \( \displaystyle \int x\,dx \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 공식 \(\int x^n\,dx = \dfrac{1}{n+1}x^{n+1} + C\) 직접 적용. (1) \(\dfrac{1}{7}x^7 + C\). (2) \(\dfrac{1}{10}x^{10} + C\). (3) \(10x + C\). (4) \(\dfrac{1}{2}x^2 + C\). — 적분상수 \(C\)를 빼먹지 말 것.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-다항함수의 부정적분</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 03 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int (4x^3 - 6x^2 + x - 4)\,dx \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int (-x^4 + 2x + 5)\,dx \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 항별 적분 후 적분상수 하나로 묶기. (1) \(x^4 - 2x^3 + \dfrac{1}{2}x^2 - 4x + C\). (2) \(-\dfrac{1}{5}x^5 + x^2 + 5x + C\). — 각 항의 지수를 \(1\) 올리고 그 새 지수로 나눈다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-도함수 + 초기조건</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 조건을 모두 만족시키는 함수 \(f(x)\)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 04 참고)</span>
+                            <div class="ml-6 mt-2 text-lg font-medium">
+                                \( f'(x) = -8x^3 + 3x^2 - 4,\quad f(0) = -1 \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f(x) = \int (-8x^3 + 3x^2 - 4)\,dx = -2x^4 + x^3 - 4x + C\). \(f(0) = C = -1\). 따라서 \(f(x) = -2x^4 + x^3 - 4x - 1\). — 초기조건은 \(C\)를 못 박는 단 한 줄.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">접선의 기울기·곱셈 전개·두 적분의 차 등 다단계 적분을 다루는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-곱셈 전개 후 적분</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.121 · 중단원 기초 01번 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int (x^2 - 2x + 3)\,dx \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> (1) \(\dfrac{1}{3}x^3 - x^2 + 3x + C\). <br>
+                            (2) 두 적분을 합쳐 한 번에: \(\int [x(x+1)^2 - x(x^2+1)]\,dx = \int x\cdot[(x+1)^2 - (x^2+1)]\,dx = \int x(2x)\,dx = \int 2x^2\,dx = \dfrac{2}{3}x^3 + C\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-접선의 기울기 + 통과점</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 곡선 \(y = f(x)\) 위의 점 \((x, y)\)에서의 접선의 기울기는 \(x - 3\)이다. 이 곡선이 점 \((2, 4)\)를 지날 때, 함수 \(f(x)\)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 05 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> "접선의 기울기 \(= f'(x)\)" — 단원 II의 핵심을 적분으로 되돌린다. \(f'(x) = x - 3 \Rightarrow f(x) = \dfrac{1}{2}x^2 - 3x + C\). \(f(2) = 2 - 6 + C = 4 \Rightarrow C = 8\). 답: \(f(x) = \dfrac{1}{2}x^2 - 3x + 8\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-도함수 형식이 다항식</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 점 \((-2, 1)\)을 지나는 곡선 \(y = f(x)\) 위의 임의의 점 \((x, y)\)에서의 접선의 기울기가 \(6x^2 + 12x + 5\)일 때, \(f(-1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 04번 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(f'(x) = 6x^2 + 12x + 5 \Rightarrow f(x) = 2x^3 + 6x^2 + 5x + C\). \(f(-2) = -16 + 24 - 10 + C = -2 + C = 1 \Rightarrow C = 3\). \(f(x) = 2x^3 + 6x^2 + 5x + 3\). \(f(-1) = -2 + 6 - 5 + 3 = 2\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 적분상수 결정의 두 조건 \(f(0), f(1)\) 동시 활용 — 자연수 매개변수 결정</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-도함수 일반항 + 두 조건</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x)\)가 \( f'(x) = 1 + 2x + 3x^2 + \cdots + n x^{n-1} \)을 만족시키고 \( f(0) = 5,\; f(1) = 11 \) 일 때, 자연수 \(n\)의 값을 구하시오. (단, \(n \geq 2\)) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 03번 참고)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                많은 학생이 \(f'(x)\)의 일반항을 보고 멈춰버린다. 핵심은 <strong>"항별 부정적분이 매우 단순한 패턴"</strong>이라는 것 — 각 항 \(k x^{k-1}\)을 적분하면 \(x^k\)가 그대로 나온다.<br><br>
+                                <strong>STEP 1 — 항별 적분</strong>: \(\int k x^{k-1}\,dx = x^k\)이므로 \(f(x) = x + x^2 + x^3 + \cdots + x^n + C\).<br><br>
+                                <strong>STEP 2 — 조건 \(f(0) = 5\) 적용</strong>: 모든 \(x^k\) 항이 \(0\)이 되므로 \(C = 5\).<br><br>
+                                <strong>STEP 3 — 조건 \(f(1) = 11\) 적용</strong>: \(f(1) = \underbrace{1 + 1 + \cdots + 1}_{n\text{개}} + 5 = n + 5 = 11 \Rightarrow n = 6\).<br><br>
+                                <strong>결론:</strong> \(n = 6\).<br><br>
+                                <strong>핵심 통찰:</strong> "도함수가 등차 형태 \(k x^{k-1}\)의 합"이라는 정보는 단원 III에서 종종 등장한다. 적분 후 모양이 등비 또는 등차의 합이 되어 미지수 \(n\)이 쉽게 풀린다. <strong>적분 = 미분의 역</strong>이라는 한 줄로 단원 I(수열)·단원 II(미분)의 기억까지 끌어오는 통합 문제.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 미분가능한 함수 \(f(x)\)에 대하여 \( f'(x) = ax^2 - ax \) 이고, 함수 \(f(x)\)의 극댓값이 \(6\), 극솟값이 \(5\)일 때, 함수 \(f(x)\)를 구하시오. (단, \(a \gt 0\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 05번 참고)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① \(f'(x) = ax(x - 1) = 0 \Rightarrow x = 0, 1\). \(a \gt 0\)이므로 \(x = 0\)에서 극대, \(x = 1\)에서 극소. <br>
+                ② 적분: \(f(x) = \dfrac{a}{3}x^3 - \dfrac{a}{2}x^2 + C\). <br>
+                ③ 극댓값 \(= f(0) = C = 6\). 극솟값 \(= f(1) = \dfrac{a}{3} - \dfrac{a}{2} + 6 = -\dfrac{a}{6} + 6 = 5 \Rightarrow a = 6\). <br>
+                ④ 답: \(f(x) = 2x^3 - 3x^2 + 6\). — 단원 II(극값) + 단원 III(부정적분 + 초기조건)의 결합.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 부정적분과 정적분 유제 1) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_부정적분과정적분"
+                 data-aft-source-id="c6-ex1"
+                 data-aft-source-label="수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 1">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 1</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 접선의 기울기 \(=f'(x)\). 부정적분으로 \(f(x)\) 복원 후 주어진 점으로 적분상수 결정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                다항함수 \(f(x)\)에 대하여 곡선 \(y = f(x)\) 위의 임의의 점 \((x, f(x))\)에서의 접선의 기울기가 \(3x^2 - 2x + 1\)이다. 곡선 \(y = f(x)\)가 점 \((1, 2)\)를 지날 때, \(f(0)\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(1\) &nbsp;&nbsp; ② \(2\) &nbsp;&nbsp; ③ \(3\) &nbsp;&nbsp; ④ \(4\) &nbsp;&nbsp; ⑤ \(5\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 도함수 식 세우기</strong>: 곡선 \(y = f(x)\) 위 임의의 점 \((x, f(x))\)에서의 접선의 기울기가 \(f'(x)\)이므로 \(f'(x) = 3x^2 - 2x + 1\).</li>
+                    <li><strong>STEP 2 — 부정적분으로 \(f(x)\) 복원</strong>: \(f(x) = \displaystyle\int (3x^2 - 2x + 1)\,dx = x^3 - x^2 + x + C\) (\(C\)는 적분상수).</li>
+                    <li><strong>STEP 3 — 점 \((1, 2)\)로 적분상수 결정</strong>: 곡선이 \((1, 2)\)를 지나므로 \(f(1) = 1 - 1 + 1 + C = 1 + C = 2\) ⇒ \(C = 1\). 따라서 \(f(x) = x^3 - x^2 + x + 1\).</li>
+                    <li><strong>STEP 4 — \(f(0)\) 계산</strong>: \(f(0) = 0 - 0 + 0 + 1 = 1\). <span class="text-red-600 font-bold">정답: ①</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "접선의 기울기 = \(f'(x)\)"가 핵심 연결고리. 부정적분 \(f(x) = \int f'(x)\,dx\) 후 적분상수 \(C\)는 곡선이 지나는 점 1개로 결정된다. 차시 22의 다항함수 부정적분 \(\int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C\)이 직접 사용되는 전형적 응용.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_부정적분과정적분_해설.html#c6-ex1" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 1</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2024년 3월 학력평가 공통 5번 — 부정적분과 초기조건) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_적분"
+                 data-aft-source-id="g_ws22_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 적분 · 2024년 3월 학력평가 공통 5번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2024년 3월 학력평가 수학영역 공통 5번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 도함수 \(f'(x)\)를 곱셈 전개 \(\to\) 항별 부정적분으로 \(f(x)\) 복원 \(\to\) 한 점 조건 \(f(1)=6\)으로 적분상수 \(C\) 결정 \(\to\) \(f(0)\) 계산</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                다항함수 \(f(x)\)가 \[ f'(x) = x(3x + 2),\quad f(1) = 6 \] 을 만족시킬 때, \(f(0)\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(1\) &nbsp;&nbsp; ② \(2\) &nbsp;&nbsp; ③ \(3\) &nbsp;&nbsp; ④ \(4\) &nbsp;&nbsp; ⑤ \(5\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 도함수 전개</strong>: 곱의 형태로 주어진 \(f'(x) = x(3x + 2)\)를 항별로 풀어쓴다. \[ f'(x) = 3x^2 + 2x. \] 부정적분 공식 \(\int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C\)을 적용하려면 단항식의 합 형태가 편하다.</li>
+                    <li><strong>STEP 2 — 항별 부정적분으로 \(f(x)\) 복원</strong>: \[ f(x) = \int (3x^2 + 2x)\,dx = x^3 + x^2 + C \] (\(C\)는 적분상수). 검산: 미분 \((x^3 + x^2 + C)' = 3x^2 + 2x \;\checkmark\).</li>
+                    <li><strong>STEP 3 — 한 점 조건 \(f(1) = 6\)으로 \(C\) 결정</strong>: \[ f(1) = 1^3 + 1^2 + C = 2 + C = 6 \;\Rightarrow\; C = 4. \] 따라서 \(f(x) = x^3 + x^2 + 4\).</li>
+                    <li><strong>STEP 4 — \(f(0)\) 계산</strong>: \[ f(0) = 0^3 + 0^2 + 4 = 4. \]</li>
+                    <li><strong>STEP 5 — 최종</strong>: \(f(0) = 4\). <span class="text-red-600 font-bold">정답: ④ \(4\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 2024학년도 수능 직전 학력평가의 표준 출제 패턴. ① 도함수가 곱셈 형태로 주어지면 <strong>전개부터</strong>, ② 항별 부정적분으로 \(f(x)\) 복원 (적분상수 \(C\) 한 개 추가), ③ <strong>주어진 한 점 조건</strong>(이 문제는 \(f(1) = 6\))으로 \(C\)를 결정, ④ 요구된 함숫값(\(f(0)\)) 계산. 차시 22 Level 2 문제 5·6에서 익힌 "접선의 기울기 \(\to\) 부정적분 \(\to\) 한 점 조건 \(\to\) \(C\) 결정"의 4단계 사고가 평가원 출제에서 그대로 작동함을 보여준다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (역연산의 인식)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"부정적분 = 미분의 역연산"이라는 한 줄이 \(\int x^n\,dx = \dfrac{1}{n+1}x^{n+1} + C\) 공식과 어떻게 1:1 대응하는지를 자신의 언어로 정리하고, 적분상수 \(C\)가 왜 반드시 따라붙는지를 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\int x^n\,dx = \dfrac{x^{n+1}}{n + 1} + C\)를 공식으로만 외웠는데, \((x^{n+1})' = (n + 1) x^n\)을 거꾸로 읽으면 자연스럽게 나온다는 걸 알게 됐다. 또 평균값 정리의 따름정리에서 '도함수가 같으면 두 함수는 상수 차이'라고 보장되니 \(+ C\)가 빠질 수 없는 거였다. \(C\)가 그냥 약속이 아니라 정리의 결과라는 게 보였다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (적분상수 결정의 루틴화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">초기조건 한 줄(\(f(0)=k\), 또는 곡선이 점 \((p,q)\)를 지난다)이 적분상수 \(C\)를 결정하는 절차를 표준화해 보고, 두 개의 조건(\(f(0)\)과 \(f(1)\))으로 자연수 \(n\)을 찾는 차시 22 Level 3 유형을 자기점검 루틴으로 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(f'(x) = 3 x^2 + 2x\)이고 \(f(0) = 1\)인 \(f\)를 구하는 문제에서 처음엔 \(+ C\)를 빠뜨려 답이 어긋났다. 그 뒤로 '① 항별로 적분 → ② 한 점 조건으로 \(C\) 확정 → ③ 검산 \(F'(x) = f(x)\)' 3단계로 카드를 만들어 놓고 풀고 있다. \(f(0)\)과 \(f(1)\) 두 조건으로 자연수 \(n\)을 찾는 유형도 같은 틀에 들어와서 헷갈리지 않게 됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (정적분으로의 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">부정적분은 "함수족 \(F(x) + C\)"를 반환하지만, 정적분 \(\int_a^b f(x)\,dx\)는 한 개의 수를 반환한다. 두 개념이 어떻게 연결될 것 같은지(미적분의 기본정리) 가설을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"부정적분은 \(F(x) + C\)라는 함수족인데, 정적분 \(\int_a^b f\,dx\)는 한 개의 수라는 게 잘 안 이해됐다. 그런데 \(F(b) - F(a)\)를 계산해보면 \(C\)가 서로 빼져서 사라지니까 자연스럽게 한 수가 된다는 걸 깨달았다. 다음 차시에서 \(\int_a^b f\,dx = F(b) - F(a)\)라는 미적분 기본정리를 배운다는데, 미리 그림이 잡혀 기대된다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
@@ -82,7 +458,27 @@
     </div>
 
     <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
         document.addEventListener('keydown', (e) => {
             if (e.isComposing) return;
             const t = e.target;
@@ -137,5 +533,16 @@
     </div>
 
     <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
 </body>
 </html>

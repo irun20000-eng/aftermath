@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 학기말 종합 (차시 31) · Agent A11 작성 (1학기 05 패턴, no_external_challenge, 단원 I·II·III 종합) -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 2학기 미적분 I 학습지: 학기말 종합 평가 (선택 차시)</title>
+    <title>2026 2학기 미적분 I 학습지: 학기말 종합 평가</title>
     <meta name="robots" content="noindex,nofollow">
     <script>
         window.MathJax = {
@@ -19,31 +20,55 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
         body.mathjax-ready { opacity: 1; }
+
         .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
         .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
-        .placeholder-body {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
-            border: 3px dashed #ca8a04;
-            border-radius: 1rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #713f12;
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
         }
-        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
-        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 220px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-type { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-hard { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+        .badge-unit-i { color: #1e3a8a; background: #dbeafe; border: 1px solid #bfdbfe; }
+        .badge-unit-ii { color: #064e3b; background: #d1fae5; border: 1px solid #a7f3d0; }
+        .badge-unit-iii { color: #581c87; background: #ede9fe; border: 1px solid #ddd6fe; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+
+        /* 미적분 I 톤 — 메인은 teal */
+        .calc-accent { color: #0d9488; }
+
+        .unit-divider { background: linear-gradient(90deg, #f0fdfa 0%, #e0f2fe 100%); border-radius: 0.75rem; padding: 1rem 1.5rem; margin: 1.5rem 0 1rem 0; border-left: 6px solid #0d9488; }
+        .unit-divider h3 { font-size: 1.25rem; font-weight: 900; color: #0f766e; letter-spacing: -0.025em; }
+        .unit-divider p { font-size: 0.875rem; color: #475569; margin-top: 0.25rem; }
+
         @media print {
             .no-print { display: none !important; }
             body { opacity: 1; background: white; }
             .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 160px; }
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
-        const GOOGLE_FORM_BASE_URL = ""; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "31차시 학기말 종합 평가 (선택 차시)";
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
+        const LESSON_NAME = "31차시 학기말 종합 평가";
         const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
     </script>
 
@@ -52,9 +77,10 @@
             <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 미적분 I</p>
             <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
             <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
-                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: 학기말 종합</span>
-                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">31차시: 학기말 종합 평가 (선택 차시)</span>
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">학기말 종합 (I · II · III)</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">31차시: 학기말 종합 평가</span>
             </div>
+            <p class="mt-4 text-slate-600 font-bold bg-teal-50 p-3 rounded-lg inline-block border border-teal-200">💡 미적분 I 학기말 종합 평가. 단원 I(극한·연속) · II(미분) · III(적분) 핵심 종합 — 수능 모의시험 형식.</p>
         </header>
 
         <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
@@ -64,22 +90,289 @@
             </a>
             <div class="flex gap-2">
                 <a href="학습지_미적분I_30_대단원평가_III.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-400 rounded-lg text-sm font-bold border border-slate-100 cursor-not-allowed select-none" aria-disabled="true"><span>🏁</span><span>학기 종료</span></span>
             </div>
         </nav>
 
-        <section class="card placeholder-body">
-            <h2>📝 학습지 작성 예정</h2>
-            <div class="ph-row">학기말 종합</div>
-            <div class="ph-row">31차시 · 학기말 종합 평가 (선택 차시)</div>
-            <p class="ph-meta">사용자의 차시별 자료(교과서·수능특강 PDF) 제공 후 본문(Warm-up · 공식 · Level 1/2/3 · 형성평가 · 도전 · 성찰)이 작성됩니다.</p>
-            <p class="ph-meta">수능특강 매핑: 01~07</p>
+        <!-- 01. 실전 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련 (학기말 종합)">
+            <h2 class="section-title">01. 실전 훈련 (Semester-final Comprehensive)</h2>
+            <p class="text-slate-600 mb-10 font-bold">💡 2학기 학습한 단원 I (함수의 극한·연속), II (미분), III (적분)의 핵심을 종합한 14문항. 객관·단답 1~10번 + 서술형 11~14번. 비상 교과서·익힘책 P.148~P.159 기본·도전 문제 + 학기 종합 출제.</p>
+
+            <!-- 단원 I 영역 -->
+            <div class="unit-divider">
+                <h3>📘 단원 I. 함수의 극한과 연속 (Q1~Q3)</h3>
+                <p>극한 계산 · 미정형 · 연속·미분가능 · 사잇값 정리</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Q1 -->
+                <div>
+                    <span class="badge badge-unit-i">[I. 극한 — 미정형 \(\dfrac{0}{0}\)]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">1. 극한값 \( \displaystyle \lim_{x \to 1} \dfrac{\sqrt{x + 3} - 2}{x^2 - 1} \) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 I 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 분자 유리화: \( \dfrac{(\sqrt{x + 3} - 2)(\sqrt{x + 3} + 2)}{(x^2 - 1)(\sqrt{x + 3} + 2)} = \dfrac{x - 1}{(x - 1)(x + 1)(\sqrt{x + 3} + 2)} = \dfrac{1}{(x + 1)(\sqrt{x + 3} + 2)} \). \(x \to 1\): \( \dfrac{1}{2 \cdot 4} = \dfrac{1}{8} \).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div>
+                    <span class="badge badge-unit-i">[I. 함수의 연속 — 미정 상수 결정]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \( f(x) = \begin{cases} \dfrac{x^2 + a x - 6}{x - 2} &amp; (x \neq 2) \\ b &amp; (x = 2) \end{cases} \) 이 \(x = 2\)에서 연속이 되도록 하는 실수 \(a, b\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 I 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 연속 ⇔ \( \lim_{x \to 2} f(x) = f(2) = b \). 분모 \(\to 0\), 극한이 유한 \(\Rightarrow\) 분자 \(\to 0\): \( 4 + 2a - 6 = 0 \Rightarrow a = 1 \). 그러면 분자 \(= x^2 + x - 6 = (x - 2)(x + 3) \). 극한 \( = \lim_{x \to 2} (x + 3) = 5 = b \). 답: \(a = 1, b = 5\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q3 -->
+                <div>
+                    <span class="badge badge-unit-i">[I. 사잇값 정리 — 실근의 존재]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">3. 방정식 \( x^3 - 4 x^2 + 1 = 0 \)이 열린구간 \( (0, 1) \)과 \( (3, 4) \) 각각에서 실근을 적어도 하나씩 가짐을 사잇값 정리를 이용해 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 I 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> \( f(x) = x^3 - 4 x^2 + 1 \). 다항함수이므로 모든 실수에서 연속. 함숫값: \( f(0) = 1 \gt 0 \), \( f(1) = 1 - 4 + 1 = -2 \lt 0 \). 사잇값 정리에 의해 \((0, 1)\)에서 \(f(x) = 0\)인 \(x\) 존재. \( f(3) = 27 - 36 + 1 = -8 \lt 0 \), \( f(4) = 64 - 64 + 1 = 1 \gt 0 \). 사잇값 정리에 의해 \((3, 4)\)에서 실근 존재.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 단원 II 영역 -->
+                <div class="unit-divider" style="border-left-color:#16a34a; background: linear-gradient(90deg, #f0fdf4 0%, #ecfdf5 100%);">
+                    <h3 style="color:#15803d;">📗 단원 II. 미분 (Q4~Q7)</h3>
+                    <p>미분계수 · 접선 · 극값 · 그래프 · 속도와 가속도</p>
+                </div>
+
+                <!-- Q4 -->
+                <div>
+                    <span class="badge badge-unit-ii">[II. 미분계수 정의 활용]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">4. 다항함수 \( f(x) \)에 대하여 \( f(2) = 3 \), \( f'(2) = 4 \)일 때, 극한값 \( \displaystyle \lim_{x \to 2} \dfrac{x^2 f(2) - 4 f(x)}{x - 2} \) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 II 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 분자: \( x^2 f(2) - 4 f(x) = 3 x^2 - 4 f(x) \). \(x = 2\) 대입 시 \( 12 - 12 = 0 \). 변형: \(3 x^2 - 4 f(x) = 3(x^2 - 4) + (12 - 4 f(x)) = 3(x - 2)(x + 2) - 4(f(x) - 3) = 3(x - 2)(x + 2) - 4(f(x) - f(2))\). 따라서 분수 \( = 3(x + 2) - 4 \cdot \dfrac{f(x) - f(2)}{x - 2} \to 3 \cdot 4 - 4 \cdot 4 = 12 - 16 = -4 \).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q5 -->
+                <div>
+                    <span class="badge badge-unit-ii">[II. 접선의 방정식 — 외부점]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">5. 점 \( (0, 2) \)에서 곡선 \( y = x^3 + 1 \)에 그은 접선의 방정식을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 II 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 접점 \((t, t^3 + 1)\), 접선 기울기 \(3 t^2\). 접선식: \( y - (t^3 + 1) = 3 t^2 (x - t) \). 점 \((0, 2)\) 통과: \( 2 - (t^3 + 1) = 3 t^2 (0 - t) \Rightarrow 1 - t^3 = -3 t^3 \Rightarrow 2 t^3 = -1 \Rightarrow t^3 = -\dfrac{1}{2} \Rightarrow t = -\dfrac{1}{\sqrt[3]{2}} \). 기울기 \( 3 t^2 = 3 \cdot \dfrac{1}{\sqrt[3]{4}} = \dfrac{3}{\sqrt[3]{4}} \). 접선: \( y = \dfrac{3}{\sqrt[3]{4}} x + 2 \) (단 한 개).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q6 -->
+                <div>
+                    <span class="badge badge-unit-ii">[II. 닫힌구간의 최대·최소]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">6. 닫힌구간 \([-1, 3]\)에서 함수 \( f(x) = x^3 - 3 x^2 + 1 \) 의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 II 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> \( f'(x) = 3 x^2 - 6 x = 3x(x - 2) = 0 \Rightarrow x = 0, 2 \). 후보 함숫값: \( f(-1) = -1 - 3 + 1 = -3 \), \( f(0) = 1 \), \( f(2) = 8 - 12 + 1 = -3 \), \( f(3) = 27 - 27 + 1 = 1 \). 최댓값 \(1\) (\(x = 0\) 또는 \(x = 3\)), 최솟값 \(-3\) (\(x = -1\) 또는 \(x = 2\)).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q7 -->
+                <div>
+                    <span class="badge badge-unit-ii">[II. 속도와 가속도]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">7. 수직선 위를 움직이는 점 P의 시각 \(t\)에서 위치가 \( x(t) = t^3 - 6 t^2 + 9 t \)일 때, 점 P가 처음으로 운동 방향을 바꾸는 순간의 가속도를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 II 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> \( v(t) = x'(t) = 3 t^2 - 12 t + 9 = 3(t - 1)(t - 3) \). 운동 방향 전환 시각 = \(v(t) = 0\)이고 부호 변화: \(t = 1\) (\(+ \to -\)) — 첫 번째, \(t = 3\) (\(- \to +\)). \(a(t) = v'(t) = 6 t - 12 \). \(t = 1\): \(a(1) = -6\).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- 단원 III 영역 -->
+                <div class="unit-divider" style="border-left-color:#7c3aed; background: linear-gradient(90deg, #faf5ff 0%, #f3e8ff 100%);">
+                    <h3 style="color:#6b21a8;">📕 단원 III. 적분 (Q8~Q10)</h3>
+                    <p>부정적분 · 정적분 · 넓이 · 속도와 거리</p>
+                </div>
+
+                <!-- Q8 -->
+                <div>
+                    <span class="badge badge-unit-iii">[III. 정적분 — 절댓값]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">8. 정적분 \( \displaystyle \int_{-1}^{2} |x^2 - x|\,dx \) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 III 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> \(x^2 - x = x(x - 1) \). 부호: \(x \lt 0\)에서 \(+\), \(0 \lt x \lt 1\)에서 \(-\), \(x \gt 1\)에서 \(+\). 구간 분할: \( \int_{-1}^{0} (x^2 - x)\,dx + \int_0^1 (x - x^2)\,dx + \int_1^2 (x^2 - x)\,dx \).
+                        \( I_1 = \left[\dfrac{x^3}{3} - \dfrac{x^2}{2}\right]_{-1}^{0} = 0 - \left(-\dfrac{1}{3} - \dfrac{1}{2}\right) = \dfrac{5}{6} \).
+                        \( I_2 = \left[\dfrac{x^2}{2} - \dfrac{x^3}{3}\right]_0^1 = \dfrac{1}{2} - \dfrac{1}{3} = \dfrac{1}{6} \).
+                        \( I_3 = \left[\dfrac{x^3}{3} - \dfrac{x^2}{2}\right]_1^2 = \left(\dfrac{8}{3} - 2\right) - \left(\dfrac{1}{3} - \dfrac{1}{2}\right) = \dfrac{2}{3} + \dfrac{1}{6} = \dfrac{5}{6} \). 합 \( = \dfrac{5}{6} + \dfrac{1}{6} + \dfrac{5}{6} = \dfrac{11}{6} \).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q9 -->
+                <div>
+                    <span class="badge badge-unit-iii">[III. 두 곡선 사이의 넓이]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">9. 두 곡선 \( y = x^2 \)과 \( y = -x^2 + 4x \)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 III 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> 교점: \(x^2 = -x^2 + 4x \Rightarrow 2 x^2 - 4x = 0 \Rightarrow 2x(x - 2) = 0 \Rightarrow x = 0, 2\). \(0 \lt x \lt 2\)에서 \(-x^2 + 4x \gt x^2\) (예: \(x = 1\): \(3 \gt 1\)). 넓이 \( = \int_0^2 [(-x^2 + 4x) - x^2] dx = \int_0^2 (-2 x^2 + 4x) dx = \left[-\dfrac{2 x^3}{3} + 2 x^2\right]_0^2 = -\dfrac{16}{3} + 8 = \dfrac{8}{3} \).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q10 -->
+                <div>
+                    <span class="badge badge-unit-iii">[III. 적분으로 정의된 함수]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">10. 함수 \( \displaystyle f(x) = \int_1^x (t^2 - 4) dt \) 의 극솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(학기말 종합 — 단원 III 핵심)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략 힌트:</strong> \( f'(x) = x^2 - 4 = (x - 2)(x + 2) = 0 \Rightarrow x = \pm 2 \). 부호: \(x \lt -2\)에서 \(+\), \(-2 \lt x \lt 2\)에서 \(-\), \(x \gt 2\)에서 \(+\). 따라서 \(x = -2\)에서 극대, \(x = 2\)에서 극소. \( f(2) = \int_1^2 (t^2 - 4)\,dt = \left[\dfrac{t^3}{3} - 4t\right]_1^2 = \left(\dfrac{8}{3} - 8\right) - \left(\dfrac{1}{3} - 4\right) = \dfrac{7}{3} - 4 = -\dfrac{5}{3} \). 극솟값 \( = -\dfrac{5}{3} \).
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- ============ 서술형 (11~14) ============ -->
+                <div class="mt-6 mb-2">
+                    <h3 class="text-2xl font-black text-red-800 border-b-2 border-red-200 pb-2">서술형 문제 [11~14] — 단원 간 융합</h3>
+                    <p class="text-sm text-slate-600 mt-1">아래 문제는 풀이 과정을 자세히 작성하시오. 단원 I·II·III가 융합된 종합 문항입니다.</p>
+                </div>
+
+                <!-- Q11 (서술형) — 단원 I + II 융합 -->
+                <div>
+                    <span class="badge badge-hard">[서술형 · I+II 융합 — 연속·미분가능 조건]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">11. 함수 \( f(x) = \begin{cases} x^2 + a x + b &amp; (x \leq 1) \\ c x + 2 &amp; (x \gt 1) \end{cases} \) 이 \(x = 1\)에서 미분가능하고, \( f(-1) = 4 \)일 때, 실수 \(a, b, c\)의 값을 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(학기말 종합 — I·II 융합 서술형)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong>
+                        ① \(x = 1\)에서 연속: \( f(1^-) = 1 + a + b \), \( f(1^+) = c + 2 \). 같음: \(1 + a + b = c + 2 \Rightarrow a + b - c = 1\) ... (가). <br>
+                        ② \(x = 1\)에서 미분가능: 좌도함수 \(f'_-(x) = 2x + a \Rightarrow f'_-(1) = 2 + a\). 우도함수 \(f'_+(x) = c\). 같음: \(2 + a = c \Rightarrow c = a + 2\) ... (나). <br>
+                        ③ \( f(-1) = 1 - a + b = 4 \Rightarrow b - a = 3 \Rightarrow b = a + 3\) ... (다). <br>
+                        (가)에 (나), (다) 대입: \( a + (a + 3) - (a + 2) = 1 \Rightarrow a + 1 = 1 \Rightarrow a = 0 \). 따라서 \(b = 3\), \(c = 2\). <br>
+                        <strong>검증:</strong> \(f(x) = x^2 + 3\) (\(x \leq 1\)), \(f(x) = 2x + 2\) (\(x \gt 1\)). \(f(1^-) = 4\), \(f(1^+) = 4\) ✓. \(f'_-(1) = 2\), \(f'_+(1) = 2\) ✓. \(f(-1) = 1 + 3 = 4\) ✓. <br>
+                        <strong>서술 채점 포인트:</strong> (i) 연속 조건식 도출, (ii) 좌·우 미분계수 일치 조건 도출, (iii) 추가 조건 \(f(-1) = 4\) 식 도출, (iv) 세 조건 연립 풀이 \(\to a, b, c\) 유일 결정.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q12 (서술형) — 단원 II 중심 (도함수 + 그래프 + 방정식) -->
+                <div>
+                    <span class="badge badge-hard">[서술형 · II 중심 — 방정식 실근 개수]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">12. 방정식 \( x^3 - 3 x^2 + a = 0 \) 이 서로 다른 세 실근을 갖도록 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(학기말 종합 — II 중심 서술형)</span></div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> ① \(a\) 분리: \( x^3 - 3 x^2 = -a \). 보조함수 \( g(x) = x^3 - 3 x^2 \)와 수평선 \(y = -a\)가 세 점에서 만나는 조건. ② \(g'(x) = 3 x^2 - 6x = 3x(x - 2) = 0 \Rightarrow x = 0, 2\). 극대 \(g(0) = 0\), 극소 \(g(2) = 8 - 12 = -4\). ③ 세 실근 조건: \(-4 \lt -a \lt 0 \Rightarrow 0 \lt a \lt 4\). <br><strong>서술 채점 포인트:</strong> 보조함수 정의, 극값 좌표 명시, 극값 사이 수평선 교점 3개 조건.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q13 (서술형) — 단원 II + III 융합 -->
+                <div>
+                    <span class="badge badge-hard">[서술형 · II+III 융합 — 접선 + 넓이]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">13. 곡선 \( y = x^2 \) 위의 점 \( (2, 4) \)에서의 접선을 \(\ell\)이라 하자. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(학기말 종합 — II·III 융합 서술형)</span>
+                        <div class="ml-6 mt-2 text-lg font-medium">
+                            (1) 접선 \(\ell\)의 방정식을 구하시오. <br>
+                            (2) 곡선 \(y = x^2\), 접선 \(\ell\), \(y\)축으로 둘러싸인 도형의 넓이를 구하시오.
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> <strong>(1)</strong> \( y' = 2x \), \(x = 2\)에서 기울기 \(4\). 접선: \(y - 4 = 4(x - 2) \Rightarrow y = 4x - 4\). <br>
+                        <strong>(2)</strong> 접선 \(\ell\)이 \(y\)축과 만나는 점 \( (0, -4) \). 영역: 곡선 \(y = x^2\) (위), \(y\)축 (왼쪽), 접선 \(\ell\) (아래). 영역 범위 \(x \in [0, 2]\). \(0 \leq x \leq 2\)에서 \(x^2 \geq 4x - 4\) (왜냐하면 \(x^2 - (4x - 4) = (x - 2)^2 \geq 0\)). 넓이 \( = \int_0^2 [x^2 - (4x - 4)] dx = \int_0^2 (x - 2)^2 dx = \left[\dfrac{(x - 2)^3}{3}\right]_0^2 = 0 - \left(-\dfrac{8}{3}\right) = \dfrac{8}{3} \). <br>
+                        <strong>서술 채점 포인트:</strong> 접선식 도출, 위·아래 곡선 판별 (제곱 차이 ≥ 0), 정적분 계산.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <!-- Q14 (서술형) — 단원 III 중심 + 단원 II 융합 (속도와 거리) -->
+                <div>
+                    <span class="badge badge-hard">[서술형 · II+III 융합 — 속도와 거리]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">14. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \( v(t) = t^2 - 6 t + 8 \) 일 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(학기말 종합 — II·III 융합 서술형)</span>
+                        <div class="ml-6 mt-2 text-lg font-medium">
+                            (1) 점 P의 시각 \(t = 5\)에서의 위치를 구하시오. <br>
+                            (2) 점 P가 출발 후 \(t = 5\)까지 움직인 거리를 구하시오.
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
+                        <strong>💡 전략:</strong> \(v(t) = (t - 2)(t - 4)\). 부호: \(0 \lt t \lt 2\)에서 \(+\), \(2 \lt t \lt 4\)에서 \(-\), \(t \gt 4\)에서 \(+\). <br>
+                        <strong>(1)</strong> 위치 \( x(5) = \int_0^5 v(t)\,dt = \int_0^5 (t^2 - 6t + 8)\,dt = \left[\dfrac{t^3}{3} - 3 t^2 + 8 t\right]_0^5 = \dfrac{125}{3} - 75 + 40 = \dfrac{125}{3} - 35 = \dfrac{125 - 105}{3} = \dfrac{20}{3} \). <br>
+                        <strong>(2)</strong> 움직인 거리 \( = \int_0^5 |v(t)|\,dt \). 구간 분할: <br>
+                        \(\int_0^2 v\,dt = \left[\dfrac{t^3}{3} - 3 t^2 + 8 t\right]_0^2 = \dfrac{8}{3} - 12 + 16 = \dfrac{8}{3} + 4 = \dfrac{20}{3}\). <br>
+                        \(\int_2^4 v\,dt = \left[\dfrac{t^3}{3} - 3 t^2 + 8 t\right]_2^4 = \left(\dfrac{64}{3} - 48 + 32\right) - \dfrac{20}{3} = \dfrac{64}{3} - 16 - \dfrac{20}{3} = \dfrac{44}{3} - 16 = \dfrac{44 - 48}{3} = -\dfrac{4}{3}\). 절댓값 \( = \dfrac{4}{3} \). <br>
+                        \(\int_4^5 v\,dt = \left[\dfrac{t^3}{3} - 3 t^2 + 8 t\right]_4^5 = \left(\dfrac{125}{3} - 75 + 40\right) - \left(\dfrac{64}{3} - 48 + 32\right) = \dfrac{20}{3} - \left(\dfrac{64}{3} - 16\right) = \dfrac{20}{3} - \dfrac{64}{3} + 16 = -\dfrac{44}{3} + 16 = \dfrac{-44 + 48}{3} = \dfrac{4}{3}\). 양. <br>
+                        합 \( = \dfrac{20}{3} + \dfrac{4}{3} + \dfrac{4}{3} = \dfrac{28}{3} \). <br>
+                        <strong>서술 채점 포인트:</strong> \(v(t)\) 인수분해 + 부호표, 위치 정적분 계산, 움직인 거리 \(= \int|v|\,dt\) 구간 분할 + 부호 처리.
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 학기말 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">02. 학기말 종합 성찰 (Final Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 2학기 미적분 I 학습 전체에 대한 종합 성찰을 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 학기 전체 통합 통찰 (극한 → 미분 → 적분)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">2학기 학습한 단원 I (함수의 극한·연속), II (미분), III (적분)이 어떻게 하나의 미적분 체계로 묶이는지 자신의 언어로 사고 흐름도를 그려 보자. 단원 I의 극한 정의가 단원 II의 미분계수 \( \lim_{h \to 0} \dfrac{f(x+h) - f(x)}{h} \)와 단원 III의 정적분(구분구적법의 극한)을 동시에 받치는 공통 기반임을, 그리고 미분과 적분이 미적분의 기본정리로 역연산 관계임을 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"2학기 미적분 I 전체를 정리하면서 '극한 \(\to\) 미분 \(\to\) 적분 \(\to\) 활용'이라는 한 줄의 흐름으로 묶을 수 있다는 게 보였다. 단원 I의 극한 정의가 단원 II의 미분계수와 단원 III의 구분구적법 정적분을 동시에 떠받치는 도구였고, 미분과 적분이 \(\dfrac{d}{dx}\int_a^x f(t)\,dt = f(x)\)와 \(\int_a^b f'(x)\,dx = f(b) - f(a)\)로 역연산 관계를 이룬다는 게 흐름도로 한눈에 잡혔다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 학기 전체 실수 분석 (가장 자주 틀린 유형 Top 3)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">2학기 30차시에 걸쳐 가장 반복적으로 틀린 유형 Top 3 (예: 단원 I의 분모→0 유리화 실수 / 단원 II의 도함수 부호표 누락 / 단원 III의 적분상수·절댓값 구간 분할 실수)을 분석하고, 학기말 시험 직전에 반드시 점검할 자기 체크리스트를 작성해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"학기 30차시 일지를 분석해보니 가장 자주 틀린 게 ① 단원 I에서 \(\dfrac{0}{0}\) 미정형이면 인수분해·유리화 안 한 채 대입한 것, ② 단원 II에서 도함수 부호표·양 끝점·극점 비교를 빠뜨린 것, ③ 단원 III에서 \(|f|\) 정적분에서 부호 변환점 구간 분할 빠뜨린 것 세 가지였다. '① 미정형이면 분자·분모 처리법 매칭 → ② 미분 후 부호표 + 끝점 비교 → ③ 절댓값·움직인 거리는 부호 변환점에서 분할' 3단계 체크리스트로 학기말을 대비하기로 했다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 학기 마무리 — 다음 학년 미적분 II로의 다리</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">미적분 I에서 학습한 다항함수의 미분·적분이 미적분 II (지수·로그·삼각함수의 미분·적분)로 어떻게 확장될지 가설을 적어 보자. 미분의 정의 \(\lim_{h \to 0} \dfrac{f(x+h) - f(x)}{h}\)와 정적분의 정의는 다항함수에서만 성립하는가, 아니면 보편적 정의인가? 학기를 정리하며 가장 인상적이었던 미적분 I 개념과 그 이유를 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"미분·적분의 정의 \(\lim_{h \to 0} \dfrac{f(x + h) - f(x)}{h}\)나 정적분이 다항함수에서만 통하는 게 아니라 보편적인 정의라는 걸 알게 됐다. 미적분 II에서 \(e^x, \ln x, \sin x, \cos x\)로 확장돼도 같은 틀이 그대로 통할 것 같다. 학기에서 가장 인상적이었던 건 미적분의 기본정리였고, 미분과 적분이 역연산이라는 한 줄로 두 단원이 묶이는 게 깔끔하고 멋있었다. 다음 학년에도 같은 사고 흐름으로 접근하기로 다짐했다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
-            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 31차시</p>
+            <p>© 2026 Mathematics Education Engineering · 미적분 I 학습지 31차시 (학기말 종합 — I·II·III) · 2학기 미적분 I 학습지 종강</p>
         </footer>
     </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
 
     <script>
         // 메인 단축키 (H/Esc → index-calc.html)
@@ -137,5 +430,16 @@
     </div>
 
     <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
 </body>
 </html>

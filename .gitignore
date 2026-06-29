@@ -13,7 +13,7 @@ Nav_*.html
 구글클래스룸_성찰지_연동_메뉴얼.md
 학습지\ 제작을\ 위한\ 대화내용.md
 MEMORY.md
-
+_assets_private/
 # Apps Script / Python 서버사이드 코드
 *.gs
 *.py

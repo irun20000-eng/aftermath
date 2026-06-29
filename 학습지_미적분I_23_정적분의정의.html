@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<!-- 2026 2학기 미적분 I · 단원 III-1 부정적분과 정적분 · 차시 23 정적분의 정의 · Agent A9 작성 -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 2학기 미적분 I 학습지: 정적분의 정의·미적분 기본정리</title>
+    <title>2026 2학기 미적분 I 학습지: 정적분의 정의</title>
     <meta name="robots" content="noindex,nofollow">
     <script>
         window.MathJax = {
@@ -19,31 +20,51 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
         body.mathjax-ready { opacity: 1; }
+
         .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
         .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
-        .placeholder-body {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
-            border: 3px dashed #ca8a04;
-            border-radius: 1rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #713f12;
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
         }
-        .placeholder-body h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; }
-        .placeholder-body .ph-row { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .placeholder-body .ph-meta { font-size: 0.875rem; opacity: 0.75; margin-top: 1rem; }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #0d9488; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #ecfeff; border-color: #0d9488; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .calc-accent { color: #0d9488; }
+
         @media print {
             .no-print { display: none !important; }
             body { opacity: 1; background: white; }
             .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
-        const GOOGLE_FORM_BASE_URL = ""; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "23차시 정적분의 정의·미적분 기본정리";
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+        const LESSON_NAME = "23차시 정적분의 정의";
         const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
     </script>
 
@@ -53,7 +74,7 @@
             <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">미적분 I 수업 학습지</h1>
             <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
                 <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III. 적분</span>
-                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">23차시: 정적분의 정의·미적분 기본정리</span>
+                <span class="bg-teal-100 text-teal-800 px-5 py-2 rounded-lg border border-teal-200 shadow-sm">23차시: 정적분의 정의</span>
             </div>
         </header>
 
@@ -68,12 +89,353 @@
             </div>
         </nav>
 
-        <section class="card placeholder-body">
-            <h2>📝 학습지 작성 예정</h2>
-            <div class="ph-row">III. 적분</div>
-            <div class="ph-row">23차시 · 정적분의 정의·미적분 기본정리</div>
-            <p class="ph-meta">사용자의 차시별 자료(교과서·수능특강 PDF) 제공 후 본문(Warm-up · 공식 · Level 1/2/3 · 형성평가 · 도전 · 성찰)이 작성됩니다.</p>
-            <p class="ph-meta">수능특강 매핑: 06. 부정적분과 정적분</p>
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">차시 22에서 우리는 "도함수에서 원래 함수를 복원"하는 <strong>부정적분</strong>을 익혔다. 오늘은 같은 적분 기호 \(\int\)을 한 점 \(a\)와 \(b\) 사이에서 사용하면 <strong>하나의 수</strong>(곡선 아래 넓이)가 나온다는 사실을 본다.</p>
+                <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 아래 그림과 같이 직선 \(y = x\)와 \(x\)축, 직선 \(x = 2\)로 둘러싸인 삼각형 넓이를 \(S_1\)이라 하고, 직선 \(y = -x\)와 \(x\)축, 직선 \(x = 2\)로 둘러싸인 삼각형 넓이를 \(S_2\)라 하자. \(S_1, S_2\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.112 · 개념 탐구 참고)</span></p>
+                    <div class="flex justify-center">
+                        <img src="images/calc_23_warmup_S1S2.png" alt="개념 탐구 그림 — 좌측: y=x 그래프와 x축, 직선 x=2로 둘러싸인 삼각형 S1 (꼭짓점 (0,0), (2,0), (2,2)); 우측: y=-x 그래프와 x축, 직선 x=2로 둘러싸인 삼각형 S2 (꼭짓점 (0,0), (2,0), (2,-2))" class="block mx-auto max-w-2xl w-full rounded-lg border border-teal-100" />
+                    </div>
+                    <div class="thinking-space bg-teal-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> \(S_1 = \dfrac{1}{2}\cdot 2 \cdot 2 = 2\), \(S_2 = 2\). 두 값은 같지만, 함수 \(y = -x\)는 닫힌구간 \([0, 2]\)에서 음수이다. 그래서 정적분 \(\int_0^2 (-x)\,dx\)는 그냥 \(2\)가 아니라 <strong>부호가 붙은 면적 \(-2\)</strong>가 된다. 오늘 우리는 ① 정적분 \(\int_a^b f(x)\,dx\)의 정의(기하적 의미), ② 부호 있는 면적의 약속(\(f \lt 0\) 구간, 양수·음수 혼합), ③ \(a = b\), \(a \gt b\)일 때의 규약, ④ 적분과 미분의 관계 \(\dfrac{d}{dx}\int_a^x f(t)\,dt = f(x)\)까지 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-teal-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 정적분의 정의 — 세 가지 경우 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        정적분의 정의 — 부호 있는 면적
+                    </h3>
+                    <p class="mb-3 text-slate-700">닫힌구간 \([a, b]\)에서 연속인 함수 \(f(x)\)의 \(a\)에서 \(b\)까지의 <span class="calc-accent font-bold">정적분</span>을 기호 \(\displaystyle\int_a^b f(x)\,dx\)로 나타내며, 다음 세 가지 경우로 정의한다 (단 \(a \lt b\)).</p>
+                    <div class="flex justify-center my-4">
+                        <img src="images/calc_23_def_3cases.png" alt="정적분 정의 그림 — 상단: f(x)>=0일 때 곡선 y=f(x), x축, x=a, x=b로 둘러싸인 도형의 넓이 S; 하단: f(x)<=0일 때 같은 영역이 x축 아래에 위치" class="block mx-auto max-w-xl w-full rounded-lg border border-slate-200" />
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \(f(x) \geq 0\)일 때: \(\displaystyle\int_a^b f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( S \) (도형의 넓이)</span></span></li>
+                            <li>② \(f(x) \leq 0\)일 때: \(\displaystyle\int_a^b f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( -S \) (도형의 넓이에 음의 부호)</span></span></li>
+                            <li>③ \(f\)가 양·음 혼합 (양인 부분의 넓이 \(S_1\), 음인 부분의 넓이 \(S_2\)): \(\displaystyle\int_a^b f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( S_1 - S_2 \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 정적분은 "<span class="calc-accent font-bold">부호 있는 면적</span>" — \(x\)축 위쪽은 \(+\), 아래쪽은 \(-\). \(a\)를 <strong>아래끝</strong>, \(b\)를 <strong>위끝</strong>이라 한다. 또한 변수 \(x\)는 임의의 문자로 바꿔도 값이 같다: \(\int_a^b f(x)\,dx = \int_a^b f(t)\,dt\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.112~113 · 정적분의 정의 참고)</span></p>
+                </div>
+
+                <!-- 2. a=b, a>b의 약속 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        \(a = b,\; a \gt b\)일 때의 약속 — 한 점과 역방향
+                    </h3>
+                    <p class="mb-3 text-slate-700">정적분의 정의는 \(a \lt b\) 경우에만 직접 주어진다. 나머지 두 경우는 <strong>편의를 위한 약속</strong>으로 보충한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \(a = b\)일 때: \(\displaystyle\int_a^a f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 0 \)</span></span> &nbsp;(폭이 \(0\)이므로 넓이도 \(0\))</li>
+                            <li>② \(a \gt b\)일 때: \(\displaystyle\int_a^b f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( -\displaystyle\int_b^a f(x)\,dx \)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 위끝·아래끝을 바꾸면 부호만 뒤집힌다. 이 약속 덕분에 다음 차시에서 부정적분과 정적분을 연결하는 <strong>미적분의 기본정리</strong>가 \(a, b\)의 대소에 관계없이 한 줄로 성립한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.113 · 약속 (1)(2) 참고)</span></p>
+                </div>
+
+                <!-- 3. 적분과 미분의 관계 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        적분과 미분의 관계 — 한 점에서 미분하면 피적분함수
+                    </h3>
+                    <p class="mb-3 text-slate-700">함수 \(f(t)\)가 실수 \(a\)를 포함하는 열린구간에서 연속일 때, 위끝을 변수 \(x\)로 둔 정적분 \(\displaystyle\int_a^x f(t)\,dt\)는 \(x\)에 대한 함수이다. 이를 \(x\)로 미분하면 다음이 성립한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
+                        <p class="text-xl font-bold">\( \displaystyle \dfrac{d}{dx}\int_a^x f(t)\,dt = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f(x) \)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-slate-700">즉 위끝을 \(x\)로 두고 미분하면, 피적분함수의 변수를 \(x\)로 바꾼 \(f(x)\)가 그대로 나온다.</p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> \(S(x) = \int_a^x f(t)\,dt\)일 때 \(\Delta x\)에 대한 \(\Delta S\)는 사이 영역의 넓이로, \(m\cdot\Delta x \leq \Delta S \leq M \cdot \Delta x\) (\(m, M\)은 닫힌구간의 최소·최대). 양변을 \(\Delta x\)로 나누고 \(\Delta x \to 0\)을 취하면 연속함수의 최대·최소가 모두 \(f(x)\)로 수렴 \(\Rightarrow\) \(S'(x) = f(x)\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.114~115 · 적분과 미분의 관계 참고)</span></p>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 즉시 활용</p>
+                        <p class="text-sm text-cyan-800">\(\displaystyle\dfrac{d}{dx}\int_2^x (3t^2 - 2t + 1)\,dt = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 3x^2 - 2x + 1 \)</span></span>. — 적분 기호 안의 \(t\)를 \(x\)로 바꾸기만 하면 끝. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 문제 02 참고)</span></p>
+                    </div>
+                </div>
+
+                <!-- 4. 함수 결정형 — 정적분 항등식에서 f(x), a 찾기 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
+                        <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        함수 결정형 — \(\displaystyle\int_a^x f(t)\,dt = (\text{식})\)에서 \(f, a\) 찾기
+                    </h3>
+                    <p class="mb-3 text-slate-700">"모든 실수 \(x\)에 대하여 \(\int_a^x f(t)\,dt = g(x)\)" 형태의 항등식이 주어지면 정해진 두 단계로 \(f, a\)를 모두 결정할 수 있다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-teal-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① 양변을 \(x\)로 미분 \(\Rightarrow\) \(f(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( g'(x) \)</span></span></li>
+                            <li>② 양변에 \(x = a\) 대입 \(\Rightarrow\) 좌변 \(= 0\)이므로 \(g(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 0 \)</span></span> &nbsp;→ \(a\) 결정</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 적분 기호를 미분으로 없애는 STEP 1과, 위끝과 아래끝이 같으면 정적분 \(= 0\)이라는 STEP 2가 짝을 이룬다. 차시 22의 "양변 미분 \(\to\) 식 복원"과 같은 원리. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 예제 2·문제 04 참고)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">기하적 정의로 정적분 값을 계산하고, 적분과 미분의 관계를 적용하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-기하 도형으로 정적분 계산</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 정적분의 값을 기하적 의미(부호 있는 면적)로 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.113 · 예제 1·문제 01 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int_{-2}^{2} (x + 4)\,dx \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int_{-2}^{4} \left(\tfrac{1}{2}x + 1\right)\,dx \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 도형으로 분석. (1) \(y = x + 4\)는 \([-2, 2]\)에서 모두 양 \(\Rightarrow\) 사다리꼴 넓이 \(\dfrac{(2 + 6) \cdot 4}{2} = 16\). <br>
+                            (2) \(y = \tfrac{1}{2}x + 1\): \(x = -2\)에서 \(0\), \(x = 4\)에서 \(3\). \([-2, 4]\)에서 모두 \(\geq 0\) (영점 \(-2\)에서 시작) \(\Rightarrow\) 삼각형 넓이 \(\dfrac{1}{2}\cdot 6 \cdot 3 = 9\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-적분과 미분의 관계</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음을 \(x\)에 대하여 미분하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 문제 02 참고)</span>
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                (1) \( \displaystyle \int_{2}^{x} (3t^2 - 2t + 1)\,dt \) &nbsp;&nbsp;
+                                (2) \( \displaystyle \int_{-3}^{x} (t - 1)(2t^3 + t - 1)\,dt \)
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 공식 \(\dfrac{d}{dx}\int_a^x f(t)\,dt = f(x)\) 직접 적용 — \(t\)를 \(x\)로 바꿔 적기만 하면 끝. <br>
+                            (1) \(3x^2 - 2x + 1\). <br>
+                            (2) \((x - 1)(2x^3 + x - 1)\). — 전개할 필요 없이 그대로 적는다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-함수 결정형 (2단계 절차)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 모든 실수 \(x\)에 대하여 \(\displaystyle\int_1^x f(t)\,dt = 2x^3 - x + a\)를 만족시키는 함수 \(f(x)\)와 실수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 예제 2 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> ① 양변 \(x\)에 대하여 미분 \(\Rightarrow\) \(f(x) = 6x^2 - 1\). ② 양변에 \(x = 1\) 대입 \(\Rightarrow\) 좌변 \(= 0\), 우변 \(= 2 - 1 + a = 1 + a = 0\) \(\Rightarrow\) \(a = -1\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">함수 결정형에 미정계수 추가 — 좌·우 차수 비교 + 두 조건 동시 활용</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-위끝과 아래끝 모두 미지수</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 모든 실수 \(x\)에 대하여 \(\displaystyle\int_{-1}^{x} f(t)\,dt = x^4 - x^3 + ax^2 - 5\)를 만족시키는 함수 \(f(x)\)와 실수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 문제 04 참고)</span></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> ① 양변 미분 \(\Rightarrow\) \(f(x) = 4x^3 - 3x^2 + 2ax\). ② \(x = -1\) 대입 \(\Rightarrow\) 좌변 \(= 0\), 우변 \(= 1 + 1 + a - 5 = a - 3 = 0\) \(\Rightarrow\) \(a = 3\). 따라서 \(f(x) = 4x^3 - 3x^2 + 6x\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-그래프 + 정적분 그래프의 접선</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \(y = f(x)\)의 그래프가 오른쪽 그림과 같다. 함수 \(F(x) = \displaystyle\int_0^x f(t)\,dt\)라 할 때, 그래프 \(y = F(x)\) 위의 점 \((3, F(3))\)에서의 접선의 기울기를 구하고, 그 방법을 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 문제 03 (수리 언어 소양) 참고)</span>
+                            <div class="ml-6 mt-3 flex justify-center">
+                                <img src="images/calc_23_q_yf_graph.png" alt="문제 5번 그래프 — y=f(x)는 원점 부근에서 음수, 극대 (값 2)를 x=1 근처에서 가지고 x=3에서 영점에 접한 뒤 다시 증가하는 곡선; 골 부분에서 y=-2 근방" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 전략:</strong> 점 \((3, F(3))\)에서의 접선의 기울기 \(= F'(3)\). 적분과 미분의 관계로 \(F'(x) = f(x) \Rightarrow F'(3) = f(3)\). 그래프에서 \(f(3) = 0\) (영점). 따라서 접선의 기울기 \(= 0\). <br>
+                            <strong>설명:</strong> "\(F(x)\)가 \(f(t)\)를 \(0\)에서 \(x\)까지 적분한 값"이므로 \(F'(x)\)는 곧 그 순간의 피적분함수 값. 그래프에서 \(f(3)\)을 읽어내는 것이 핵심.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-위끝이 식인 정적분의 미분</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 함수 \(G(x) = \displaystyle\int_0^x (t^3 + 2t)\,dt\)에 대하여 \(G'(2)\)의 값을 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(G'(x) = x^3 + 2x\) (적분과 미분의 관계). \(G'(2) = 8 + 4 = 12\). — 적분을 직접 계산할 필요 없이 피적분함수 값만 읽으면 된다.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 정적분 = 부호 있는 면적 — 음수 구간에서의 부호 함정</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-함수가 음수인 구간 포함</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 직선 \(y = x\)와 \(x\)축, 두 직선 \(x = -1, x = 2\)로 둘러싸인 도형의 넓이를 \(S\)라 하자. 한편 정적분 \(\displaystyle I = \int_{-1}^{2} x\,dx\)의 값을 구하시오. \(S\)와 \(I\)의 관계를 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.112~113 · 정의 (1)(3) 응용)</span></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                많은 학생이 "\(S\)와 \(I\)가 같다"라고 답한다. 그러나 \([-1, 0]\)에서 \(y = x \lt 0\)이고 \([0, 2]\)에서 \(y = x \gt 0\)이므로, 정적분은 두 부분을 <strong>부호를 살려서 빼고 더한다</strong>.<br><br>
+                                <strong>STEP 1 — 기하적 넓이 \(S\)</strong>: \([-1, 0]\)의 삼각형 넓이 \(= \dfrac{1}{2}\), \([0, 2]\)의 삼각형 넓이 \(= 2\). 도형 넓이 \(S = \dfrac{1}{2} + 2 = \dfrac{5}{2}\).<br><br>
+                                <strong>STEP 2 — 정적분 \(I\)</strong>: \(I = \int_{-1}^{2} x\,dx = S_+ - S_- = 2 - \dfrac{1}{2} = \dfrac{3}{2}\). (다음 차시 미적분 기본정리로도 같은 값: \(\big[\tfrac{1}{2}x^2\big]_{-1}^{2} = 2 - \tfrac{1}{2} = \tfrac{3}{2}\).)<br><br>
+                                <strong>결론:</strong> \(S = \dfrac{5}{2}\), \(I = \dfrac{3}{2}\). 둘은 다르다.<br><br>
+                                <strong>핵심 통찰:</strong> 정적분은 <strong>"부호 있는 면적"</strong>, 도형의 실제 넓이는 <strong>"부호 없는 면적"</strong>. 도형 넓이를 정적분으로 구하려면 \(\int |f(x)|\,dx\)를 써야 한다. 차시 24·26에서 절댓값이 붙은 정적분을 다루게 되는 이유.
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 모든 실수 \(x\)에 대하여 다항함수 \(f(x)\)가 \(\displaystyle\int_a^x f(t)\,dt = 6x^2 + x - 1\)을 만족시킬 때, \(f(a)\)의 값을 구하시오. (단, \(a \gt 0\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 07번 참고)</span></div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① 양변 \(x\) 미분 \(\Rightarrow\) \(f(x) = 12x + 1\). ② \(x = a\) 대입 \(\Rightarrow\) 좌변 \(= 0\), 우변 \(= 6a^2 + a - 1 = 0 \Rightarrow (3a - 1)(2a + 1) = 0\). \(a \gt 0\) 조건 \(\Rightarrow\) \(a = \dfrac{1}{3}\). ③ \(f(a) = f\!\left(\tfrac{1}{3}\right) = 12 \cdot \tfrac{1}{3} + 1 = 5\). — 두 단계 절차의 표준 응용.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 수학Ⅱ 부정적분과 정적분 유제 3) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_수학II_부정적분과정적분"
+                 data-aft-source-id="c6-ex3"
+                 data-aft-source-label="수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 3">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅱ · 부정적분과 정적분 · 유제 3</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 정적분 항등식의 양변을 \(x\)에 대해 미분 → \((x-1) f(x)\) 형태로 정리 → \(x = 1\) 대입으로 상수 \(a\) 결정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                다항함수 \(f(x)\)가 모든 실수 \(x\)에 대하여 \[ \int_{0}^{x} t f(t)\,dt = x^4 + a x^2 + \int_{0}^{x} f(t)\,dt \] 를 만족시킬 때, \(f(a)\)의 값을 구하시오. (단, \(a\)는 상수이다.)
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    <span class="text-slate-600 font-semibold">단답형:</span> \(f(a) = \boxed{\phantom{00}}\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 양변을 \(x\)에 대해 미분</strong>: 좌변 \(\dfrac{d}{dx}\!\int_0^x t f(t)\,dt = x f(x)\). 우변 \(\dfrac{d}{dx}\!\left(x^4 + a x^2 + \!\int_0^x f(t)\,dt\right) = 4x^3 + 2ax + f(x)\). 따라서 \(x f(x) = 4x^3 + 2ax + f(x)\) ⇒ \((x - 1) f(x) = 4x^3 + 2ax\).</li>
+                    <li><strong>STEP 2 — \(x = 1\) 대입으로 \(a\) 결정</strong>: 좌변 \(= 0\cdot f(1) = 0\). 우변 \(= 4 + 2a\). 따라서 \(0 = 4 + 2a\) ⇒ \(a = -2\).</li>
+                    <li><strong>STEP 3 — \(f(x)\) 인수분해로 복원</strong>: \((x - 1) f(x) = 4x^3 - 4x = 4x(x^2 - 1) = 4x(x - 1)(x + 1)\). \(f(x)\)는 다항함수이므로 양변을 \(x - 1\)로 나누면 \(f(x) = 4x(x + 1)\).</li>
+                    <li><strong>STEP 4 — \(f(a) = f(-2)\) 계산</strong>: \(f(-2) = 4 \cdot (-2) \cdot (-2 + 1) = (-8) \cdot (-1) = 8\). <span class="text-red-600 font-bold">정답: \(f(a) = 8\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 정적분 항등식 ⇒ ① <strong>양변 미분</strong>으로 적분 기호 제거 + 미적분의 기본정리 \(\dfrac{d}{dx}\!\int_a^x g(t)\,dt = g(x)\) 적용. ② \(x f(x)\)와 \(f(x)\)를 묶어 \((x - 1) f(x)\) 형태로 정리. ③ <strong>\(x = 1\) 대입</strong>으로 좌변을 \(0\)으로 만들어 미정상수 \(a\) 결정. ④ \(f(x)\)가 다항함수이므로 우변의 인수분해 결과에 \((x - 1)\) 인수가 반드시 들어 있어야 한다 — 그래야 양변을 \((x - 1)\)로 나눌 수 있다. 차시 23 정적분 정의·미분 관계의 핵심 응용.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_미적분I_부정적분과정적분_해설.html#c6-ex3" class="text-purple-600 underline font-semibold">수능특강 수학Ⅱ 해설지 유제 3</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (2024년 5월 학력평가 공통 18번 — 정적분 항등식 + 이차함수 결정) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="기출_수학II_적분"
+                 data-aft-source-id="g_ws23_d2"
+                 data-aft-source-label="평가원·수능 기출 · 수학Ⅱ · 적분 · 2024년 5월 학력평가 공통 18번">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 2024년 5월 학력평가 수학영역 공통 18번 [3점]</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (학습지 max+2, 7분) · 핵심: 위끝이 변수인 정적분의 미분 + 우변에 \(f(-x)\)가 나타남 \(\to\) 대칭식 \(f(x)+f(-x)\)로 우함수 부분 분리 \(\to\) 최고차계수 + 한 점 조건으로 이차함수 확정</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                최고차항의 계수가 \(3\)인 이차함수 \(f(x)\)가 모든 실수 \(x\)에 대하여 \[ \int_0^x f(t)\,dt \;=\; 2x^3 \;+\; \int_0^{-x} f(t)\,dt \] 를 만족시킨다. \(f(1) = 5\)일 때, \(f(2)\)의 값을 구하시오.
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (5단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 양변을 \(x\)에 대하여 미분</strong>: 좌변 \(\dfrac{d}{dx}\int_0^x f(t)\,dt = f(x)\). 우변 첫째항 \(\dfrac{d}{dx}(2x^3) = 6x^2\). 우변 둘째항은 위끝이 \(-x\)이므로 합성함수 미분으로 \(\dfrac{d}{dx}\int_0^{-x} f(t)\,dt = f(-x)\cdot(-1) = -f(-x)\). 따라서 \[ f(x) \;=\; 6x^2 \;-\; f(-x). \]</li>
+                    <li><strong>STEP 2 — 대칭식 \(f(x) + f(-x) = 6x^2\) 활용</strong>: 최고차항 계수가 \(3\)인 이차함수이므로 \(f(x) = 3x^2 + bx + c\)로 놓으면 \(f(-x) = 3x^2 - bx + c\). 두 식의 합은 \[ f(x) + f(-x) \;=\; 6x^2 + 2c \;=\; 6x^2 \;\Rightarrow\; c = 0. \]</li>
+                    <li><strong>STEP 3 — 조건 \(f(1) = 5\)로 \(b\) 결정</strong>: \(f(x) = 3x^2 + bx\)이므로 \(f(1) = 3 + b = 5 \Rightarrow b = 2\). 따라서 \(f(x) = 3x^2 + 2x\).</li>
+                    <li><strong>STEP 4 — 항등식 검증</strong>: \(\int_0^x (3t^2 + 2t)\,dt = x^3 + x^2\). \(\int_0^{-x}(3t^2+2t)\,dt = -x^3 + x^2\). 차이: \((x^3 + x^2) - (-x^3 + x^2) = 2x^3 \;\checkmark\). 항등식 성립.</li>
+                    <li><strong>STEP 5 — \(f(2)\) 계산</strong>: \(f(2) = 3\cdot 4 + 2\cdot 2 = 12 + 4 = 16\). <span class="text-red-600 font-bold">정답: \(16\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 2024학년도 수능 직전 학력평가의 핵심 패턴 — ① <strong>양변 \(x\) 미분으로 적분 기호 제거</strong> (차시 23의 표준 도구), ② 위끝이 \(-x\)인 정적분은 <strong>합성함수 미분</strong>으로 부호 \((-1)\) 발생, ③ \(f(x) + f(-x)\) 같은 <strong>대칭식</strong>으로 우함수·기함수 부분을 분리하여 계수 일부를 확정, ④ 남은 계수는 주어진 함숫값 한 줄로 결정. 차시 23의 함수 결정형 4단계 절차의 정점.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-teal-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-teal-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-teal-500 focus:ring-teal-500 pointer-events-none">
+                                <span class="text-teal-400 font-bold text-lg">유형 1: 지식의 내면화 (부호 있는 면적의 정당화)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">정적분이 단순한 넓이가 아니라 "부호 있는 면적"으로 정의되는 이유를, \(\int_0^2 (-x)\,dx = -2\)와 도형 넓이 \(2\)의 차이를 통해 자신의 언어로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-teal-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\int_0^2 (-x)\,dx = -2\)인데 도형 넓이는 \(2\)인 게 처음엔 모순처럼 보였다. 알고 보니 정적분은 '\(x\)축 위쪽은 \(+\), 아래쪽은 \(-\)'로 부호를 살리는 약속이라 음수가 나오는 게 당연했다. 도형 넓이를 진짜로 구하려면 \(\int |f(x)|\,dx\)처럼 절댓값을 씌워야 한다는 걸 알게 됐고, 다음 차시 학습 메모로 남겨뒀다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (적분과 미분 관계의 활용)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">함수 결정형 \(\int_a^x f(t)\,dt = g(x)\)에서 ① 양변 미분 → \(f(x) = g'(x)\), ② \(x = a\) 대입 → \(g(a) = 0\)의 2단계 절차를 자기점검 카드로 정리해 보고, 이를 평가원 기출에서 어떻게 응용하는지 한 사례를 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\int_a^x f(t)\,dt = g(x)\) 같은 식이 나오면 처음엔 어찌 할 줄 몰라 멈춰 있었다. 그런데 '① 양변 미분 \(\Rightarrow f(x) = g'(x)\), ② \(x = a\) 대입 \(\Rightarrow g(a) = 0\)으로 아래끝 결정' 2단계만 하면 적분 기호가 사라지고 미분 문제로 바뀌었다. 이 두 줄 카드 덕분에 평가원 기출 패턴이 한꺼번에 정리됐다."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (미적분의 기본정리 예측)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">정적분 \(\int_a^b f(x)\,dx\)와 부정적분 \(F(x)\) 사이에 어떤 한 줄 관계가 성립할지 가설을 적어 보고, 다음 차시(정적분의 계산)에서 그것이 어떻게 활용될지 예측해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">✏️ 학생 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(S(x) = \int_a^x f(t)\,dt\)를 미분하면 \(f(x)\)가 된다는 게 \(S\)도 결국 \(f\)의 부정적분이라는 얘기 같다. 그러면 \(\int_a^b f\,dx = F(b) - F(a)\) 한 줄로 적분 계산이 정리될 것 같다는 가설을 세웠다. 구분구적법으로 일일이 더하지 않아도 된다면, 미적분의 기본정리가 정말 강력한 도구라는 생각이 들었다."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
@@ -82,7 +444,27 @@
     </div>
 
     <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
         document.addEventListener('keydown', (e) => {
             if (e.isComposing) return;
             const t = e.target;
@@ -94,7 +476,7 @@
         });
     </script>
 
-    <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
+    <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
       <div class="aft-widget-head">
         <span class="aft-widget-title">⏱ 타이머</span>
@@ -117,7 +499,7 @@
       <div class="aft-widget-resize" aria-hidden="true"></div>
     </div>
 
-    <!-- 문제 모아보기 — FAB + 모달 (data-aft-problem-level 마킹 자동 수집) -->
+    <!-- 문제 모아보기 FAB -->
     <button type="button" id="aft-problems-fab" class="aft-fab no-print" aria-label="문제 모아보기">
       <span class="aft-fab-icon">📚</span>
       <span>문제 모아보기</span>
@@ -137,5 +519,16 @@
     </div>
 
     <script src="widgets.js"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
 </body>
 </html>
