@@ -17,16 +17,20 @@ _assets_private/
 # Apps Script / Python 서버사이드 코드
 *.gs
 *.py
+# 예외: scripts/ 디렉토리의 빌더(.py)는 추적 — 묶음 재빌드·핸들러 재주입 재실행 가능
+!scripts/*.py
 
 # PDF 추출 임시 텍스트
 *_text.txt
 
 # Claude / 메모리 관련
-# .claude/agents/ 는 도메인 에이전트 정의 — git 추적 (다른 세션·머신에서 사용)
+# .claude/agents/, .claude/skills/ 는 도메인 정의 — git 추적 (다른 세션·머신에서 사용)
 # .claude/ 안의 history·settings 등은 무시. GitHub Pages는 dot 디렉터리 자동 제외.
 .claude/*
 !.claude/agents/
 !.claude/agents/**
+!.claude/skills/
+!.claude/skills/**
 memory/
 
 # 백업 파일
@@ -45,6 +49,9 @@ desktop.ini
 
 # 교사용 가이드 폴더 (Nav_*.html + Solutions_All + Nav_All_index 등)
 nav/
+
+# 교사용 자료 — PDF·인벤토리·검수 노트 (학생 비공개)
+_assets_private/
 
 # 임시 압축·백업 파일 (교사용 자료)
 nav_backup*.tar.gz
