@@ -740,7 +740,7 @@ a{color:var(--color-primary);text-decoration:none}
   <nav class="lesson-nav-bar no-print" aria-label="차시 이동">
     <a href="workbook-calc.html" target="aftermath_workbook_calc"><span>🏠</span><span>수학 익힘책 모음</span><kbd>H</kbd></a>
     <div class="nav-group">
-      <span style="opacity:.45;cursor:not-allowed"><span>다음 단원</span><span>준비 중</span></span>
+      <a href="수학익힘책_미적분I_I2_함수의연속_해설.html"><span>다음 단원</span><span>→</span></a>
     </div>
   </nav>
   <div class="card-viewport" id="card-viewport">
@@ -1083,7 +1083,7 @@ const PROBLEMS = [
         ).join('') +
         `</ol>`;
     } else {
-      choicesHTML = `<div class="short-answer-label">단답형 (서술)</div>`;
+      choicesHTML = '';
     }
 
     const maxStep = problem.steps.length;
@@ -1216,6 +1216,9 @@ const PROBLEMS = [
           ['background','border','color','font-weight'].forEach(p => el.style.removeProperty(p));
         });
       document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`)?.classList.remove('active');
+      // 단답형 정답 박스도 함께 제거 (초기화 시 정답이 남는 문제 수정)
+      document.querySelectorAll(`.problem-card[data-pid="${pid}"] .answer-reveal-inline`).forEach(b => b.remove());
+      document.querySelectorAll('#scratch-overlay .answer-reveal-inline').forEach(b => b.remove());
       const overlayContainer = document.getElementById('overlay-steps-' + pid);
       overlayContainer?.querySelectorAll('.step').forEach(el => { el.style.display = 'none'; });
       updateStepBtns(pid);
@@ -1364,7 +1367,7 @@ const PROBLEMS = [
           p.choices.map((c, i) => `<li class="${(mode === 'solution' && i === p.answer) ? 'print-correct' : ''}">${nums[i]} ${c}</li>`).join('') +
           `</ol>`;
       } else {
-        choicesHTML = `<div class="print-short-label">단답형${mode === 'solution' && p.answerText ? ' — 정답: ' + p.answerText : ''}</div>`;
+        choicesHTML = (mode === 'solution' && p.answerText) ? `<div class="print-short-label">정답: ${p.answerText}</div>` : '';
       }
 
       let extraHTML = '';
@@ -1519,7 +1522,7 @@ const PROBLEMS = [
           `<li class="${i === problem.answer ? 'correct-choice' : ''}">${nums[i]} ${c}</li>`).join('') +
         `</ol>`;
     } else {
-      choicesHTML = `<div class="short-answer-label">단답형 (서술)</div>`;
+      choicesHTML = '';
     }
 
     const titleSuffix = `${problem.levelLabel} ${problem.num} · `;

@@ -862,7 +862,7 @@ const PROBLEMS = [ /* 여기에 문제 객체들을 채운다 */ ];;
         ).join('') +
         `</ol>`;
     } else {
-      choicesHTML = `<div class="short-answer-label">단답형 (서술)</div>`;
+      choicesHTML = '';
     }
 
     const maxStep = problem.steps.length;
@@ -995,6 +995,9 @@ const PROBLEMS = [ /* 여기에 문제 객체들을 채운다 */ ];;
           ['background','border','color','font-weight'].forEach(p => el.style.removeProperty(p));
         });
       document.querySelector(`.problem-card[data-pid="${pid}"] .answer-btn`)?.classList.remove('active');
+      // 단답형 정답 박스도 함께 제거 (초기화 시 정답이 남는 문제 수정)
+      document.querySelectorAll(`.problem-card[data-pid="${pid}"] .answer-reveal-inline`).forEach(b => b.remove());
+      document.querySelectorAll('#scratch-overlay .answer-reveal-inline').forEach(b => b.remove());
       const overlayContainer = document.getElementById('overlay-steps-' + pid);
       overlayContainer?.querySelectorAll('.step').forEach(el => { el.style.display = 'none'; });
       updateStepBtns(pid);
@@ -1143,7 +1146,7 @@ const PROBLEMS = [ /* 여기에 문제 객체들을 채운다 */ ];;
           p.choices.map((c, i) => `<li class="${(mode === 'solution' && i === p.answer) ? 'print-correct' : ''}">${nums[i]} ${c}</li>`).join('') +
           `</ol>`;
       } else {
-        choicesHTML = `<div class="print-short-label">단답형${mode === 'solution' && p.answerText ? ' — 정답: ' + p.answerText : ''}</div>`;
+        choicesHTML = (mode === 'solution' && p.answerText) ? `<div class="print-short-label">정답: ${p.answerText}</div>` : '';
       }
 
       let extraHTML = '';
@@ -1298,7 +1301,7 @@ const PROBLEMS = [ /* 여기에 문제 객체들을 채운다 */ ];;
           `<li class="${i === problem.answer ? 'correct-choice' : ''}">${nums[i]} ${c}</li>`).join('') +
         `</ol>`;
     } else {
-      choicesHTML = `<div class="short-answer-label">단답형 (서술)</div>`;
+      choicesHTML = '';
     }
 
     const titleSuffix = `${problem.levelLabel} ${problem.num} · `;
