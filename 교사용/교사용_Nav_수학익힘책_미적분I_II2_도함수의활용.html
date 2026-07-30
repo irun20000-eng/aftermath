@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 — 학생 비공개. 수학 익힘책 Ⅱ-2 도함수의 활용 — 12 풀이 카드. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 수학 익힘책 Ⅱ-2 도함수의 활용 — 문제풀이 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; } .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; } .tl-s strong { color: #334155; font-weight: 800; }
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_20_중단원마무리_II_2.html">← 20차시 중단원 마무리</a>
+        <a href="교사용_수학익힘책_미적분I_II2_도함수의활용_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">📗</span>
+        <span class="lesson-tag">익힘책 Ⅱ-2 · 20차시 이후 심화</span>
+        <span class="lesson-title">수학 익힘책 Ⅱ-2 도함수의 활용 — 12문항 (기초 3 + 기본 6 + 도전 3)</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> 중단원 마무리(20차시)가 <strong>접선·증감·극값·최대최소를 각각 정리</strong>했다면, 익힘책은 그 도구들을 <strong>실제 상황(도형·운동·부등식)으로 번역</strong>하는 훈련이다. <strong>기울기 자체를 함수로 보기(4번), 도함수 그래프에서 원함수 복원(8번), 닮음+변화율(12번)</strong>이 새 결이다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-02-04~07] 접선의 방정식, 함수의 증가·감소와 극대·극소, 최대·최소, 속도와 가속도.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">12~20차시 전체. 특히 20 중단원 마무리의 "증감표 작성 루틴".</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 문제 상황을 <strong>하나의 변수</strong>로 통일하기 ② \(f'\)의 그래프에서 \(f\)의 개형 복원 ③ 부등식 문제를 최솟값 문제로 번역.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> "도함수의 활용은 <strong>번역 능력</strong>"이라고 선언. 12문항 구성 안내 후 20차시 증감표 루틴 재게시.</div>
+            <div class="tl-s"><strong>학생:</strong> 해설지 열고 필터 확인. 증감표 틀(부호행·화살표행)을 노트에 미리 그려 둔다.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기초 8'</div>
+            <div class="tl-t"><strong>교사:</strong> 1~3번 자율. <strong>2번의 롤 vs 평균값</strong> 관계(롤은 평균값의 특수 경우)를 한 문장으로 정리 판서.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 \(y=2x+7\), 2번 \(\frac{\sqrt3}{3}\)·\(\sqrt3\), 3번 증감 구간. 3번은 <strong>닫힌구간 표기</strong>로 답한다.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기본 20'</div>
+            <div class="tl-t"><strong>교사:</strong> 7·8번에 10분 — 7번은 <strong>변수 통일</strong>(구의 반지름 관계식), 8번은 <strong>\(f'\) 그래프 → \(f\) 개형 복원</strong>을 각각 시연. 4·5·6·9번은 묶음.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번은 "\(r^2=9-\frac{h^2}{4}\) → \(V(h)\) 한 변수" 순으로 적는다. 8번은 극댓값·극솟값을 먼저 구하고 그 사이가 답.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">도전 14'</div>
+            <div class="tl-t"><strong>교사:</strong> 10번(운동 방향 전환) 4분, 11번(곡선-원 최단거리) 5분 — <strong>"중심까지 거리 \(-\) 반지름"</strong>, 12번(닮음) 5분 — 그림자 길이를 시간의 식으로.</div>
+            <div class="tl-s"><strong>학생:</strong> 11번은 원을 <strong>점(중심)으로 축소</strong>해서 먼저 최소화. 12번은 닮음비 식을 세운 뒤 미분.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "실생활 문제를 수식으로 바꾼 한 줄" 발표. Ⅲ-1 적분 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰지 작성 (번역 과정 중심).</div>
+        </div>
+    </div>
+
+    <!-- C. 도입 발문 -->
+    <h2 class="section-h"><span class="ico">C</span> 도입 발문 (익힘책 진입)</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "부피가 최대인 원기둥을 구하라는데, 변수가 반지름과 높이 두 개다. 어떻게 할까?"</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"변수가 두 개면 못 풀지 않나요?"</span><br><span class="fb"><strong>피드백:</strong> 두 변수를 잇는 <strong>관계식이 하나</strong> 있으면 소거할 수 있다. 7번은 구의 지름이 대각선인 직각삼각형에서 \((2r)^2+h^2=6^2\)이 그 다리.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"부등식이 항상 성립할 조건은 어떻게 시작하나요?"</span><br><span class="fb"><strong>피드백:</strong> 모두 한쪽으로 넘겨 \((\text{함수})\ge 0\) 꼴로 만든 뒤 <strong>그 함수의 최솟값 \(\ge 0\)</strong>. 9번이 정확히 그 구조이고, 정의역 조건(\(x\ge0\))을 놓치면 안 된다.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"도함수 그래프만 주면 원함수를 어떻게 아나요?"</span><br><span class="fb"><strong>피드백:</strong> \(f'\)의 <strong>부호</strong>가 증감을, <strong>\(x\)절편</strong>이 극점을 알려 준다. 8번은 여기에 \(f(0)=0\)이 더해져 개형이 완전히 결정된다.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>연결:</strong> 20차시가 "도구별 연습"이었다면, 익힘책은 <strong>"상황 → 함수 → 미분"의 전 과정</strong>. 수능 4점 문항의 표준 구조다.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 익힘책에서 처음 나오는 3가지</h2>
+
+    <div class="formula-box">
+        <div class="label">익힘책 신규 도구 3종</div>
+        <div class="formula">① <strong>변수 통일</strong> 관계식으로 두 변수를 하나로 &nbsp;|&nbsp; ② <strong>\(f'\)→\(f\) 복원</strong> 부호로 증감, 절편으로 극점 &nbsp;|&nbsp; ③ <strong>원까지 최단거리</strong> \(\overline{PQ}_{\min}=\overline{PC}_{\min}-r\)</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 — 실생활 최대·최소 4단계 (7·12번 대비):</strong>
+        <ol>
+            <li>그림에 <strong>문자를 붙인다</strong>. (7번: 반지름 \(r\), 높이 \(h\) / 12번: 걸은 거리 \(x\), 그림자 \(y\))</li>
+            <li>문자들 사이의 <strong>관계식</strong>을 찾는다. (7번: 피타고라스 / 12번: 닮음비)</li>
+            <li>구하려는 양을 <strong>한 변수의 함수</strong>로 쓴다. 정의역도 반드시 함께 적는다.</li>
+            <li>미분 → 증감표 → 최대/최소. 마지막에 <strong>단위</strong>를 붙여 답한다.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>익힘책에서 가장 자주 틀리는 3가지:</strong> ① 7번에서 변수를 통일하지 않고 두 변수인 채로 미분 ② 9번에서 정의역 \(x\ge0\)을 무시 ③ 11번에서 원의 반지름을 빼지 않음.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (익힘책 12문항)</h2>
+
+    <div class="problems">
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span><span class="q-title">접선의 방정식</span></div>
+            <div class="q-stmt">곡선 \(y=x^3-x+5\) 위의 점 \((-1,5)\)</div>
+            <div class="q-solve">
+                <span class="step">\(f'(x)=3x^2-1\), \(f'(-1)=2\).</span>
+                <span class="step">\(y-5=2(x+1)\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(y=2x+7\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> "곡선 <strong>위의</strong> 점"이므로 기울기를 바로 계산. 곡선 밖의 점 유형(접점을 미지수로)과 구별시킨다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">롤의 정리 · 평균값 정리</span></div>
+            <div class="q-stmt">\(f(x)=x^3-x-9\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \([0,1]\)에서 \(f(0)=f(1)=-9\) → 롤: \(f'(c)=0\), \(3c^2-1=0\), \(c=\frac{\sqrt3}{3}\).</span>
+                <span class="step">(2) \([0,3]\): 평균변화율 \(\frac{15-(-9)}{3}=8\), \(3c^2-1=8\), \(c=\sqrt3\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>(1) \(\dfrac{\sqrt3}{3}\) &nbsp; (2) \(\sqrt3\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 두 정리를 <strong>같은 함수</strong>로 비교하는 설계. "롤 = 평균값의 특수한 경우(양 끝 함숫값이 같을 때)"를 한 줄로 정리.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">증가·감소 구간</span></div>
+            <div class="q-stmt">\(f(x)=x^3-3x+1\)</div>
+            <div class="q-solve">
+                <span class="step">\(f'=3(x+1)(x-1)\).</span>
+                <span class="step">\(x\lt-1\), \(x\gt1\) 증가 / \(-1\lt x\lt1\) 감소.</span>
+            </div>
+            <div class="q-ans">정답: <strong>\((-\infty,-1]\), \([1,\infty)\) 증가 / \([-1,1]\) 감소</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 경계점을 <strong>닫힌구간</strong>으로 포함해 표기하는 관례를 짚는다. 증감표를 반드시 그리게 할 것.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">기울기가 최소인 접선</span></div>
+            <div class="q-stmt">\(y=x^3-6x^2+1\)</div>
+            <div class="q-solve">
+                <span class="step">\(f'(x)=3x^2-12x=3(x-2)^2-12\) → \(x=2\)에서 최소 \(-12\).</span>
+                <span class="step">접점 \((2,-15)\), \(y+15=-12(x-2)\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(y=-12x+9\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>\(f'\)을 또 하나의 함수로 보는</strong> 관점이 핵심. "미분을 두 번 쓰는 게 아니라, \(f'\)의 최솟값을 이차함수로 구한다"고 명확히.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">극값 조건으로 미정계수</span></div>
+            <div class="q-stmt">\(f=x^3+ax^2+bx+3\), \(x=-3\)에서 극댓값 \(30\)</div>
+            <div class="q-solve">
+                <span class="step">\(f'(-3)=0\), \(f(-3)=30\) 두 식.</span>
+                <span class="step">\(a=1, b=-15\)... 정리하면 극솟값 \(-2\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(-2\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> "극값을 가진다"는 조건에서 <strong>식이 두 개</strong> 나온다는 점. 구한 뒤 반드시 증감표로 극대/극소를 재확인시킨다.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">극값을 갖지 않을 조건</span></div>
+            <div class="q-stmt">\(f=2x^3+2ax^2+3ax-5\), 정수 \(a\)</div>
+            <div class="q-solve">
+                <span class="step">\(f'=6x^2+4ax+3a\)의 판별식 \(\le 0\).</span>
+                <span class="step">\(4a^2-18a\le0 \Rightarrow 0\le a\le\frac92\).</span>
+                <span class="step">정수 \(a=0,1,2,3,4\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(a=0,1,2,3,4\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 삼차함수가 극값을 <strong>갖지 않을</strong> 조건 = \(f'=0\)이 실근을 두 개 갖지 않음 = 판별식 \(\le0\). 등호 포함 여부를 반드시 확인.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">⭐ 입체도형의 최대 · 변수 통일</span></div>
+            <div class="q-stmt">반지름 \(3\)인 구에 내접하는 원기둥의 부피 최대</div>
+            <div class="q-solve">
+                <span class="step">\((2r)^2+h^2=36 \Rightarrow r^2=9-\frac{h^2}{4}\).</span>
+                <span class="step">\(V=\pi r^2h=\pi(9h-\frac{h^3}{4})\).</span>
+                <span class="step">\(V'=\pi(9-\frac{3h^2}{4})=0 \Rightarrow h=2\sqrt3\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(2\sqrt3\,\mathrm{cm}\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>변수 통일이 전부</strong>. 그림에 직각삼각형을 직접 그려 넣고 관계식을 학생이 찾게 한다. 정의역 \(0\lt h\lt6\)도 함께.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">⭐ 도함수 그래프 → 실근 개수</span></div>
+            <div class="q-stmt">\(f'\) 그래프 주어짐, \(f(0)=0\), \(f(x)=k\)가 3실근</div>
+            <div class="q-solve">
+                <span class="step">\(f'\)의 절편에서 극점, 부호로 증감 파악.</span>
+                <span class="step">\(f\)를 복원해 극댓값 \(9\), 극솟값 \(-\frac53\).</span>
+                <span class="step">\(-\frac53 \lt k \lt 9\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(-\dfrac53 \lt k \lt 9\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> \(f'\)의 그래프를 보고 <strong>\(f\)의 개형을 손으로 그리게</strong> 한 뒤 수평선 \(y=k\)를 움직여 교점을 세게 한다. 등호 제외 이유도 확인.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">부등식이 항상 성립할 조건</span></div>
+            <div class="q-stmt">\(x\ge0\)에서 \(x^3-5x^2-9x-2\ge-2x^2+k\)</div>
+            <div class="q-solve">
+                <span class="step">\(g(x)=x^3-3x^2-9x-2-k\ge0\).</span>
+                <span class="step">\(g'=3(x-3)(x+1)\), \(x\ge0\)에서 최소는 \(x=3\).</span>
+                <span class="step">\(g(3)=-29-k\ge0 \Rightarrow k\le-29\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(-29\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>정의역이 \(x\ge0\)</strong>이므로 \(x=-1\)은 후보가 아니다. 이 조건을 놓치면 답이 달라짐을 반드시 대조.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">10</span><span class="q-title">운동 방향 전환 · 가속도</span></div>
+            <div class="q-stmt">\(x=t^3-9t^2+24t\), 두 번째 방향 전환 순간의 가속도</div>
+            <div class="q-solve">
+                <span class="step">\(v=3t^2-18t+24=3(t-2)(t-4)\) → \(t=2,4\).</span>
+                <span class="step">두 번째는 \(t=4\).</span>
+                <span class="step">\(a=6t-18\), \(a(4)=6\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(6\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> "두 번째"라는 표현을 놓쳐 \(t=2\)로 답하는 실수가 많다. \(v\)의 <strong>부호 변화표</strong>를 그려 순서를 확인시킨다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">11</span><span class="q-title">⭐ 곡선과 원 사이 최단거리</span></div>
+            <div class="q-stmt">\(y=x^2-5\) 위 P, 원 \((x-6)^2+(y+2)^2=1\) 위 Q</div>
+            <div class="q-solve">
+                <span class="step">중심 \(C(6,-2)\)까지 거리 제곱 \(=(x-6)^2+(x^2-3)^2\)을 최소화.</span>
+                <span class="step">미분해 \(x=2\), \(\overline{PC}=\sqrt{17}\).</span>
+                <span class="step">\(\overline{PQ}_{\min}=\sqrt{17}-1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(\sqrt{17}-1\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>원을 중심 한 점으로 축소</strong>해서 먼저 푼 뒤 반지름을 빼는 2단 구조. 반지름 빼기를 잊는 실수가 절반 이상이다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">12</span><span class="q-title">⭐ 닮음 + 변화율</span></div>
+            <div class="q-stmt">키 \(1.6\), 가로등 \(3\), 속력 \(1.4\,\mathrm{m/s}\)일 때 그림자 길이의 변화율</div>
+            <div class="q-solve">
+                <span class="step">걸은 거리 \(x=1.4t\), 그림자 \(y\).</span>
+                <span class="step">닮음: \(\frac{y}{1.6}=\frac{x+y}{3} \Rightarrow y=\frac{8}{7}x\).</span>
+                <span class="step">\(\frac{dy}{dt}=\frac87 \cdot 1.4=1.6\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(1.6\,\mathrm{m/s}\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>닮음비 식을 세우는 것</strong>이 전부이고 미분은 한 줄. 그림에 삼각형 두 개를 분리해 그려 주면 식이 바로 나온다.</div>
+        </div>
+
+    </div>
+
+    <!-- F. 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성 점검 기준 — 익힘책 12문항 (100점 환산)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 도달도 판정 (도구 선택 능력 중심)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">A (우수)</div><div class="score">90+</div><div class="desc">도전 3문항 중 2개 이상 해결. 특히 11번에서 <strong>반지름을 빼는 마지막 단계</strong>를 놓치지 않았다.</div>
+            <div class="lvl-box">B (양호)</div><div class="score">75</div><div class="desc">기본 6문항 전부 해결. 7번에서 변수를 스스로 통일했다.</div>
+            <div class="lvl-box">C (보통)</div><div class="score">60</div><div class="desc">기초 3 + 기본 4 이상. 증감표를 빠뜨리지 않고 작성한다.</div>
+            <div class="lvl-box">D (보충)</div><div class="score">40</div><div class="desc">기초 3문항만 해결. 3번 증감 구간을 부등식으로만 답했다. → 20차시 증감표 루틴 재지도.</div>
+            <div class="lvl-box">보충 지도</div><div class="score">—</div><div class="desc"><strong>우선순위:</strong> ① 증감표 작성 루틴 ② 변수 통일(관계식 찾기) ③ 정의역 확인. 이 3개가 익힘책 Ⅱ-2의 뼈대.</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 -->
+    <h2 class="section-h"><span class="ico">G</span> 익힘책 성찰 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화</span>
+            <span class="rtbody">"7번에서 변수가 두 개라 못 푼다고 생각했는데, 구의 지름으로 직각삼각형을 만들면 하나로 줄어든다는 걸 배웠다. <strong>관계식 하나가 변수 하나를 지운다.</strong>"</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 결정적 실수와 극복</span>
+            <span class="rtbody">"11번에서 \(\sqrt{17}\)까지 구하고 답이라고 했다가 틀렸다. Q가 원 <strong>위</strong>의 점이라 반지름 1을 빼야 했다. 이제 그림에서 무엇이 움직이는지 먼저 확인한다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성</span>
+            <span class="rtbody">"9번에서 \(x\ge0\)을 무시하고 \(x=-1\)에서 최소를 잡아 틀렸다. 앞으로 부등식 문제는 <strong>정의역부터 동그라미</strong> 치고 시작하겠다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (익힘책 도달도 + 보충 대상)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>
