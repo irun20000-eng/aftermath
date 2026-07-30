@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학 익힘책 미적분 I — 단계별 해설 모음</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>window.name = 'aftermath_workbook_calc';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); min-height: 100vh; color: #0f172a; }
+        .page { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+        .hero { text-align: center; padding: 2rem 1rem 1.5rem; }
+        .hero .label { color: #ea580c; font-weight: 800; letter-spacing: 0.3em; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.75rem; }
+        .hero h1 { font-size: 2rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -0.025em; }
+        .hero .sub { color: #475569; font-size: 1rem; font-weight: 600; }
+        .hero .hint { margin-top: 0.875rem; font-size: 0.82rem; color: #64748b; line-height: 1.6; }
+        .summary-wrap { text-align: center; margin-bottom: 1.5rem; }
+        .summary { background: white; border: 1px solid #fed7aa; border-radius: 999px; padding: 0.5rem 1.25rem; display: inline-block; font-size: 0.82rem; font-weight: 700; color: #c2410c; }
+        .topbar { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .topbar a { font-size: 0.85rem; font-weight: 700; padding: 0.5rem 1rem; background: white; border: 1px solid #fed7aa; border-radius: 999px; color: #c2410c; text-decoration: none; transition: all 0.15s; }
+        .topbar a:hover { background: #ea580c; color: white; border-color: #ea580c; }
+        .unit { margin-bottom: 2rem; }
+        .unit-head { font-size: 1.25rem; font-weight: 900; color: #7c2d12; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid #fdba74; display: flex; align-items: center; gap: 0.5rem; }
+        .wb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+        .wb-card { display: flex; align-items: center; gap: 0.875rem; background: white; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.125rem 1.25rem; box-shadow: 0 4px 16px rgba(0,0,0,0.05); text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
+        .wb-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(234,88,12,0.15); border-color: #fdba74; }
+        .wb-card.soon { opacity: 0.55; cursor: not-allowed; pointer-events: none; }
+        .wb-no { display: inline-flex; align-items: center; justify-content: center; min-width: 3.25rem; height: 2.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #fb923c, #ea580c); color: white; font-weight: 900; font-size: 0.9rem; border-radius: 0.625rem; flex-shrink: 0; }
+        .wb-card.soon .wb-no { background: #cbd5e1; }
+        .wb-body { flex: 1; min-width: 0; }
+        .wb-name { font-weight: 800; color: #1e293b; font-size: 1rem; line-height: 1.3; }
+        .wb-meta { font-size: 0.78rem; color: #ea580c; font-weight: 700; margin-top: 0.2rem; }
+        .wb-card.soon .wb-meta { color: #94a3b8; }
+        .wb-arrow { color: #fdba74; font-size: 1.1rem; font-weight: 900; flex-shrink: 0; }
+        .footer { text-align: center; color: #64748b; font-size: 0.85rem; padding-top: 1.5rem; margin-top: 1rem; border-top: 1px solid #fed7aa; }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .wb-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="hero">
+        <div class="label">Math Workbook · 스스로 공부하는</div>
+        <h1>📗 수학 익힘책 미적분 I</h1>
+        <div class="sub">단계별(STEP) 해설 · 전체 6단원</div>
+        <div class="hint">교과서 <strong>수학 익힘책</strong>의 기초·기본·도전 문제를 단계별 해설로 확인하세요.<br>풀이 공간·정답 확인·난이도 필터 기능이 포함되어 있습니다.</div>
+    </div>
+
+    <div class="summary-wrap">
+        <span class="summary">📘 6단원 · 기초 · 기본 · 도전 3단계 구성</span>
+    </div>
+
+    <div class="topbar">
+        <a href="index-calc.html" target="aftermath_main_calc">🏠 학습지 메인</a>
+        <a href="suneung-calc.html" target="aftermath_suneung_calc">📚 수능특강 해설</a>
+        <a href="forms-calc.html" target="aftermath_forms_calc">📋 성찰지 폼 모음</a>
+    </div>
+
+    <!-- I. 함수의 극한과 연속 -->
+    <div class="unit">
+        <h2 class="unit-head"><span>📊</span> I. 함수의 극한과 연속</h2>
+        <div class="wb-grid">
+            <a class="wb-card" href="수학익힘책_미적분I_I1_함수의극한_해설.html" target="aftermath_wb_I1">
+                <span class="wb-no">Ⅰ-1</span>
+                <span class="wb-body"><span class="wb-name">함수의 극한</span><span class="wb-meta">11문항 · 기초 3 · 기본 6 · 도전 2</span></span>
+                <span class="wb-arrow">→</span>
+            </a>
+            <span class="wb-card soon">
+                <span class="wb-no">Ⅰ-2</span>
+                <span class="wb-body"><span class="wb-name">함수의 연속</span><span class="wb-meta">준비 중</span></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- II. 미분 -->
+    <div class="unit">
+        <h2 class="unit-head"><span>📉</span> II. 미분</h2>
+        <div class="wb-grid">
+            <span class="wb-card soon">
+                <span class="wb-no">Ⅱ-1</span>
+                <span class="wb-body"><span class="wb-name">미분계수와 도함수</span><span class="wb-meta">준비 중</span></span>
+            </span>
+            <span class="wb-card soon">
+                <span class="wb-no">Ⅱ-2</span>
+                <span class="wb-body"><span class="wb-name">도함수의 활용</span><span class="wb-meta">준비 중</span></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- III. 적분 -->
+    <div class="unit">
+        <h2 class="unit-head"><span>∫</span> III. 적분</h2>
+        <div class="wb-grid">
+            <span class="wb-card soon">
+                <span class="wb-no">Ⅲ-1</span>
+                <span class="wb-body"><span class="wb-name">부정적분과 정적분</span><span class="wb-meta">준비 중</span></span>
+            </span>
+            <span class="wb-card soon">
+                <span class="wb-no">Ⅲ-2</span>
+                <span class="wb-body"><span class="wb-name">정적분의 활용</span><span class="wb-meta">준비 중</span></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="footer">
+        2026 · 2학기 미적분 I · 스스로 공부하는 수학 익힘책 단계별 해설<br>
+        각 단원은 문제 · STEP 풀이 · 정답 · 풀이 공간을 포함합니다.
+    </div>
+
+</div>
+</body>
+</html>
