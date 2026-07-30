@@ -13,7 +13,8 @@ Nav_*.html
 구글클래스룸_성찰지_연동_메뉴얼.md
 학습지\ 제작을\ 위한\ 대화내용.md
 MEMORY.md
-
+_assets_private/
+교사용/
 # Apps Script / Python 서버사이드 코드
 *.gs
 *.py
@@ -52,6 +53,7 @@ nav/
 
 # 교사용 자료 — PDF·인벤토리·검수 노트 (학생 비공개)
 _assets_private/
+교사용/
 
 # 임시 압축·백업 파일 (교사용 자료)
 nav_backup*.tar.gz
