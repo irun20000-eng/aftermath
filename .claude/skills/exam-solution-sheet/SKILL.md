@@ -53,11 +53,31 @@ description: >-
 - `keypoint`(핵심 개념 한 줄)와 `subLabel`(유형 설명), `title`(문제 제목) 채운다
 
 ### 5. 검증 (생략 금지)
-다음을 **반드시** 자체 점검한다:
-- [ ] **정답 정합**: 작성한 STEP 풀이의 결론 == `answer` (선택형이면 인덱스, 단답형이면 값)
-- [ ] **수식 유효성**: 모든 `\(...\)` / `\[...\]` 가 KaTeX로 렌더 가능한 문법인가 (백슬래시 이스케이프, 중괄호 짝)
-- [ ] **그림 정합**: 그림 기준으로 좌표·값·해설이 일치하는가
-- [ ] **교육과정 적합**: 풀이에 쓴 도구가 해당 과목 교육과정 내인가 (예: 2026 수학I에서 내적·삼각함수 합성 등 범위 외 도구 사용 금지)
+
+**A. 필드·문법 자동 점검** — 아래를 스크립트로 확인한다:
+- [ ] **정답 필드명**: `choice`는 `answer`(인덱스), `short`는 **`answerText`**(문자열). 섞이면 정답이 안 보인다
+      → `P.filter(p=>p.type==='short' && !p.answerText).length === 0` 이어야 함
+- [ ] **정답 정합**: STEP 풀이의 결론 == 정답값
+- [ ] **부등호**: `question`·`steps[].body`에 **생( raw ) `<` 가 수식 안에 없는가** (`\lt`/`\gt` 사용)
+      → `/\\\(.*?[<>].*?\\\)/` 매칭이 0이어야 함
+- [ ] **선택지 길이**: 각 `choices` 항목 20자 이내 (넘치면 `short`로 전환)
+- [ ] **수식 짝**: `\(` 개수 == `\)` 개수, 중괄호 균형
+- [ ] **그림**: 외부 참조 0 (`src="images/` 금지), base64만
+- [ ] `node --check` 로 JS 구문 통과
+
+**B. 렌더 확인 (필수 — 생략하면 위 A를 통과해도 화면이 깨질 수 있다)**
+- [ ] Playwright(Chromium 사전 설치됨)로 실제 페이지를 열어 **스크린샷을 찍고 눈으로 확인**한다
+- [ ] 확인 항목: ① 문제 본문 수식이 렌더되는가(원시 `\(...\)` 노출 없음) ② 선택지가 한 화면에 들어오는가
+      ③ **'정답' 버튼을 눌렀을 때 정답이 실제로 표시되는가** ④ 그림이 보이고 잘림/불필요 영역이 없는가
+      ⑤ STEP 배치가 문항마다 일관된가
+- [ ] 최소 **선택형 1개 + 단답형 1개 + 그림 있는 문항 1개**는 반드시 렌더 확인
+
+**C. 그림 crop 정확성**
+- [ ] 캡처 이미지를 **직접 열어 확인** — 위/아래에 다른 문제의 텍스트가 섞이지 않았는지
+- [ ] 섞였으면 crop 좌표를 조정해 다시 캡처 (문제 본문 텍스트는 제외, 그래프만)
+
+**D. 교육과정 적합**
+- [ ] 풀이에 쓴 도구가 해당 과목 교육과정 내인가 (예: 2026 수학I에서 내적·삼각함수 합성 등 범위 외 금지)
 - 가능하면 에이전트로 교차 검수:
   - `problem-evaluator` (난이도·핵심개념·실수포인트)
   - `worksheet-auditor` (HTML/수식/링크 정합성, 최종 단계)
@@ -76,29 +96,66 @@ description: >-
 `reference/example_problems.js` 에 실제 작성 예시(choice형·short형)가 있다. 구조:
 
 ```js
+// 선택형(choice) — answer = 정답 인덱스(0부터)
 {
   id: 'c1-e1',                 // 고유 ID: {단원코드}-{유형}{번호}
   level: 'example',            // basic|example|exercise|standard|advanced
   levelLabel: '예제',          // 기초|예제|유제|기본|실력
   num: 1,                      // 표시 번호
-  type: 'choice',              // 'choice'(선택형) | 'short'(단답형)
+  type: 'choice',
   subLabel: '함수의 우극한과 좌극한 · 그래프형',  // 유형 설명
   title: '함수 y=f(x)의 그래프 좌·우극한',        // 문제 제목
   question: `<p>...문제 본문 (수식 \\(...\\), 그림 <img base64>)...</p>`,
-  choices: ['\\(-2\\)','\\(-1\\)','\\(0\\)','\\(1\\)','\\(2\\)'],  // choice일 때만
-  answer: 0,                   // choice: 정답 인덱스(0부터) / short: 정답 값(문자열/숫자)
+  choices: ['\\(-2\\)','\\(-1\\)','\\(0\\)','\\(1\\)','\\(2\\)'],
+  answer: 0,                   // ← choice는 answer(인덱스)만. answerText 불필요
   keypoint: '우극한·좌극한은 ...핵심 한 줄',
   steps: [
     {tag:'STEP 1', title:'...', body:`<p>...</p><div class="calc purple">\\(...\\)</div>`},
     {tag:'STEP 2', title:'...', body:`...`}
   ]
 }
+
+// 단답형(short) — answerText = 정답 문자열 (KaTeX 표기)
+{
+  id: 'c1-b1', level: 'basic', levelLabel: '기초', num: 2,
+  type: 'short',
+  subLabel: '...', title: '...',
+  question: `<p>...</p>`,
+  answerText: '\\(2\\)',       // ← short는 반드시 answerText. answer 아님!
+  keypoint: '...',
+  steps: [ ... ]
+}
 ```
 
-규칙:
+### ⚠️ 필드명 규칙 (틀리면 정답이 화면에 안 나옴)
+| 유형 | 정답 필드 | 예 |
+|---|---|---|
+| `choice` | **`answer`** (0부터의 인덱스) | `answer: 3` → ④ |
+| `short` | **`answerText`** (KaTeX 문자열) | `answerText: '\\(\\frac{1}{2}\\)'` |
+
+`short`에 `answer`를 쓰면 템플릿이 `problem.answerText`를 읽으므로 **정답 칸이 빈 채로 표시**된다.
+정답이 여러 개면 한 문자열로: `answerText: '\\(a=-2,\\ b=-2\\)'`
+
+### ⚠️ 부등호는 `\lt` / `\gt` 로 쓴다 (필수)
+`question`·`steps[].body`는 `innerHTML`로 삽입되므로, 수식 안의 `<`·`>`가 **HTML 태그로 파싱되어 수식이 깨진다.**
+
+```
+❌ \\(3-\\frac{5}{x}<f(x)<3+\\frac{10}{x}\\)      → 태그로 먹혀 사라짐
+✅ \\(3-\\frac{5}{x}\\lt f(x)\\lt 3+\\frac{10}{x}\\)
+✅ \\(x\\gt 0\\) / \\(x\\le 1\\)은 \\(\\le\\) 그대로 사용 가능
+```
+
+### ⚠️ 선택지(choices)는 짧게 — 5열 그리드
+`.choices`는 `grid-template-columns:repeat(5,1fr)` 고정이다. 항목이 길면 **옆으로 넘쳐 잘린다.**
+- 각 항목 **20자 이내**를 목표로 한다 (원본 해설지 실측 최대 17자)
+- 선택지가 긴 수식·문장이면 `type:'short'`로 바꾸고, 선택지 내용을 `question` 본문의 목록으로 옮긴다
+  (예: "다음 중 옳지 않은 것은?" + ①~⑤를 `<div class="calc">` 목록으로 나열 → `answerText:'④'`)
+
+### 기타 규칙
 - 모든 수식은 KaTeX 표기. JS 템플릿 문자열 안에서는 백슬래시를 `\\(` `\\)` 처럼 이스케이프
 - `question`·`steps[].body` 는 HTML 문자열 (백틱 템플릿 리터럴 사용)
 - 그림은 question 안에 `<div class="graph-box"><img src="data:image/png;base64,..."></div>`
+- `keypoint`·`subLabel`·`title`에는 **긴 수식을 넣지 않는다** (레이아웃 깨짐)
 
 ---
 
