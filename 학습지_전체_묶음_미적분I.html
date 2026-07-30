@@ -173,11 +173,14 @@
 
 <section class="aft-lesson-wrap" data-lesson-no="01" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 01. 2026 2학기 미적분 I 학습지: 함수의 극한</div>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "01차시 함수의 극한";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "01차시 함수의 극한";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["01"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -497,8 +500,8 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-01" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-01" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -510,26 +513,31 @@
         </footer>
     </div>
 
-    <script>
+        <script>
+        /* 정답 확인 박스 — 묶음 전체 공용 (인라인 onclick 이 호출) */
         function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
+          el.classList.add("active");
+          if (typeof MathJax !== "undefined" && MathJax.typesetPromise) MathJax.typesetPromise([el]);
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["01"] || "";
+            const qr = document.getElementById("qr-container-01");
+            const btn = document.getElementById("form-link-btn-01");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
     <script>
         // 메인 단축키 (H/Esc → index-calc.html)
@@ -642,11 +650,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "02차시 함수의 극한값의 계산";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "02차시 함수의 극한값의 계산";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["02"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -1013,8 +1024,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-02" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-02" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -1026,39 +1037,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["02"] || "";
+            const qr = document.getElementById("qr-container-02");
+            const btn = document.getElementById("form-link-btn-02");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -1101,16 +1099,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="03" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 03. 2026 2학기 미적분 I 학습지: 함수의 극한 — 미정형</div>
@@ -1158,11 +1146,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "03차시 함수의 극한 — 미정형";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "03차시 함수의 극한 — 미정형";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["03"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -1531,8 +1522,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-03" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-03" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -1544,39 +1535,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["03"] || "";
+            const qr = document.getElementById("qr-container-03");
+            const btn = document.getElementById("form-link-btn-03");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -1619,16 +1597,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="04" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 04. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 함수의 극한</div>
@@ -1675,11 +1643,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 150px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "04차시 중단원 마무리 (I-1 함수의 극한)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "04차시 중단원 마무리 (I-1 함수의 극한)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["04"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -1949,8 +1920,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-04" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-04" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -1962,39 +1933,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["04"] || "";
+            const qr = document.getElementById("qr-container-04");
+            const btn = document.getElementById("form-link-btn-04");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -2037,16 +1995,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="wb-I1" style="page-break-after:always;break-after:page;">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅰ-1. 2026 2학기 수학 익힘책: 함수의 극한</div>
@@ -2194,11 +2142,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "05차시 함수의 연속";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "05차시 함수의 연속";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["05"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -2562,8 +2513,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-05" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-05" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -2575,39 +2526,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["05"] || "";
+            const qr = document.getElementById("qr-container-05");
+            const btn = document.getElementById("form-link-btn-05");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -2650,16 +2588,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="06" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 06. 2026 2학기 미적분 I 학습지: 연속함수의 성질</div>
@@ -2707,11 +2635,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "06차시 연속함수의 성질";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "06차시 연속함수의 성질";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["06"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -3061,8 +2992,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-06" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-06" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -3074,39 +3005,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["06"] || "";
+            const qr = document.getElementById("qr-container-06");
+            const btn = document.getElementById("form-link-btn-06");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -3149,16 +3067,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="07" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 07. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 함수의 연속</div>
@@ -3203,11 +3111,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 150px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "07차시 중단원 마무리 (I-2 함수의 연속)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "07차시 중단원 마무리 (I-2 함수의 연속)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["07"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -3472,8 +3383,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-07" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-07" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -3485,39 +3396,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["07"] || "";
+            const qr = document.getElementById("qr-container-07");
+            const btn = document.getElementById("form-link-btn-07");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -3560,16 +3458,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="wb-I2" style="page-break-after:always;break-after:page;">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅰ-2. 2026 2학기 수학 익힘책: 함수의 연속</div>
@@ -3723,11 +3611,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 160px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "08차시 대단원 평가 I (함수의 극한·연속)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "08차시 대단원 평가 I (함수의 극한·연속)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["08"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -3976,8 +3867,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-08" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-08" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -3989,39 +3880,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["08"] || "";
+            const qr = document.getElementById("qr-container-08");
+            const btn = document.getElementById("form-link-btn-08");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -4064,16 +3942,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="09" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 09. 2026 2학기 미적분 I 학습지: 미분계수</div>
@@ -4121,11 +3989,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "09차시 미분계수";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "09차시 미분계수";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["09"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -4487,8 +4358,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-09" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-09" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -4500,39 +4371,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["09"] || "";
+            const qr = document.getElementById("qr-container-09");
+            const btn = document.getElementById("form-link-btn-09");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -4575,16 +4433,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="10" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 10. 2026 2학기 미적분 I 학습지: 도함수</div>
@@ -4632,11 +4480,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "10차시 도함수";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "10차시 도함수";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["10"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -5014,8 +4865,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-10" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-10" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -5027,39 +4878,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["10"] || "";
+            const qr = document.getElementById("qr-container-10");
+            const btn = document.getElementById("form-link-btn-10");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -5102,16 +4940,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="11" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 11. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 미분계수와 도함수</div>
@@ -5156,11 +4984,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 150px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "11차시 중단원 마무리 (II-1 미분계수와 도함수)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "11차시 중단원 마무리 (II-1 미분계수와 도함수)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["11"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -5421,8 +5252,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-11" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-11" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -5434,39 +5265,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["11"] || "";
+            const qr = document.getElementById("qr-container-11");
+            const btn = document.getElementById("form-link-btn-11");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -5509,16 +5327,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="wb-II1" style="page-break-after:always;break-after:page;">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅱ-1. 2026 2학기 수학 익힘책: 미분계수와 도함수</div>
@@ -5663,11 +5471,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "12차시 접선의 방정식";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "12차시 접선의 방정식";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["12"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -6035,8 +5846,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-12" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-12" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -6048,39 +5859,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["12"] || "";
+            const qr = document.getElementById("qr-container-12");
+            const btn = document.getElementById("form-link-btn-12");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -6123,16 +5921,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="13" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 13. 2026 2학기 미적분 I 학습지: 평균값 정리</div>
@@ -6179,11 +5967,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "13차시 평균값 정리";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "13차시 평균값 정리";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["13"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -6545,8 +6336,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-13" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-13" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -6558,38 +6349,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["13"] || "";
+            const qr = document.getElementById("qr-container-13");
+            const btn = document.getElementById("form-link-btn-13");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -6632,16 +6411,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="14" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 14. 2026 2학기 미적분 I 학습지: 함수의 증가와 감소</div>
@@ -6692,11 +6461,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "14차시 함수의 증가와 감소";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "14차시 함수의 증가와 감소";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["14"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -7075,8 +6847,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-14" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-14" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -7088,38 +6860,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["14"] || "";
+            const qr = document.getElementById("qr-container-14");
+            const btn = document.getElementById("form-link-btn-14");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -7162,16 +6922,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="15" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 15. 2026 2학기 미적분 I 학습지: 극대와 극소</div>
@@ -7222,11 +6972,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "15차시 극대와 극소";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "15차시 극대와 극소";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["15"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -7638,8 +7391,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-15" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-15" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -7651,38 +7404,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["15"] || "";
+            const qr = document.getElementById("qr-container-15");
+            const btn = document.getElementById("form-link-btn-15");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -7725,16 +7466,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="16" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 16. 2026 2학기 미적분 I 학습지: 함수의 그래프</div>
@@ -7785,11 +7516,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "16차시 함수의 그래프";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "16차시 함수의 그래프";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["16"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -8186,8 +7920,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-16" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-16" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -8199,38 +7933,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["16"] || "";
+            const qr = document.getElementById("qr-container-16");
+            const btn = document.getElementById("form-link-btn-16");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -8273,16 +7995,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="17" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 17. 2026 2학기 미적분 I 학습지: 함수의 그래프 응용 (최댓값·최솟값)</div>
@@ -8333,11 +8045,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "17차시 함수의 그래프 응용 (최댓값·최솟값)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "17차시 함수의 그래프 응용 (최댓값·최솟값)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["17"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -8720,8 +8435,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-17" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-17" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -8733,38 +8448,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["17"] || "";
+            const qr = document.getElementById("qr-container-17");
+            const btn = document.getElementById("form-link-btn-17");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -8807,16 +8510,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="18" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 18. 2026 2학기 미적분 I 학습지: 방정식과 부등식에의 활용</div>
@@ -8867,11 +8560,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "18차시 방정식과 부등식에의 활용";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "18차시 방정식과 부등식에의 활용";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["18"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -9258,8 +8954,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-18" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-18" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -9271,38 +8967,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["18"] || "";
+            const qr = document.getElementById("qr-container-18");
+            const btn = document.getElementById("form-link-btn-18");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -9345,16 +9029,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="19" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 19. 2026 2학기 미적분 I 학습지: 속도와 가속도</div>
@@ -9405,11 +9079,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "19차시 속도와 가속도";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "19차시 속도와 가속도";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["19"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -9817,8 +9494,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-19" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-19" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -9830,38 +9507,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["19"] || "";
+            const qr = document.getElementById("qr-container-19");
+            const btn = document.getElementById("form-link-btn-19");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -9904,16 +9569,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="20" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 20. 2026 2학기 미적분 I 학습지: 중단원 마무리 II-2 (도함수의 활용)</div>
@@ -9960,11 +9615,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 150px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "20차시 중단원 마무리 II-2 (도함수의 활용)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "20차시 중단원 마무리 II-2 (도함수의 활용)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["20"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -10191,8 +9849,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-20" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-20" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -10204,39 +9862,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["20"] || "";
+            const qr = document.getElementById("qr-container-20");
+            const btn = document.getElementById("form-link-btn-20");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -10279,16 +9924,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="wb-II2" style="page-break-after:always;break-after:page;">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅱ-2. 2026 2학기 수학 익힘책: 도함수의 활용</div>
@@ -10431,11 +10066,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 160px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "21차시 대단원 평가 II (미분)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "21차시 대단원 평가 II (미분)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["21"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -10689,8 +10327,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-21" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-21" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -10702,39 +10340,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["21"] || "";
+            const qr = document.getElementById("qr-container-21");
+            const btn = document.getElementById("form-link-btn-21");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -10777,16 +10402,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="22" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 22. 2026 2학기 미적분 I 학습지: 부정적분</div>
@@ -10833,11 +10448,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "22차시 부정적분";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "22차시 부정적분";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["22"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -11215,8 +10833,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-22" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-22" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -11228,38 +10846,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["22"] || "";
+            const qr = document.getElementById("qr-container-22");
+            const btn = document.getElementById("form-link-btn-22");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -11302,16 +10908,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="23" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 23. 2026 2학기 미적분 I 학습지: 정적분의 정의</div>
@@ -11358,11 +10954,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "23차시 정적분의 정의";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "23차시 정적분의 정의";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["23"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -11726,8 +11325,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-23" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-23" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -11739,38 +11338,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["23"] || "";
+            const qr = document.getElementById("qr-container-23");
+            const btn = document.getElementById("form-link-btn-23");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -11813,16 +11400,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="24" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 24. 2026 2학기 미적분 I 학습지: 정적분의 계산</div>
@@ -11869,11 +11446,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "24차시 정적분의 계산";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "24차시 정적분의 계산";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["24"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -12246,8 +11826,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-24" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-24" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -12259,38 +11839,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["24"] || "";
+            const qr = document.getElementById("qr-container-24");
+            const btn = document.getElementById("form-link-btn-24");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -12333,16 +11901,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="25" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 25. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 부정적분과 정적분</div>
@@ -12386,11 +11944,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 150px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "25차시 중단원 마무리 (III-1 부정적분과 정적분)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "25차시 중단원 마무리 (III-1 부정적분과 정적분)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["25"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -12637,8 +12198,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-25" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-25" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -12650,38 +12211,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["25"] || "";
+            const qr = document.getElementById("qr-container-25");
+            const btn = document.getElementById("form-link-btn-25");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -12724,16 +12273,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="wb-III1" style="page-break-after:always;break-after:page;">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅲ-1. 2026 2학기 수학 익힘책: 부정적분과 정적분</div>
@@ -12898,11 +12437,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "26차시 넓이 — 곡선과 x축 사이";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "26차시 넓이 — 곡선과 x축 사이";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["26"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -13285,8 +12827,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-26" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-26" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -13298,38 +12840,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["26"] || "";
+            const qr = document.getElementById("qr-container-26");
+            const btn = document.getElementById("form-link-btn-26");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -13372,16 +12902,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="27" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 27. 2026 2학기 미적분 I 학습지: 넓이 — 두 곡선 사이</div>
@@ -13428,11 +12948,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "27차시 넓이 — 두 곡선 사이";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "27차시 넓이 — 두 곡선 사이";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["27"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -13792,8 +13315,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-27" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-27" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -13805,38 +13328,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["27"] || "";
+            const qr = document.getElementById("qr-container-27");
+            const btn = document.getElementById("form-link-btn-27");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -13879,16 +13390,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="28" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 28. 2026 2학기 미적분 I 학습지: 속도와 거리</div>
@@ -13935,11 +13436,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 100px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "28차시 속도와 거리";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "28차시 속도와 거리";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["28"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -14320,8 +13824,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-28" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-28" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -14333,38 +13837,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["28"] || "";
+            const qr = document.getElementById("qr-container-28");
+            const btn = document.getElementById("form-link-btn-28");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -14407,16 +13899,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="29" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 29. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 정적분의 활용</div>
@@ -14460,11 +13942,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 150px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
-        const LESSON_NAME = "29차시 중단원 마무리 (III-2 정적분의 활용)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "29차시 중단원 마무리 (III-2 정적분의 활용)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["29"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -14741,8 +14226,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-29" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-29" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -14754,38 +14239,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["29"] || "";
+            const qr = document.getElementById("qr-container-29");
+            const btn = document.getElementById("form-link-btn-29");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -14828,16 +14301,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="wb-III2" style="page-break-after:always;break-after:page;">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅲ-2. 2026 2학기 수학 익힘책: 정적분의 활용</div>
@@ -14974,11 +14437,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 160px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "30차시 대단원 평가 III (적분)";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "30차시 대단원 평가 III (적분)";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["30"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -15241,8 +14707,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-30" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-30" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -15254,39 +14720,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["30"] || "";
+            const qr = document.getElementById("qr-container-30");
+            const btn = document.getElementById("form-link-btn-30");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -15329,16 +14782,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <section class="aft-lesson-wrap" data-lesson-no="31" style="page-break-after:always;break-after:page;">
   <div class="aft-lesson-meta no-print">📄 31. 2026 2학기 미적분 I 학습지: 학기말 종합 평가</div>
@@ -15389,11 +14832,14 @@ document.addEventListener('click', function(e) {
             .thinking-space { min-height: 160px; }
         }
     </style>
-<script>
-        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343="; // 차시별 구글 폼 URL 확정 후 채움
-        const LESSON_NAME = "31차시 학기말 종합 평가";
-        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
-    </script>
+        <script>
+        (function () {
+          const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSeSL8wPYs5uEbWVjwktcpIPb95y18yr7B_Ehqjxga8LOdG3DA/viewform?usp=pp_url&entry.359855343=";
+          const NAME = "31차시 학기말 종합 평가";
+          (window.AFT_FORM_URL = window.AFT_FORM_URL || {})["31"] =
+            BASE ? BASE + encodeURIComponent(NAME) : "";
+        })();
+        </script>
 
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
@@ -15663,8 +15109,8 @@ document.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
-                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
-                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                    <div id="qr-container-31" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn-31" target="_blank" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
                         성찰지 제출하기
                     </a>
                 </div>
@@ -15676,39 +15122,26 @@ document.addEventListener('click', function(e) {
         </footer>
     </div>
 
-    <script>
-        function toggleReveal(el) {
-            el.classList.add('active');
-            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
-                MathJax.typesetPromise([el]);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const qrContainer = document.getElementById('qr-container');
-            const formLinkBtn = document.getElementById('form-link-btn');
-            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
-                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
-                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
-                formLinkBtn.href = GOOGLE_FORM_URL;
+        <script>
+        (function () {
+          const wire = function () {
+            const url = (window.AFT_FORM_URL || {})["31"] || "";
+            const qr = document.getElementById("qr-container-31");
+            const btn = document.getElementById("form-link-btn-31");
+            if (!qr) return;
+            if (url && url.indexOf("http") === 0) {
+              const src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(url);
+              qr.innerHTML = '<img src="' + src + '" alt="QR Code" class="w-full h-full object-contain">';
+              if (btn) btn.href = url;
             } else {
-                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+              qr.innerHTML = '<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>';
             }
-        });
-    </script>
+          };
+          if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+          else wire();
+        })();
+        </script>
 
-    <script>
-        // 메인 단축키 (H/Esc → index-calc.html)
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing) return;
-            const t = e.target;
-            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
-                e.preventDefault();
-                const w = window.open('index-calc.html', 'aftermath_main_calc'); if (w) w.focus();
-            }
-        });
-    </script>
 
     <!-- floating 타이머 위젯 (1학기와 동일 마크업 — widgets.js 자동 마운트) -->
     <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
@@ -15751,16 +15184,6 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
-<script>
-/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
-document.addEventListener('click', function(e) {
-  const a = e.target.closest('a[target^="aftermath_"]');
-  if (!a) return;
-  e.preventDefault();
-  const w = window.open(a.href, a.target);
-  if (w) w.focus();
-});
-</script>
 </section>
 <script src="widgets.js"></script>
 </body>
