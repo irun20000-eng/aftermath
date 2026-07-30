@@ -1,0 +1,822 @@
+/* ============================================================
+   aftermath floating widgets — 공통 스타일
+   - 모든 셀렉터는 .aft-* prefix (학습지 본문과 충돌 차단)
+   - 인쇄 시 숨김
+   ============================================================ */
+
+.aft-widget {
+  position: fixed;
+  top: 80px;
+  right: 16px;
+  width: 280px;
+  min-width: 220px;
+  min-height: 60px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 8px 16px rgba(15, 23, 42, 0.10),
+    0 24px 48px rgba(15, 23, 42, 0.14);
+  z-index: 9999;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none; /* 드래그 시 스크롤 차단 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.aft-widget-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #1e293b;
+  color: #f8fafc;
+  cursor: move;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.aft-widget-title {
+  pointer-events: none; /* 텍스트 자체엔 드래그 이벤트 안 가게 */
+}
+
+.aft-widget-collapse {
+  background: transparent;
+  border: none;
+  color: #f8fafc;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.aft-widget-collapse:hover { background: rgba(255,255,255,0.15); }
+
+.aft-widget-body {
+  padding: 14px;
+  overflow: auto;
+  flex: 1;
+}
+
+.aft-widget.aft-collapsed {
+  height: auto !important;
+  min-height: 0;
+}
+.aft-widget.aft-collapsed .aft-widget-body,
+.aft-widget.aft-collapsed .aft-widget-resize {
+  display: none;
+}
+.aft-widget.aft-collapsed .aft-widget-collapse {
+  transform: rotate(-90deg);
+}
+
+.aft-widget-resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+  background:
+    linear-gradient(135deg, transparent 50%, #94a3b8 50%, #94a3b8 60%, transparent 60%, transparent 75%, #94a3b8 75%, #94a3b8 85%, transparent 85%);
+  border-bottom-right-radius: 12px;
+  touch-action: none;
+}
+
+/* ============================================================
+   타이머 위젯 전용
+   ============================================================ */
+
+.aft-timer-display {
+  font-family: 'Courier New', monospace;
+  font-size: 38px;
+  font-weight: 700;
+  text-align: center;
+  color: #0f172a;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 10px 0;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+.aft-timer-display.aft-warn { color: #d97706; background: #fef3c7; }
+.aft-timer-display.aft-danger { color: #dc2626; background: #fee2e2; animation: aft-pulse 1s infinite; }
+
+@keyframes aft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.aft-timer-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.aft-preset {
+  background: #e0f2fe;
+  border: 1px solid #7dd3fc;
+  color: #075985;
+  border-radius: 6px;
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.aft-preset:hover { background: #bae6fd; }
+.aft-preset:active { background: #7dd3fc; }
+
+.aft-timer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+#aft-timer-input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+.aft-timer-controls button {
+  flex: 1;
+  min-width: 60px;
+  padding: 7px 0;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+#aft-timer-start { background: #16a34a; color: white; }
+#aft-timer-start:hover { background: #15803d; }
+#aft-timer-pause { background: #f59e0b; color: white; }
+#aft-timer-pause:hover { background: #d97706; }
+#aft-timer-reset { background: #64748b; color: white; }
+#aft-timer-reset:hover { background: #475569; }
+
+/* ============================================================
+   FAB — "문제 모아보기" 우하단 floating action button
+   ============================================================ */
+.aft-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  padding: 14px 20px 14px 18px;
+  background: #1e293b;
+  color: #f8fafc;
+  border: none;
+  border-radius: 28px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.10),
+    0 8px 24px rgba(15, 23, 42, 0.20);
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.18s ease;
+}
+.aft-fab:hover {
+  background: #0f172a;
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.10),
+    0 14px 36px rgba(15, 23, 42, 0.30);
+}
+.aft-fab:active { transform: translateY(0); }
+.aft-fab-icon { font-size: 18px; line-height: 1; }
+
+/* ============================================================
+   풀스크린 모달 — 문제 모아보기 뷰어
+   ============================================================ */
+.aft-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: stretch;
+  justify-content: center;
+}
+.aft-modal.aft-modal-open { display: flex; }
+
+.aft-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.aft-modal-content {
+  position: relative;
+  margin: auto;
+  background: #f8fafc;
+  width: 95%;
+  max-width: 1200px;
+  height: 92vh;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.aft-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #1e293b;
+  color: #f8fafc;
+  flex-shrink: 0;
+}
+.aft-modal-head h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.aft-modal-close {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.aft-modal-close:hover { background: rgba(255,255,255,0.22); }
+
+.aft-modal-body {
+  padding: 0;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* modal-body와 paneWrap 사이 중간 래퍼 — flex chain 유지 */
+#aft-problems-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* body에 잠금 클래스 추가 시 페이지 스크롤 차단 */
+body.aft-modal-locked { overflow: hidden; }
+
+/* 그룹 헤더 */
+.aft-problem-group { margin-bottom: 32px; }
+.aft-problem-group:last-child { margin-bottom: 0; }
+.aft-problem-group-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.aft-problem-group[data-level="challenge"] .aft-problem-group-title {
+  border-bottom-color: #c4b5fd;
+}
+
+/* 클론된 카드 */
+.aft-problem-clone {
+  margin-bottom: 16px;
+  padding: 18px 20px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.aft-problem-clone:last-child { margin-bottom: 0; }
+
+/* 출처 배지 (도전 카드에 자동 prepend) */
+.aft-source-badge {
+  display: inline-block;
+  background: #ede9fe;
+  color: #5b21b6;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   모달 2-pane 레이아웃 (좌: 학습지 / 우: 도전) — 독립 스크롤
+   ============================================================ */
+.aft-problems-pane-wrap {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+.aft-problems-pane {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 24px 24px;
+  -webkit-overflow-scrolling: touch;
+}
+.aft-problems-pane-left {
+  border-right: 2px solid #e2e8f0;
+}
+/* sticky 헤더 — 각 pane 자체 스크롤 컨테이너 기준
+   pane padding-top 대신 헤더에 padding 부여 → 헤더 위 빈 공간 X
+   배경 불투명 → 스크롤 시 내용 헤더 뒤로 비치지 X */
+.aft-problems-pane-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 14px;
+  padding: 18px 0 10px;
+  border-bottom: 3px solid #cbd5e1;
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 5;
+  box-shadow: 0 6px 8px -6px rgba(15, 23, 42, 0.08);
+}
+.aft-problems-pane-right .aft-problems-pane-title {
+  color: #5b21b6;
+  border-bottom-color: #c4b5fd;
+}
+.aft-pane-empty {
+  color: #94a3b8;
+  font-size: 14px;
+  font-style: italic;
+  padding: 12px 0;
+}
+
+/* ============================================================
+   클론 카드 — 모달 안에서 여백 압축
+   ============================================================ */
+.aft-problem-clone { padding: 14px 18px; margin-bottom: 12px; }
+/* 필기 공간·사고 공간은 모달 안에서 숨김 — 학생이 풀이는 본문에서 */
+.aft-problem-clone .thinking-space,
+.aft-problem-clone .empty-line { display: none !important; }
+/* Tailwind 큰 여백 압축 */
+.aft-problem-clone .mb-8 { margin-bottom: 0.75rem !important; }
+.aft-problem-clone .mb-6 { margin-bottom: 0.5rem !important; }
+.aft-problem-clone .mt-8 { margin-top: 0.75rem !important; }
+.aft-problem-clone .p-8 { padding: 1rem !important; }
+.aft-problem-clone .py-8 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+/* 카드 안 section-title 축소 */
+.aft-problem-clone .section-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom-width: 2px;
+}
+
+/* 모바일 — pane 세로 stack (각각 절반 높이로 독립 스크롤) */
+@media (max-width: 800px) {
+  .aft-problems-pane-wrap {
+    flex-direction: column;
+  }
+  .aft-problems-pane {
+    flex: 1 1 50%;
+  }
+  .aft-problems-pane-left {
+    border-right: none;
+    border-bottom: 2px solid #e2e8f0;
+  }
+}
+@media (max-width: 600px) {
+  .aft-modal-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .aft-fab {
+    right: 16px;
+    bottom: 16px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
+   인쇄 시 숨김
+   ============================================================ */
+@media print {
+  .aft-widget,
+  .aft-fab,
+  .aft-modal { display: none !important; }
+}
+
+/* ============================================================
+   다크 모드 (페이지가 dark 클래스 가질 때)
+   ============================================================ */
+.dark .aft-widget,
+[data-theme="dark"] .aft-widget {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+.dark .aft-timer-display,
+[data-theme="dark"] .aft-timer-display {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+/* ============================================================
+   힌트·풀이 토글 — <details>/<summary> 스타일
+   ============================================================ */
+details.hint-box {
+  display: block;
+  padding: 0;
+}
+details.hint-box > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  color: #92400e;
+  background: transparent;
+  border-radius: inherit;
+  transition: background 0.15s;
+}
+details.hint-box > summary:hover {
+  background: rgba(245, 158, 11, 0.08);
+}
+details.hint-box > summary::-webkit-details-marker { display: none; }
+details.hint-box > summary::before {
+  content: '▶';
+  font-size: 0.65em;
+  color: currentColor;
+  opacity: 0.6;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+details.hint-box[open] > summary::before {
+  transform: rotate(90deg);
+}
+details.hint-box > .hint-content {
+  padding: 0 1.25rem 1.25rem 2rem;
+  animation: hintFadeIn 0.2s ease-out;
+}
+@keyframes hintFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 빨간색 변형 (Level 3 함정) */
+details.hint-box.border-red-400 > summary,
+details.hint-box.bg-red-50 > summary { color: #991b1b; }
+details.hint-box.border-red-400 > summary:hover,
+details.hint-box.bg-red-50 > summary:hover { background: rgba(220, 38, 38, 0.08); }
+
+/* slate 변형 (형성평가 전략) */
+details.hint-box.bg-slate-50 > summary,
+details.hint-box.border-slate-400 > summary { color: #334155; }
+details.hint-box.bg-slate-50 > summary:hover { background: rgba(100, 116, 139, 0.08); }
+
+/* 도전 카드 — purple 변형 (학습지_03 등) */
+.aft-problem-clone details.hint-box > summary,
+section[data-aft-problem-level="challenge"] details.hint-box > summary {
+  color: #5b21b6;
+}
+
+/* 인쇄 시 모두 펼침 (오답분석·복습용) */
+@media print {
+  details.hint-box { display: block; }
+  details.hint-box > summary { display: none; }
+  details.hint-box > .hint-content { padding: 1rem 1.25rem !important; display: block !important; }
+  details.hint-box::after { content: ''; }
+  details.hint-box > .hint-content { animation: none; }
+  details:not([open]) > .hint-content { display: block !important; }
+}
+
+/* ============================================================
+   🚨 함정 경고 박스 (details 펼침형 — 학습지 06~18 일괄 적용)
+   ============================================================ */
+details.trap-box {
+  list-style: none;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+details.trap-box[open] { box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15); }
+details.trap-box:hover { box-shadow: 0 2px 8px rgba(220, 38, 38, 0.12); }
+
+details.trap-box > summary {
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  background: linear-gradient(180deg, #fef2f2, #fff);
+  transition: background 0.2s;
+}
+details.trap-box > summary:hover { background: linear-gradient(180deg, #fee2e2, #fff); }
+details.trap-box > summary::-webkit-details-marker { display: none; }
+
+details.trap-box > summary::after {
+  content: '▼';
+  margin-left: auto;
+  color: #dc2626;
+  font-size: 0.875rem;
+  transition: transform 0.2s;
+}
+details.trap-box[open] > summary::after { transform: rotate(180deg); }
+
+details.trap-box .trap-hint {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ef4444;
+  margin-left: 0.5rem;
+  opacity: 0.7;
+}
+details.trap-box[open] .trap-hint { display: none; }
+
+details.trap-box .trap-body {
+  animation: trapSlide 0.25s ease-out;
+}
+@keyframes trapSlide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 인쇄 시 모두 펼침 */
+@media print {
+  details.trap-box { display: block; }
+  details.trap-box > summary { display: block; color: #991b1b; }
+  details.trap-box > summary::after { content: ''; }
+  details.trap-box .trap-hint { display: none; }
+  details.trap-box > .trap-body { display: block !important; padding: 1rem 1.25rem; }
+}
+
+/* ============================================================
+   PDF 저장 기능 — 18개 학습지 공통
+   ============================================================ */
+
+/* 플로팅 PDF 버튼 (기존 .aft-fab 위에 한 줄 띄움) */
+.aft-pdf-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+  z-index: 9999;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.aft-pdf-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.5);
+}
+.aft-pdf-fab:active { transform: translateY(0); }
+
+/* 모달 (해설지 스타일과 유사) */
+.aft-pdf-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  background: rgba(15, 23, 42, 0.55);
+  padding: 1rem;
+}
+.aft-pdf-modal.aft-open { display: flex; }
+.aft-pdf-modal-inner {
+  background: white;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.aft-pdf-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+}
+.aft-pdf-modal-desc {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+.aft-pdf-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.aft-pdf-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #f8fafc;
+  transition: all 0.15s;
+}
+.aft-pdf-radio:hover {
+  border-color: #818cf8;
+  background: #eef2ff;
+}
+.aft-pdf-radio input { accent-color: #4f46e5; margin-top: 2px; }
+.aft-pdf-radio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aft-pdf-radio-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+.aft-pdf-radio-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+.aft-pdf-modal-btns {
+  display: flex;
+  gap: 0.625rem;
+  justify-content: flex-end;
+}
+.aft-pdf-btn {
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+.aft-pdf-btn-cancel {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #e2e8f0;
+}
+.aft-pdf-btn-cancel:hover { background: #e2e8f0; }
+.aft-pdf-btn-confirm {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+}
+.aft-pdf-btn-confirm:hover { filter: brightness(1.1); }
+
+/* ============================================================
+   인쇄 — 학습지만 모드 (기본 세로) + 학습지+필기공간 모드 (가로 좌우분할)
+   ============================================================ */
+@media print {
+  /* 페이지 마진 통일 */
+  @page { size: A4; margin: 15mm; }
+
+  /* 가독성 — 인쇄용 베이스 조정 */
+  body.aft-print-active { font-size: 11pt; color: #0f172a; }
+  body.aft-print-active section.card {
+    padding: 1.25rem 1.5rem !important;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+    border-radius: 8pt !important;
+  }
+  body.aft-print-active section.card h2.section-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.4rem !important;
+  }
+  body.aft-print-active section.card .grid {
+    gap: 0.75rem !important;
+  }
+  /* 카드 내부 자식이 페이지 중간에서 잘리지 않도록 */
+  body.aft-print-active section.card > *,
+  body.aft-print-active section.card .grid > *,
+  body.aft-print-active section.card table,
+  body.aft-print-active section.card figure,
+  body.aft-print-active section.card pre,
+  body.aft-print-active section.card .formula-box,
+  body.aft-print-active section.card .reveal-box,
+  body.aft-print-active section.card details {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* 플로팅 버튼·모달은 인쇄 제외 */
+  .aft-pdf-fab,
+  .aft-pdf-modal,
+  .aft-pdf-modal-backdrop { display: none !important; }
+
+  /* 카드 단위 페이지 분할 — 한 카드 = 한 페이지, 한 페이지 초과 시
+     break-inside:avoid가 다음 페이지로 옮기려 시도. 그래도 길면 자연 분할. */
+  body.aft-print-active section.card:not(.no-print) {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-after: page;
+    page-break-after: always;
+  }
+  body.aft-print-active section.card:not(.no-print):last-of-type {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  /* 필기 공간 모드: orientation 적응형 (태블릿 iOS Safari 호환)
+     - 가로(landscape): 좌 카드 / 우 그리드 (좌우분할)
+     - 세로(portrait):  위 카드 / 아래 그리드 (상하분할)
+     min-height 제거, ::after 대신 실제 .aft-pdf-blank DOM 요소 사용 */
+  @page aft-blank-page { size: A4 landscape; margin: 12mm; }
+  body.aft-print-mode-blank section.card:not(.no-print) {
+    page: aft-blank-page;
+    position: relative;
+    padding: 0.875rem 1.25rem !important;
+    margin: 0 !important;
+    border-radius: 6pt !important;
+  }
+  body.aft-print-mode-blank section.card h2.section-title {
+    font-size: 1.15rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+  body.aft-print-mode-blank section.card .grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  body.aft-print-mode-blank section.card p,
+  body.aft-print-mode-blank section.card li {
+    line-height: 1.45 !important;
+  }
+
+  /* 그리드 영역 — 실제 DOM 요소 (JS가 동적 삽입) */
+  body.aft-print-mode-blank section.card .aft-pdf-blank {
+    display: block;
+    border: 1pt solid #cbd5e1;
+    border-radius: 4pt;
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.35) 0.5pt, transparent 0.5pt),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.35) 0.5pt, transparent 0.5pt);
+    background-size: 5mm 5mm;
+    pointer-events: none;
+    break-inside: avoid;
+  }
+
+  /* 가로 페이지: 카드 우측 58% 영역에 그리드 (절대 위치 좌우분할) */
+  @media (orientation: landscape) {
+    body.aft-print-mode-blank section.card:not(.no-print) {
+      padding-right: 58% !important;
+    }
+    body.aft-print-mode-blank section.card .aft-pdf-blank {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      width: 55%;
+    }
+  }
+  /* 세로 페이지(landscape 강제 안 되는 iOS 등 fallback):
+     카드 아래에 그리드 (상하분할, 100mm 높이) */
+  @media (orientation: portrait) {
+    body.aft-print-mode-blank section.card .aft-pdf-blank {
+      position: static;
+      width: 100%;
+      height: 100mm;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+/* 화면에서는 동적 삽입된 .aft-pdf-blank 숨김 (인쇄 시에만 의미) */
+.aft-pdf-blank { display: none; }
