@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>수학 익힘책 미적분 I · Ⅰ-1 함수의 극한 — 단계별 해설</title>
+<title>[교사용] 수학 익힘책 미적분 I · Ⅰ-1 함수의 극한 — 단계별 해설</title>
 <meta name="robots" content="noindex,nofollow">
 <script>window.name = 'aftermath_sol_calc_01';</script>
 
@@ -703,7 +703,7 @@ a{color:var(--color-primary);text-decoration:none}
         <text x="16" y="22" text-anchor="middle" font-family="Georgia,sans-serif" font-size="16" font-weight="700" fill="var(--color-primary)">∫</text>
       </svg>
       <div>
-        <span class="school-name">스스로 공부하는 수학 익힘책 · 2학기</span>
+        <span class="school-name">[교사용] 스스로 공부하는 수학 익힘책 · 2학기</span>
         <h1 class="site-title">미적분 I &nbsp;·&nbsp; <span class="unit-name">Ⅰ-1. 함수의 극한</span></h1>
       </div>
     </div>
@@ -738,7 +738,7 @@ a{color:var(--color-primary);text-decoration:none}
 <!-- MAIN -->
 <main class="main-area" id="main-area">
   <nav class="lesson-nav-bar no-print" aria-label="차시 이동">
-    <a href="workbook-calc.html" target="aftermath_workbook_calc"><span>🏠</span><span>수학 익힘책 모음</span><kbd>H</kbd></a>
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_nav_calc"><span>🏠</span><span>교사용 인덱스 (Nav)</span><kbd>H</kbd></a>
     <div class="nav-group">
       <span style="opacity:.45;cursor:not-allowed"><span>다음 단원</span><span>준비 중</span></span>
     </div>
@@ -1645,7 +1645,7 @@ const PROBLEMS = [
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement('a');
       a.href     = url;
-      a.download = '수학익힘책_미적분I_I1_함수의극한_해설.html';
+      a.download = '교사용_수학익힘책_미적분I_I1_함수의극한_해설.html';
       document.body.appendChild(a);
       a.click();
       setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
@@ -1690,14 +1690,14 @@ const PROBLEMS = [
 })();
 </script>
 <script>
-// 메인 단축키 (H/Esc → workbook-calc.html)
+// 메인 단축키 (H/Esc → 교사용_Nav_All_index_미적분I.html)
 document.addEventListener('keydown', (e) => {
   if (e.isComposing) return;
   const t = e.target;
   if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
   if (e.key === 'h' || e.key === 'H') {
     e.preventDefault();
-    const w = window.open('workbook-calc.html', 'aftermath_workbook_calc'); if (w) w.focus();
+    const w = window.open('교사용_Nav_All_index_미적분I.html', 'aftermath_nav_calc'); if (w) w.focus();
   }
 });
 </script>
