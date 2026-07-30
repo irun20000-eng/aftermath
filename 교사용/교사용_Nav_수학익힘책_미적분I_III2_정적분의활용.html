@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 — 학생 비공개. 수학 익힘책 Ⅲ-2 정적분의 활용 — 11 풀이 카드. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 수학 익힘책 Ⅲ-2 정적분의 활용 — 문제풀이 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; } .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; } .tl-s strong { color: #334155; font-weight: 800; }
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_29_중단원마무리_III_2.html">← 29차시 중단원 마무리</a>
+        <a href="교사용_수학익힘책_미적분I_III2_정적분의활용_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">📗</span>
+        <span class="lesson-tag">익힘책 Ⅲ-2 · 29차시 이후 심화</span>
+        <span class="lesson-title">수학 익힘책 Ⅲ-2 정적분의 활용 — 11문항 (기초 3 + 기본 6 + 도전 2)</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> 중단원 마무리(29차시)가 <strong>넓이와 속도·거리를 각각 정리</strong>했다면, 익힘책은 <strong>"넓이 조건 → 미정계수", "위치 vs 거리" 구분</strong>을 집중 훈련한다. <strong>넓이가 같을 조건(6번), 정적분 값만으로 넓이(7번), 역함수와 정적분(10번)</strong>이 새 결이다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-03-04~05] 정적분을 이용한 넓이, 속도와 거리.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">26~29차시 전체. 특히 29 중단원 마무리의 "위·아래 판정 루틴"과 "위치/거리 구분표".</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① \(\frac{|k|}{6}(\beta-\alpha)^3\) 공식으로 계산 단축 ② "넓이가 같다"를 \(\int=0\)으로 번역 ③ 위치(\(\int v\))와 거리(\(\int|v|\))를 <strong>항상</strong> 구분.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> "이 단원의 오답 1위는 <strong>위치와 거리를 바꿔 쓰는 것</strong>"이라고 못 박고 시작. 11문항 구성 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 해설지 열고 필터 확인. 노트에 "위치 \(=\int v\) / 거리 \(=\int|v|\)" 두 줄을 적는다.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기초 8'</div>
+            <div class="tl-t"><strong>교사:</strong> 1~3번 자율. <strong>1번은 \(\frac{|k|}{6}(\beta-\alpha)^3\) 공식</strong>으로 3초에 끝남을 시연해 공식의 위력을 보여 준다.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 \(9\), 2번 \(\frac16\), 3번 \(8\). 3번은 "위치를 물었으니 절댓값 없음"을 확인하고 답한다.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기본 20'</div>
+            <div class="tl-t"><strong>교사:</strong> 6·7번에 10분 — 6번은 <strong>"같다 ⟹ \(\int_0^b=0\)"</strong> 번역을, 7번은 <strong>구간 덧셈성</strong>으로 없는 값을 만드는 과정을 시연. 4·5·8·9번 묶음.</div>
+            <div class="tl-s"><strong>학생:</strong> 6번은 넓이를 각각 구하지 않는다. 7번은 주어진 4개 값에서 필요한 2개를 만들어 표로 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">도전 12'</div>
+            <div class="tl-t"><strong>교사:</strong> 10번(역함수) 6분 — <strong>\(y=x\) 대칭 → 큰 직사각형 \(-\) 작은 직사각형</strong> 그림으로 시연. 11번 6분 — 구간별 속도, (2)에서 부호 전환점 \(t=2\) 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 10번은 \(f(1)=2\), \(f(2)=9\)를 먼저 적는다. 11번 (2)는 \(t=2\)에서 반드시 끊는다.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "위치와 거리를 구분한 순간" 발표. 학기말 종합(31차시) 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰지 작성 (구분 경험 중심).</div>
+        </div>
+    </div>
+
+    <!-- C. 도입 발문 -->
+    <h2 class="section-h"><span class="ico">C</span> 도입 발문 (익힘책 진입)</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "속도가 음수인 구간이 있는데, 위치를 물으면 어떻게 하고 거리를 물으면 어떻게 할까?"</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"둘 다 적분하는 거 아닌가요?"</span><br><span class="fb"><strong>피드백:</strong> 적분은 같지만 <strong>절댓값</strong>이 다르다. 위치는 뒤로 간 만큼 <strong>빼고</strong>, 거리는 뒤로 간 것도 <strong>더한다</strong>. 8번이 정확히 이 차이를 묻는다.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"두 부분의 넓이가 같다는 조건은 어떻게 쓰나요?"</span><br><span class="fb"><strong>피드백:</strong> 넓이를 각각 구할 필요가 없다. 한쪽은 \(x\)축 아래(음수), 한쪽은 위(양수)이므로 <strong>부호를 살린 정적분의 합이 \(0\)</strong>. 6번이 그 구조.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"7번은 필요한 적분값이 안 주어졌는데요?"</span><br><span class="fb"><strong>피드백:</strong> \(\int_{-2}^{1}=\int_{-2}^{0}+\int_{0}^{1}\) — <strong>구간 덧셈성</strong>으로 만들어 쓴다. Ⅲ-1 3번에서 익힌 성질이 그대로 쓰인다.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>연결:</strong> 29차시가 "넓이·거리 계산"이었다면, 익힘책은 <strong>"조건에서 역으로 값을 결정"</strong>. 수능 적분 문항의 표준 구조다.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 익힘책에서 처음 나오는 3가지</h2>
+
+    <div class="formula-box">
+        <div class="label">익힘책 신규 도구 3종</div>
+        <div class="formula">① <strong>넓이 공식</strong> \(\frac{|k|}{6}(\beta-\alpha)^3\) &nbsp;|&nbsp; ② <strong>넓이 같음</strong> \(\int_0^b f=0\) &nbsp;|&nbsp; ③ <strong>역함수</strong> \(\int_a^b f+\int_c^d g=bd-ac\) (단, \(f(a)=c, f(b)=d\))</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 — 위치와 거리 구분 4단계 (3·8·11번 대비):</strong>
+        <ol>
+            <li>문제가 <strong>위치</strong>를 묻는지 <strong>거리</strong>를 묻는지 먼저 동그라미 친다.</li>
+            <li>속도 \(v(t)=0\)이 되는 시각을 모두 찾아 <strong>부호표</strong>를 만든다.</li>
+            <li>위치면 그대로 \(\int v\,dt\). 거리면 부호가 바뀌는 시각에서 <strong>구간을 끊고</strong> 각각 절댓값.</li>
+            <li>출발점이 원점이 아니면 <strong>초기 위치를 더한다</strong>.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>익힘책에서 가장 자주 틀리는 3가지:</strong> ① 8·11번에서 거리를 물었는데 변위로 답함 ② 4번에서 곡선이 \(x\)축 아래인데 부호를 안 뒤집음 ③ 11번 (2)에서 \(t=2\)를 지나쳐 계산.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (익힘책 11문항)</h2>
+
+    <div class="problems">
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span><span class="q-title">두 곡선 사이의 넓이</span></div>
+            <div class="q-stmt">\(y=-x^2+7x\), \(y=x^2-3x+8\)</div>
+            <div class="q-solve">
+                <span class="step">교점 \(x=1,4\).</span>
+                <span class="step">\(\int_1^4(-2x^2+10x-8)dx=9\).</span>
+                <span class="step">공식: \(\frac{2}{6}\cdot3^3=9\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(9\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 정직하게 적분한 결과와 <strong>공식 결과가 같음</strong>을 나란히 판서하면 공식을 신뢰하게 된다.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">곡선과 \(x\)축 사이의 넓이</span></div>
+            <div class="q-stmt">\(y=2x(1-x)^2\)</div>
+            <div class="q-solve">
+                <span class="step">교점 \(x=0\), \(x=1\)(중근 → 접함).</span>
+                <span class="step">\(0\lt x\lt1\)에서 \(y\gt0\).</span>
+                <span class="step">\(\int_0^1(2x-4x^2+2x^3)dx=\frac16\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(\dfrac16\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 중근이면 <strong>접하므로</strong> 구간을 나눌 필요가 없다. 그래프를 그려 "한 덩어리"임을 확인시킨다.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">속도와 위치</span></div>
+            <div class="q-stmt">\(v(t)=-6t^2+12t\), \(t=2\)에서의 위치</div>
+            <div class="q-solve">
+                <span class="step">원점 출발이므로 \(x(2)=\int_0^2 v\,dt\).</span>
+                <span class="step">\([-2t^3+6t^2]_0^2=8\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(8\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>위치를 물었으므로 절댓값 없음</strong>. 8번과 대비시켜 두 유형을 나란히 보여 주면 구분이 확실해진다.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">넓이 조건으로 미정계수</span></div>
+            <div class="q-stmt">\(y=ax^2-2ax\)와 \(x\)축, 넓이 \(12\), \(a\gt0\)</div>
+            <div class="q-solve">
+                <span class="step">교점 \(x=0,2\). \(a\gt0\)이면 구간 안에서 \(y\lt0\).</span>
+                <span class="step">\(S=\int_0^2(-ax^2+2ax)dx=\frac{4a}{3}=12\).</span>
+                <span class="step">\(a=9\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(a=9\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 부호를 안 뒤집으면 \(a=-9\)가 나와 <strong>조건(양수)에 모순</strong>. 이 모순을 학생이 스스로 발견하게 하면 교육 효과가 크다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">곡선과 직선 사이의 넓이</span></div>
+            <div class="q-stmt">\(y=-x^2+4x\)와 \(y=ax\), 넓이 \(\frac43\), \(0\lt a\lt4\)</div>
+            <div class="q-solve">
+                <span class="step">교점 \(x=0,\ 4-a\).</span>
+                <span class="step">\(S=\frac16(4-a)^3=\frac43 \Rightarrow (4-a)^3=8\).</span>
+                <span class="step">\(4-a=2\), \(a=2\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(a=2\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 공식의 \(k\)는 <strong>(위 - 아래)를 정리한 이차식의 최고차항 계수</strong>. 여기서는 \(-1\)임을 명확히 짚는다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">⭐ 넓이가 같을 조건</span></div>
+            <div class="q-stmt">\(y=x(x-a)(x-b)\), 두 부분 넓이 같음</div>
+            <div class="q-solve">
+                <span class="step">"같다" ⟹ \(\int_0^b f(x)dx=0\).</span>
+                <span class="step">\(\frac{b^3}{12}(2a-b)=0\).</span>
+                <span class="step">\(b=2a\) ⟹ \(\frac{b}{a}=2\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(2\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>넓이를 각각 구하지 않는다</strong>는 것이 핵심. "같다"를 곧바로 \(\int=0\)으로 번역하는 훈련.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">⭐ 정적분 값만으로 넓이</span></div>
+            <div class="q-stmt">그래프 + 4개의 정적분 값</div>
+            <div class="q-solve">
+                <span class="step">\(-2\lt x\lt0\): \(f\)가 위 / \(0\lt x\lt1\): \(g\)가 위.</span>
+                <span class="step">없는 값은 구간 덧셈성으로: \(\int_{-2}^{0}g=5-\frac83=\frac73\), \(\int_0^1 f=\frac{11}{2}-\frac72=2\).</span>
+                <span class="step">\(\frac76+\frac23=\frac{11}{6}\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(\dfrac{11}{6}\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 주어진 값 4개를 <strong>표로 정리</strong>한 뒤 필요한 2개를 만들어 채우는 과정을 판서. 구간 덧셈성 하나로 전부 해결된다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">⭐ 움직인 거리</span></div>
+            <div class="q-stmt">\(v(t)=t(t-1)\), \(t=0 \to 2\)</div>
+            <div class="q-solve">
+                <span class="step">\(v=0\): \(t=0,1\). \((0,1)\) 음수 / \((1,2)\) 양수.</span>
+                <span class="step">\(\int_0^1(t-t^2)dt=\frac16\), \(\int_1^2(t^2-t)dt=\frac56\).</span>
+                <span class="step">합 \(=1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(1\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 부호를 무시하면 \(\frac23\)(변위)이 나온다. <strong>두 답을 모두 칠판에 적어</strong> 차이를 보여 주는 것이 가장 효과적이다.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">두 점이 다시 만나는 시각</span></div>
+            <div class="q-stmt">\(v_P=2t^2+9\), \(v_Q=-t^2+12t\)</div>
+            <div class="q-solve">
+                <span class="step">같은 지점 출발 ⟹ \(\int_0^a v_P=\int_0^a v_Q\).</span>
+                <span class="step">\(a^3-6a^2+9a=0 \Rightarrow a(a-3)^2=0\).</span>
+                <span class="step">\(a\gt0\)이므로 \(a=3\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(t=3\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> \(a=0\)은 <strong>출발 순간</strong>이므로 제외. "다시"라는 단어에서 \(a\gt0\) 조건이 나온다는 점을 짚는다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">10</span><span class="q-title">⭐ 역함수와 정적분</span></div>
+            <div class="q-stmt">\(f(x)=x^3+1\), \(g=f^{-1}\), \(\int_1^2 f+\int_2^9 g\)</div>
+            <div class="q-solve">
+                <span class="step">\(f(1)=2\), \(f(2)=9\) ⟹ \(g(2)=1\), \(g(9)=2\).</span>
+                <span class="step">\(y=x\) 대칭으로 두 넓이를 붙이면 직사각형 차.</span>
+                <span class="step">\(2\cdot9-1\cdot2=16\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(16\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>그림 없이는 이해되지 않는다</strong>. 큰 직사각형과 작은 직사각형을 겹쳐 그리고 두 넓이 조각을 색칠해 보여 줄 것.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">11</span><span class="q-title">⭐ 구간별 속도 · 미정계수 · 거리</span></div>
+            <div class="q-stmt">\(v=at(t-2)\,(0\le t\le2)\), \(b(t^2-4)\,(2\le t\le4)\)</div>
+            <div class="q-solve">
+                <span class="step">(1) \(\int_0^2 at(t-2)dt=-\frac43a=-8 \Rightarrow a=6\).</span>
+                <span class="step">\(-8+\frac{32}{3}b=24 \Rightarrow b=3\).</span>
+                <span class="step">(2) \(t=2\)에서 부호 전환 → \(\int_1^2|v|=4\), \(\int_2^3|v|=7\), 합 \(11\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>(1) \(a=6,\ b=3\) &nbsp; (2) \(11\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> (2)에서 \(t=2\)를 지나쳐 \(\int_1^3 v\)로 계산하면 \(3\)(변위)이 나온다. <strong>부호 전환점에서 끊기</strong>가 이 문항의 채점 포인트.</div>
+        </div>
+
+    </div>
+
+    <!-- F. 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성 점검 기준 — 익힘책 11문항 (100점 환산)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 도달도 판정 (도구 선택 능력 중심)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">A (우수)</div><div class="score">90+</div><div class="desc">도전 2문항 모두 해결. 특히 11번 (2)에서 <strong>\(t=2\)에서 구간을 끊었다</strong>.</div>
+            <div class="lvl-box">B (양호)</div><div class="score">75</div><div class="desc">기본 6문항 전부 해결. 6번을 \(\int_0^b=0\)으로 번역했다.</div>
+            <div class="lvl-box">C (보통)</div><div class="score">60</div><div class="desc">기초 3 + 기본 4 이상. 위치와 거리를 문제마다 <strong>구분해서</strong> 답한다.</div>
+            <div class="lvl-box">D (보충)</div><div class="score">40</div><div class="desc">기초 3문항만 해결. 4번에서 부호를 뒤집지 않았다. → 29차시 위·아래 판정 루틴 재지도.</div>
+            <div class="lvl-box">보충 지도</div><div class="score">—</div><div class="desc"><strong>우선순위:</strong> ① 위치/거리 구분 ② 위·아래 판정과 부호 ③ 넓이 공식 \(\frac{|k|}{6}(\beta-\alpha)^3\). 이 3개가 익힘책 Ⅲ-2의 뼈대.</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 -->
+    <h2 class="section-h"><span class="ico">G</span> 익힘책 성찰 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화</span>
+            <span class="rtbody">"넓이 공식 \(\frac{|k|}{6}(\beta-\alpha)^3\)을 그냥 외웠었는데, 1번에서 직접 적분한 값과 같은 걸 확인하고 나서야 <strong>믿고 쓸 수 있게</strong> 되었다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 결정적 실수와 극복</span>
+            <span class="rtbody">"8번에서 그냥 \(\int_0^2 v\,dt\)를 해서 \(\frac23\)이라고 답했다. 거리를 물었으니 부호가 바뀌는 \(t=1\)에서 끊었어야 했다. 이제 <strong>문제의 단어부터</strong> 확인한다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성</span>
+            <span class="rtbody">"6번에서 두 넓이를 각각 구하려다 막혔다. '같다'를 \(\int_0^b=0\)으로 바꾸면 한 줄이었다. <strong>조건을 식으로 번역하는 것</strong>이 진짜 실력인 것 같다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (익힘책 도달도 + 보충 대상)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>

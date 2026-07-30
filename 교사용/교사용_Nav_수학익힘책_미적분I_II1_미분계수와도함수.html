@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<!-- 교사용 수업 가이드 — 학생 비공개. 수학 익힘책 Ⅱ-1 미분계수와 도함수 — 12 풀이 카드. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[교사용] 수학 익힘책 Ⅱ-1 미분계수와 도함수 — 문제풀이 가이드</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f1f5f9; color: #0f172a; line-height: 1.65; opacity: 1; }
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 8rem; font-weight: 900; color: #0d9488; opacity: 0.04; pointer-events: none; z-index: 0; letter-spacing: 0.2em; white-space: nowrap; }
+        .lesson { max-width: 880px; margin: 1.5rem auto; padding: 2rem 2.25rem; background: white; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); position: relative; z-index: 1; }
+        .lesson-head { display: flex; align-items: center; gap: .875rem; padding-bottom: .75rem; border-bottom: 4px solid #0d9488; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .lesson-num { background: #0d9488; color: white; width: 2.5rem; height: 2.5rem; border-radius: .5rem; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; flex-shrink: 0; }
+        .lesson-tag { background: #ecfeff; color: #155e75; padding: .25rem .75rem; border-radius: .375rem; font-weight: 700; font-size: .75rem; }
+        .lesson-title { font-size: 1.5rem; font-weight: 900; color: #134e4a; flex: 1; }
+        .big-idea { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-left: 5px solid #0d9488; padding: .875rem 1.25rem; border-radius: 0 .5rem .5rem 0; margin-bottom: 1rem; font-size: .95rem; color: #155e75; }
+        .big-idea strong { color: #134e4a; }
+        .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.25rem; }
+        .meta-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; padding: .625rem .875rem; }
+        .meta-item .meta-label { font-size: .7rem; font-weight: 800; color: #0d9488; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .25rem; }
+        .meta-item .meta-value { font-size: .85rem; color: #334155; font-weight: 500; }
+        .section-h { font-size: 1.125rem; font-weight: 900; color: #0f766e; margin-top: 1.5rem; margin-bottom: .75rem; padding-bottom: .25rem; border-bottom: 2px solid #99f6e4; display: flex; align-items: center; gap: .5rem; }
+        .section-h .ico { background: #0d9488; color: white; width: 1.5rem; height: 1.5rem; border-radius: .375rem; display: inline-flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 900; }
+        .timeline { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: 1rem; }
+        .tl-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: .5rem; padding: .5rem .75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .5rem; font-size: .82rem; align-items: start; }
+        .tl-time { font-weight: 900; color: #0d9488; }
+        .tl-t { color: #1e293b; } .tl-t strong { color: #0f766e; font-weight: 800; }
+        .tl-s { color: #475569; } .tl-s strong { color: #334155; font-weight: 800; }
+        .warm-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-bottom: .5rem; }
+        .warm-card { background: #fefce8; border-left: 4px solid #eab308; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .85rem; }
+        .warm-card .resp { font-weight: 800; color: #854d0e; margin-right: .375rem; }
+        .warm-card .fb { color: #475569; }
+        .formula-box { background: #0f172a; color: #ecfeff; padding: 1rem 1.25rem; border-radius: .75rem; margin-bottom: 1rem; text-align: center; }
+        .formula-box .label { color: #67e8f9; font-size: .7rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .375rem; }
+        .formula-box .formula { font-size: 1.05rem; }
+        .board-steps { background: #fffbeb; border: 1px solid #fde68a; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: 1rem; }
+        .board-steps ol { list-style: decimal; margin-left: 1.25rem; }
+        .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
+        .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
+        .q-warn strong { color: #b45309; }
+        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
+        .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
+        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
+        .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
+        .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
+        .lvl { font-size: .65rem; padding: .15rem .5rem; border-radius: .25rem; font-weight: 800; }
+        .lvl-l1 { background: #dcfce7; color: #166534; }
+        .lvl-l2 { background: #fef9c3; color: #854d0e; }
+        .lvl-l3 { background: #fee2e2; color: #991b1b; }
+        .lvl-fc { background: #cffafe; color: #155e75; }
+        .lvl-ch { background: #f3e8ff; color: #6b21a8; }
+        .q-num { font-weight: 900; color: #0f172a; font-size: .95rem; }
+        .q-title { font-weight: 700; color: #334155; font-size: .82rem; flex: 1; }
+        .q-stmt { color: #1e293b; font-weight: 600; margin-bottom: .5rem; font-size: .87rem; overflow-x: auto; }
+        .q-solve { color: #334155; font-size: .85rem; margin-bottom: .375rem; overflow-x: auto; }
+        .q-solve .step { display: block; margin-bottom: .15rem; }
+        .q-ans { background: white; padding: .375rem .625rem; border-radius: .375rem; font-weight: 800; color: #0f766e; border: 1px solid #5eead4; font-size: .87rem; margin-top: .375rem; overflow-x: auto; }
+        .rubric { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd; border-radius: .625rem; padding: .875rem 1rem; margin-bottom: .75rem; }
+        .rubric .rtitle { font-weight: 800; color: #1e3a8a; font-size: .9rem; margin-bottom: .5rem; }
+        .rubric-grid { display: grid; grid-template-columns: 90px 70px 1fr; gap: .375rem; font-size: .8rem; align-items: start; }
+        .rubric-grid .lvl-box { font-weight: 800; color: #1e40af; padding: .25rem .5rem; background: white; border: 1px solid #93c5fd; border-radius: .25rem; text-align: center; }
+        .rubric-grid .score { font-weight: 800; color: #0f766e; text-align: center; padding-top: .25rem; }
+        .rubric-grid .desc { color: #334155; padding-top: .25rem; }
+        .reflect-grid { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+        .reflect-card { background: #f0fdf4; border-left: 4px solid #22c55e; padding: .625rem .875rem; border-radius: 0 .5rem .5rem 0; font-size: .82rem; }
+        .reflect-card.t2 { background: #fff7ed; border-left-color: #f97316; }
+        .reflect-card.t3 { background: #eff6ff; border-left-color: #3b82f6; }
+        .reflect-card .rttype { font-weight: 800; color: #15803d; font-size: .78rem; display: block; margin-bottom: .25rem; }
+        .reflect-card.t2 .rttype { color: #c2410c; }
+        .reflect-card.t3 .rttype { color: #1d4ed8; }
+        .reflect-card .rtbody { color: #334155; }
+        .memo-area { min-height: 60mm; background: repeating-linear-gradient(to bottom, white 0, white 8.5mm, #e2e8f0 8.5mm, #e2e8f0 9mm); border: 1px solid #cbd5e1; border-radius: .5rem; padding: .5rem 1rem; position: relative; margin-top: .5rem; }
+        .memo-area::before { content: '✏️ 수업 후 메모'; position: absolute; top: -.625rem; left: .75rem; background: white; padding: 0 .5rem; font-size: .75rem; font-weight: 800; color: #0d9488; }
+        .topnav { max-width: 880px; margin: 1rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; }
+        .topnav a, .topnav button { font-size: .82rem; font-weight: 700; padding: .5rem .875rem; background: white; border: 1px solid #cbd5e1; border-radius: .5rem; color: #334155; text-decoration: none; cursor: pointer; }
+        .topnav a:hover, .topnav button:hover { background: #f1f5f9; border-color: #0d9488; color: #0f766e; }
+        .topnav .ws-link { background: #0d9488; color: white; border-color: #0d9488; }
+        .topnav .ws-link:hover { background: #0f766e; color: white; }
+        @media print {
+            @page { size: A4; margin: 14mm; }
+            body { background: white !important; opacity: 1 !important; }
+            .no-print { display: none !important; }
+            .watermark { opacity: 0.06; font-size: 6rem; }
+            .lesson { box-shadow: none; border-radius: 0; margin: 0; padding: 0; max-width: none; }
+            details { display: block; }
+            details > summary { display: none; }
+            details > *:not(summary) { display: block !important; }
+            .memo-area { min-height: 80mm; }
+            .problems { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="mathjax-process">
+
+<div class="watermark">TEACHER'S GUIDE</div>
+
+<nav class="topnav no-print">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_11_중단원마무리_II_1.html">← 11차시 중단원 마무리</a>
+        <a href="교사용_수학익힘책_미적분I_II1_미분계수와도함수_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+<article class="lesson">
+
+    <!-- A. 차시 개관 -->
+    <div class="lesson-head">
+        <span class="lesson-num">📗</span>
+        <span class="lesson-tag">익힘책 Ⅱ-1 · 11차시 이후 심화</span>
+        <span class="lesson-title">수학 익힘책 Ⅱ-1 미분계수와 도함수 — 12문항 (기초 3 + 기본 6 + 도전 3)</span>
+    </div>
+
+    <div class="big-idea">
+        <strong>한 줄 핵심:</strong> 중단원 마무리(11차시)가 <strong>미분계수의 정의와 미분법 공식을 정리</strong>했다면, 익힘책은 <strong>"주어진 극한을 미분계수 정의꼴로 되돌리는" 변형 훈련</strong>이다. <strong>대칭형 극한(6번), 합성 형태(7번), 미정형으로 \(n\) 결정(11번)</strong> 세 가지가 새 결이다.
+    </div>
+
+    <div class="meta-grid">
+        <div class="meta-item">
+            <div class="meta-label">성취기준</div>
+            <div class="meta-value">[12미적-02-01~03] 미분계수의 뜻, 미분가능성과 연속성, 도함수와 미분법.</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">선수학습</div>
+            <div class="meta-value">09~11차시 전체. 특히 11 중단원 마무리의 "미분계수 정의꼴 3형태".</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label">학습 목표</div>
+            <div class="meta-value">① 낯선 극한을 \(\lim\frac{f(x)-f(a)}{x-a}\) 꼴로 <strong>변형</strong> ② 연속과 미분가능을 구분해 판정 ③ 조건 여러 개로 다항함수를 <strong>결정</strong>.</div>
+        </div>
+    </div>
+
+    <!-- B. 50분 타임라인 -->
+    <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> "미분계수 문제의 90%는 <strong>정의꼴 만들기</strong>"라고 선언하고, 11차시의 정의꼴 3형태를 다시 판서.</div>
+            <div class="tl-s"><strong>학생:</strong> 해설지 열고 난이도 필터 확인. 정의꼴 \(\lim_{x\to a}\frac{f(x)-f(a)}{x-a}\)를 노트 상단에 적는다.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기초 8'</div>
+            <div class="tl-t"><strong>교사:</strong> 1~3번 자율 풀이. <strong>1번의 평균변화율 vs 미분계수 구분</strong>과 <strong>3번의 연속 ≠ 미분가능</strong>을 판서로 못 박는다.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 \(15\), 2번 \(55\), 3번 "연속이지만 미분불가능". 3번은 좌·우 미분계수를 각각 계산해 표로 비교.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기본 20'</div>
+            <div class="tl-t"><strong>교사:</strong> 6·7번에 10분 — <strong>극한식을 정의꼴로 되돌리는 변형</strong>을 시연. 6번은 \(f(x)\)를 더하고 빼기, 7번은 분모를 \(x^3-1\)로 바꾸기. 4·5·8·9번은 묶음.</div>
+            <div class="tl-s"><strong>학생:</strong> 6번은 "\(\pm f(x)\) 삽입 → 정의꼴 2개 → \(2f'(x)\)". 7번은 "분모 교체 → 남은 비율 따로" 2단계로 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">도전 14'</div>
+            <div class="tl-t"><strong>교사:</strong> 11번(미정형으로 \(n\) 결정) 7분 — <strong>"분모\(\to0\) ⟹ 분자\(\to0\)"</strong>이 Ⅰ-2에서 이어짐을 연결. 12번(중근 구조) 5분 — \(f(b)=f'(b)=0\)이면 \(x=b\)가 중근임을 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 11번은 \(x=2\) 대입으로 \(2^n=64\)를 얻고 \(n=6\). 12번은 \(f(x)=k(x-a)(x-b)^2\)로 놓고 시작.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "내가 만든 정의꼴" 1개 발표. Ⅱ-2 도함수의 활용 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰지 작성 (변형 과정을 <strong>내 말로</strong> 서술).</div>
+        </div>
+    </div>
+
+    <!-- C. 도입 발문 -->
+    <h2 class="section-h"><span class="ico">C</span> 도입 발문 (익힘책 진입)</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "\(\lim\limits_{h\to0}\dfrac{f(1+2h)-f(1)}{h}\)는 왜 \(f'(1)\)이 아니라 \(2f'(1)\)일까?"</p>
+    <div class="warm-grid">
+        <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"분자가 \(f(1+2h)-f(1)\)이니까 그냥 \(f'(1)\) 아닌가요?"</span><br><span class="fb"><strong>피드백:</strong> 정의꼴은 <strong>분모와 증가분이 같아야</strong> 성립한다. 증가분이 \(2h\)인데 분모가 \(h\)이므로 \(\frac{2h}{h}=2\)배. 6번이 이 원리의 확장판.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"3번은 이어져 있으니까 미분도 되는 거 아니에요?"</span><br><span class="fb"><strong>피드백:</strong> 연속은 "끊기지 않음", 미분가능은 "꺾이지 않음". \(x=1\)에서 좌미분계수 \(4\), 우미분계수 \(1\)로 <strong>다르므로</strong> 뾰족점. Ⅰ-2의 \(|x-2|\)와 같은 상황이다.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"11번은 \(n\)을 어떻게 찾나요? 대입해 보나요?"</span><br><span class="fb"><strong>피드백:</strong> 찍지 않는다. 분모가 \(x\to2\)에서 \(0\)이므로 <strong>분자도 \(0\)</strong>이어야 하고, \(2^n-24-40=0\)에서 \(2^n=64\). Ⅰ-2 6·7번과 <strong>완전히 같은 논리</strong>.</span></div>
+    </div>
+    <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>연결:</strong> 11차시가 "정의와 공식 정리"였다면, 익힘책은 <strong>"낯선 식을 아는 꼴로 바꾸는 변형력"</strong>. 수능에서 가장 자주 요구하는 능력이다.</p>
+
+    <!-- D. 개념 지도 노트 -->
+    <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 익힘책에서 처음 나오는 3가지</h2>
+
+    <div class="formula-box">
+        <div class="label">익힘책 신규 도구 3종</div>
+        <div class="formula">① <strong>대칭형</strong> \(\frac{f(x+h)-f(x-h)}{h} \to 2f'(x)\) &nbsp;|&nbsp; ② <strong>분모 교체</strong> \(\frac{f(x^3)-f(1)}{x^2-1}=\frac{f(x^3)-f(1)}{x^3-1}\cdot\frac{x^3-1}{x^2-1}\) &nbsp;|&nbsp; ③ <strong>중근 구조</strong> \(f(b)=f'(b)=0 \Rightarrow (x-b)^2\) 인수</div>
+    </div>
+
+    <div class="board-steps">
+        <strong style="color:#92400e;">📌 판서 시연 — 낯선 극한을 정의꼴로 되돌리는 3단계 (6·7번 대비):</strong>
+        <ol>
+            <li>분자에서 <strong>기준점 \(f(a)\)를 찾는다</strong>. 없으면 \(\pm f(a)\)를 삽입해 만든다.</li>
+            <li>분모를 <strong>기준점과 짝이 맞게</strong> 고친다. 고친 만큼 곱셈으로 보정.</li>
+            <li>정의꼴 부분은 \(f'(a)\)로 바꾸고, 남은 비율은 따로 극한을 취한다.</li>
+            <li>증가분과 분모의 <strong>배수 관계</strong>를 마지막에 반드시 재확인.</li>
+        </ol>
+    </div>
+
+    <div class="q-warn"><strong>익힘책에서 가장 자주 틀리는 3가지:</strong> ① 6번에서 \(\pm f(x)\) 삽입을 못 떠올림 ② 7번에서 분모를 바꾼 뒤 보정 인수를 빠뜨림 ③ 3번에서 연속만 확인하고 미분가능성 결론을 생략.</div>
+
+    <!-- E. 문항별 해설 카드 -->
+    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (익힘책 12문항)</h2>
+
+    <div class="problems">
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span><span class="q-title">평균변화율 → 미분계수</span></div>
+            <div class="q-stmt">\(f(x)=2x^2+ax+3\), \([-1,1]\)의 평균변화율 \(3\). \(f'(a)\)는?</div>
+            <div class="q-solve">
+                <span class="step">평균변화율 \(=\frac{f(1)-f(-1)}{2}=a=3\).</span>
+                <span class="step">\(f'(x)=4x+3\), \(f'(3)=15\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(15\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 두 개념을 <strong>같은 문제 안에서</strong> 쓰게 하는 설계. "평균변화율은 두 점, 미분계수는 한 점"을 판서.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">거듭제곱 합의 미분</span></div>
+            <div class="q-stmt">\(f(x)=1+x+\cdots+x^{10}\), \(f'(1)\)</div>
+            <div class="q-solve">
+                <span class="step">\(f'(x)=1+2x+\cdots+10x^9\).</span>
+                <span class="step">\(x=1\) 대입 → \(1+2+\cdots+10=55\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(55\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 미분 후 \(x=1\)을 넣으면 <strong>지수가 그대로 계수로</strong> 남는다는 관찰. 등차수열 합 공식과 연결.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">⭐ 연속 vs 미분가능</span></div>
+            <div class="q-stmt">\(f(x)=x+1\,(x\ge1)\), \(2x^2\,(x\lt1)\)</div>
+            <div class="q-solve">
+                <span class="step">좌·우 함숫값 모두 \(2\) → <strong>연속</strong>.</span>
+                <span class="step">좌미분계수 \(4x|_{x=1}=4\), 우미분계수 \(1\) → 다름.</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(x=1\)에서 연속이지만 미분가능하지 않다</strong></div>
+            <div class="q-warn"><strong>지도:</strong> Ⅰ-2 1번의 \(|x-2|\)와 <strong>같은 구조</strong>임을 반드시 연결. 두 그래프를 나란히 그려 "꺾임"을 시각화한다.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">곱의 미분법</span></div>
+            <div class="q-stmt">\(f(2)=-1, f'(2)=4, g(2)=2, g'(2)=-5\)</div>
+            <div class="q-solve">
+                <span class="step">\((fg)'(2)=f'(2)g(2)+f(2)g'(2)\)</span>
+                <span class="step">\(=4\cdot2+(-1)(-5)=8+5=13\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(13\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 공식을 <strong>순서대로</strong> 쓰게 한다. 항을 섞는 실수가 가장 흔하므로 \(f'g\)를 먼저 쓰는 습관.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">그래프에서 불연속·미분불가능</span></div>
+            <div class="q-stmt">열린구간 \((-2,7)\)에서 \(a+b\)</div>
+            <div class="q-solve">
+                <span class="step">불연속점 개수 \(a\)를 먼저 센다.</span>
+                <span class="step">미분불가능점 \(b\)는 <strong>불연속점 + 뾰족점</strong>.</span>
+                <span class="step">\(a+b=6\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(6\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> "불연속이면 자동으로 미분불가능"이라는 포함 관계를 벤 다이어그램으로 정리. 중복해서 빼먹거나 이중으로 세는 실수 주의.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">⭐ 대칭형 극한</span></div>
+            <div class="q-stmt">\(\lim\limits_{h\to0}\dfrac{f(x+h)-f(x-h)}{h}=4x^2+6\)일 때 \(f'(1)\)</div>
+            <div class="q-solve">
+                <span class="step">분자에 \(-f(x)+f(x)\) 삽입.</span>
+                <span class="step">\(\frac{f(x+h)-f(x)}{h}+\frac{f(x)-f(x-h)}{h} \to f'(x)+f'(x)\).</span>
+                <span class="step">\(2f'(x)=4x^2+6 \Rightarrow f'(x)=2x^2+3\), \(f'(1)=5\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(5\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>\(\pm f(x)\) 삽입</strong>이 유일한 관문. "기준점이 없으면 만들어 넣는다"를 구호처럼 반복시킨다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">⭐ 분모 교체형</span></div>
+            <div class="q-stmt">\(\lim\limits_{x\to1}\dfrac{f(x^3)-f(1)}{x^2-1}\), \(f'(1)=6\)</div>
+            <div class="q-solve">
+                <span class="step">\(\frac{f(x^3)-f(1)}{x^3-1}\cdot\frac{x^3-1}{x^2-1}\)로 분해.</span>
+                <span class="step">앞 \(\to f'(1)=6\), 뒤 \(\to \frac{3}{2}\).</span>
+                <span class="step">\(6 \cdot \frac{3}{2}=9\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(9\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 분모를 바꾸면 <strong>반드시 보정 인수를 곱한다</strong>. 뒤 비율은 \(\frac{(x-1)(x^2+x+1)}{(x-1)(x+1)}\)로 약분해 계산.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">항등식으로 함수 결정</span></div>
+            <div class="q-stmt">\(f(x)+xf'(x)=6x^2+6x-5\), \(\lim\limits_{x\to2}\frac{f(x)-9}{x-2}\)</div>
+            <div class="q-solve">
+                <span class="step">\(f=ax^2+bx+c\)로 놓고 대입 → \(3ax^2+2bx+c\).</span>
+                <span class="step">계수 비교 \(a=2, b=3, c=-5\).</span>
+                <span class="step">\(f(2)=9\)이므로 극한은 \(f'(2)=4\cdot2+3=11\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(11\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 마지막 극한이 <strong>미분계수 정의꼴</strong>임을 알아채는 것이 포인트. \(f(2)=9\)를 확인해야 정의꼴이 성립한다는 점도 짚는다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">조건 3개로 삼차함수 결정</span></div>
+            <div class="q-stmt">\(\lim\limits_{x\to0}\frac{f(x)-1}{x}=-3\), \((-2,3)\)에서 접선 기울기 \(-3\)</div>
+            <div class="q-solve">
+                <span class="step">극한이 존재하려면 \(f(0)=1\), 그 값이 \(f'(0)=-3\).</span>
+                <span class="step">\(f(-2)=3\), \(f'(-2)=-3\).</span>
+                <span class="step">네 조건으로 \(f(x)=-x^3-3x^2-3x+1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(f(x)=-x^3-3x^2-3x+1\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> 하나의 극한에서 <strong>\(f(0)\)과 \(f'(0)\) 두 정보</strong>가 동시에 나온다는 점이 핵심. 조건 개수와 미지수 개수를 세어 보게 한다.</div>
+        </div>
+
+        <div class="prob-card">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">10</span><span class="q-title">곱의 미분법 · 미정계수</span></div>
+            <div class="q-stmt">\(f(x)=(x-1)(x^3+ax^2+4)\), \(f'(2)=0\)</div>
+            <div class="q-solve">
+                <span class="step">\(f'=1\cdot(x^3+ax^2+4)+(x-1)(3x^2+2ax)\).</span>
+                <span class="step">\(x=2\): \((12+4a)+(12+4a)=0\).</span>
+                <span class="step">\(a=-3\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(a=-3\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> <strong>전개하면 시간이 3배</strong>. 곱의 미분법을 쓰는 것이 정답 루트임을 두 방법을 비교해 보여 준다.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">11</span><span class="q-title">⭐ 미정형으로 \(n\) 결정</span></div>
+            <div class="q-stmt">\(\lim\limits_{x\to2}\dfrac{x^n-3x^3-40}{x^2-4}=a\)</div>
+            <div class="q-solve">
+                <span class="step">분모\(\to0\) ⟹ 분자\(\to0\): \(2^n-24-40=0 \Rightarrow 2^n=64 \Rightarrow n=6\).</span>
+                <span class="step">\(g(x)=x^6-3x^3-40\)로 두면 극한 \(=\frac{g'(2)}{4}\).</span>
+                <span class="step">\(g'(2)=6\cdot32-9\cdot4=156\), \(156/4=39\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(n=6,\ a=39\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> Ⅰ-2 6·7번과 <strong>동일한 논리</strong>임을 반드시 연결해 준다. 학생들이 "또 이거네"라고 말하면 성공.</div>
+        </div>
+
+        <div class="prob-card span2">
+            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">12</span><span class="q-title">⭐ 삼차함수의 중근 구조</span></div>
+            <div class="q-stmt">\(f(a)=f(b)=0\), \(f'(b)=f'(c)=0\)일 때 \(c\)를 \(a,b\)로</div>
+            <div class="q-solve">
+                <span class="step">\(f(b)=f'(b)=0\) ⟹ \(x=b\)는 <strong>중근</strong> ⟹ \(f=k(x-a)(x-b)^2\).</span>
+                <span class="step">\(f'=k(x-b)\{3x-(a+2b)\}\).</span>
+                <span class="step">\(f'(c)=0,\ c\ne b\) ⟹ \(c=\frac{a+2b}{3}\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>\(c=\dfrac{a+2b}{3}\)</strong></div>
+            <div class="q-warn"><strong>지도:</strong> "함숫값과 미분계수가 <strong>동시에 0</strong>이면 중근"은 Ⅱ-2 극값·접선에서 계속 쓰인다. 여기서 확실히 각인시킬 것.</div>
+        </div>
+
+    </div>
+
+    <!-- F. 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성 점검 기준 — 익힘책 12문항 (100점 환산)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 도달도 판정 (도구 선택 능력 중심)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">A (우수)</div><div class="score">90+</div><div class="desc">도전 3문항 중 2개 이상 해결. 특히 11번에서 <strong>"분모\(\to0\)⟹분자\(\to0\)"</strong>을 스스로 적용했다.</div>
+            <div class="lvl-box">B (양호)</div><div class="score">75</div><div class="desc">기본 6문항 전부 해결. 6번의 \(\pm f(x)\) 삽입을 스스로 떠올렸다.</div>
+            <div class="lvl-box">C (보통)</div><div class="score">60</div><div class="desc">기초 3 + 기본 4 이상. 3번에서 연속과 미분가능을 <strong>따로</strong> 판정했다.</div>
+            <div class="lvl-box">D (보충)</div><div class="score">40</div><div class="desc">기초 3문항만 해결. 1번에서 평균변화율과 미분계수를 혼동했다. → 11차시 정의꼴 재지도.</div>
+            <div class="lvl-box">보충 지도</div><div class="score">—</div><div class="desc"><strong>우선순위:</strong> ① 정의꼴 3형태 암기 ② 연속/미분가능 구분 ③ 분모\(\to0\)⟹분자\(\to0\). 이 3개가 익힘책 Ⅱ-1의 뼈대.</div>
+        </div>
+    </div>
+
+    <!-- G. 성찰지 -->
+    <h2 class="section-h"><span class="ico">G</span> 익힘책 성찰 — 3유형 우수 답안 예</h2>
+    <div class="reflect-grid">
+        <div class="reflect-card">
+            <span class="rttype">유형 1: 지식의 내면화</span>
+            <span class="rtbody">"6번에서 \(f(x)\)를 더하고 빼는 걸 보고 놀랐다. 없으면 만들어 넣으면 된다는 게, 결국 정의꼴은 <strong>모양만 맞추면 되는 것</strong>이었다."</span>
+        </div>
+        <div class="reflect-card t2">
+            <span class="rttype">유형 2: 결정적 실수와 극복</span>
+            <span class="rtbody">"7번에서 분모를 \(x^3-1\)로 바꾸고는 보정하는 걸 잊어서 \(6\)이라고 답했다. 바꾼 만큼 곱해 줘야 한다는 걸 배웠다."</span>
+        </div>
+        <div class="reflect-card t3">
+            <span class="rttype">유형 3: 발전 가능성</span>
+            <span class="rtbody">"11번이 Ⅰ-2의 연속 문제와 똑같은 논리라는 걸 알았다. 단원이 달라도 <strong>분모가 0이면 분자도 0</strong>은 계속 쓰인다는 걸 느꼈다."</span>
+        </div>
+    </div>
+
+    <!-- H. 수업 후 메모 -->
+    <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (익힘책 도달도 + 보충 대상)</h2>
+    <div class="memo-area"></div>
+
+</article>
+
+</body>
+</html>
