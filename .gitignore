@@ -31,6 +31,8 @@ _assets_private/
 !.claude/agents/**
 !.claude/skills/
 !.claude/skills/**
+!.claude/playbook/
+!.claude/playbook/**
 memory/
 
 # 백업 파일
@@ -61,3 +63,11 @@ nav_backup*.tar.gz
 *.zip
 *.tar.gz
 *.tar
+
+# 검증 스크립트 실행 부산물
+node_modules/
+__pycache__/
+*.pyc
+
+# 검증 스크립트(.js)는 추적 — 다른 세션에서 재실행 가능해야 함
+!scripts/*.js
