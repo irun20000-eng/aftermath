@@ -53,6 +53,9 @@
         .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
         .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
         .prob-card.span2 { grid-column: auto; }  /* 전폭 1단 통일 — 섹션 안 폭을 일정하게 */
+        /* 그리드 항목은 min-width:auto 라 넓은 수식이 들어오면 카드가 통째로 늘어난다.
+           0 으로 고정해야 카드 폭이 유지되고, 넘치는 수식만 축소 대상이 된다. */
+        .problems > .prob-card { min-width: 0; }
         .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
         .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
         .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
@@ -384,5 +387,44 @@
 
 </article>
 
+<script id="aft-fit-math">
+/* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */
+(function () {
+  var MIN = 55;                      // 축소 하한 (%)
+  function blockWidth(el) {          // 가장 가까운 블록 조상의 안쪽 폭
+    var p = el.parentElement;
+    while (p && !p.clientWidth) p = p.parentElement;
+    return p ? p.clientWidth : 0;
+  }
+  function fitMath() {
+    var list = document.querySelectorAll('mjx-container');
+    for (var i = 0; i < list.length; i++) {
+      var c = list[i];
+      c.style.fontSize = '';                       // 초기화 후 재측정
+      var avail = blockWidth(c);
+      if (!avail) continue;
+      var w = c.getBoundingClientRect().width;
+      if (w <= avail) continue;
+      var pct = Math.floor(100 * avail / w) - 1;   // 1% 여유
+      if (pct < MIN) pct = MIN;
+      c.style.fontSize = pct + '%';
+      if (c.getBoundingClientRect().width > avail && pct > MIN) {
+        c.style.fontSize = Math.max(MIN, pct - 4) + '%';
+      }
+    }
+  }
+  function run() {
+    if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+      MathJax.startup.promise.then(fitMath).catch(fitMath);
+    } else { fitMath(); }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fitMath, 200); });
+  window.addEventListener('beforeprint', fitMath);
+  window.aftFitMath = fitMath;       // 검증용
+})();
+</script>
 </body>
 </html>
