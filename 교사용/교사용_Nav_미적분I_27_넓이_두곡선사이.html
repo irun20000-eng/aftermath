@@ -49,10 +49,10 @@
         .board-steps li { margin-bottom: .25rem; font-size: .85rem; color: #78350f; }
         .q-warn { background: #fffbeb; color: #78350f; padding: .375rem .625rem; border-radius: .375rem; font-size: .77rem; margin-top: .375rem; border-left: 3px solid #f59e0b; }
         .q-warn strong { color: #b45309; }
-        .problems { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1rem; }
+        .problems { display: grid; grid-template-columns: 1fr; gap: .75rem; margin-bottom: 1rem; }
         .prob-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .625rem; padding: .75rem .875rem; font-size: .88rem; line-height: 1.55; page-break-inside: avoid; }
         .prob-card.l3 { background: #fef2f2; border-color: #fecaca; }
-        .prob-card.span2 { grid-column: span 2; }
+        .prob-card.span2 { grid-column: auto; }  /* 전폭 1단 통일 — 섹션 안 폭을 일정하게 */
         .prob-card.fc { background: #ecfeff; border-color: #5eead4; }
         .prob-card.challenge { background: #faf5ff; border-color: #d8b4fe; }
         .prob-head { display: flex; align-items: center; gap: .375rem; margin-bottom: .375rem; flex-wrap: wrap; }
