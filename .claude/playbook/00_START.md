@@ -76,7 +76,7 @@
 50_DELIVER.md          납품 — 머지, 드라이브 반영, 배포
 60_RETRO.md            평가 — 회고와 플레이북 갱신
 lessons/PITFALLS.md      ★ 실제로 터진 함정 + 재발 방지 (기술)
-lessons/DECISIONS.md     ★ 방향이 바뀐 지점 10건과 그 이유 (제품)
+lessons/DECISIONS.md     ★ 방향이 바뀐 지점 12건과 그 이유 (제품)
 lessons/COMMUNICATION.md ★ 보고·질문에서 얻은 교훈 10건 (협업)
 lessons/TIMELINE.md      지난 사이클 실측치 — 어디서 시간이 샜는가
 templates/               기획안·검수보고서·회고 양식
