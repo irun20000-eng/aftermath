@@ -71,13 +71,13 @@
 00_START.md            ← 지금 이 문서
 10_PLAN.md             기획 — 스코핑 인터뷰 8문항, 산출물 정의, 리스크
 20_BUILD.md            실행 — 추출·제작 절차와 스캐폴드
-30_VERIFY.md           검증 — 4단 검사 (정적/렌더/수학/교육과정)
+30_VERIFY.md           검증 — 5단 검사 (정적/렌더/수학/교육과정/통합)
 40_REVIEW.md           리뷰 — 커밋·PR 규약, 사고 방지 규칙
 50_DELIVER.md          납품 — 머지, 드라이브 반영, 배포
 60_RETRO.md            평가 — 회고와 플레이북 갱신
-lessons/PITFALLS.md      ★ 실제로 터진 함정 + 재발 방지 (기술)
-lessons/DECISIONS.md     ★ 방향이 바뀐 지점 12건과 그 이유 (제품)
-lessons/COMMUNICATION.md ★ 보고·질문에서 얻은 교훈 10건 (협업)
+lessons/PITFALLS.md      ★ 실제로 터진 함정 38건 + 재발 방지 (기술)
+lessons/DECISIONS.md     ★ 방향이 바뀐 지점 13건과 그 이유 (제품)
+lessons/COMMUNICATION.md ★ 보고·질문에서 얻은 교훈 11건 (협업)
 lessons/TIMELINE.md      지난 사이클 실측치 — 어디서 시간이 샜는가
 templates/               기획안·검수보고서·회고 양식
 profiles/_generic.md   과목 무관 코어 규칙
