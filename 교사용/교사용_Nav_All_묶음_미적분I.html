@@ -170,9 +170,14 @@
   /* 각 Nav의 워터마크 중첩 회피 — 묶음에서는 1개만 표시 (첫 wrap에서만) */
   .aft-lesson-wrap:not(:first-of-type) .watermark { display: none !important; }
 
-  /* 각 Nav 안 topnav (no-print) 묶음 화면에서도 숨김 */
-  .aft-lesson-wrap .lesson-nav-bar,
-  .aft-lesson-wrap nav.no-print { display: none !important; }
+  /* 각 Nav 안 차시 이동 바는 숨김 (외부 파일을 가리킴) */
+  .aft-lesson-wrap .lesson-nav-bar { display: none !important; }
+  /* topnav 는 내부 앵커(목차·이전·다음)로 전환했으므로 화면에 표시 */
+  .aft-lesson-wrap nav.topnav {
+    max-width: 760px; margin: 0 auto 1rem; padding: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: .5rem; flex-wrap: wrap;
+  }
 
   @media print {
     @page { size: A4; margin: 14mm; }
@@ -224,16 +229,81 @@
 <button class="aft-pdf-save-bundle no-print" onclick="window.print()">
   📄 전체 PDF 저장 (31차시 + 익힘책 6단원)
 </button>
+<a class="aft-btoc-top no-print" href="#toc">▲ 목차</a>
+<style id="aft-btoc-css">
+.btoc { max-width: 880px; margin: 1.5rem auto 2.5rem; padding: 1.75rem 2rem;
+  background: #fff; border-radius: 1rem; box-shadow: 0 6px 30px rgba(0,0,0,.08); }
+.btoc h1 { font-size: 1.5rem; font-weight: 900; color: #134e4a; margin-bottom: .25rem; }
+.btoc .btoc-sub { font-size: .85rem; color: #64748b; margin-bottom: 1.25rem; }
+.btoc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: .5rem; }
+.btoc-item { display: flex; align-items: center; gap: .5rem; padding: .5rem .75rem;
+  border: 1px solid #e2e8f0; border-radius: .5rem; text-decoration: none;
+  color: #1e293b; font-size: .85rem; font-weight: 600; background: #f8fafc; }
+.btoc-item:hover { border-color: #0d9488; background: #f0fdfa; }
+.btoc-item.wb { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+.btoc-item.wb:hover { border-color: #ea580c; }
+.btoc-ic { flex-shrink: 0; }
+.aft-btoc-top { position: fixed; right: 24px; bottom: 24px; z-index: 9998;
+  padding: 10px 16px; border: none; border-radius: 999px; background: #0d9488;
+  color: #fff; font-size: 14px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(13,148,136,.4); text-decoration: none; }
+.aft-btoc-top:hover { background: #0f766e; }
+@media print { .btoc, .aft-btoc-top { display: none !important; } }
+</style>
+<div class="btoc" id="toc">
+  <h1>📚 미적분 I 수업 가이드 통합본</h1>
+  <div class="btoc-sub">31차시 + 수학 익힘책 6단원 · 이 파일 하나에 전부 들어 있습니다. 항목을 누르면 이동합니다.</div>
+  <div class="btoc-grid">
+    <a class="btoc-item" href="#nav-01"><span class="btoc-ic">📋</span><span>01차시 함수의 극한</span></a>
+    <a class="btoc-item" href="#nav-02"><span class="btoc-ic">📋</span><span>02차시 함수의 극한값의 계산</span></a>
+    <a class="btoc-item" href="#nav-03"><span class="btoc-ic">📋</span><span>03차시 함수의 극한 (미정형)</span></a>
+    <a class="btoc-item" href="#nav-04"><span class="btoc-ic">📋</span><span>04차시 중단원 마무리 (I-1)</span></a>
+    <a class="btoc-item wb" href="#nav-wb-I1"><span class="btoc-ic">📗</span><span>익힘책 Ⅰ-1 함수의 극한</span></a>
+    <a class="btoc-item" href="#nav-05"><span class="btoc-ic">📋</span><span>05차시 함수의 연속</span></a>
+    <a class="btoc-item" href="#nav-06"><span class="btoc-ic">📋</span><span>06차시 연속함수의 성질</span></a>
+    <a class="btoc-item" href="#nav-07"><span class="btoc-ic">📋</span><span>07차시 중단원 마무리 I-2</span></a>
+    <a class="btoc-item wb" href="#nav-wb-I2"><span class="btoc-ic">📗</span><span>익힘책 Ⅰ-2 함수의 연속</span></a>
+    <a class="btoc-item" href="#nav-08"><span class="btoc-ic">📋</span><span>08차시 대단원 평가 I</span></a>
+    <a class="btoc-item" href="#nav-09"><span class="btoc-ic">📋</span><span>09차시 미분계수</span></a>
+    <a class="btoc-item" href="#nav-10"><span class="btoc-ic">📋</span><span>10차시 도함수</span></a>
+    <a class="btoc-item" href="#nav-11"><span class="btoc-ic">📋</span><span>11차시 중단원 마무리 (II-1)</span></a>
+    <a class="btoc-item wb" href="#nav-wb-II1"><span class="btoc-ic">📗</span><span>익힘책 Ⅱ-1 미분계수와 도함수</span></a>
+    <a class="btoc-item" href="#nav-12"><span class="btoc-ic">📋</span><span>12차시 접선의 방정식</span></a>
+    <a class="btoc-item" href="#nav-13"><span class="btoc-ic">📋</span><span>13차시 평균값 정리</span></a>
+    <a class="btoc-item" href="#nav-14"><span class="btoc-ic">📋</span><span>14차시 함수의 증가와 감소</span></a>
+    <a class="btoc-item" href="#nav-15"><span class="btoc-ic">📋</span><span>15차시 극대와 극소</span></a>
+    <a class="btoc-item" href="#nav-16"><span class="btoc-ic">📋</span><span>16차시 함수의 그래프</span></a>
+    <a class="btoc-item" href="#nav-17"><span class="btoc-ic">📋</span><span>17차시 함수의 그래프 응용</span></a>
+    <a class="btoc-item" href="#nav-18"><span class="btoc-ic">📋</span><span>18차시 방정식과 부등식에의 활용</span></a>
+    <a class="btoc-item" href="#nav-19"><span class="btoc-ic">📋</span><span>19차시 속도와 가속도</span></a>
+    <a class="btoc-item" href="#nav-20"><span class="btoc-ic">📋</span><span>20차시 중단원 마무리 II-2</span></a>
+    <a class="btoc-item wb" href="#nav-wb-II2"><span class="btoc-ic">📗</span><span>익힘책 Ⅱ-2 도함수의 활용</span></a>
+    <a class="btoc-item" href="#nav-21"><span class="btoc-ic">📋</span><span>21차시 대단원 평가 II</span></a>
+    <a class="btoc-item" href="#nav-22"><span class="btoc-ic">📋</span><span>22차시 부정적분</span></a>
+    <a class="btoc-item" href="#nav-23"><span class="btoc-ic">📋</span><span>23차시 정적분의 정의</span></a>
+    <a class="btoc-item" href="#nav-24"><span class="btoc-ic">📋</span><span>24차시 정적분의 계산</span></a>
+    <a class="btoc-item" href="#nav-25"><span class="btoc-ic">📋</span><span>25차시 중단원 마무리 (III-1)</span></a>
+    <a class="btoc-item wb" href="#nav-wb-III1"><span class="btoc-ic">📗</span><span>익힘책 Ⅲ-1 부정적분과 정적분</span></a>
+    <a class="btoc-item" href="#nav-26"><span class="btoc-ic">📋</span><span>26차시 넓이 — 곡선과 x축 사이</span></a>
+    <a class="btoc-item" href="#nav-27"><span class="btoc-ic">📋</span><span>27차시 넓이 — 두 곡선 사이</span></a>
+    <a class="btoc-item" href="#nav-28"><span class="btoc-ic">📋</span><span>28차시 속도와 거리</span></a>
+    <a class="btoc-item" href="#nav-29"><span class="btoc-ic">📋</span><span>29차시 중단원 마무리 (III-2)</span></a>
+    <a class="btoc-item wb" href="#nav-wb-III2"><span class="btoc-ic">📗</span><span>익힘책 Ⅲ-2 정적분의 활용</span></a>
+    <a class="btoc-item" href="#nav-30"><span class="btoc-ic">📋</span><span>30차시 대단원 평가 III (적분 종합)</span></a>
+    <a class="btoc-item" href="#nav-31"><span class="btoc-ic">📋</span><span>31차시 학기말 종합</span></a>
+  </div>
+</div>
 
-<section class="aft-lesson-wrap" data-nav-no="01">
+<section class="aft-lesson-wrap" id="nav-01" data-nav-no="01">
   <div class="aft-lesson-meta no-print">📋 01차시 함수의 극한</div>
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <span style="opacity:.4">← 이전</span>
+        <a href="#nav-02">다음 →</a>
         <a href="교사용_학습지_미적분I_01_함수의극한.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -470,7 +540,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="02">
+<section class="aft-lesson-wrap" id="nav-02" data-nav-no="02">
   <div class="aft-lesson-meta no-print">📋 02차시 함수의 극한값의 계산</div>
   <style data-nav-style="02">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -569,11 +639,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_01_함수의극한.html">← 이전 차시</a>
+        <a href="#nav-01">← 이전</a>
+        <a href="#nav-03">다음 →</a>
         <a href="교사용_학습지_미적분I_02_함수의극한값의계산.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_03_함수의극한_미정형.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -824,7 +894,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="03">
+<section class="aft-lesson-wrap" id="nav-03" data-nav-no="03">
   <div class="aft-lesson-meta no-print">📋 03차시 함수의 극한 (미정형)</div>
   <style data-nav-style="03">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -923,11 +993,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html">← 이전 차시</a>
+        <a href="#nav-02">← 이전</a>
+        <a href="#nav-04">다음 →</a>
         <a href="교사용_학습지_미적분I_03_함수의극한_미정형.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_04_중단원마무리_I_1.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -1175,7 +1245,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="04">
+<section class="aft-lesson-wrap" id="nav-04" data-nav-no="04">
   <div class="aft-lesson-meta no-print">📋 04차시 중단원 마무리 (I-1)</div>
   <style data-nav-style="04">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -1274,9 +1344,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_03_함수의극한_미정형.html">← 이전 차시</a>
+        <a href="#nav-03">← 이전</a>
+        <a href="#nav-wb-I1">다음 →</a>
         <a href="교사용_학습지_미적분I_04_중단원마무리_I_1.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
@@ -1584,7 +1655,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="wb-I1">
+<section class="aft-lesson-wrap" id="nav-wb-I1" data-nav-no="wb-I1">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅰ-1 함수의 극한</div>
 <style data-nav-style="wb-I1">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -1683,10 +1754,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_04_중단원마무리_I_1.html">← 04차시 중단원 마무리</a>
-        <a href="교사용_수학익힘책_미적분I_I1_함수의극한_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <a href="#nav-04">← 이전</a>
+        <a href="#nav-05">다음 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -1947,7 +2018,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="05">
+<section class="aft-lesson-wrap" id="nav-05" data-nav-no="05">
   <div class="aft-lesson-meta no-print">📋 05차시 함수의 연속</div>
   <style data-nav-style="05">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -2074,11 +2145,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_04_중단원마무리_I_1.html">← 이전 차시 가이드</a>
+        <a href="#nav-wb-I1">← 이전</a>
+        <a href="#nav-06">다음 →</a>
         <a href="교사용_학습지_미적분I_05_함수의연속.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_06_연속함수의성질.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -2316,7 +2387,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="06">
+<section class="aft-lesson-wrap" id="nav-06" data-nav-no="06">
   <div class="aft-lesson-meta no-print">📋 06차시 연속함수의 성질</div>
   <style data-nav-style="06">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -2433,11 +2504,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_05_함수의연속.html">← 이전 차시 가이드</a>
+        <a href="#nav-05">← 이전</a>
+        <a href="#nav-07">다음 →</a>
         <a href="교사용_학습지_미적분I_06_연속함수의성질.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_07_중단원마무리_I_2.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -2678,7 +2749,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="07">
+<section class="aft-lesson-wrap" id="nav-07" data-nav-no="07">
   <div class="aft-lesson-meta no-print">📋 07차시 중단원 마무리 I-2</div>
   <style data-nav-style="07">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -2795,11 +2866,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_06_연속함수의성질.html">← 이전 차시 가이드</a>
+        <a href="#nav-06">← 이전</a>
+        <a href="#nav-wb-I2">다음 →</a>
         <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_08_대단원평가_I.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -3109,7 +3180,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="wb-I2">
+<section class="aft-lesson-wrap" id="nav-wb-I2" data-nav-no="wb-I2">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅰ-2 함수의 연속</div>
 <style data-nav-style="wb-I2">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -3208,10 +3279,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_07_중단원마무리_I_2.html">← 07차시 중단원 마무리</a>
-        <a href="교사용_수학익힘책_미적분I_I2_함수의연속_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <a href="#nav-07">← 이전</a>
+        <a href="#nav-08">다음 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -3478,7 +3549,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="08">
+<section class="aft-lesson-wrap" id="nav-08" data-nav-no="08">
   <div class="aft-lesson-meta no-print">📋 08차시 대단원 평가 I</div>
   <style data-nav-style="08">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -3595,9 +3666,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_07_중단원마무리_I_2.html">← 이전 차시 가이드</a>
+        <a href="#nav-wb-I2">← 이전</a>
+        <a href="#nav-09">다음 →</a>
         <a href="교사용_학습지_미적분I_08_대단원평가_I.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
@@ -3899,7 +3971,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="09">
+<section class="aft-lesson-wrap" id="nav-09" data-nav-no="09">
   <div class="aft-lesson-meta no-print">📋 09차시 미분계수</div>
   <style data-nav-style="09">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -3998,10 +4070,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-08">← 이전</a>
+        <a href="#nav-10">다음 →</a>
         <a href="교사용_학습지_미적분I_09_미분계수.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_10_도함수.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -4262,7 +4335,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="10">
+<section class="aft-lesson-wrap" id="nav-10" data-nav-no="10">
   <div class="aft-lesson-meta no-print">📋 10차시 도함수</div>
   <style data-nav-style="10">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -4361,11 +4434,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_09_미분계수.html">← 이전 차시</a>
+        <a href="#nav-09">← 이전</a>
+        <a href="#nav-11">다음 →</a>
         <a href="교사용_학습지_미적분I_10_도함수.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_11_중단원마무리_II_1.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -4630,7 +4703,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="11">
+<section class="aft-lesson-wrap" id="nav-11" data-nav-no="11">
   <div class="aft-lesson-meta no-print">📋 11차시 중단원 마무리 (II-1)</div>
   <style data-nav-style="11">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -4729,9 +4802,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_10_도함수.html">← 이전 차시</a>
+        <a href="#nav-10">← 이전</a>
+        <a href="#nav-wb-II1">다음 →</a>
         <a href="교사용_학습지_미적분I_11_중단원마무리_II_1.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
@@ -5038,7 +5112,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="wb-II1">
+<section class="aft-lesson-wrap" id="nav-wb-II1" data-nav-no="wb-II1">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅱ-1 미분계수와 도함수</div>
 <style data-nav-style="wb-II1">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -5137,10 +5211,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_11_중단원마무리_II_1.html">← 11차시 중단원 마무리</a>
-        <a href="교사용_수학익힘책_미적분I_II1_미분계수와도함수_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <a href="#nav-11">← 이전</a>
+        <a href="#nav-12">다음 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -5415,7 +5489,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="12">
+<section class="aft-lesson-wrap" id="nav-12" data-nav-no="12">
   <div class="aft-lesson-meta no-print">📋 12차시 접선의 방정식</div>
   <style data-nav-style="12">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -5532,10 +5606,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-wb-II1">← 이전</a>
+        <a href="#nav-13">다음 →</a>
         <a href="교사용_학습지_미적분I_12_접선의방정식.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_13_평균값정리.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -5795,7 +5870,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="13">
+<section class="aft-lesson-wrap" id="nav-13" data-nav-no="13">
   <div class="aft-lesson-meta no-print">📋 13차시 평균값 정리</div>
   <style data-nav-style="13">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -5912,10 +5987,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-12">← 이전</a>
+        <a href="#nav-14">다음 →</a>
         <a href="교사용_학습지_미적분I_13_평균값정리.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_14_함수의증가와감소.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -6171,7 +6247,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="14">
+<section class="aft-lesson-wrap" id="nav-14" data-nav-no="14">
   <div class="aft-lesson-meta no-print">📋 14차시 함수의 증가와 감소</div>
   <style data-nav-style="14">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -6288,10 +6364,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-13">← 이전</a>
+        <a href="#nav-15">다음 →</a>
         <a href="교사용_학습지_미적분I_14_함수의증가와감소.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_15_극대와극소.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -6546,7 +6623,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="15">
+<section class="aft-lesson-wrap" id="nav-15" data-nav-no="15">
   <div class="aft-lesson-meta no-print">📋 15차시 극대와 극소</div>
   <style data-nav-style="15">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -6668,10 +6745,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-14">← 이전</a>
+        <a href="#nav-16">다음 →</a>
         <a href="교사용_학습지_미적분I_15_극대와극소.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_16_함수의그래프.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -6931,7 +7009,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="16">
+<section class="aft-lesson-wrap" id="nav-16" data-nav-no="16">
   <div class="aft-lesson-meta no-print">📋 16차시 함수의 그래프</div>
   <style data-nav-style="16">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -7058,10 +7136,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-15">← 이전</a>
+        <a href="#nav-17">다음 →</a>
         <a href="교사용_학습지_미적분I_16_함수의그래프.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_17_함수의그래프_응용.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -7322,7 +7401,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="17">
+<section class="aft-lesson-wrap" id="nav-17" data-nav-no="17">
   <div class="aft-lesson-meta no-print">📋 17차시 함수의 그래프 응용</div>
   <style data-nav-style="17">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -7439,10 +7518,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-16">← 이전</a>
+        <a href="#nav-18">다음 →</a>
         <a href="교사용_학습지_미적분I_17_함수의그래프_응용.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_18_방정식과부등식에의활용.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -7699,7 +7779,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="18">
+<section class="aft-lesson-wrap" id="nav-18" data-nav-no="18">
   <div class="aft-lesson-meta no-print">📋 18차시 방정식과 부등식에의 활용</div>
   <style data-nav-style="18">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -7816,10 +7896,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-17">← 이전</a>
+        <a href="#nav-19">다음 →</a>
         <a href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_19_속도와가속도.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -8077,7 +8158,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="19">
+<section class="aft-lesson-wrap" id="nav-19" data-nav-no="19">
   <div class="aft-lesson-meta no-print">📋 19차시 속도와 가속도</div>
   <style data-nav-style="19">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -8194,10 +8275,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-18">← 이전</a>
+        <a href="#nav-20">다음 →</a>
         <a href="교사용_학습지_미적분I_19_속도와가속도.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_20_중단원마무리_II_2.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -8460,7 +8542,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="20">
+<section class="aft-lesson-wrap" id="nav-20" data-nav-no="20">
   <div class="aft-lesson-meta no-print">📋 20차시 중단원 마무리 II-2</div>
   <style data-nav-style="20">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -8587,11 +8669,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_19_속도와가속도.html">← 이전 차시</a>
+        <a href="#nav-19">← 이전</a>
+        <a href="#nav-wb-II2">다음 →</a>
         <a href="교사용_학습지_미적분I_20_중단원마무리_II_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_21_대단원평가_II.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -8902,7 +8984,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="wb-II2">
+<section class="aft-lesson-wrap" id="nav-wb-II2" data-nav-no="wb-II2">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅱ-2 도함수의 활용</div>
 <style data-nav-style="wb-II2">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -9001,10 +9083,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_20_중단원마무리_II_2.html">← 20차시 중단원 마무리</a>
-        <a href="교사용_수학익힘책_미적분I_II2_도함수의활용_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <a href="#nav-20">← 이전</a>
+        <a href="#nav-21">다음 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -9278,7 +9360,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="21">
+<section class="aft-lesson-wrap" id="nav-21" data-nav-no="21">
   <div class="aft-lesson-meta no-print">📋 21차시 대단원 평가 II</div>
   <style data-nav-style="21">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -9405,9 +9487,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_20_중단원마무리_II_2.html">← 이전 차시</a>
+        <a href="#nav-wb-II2">← 이전</a>
+        <a href="#nav-22">다음 →</a>
         <a href="교사용_학습지_미적분I_21_대단원평가_II.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
@@ -9723,7 +9806,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="22">
+<section class="aft-lesson-wrap" id="nav-22" data-nav-no="22">
   <div class="aft-lesson-meta no-print">📋 22차시 부정적분</div>
   <style data-nav-style="22">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -9840,11 +9923,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_21_대단원평가_II.html">← 이전 차시</a>
+        <a href="#nav-21">← 이전</a>
+        <a href="#nav-23">다음 →</a>
         <a href="교사용_학습지_미적분I_22_부정적분.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_23_정적분의정의.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -10101,7 +10184,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="23">
+<section class="aft-lesson-wrap" id="nav-23" data-nav-no="23">
   <div class="aft-lesson-meta no-print">📋 23차시 정적분의 정의</div>
   <style data-nav-style="23">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -10218,11 +10301,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_22_부정적분.html">← 이전 차시</a>
+        <a href="#nav-22">← 이전</a>
+        <a href="#nav-24">다음 →</a>
         <a href="교사용_학습지_미적분I_23_정적분의정의.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_24_정적분의계산.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -10481,7 +10564,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="24">
+<section class="aft-lesson-wrap" id="nav-24" data-nav-no="24">
   <div class="aft-lesson-meta no-print">📋 24차시 정적분의 계산</div>
   <style data-nav-style="24">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -10598,11 +10681,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_23_정적분의정의.html">← 이전 차시</a>
+        <a href="#nav-23">← 이전</a>
+        <a href="#nav-25">다음 →</a>
         <a href="교사용_학습지_미적분I_24_정적분의계산.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_25_중단원마무리_III_1.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -10859,7 +10942,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="25">
+<section class="aft-lesson-wrap" id="nav-25" data-nav-no="25">
   <div class="aft-lesson-meta no-print">📋 25차시 중단원 마무리 (III-1)</div>
   <style data-nav-style="25">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -10958,9 +11041,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_24_정적분의계산.html">← Nav 24 정적분의계산</a>
+        <a href="#nav-24">← 이전</a>
+        <a href="#nav-wb-III1">다음 →</a>
         <a href="교사용_학습지_미적분I_25_중단원마무리_III_1.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
@@ -11268,7 +11352,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="wb-III1">
+<section class="aft-lesson-wrap" id="nav-wb-III1" data-nav-no="wb-III1">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅲ-1 부정적분과 정적분</div>
 <style data-nav-style="wb-III1">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -11367,10 +11451,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_25_중단원마무리_III_1.html">← 25차시 중단원 마무리</a>
-        <a href="교사용_수학익힘책_미적분I_III1_부정적분과정적분_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <a href="#nav-25">← 이전</a>
+        <a href="#nav-26">다음 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -11652,7 +11736,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="26">
+<section class="aft-lesson-wrap" id="nav-26" data-nav-no="26">
   <div class="aft-lesson-meta no-print">📋 26차시 넓이 — 곡선과 x축 사이</div>
   <style data-nav-style="26">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -11779,10 +11863,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="#nav-wb-III1">← 이전</a>
+        <a href="#nav-27">다음 →</a>
         <a href="교사용_학습지_미적분I_26_넓이_곡선과x축.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_27_넓이_두곡선사이.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -12036,7 +12121,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="27">
+<section class="aft-lesson-wrap" id="nav-27" data-nav-no="27">
   <div class="aft-lesson-meta no-print">📋 27차시 넓이 — 두 곡선 사이</div>
   <style data-nav-style="27">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -12135,11 +12220,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_26_넓이_곡선과x축.html">← 이전 가이드</a>
+        <a href="#nav-26">← 이전</a>
+        <a href="#nav-28">다음 →</a>
         <a href="교사용_학습지_미적분I_27_넓이_두곡선사이.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_28_속도와거리.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -12391,7 +12476,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="28">
+<section class="aft-lesson-wrap" id="nav-28" data-nav-no="28">
   <div class="aft-lesson-meta no-print">📋 28차시 속도와 거리</div>
   <style data-nav-style="28">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -12490,11 +12575,11 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_27_넓이_두곡선사이.html">← 이전 가이드</a>
+        <a href="#nav-27">← 이전</a>
+        <a href="#nav-29">다음 →</a>
         <a href="교사용_학습지_미적분I_28_속도와거리.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_29_중단원마무리_III_2.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -12752,7 +12837,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="29">
+<section class="aft-lesson-wrap" id="nav-29" data-nav-no="29">
   <div class="aft-lesson-meta no-print">📋 29차시 중단원 마무리 (III-2)</div>
   <style data-nav-style="29">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -12851,9 +12936,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_28_속도와거리.html">← 28차시</a>
+        <a href="#nav-28">← 이전</a>
+        <a href="#nav-wb-III2">다음 →</a>
         <a href="교사용_학습지_미적분I_29_중단원마무리_III_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
@@ -13190,7 +13276,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="wb-III2">
+<section class="aft-lesson-wrap" id="nav-wb-III2" data-nav-no="wb-III2">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅲ-2 정적분의 활용</div>
 <style data-nav-style="wb-III2">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -13289,10 +13375,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_29_중단원마무리_III_2.html">← 29차시 중단원 마무리</a>
-        <a href="교사용_수학익힘책_미적분I_III2_정적분의활용_해설.html" target="aftermath_wb_calc" class="ws-link">익힘책 해설 보기 →</a>
+        <a href="#nav-29">← 이전</a>
+        <a href="#nav-30">다음 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -13558,7 +13644,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="30">
+<section class="aft-lesson-wrap" id="nav-30" data-nav-no="30">
   <div class="aft-lesson-meta no-print">📋 30차시 대단원 평가 III (적분 종합)</div>
   <style data-nav-style="30">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -13685,9 +13771,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_31_학기말종합.html">학기말 종합 가이드 →</a>
+        <a href="#nav-wb-III2">← 이전</a>
+        <a href="#nav-31">다음 →</a>
         <a href="교사용_학습지_미적분I_30_대단원평가_III.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
@@ -13995,7 +14082,7 @@
 
 </article>
 </section>
-<section class="aft-lesson-wrap" data-nav-no="31">
+<section class="aft-lesson-wrap" id="nav-31" data-nav-no="31">
   <div class="aft-lesson-meta no-print">📋 31차시 학기말 종합</div>
   <style data-nav-style="31">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap');
@@ -14137,9 +14224,10 @@
 <div class="watermark">TEACHER'S GUIDE</div>
 
 <nav class="topnav no-print">
-    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <a href="#toc">🏠 목차</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_30_대단원평가_III.html">← 대단원 평가 III 가이드</a>
+        <a href="#nav-30">← 이전</a>
+        <span style="opacity:.4">다음 →</span>
         <a href="교사용_학습지_미적분I_31_학기말종합.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
