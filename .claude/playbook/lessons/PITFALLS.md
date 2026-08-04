@@ -121,6 +121,38 @@
   const PAGE = 1122 - 2*53;   // A4 297mm − 여백 14mm×2 ≈ 1016px @96dpi
   ```
 
+### C-5. `overflow: auto` 가 인쇄에서 내용을 삼킨다 ★조용히 사라진다
+
+- **증상** 화면에서 카드 밖으로 넘친 긴 수식이 **PDF에서 통째로 사라짐.**
+  화면에는 스크롤바가 있어 밀어 볼 수 있으니 정상으로 보인다.
+  > "흰 배경 밖으로 설명·해설이 넘쳐서 나오는데, pdf로 변환시 잘리는 것인가?"
+- **원인** `.q-stmt`/`.q-solve` 의 `overflow-x: auto`. **인쇄에는 스크롤이 없다.**
+  (덤: `overflow-x: auto` 만 지정해도 `overflow-y` 가 `auto` 로 계산되어 세로 스크롤바까지 생긴다)
+- **더 큰 원인** `@media print { .problems { grid-template-columns: 1fr } }` 로 1단 전환을 걸어 놨어도
+  `.prob-card.span2 { grid-column: span 2 }` 가 살아 있으면 **1단 그리드에 2열이 다시 생긴다.**
+  인쇄에서도 카드가 절반 폭에 머물러 잘림이 2배로 심해진다.
+- **방지** 인쇄 블록에서 span 해제 + 넘침 허용:
+  ```css
+  @media print {
+    .problems { grid-template-columns: 1fr; }
+    .prob-card.span2 { grid-column: auto !important; }   /* ← 빠지기 쉽다 */
+    .q-stmt, .q-solve, .q-ans, .q-warn, .step-body, .calc {
+      overflow: visible !important; word-break: break-word;
+    }
+    mjx-container { max-width: 100% !important; }
+  }
+  ```
+- **검증법** 폭을 아는 표식을 주입해 실제 PDF에서 살아남는 한계를 잰다.
+  화면 측정만으로는 못 잡는다.
+  ```js
+  // 카드에 폭 300~1000px 표식(S{w}S … E{w}E)을 넣고 page.pdf() → 텍스트 추출
+  // 끝 표식이 사라지는 폭이 곧 잘림 한계
+  ```
+  실측(A4 세로, 여백 14mm): **수정 전 600px → 수정 후 950px**
+
+  ⚠️ 샌드박스는 프록시가 MathJax CDN을 막으므로(403) 수식이 실제로 렌더되지 않는다.
+  **폭 표식 주입 방식이 유일하게 신뢰할 수 있는 측정법**이고, 최종 육안 확인은 사용자 화면에서 받아야 한다.
+
 ---
 
 ## D. 배포 · 이식
@@ -265,6 +297,7 @@
 | 7 | 일괄 작업 뒤에는 전 파일 검증 (표본 금지) |
 | 8 | 인쇄는 "화면에서 본 그대로" |
 | 9 | 인쇄 CSS는 기기마다 다르다 |
+| 9b | **인쇄에는 스크롤이 없다** — `overflow:auto` 내용은 PDF에서 사라진다 |
 | 10 | 그림은 base64 임베드 |
 | 11 | 폴더 깊이가 바뀌면 링크 전수 검사 |
 | 12 | 정본이 어디인지 먼저 확정한다 |
