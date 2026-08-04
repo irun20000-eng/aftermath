@@ -34,6 +34,25 @@ git checkout origin/main -- "<경로>"
 
   (작업 트리가 main과 이미 같은 내용이면 `--soft`, 아니면 `-B <branch> origin/main` 후 재적용)
 
+### ⚠️ 스쿼시 커밋만 얹힌 브랜치는 푸시하지 않는다
+
+`git reset --hard origin/main` 을 하면 **GitHub이 스쿼시 머지로 만든 커밋**이 브랜치에 얹힌다.
+그 커밋은 작성자가 사용자 실제 이메일로 기록되어 있어, 푸시하면 거부된다.
+
+```
+! [remote rejected] ... (push declined due to email privacy restrictions)
+```
+
+- **내 커밋을 올린 뒤에** 푸시한다. 내 커밋은 `noreply@anthropic.com` 이라 통과한다
+- 조사·확인 목적으로만 main을 당겨왔고 **커밋할 것이 없다면 푸시하지 않는다**
+- 이미 얹혔고 올릴 것이 없으면 원격 브랜치 기준으로 되돌린다
+  (스쿼시 전후 트리는 동일하므로 내용 손실이 없다 — `git diff` 로 먼저 확인)
+
+  ```bash
+  git diff origin/<branch> HEAD --stat     # 비어 있으면 내용 동일
+  git reset --hard origin/<branch>
+  ```
+
 ---
 
 ## 커밋 메시지
