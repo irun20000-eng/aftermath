@@ -170,7 +170,67 @@
   📄 전체 PDF 저장 (학습지 31 + 익힘책 6)
 </button>
 
-<section class="aft-lesson-wrap" data-lesson-no="01" style="page-break-after:always;break-after:page;">
+
+<style id="aft-btoc-css">
+.btoc{max-width:1100px;margin:1.5rem auto 2.5rem;padding:1.75rem 2rem;background:#fff;border-radius:1rem;box-shadow:0 6px 30px rgba(0,0,0,.08)}
+.btoc h1{font-size:1.5rem;font-weight:900;color:#134e4a;margin-bottom:.25rem}
+.btoc .btoc-sub{font-size:.85rem;color:#64748b;margin-bottom:1.25rem}
+.btoc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.5rem}
+.btoc-item{display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;border:1px solid #e2e8f0;border-radius:.5rem;text-decoration:none;color:#1e293b;font-size:.85rem;font-weight:600;background:#f8fafc}
+.btoc-item:hover{border-color:#0d9488;background:#f0fdfa}
+.btoc-item.wb{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
+.btoc-item.wb:hover{border-color:#ea580c}
+.aft-btoc-top{position:fixed;left:24px;bottom:24px;z-index:9997;padding:10px 16px;border:none;border-radius:999px;background:#0d9488;color:#fff;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(13,148,136,.4);text-decoration:none}
+.aft-btoc-top:hover{background:#0f766e;color:#fff}
+@media (max-width:600px){.aft-btoc-top{left:16px;bottom:16px;padding:9px 14px;font-size:13px}}
+@media print{.btoc,.aft-btoc-top,.aft-bundle-nav{display:none !important}}
+</style>
+<a class="aft-btoc-top no-print" href="#toc">▲ TOP</a>
+<div class="btoc" id="toc">
+  <h1>📚 미적분 I 학습지 통합본</h1>
+  <div class="btoc-sub">31차시 + 수학 익힘책 6단원 · 이 파일 하나에 전부 들어 있습니다. 항목을 누르면 이동합니다.</div>
+  <div class="btoc-grid">
+    <a class="btoc-item" href="#ws-01"><span>📄</span><span>01 함수의 극한</span></a>
+    <a class="btoc-item" href="#ws-02"><span>📄</span><span>02 함수의 극한값의 계산</span></a>
+    <a class="btoc-item" href="#ws-03"><span>📄</span><span>03 함수의 극한 — 미정형</span></a>
+    <a class="btoc-item" href="#ws-04"><span>📄</span><span>04 중단원 마무리 — 함수의 극한</span></a>
+    <a class="btoc-item wb" href="#ws-wb-I1"><span>📗</span><span>익힘책 Ⅰ-1 함수의 극한</span></a>
+    <a class="btoc-item" href="#ws-05"><span>📄</span><span>05 함수의 연속</span></a>
+    <a class="btoc-item" href="#ws-06"><span>📄</span><span>06 연속함수의 성질</span></a>
+    <a class="btoc-item" href="#ws-07"><span>📄</span><span>07 중단원 마무리 — 함수의 연속</span></a>
+    <a class="btoc-item wb" href="#ws-wb-I2"><span>📗</span><span>익힘책 Ⅰ-2 함수의 연속</span></a>
+    <a class="btoc-item" href="#ws-08"><span>📄</span><span>08 대단원 평가 I (함수의 극한·연속)</span></a>
+    <a class="btoc-item" href="#ws-09"><span>📄</span><span>09 미분계수</span></a>
+    <a class="btoc-item" href="#ws-10"><span>📄</span><span>10 도함수</span></a>
+    <a class="btoc-item" href="#ws-11"><span>📄</span><span>11 중단원 마무리 — 미분계수와 도함수</span></a>
+    <a class="btoc-item wb" href="#ws-wb-II1"><span>📗</span><span>익힘책 Ⅱ-1 미분계수와 도함수</span></a>
+    <a class="btoc-item" href="#ws-12"><span>📄</span><span>12 접선의 방정식</span></a>
+    <a class="btoc-item" href="#ws-13"><span>📄</span><span>13 평균값 정리</span></a>
+    <a class="btoc-item" href="#ws-14"><span>📄</span><span>14 함수의 증가와 감소</span></a>
+    <a class="btoc-item" href="#ws-15"><span>📄</span><span>15 극대와 극소</span></a>
+    <a class="btoc-item" href="#ws-16"><span>📄</span><span>16 함수의 그래프</span></a>
+    <a class="btoc-item" href="#ws-17"><span>📄</span><span>17 함수의 그래프 응용 (최댓값·최솟값)</span></a>
+    <a class="btoc-item" href="#ws-18"><span>📄</span><span>18 방정식과 부등식에의 활용</span></a>
+    <a class="btoc-item" href="#ws-19"><span>📄</span><span>19 속도와 가속도</span></a>
+    <a class="btoc-item" href="#ws-20"><span>📄</span><span>20 중단원 마무리 II-2 (도함수의 활용)</span></a>
+    <a class="btoc-item wb" href="#ws-wb-II2"><span>📗</span><span>익힘책 Ⅱ-2 도함수의 활용</span></a>
+    <a class="btoc-item" href="#ws-21"><span>📄</span><span>21 대단원 평가 II (미분)</span></a>
+    <a class="btoc-item" href="#ws-22"><span>📄</span><span>22 부정적분</span></a>
+    <a class="btoc-item" href="#ws-23"><span>📄</span><span>23 정적분의 정의</span></a>
+    <a class="btoc-item" href="#ws-24"><span>📄</span><span>24 정적분의 계산</span></a>
+    <a class="btoc-item" href="#ws-25"><span>📄</span><span>25 중단원 마무리 — 부정적분과 정적분</span></a>
+    <a class="btoc-item wb" href="#ws-wb-III1"><span>📗</span><span>익힘책 Ⅲ-1 부정적분과 정적분</span></a>
+    <a class="btoc-item" href="#ws-26"><span>📄</span><span>26 넓이 — 곡선과 x축 사이</span></a>
+    <a class="btoc-item" href="#ws-27"><span>📄</span><span>27 넓이 — 두 곡선 사이</span></a>
+    <a class="btoc-item" href="#ws-28"><span>📄</span><span>28 속도와 거리</span></a>
+    <a class="btoc-item" href="#ws-29"><span>📄</span><span>29 중단원 마무리 — 정적분의 활용</span></a>
+    <a class="btoc-item wb" href="#ws-wb-III2"><span>📗</span><span>익힘책 Ⅲ-2 정적분의 활용</span></a>
+    <a class="btoc-item" href="#ws-30"><span>📄</span><span>30 대단원 평가 III (적분)</span></a>
+    <a class="btoc-item" href="#ws-31"><span>📄</span><span>31 학기말 종합 평가</span></a>
+  </div>
+</div>
+
+<section class="aft-lesson-wrap" data-lesson-no="01" style="page-break-after:always;break-after:page;" id="ws-01">
   <div class="aft-lesson-meta no-print">📄 01. 2026 2학기 미적분 I 학습지: 함수의 극한</div>
         <script>
         (function () {
@@ -191,16 +251,10 @@
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-
-                <a href="학습지_미적분I_02_함수의극한값의계산.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-400 rounded-lg text-sm font-bold border border-slate-100 cursor-not-allowed select-none" aria-disabled="true"><span>←</span><span>처음</span></span><a href="#ws-02" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -561,8 +615,12 @@ document.addEventListener('click', function(e) {
   if (w) w.focus();
 });
 </script>
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-400 rounded-lg text-sm font-bold border border-slate-100 cursor-not-allowed select-none" aria-disabled="true"><span>←</span><span>처음</span></span><a href="#ws-02" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="02" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="02" style="page-break-after:always;break-after:page;" id="ws-02">
   <div class="aft-lesson-meta no-print">📄 02. 2026 2학기 미적분 I 학습지: 함수의 극한값의 계산</div>
   <style data-lesson-style="02">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -627,16 +685,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_01_함수의극한.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_03_함수의극한_미정형.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-01" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-03" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -1016,8 +1068,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-01" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-03" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="03" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="03" style="page-break-after:always;break-after:page;" id="ws-03">
   <div class="aft-lesson-meta no-print">📄 03. 2026 2학기 미적분 I 학습지: 함수의 극한 — 미정형</div>
   <style data-lesson-style="03">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -1082,16 +1138,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_02_함수의극한값의계산.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_04_중단원마무리_I_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-02" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-04" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -1473,8 +1523,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-02" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-04" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="04" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="04" style="page-break-after:always;break-after:page;" id="ws-04">
   <div class="aft-lesson-meta no-print">📄 04. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 함수의 극한</div>
   <style data-lesson-style="04">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -1538,16 +1592,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_03_함수의극한_미정형.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_05_함수의연속.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-03" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-I1" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -1830,9 +1878,17 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-03" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-I1" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="wb-I1" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="wb-I1" style="page-break-after:always;break-after:page;" id="ws-wb-I1">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅰ-1. 2026 2학기 수학 익힘책: 함수의 극한</div>
+<nav class="aft-bundle-nav mb-6 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-04" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-05" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 <div class="max-w-4xl mx-auto">
   <header class="text-center mb-16 border-b-4 pb-10" style="border-color:#ea580c">
     <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 스스로 공부하는 수학 익힘책</p>
@@ -1929,9 +1985,13 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
 </div>
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-04" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-05" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
 
-<section class="aft-lesson-wrap" data-lesson-no="05" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="05" style="page-break-after:always;break-after:page;" id="ws-05">
   <div class="aft-lesson-meta no-print">📄 05. 2026 2학기 미적분 I 학습지: 함수의 연속</div>
   <style data-lesson-style="05">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -1996,16 +2056,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_04_중단원마무리_I_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_06_연속함수의성질.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-I1" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-06" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -2382,8 +2436,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-I1" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-06" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="06" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="06" style="page-break-after:always;break-after:page;" id="ws-06">
   <div class="aft-lesson-meta no-print">📄 06. 2026 2학기 미적분 I 학습지: 연속함수의 성질</div>
   <style data-lesson-style="06">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -2448,16 +2506,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_05_함수의연속.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_07_중단원마무리_I_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-05" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-07" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -2820,8 +2872,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-05" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-07" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="07" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="07" style="page-break-after:always;break-after:page;" id="ws-07">
   <div class="aft-lesson-meta no-print">📄 07. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 함수의 연속</div>
   <style data-lesson-style="07">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -2883,16 +2939,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_06_연속함수의성질.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_08_대단원평가_I.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-06" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-I2" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -3170,9 +3220,17 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-06" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-I2" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="wb-I2" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="wb-I2" style="page-break-after:always;break-after:page;" id="ws-wb-I2">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅰ-2. 2026 2학기 수학 익힘책: 함수의 연속</div>
+<nav class="aft-bundle-nav mb-6 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-07" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-08" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 <div class="max-w-4xl mx-auto">
   <header class="text-center mb-16 border-b-4 pb-10" style="border-color:#ea580c">
     <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 스스로 공부하는 수학 익힘책</p>
@@ -3279,9 +3337,13 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
 </div>
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-07" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-08" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
 
-<section class="aft-lesson-wrap" data-lesson-no="08" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="08" style="page-break-after:always;break-after:page;" id="ws-08">
   <div class="aft-lesson-meta no-print">📄 08. 2026 2학기 미적분 I 학습지: 대단원 평가 I (함수의 극한·연속)</div>
   <style data-lesson-style="08">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -3343,16 +3405,10 @@ document.addEventListener('click', function(e) {
             <p class="mt-4 text-slate-600 font-bold bg-teal-50 p-3 rounded-lg inline-block border border-teal-200">💡 비상 미적분 I 교과서 대단원 평가 I (함수의 극한·연속 종합) 문항. 정확한 논리로 풀이를 적어보세요.</p>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_07_중단원마무리_I_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_09_미분계수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-I2" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-09" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -3613,8 +3669,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-I2" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-09" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="09" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="09" style="page-break-after:always;break-after:page;" id="ws-09">
   <div class="aft-lesson-meta no-print">📄 09. 2026 2학기 미적분 I 학습지: 미분계수</div>
   <style data-lesson-style="09">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -3679,16 +3739,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_08_대단원평가_I.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_10_도함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-08" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-10" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -4063,8 +4117,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-08" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-10" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="10" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="10" style="page-break-after:always;break-after:page;" id="ws-10">
   <div class="aft-lesson-meta no-print">📄 10. 2026 2학기 미적분 I 학습지: 도함수</div>
   <style data-lesson-style="10">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -4129,16 +4187,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_09_미분계수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_11_중단원마무리_II_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-09" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-11" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -4529,8 +4581,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-09" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-11" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="11" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="11" style="page-break-after:always;break-after:page;" id="ws-11">
   <div class="aft-lesson-meta no-print">📄 11. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 미분계수와 도함수</div>
   <style data-lesson-style="11">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -4592,16 +4648,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_10_도함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_12_접선의방정식.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-10" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-II1" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -4875,9 +4925,17 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-10" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-II1" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="wb-II1" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="wb-II1" style="page-break-after:always;break-after:page;" id="ws-wb-II1">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅱ-1. 2026 2학기 수학 익힘책: 미분계수와 도함수</div>
+<nav class="aft-bundle-nav mb-6 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-11" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-12" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 <div class="max-w-4xl mx-auto">
   <header class="text-center mb-16 border-b-4 pb-10" style="border-color:#ea580c">
     <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 스스로 공부하는 수학 익힘책</p>
@@ -4972,9 +5030,13 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
 </div>
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-11" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-12" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
 
-<section class="aft-lesson-wrap" data-lesson-no="12" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="12" style="page-break-after:always;break-after:page;" id="ws-12">
   <div class="aft-lesson-meta no-print">📄 12. 2026 2학기 미적분 I 학습지: 접선의 방정식</div>
   <style data-lesson-style="12">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -5038,16 +5100,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_11_중단원마무리_II_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_13_평균값정리.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-II1" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-13" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -5428,8 +5484,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-II1" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-13" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="13" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="13" style="page-break-after:always;break-after:page;" id="ws-13">
   <div class="aft-lesson-meta no-print">📄 13. 2026 2학기 미적분 I 학습지: 평균값 정리</div>
   <style data-lesson-style="13">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -5493,16 +5553,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_12_접선의방정식.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_14_함수의증가와감소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-12" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-14" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -5877,8 +5931,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-12" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-14" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="14" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="14" style="page-break-after:always;break-after:page;" id="ws-14">
   <div class="aft-lesson-meta no-print">📄 14. 2026 2학기 미적분 I 학습지: 함수의 증가와 감소</div>
   <style data-lesson-style="14">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -5946,16 +6004,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_13_평균값정리.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_15_극대와극소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-13" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-15" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -6347,8 +6399,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-13" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-15" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="15" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="15" style="page-break-after:always;break-after:page;" id="ws-15">
   <div class="aft-lesson-meta no-print">📄 15. 2026 2학기 미적분 I 학습지: 극대와 극소</div>
   <style data-lesson-style="15">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -6416,16 +6472,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_14_함수의증가와감소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_16_함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-14" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-16" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -6850,8 +6900,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-14" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-16" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="16" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="16" style="page-break-after:always;break-after:page;" id="ws-16">
   <div class="aft-lesson-meta no-print">📄 16. 2026 2학기 미적분 I 학습지: 함수의 그래프</div>
   <style data-lesson-style="16">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -6919,16 +6973,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_15_극대와극소.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_17_함수의그래프_응용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-15" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-17" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -7338,8 +7386,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-15" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-17" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="17" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="17" style="page-break-after:always;break-after:page;" id="ws-17">
   <div class="aft-lesson-meta no-print">📄 17. 2026 2학기 미적분 I 학습지: 함수의 그래프 응용 (최댓값·최솟값)</div>
   <style data-lesson-style="17">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -7407,16 +7459,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_16_함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_18_방정식과부등식에의활용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-16" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-18" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -7812,8 +7858,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-16" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-18" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="18" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="18" style="page-break-after:always;break-after:page;" id="ws-18">
   <div class="aft-lesson-meta no-print">📄 18. 2026 2학기 미적분 I 학습지: 방정식과 부등식에의 활용</div>
   <style data-lesson-style="18">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -7881,16 +7931,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_17_함수의그래프_응용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_19_속도와가속도.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-17" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-19" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -8290,8 +8334,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-17" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-19" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="19" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="19" style="page-break-after:always;break-after:page;" id="ws-19">
   <div class="aft-lesson-meta no-print">📄 19. 2026 2학기 미적분 I 학습지: 속도와 가속도</div>
   <style data-lesson-style="19">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -8359,16 +8407,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_18_방정식과부등식에의활용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_20_중단원마무리_II_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-18" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-20" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -8789,8 +8831,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-18" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-20" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="20" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="20" style="page-break-after:always;break-after:page;" id="ws-20">
   <div class="aft-lesson-meta no-print">📄 20. 2026 2학기 미적분 I 학습지: 중단원 마무리 II-2 (도함수의 활용)</div>
   <style data-lesson-style="20">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -8854,16 +8900,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_19_속도와가속도.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_21_대단원평가_II.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-19" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-II2" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -9103,9 +9143,17 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-19" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-II2" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="wb-II2" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="wb-II2" style="page-break-after:always;break-after:page;" id="ws-wb-II2">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅱ-2. 2026 2학기 수학 익힘책: 도함수의 활용</div>
+<nav class="aft-bundle-nav mb-6 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-20" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-21" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 <div class="max-w-4xl mx-auto">
   <header class="text-center mb-16 border-b-4 pb-10" style="border-color:#ea580c">
     <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 스스로 공부하는 수학 익힘책</p>
@@ -9201,9 +9249,13 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
 </div>
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-20" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-21" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
 
-<section class="aft-lesson-wrap" data-lesson-no="21" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="21" style="page-break-after:always;break-after:page;" id="ws-21">
   <div class="aft-lesson-meta no-print">📄 21. 2026 2학기 미적분 I 학습지: 대단원 평가 II (미분)</div>
   <style data-lesson-style="21">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -9265,16 +9317,10 @@ document.addEventListener('click', function(e) {
             <p class="mt-4 text-slate-600 font-bold bg-teal-50 p-3 rounded-lg inline-block border border-teal-200">💡 비상 미적분 I 교과서 대단원 평가 II (미분 종합) 문항. 정확한 논리로 풀이를 적어보세요.</p>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_20_중단원마무리_II_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_22_부정적분.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-II2" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-22" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -9540,8 +9586,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-II2" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-22" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="22" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="22" style="page-break-after:always;break-after:page;" id="ws-22">
   <div class="aft-lesson-meta no-print">📄 22. 2026 2학기 미적분 I 학습지: 부정적분</div>
   <style data-lesson-style="22">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -9605,16 +9655,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_21_대단원평가_II.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_23_정적분의정의.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-21" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-23" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -10005,8 +10049,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-21" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-23" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="23" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="23" style="page-break-after:always;break-after:page;" id="ws-23">
   <div class="aft-lesson-meta no-print">📄 23. 2026 2학기 미적분 I 학습지: 정적분의 정의</div>
   <style data-lesson-style="23">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -10070,16 +10118,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_22_부정적분.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_24_정적분의계산.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-22" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-24" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -10456,8 +10498,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-22" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-24" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="24" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="24" style="page-break-after:always;break-after:page;" id="ws-24">
   <div class="aft-lesson-meta no-print">📄 24. 2026 2학기 미적분 I 학습지: 정적분의 계산</div>
   <style data-lesson-style="24">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -10521,16 +10567,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_23_정적분의정의.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_25_중단원마무리_III_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-23" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-25" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -10916,8 +10956,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-23" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-25" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="25" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="25" style="page-break-after:always;break-after:page;" id="ws-25">
   <div class="aft-lesson-meta no-print">📄 25. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 부정적분과 정적분</div>
   <style data-lesson-style="25">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -10978,16 +11022,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_24_정적분의계산.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_26_넓이_곡선과x축.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-24" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-III1" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -11247,9 +11285,17 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-24" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-III1" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="wb-III1" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="wb-III1" style="page-break-after:always;break-after:page;" id="ws-wb-III1">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅲ-1. 2026 2학기 수학 익힘책: 부정적분과 정적분</div>
+<nav class="aft-bundle-nav mb-6 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-25" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-26" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 <div class="max-w-4xl mx-auto">
   <header class="text-center mb-16 border-b-4 pb-10" style="border-color:#ea580c">
     <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 스스로 공부하는 수학 익힘책</p>
@@ -11364,9 +11410,13 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
 </div>
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-25" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-26" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
 
-<section class="aft-lesson-wrap" data-lesson-no="26" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="26" style="page-break-after:always;break-after:page;" id="ws-26">
   <div class="aft-lesson-meta no-print">📄 26. 2026 2학기 미적분 I 학습지: 넓이 — 곡선과 x축 사이</div>
   <style data-lesson-style="26">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -11430,16 +11480,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_25_중단원마무리_III_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_27_넓이_두곡선사이.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-III1" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-27" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -11835,8 +11879,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-III1" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-27" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="27" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="27" style="page-break-after:always;break-after:page;" id="ws-27">
   <div class="aft-lesson-meta no-print">📄 27. 2026 2학기 미적분 I 학습지: 넓이 — 두 곡선 사이</div>
   <style data-lesson-style="27">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -11900,16 +11948,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_26_넓이_곡선과x축.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_28_속도와거리.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-26" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-28" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -12282,8 +12324,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-26" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-28" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="28" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="28" style="page-break-after:always;break-after:page;" id="ws-28">
   <div class="aft-lesson-meta no-print">📄 28. 2026 2학기 미적분 I 학습지: 속도와 거리</div>
   <style data-lesson-style="28">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -12347,16 +12393,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_27_넓이_두곡선사이.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_29_중단원마무리_III_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-27" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-29" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
@@ -12750,8 +12790,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-27" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-29" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="29" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="29" style="page-break-after:always;break-after:page;" id="ws-29">
   <div class="aft-lesson-meta no-print">📄 29. 2026 2학기 미적분 I 학습지: 중단원 마무리 — 정적분의 활용</div>
   <style data-lesson-style="29">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -12812,16 +12856,10 @@ document.addEventListener('click', function(e) {
             </div>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_28_속도와거리.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_30_대단원평가_III.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-28" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-III2" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -13111,9 +13149,17 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-28" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-wb-III2" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="wb-III2" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="wb-III2" style="page-break-after:always;break-after:page;" id="ws-wb-III2">
 <div class="aft-lesson-meta no-print">📗 익힘책 Ⅲ-2. 2026 2학기 수학 익힘책: 정적분의 활용</div>
+<nav class="aft-bundle-nav mb-6 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-29" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-30" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 <div class="max-w-4xl mx-auto">
   <header class="text-center mb-16 border-b-4 pb-10" style="border-color:#ea580c">
     <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 2학기 | 스스로 공부하는 수학 익힘책</p>
@@ -13203,9 +13249,13 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
 </div>
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-29" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-30" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
 
-<section class="aft-lesson-wrap" data-lesson-no="30" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="30" style="page-break-after:always;break-after:page;" id="ws-30">
   <div class="aft-lesson-meta no-print">📄 30. 2026 2학기 미적분 I 학습지: 대단원 평가 III (적분)</div>
   <style data-lesson-style="30">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -13267,16 +13317,10 @@ document.addEventListener('click', function(e) {
             <p class="mt-4 text-slate-600 font-bold bg-teal-50 p-3 rounded-lg inline-block border border-teal-200">💡 비상 미적분 I 교과서 대단원 평가 III (적분 종합) 문항. 정확한 논리로 풀이를 적어보세요.</p>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_29_중단원마무리_III_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <a href="학습지_미적분I_31_학기말종합.html" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-III2" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-31" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
@@ -13551,8 +13595,12 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-wb-III2" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><a href="#ws-31" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 hover:text-teal-900 rounded-lg text-sm font-bold border border-teal-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a></div>
+</nav>
 </section>
-<section class="aft-lesson-wrap" data-lesson-no="31" style="page-break-after:always;break-after:page;">
+<section class="aft-lesson-wrap" data-lesson-no="31" style="page-break-after:always;break-after:page;" id="ws-31">
   <div class="aft-lesson-meta no-print">📄 31. 2026 2학기 미적분 I 학습지: 학기말 종합 평가</div>
   <style data-lesson-style="31">
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
@@ -13621,16 +13669,10 @@ document.addEventListener('click', function(e) {
             <p class="mt-4 text-slate-600 font-bold bg-teal-50 p-3 rounded-lg inline-block border border-teal-200">💡 미적분 I 학기말 종합 평가. 단원 I(극한·연속) · II(미분) · III(적분) 핵심 종합 — 수능 모의시험 형식.</p>
         </header>
 
-        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
-            <a href="index-calc.html" target="aftermath_main_calc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
-                <span>🏠</span><span>메인</span>
-                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
-            </a>
-            <div class="flex gap-2">
-                <a href="학습지_미적분I_30_대단원평가_III.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
-                <span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-400 rounded-lg text-sm font-bold border border-slate-100 cursor-not-allowed select-none" aria-disabled="true"><span>🏁</span><span>학기 종료</span></span>
-            </div>
-        </nav>
+        <nav class="aft-bundle-nav -mt-12 mb-8 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-30" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-400 rounded-lg text-sm font-bold border border-slate-100 cursor-not-allowed select-none" aria-disabled="true"><span>🏁</span><span>학기 종료</span></span></div>
+</nav>
 
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련 (학기말 종합)">
@@ -13912,6 +13954,19 @@ document.addEventListener('click', function(e) {
         </script>
 
 
+<nav class="aft-bundle-nav aft-bottom-nav mt-10 mb-2 no-print flex justify-between items-center gap-2 flex-wrap">
+  <a href="#toc" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>🏠</span><span>목차</span></a>
+  <div class="flex gap-2"><a href="#ws-30" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a><span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-400 rounded-lg text-sm font-bold border border-slate-100 cursor-not-allowed select-none" aria-disabled="true"><span>🏁</span><span>학기 종료</span></span></div>
+</nav>
 </section>
+<script id="aft-top-js">
+(function(){
+  var b=document.querySelector('.aft-btoc-top'); if(!b) return;
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
 </body>
 </html>

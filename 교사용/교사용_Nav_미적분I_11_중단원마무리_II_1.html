@@ -120,8 +120,9 @@
 <nav class="topnav no-print">
     <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-        <a href="교사용_Nav_미적분I_10_도함수.html">← 이전 차시</a>
+        <a href="교사용_Nav_미적분I_10_도함수.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_11_중단원마무리_II_1.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_수학익힘책_미적분I_II1_미분계수와도함수.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -427,6 +428,17 @@
 
 </article>
 
+<nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_10_도함수.html">← 이전 차시 가이드</a>
+        <a href="교사용_학습지_미적분I_11_중단원마무리_II_1.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_수학익힘책_미적분I_II1_미분계수와도함수.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */
 (function () {
@@ -464,6 +476,32 @@
   window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fitMath, 200); });
   window.addEventListener('beforeprint', fitMath);
   window.aftFitMath = fitMath;       // 검증용
+})();
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#0d9488;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(13,148,136,.38);}
+.aft-top-btn:hover{background:#0f766e;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
 })();
 </script>
 </body>

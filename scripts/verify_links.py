@@ -12,7 +12,9 @@
 import os, re, sys
 
 SKIP_DIRS = {'.git', 'node_modules', '.claude', 'images', '_assets_private'}
-HREF = re.compile(r'(?:href|src)="([^"#?]+\.html)"')
+# .html 만 보면 부족하다 — 폴더 깊이가 바뀐 복제에서 그림 경로가 통째로 깨진 적이 있다.
+# 교사용/ 로 복사한 27개 파일의 그림 57개가 이 검사를 빠져나갔다.
+HREF = re.compile(r'(?:href|src)="([^"#?]+\.(?:html|css|js|png|jpe?g|svg|gif))"')
 
 
 def walk(roots):

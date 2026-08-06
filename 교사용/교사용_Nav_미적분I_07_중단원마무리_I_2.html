@@ -140,7 +140,7 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_06_연속함수의성질.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
-        <a href="교사용_Nav_미적분I_08_대단원평가_I.html">다음 차시 가이드 →</a>
+        <a href="교사용_Nav_수학익힘책_미적분I_I2_함수의연속.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
@@ -300,10 +300,9 @@
                 <span class="step">\(x=1\): 좌극한 \(=\) 우극한 \(=\) 곡선의 ○ \(= 4\), \(f(1) = \bullet = 1\). 극한 존재(4), 연속 아님 (4 \(\neq\) 1).</span>
                 <span class="step">\(x=3\): 좌극한 \(=\) 곡선의 ○ \(= 3\), 우극한 \(=\) 수평선 \(= 1\). 극한 미존재, 불연속.</span>
                 <span class="step">\(x=4\): 좌극한 \(=\) 수평선의 ○ \(= 1\), 우극한 \(=\) 우하향 곡선의 ○ \(= 3\). 극한 미존재, 불연속.</span>
-                <span class="step">ㄱ ✓ (좌·우극한 모두 4). ㄴ 정의역 \((0,5)\)에 \(x=0\) 미포함, \(f(0)\) 부재 → 진위 부적절(주의: 학습지 hint는 \(x=2\) 표기 오타로 보임, 실제 후보는 \(x = 1, 3, 4\)). ㄷ 불연속점 = \(\{1, 3, 4\}\) <strong>3개</strong> → ㄷ 거짓. ㄹ 극한 미존재 \(= \{3, 4\}\) <strong>2개</strong> → ㄹ ✓.</span>
+                <span class="step">ㄱ ✓ (좌·우극한 모두 4). ㄴ ✓ — 그래프는 \(x=0\) 좌우로 끊김 없이 이어지고 그 점에 ○·● 표시가 없다 → \(f\)는 \(x=0\)에서 연속. (보기 ㄷ·ㄹ의 \((0,5)\)는 그 두 보기가 세운 조건일 뿐 \(f\)의 정의역이 아니다.) ㄷ 불연속점 = \(\{1, 3, 4\}\) <strong>3개</strong> → ㄷ 거짓. ㄹ 극한 미존재 \(= \{3, 4\}\) <strong>2개</strong> → ㄹ ✓.</span>
             </div>
-            <div class="q-ans">정답: <strong>ㄱ, ㄹ</strong>. (교과서 정답 동일.)</div>
-            <div class="q-warn"><strong>학습지 hint 오류 발견:</strong> "각 후보점 \(x = 1, 2, 4\)"라고 기재되어 있으나 그래프에는 \(x=2\)가 후보가 아니며 \(x=3\)이 후보. 학습지 본문 별도 PR로 정정 권장.</div>
+            <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄹ</strong></div>
         </div>
 
         <!-- Q6 -->
@@ -450,6 +449,17 @@
 
 </article>
 
+<nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
+    <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <a href="교사용_Nav_미적분I_06_연속함수의성질.html">← 이전 차시 가이드</a>
+        <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_Nav_수학익힘책_미적분I_I2_함수의연속.html">다음 차시 가이드 →</a>
+        <button onclick="window.print()">🖨 인쇄 (A4)</button>
+    </div>
+</nav>
+
+
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */
 (function () {
@@ -487,6 +497,32 @@
   window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fitMath, 200); });
   window.addEventListener('beforeprint', fitMath);
   window.aftFitMath = fitMath;       // 검증용
+})();
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#0d9488;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(13,148,136,.38);}
+.aft-top-btn:hover{background:#0f766e;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
 })();
 </script>
 </body>

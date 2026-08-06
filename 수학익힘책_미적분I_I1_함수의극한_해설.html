@@ -740,8 +740,8 @@ a{color:var(--color-primary);text-decoration:none}
   <nav class="lesson-nav-bar no-print" aria-label="차시 이동">
     <a href="workbook-calc.html" target="aftermath_workbook_calc"><span>🏠</span><span>수학 익힘책 모음</span><kbd>H</kbd></a>
     <div class="nav-group">
-      <span style="opacity:.45;cursor:not-allowed"><span>←</span><span>이전 단원</span></span>
-      <a href="수학익힘책_미적분I_I2_함수의연속_해설.html"><span>다음 단원</span><span>→</span></a>
+      <a href="학습지_미적분I_04_중단원마무리_I_1.html"><span>←</span><span>이전 차시</span></a>
+      <a href="학습지_미적분I_05_함수의연속.html"><span>다음 차시</span><span>→</span></a>
     </div>
   </nav>
   <div class="card-viewport" id="card-viewport">
@@ -1715,6 +1715,32 @@ document.addEventListener('click', function(e) {
   const w = window.open(a.href, a.target);
   if (w) w.focus();
 });
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:96px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#0d9488;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(13,148,136,.38);}
+.aft-top-btn:hover{background:#0f766e;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:88px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
 </script>
 </body>
 </html>
