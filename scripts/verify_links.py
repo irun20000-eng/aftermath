@@ -12,9 +12,12 @@
 import os, re, sys
 
 SKIP_DIRS = {'.git', 'node_modules', '.claude', 'images', '_assets_private'}
-# .html 만 보면 부족하다 — 폴더 깊이가 바뀐 복제에서 그림 경로가 통째로 깨진 적이 있다.
-# 교사용/ 로 복사한 27개 파일의 그림 57개가 이 검사를 빠져나갔다.
-HREF = re.compile(r'(?:href|src)="([^"#?]+\.(?:html|css|js|png|jpe?g|svg|gif))"')
+# 이 정규식은 두 번 새 나갔다. 고칠 때마다 이유를 남긴다.
+#  ① .html 만 보면 부족하다 — 폴더 깊이가 바뀐 복제에서 그림 경로가 통째로 깨진 적이 있다.
+#     교사용/ 로 복사한 27개 파일의 그림 57개가 이 검사를 빠져나갔다.
+#  ② 확장자 뒤에 #·? 가 붙은 링크를 통째로 건너뛰었다. 파일명만 잘라 내고 검사해야 한다.
+#     교사용 인덱스의 '뽑기.html#class=1' 4건이 이 구멍으로 빠져나갔다.
+HREF = re.compile(r'(?:href|src)="([^":]+?\.(?:html|css|js|png|jpe?g|svg|gif))(?:[#?][^"]*)?"')
 
 
 def walk(roots):
