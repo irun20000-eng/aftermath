@@ -17,14 +17,15 @@
   // 통합본(여러 학습지를 합친 문서)에서는 동작하지 않는다
   if (document.querySelectorAll('header h1').length > 1) return;
 
+  // 번호가 아니라 제목 낱말로 판단한다 (마무리 차시는 '02. 중단원 성찰' 처럼 번호가 다르다)
   var TAB_RULES = [
-    { re: /^00\./, key: 'warmup', name: '생각 열기', split: 'none' },
-    { re: /^01\.\s*개념/, key: 'concept', name: '개념 구성', split: 'blocks' },
-    { re: /^02\./, key: 'level', name: '수준별 훈련', split: 'problems' },
-    { re: /^03\./, key: 'check', name: '형성평가', split: 'none' },
+    { re: /성찰/, key: 'reflect', name: '성찰', split: 'none' },
+    { re: /생각\s*열기/, key: 'warmup', name: '생각 열기', split: 'none' },
+    { re: /개념\s*구성/, key: 'concept', name: '개념 구성', split: 'blocks' },
+    { re: /수준별/, key: 'level', name: '수준별 훈련', split: 'problems' },
+    { re: /형성평가/, key: 'check', name: '형성평가', split: 'none' },
     { re: /도전\s*문제/, key: 'challenge', name: '도전', split: 'none', merge: true },
-    { re: /^04\./, key: 'reflect', name: '성찰', split: 'none' },
-    { re: /^01\.\s*실전/, key: 'practice', name: '실전 훈련', split: 'problems' }
+    { re: /실전/, key: 'practice', name: '실전 훈련', split: 'problems' }
   ];
   var ZONE_NUM = ['①', '②', '③', '④', '⑤', '⑥'];
 
@@ -347,7 +348,7 @@
     if (!state.on) return;
     var root = document.documentElement;
     var vw = window.innerWidth;
-    var max = Math.max(16, Math.min(30, Math.round(vw / 1920 * 25)));
+    var max = Math.max(16, Math.min(32, Math.round(vw / 1920 * 28)));   // 짧은 문항은 크게 (교실 뒤에서도 읽히게)
     var min = 12;
     var size = max;
     ui.body.classList.remove('is-scroll');
