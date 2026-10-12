@@ -68,6 +68,10 @@
         .progress-check.completed { background: #10b981; border-color: #10b981; color: white; }
         .lesson-row { display: flex; align-items: stretch; gap: 0.5rem; }
         .lesson-row .lesson-link { flex: 1; }
+        /* 수업 모드(전자칠판) 바로가기 — 파일럿 차시에만 표시 */
+        .lm-pill { display: inline-flex; align-items: center; padding: 0 0.875rem; border-radius: 0.75rem; background: #0f766e; color: #fff; font-weight: 800; font-size: 0.8rem; text-decoration: none; white-space: nowrap; border: 1px solid #0f766e; }
+        .lm-pill:hover { background: #115e59; color: #fff; }
+        html.dark .lm-pill { background: #0d9488; border-color: #0d9488; }
         .lesson-row.done .lesson-link { background: #f0fdf4; border-color: #86efac; }
         .lesson-row.done .lesson-num { background: #dcfce7; color: #166534; }
 
@@ -499,6 +503,7 @@
                         <span class="flex items-center gap-3"><span class="lesson-num">19</span><span>속도와 가속도 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_미적분I_19_속도와가속도.html?mode=class" target="aftermath_ws_calc_19" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
                 <div class="lesson-row" data-lesson="학습지_미적분I_20_중단원마무리_II_2.html">
                     <button class="progress-check" title="진도 체크">✓</button>
