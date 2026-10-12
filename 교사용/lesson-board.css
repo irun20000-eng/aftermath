@@ -1,0 +1,87 @@
+/* ============================================================
+   교사용 Nav — 수업 모드 탭 구조 + 판서 예시 칠판 (lesson-board.css)
+   학습지 수업 모드(lesson-mode)와 같은 탭 순서·같은 판서 구역을 쓴다.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+/* 탭 바 */
+.nv-tabs {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; gap: .25rem; flex-wrap: wrap;
+  margin: 0 -2.25rem 1rem; padding: .5rem 2.25rem;
+  background: rgba(255,255,255,.96); border-bottom: 1px solid #e2e8f0;
+  backdrop-filter: blur(4px);
+}
+.nv-tab {
+  padding: .5rem .875rem; border-radius: .5rem; border: 1px solid transparent;
+  background: transparent; color: #475569; font: 700 .85rem/1.2 'Noto Sans KR', sans-serif; cursor: pointer;
+}
+.nv-tab .k { color: #94a3b8; margin-right: .25rem; font-size: .75rem; }
+.nv-tab:hover { background: #f1f5f9; }
+.nv-tab.is-on { background: #0f172a; color: #fff; }
+.nv-tab.is-on .k { color: #5eead4; }
+.nv-tab-open {
+  margin-left: auto; padding: .5rem .875rem; border-radius: .5rem;
+  background: #0f766e; color: #fff; font: 800 .82rem/1.2 'Noto Sans KR', sans-serif; text-decoration: none;
+}
+.nv-tab-open:hover { background: #115e59; color: #fff; }
+
+.nv-panel { display: none; }
+.nv-panel.is-on { display: block; }
+.nv-panel-h {
+  display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap;
+  font-size: 1.25rem; font-weight: 900; color: #0f172a; margin: .25rem 0 .75rem;
+}
+.nv-panel-h small { font-size: .8rem; font-weight: 700; color: #64748b; }
+
+/* 판서 색 약속 */
+.nv-legend { display: flex; gap: .875rem; flex-wrap: wrap; font-size: .8rem; color: #334155; margin: .25rem 0 1rem; }
+.nv-legend span { display: inline-flex; align-items: center; gap: .375rem; font-weight: 700; }
+.nv-legend i { width: .875rem; height: .875rem; border-radius: 999px; display: inline-block; }
+
+/* 판서 예시 칠판 */
+.nv-board { margin: .75rem 0 1.25rem; page-break-inside: avoid; break-inside: avoid; }
+.nvb-head { display: flex; align-items: center; gap: .5rem; margin-bottom: .375rem; flex-wrap: wrap; }
+.nvb-tag { font-size: .7rem; font-weight: 800; color: #fff; background: #0f766e; padding: .15rem .5rem; border-radius: .25rem; }
+.nvb-title { font-size: .9rem; font-weight: 800; color: #0f172a; flex: 1; min-width: 0; }
+.nvb-open { font-size: .75rem; font-weight: 800; color: #0f766e; text-decoration: none; border: 1px solid #5eead4; padding: .2rem .55rem; border-radius: .375rem; background: #f0fdfa; }
+.nvb-open:hover { background: #ccfbf1; }
+.nvb-sheet {
+  position: relative; display: flex; flex-direction: column; gap: .75rem;
+  aspect-ratio: 16 / 11; padding: 1rem .875rem .75rem;
+  background-color: #fff; border: 2px solid #0f172a; border-radius: .75rem;
+  background-image: linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.nvb-sheet.bg-blank { background-image: none; }
+.nvb-zone {
+  position: relative; flex: 1 1 0; min-height: 0;
+  border: 1.5px dashed rgba(100,116,139,.5); border-radius: .5rem;
+  padding: .35rem .75rem .4rem; overflow: hidden;
+}
+.nvb-zlabel {
+  display: inline-block; font-size: .72rem; font-weight: 800; color: #64748b; white-space: nowrap;
+  background: #f1f5f9; padding: .05rem .4rem; border-radius: .25rem; margin-bottom: .1rem;
+}
+/* 좌표 구역: 글은 위, 그래프는 오른쪽 아래 */
+.nvb-zone.has-axes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-rows: auto 1fr; column-gap: .75rem; }
+.nvb-zone.has-axes .nvb-zlabel { grid-column: 1 / -1; justify-self: start; }
+.nvb-zone.has-axes .nvb-text { grid-column: 1; grid-row: 2; }
+.nvb-axes { pointer-events: none; }
+.nvb-zone.has-axes .nvb-axes { grid-column: 2; grid-row: 2; width: 100%; height: 100%; min-height: 110px; }
+.nvb-line {
+  position: relative; font-family: 'Nanum Pen Script', 'Noto Sans KR', cursive; font-size: 1.45rem; line-height: 1.25;
+  color: #1e293b; margin: .05rem 0 .15rem;
+}
+.nvb-line mjx-container { font-size: 72% !important; }
+.c-b { color: #1d4ed8; }
+.c-r { color: #dc2626; }
+.c-g { color: #15803d; }
+.nvb-missing { font-size: .8rem; color: #94a3b8; }
+
+@media print {
+  .nv-tabs, .nv-tab-open, .nvb-open { display: none !important; }
+  .nv-panel { display: block !important; }
+  .nv-panel + .nv-panel { margin-top: 1.5rem; }
+  .nvb-sheet { aspect-ratio: auto; min-height: 95mm; }
+}

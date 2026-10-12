@@ -340,6 +340,36 @@
   body.mode-leader .action-btn[data-step="3"] { display: none; }
   body.mode-leader .action-btn-leader { display: inline-flex; }
 
+  /* === 간단 1단계 — 반 전체(출석)에서 정한 인원만큼 바로 뽑기 === */
+  .quick-bar { display: none; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 18px;
+    padding: 14px 16px; background: #fff; border: 2px solid #c9d3e0; border-radius: 14px; }
+  body.mode-quick .quick-bar { display: flex; }
+  body.mode-quick .action-bar { display: none; }
+  .quick-count { display: inline-flex; align-items: center; gap: 8px; }
+  .quick-count-label { font-size: 14px; font-weight: 700; color: #1a2840; margin-right: 2px; }
+  .qc-btn { width: 44px; height: 44px; border-radius: 10px; border: 2px solid #c9d3e0; background: #f0f4f9;
+    font-size: 22px; font-weight: 800; color: #1a3a6e; cursor: pointer; line-height: 1; }
+  .qc-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .qc-num { min-width: 44px; text-align: center; font-size: 28px; font-weight: 800; color: #1a3a6e; font-variant-numeric: tabular-nums; }
+  .qc-unit { font-size: 14px; font-weight: 700; color: #5a6c87; margin-left: -4px; }
+  .qc-presets { display: inline-flex; gap: 4px; margin-left: 6px; }
+  .qc-presets button { min-width: 36px; height: 36px; border-radius: 8px; border: 1px solid #c9d3e0; background: #fff;
+    font-size: 14px; font-weight: 700; color: #1a2840; cursor: pointer; }
+  .qc-presets button.on { background: #1a3a6e; border-color: #1a3a6e; color: #fff; }
+  .quick-opt { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #3d4f6b; cursor: pointer; }
+  .quick-opt input { width: 18px; height: 18px; }
+  .quick-go, .quick-more { position: relative; min-height: 52px; padding: 0 22px; border-radius: 12px; cursor: pointer;
+    font-size: 17px; font-weight: 800; border: 2px solid #1a3a6e; }
+  .quick-go { margin-left: auto; background: #1a3a6e; color: #fff; }
+  .quick-go:hover { background: #24508f; }
+  .quick-more { background: #fff; color: #1a3a6e; }
+  .quick-more:disabled { opacity: .4; cursor: not-allowed; }
+  .quick-go .shortcut, .quick-more .shortcut { position: absolute; top: 4px; right: 6px; font-size: 10px; font-weight: 600;
+    color: #8b9bb4; background: #f0f4f9; padding: 1px 5px; border-radius: 4px; }
+  .student-item.role-q { background: #fff8e1; border-color: #f59e0b; color: #92400e; font-weight: 700; }
+  .role-tag.rq { background: #f59e0b; color: #fff; }
+  .student-item.role-q .pick-count { display: none; }
+
   /* Groups grid */
   .groups-grid {
     display: grid;
@@ -690,11 +720,12 @@
   </div>
 
   <div class="help-text">
-    👆 학번 클릭=결석 토글 · 단계 버튼 다시 클릭=재추첨 · 모둠별 🔄로 부분 재추첨 · 단축키 <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> · 타이머 <kbd>스페이스</kbd> · 메인 <kbd>H</kbd>
+    👆 학번 클릭=결석 토글 · 단계 버튼 다시 클릭=재추첨 · 모둠별 🔄로 부분 재추첨 · 단축키 <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> · 간단 1단계 <kbd>1</kbd> 뽑기 <kbd>2</kbd> 한 명 더 <kbd>+</kbd><kbd>−</kbd> 인원 · 타이머 <kbd>스페이스</kbd> · 메인 <kbd>H</kbd>
   </div>
 
   <div class="mode-bar">
     <span class="mode-label">모드:</span>
+    <label class="mode-radio"><input type="radio" name="pick-mode" value="quick"><span>⚡ 간단 1단계</span></label>
     <label class="mode-radio"><input type="radio" name="pick-mode" value="standard" checked><span>기본 3단계</span></label>
     <label class="mode-radio"><input type="radio" name="pick-mode" value="simple"><span>간편 2단계</span></label>
     <label class="mode-radio"><input type="radio" name="pick-mode" value="leader"><span>🌟 학습리더</span></label>
@@ -717,6 +748,19 @@
       <span class="shortcut">1</span>
       <span class="step-num">🌟</span>리더 칠판 풀이 뽑기
     </button>
+  </div>
+
+  <div class="quick-bar">
+    <div class="quick-count" role="group" aria-label="뽑는 인원">
+      <span class="quick-count-label">뽑는 인원</span>
+      <button type="button" class="qc-btn" id="quickMinus" aria-label="인원 줄이기">−</button>
+      <span class="qc-num" id="quickNum">1</span><span class="qc-unit">명</span>
+      <button type="button" class="qc-btn" id="quickPlus" aria-label="인원 늘리기">+</button>
+      <span class="qc-presets" id="quickPresets"><button type="button" data-n="1">1</button><button type="button" data-n="2">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button><button type="button" data-n="6">6</button></span>
+    </div>
+    <label class="quick-opt" title="끄면 학습리더(★)는 뽑지 않습니다"><input type="checkbox" id="quickLeaders" checked> 학습리더 포함</label>
+    <button type="button" class="quick-go" id="quickGo"><span class="shortcut">1</span>🎲 <span id="quickGoLabel">1명 뽑기</span></button>
+    <button type="button" class="quick-more" id="quickMore" disabled><span class="shortcut">2</span>＋1명 더</button>
   </div>
 
   <div class="groups-grid" id="groupsGrid"></div>
@@ -785,7 +829,9 @@ let state = {
   currentRound: {},
   fairness: true,
   sound: true,
-  mode: 'standard', // 'standard' | 'simple' | 'leader'
+  mode: 'standard', // 'quick' | 'standard' | 'simple' | 'leader'
+  quickCount: 1,     // 간단 1단계: 한 번에 뽑는 인원
+  quickLeaders: true, // 간단 1단계: 학습리더 포함 여부
 };
 
 let isRunning = false; // 룰렛 진행 중 잠금
@@ -857,7 +903,7 @@ async function loadStateAsync() {
         state.pickHistory = parsed.pickHistory || {};
         state.fairness = parsed.fairness !== undefined ? parsed.fairness : true;
         state.sound = parsed.sound !== undefined ? parsed.sound : true;
-        state.mode = ['standard','simple','leader'].includes(parsed.mode) ? parsed.mode : 'standard';
+        state.mode = ['quick','standard','simple','leader'].includes(parsed.mode) ? parsed.mode : 'standard';
         const absentData = parsed.absent || {};
         for (const cls in absentData) {
           state.absent[cls] = new Set(absentData[cls]);
@@ -868,15 +914,28 @@ async function loadStateAsync() {
       // 키가 존재하지 않을 때도 throw하므로 정상 케이스
     }
   }
+  // 화면 설정(모드·인원·리더 포함)은 브라우저에 기억 — 누적 기록·결석은 기존 방식 그대로
+  try {
+    const pref = JSON.parse(localStorage.getItem('aftermath_picker_prefs') || 'null');
+    if (pref) {
+      if (['quick','standard','simple','leader'].includes(pref.mode)) state.mode = pref.mode;
+      if (pref.quickCount > 0) state.quickCount = pref.quickCount;
+      if (typeof pref.quickLeaders === 'boolean') state.quickLeaders = pref.quickLeaders;
+    }
+  } catch(e) { /* 무시 */ }
   // storage가 없어도 in-memory 상태로 작동
   Object.keys(CLASS_DATA).forEach(cls => {
     if (!state.absent[cls]) state.absent[cls] = new Set();
     if (!state.pickHistory[cls]) state.pickHistory[cls] = {};
-    if (!state.currentRound[cls]) state.currentRound[cls] = { 1:{}, 2:{}, 3:null };
+    if (!state.currentRound[cls]) state.currentRound[cls] = { 1:{}, 2:{}, 3:null, q:[] };
+    if (!state.currentRound[cls].q) state.currentRound[cls].q = [];
   });
 }
 
 async function saveState() {
+  try {
+    localStorage.setItem('aftermath_picker_prefs', JSON.stringify({ mode: state.mode, quickCount: state.quickCount, quickLeaders: state.quickLeaders }));
+  } catch(e) { /* 무시 */ }
   if (typeof window.storage === 'undefined' || !window.storage.set) return;
   const toSave = {
     absent: {},
@@ -884,6 +943,8 @@ async function saveState() {
     fairness: state.fairness,
     sound: state.sound,
     mode: state.mode,
+    quickCount: state.quickCount,
+    quickLeaders: state.quickLeaders,
   };
   for (const cls in state.absent) {
     toSave.absent[cls] = Array.from(state.absent[cls]);
@@ -985,6 +1046,11 @@ function render() {
         item.classList.add('role-3');
         roleTag = `<span class="role-tag r3">${ROLE_NAMES[3]} ⭐</span>`;
       }
+      const qIdx = (round.q || []).indexOf(s.id);
+      if (qIdx >= 0) {
+        item.classList.add('role-q');
+        roleTag = `<span class="role-tag rq">뽑힘 ${qIdx + 1}</span>`;
+      }
 
       const pickCnt = state.pickHistory[cls][s.id] || 0;
       const cntDisplay = pickCnt > 0 ? `<span class="pick-count">${pickCnt}회</span>` : '';
@@ -1017,6 +1083,7 @@ function render() {
   });
 
   updateButtons();
+  updateQuickBar();
 }
 
 function updateButtons() {
@@ -1074,7 +1141,7 @@ function updateButtons() {
 
 // === 모드 관련 유틸 ===
 function applyModeClass() {
-  document.body.classList.remove('mode-standard', 'mode-simple', 'mode-leader');
+  document.body.classList.remove('mode-quick', 'mode-standard', 'mode-simple', 'mode-leader');
   document.body.classList.add('mode-' + state.mode);
   document.querySelectorAll('.mode-radio').forEach(lab => {
     const inp = lab.querySelector('input');
@@ -1107,7 +1174,7 @@ function applyModeClass() {
 
 function clearAllRounds() {
   Object.keys(CLASS_DATA).forEach(c => {
-    const r = state.currentRound[c] || { 1:{}, 2:{}, 3:null };
+    const r = state.currentRound[c] || { 1:{}, 2:{}, 3:null, q:[] };
     Object.values(r[1] || {}).forEach(id => {
       state.pickHistory[c] = state.pickHistory[c] || {};
       state.pickHistory[c][id] = Math.max(0, (state.pickHistory[c][id] || 0) - 1);
@@ -1116,24 +1183,29 @@ function clearAllRounds() {
       state.pickHistory[c] = state.pickHistory[c] || {};
       state.pickHistory[c][id] = Math.max(0, (state.pickHistory[c][id] || 0) - 1);
     });
+    (r.q || []).forEach(id => {
+      state.pickHistory[c] = state.pickHistory[c] || {};
+      state.pickHistory[c][id] = Math.max(0, (state.pickHistory[c][id] || 0) - 1);
+    });
     if (r[3] !== null && r[3] !== undefined) {
       state.pickHistory[c] = state.pickHistory[c] || {};
       state.pickHistory[c][r[3]] = Math.max(0, (state.pickHistory[c][r[3]] || 0) - 1);
     }
-    state.currentRound[c] = { 1:{}, 2:{}, 3:null };
+    state.currentRound[c] = { 1:{}, 2:{}, 3:null, q:[] };
   });
 }
 
 async function setMode(newMode) {
   if (isRunning) return;
   if (state.mode === newMode) return;
-  if (!['standard','simple','leader'].includes(newMode)) return;
+  if (!['quick','standard','simple','leader'].includes(newMode)) return;
 
   const cls = state.currentClass;
   const round = state.currentRound[cls];
   const hasProgress = (round && (Object.keys(round[1] || {}).length > 0
                               || Object.keys(round[2] || {}).length > 0
-                              || round[3] !== null));
+                              || round[3] !== null
+                              || (round.q || []).length > 0));
   if (hasProgress) {
     if (!confirm('모드를 바꾸면 진행 중인 라운드가 모든 반에서 초기화됩니다.\n계속할까요?')) {
       applyModeClass(); // 라디오 원복
@@ -1189,6 +1261,147 @@ async function runLeaderPick() {
   await saveState();
   isRunning = false;
   render();
+}
+
+// ============================================
+// 간단 1단계 — 반 전체(출석)에서 N명
+// ============================================
+function quickPool(cls) {
+  const ids = [];
+  CLASS_DATA[cls].forEach(group => group.students.forEach(s => {
+    if (state.absent[cls].has(s.id)) return;
+    if (s.leader && !state.quickLeaders) return;
+    ids.push(s.id);
+  }));
+  return ids;
+}
+
+function setQuickCount(n) {
+  const max = Math.max(1, quickPool(state.currentClass).length);
+  state.quickCount = Math.min(max, Math.max(1, n | 0));
+  saveState();
+  updateQuickBar();
+}
+
+function updateQuickBar() {
+  const numEl = document.getElementById('quickNum');
+  if (!numEl) return;
+  const cls = state.currentClass;
+  const round = state.currentRound[cls];
+  const pool = quickPool(cls);
+  const max = Math.max(1, pool.length);
+  if (state.quickCount > max) state.quickCount = max;
+  numEl.textContent = state.quickCount;
+  document.getElementById('quickMinus').disabled = state.quickCount <= 1;
+  document.getElementById('quickPlus').disabled = state.quickCount >= max;
+  document.querySelectorAll('#quickPresets button').forEach(b => {
+    const n = parseInt(b.dataset.n);
+    b.classList.toggle('on', n === state.quickCount);
+    b.disabled = n > max;
+  });
+  document.getElementById('quickLeaders').checked = state.quickLeaders;
+  const picked = (round.q || []).length;
+  document.getElementById('quickGoLabel').textContent = picked ? `다시 뽑기 (${state.quickCount}명)` : `${state.quickCount}명 뽑기`;
+  const remain = pool.filter(id => !(round.q || []).includes(id)).length;
+  document.getElementById('quickMore').disabled = picked === 0 || remain === 0;
+}
+
+async function runQuickPick(more) {
+  if (isRunning) return;
+  const cls = state.currentClass;
+  const round = state.currentRound[cls];
+  round.q = round.q || [];
+  if (!more && round.q.length) {
+    if (!confirm('다시 뽑을까요?\n방금 뽑힌 학생의 누적 기록은 취소됩니다.')) return;
+    round.q.forEach(id => {
+      state.pickHistory[cls][id] = Math.max(0, (state.pickHistory[cls][id] || 0) - 1);
+    });
+    round.q = [];
+  }
+  const exclude = new Set(round.q);
+  const cands = quickPool(cls).filter(id => !exclude.has(id));
+  if (cands.length === 0) { showToast('뽑을 수 있는 학생이 없습니다'); render(); return; }
+  const n = Math.min(more ? 1 : state.quickCount, cands.length);
+
+  isRunning = true;
+  const left = cands.slice();
+  const picks = [];
+  for (let i = 0; i < n; i++) {
+    const p = weightedPick(left, cls);
+    if (p === null) break;
+    picks.push(p);
+    left.splice(left.indexOf(p), 1);
+  }
+  await showQuickResult(picks, cands, round.q.length);
+  picks.forEach(id => {
+    round.q.push(id);
+    state.pickHistory[cls][id] = (state.pickHistory[cls][id] || 0) + 1;
+  });
+  await saveState();
+  isRunning = false;
+  render();
+}
+
+async function showQuickResult(picks, cands, offset) {
+  const overlay = document.getElementById('resultOverlay');
+  const titleEl = document.getElementById('resultTitle');
+  const gridEl = document.getElementById('resultGrid');
+  const closeBtn = document.getElementById('closeResultBtn');
+  titleEl.textContent = offset ? '🎲 한 명 더 뽑기' : `🎲 ${picks.length}명 뽑기`;
+  closeBtn.disabled = true;
+  closeBtn.textContent = '추첨 중...';
+  gridEl.innerHTML = '';
+  const cards = picks.map((id, i) => {
+    const card = document.createElement('div');
+    card.className = 'result-card spinning';
+    card.innerHTML = `<div class="result-group-name">${offset + i + 1}번째</div><div class="result-student-id">${cands[0]}</div>`;
+    gridEl.appendChild(card);
+    return { el: card, finalPick: id, stopped: false, stopAt: 900 + i * 280, lastTick: 0 };
+  });
+  overlay.classList.add('active');
+  const startTime = performance.now();
+  await new Promise(resolve => {
+    function frame(now) {
+      const elapsed = now - startTime;
+      cards.forEach(c => {
+        if (c.stopped) return;
+        if (elapsed >= c.stopAt) {
+          c.stopped = true;
+          c.el.classList.remove('spinning');
+          c.el.classList.add('locked');
+          c.el.querySelector('.result-student-id').textContent = c.finalPick;
+          playLockIn();
+          return;
+        }
+        const remaining = c.stopAt - elapsed;
+        const speed = remaining > 500 ? 50 : 50 + (1 - remaining / 500) * 200;
+        if (now - c.lastTick >= speed) {
+          c.lastTick = now;
+          c.el.querySelector('.result-student-id').textContent = cands[Math.floor(Math.random() * cands.length)];
+          if (remaining < 500) playTick(400 + Math.random() * 200, 0.02);
+        }
+      });
+      if (cards.every(c => c.stopped)) { resolve(); return; }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  });
+  if (picks.length === 1) playFanfare();
+  await new Promise(r => setTimeout(r, 300));
+  closeBtn.disabled = false;
+  closeBtn.textContent = '확인';
+  await new Promise(resolve => {
+    const done = () => {
+      overlay.classList.remove('active');
+      document.removeEventListener('keydown', keyHandler);
+      resolve();
+    };
+    closeBtn.onclick = done;
+    const keyHandler = (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); done(); }
+    };
+    document.addEventListener('keydown', keyHandler);
+  });
 }
 
 // ============================================
@@ -1692,6 +1905,19 @@ function attachEventListeners() {
     };
   });
 
+  document.getElementById('quickGo').onclick = () => runQuickPick(false);
+  document.getElementById('quickMore').onclick = () => runQuickPick(true);
+  document.getElementById('quickMinus').onclick = () => setQuickCount(state.quickCount - 1);
+  document.getElementById('quickPlus').onclick = () => setQuickCount(state.quickCount + 1);
+  document.querySelectorAll('#quickPresets button').forEach(b => {
+    b.onclick = () => setQuickCount(parseInt(b.dataset.n));
+  });
+  document.getElementById('quickLeaders').onchange = (e) => {
+    state.quickLeaders = e.target.checked;
+    saveState();
+    render();
+  };
+
   document.querySelectorAll('input[name="pick-mode"]').forEach(radio => {
     radio.addEventListener('change', (e) => setMode(e.target.value));
   });
@@ -1724,10 +1950,13 @@ function attachEventListeners() {
       Object.values(state.currentRound[cls][2] || {}).forEach(id => {
         state.pickHistory[cls][id] = Math.max(0, (state.pickHistory[cls][id] || 0) - 1);
       });
+      (state.currentRound[cls].q || []).forEach(id => {
+        state.pickHistory[cls][id] = Math.max(0, (state.pickHistory[cls][id] || 0) - 1);
+      });
       if (state.currentRound[cls][3] !== null) {
         state.pickHistory[cls][state.currentRound[cls][3]] = Math.max(0, (state.pickHistory[cls][state.currentRound[cls][3]] || 0) - 1);
       }
-      state.currentRound[cls] = { 1:{}, 2:{}, 3:null };
+      state.currentRound[cls] = { 1:{}, 2:{}, 3:null, q:[] };
       saveState();
       render();
       showToast('현재 라운드 초기화 완료');
@@ -1738,7 +1967,7 @@ function attachEventListeners() {
     if (isRunning) return;
     if (confirm(`'${state.currentClass}'의 누적 선택 기록을 전부 초기화할까요?\n(결석 정보는 유지)`)) {
       state.pickHistory[state.currentClass] = {};
-      state.currentRound[state.currentClass] = { 1:{}, 2:{}, 3:null };
+      state.currentRound[state.currentClass] = { 1:{}, 2:{}, 3:null, q:[] };
       saveState();
       render();
       showToast('누적 기록 초기화 완료');
@@ -1782,6 +2011,13 @@ function attachEventListeners() {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     // 한글 IME 조합 중 무시
     if (e.isComposing) return;
+
+    if (state.mode === 'quick') {
+      if (e.key === '1') { e.preventDefault(); runQuickPick(false); return; }
+      if (e.key === '2') { e.preventDefault(); if (!document.getElementById('quickMore').disabled) runQuickPick(true); return; }
+      if (e.key === '+' || e.key === '=') { e.preventDefault(); setQuickCount(state.quickCount + 1); return; }
+      if (e.key === '-') { e.preventDefault(); setQuickCount(state.quickCount - 1); return; }
+    }
 
     if (e.key === '1' || e.key === '2' || e.key === '3') {
       const k = parseInt(e.key);

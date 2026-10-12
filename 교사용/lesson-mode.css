@@ -1,0 +1,186 @@
+/* ============================================================
+   aftermath 수업 모드 (전자칠판용) — lesson-mode.css
+   - 왼쪽: 학습지 본문(한 화면 = 한 단위), 오른쪽: 판서 공간
+   - 전자칠판 필기모드(화면 캡처 후 필기)를 전제로, 페이지 안에는 펜 기능이 없다
+   - 모든 크기는 px — 본문 자동 맞춤이 html font-size 를 바꾸기 때문 (rem 금지)
+   - 모든 클래스/ID 접두 lm-
+   ============================================================ */
+
+/* 진입 버튼 (학습지 상단 nav 안에 삽입됨) */
+.lm-enter {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 8px; border: 1px solid #0f766e;
+  background: #0f766e; color: #fff; font: 700 14px/1 'Noto Sans KR', sans-serif;
+  cursor: pointer; white-space: nowrap;
+}
+.lm-enter:hover { background: #115e59; }
+@media print { .lm-enter { display: none !important; } }
+
+/* 수업 모드 중: 원래 문서와 떠 있는 위젯을 가린다 (뽑기 모달은 유지) */
+html.lm-on, html.lm-on body { overflow: hidden !important; }
+html.lm-on body > *:not(.lm-app):not(.aft-picker-modal):not(script):not(style) { display: none !important; }
+html.lm-on body { padding: 0 !important; background: #0f172a !important; }
+
+.lm-app {
+  position: fixed; inset: 0; z-index: 9000;
+  display: grid; grid-template-rows: auto 1fr;
+  background: #0f172a; color: #0f172a;
+  font-family: 'Noto Sans KR', sans-serif;
+  -webkit-user-select: none; user-select: none;
+  touch-action: manipulation;
+}
+
+/* ---------- 상단 바 ---------- */
+.lm-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; background: #0f172a; color: #e2e8f0;
+  min-height: 64px; box-sizing: border-box;
+}
+.lm-title { font-size: 17px; font-weight: 900; color: #fff; white-space: nowrap; margin-right: 4px; }
+.lm-title small { display: block; font-size: 11px; font-weight: 700; color: #5eead4; letter-spacing: .04em; }
+.lm-tabs { display: flex; gap: 4px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.lm-tabs::-webkit-scrollbar { display: none; }
+.lm-tab {
+  flex: none; min-height: 48px; padding: 0 16px; border-radius: 10px; border: 0;
+  background: transparent; color: #94a3b8; font: 700 16px/1 'Noto Sans KR', sans-serif;
+  cursor: pointer; white-space: nowrap;
+}
+.lm-tab .lm-k { display: inline-block; min-width: 20px; margin-right: 6px; color: #64748b; font-size: 13px; }
+.lm-tab.is-on { background: #fff; color: #0f172a; }
+.lm-tab.is-on .lm-k { color: #0d9488; }
+
+.lm-tools { display: flex; align-items: center; gap: 6px; flex: none; }
+.lm-btn {
+  min-height: 48px; min-width: 48px; padding: 0 12px; border-radius: 10px;
+  border: 1px solid #334155; background: #1e293b; color: #e2e8f0;
+  font: 700 15px/1 'Noto Sans KR', sans-serif; cursor: pointer; white-space: nowrap;
+}
+.lm-btn.is-on { background: #0d9488; border-color: #0d9488; color: #fff; }
+.lm-btn.lm-exit { background: transparent; color: #fca5a5; border-color: #7f1d1d; }
+.lm-sep { width: 1px; height: 32px; background: #334155; margin: 0 2px; }
+.lm-seg { display: inline-flex; border: 1px solid #334155; border-radius: 10px; overflow: hidden; }
+.lm-seg .lm-btn { border: 0; border-radius: 0; }
+.lm-seg .lm-btn + .lm-btn { border-left: 1px solid #334155; }
+
+/* 타이머 */
+.lm-timer { display: inline-flex; align-items: center; gap: 4px; }
+.lm-time {
+  min-width: 92px; min-height: 48px; padding: 0 10px; border-radius: 10px;
+  border: 1px solid #334155; background: #020617; color: #fff;
+  font: 800 24px/48px 'IBM Plex Mono', ui-monospace, monospace; text-align: center;
+  font-variant-numeric: tabular-nums; cursor: pointer;
+}
+.lm-time.is-run { color: #5eead4; }
+.lm-time.is-done { animation: lm-blink .5s steps(2) 10; background: #dc2626; }
+@keyframes lm-blink { 50% { background: #020617; } }
+
+/* ---------- 본문 2분할 ---------- */
+.lm-main { display: grid; grid-template-columns: 1fr 1fr; min-height: 0; gap: 0; }
+.lm-app.is-wide .lm-main { grid-template-columns: 42fr 58fr; }
+
+.lm-left {
+  display: grid; grid-template-rows: auto 1fr auto; min-height: 0;
+  background: #f8fafc; border-right: 3px solid #0f172a;
+}
+.lm-head {
+  display: flex; align-items: baseline; gap: 12px; padding: 14px 24px 10px;
+  border-bottom: 1px solid #e2e8f0; font-family: 'Noto Sans KR', sans-serif;
+}
+.lm-head .lm-tabname { font-size: 15px; font-weight: 900; color: #0d9488; white-space: nowrap; }
+.lm-head .lm-sub { font-size: 20px; font-weight: 900; color: #0f172a; flex: 1; min-width: 0; }
+.lm-head .lm-count { font-size: 15px; font-weight: 800; color: #64748b; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.lm-body { min-height: 0; overflow: hidden; padding: 18px 24px; }
+.lm-body.is-scroll { overflow-y: auto; -webkit-user-select: text; user-select: text; }
+.lm-page { margin: 0 auto; max-width: 100%; }
+
+/* 옮겨 온 본문의 화면용 정리 — 수업 모드 안에서만 적용 */
+.lm-page > section.card { margin: 0 !important; box-shadow: none !important; padding: 1.25rem 1.5rem !important; }
+.lm-page > section.card > h2.section-title,
+.lm-page > section.card > h2:first-of-type { display: none; }
+.lm-page .thinking-space { display: none !important; }
+.lm-page > div { margin: 0 !important; }
+.lm-page .bg-red-50.relative { margin-top: 12px !important; }
+/* 그림은 글자 크기(rem)에 묶어 같이 줄어든다 — 그림 때문에 글자만 작아지는 것 방지 */
+.lm-page img { max-height: min(34vh, 13rem) !important; width: auto !important; max-width: 100%; }
+/* 성찰: 학생 예시 답안은 화면에서 빼고(인쇄·기본 화면엔 그대로) QR 을 크게 */
+.lm-page[data-tab="reflect"] label > div:last-child { display: none !important; }
+.lm-page[data-tab="reflect"] label { padding: 14px 18px !important; }
+.lm-sub mjx-container { font-size: 100% !important; }
+
+.lm-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 16px; border-top: 1px solid #e2e8f0; background: #fff;
+}
+.lm-nav {
+  min-width: 120px; min-height: 56px; border-radius: 12px; border: 2px solid #cbd5e1;
+  background: #fff; color: #0f172a; font: 800 18px/1 'Noto Sans KR', sans-serif; cursor: pointer;
+}
+.lm-nav.lm-next { background: #0f766e; border-color: #0f766e; color: #fff; }
+.lm-nav:disabled { opacity: .35; cursor: default; }
+.lm-dots { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.lm-dot {
+  width: 40px; height: 40px; border-radius: 999px; border: 2px solid #cbd5e1; background: #fff;
+  font: 800 15px/1 'Noto Sans KR', sans-serif; color: #475569; cursor: pointer;
+}
+.lm-dot.is-on { background: #0d9488; border-color: #0d9488; color: #fff; }
+
+/* ---------- 판서 공간 ---------- */
+.lm-board { position: relative; background: #fff; min-height: 0; overflow: hidden; }
+.lm-board.bg-grid {
+  background-image:
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.lm-board-axes { position: absolute; inset: 0; pointer-events: none; }
+.lm-zones {
+  position: absolute; inset: 14px; display: flex; flex-direction: column; gap: 14px;
+  pointer-events: none;
+}
+.lm-zones.is-hidden { display: none; }
+.lm-zone {
+  position: relative; flex: 1 1 0; min-height: 0;
+  border: 2px dashed rgba(100,116,139,.45); border-radius: 14px;
+}
+.lm-zone-label {
+  position: absolute; top: -2px; left: 14px; transform: translateY(-50%);
+  padding: 0 8px; background: #fff; color: #64748b;
+  font: 800 18px/1.4 'Noto Sans KR', sans-serif; white-space: nowrap;
+}
+.lm-zone svg { position: absolute; inset: 22px 14px 12px 14px; width: calc(100% - 28px); height: calc(100% - 34px); }
+.lm-board-note {
+  position: absolute; right: 14px; bottom: 10px; font: 700 12px/1 'Noto Sans KR', sans-serif;
+  color: #94a3b8; pointer-events: none;
+}
+
+/* ---------- 좁은 화면 (노트북·태블릿·창 모드) ---------- */
+/* 상단 바가 넘치면 도구 묶음이 둘째 줄로 내려간다 (버튼이 잘리지 않게) */
+.lm-bar { flex-wrap: wrap; row-gap: 6px; }
+.lm-tabs { flex: 1 1 480px; }
+.lm-tools { flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; margin-left: auto; }
+@media (max-width: 1600px) {
+  .lm-tab { padding: 0 12px; font-size: 15px; }
+  .lm-btn { padding: 0 10px; font-size: 14px; }
+  .lm-time { min-width: 80px; font-size: 21px; }
+}
+@media (max-width: 1280px) {
+  .lm-bar { padding: 6px 8px; gap: 6px; }
+  .lm-title { font-size: 15px; }
+  .lm-tab, .lm-btn, .lm-time { min-height: 42px; }
+  .lm-time { line-height: 42px; }
+  .lm-tab .lm-k { display: none; }
+  .lm-sep { display: none; }
+  .lm-head { padding: 10px 16px 8px; }
+  .lm-head .lm-sub { font-size: 17px; }
+  .lm-body { padding: 12px 16px; }
+  .lm-nav { min-width: 96px; min-height: 48px; font-size: 16px; }
+  .lm-dot { width: 34px; height: 34px; }
+}
+/* 세로로 긴 화면: 본문 위 · 판서 아래 */
+@media (max-width: 900px), (orientation: portrait) and (max-width: 1200px) {
+  .lm-main, .lm-app.is-wide .lm-main { grid-template-columns: 1fr; grid-template-rows: 3fr 2fr; }
+  .lm-left { border-right: 0; border-bottom: 3px solid #0f172a; }
+}
+
+@media print { .lm-app { display: none !important; } }
