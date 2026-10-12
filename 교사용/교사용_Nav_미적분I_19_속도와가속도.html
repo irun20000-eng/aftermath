@@ -130,7 +130,7 @@
 
         }
     </style>
-    <link rel="stylesheet" href="lesson-board.css">
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -175,7 +175,6 @@
         </div>
     </div>
 
-
     <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
     <nav class="nv-tabs no-print" aria-label="수업 단계">
         <button type="button" class="nv-tab" data-key="overview">개관</button>
@@ -185,6 +184,7 @@
         <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
         <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
         <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
         <a class="nv-tab-open" href="교사용_학습지_미적분I_19_속도와가속도.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
     </nav>
 
@@ -220,15 +220,14 @@
         </div>
     </div>
 
-
     <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
-    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다.</p>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
     <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
     </section>
 
     <!-- ===== 1 생각 열기 ===== -->
     <section class="nv-panel" data-key="warmup">
-    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5′</small></h2>
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
     <div class="timeline">
         <div class="tl-row">
             <div class="tl-time">도입 5'</div>
@@ -251,7 +250,7 @@
 
     <!-- ===== 2 개념 구성 ===== -->
     <section class="nv-panel" data-key="concept">
-    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15′ · 수업 화면 5장</small></h2>
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 5장</small></h2>
     <div class="timeline">
         <div class="tl-row">
             <div class="tl-time">개념 15'</div>
@@ -292,7 +291,7 @@
 
     <!-- ===== 3 수준별 훈련 ===== -->
     <section class="nv-panel" data-key="level">
-    <h2 class="nv-panel-h">3 수준별 훈련 <small>L1·L2 15′ + L3 · 문항마다 해설 → 판서 예시</small></h2>
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
     <div class="timeline">
         <div class="tl-row">
             <div class="tl-time">L1·L2 15'</div>
@@ -414,7 +413,7 @@
 
     <!-- ===== 4 형성평가 ===== -->
     <section class="nv-panel" data-key="check">
-    <h2 class="nv-panel-h">4 형성평가 <small>4분 타이머 · 전원 풀이</small></h2>
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
     <div class="timeline">
         <div class="tl-row">
             <div class="tl-time">L3·형성 10'</div>
@@ -489,7 +488,7 @@
 
     <!-- ===== 6 성찰·메모 ===== -->
     <section class="nv-panel" data-key="reflect">
-    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5′</small></h2>
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
     <div class="timeline">
         <div class="tl-row">
             <div class="tl-time">정리 5'</div>
@@ -535,8 +534,8 @@
 </nav>
 
 
-<script src="boardplans/calc_19.js"></script>
-<script src="lesson-board.js"></script>
+<script src="boardplans/calc_19.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

@@ -29,7 +29,7 @@
   ];
   var ZONE_NUM = ['①', '②', '③', '④', '⑤', '⑥'];
 
-  var state = { on: false, tab: 0, page: 0, bg: null, zones: true, wide: false };
+  var state = { on: false, tab: 0, page: 0, bg: null, zones: true, wide: false, cls: null };
   var tabs = [];          // [{key,name,pages:[{el,sub}]}]
   var homes = [];         // 원위치 복원용 [{el, marker}]
   var app, ui = {};
@@ -99,6 +99,102 @@
     });
   }
 
+  /* ---------- 반 · 진도 기억 ---------- */
+  function classes() { return window.LM_CLASSES || ['1', '4', '7', '10']; }
+  function progKey() { return 'lm:prog:' + location.pathname; }
+  function loadProg() {
+    try { return JSON.parse(localStorage.getItem(progKey()) || 'null') || { cls: classes()[0], pos: {} }; }
+    catch (e) { return { cls: classes()[0], pos: {} }; }
+  }
+  function saveProg() {
+    if (!state.cls) return;
+    var pr = loadProg();
+    pr.cls = state.cls;
+    pr.pos[state.cls] = { t: state.tab, p: state.page };
+    try { localStorage.setItem(progKey(), JSON.stringify(pr)); } catch (e) { /* 무시 */ }
+  }
+  function setClass(c) {
+    if (c === state.cls) return;
+    saveProg();
+    state.cls = c;
+    var pos = loadProg().pos[c];
+    go(pos ? pos.t : 0, pos ? pos.p : 0);
+    openPickerSilently(function (api) { api.setClass(c); });
+  }
+
+  /* ---------- 탭 시간 (판서 계획의 minutes) ---------- */
+  function tabMinutes(i) {
+    var p = plan(), t = tabs[i];
+    return (p && p.minutes && t && p.minutes[t.key]) || 0;
+  }
+
+  /* ---------- 팝업 메뉴 ---------- */
+  function closePops() {
+    if (!app) return;
+    $all('.lm-pop.is-open', app).forEach(function (x) { x.classList.remove('is-open'); });
+  }
+  function togglePop(menu, btn) {
+    var open = !menu.classList.contains('is-open');
+    closePops();
+    if (!open) return;
+    var r = btn.getBoundingClientRect();
+    menu.style.top = Math.round(r.bottom + 6) + 'px';
+    menu.style.right = Math.max(8, Math.round(window.innerWidth - r.right)) + 'px';
+    menu.classList.add('is-open');
+  }
+
+  /* ---------- 학생 뽑기 연동 (같은 사이트의 뽑기 창 iframe 에 직접 명령) ---------- */
+  function pickerApi() {
+    var f = document.querySelector('#aft-picker-modal iframe');
+    try { return f && f.contentWindow && f.contentWindow.aftPicker; } catch (e) { return null; }
+  }
+  function withPicker(fn) {
+    var tries = 0;
+    (function wait() {
+      var api = pickerApi();
+      if (api) { fn(api); return; }
+      if (++tries < 60) setTimeout(wait, 120);
+    })();
+  }
+  function openPicker(fn) {
+    var fab = document.getElementById('aft-picker-fab');
+    if (!fab) { window.open('뽑기_미적분I.html#class=' + (state.cls || ''), 'aftermath_picker_calc'); return; }
+    var modal = document.getElementById('aft-picker-modal');
+    if (!modal || !modal.classList.contains('is-open')) fab.click();
+    withPicker(fn);
+  }
+  // 창을 열지 않고 (이미 만들어진 경우에만) 반만 맞춘다
+  function openPickerSilently(fn) { var api = pickerApi(); if (api) fn(api); }
+
+  /* ---------- 정답·풀이 한 번에 열기/닫기 ---------- */
+  function revealTargets() {
+    return { boxes: $all('.reveal-box', ui.page), dets: $all('details', ui.page) };
+  }
+  function anyClosed(r) {
+    return r.boxes.some(function (b) { return !b.classList.contains('active'); }) ||
+      r.dets.some(function (d) { return !d.open; });
+  }
+  function updateReveal() {
+    var r = revealTargets();
+    ui.reveal.style.display = (r.boxes.length + r.dets.length) ? '' : 'none';
+    var closed = anyClosed(r);
+    ui.reveal.textContent = closed ? '정답·풀이 열기' : '정답·풀이 닫기';
+    ui.reveal.classList.toggle('is-on', !closed);
+  }
+  function revealAll() {
+    var r = revealTargets(), open = anyClosed(r);
+    r.boxes.forEach(function (b) {
+      if (open) {
+        if (!b.classList.contains('active')) {
+          if (typeof window.toggleReveal === 'function') window.toggleReveal(b); else b.classList.add('active');
+        }
+      } else b.classList.remove('active');
+    });
+    r.dets.forEach(function (d) { d.open = open; });
+    updateReveal();
+    setTimeout(fit, 400);
+  }
+
   /* ---------- 화면 만들기 ---------- */
   function build() {
     app = h('div', 'lm-app');
@@ -116,24 +212,47 @@
       b.type = 'button';
       b.appendChild(h('span', 'lm-k', String(i + 1)));
       b.appendChild(document.createTextNode(t.name));
+      var mm = tabMinutes(i);
+      if (mm) b.appendChild(h('span', 'lm-min', mm + '′'));
       b.addEventListener('click', function () { go(i, 0); });
       ui.tabs.appendChild(b);
     });
 
     var tools = h('div', 'lm-tools');
-    // 타이머
+
+    // 반 선택 — 반마다 진도를 따로 기억하고, 학생 뽑기도 이 반으로 연다
+    ui.clsBtn = h('button', 'lm-btn lm-cls');
+    ui.clsBtn.type = 'button';
+    ui.clsBtn.title = '반 바꾸기 (반마다 진도를 따로 기억)';
+    ui.clsMenu = h('div', 'lm-pop lm-cls-pop');
+    classes().forEach(function (c) {
+      var b = h('button', 'lm-btn', c + '반');
+      b.type = 'button';
+      b.setAttribute('data-cls', c);
+      b.addEventListener('click', function () { setClass(c); closePops(); });
+      ui.clsMenu.appendChild(b);
+    });
+    ui.clsBtn.addEventListener('click', function (e) { e.stopPropagation(); togglePop(ui.clsMenu, ui.clsBtn); });
+    tools.appendChild(ui.clsBtn);
+
+    // 타이머 — [이 단계 N′] 는 지금 탭의 타임라인 시간
     var tm = h('div', 'lm-timer');
     ui.time = h('button', 'lm-time', '00:00');
     ui.time.type = 'button';
     ui.time.title = '눌러서 시작/일시정지';
     ui.time.addEventListener('click', timerToggle);
+    tm.appendChild(ui.time);
+    ui.stepBtn = h('button', 'lm-btn lm-step');
+    ui.stepBtn.type = 'button';
+    ui.stepBtn.title = '이 단계 시간으로 타이머 시작';
+    ui.stepBtn.addEventListener('click', function () { var m = tabMinutes(state.tab); if (m) timerSet(m * 60, true); });
+    tm.appendChild(ui.stepBtn);
     [1, 3, 5].forEach(function (m) {
       var b = h('button', 'lm-btn', m + '분');
       b.type = 'button';
       b.addEventListener('click', function () { timerSet(m * 60, true); });
       tm.appendChild(b);
     });
-    tm.insertBefore(ui.time, tm.firstChild);
     var rs = h('button', 'lm-btn', '↺');
     rs.type = 'button'; rs.title = '타이머 초기화';
     rs.addEventListener('click', function () { timerSet(0, false); });
@@ -141,17 +260,33 @@
     tools.appendChild(tm);
     tools.appendChild(h('span', 'lm-sep'));
 
-    // 뽑기 — 기존 학습지의 뽑기 모달을 그대로 연다
-    var pick = h('button', 'lm-btn', '학생 뽑기');
-    pick.type = 'button';
-    pick.addEventListener('click', function () {
-      var fab = document.getElementById('aft-picker-fab');
-      if (fab) fab.click(); else window.open('뽑기_미적분I.html', 'aftermath_picker_calc');
+    // 학생 뽑기 — [1명] 은 창을 거치지 않고 바로 뽑는다 (누를 때마다 한 명씩 추가)
+    var pk = h('div', 'lm-seg lm-pick');
+    var one = h('button', 'lm-btn is-on', '🎲 1명');
+    one.type = 'button';
+    one.title = '지금 반에서 바로 1명 뽑기 (누를 때마다 한 명 추가)';
+    one.addEventListener('click', function () {
+      openPicker(function (api) {
+        // 결과 [확인] 을 누르면 뽑기 창도 닫고 수업 화면으로 돌아온다
+        Promise.resolve(api.quick(1, state.cls)).then(function () {
+          var c = document.querySelector('#aft-picker-modal button[data-picker-close]');
+          var m = document.getElementById('aft-picker-modal');
+          if (c && m && m.classList.contains('is-open')) c.click();
+        });
+      });
     });
-    tools.appendChild(pick);
+    var full = h('button', 'lm-btn', '뽑기 창');
+    full.type = 'button';
+    full.title = '모둠 뽑기 · 인원 설정 · 결석 표시';
+    full.addEventListener('click', function () { openPicker(function (api) { api.setClass(state.cls); }); });
+    pk.appendChild(one); pk.appendChild(full);
+    tools.appendChild(pk);
     tools.appendChild(h('span', 'lm-sep'));
 
-    // 판서 배경
+    // 판서 메뉴 — 배경 · 구역 틀 · 판서 넓게
+    ui.boardBtn = h('button', 'lm-btn', '판서 ▾');
+    ui.boardBtn.type = 'button';
+    ui.boardMenu = h('div', 'lm-pop lm-board-pop');
     var seg = h('div', 'lm-seg');
     ui.bgBtns = {};
     [['blank', '빈칸'], ['grid', '모눈'], ['axes', '좌표']].forEach(function (p) {
@@ -161,11 +296,11 @@
       ui.bgBtns[p[0]] = b;
       seg.appendChild(b);
     });
-    tools.appendChild(seg);
+    ui.boardMenu.appendChild(seg);
     ui.zoneBtn = h('button', 'lm-btn', '구역 틀');
     ui.zoneBtn.type = 'button';
     ui.zoneBtn.addEventListener('click', function () { state.zones = !state.zones; renderBoard(); });
-    tools.appendChild(ui.zoneBtn);
+    ui.boardMenu.appendChild(ui.zoneBtn);
     ui.wideBtn = h('button', 'lm-btn', '판서 넓게');
     ui.wideBtn.type = 'button';
     ui.wideBtn.addEventListener('click', function () {
@@ -174,7 +309,11 @@
       ui.wideBtn.classList.toggle('is-on', state.wide);
       fit();
     });
-    tools.appendChild(ui.wideBtn);
+    ui.boardMenu.appendChild(ui.wideBtn);
+    ui.boardBtn.addEventListener('click', function (e) { e.stopPropagation(); togglePop(ui.boardMenu, ui.boardBtn); });
+    ui.boardMenu.addEventListener('click', function (e) { e.stopPropagation(); });
+    tools.appendChild(ui.boardBtn);
+
     var ex = h('button', 'lm-btn lm-exit', '나가기');
     ex.type = 'button';
     ex.addEventListener('click', exit);
@@ -189,7 +328,10 @@
     ui.tabname = h('span', 'lm-tabname');
     ui.sub = h('span', 'lm-sub');
     ui.count = h('span', 'lm-count');
-    head.appendChild(ui.tabname); head.appendChild(ui.sub); head.appendChild(ui.count);
+    ui.reveal = h('button', 'lm-reveal', '정답·풀이 열기');
+    ui.reveal.type = 'button';
+    ui.reveal.addEventListener('click', revealAll);
+    head.appendChild(ui.tabname); head.appendChild(ui.sub); head.appendChild(ui.reveal); head.appendChild(ui.count);
     ui.body = h('div', 'lm-body');
     ui.page = h('div', 'lm-page');
     ui.body.appendChild(ui.page);
@@ -208,10 +350,12 @@
     main.appendChild(left); main.appendChild(ui.board);
 
     app.appendChild(bar); app.appendChild(main);
+    app.appendChild(ui.clsMenu); app.appendChild(ui.boardMenu);
     document.body.appendChild(app);
+    app.addEventListener('click', closePops);
 
     // 본문 안 정답 상자·힌트를 열면 다시 맞춤
-    ui.page.addEventListener('click', function () { setTimeout(fit, 350); });
+    ui.page.addEventListener('click', function () { setTimeout(function () { fit(); updateReveal(); }, 350); });
     ui.page.addEventListener('toggle', function () { setTimeout(fit, 50); }, true);
   }
 
@@ -234,6 +378,7 @@
     try {
       history.replaceState(null, '', location.pathname + location.search + '#lm=' + tabs[t].key + '.' + (p + 1));
       sessionStorage.setItem('lm:' + location.pathname, JSON.stringify({ t: t, p: p, bg: state.bg, z: state.zones, w: state.wide }));
+      saveProg();
     } catch (e) { /* 무시 */ }
   }
   function step(d) {
@@ -270,7 +415,16 @@
     if (u.subNode) ui.sub.appendChild(u.subNode.cloneNode(true));
     else ui.sub.textContent = u.sub || '';
     ui.page.setAttribute('data-tab', t.key);
-    ui.count.textContent = t.pages.length > 1 ? (state.page + 1) + ' / ' + t.pages.length : '';
+    var total = 0, idx = 0;
+    tabs.forEach(function (x, i) { if (i < state.tab) idx += x.pages.length; total += x.pages.length; });
+    idx += state.page + 1;
+    ui.count.textContent = (t.pages.length > 1 ? (state.page + 1) + '/' + t.pages.length + ' · ' : '') + '전체 ' + idx + '/' + total;
+    var mm = tabMinutes(state.tab);
+    ui.stepBtn.textContent = mm ? '이 단계 ' + mm + '′' : '';
+    ui.stepBtn.style.display = mm ? '' : 'none';
+    ui.clsBtn.textContent = (state.cls || '') + '반 ▾';
+    $all('[data-cls]', ui.clsMenu).forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-cls') === state.cls); });
+    updateReveal();
     ui.dots.innerHTML = '';
     if (t.pages.length > 1) {
       t.pages.forEach(function (_, i) {
@@ -334,7 +488,7 @@
       pp.zones.forEach(function (z, i) {
         var d = h('div', 'lm-zone');
         d.style.flexGrow = String(z.h || 1);
-        d.appendChild(h('span', 'lm-zone-label', ZONE_NUM[i] + ' ' + z.t));
+        d.appendChild(h('span', 'lm-zone-label', ZONE_NUM[i] + ' ' + String(z.t).replace(/^\s*[①-⑩]\s*/, '')));
         if (z.axes) d.appendChild(axesSVG(z.axes === true ? null : z.axes, true));
         zones.appendChild(d);
       });
@@ -401,7 +555,7 @@
     if (k === 'ArrowRight' || k === 'PageDown') step(1);
     else if (k === 'ArrowLeft' || k === 'PageUp') step(-1);
     else if (/^[1-9]$/.test(k) && +k <= tabs.length) go(+k - 1, 0);
-    else if (k === 'Escape' || k === 'h' || k === 'H') { /* 수업 중 실수로 메인으로 나가지 않게 막는다 */ }
+    else if (k === 'Escape' || k === 'h' || k === 'H') { closePops(); /* 수업 중 실수로 메인으로 나가지 않게 막는다 */ }
     else handled = false;
     if (handled) { e.preventDefault(); e.stopImmediatePropagation(); }
   }
@@ -419,11 +573,15 @@
     if (o.bg) state.bg = o.bg;
     if (typeof o.z === 'boolean') state.zones = o.z;
     if (o.w) { state.wide = true; app.classList.add('is-wide'); ui.wideBtn.classList.add('is-on'); }
+    var pr = loadProg();
+    state.cls = (pr.cls && classes().indexOf(pr.cls) >= 0) ? pr.cls : classes()[0];
     var t = 0, p = 0;
+    if (pr.pos[state.cls]) { t = pr.pos[state.cls].t; p = pr.pos[state.cls].p; }
     var m = /#lm=([\w-]+)\.(\d+)/.exec(location.hash);
     if (m) {
       tabs.forEach(function (x, i) { if (x.key === m[1]) { t = i; p = +m[2] - 1; } });
     } else if (typeof o.t === 'number') { t = Math.min(o.t, tabs.length - 1); p = o.p || 0; }
+    if (t >= tabs.length) { t = 0; p = 0; }
     go(t, p);
     timerDraw();
   }

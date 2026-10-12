@@ -57,6 +57,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -181,7 +182,7 @@
                         ② \(t \in [2, 3]\): 삼각형 (2,0)→(3,-2), 넓이 \( = \dfrac{1}{2} \cdot 1 \cdot 2 = 1 \) (음) → \(-1\). <br>
                         ③ \(t \in [3, 4]\): 사다리꼴 (-2)→(-1), 넓이 \( = \dfrac{1}{2}(2 + 1) \cdot 1 = \dfrac{3}{2} \) (음) → \(-\dfrac{3}{2}\). <br>
                         ④ \(t \in [4, 5]\): 사다리꼴 (-1)→k(음), 넓이 \( = \dfrac{1}{2}(1 + (-k)) \cdot 1 = \dfrac{1 - k}{2} \) (음, \(k \lt 0\) 가정) → \(-\dfrac{1 - k}{2} = \dfrac{k - 1}{2} \). <br>
-                        합: \( 2 - 1 - \dfrac{3}{2} + \dfrac{k - 1}{2} = -\dfrac{5}{2} \). \( \dfrac{1}{2} + \dfrac{k - 1}{2} = -\dfrac{5}{2} \Rightarrow \dfrac{k}{2} = -\dfrac{5}{2} \Rightarrow k = -5 \).
+                        합: \( 2 - 1 - \dfrac{3}{2} + \dfrac{k - 1}{2} = -\dfrac{5}{2} \). \( -\dfrac{1}{2} + \dfrac{k - 1}{2} = -\dfrac{5}{2} \Rightarrow \dfrac{k - 2}{2} = -\dfrac{5}{2} \Rightarrow k = -3 \).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -485,6 +486,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_30.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

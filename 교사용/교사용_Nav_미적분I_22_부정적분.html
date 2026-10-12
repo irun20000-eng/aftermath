@@ -130,6 +130,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -140,12 +141,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_21_대단원평가_II.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_22_부정적분.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_22_부정적분.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_23_정적분의정의.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_22_부정적분.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -173,6 +175,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_22_부정적분.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -203,6 +220,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "미분하여 \(2x\)가 되는 함수를 떠오르는 대로 모두 적어 보라" — 개방형 발문으로 \(x^2, x^2+1, x^2-7\cdots\) 나열하게 한 뒤 공통점·차이점으로 적분상수 \(C\) 필요성을 귀납.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00. 생각 열기 Thinking Space에 자유 기입 → 짝과 30초 공유.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "미분하여 \(2x\)가 되는 함수를 모두 적어 보자. 공통점과 차이점은?"</p>
@@ -213,6 +245,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>단원 II 연결:</strong> 단원 II에서 \((x^{n+1})' = (n+1)x^n\)이었다면, 이를 역방향으로 읽으면 \(\int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C\). 공식 암기가 아니라 미분 공식의 역방향임.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 미분하여 2x가 되는 함수들"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 4장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 부정적분 정의 → \(x^n\) 공식 역방향 유도 → 실수배·합·차 → 초기조건 결정 순으로 판서. 각 reveal-box를 학생이 직접 클릭.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01 개념 구성 4블록에 자기 언어로 핵심 단어 적기. "\(\int\)"와 "\(\dfrac{d}{dx}\)"의 역관계를 화살표로 그림.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -236,9 +281,30 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "항이 3개면 \(C\)도 3개" — 적분상수는 항상 하나로 묶인다. \(3C_1\)이 아닌 단순 \(C\).</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "초기조건이 없으면 \(C = 0\)" — 조건이 없으면 \(C\)는 임의 상수로 남겨둔다.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (L1 1~3 · L2 4~6 · L3 7 · 형성 8 · 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 부정적분의 정의와 적분상수"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — xⁿ의 부정적분 공식"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 실수배·합·차의 부정적분"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 초기조건으로 C 결정"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~3번) 짝활동 5분, L2(4~6번) 개별 풀이 10분. 5번(접선의 기울기)은 "단원 II에서 본 개념"을 묻는다 — 무작위 호명 발표.</div>
+            <div class="tl-s"><strong>학생:</strong> 1~3번 각 1.5분, 4번(곱셈 전개) 2분, 5~6번 각 3분. 6번은 \(C\) 결정 후 \(f(-1)\) 계산 두 단계를 명시.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 일반항 도함수 함정 — "항별 적분이 \(x^k\)" 인식 전까지 멈추는 학생이 많음. 함정 경고 클릭 유도 후 3단계 풀이 판서. 8번 형성평가는 극값 조건 연계.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 STEP 1~3 구조 노트 정리. 8번 \(a \gt 0\) 조건과 극대·극소 위치 파악부터.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card">
@@ -252,7 +318,9 @@
             </div>
             <div class="q-ans">정답: (1) \(\dfrac{1}{7}x^7+C\) (2) \(\dfrac{1}{10}x^{10}+C\) (3) \(10x+C\) (4) \(\dfrac{1}{2}x^2+C\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 거듭제곱·상수의 부정적분"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">다항함수의 부정적분</span></div>
@@ -263,7 +331,9 @@
             </div>
             <div class="q-ans">정답: (1) \(x^4 - 2x^3 + \dfrac{1}{2}x^2 - 4x + C\) &nbsp; (2) \(-\dfrac{1}{5}x^5 + x^2 + 5x + C\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 다항함수의 항별 적분"></div>
+    <div class="problems">
         <!-- L1 3번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">도함수 + 초기조건</span></div>
@@ -274,7 +344,10 @@
             </div>
             <div class="q-ans">정답: \(f(x) = -2x^4 + x^3 - 4x - 1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — 도함수 + 초기조건"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">곱셈 전개 후 적분 + 두 적분의 차</span></div>
@@ -285,7 +358,9 @@
             </div>
             <div class="q-ans">정답: (1) \(\dfrac{1}{3}x^3 - x^2 + 3x + C\) &nbsp; (2) \(\dfrac{2}{3}x^3 + C\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 두 적분의 차를 하나로"></div>
+    <div class="problems">
         <!-- L2 5번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">접선의 기울기 + 통과점</span></div>
@@ -296,7 +371,9 @@
             </div>
             <div class="q-ans">정답: \(f(x) = \dfrac{1}{2}x^2 - 3x + 8\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 접선의 기울기와 통과점"></div>
+    <div class="problems">
         <!-- L2 6번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">도함수 + 두 점 조건 → \(f(-1)\)</span></div>
@@ -308,7 +385,10 @@
             </div>
             <div class="q-ans">정답: \(f(-1) = 2\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 점 (−2, 1) 통과 후 f(−1)"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 7번 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 도함수 일반항 + 두 조건으로 자연수 \(n\) 결정</span></div>
@@ -321,7 +401,21 @@
             <div class="q-ans">정답: \(n = 6\). 핵심: "도함수 항 \(kx^{k-1}\)을 적분하면 \(x^k\)가 정확히 나온다"는 인식이 관문.</div>
             <div class="q-warn"><strong>발표 포인트:</strong> "왜 항별로 \(x^k\)가 나오는가?"를 칠판에서 \((x^k)' = kx^{k-1}\)의 역방향으로 보여준다. 수열(단원 I) + 미분(단원 II) + 부정적분(단원 III) 통합 문제.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — 일반항 도함수와 자연수 n"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 일반항 도함수 함정 — "항별 적분이 \(x^k\)" 인식 전까지 멈추는 학생이 많음. 함정 경고 클릭 유도 후 3단계 풀이 판서. 8번 형성평가는 극값 조건 연계.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 STEP 1~3 구조 노트 정리. 8번 \(a \gt 0\) 조건과 극대·극소 위치 파악부터.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성평가 8번 (span2 fc) -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 극값 조건 + 부정적분</span></div>
@@ -333,34 +427,8 @@
             </div>
             <div class="q-ans">정답: \(f(x) = 2x^3 - 3x^2 + 6\). 단원 II 극값 + 단원 III 부정적분의 결합.</div>
         </div>
-
-        <!-- 도전 1 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 부정적분과 정적분 유제 1</span></div>
-            <div class="q-stmt">기울기 \(3x^2 - 2x + 1\), 점 \((1, 2)\) 통과. \(f(0)\)은? ① 1 ② 2 ③ 3 ④ 4 ⑤ 5</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(f'(x) = 3x^2 - 2x + 1\).</span>
-                <span class="step">STEP 2: \(f(x) = x^3 - x^2 + x + C\).</span>
-                <span class="step">STEP 3: \(f(1) = 1 - 1 + 1 + C = 1 + C = 2 \Rightarrow C = 1\).</span>
-                <span class="step">STEP 4: \(f(0) = 0 + 1 = 1\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>① 1</strong>. 핵심: "접선의 기울기 \(= f'(x)\)" → 부정적분 → 한 점으로 \(C\) 결정 → 요구 함숫값 계산.</div>
-        </div>
-
-        <!-- 도전 2 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2024년 3월 학력평가 공통 5번 [3점]</span></div>
-            <div class="q-stmt">\(f'(x) = x(3x+2)\), \(f(1) = 6\). \(f(0)\)은? ① 1 ② 2 ③ 3 ④ 4 ⑤ 5</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(f'(x) = 3x^2 + 2x\).</span>
-                <span class="step">STEP 2: \(f(x) = x^3 + x^2 + C\). 검산: \((x^3+x^2+C)' = 3x^2 + 2x\) ✓.</span>
-                <span class="step">STEP 3: \(f(1) = 1 + 1 + C = 2 + C = 6 \Rightarrow C = 4\).</span>
-                <span class="step">STEP 4: \(f(0) = 0 + 0 + 4 = 4\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>④ 4</strong>. 핵심: 곱셈 형태 도함수는 전개부터, 항별 부정적분, 한 점으로 \(C\) 결정.</div>
-        </div>
     </div>
-
+    <div class="nv-board" data-key="check.1" data-label="형성평가 8번 — 극값 두 조건으로 a와 C"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
     <div class="rubric">
@@ -374,6 +442,54 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 부정적분과 정적분 유제 1</span></div>
+            <div class="q-stmt">기울기 \(3x^2 - 2x + 1\), 점 \((1, 2)\) 통과. \(f(0)\)은? ① 1 ② 2 ③ 3 ④ 4 ⑤ 5</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f'(x) = 3x^2 - 2x + 1\).</span>
+                <span class="step">STEP 2: \(f(x) = x^3 - x^2 + x + C\).</span>
+                <span class="step">STEP 3: \(f(1) = 1 - 1 + 1 + C = 1 + C = 2 \Rightarrow C = 1\).</span>
+                <span class="step">STEP 4: \(f(0) = 0 + 1 = 1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>① 1</strong>. 핵심: "접선의 기울기 \(= f'(x)\)" → 부정적분 → 한 점으로 \(C\) 결정 → 요구 함숫값 계산.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 기울기와 한 점으로 f(0)"></div>
+    <div class="problems">
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2024년 3월 학력평가 공통 5번 [3점]</span></div>
+            <div class="q-stmt">\(f'(x) = x(3x+2)\), \(f(1) = 6\). \(f(0)\)은? ① 1 ② 2 ③ 3 ④ 4 ⑤ 5</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f'(x) = 3x^2 + 2x\).</span>
+                <span class="step">STEP 2: \(f(x) = x^3 + x^2 + C\). 검산: \((x^3+x^2+C)' = 3x^2 + 2x\) ✓.</span>
+                <span class="step">STEP 3: \(f(1) = 1 + 1 + C = 2 + C = 6 \Rightarrow C = 4\).</span>
+                <span class="step">STEP 4: \(f(0) = 0 + 0 + 4 = 4\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ 4</strong>. 핵심: 곱셈 형태 도함수는 전개부터, 항별 부정적분, 한 점으로 \(C\) 결정.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 전개 후 적분, f(0)"></div>
+    </section>
+
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 새로 알게 된 한 가지" 3명 발표. 도전 1·2 및 성찰지 QR 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 1·2 과제 예고.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 다음 차시 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -395,6 +511,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -402,11 +520,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_21_대단원평가_II.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_22_부정적분.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_22_부정적분.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_23_정적분의정의.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_22.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

@@ -13,6 +13,8 @@
     var cls = '';
     var m = /^([bgr]):/.exec(src);
     if (m) { cls = ' c-' + m[1]; src = src.slice(2); }
+    // 계획 문장은 글자 그대로 — < > & 가 태그로 먹히지 않게 (PITFALLS A-3: -4<k<0 이 사라졌던 문제)
+    src = src.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     // 줄 중간 색: [[b:…]]
     src = src.replace(/\[\[([bgr]):([\s\S]*?)\]\]/g, function (_, c, t) { return '<span class="c-' + c + '">' + t + '</span>'; });
     var d = document.createElement('div');
@@ -93,7 +95,7 @@
           zone.className = 'nvb-zone';
           zone.style.flexGrow = String(z.h || 1);
           var lb = document.createElement('span');
-          lb.className = 'nvb-zlabel'; lb.textContent = NUM[i] + ' ' + z.t;
+          lb.className = 'nvb-zlabel'; lb.textContent = NUM[i] + ' ' + String(z.t).replace(/^\s*[①-⑩]\s*/, '');
           zone.appendChild(lb);
           if (z.axes) { zone.classList.add('has-axes'); zone.appendChild(axes(z.axes === true ? null : z.axes, z.plot)); }
           var box = zone;
@@ -134,7 +136,24 @@
     show(m ? m[1] : tabs[0].getAttribute('data-key'), false);
   }
 
-  function init() { renderBoards(); initTabs(); }
+  // 수업 중 보기 — 판서 예시·타임라인만 크게 (태블릿·보조 화면)
+  function initLive() {
+    var btn = document.querySelector('.nv-live-btn');
+    if (!btn) return;
+    function set(on) {
+      document.body.classList.toggle('nv-live', on);
+      btn.classList.toggle('is-on', on);
+      btn.textContent = on ? '전체 가이드 보기' : '수업 중 보기';
+      try { localStorage.setItem('nv-live', on ? '1' : '0'); } catch (e) { /* 무시 */ }
+      if (window.aftFitMath) setTimeout(window.aftFitMath, 30);
+    }
+    btn.addEventListener('click', function () { set(!document.body.classList.contains('nv-live')); });
+    var saved = null;
+    try { saved = localStorage.getItem('nv-live'); } catch (e) { /* 무시 */ }
+    if (saved === '1') set(true);
+  }
+
+  function init() { renderBoards(); initTabs(); initLive(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
