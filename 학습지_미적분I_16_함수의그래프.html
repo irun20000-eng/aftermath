@@ -64,6 +64,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -170,7 +171,7 @@
                             </tbody>
                         </table>
                         <p class="text-base mb-1"><strong>STEP 4:</strong> 극솟값 \(f(-2) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1\)</span></span>, 극댓값 \(f(-1) = 0\), 극솟값 \(f(0) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1\)</span></span>. \(y\)절편 \(f(0) = -1\).</p>
-                        <p class="text-base"><strong>STEP 5:</strong> 양끝 모두 \(+\infty\)로 올라가며 \(W\) 모양. 두 극솟값이 같아 그래프는 \(x = -\dfrac{3}{2}\)을 기준으로 거의 대칭처럼 보인다.</p>
+                        <p class="text-base"><strong>STEP 5:</strong> 양끝 모두 \(+\infty\)로 올라가며 \(W\) 모양. 두 극솟값이 같고, \(f(x) = \{(x+1)^2 - 1\}^2 - 1\)이므로 그래프는 \(x = -1\)을 기준으로 대칭이다.</p>
                     </div>
                     <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 사차함수(최고차 \(+\))의 양끝은 \(+\infty\). 가운데 극값은 1개(\(\cup\) 모양) 또는 <strong>3개</strong>(\(W\) 모양 — 극소·극대·극소). 극값 3개의 경우 두 극솟값의 비교가 형성평가·도전의 핵심 포인트. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 예제 2 참고)</span></p>
                 </div>
@@ -625,6 +626,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_16.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

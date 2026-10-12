@@ -135,6 +135,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -145,12 +146,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_14_함수의증가와감소.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_15_극대와극소.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_15_극대와극소.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_16_함수의그래프.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_15_극대와극소.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -178,6 +180,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_15_극대와극소.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -208,6 +225,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 시간대별 주택 전력 소비 그래프(봉우리·골짜기) 사진. "차시 14의 \(f(x) = x^3 - 3x^2 + 1\)에서 \(x = 0, 2\) 중 어느 게 봉우리?" 발문.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 발문 1분 자유. 증감표 다시 보고 \(+\to-\)는 봉우리, \(-\to+\)는 골짜기 추측.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 차시 14의 \(f(x) = x^3 - 3x^2 + 1\) 증감표를 다시 보자. \(x = 0, 2\) 중 봉우리·골짜기는 어느 쪽? 도함수 부호와 어떻게 연결?</p>
@@ -218,6 +250,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>차시 14 → 15 연결:</strong> 차시 14에서 증감표 작성을 정착시켰다. 본 차시는 그 증감표의 임계점에서 "부호 변화 패턴"만 추가로 본다 — \(+\to-\) 극대, \(-\to+\) 극소, 같은 부호 유지면 극값 아님.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 봉우리와 골짜기 찾기"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 5장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 정의 → 페르마(필요조건) → 부호 변화 판정 → 예제 (\(x^3 - 3x + 5\)) → 매개변수 결정 5단계. \(x^3\) 반례 + \(|x|\) 반례 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 개념 박스 5개 reveal-box 클릭. "필요조건 vs 충분조건" 양옆 비교표 노트.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -241,9 +286,31 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "극값 \(\Rightarrow\) 미분가능" — 거짓 (\(|x|\) 반례). \(x = 0\)에서 극솟값이지만 미분 불가. L3 7번 학생 B의 주장.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "삼차함수 극값 조건 \(D \geq 0\)" — 거짓. \(D = 0\)이면 도함수 중근 → 부호 변화 없음 → 극값 없음. 정확히는 \(D \gt 0\) (등호 제외). 도전 2 함정.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/5 — 극대·극소의 정의 (지역 개념)"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/5 — 극값의 필요조건 f'(a) = 0"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/5 — 도함수 부호 변화로 극대·극소 판정"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/5 — 예제 x³ − 3x + 5 의 극값"></div>
+    <div class="nv-board" data-key="concept.5" data-label="개념 5/5 — 극값 조건으로 매개변수 결정"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1 1·2·3번 짝활동(증감표 직접). L2 4번(\(D \leq 0\), 등호 포함)·5번(\(D \gt 0\), 등호 제외)·6번(도함수 그래프) — 등호 처리 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> L1 7분, L2 8분. 4번과 5번을 노트 양옆에 비교해 등호 ≤ vs &gt; 차이를 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 학생 A(\(f' = 0 \Rightarrow\) 극값?)·B(극값 \(\Rightarrow\) 미분?) 두 주장 거짓 판정. 반례 \(x^3\), \(|x|\) 직접 그림. 형성 8번 근과 계수의 관계.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 반례를 직접 그려보기. 8번 \(\alpha^3 + \beta^3\) 공식 적용 4분.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 (span2) -->
         <div class="prob-card span2">
@@ -255,7 +322,9 @@
             </div>
             <div class="q-ans">정답: (1) 극솟값 \(1\), 극댓값 \(2\) &nbsp; (2) 극솟값 \(-10\) (2번), 극댓값 \(6\). <strong>판서 포인트:</strong> (2)의 사차함수는 극솟값이 두 \(x\)값에서 같음 — 좌·우 대칭 구조 자연스럽다.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 증감표로 극값 직접 구하기"></div>
+    <div class="problems">
         <!-- L1 2번 (span2) -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">매개변수 결정 — \(a, b\) + 극댓값</span></div>
@@ -268,7 +337,9 @@
             </div>
             <div class="q-ans">정답: \(a = 12, b = 5\), 극댓값 \(25\). <strong>핵심:</strong> 필요조건 + 함숫값 두 식으로 \(a, b\) 결정 후 반드시 부호 변화 검증 (STEP 4가 안 통과하면 답 무효).</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — x = −1 에서 극솟값 −2, a·b와 극댓값"></div>
+    <div class="problems">
         <!-- L1 3번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">극댓값 - 극솟값</span></div>
@@ -279,7 +350,10 @@
             </div>
             <div class="q-ans">정답: \(1\).</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — 극댓값 − 극솟값"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">극값 갖지 않을 조건 (\(D \leq 0\), 등호 포함)</span></div>
@@ -290,7 +364,9 @@
             </div>
             <div class="q-ans">정답: \(a \geq 3\). <strong>등호 포함:</strong> \(a = 3\)일 때 \(f'(x) = 3(x + 1)^2 \geq 0\), 중근에서 부호 변화 없음 → 극값 없음 ✓.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 극값을 갖지 않을 조건 D ≤ 0"></div>
+    <div class="problems">
         <!-- L2 5번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">극값 가질 조건 (\(D \gt 0\), 등호 제외)</span></div>
@@ -301,7 +377,9 @@
             </div>
             <div class="q-ans">정답: \(a \lt -1\) 또는 \(a \gt 1\). <strong>4번과 비교:</strong> 4번 \(\leq 0\) (등호 포함) vs 5번 \(\gt 0\) (등호 제외) — 등호 포함 여부가 결정적.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 극댓값·극솟값을 모두 가질 조건 D > 0"></div>
+    <div class="problems">
         <!-- L2 6번 (span2) -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">도함수 그래프 3개 — 극값 판정 (수리 언어 소양)</span></div>
@@ -313,7 +391,10 @@
             </div>
             <div class="q-ans">정답: (1) 2개 / (2) 0개 / (3) 0개. <strong>핵심:</strong> 도함수 그래프가 \(x\)축을 <strong>가로지르는가</strong>(부호 변화·극값) vs <strong>접하는가</strong>(부호 유지·극값 X)를 구별.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 도함수 그래프 3개로 극값 판정"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 7번 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 학생 A·B 두 주장</span></div>
@@ -326,7 +407,21 @@
             <div class="q-ans">정답: A·B 둘 다 <strong>거짓</strong>. 반례 \(x^3, |x|\). <strong>핵심:</strong> 필요조건·충분조건 구분 — 충분조건이 되려면 부호 변화 추가. 차시 16 변곡점으로 직접 연결.</div>
             <div class="q-warn"><strong>발표 유도:</strong> A·B 각각 손들기 후, \(x^3\)·\(|x|\) 두 그래프를 칠판에 직접 그리고 학생에게 "이 점은 극값인가?"를 정의 그대로 검증하게 한다.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — 학생 A·B 두 주장 판정과 반례"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 학생 A(\(f' = 0 \Rightarrow\) 극값?)·B(극값 \(\Rightarrow\) 미분?) 두 주장 거짓 판정. 반례 \(x^3\), \(|x|\) 직접 그림. 형성 8번 근과 계수의 관계.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 반례를 직접 그려보기. 8번 \(\alpha^3 + \beta^3\) 공식 적용 4분.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성 8번 (span2 fc) -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 극값의 합 = 0 (근과 계수의 관계)</span></div>
@@ -340,7 +435,27 @@
             </div>
             <div class="q-ans">정답: \(a = -2\). <strong>핵심:</strong> 극값의 합·곱은 \(f' = 0\)의 두 근 \(\alpha, \beta\)에 대한 대칭식 → 근과 계수의 관계로 직접 계산. 두 극값을 따로 구하지 않아도 됨.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="check.1" data-label="형성평가 8번 — 극값의 합 = 0 (근과 계수)"></div>
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">극값 존재 조건 \(D \gt 0\) 검증 + 근과 계수 사용 + \(\alpha^3 + \beta^3\) 공식 정확 + \(-4 - 2a = 0\) 도출 + \(a = -2\) 결론 + 조건 \(a \lt 3\) 검증.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">근과 계수 + \(\alpha^3 + \beta^3, \alpha^2 + \beta^2\) 공식까지 정확하나 정리 과정에서 \(-4\) 상수항을 두 번 더하는 것을 놓침.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">\(\alpha, \beta\)를 매개변수로 잡고 \(f' = 0\) 두 실근까지 인식했으나 \(\alpha^3 + \beta^3\) 등 대칭식 전개에서 부호 오류.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">두 극값을 \(\alpha, \beta\)에 직접 대입하려고 시도. 그러나 \(\alpha, \beta\)를 구체적으로 풀지 못해 진행 안 됨.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "극값의 합·곱은 대칭식 — 근과 계수의 관계로 직접 표현. \(\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta)\) 공식 외우기."</div>
+        </div>
+    </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
         <!-- 도전 1 (span2 challenge) -->
         <div class="prob-card challenge span2">
             <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 도함수의 활용 1 유제 6 [26009-0080]</span></div>
@@ -353,7 +468,9 @@
             </div>
             <div class="q-ans">정답: <strong>② 144</strong>. <strong>핵심:</strong> 극값 조건은 "\(g'(a) = 0\) AND \(g(a) = (\text{극값})\)" <strong>이중 정보</strong>. 한쪽으로 \(f'(3)\), 다른 쪽으로 \(f(3)\) 결정 → 일차함수 \(f\)의 두 계수 묶음.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 곱함수의 극값 조건으로 g(−3)"></div>
+    <div class="problems">
         <!-- 도전 2 (span2 challenge) -->
         <div class="prob-card challenge span2">
             <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2014학년도 4월 학평 가형 7번 [3점]</span></div>
@@ -368,20 +485,20 @@
             <div class="q-ans">정답: <strong>① 5</strong>. <strong>함정:</strong> 학생들이 \(D \geq 0\)로 풀어 \(a = 0, 6\)을 포함시키는 오류 빈발. "극값 있음" \(\Leftrightarrow D \gt 0\) (등호 제외) — Level 2 5번과 정확히 같은 패턴의 평가원 출제.</div>
         </div>
     </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 극값을 갖는 정수 a의 개수"></div>
+    </section>
 
-    <!-- F. 형성평가 채점 루브릭 -->
-    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
-    <div class="rubric">
-        <div class="rtitle">📋 채점 기준 (총 100점)</div>
-        <div class="rubric-grid">
-            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">극값 존재 조건 \(D \gt 0\) 검증 + 근과 계수 사용 + \(\alpha^3 + \beta^3\) 공식 정확 + \(-4 - 2a = 0\) 도출 + \(a = -2\) 결론 + 조건 \(a \lt 3\) 검증.</div>
-            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">근과 계수 + \(\alpha^3 + \beta^3, \alpha^2 + \beta^2\) 공식까지 정확하나 정리 과정에서 \(-4\) 상수항을 두 번 더하는 것을 놓침.</div>
-            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">\(\alpha, \beta\)를 매개변수로 잡고 \(f' = 0\) 두 실근까지 인식했으나 \(\alpha^3 + \beta^3\) 등 대칭식 전개에서 부호 오류.</div>
-            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">두 극값을 \(\alpha, \beta\)에 직접 대입하려고 시도. 그러나 \(\alpha, \beta\)를 구체적으로 풀지 못해 진행 안 됨.</div>
-            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "극값의 합·곱은 대칭식 — 근과 계수의 관계로 직접 표현. \(\alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta)\) 공식 외우기."</div>
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "극값 + 부호 \(\to\) 그래프 개형(차시 16) \(\to\) 실근 개수(차시 18)" 로드맵 한 줄. QR 성찰지.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크. 도전 문제 사전 시도.</div>
         </div>
     </div>
-
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 다음 차시 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -403,6 +520,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -410,11 +529,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_14_함수의증가와감소.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_15_극대와극소.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_15_극대와극소.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_16_함수의그래프.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_15.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

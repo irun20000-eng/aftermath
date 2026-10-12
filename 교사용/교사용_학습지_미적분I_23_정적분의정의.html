@@ -60,6 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -253,11 +254,11 @@
                         <span class="badge badge-l2">응용-그래프 + 정적분 그래프의 접선</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \(y = f(x)\)의 그래프가 오른쪽 그림과 같다. 함수 \(F(x) = \displaystyle\int_0^x f(t)\,dt\)라 할 때, 그래프 \(y = F(x)\) 위의 점 \((3, F(3))\)에서의 접선의 기울기를 구하고, 그 방법을 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 문제 03 (수리 언어 소양) 참고)</span>
                             <div class="ml-6 mt-3 flex justify-center">
-                                <img src="images/calc_23_q_yf_graph.png" alt="문제 5번 그래프 — y=f(x)는 원점 부근에서 음수, 극대 (값 2)를 x=1 근처에서 가지고 x=3에서 영점에 접한 뒤 다시 증가하는 곡선; 골 부분에서 y=-2 근방" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
+                                <img src="images/calc_23_q_yf_graph.png" alt="문제 5번 그래프 — y=f(x)는 원점 부근에서 음수, 극대 (값 2)를 x=1 근처에서 가지고 x=3에서 극솟값 -2를 가진 뒤 다시 증가하는 곡선" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 전략:</strong> 점 \((3, F(3))\)에서의 접선의 기울기 \(= F'(3)\). 적분과 미분의 관계로 \(F'(x) = f(x) \Rightarrow F'(3) = f(3)\). 그래프에서 \(f(3) = 0\) (영점). 따라서 접선의 기울기 \(= 0\). <br>
+                            <strong>💡 전략:</strong> 점 \((3, F(3))\)에서의 접선의 기울기 \(= F'(3)\). 적분과 미분의 관계로 \(F'(x) = f(x) \Rightarrow F'(3) = f(3)\). 그래프에서 \(f(3) = -2\). 따라서 접선의 기울기 \(= -2\). <br>
                             <strong>설명:</strong> "\(F(x)\)가 \(f(t)\)를 \(0\)에서 \(x\)까지 적분한 값"이므로 \(F'(x)\)는 곧 그 순간의 피적분함수 값. 그래프에서 \(f(3)\)을 읽어내는 것이 핵심.
                         </div></details>
                         <div class="thinking-space"></div>
@@ -588,6 +589,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_23.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

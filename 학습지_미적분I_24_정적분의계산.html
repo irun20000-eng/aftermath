@@ -60,6 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -265,8 +266,8 @@
                         <span class="badge badge-l2">응용-구간별 도함수 → 함숫값</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">6. 모든 실수에서 미분가능한 함수 \(f(x)\)의 도함수가 \[ f'(x) = \begin{cases} x - 3 &amp; (x \geq 1) \\ -2x^2 &amp; (x \lt 1) \end{cases} \] 이고 \(f(2) = -2\)일 때, \(f(-1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.123 · 중단원 기본 12번 참고)</span></div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> \(x \geq 1\)에서 \(f(x) = \tfrac{1}{2}x^2 - 3x + C_1\). \(f(2) = 2 - 6 + C_1 = -2 \Rightarrow C_1 = 2\). \(f(1) = \tfrac{1}{2} - 3 + 2 = -\tfrac{3}{2}\). <br>
-                            \(x \lt 1\)에서 \(f(x) = -\tfrac{2}{3}x^3 + C_2\). 연속 조건 \(\lim_{x \to 1^-} f(x) = f(1)\) \(\Rightarrow\) \(-\tfrac{2}{3} + C_2 = -\tfrac{3}{2} \Rightarrow C_2 = -\tfrac{5}{6}\). \(f(-1) = \tfrac{2}{3} - \tfrac{5}{6} = -\tfrac{1}{6}\).
+                            <strong>💡 힌트:</strong> \(x \geq 1\)에서 \(f(x) = \tfrac{1}{2}x^2 - 3x + C_1\). \(f(2) = 2 - 6 + C_1 = -2 \Rightarrow C_1 = 2\). \(f(1) = \tfrac{1}{2} - 3 + 2 = -\tfrac{1}{2}\). <br>
+                            \(x \lt 1\)에서 \(f(x) = -\tfrac{2}{3}x^3 + C_2\). 연속 조건 \(\lim_{x \to 1^-} f(x) = f(1)\) \(\Rightarrow\) \(-\tfrac{2}{3} + C_2 = -\tfrac{1}{2} \Rightarrow C_2 = \tfrac{1}{6}\). \(f(-1) = \tfrac{2}{3} + \tfrac{1}{6} = \tfrac{5}{6}\).
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -597,6 +598,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_24.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

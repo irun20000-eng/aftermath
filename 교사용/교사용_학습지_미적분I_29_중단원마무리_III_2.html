@@ -57,6 +57,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -150,7 +151,7 @@
                     <span class="badge badge-l2">[기본-접선과 곡선 사이의 넓이]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">5. 곡선 \(y = x^3 + 1\)과 이 곡선 위의 점 \((1, 2)\)에서의 접선으로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.136 중단원 기본 05번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> ① 접선 기울기 \(y'(1) = 3\). 접선: \(y - 2 = 3(x - 1) \Rightarrow y = 3x - 1\). ② 교점: \(x^3 + 1 = 3x - 1 \Rightarrow x^3 - 3x + 2 = (x - 1)^2(x + 2) = 0 \Rightarrow x = 1, -2\). ③ \([-2, 1]\)에서 \(x^3 + 1 \leq 3x - 1\)임을 확인 (\(x = 0\) 대입: \(1 \leq -1\)? 거짓. 다시: \(x = 0 \Rightarrow x^3 + 1 = 1, 3x - 1 = -1\), \(1 \geq -1\)이므로 곡선이 위). \(\int_{-2}^{1}(x^3 + 1 - 3x + 1)\,dx = \int_{-2}^{1}(x^3 - 3x + 2)\,dx = [\tfrac{1}{4}x^4 - \tfrac{3}{2}x^2 + 2x]_{-2}^{1} = (\tfrac{1}{4} - \tfrac{3}{2} + 2) - (4 - 6 - 4) = \tfrac{3}{4} - (-6) = \tfrac{27}{4}\). 답: \(\tfrac{27}{4}\).
+                        <strong>💡 전략 힌트:</strong> ① 접선 기울기 \(y'(1) = 3\). 접선: \(y - 2 = 3(x - 1) \Rightarrow y = 3x - 1\). ② 교점: \(x^3 + 1 = 3x - 1 \Rightarrow x^3 - 3x + 2 = (x - 1)^2(x + 2) = 0 \Rightarrow x = 1, -2\). ③ \([-2, 1]\)에서 \(x^3 + 1 \geq 3x - 1\)임을 확인 (\(x = 0 \Rightarrow x^3 + 1 = 1, 3x - 1 = -1\), \(1 \geq -1\)이므로 곡선이 위). \(\int_{-2}^{1}(x^3 + 1 - 3x + 1)\,dx = \int_{-2}^{1}(x^3 - 3x + 2)\,dx = [\tfrac{1}{4}x^4 - \tfrac{3}{2}x^2 + 2x]_{-2}^{1} = (\tfrac{1}{4} - \tfrac{3}{2} + 2) - (4 - 6 - 4) = \tfrac{3}{4} - (-6) = \tfrac{27}{4}\). 답: \(\tfrac{27}{4}\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -215,7 +216,7 @@
                         ④ \(S = \int_0^2 (\sqrt{x} + 2)\,dx + \int_2^4 (\sqrt{x} + 2 - (x-2)^2)\,dx\). <br>
                         앞: \([\tfrac{2}{3}x^{3/2} + 2x]_0^2 = \tfrac{4\sqrt{2}}{3} + 4\). <br>
                         뒤: \([\tfrac{2}{3}x^{3/2} + 2x - \tfrac{(x-2)^3}{3}]_2^4 = (\tfrac{16}{3} + 8 - \tfrac{8}{3}) - (\tfrac{4\sqrt{2}}{3} + 4 - 0) = \tfrac{32}{3} - \tfrac{4\sqrt{2}}{3} - 4 = \tfrac{20}{3} - \tfrac{4\sqrt{2}}{3}\). <br>
-                        합: \((\tfrac{4\sqrt{2}}{3} + 4) + (\tfrac{20}{3} - \tfrac{4\sqrt{2}}{3} - 4) \cdot 1 = \tfrac{20}{3} + 4 = \tfrac{32}{3}\). 답: \(\tfrac{32}{3}\).
+                        합: \((\tfrac{4\sqrt{2}}{3} + 4) + (\tfrac{20}{3} - \tfrac{4\sqrt{2}}{3}) = \tfrac{20}{3} + 4 = \tfrac{32}{3}\). 답: \(\tfrac{32}{3}\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -498,6 +499,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_29.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

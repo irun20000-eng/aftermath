@@ -369,6 +369,7 @@
   .student-item.role-q { background: #fff8e1; border-color: #f59e0b; color: #92400e; font-weight: 700; }
   .role-tag.rq { background: #f59e0b; color: #fff; }
   .student-item.role-q .pick-count { display: none; }
+  .result-grid:has(> .result-card:only-child) { grid-template-columns: minmax(260px, 360px) !important; justify-content: center; }
 
   /* Groups grid */
   .groups-grid {
@@ -2061,6 +2062,35 @@ function attachEventListeners() {
   render();
   attachEventListeners();
   updateTimerDisplay();
+
+  // 학습지 수업 모드가 쓰는 작은 API (같은 사이트 iframe 에서 호출)
+  window.aftPicker = {
+    setClass(n) {
+      const c = String(n || '').replace('반', '') + '반';
+      if (!CLASS_DATA[c] || isRunning || c === state.currentClass) return;
+      state.currentClass = c;
+      history.replaceState(null, '', '#class=' + c.replace('반', ''));
+      renderTabs();
+      render();
+    },
+    // n명 바로 뽑기 — 이미 뽑힌 학생이 있으면 한 명 더
+    async quick(n, cls) {
+      if (cls) this.setClass(cls);
+      if (isRunning) return;
+      if (state.mode !== 'quick') {
+        await setMode('quick');
+        if (state.mode !== 'quick') return;
+      }
+      const round = state.currentRound[state.currentClass];
+      if ((round.q || []).length) return runQuickPick(true);
+      const prev = state.quickCount;
+      state.quickCount = n || 1;
+      const p = runQuickPick(false);
+      state.quickCount = prev;
+      updateQuickBar();
+      return p;
+    },
+  };
 })();
 </script>
 </body>

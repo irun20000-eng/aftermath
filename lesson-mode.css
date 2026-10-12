@@ -154,6 +154,29 @@ html.lm-on body { padding: 0 !important; background: #0f172a !important; }
   color: #94a3b8; pointer-events: none;
 }
 
+/* ---------- 탭 시간 · 팝업 메뉴 · 정답 열기 ---------- */
+.lm-tab .lm-min { margin-left: 6px; font-size: 12px; font-weight: 800; color: #5eead4; }
+.lm-tab.is-on .lm-min { color: #0d9488; }
+.lm-btn.lm-step { color: #5eead4; border-color: #115e59; }
+.lm-btn.lm-cls { min-width: 76px; }
+.lm-pick .lm-btn.is-on { background: #f59e0b; border-color: #f59e0b; color: #1f2937; }
+.lm-pop {
+  position: fixed; z-index: 9100; display: none; gap: 8px; padding: 10px;
+  background: #1e293b; border: 1px solid #334155; border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+}
+.lm-pop.is-open { display: flex; }
+.lm-cls-pop { flex-direction: row; }
+.lm-board-pop { flex-direction: column; align-items: stretch; }
+.lm-board-pop .lm-seg { display: flex; }
+.lm-board-pop .lm-seg .lm-btn { flex: 1; }
+.lm-reveal {
+  min-height: 40px; padding: 0 14px; border-radius: 10px; border: 2px solid #f59e0b;
+  background: #fffbeb; color: #92400e; font: 800 14px/1 'Noto Sans KR', sans-serif; cursor: pointer; white-space: nowrap;
+}
+.lm-reveal.is-on { background: #f59e0b; color: #fff; }
+.lm-head { align-items: center; }
+
 /* ---------- 좁은 화면 (노트북·태블릿·창 모드) ---------- */
 /* 상단 바가 넘치면 도구 묶음이 둘째 줄로 내려간다 (버튼이 잘리지 않게) */
 .lm-bar { flex-wrap: wrap; row-gap: 6px; }

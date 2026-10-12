@@ -130,6 +130,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -140,12 +141,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_수학익힘책_미적분I_II1_미분계수와도함수.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_12_접선의방정식.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_12_접선의방정식.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_13_평균값정리.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_12_접선의방정식.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -173,6 +175,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_12_접선의방정식.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -203,6 +220,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> \(y = -x^2 + 3\) 위의 \((1, 2)\)에서 접선을 칠판에 직접 그리고 "기울기 \(-2\)는 어디서 나왔지?"를 묻는다. \(f'(1) = -2\)로 자연스럽게 연결.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 발문 1분 자유 작성 → 짝과 30초 공유. 점-기울기 공식 떠올리기.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 곡선 \(y = -x^2 + 3\) 위의 \((1, 2)\)에서의 접선을 한 줄로 쓰려면 어떤 정보가 필요할까? 미분계수 \(f'(1) = -2\)를 어떻게 활용할까?</p>
@@ -213,6 +245,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>1학기 연결 & II-1 연결:</strong> 1학기에서 \(\dfrac{f(x) - f(a)}{x - a}\)의 극한이 접선의 기울기였고, II-1 차시 9·10에서 그 극한을 \(f'(a)\)로 정의했다. 본 차시는 \(f'(a)\)를 "값"이 아니라 "직선식의 기울기"로 적극 활용하는 첫 차시.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 기울기 −2로 접선 한 줄 쓰기"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 4장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 시나리오 ①(접점) → ②(기울기) → ③(곡선 밖) 순으로 판서. 각 reveal-box를 학생이 직접 클릭하도록 안내. ③에서 "점이 곡선 위/밖인지 검증" 1분 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 개념 1~4의 reveal-box 8개 모두 클릭, 노트에 "도함수→기울기→직선식" 3단 루틴 적기.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -236,9 +281,30 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "이차함수에 곡선 밖 점은 접선이 1개." → 일반적으로 <strong>2개</strong> (특수 경우만 1개). 삼차함수는 최대 3개.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "공통 접선은 점만 같으면 된다." → 점 \(\cdot\) 기울기 두 조건이 동시에 만족되어야 한다.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 점-기울기 공식의 미분 버전"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — 시나리오 ① 접점이 주어진 경우"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 시나리오 ② 기울기가 주어진 경우"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 시나리오 ③ 곡선 밖의 점에서 그은 접선"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~3번)은 짝활동, L2(4~6번)는 개별 풀이 후 무작위 호명. 4번에서 매개변수 \(t\) 기법 칠판 시연, 6번 섬·육지는 "기울기 \(2\)인 접선" 발상 유도.</div>
+            <div class="tl-s"><strong>학생:</strong> 1·2·3번 6분, 4·5·6번 9분. 4번 매개변수 풀이는 색깔로 단계 구분해 노트 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(오답률 1위)에서 "\(x = 0\)이니까 \(f'(0)\)이지?"라고 묻는 학생 함정을 표면화 → \(f(0) = 4 \neq 2\) 검증으로 곡선 밖 점 확정. 형성 8번은 모두에게 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 곡선 위/밖 검증을 빨간펜으로 한 줄 적기. 8번은 4분 안에 접선식 → 곡선과의 교점 풀이.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card">
@@ -250,7 +316,9 @@
             </div>
             <div class="q-ans">정답: (1) \(y = -5x + 7\) &nbsp; (2) \(y = -x - 1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 접점이 주어진 접선"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">기울기 주어진 접선 — 매개변수 \(t\)</span></div>
@@ -261,7 +329,9 @@
             </div>
             <div class="q-ans">정답: (1) \(y = x - 5\) &nbsp; (2) \(y = x - 1\) 또는 \(y = x + 3\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 기울기 1인 접선 (접점을 t로)"></div>
+    <div class="problems">
         <!-- L1 3번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">곡선 위 점에서의 접선 단순 계산</span></div>
@@ -272,7 +342,10 @@
             </div>
             <div class="q-ans">정답: \(y = -3x + 5\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — 곡선 위 점에서의 접선 단순 계산"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 4번 (span2) -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">곡선 밖의 점에서의 접선 — 매개변수 \(t\) 정착</span></div>
@@ -287,7 +360,9 @@
             <div class="q-ans">정답: (1) \(y = -2x - 1\), \(y = -14x - 25\) (2개) &nbsp; (2) \(y = -x + 5\) (1개)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> (1)에서 접선이 2개 나오는 것이 일반적. (2)에서 \(t = -1\) 한 개만 나오는 이유는 \(t^3 = -1\)이 실근 1개만 가지기 때문 — 삼차 곡선이지만 외부점 위치에 따라 접선 개수가 달라짐을 보임.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 곡선 밖의 점에서 그은 접선"></div>
+    <div class="problems">
         <!-- L2 5번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">두 곡선의 공통 접선</span></div>
@@ -299,7 +374,9 @@
             </div>
             <div class="q-ans">정답: \(a = -1\), \(b = 2\), \(c = 1\).</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 두 곡선의 공통 접선"></div>
+    <div class="problems">
         <!-- L2 6번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">섬·육지 다리 최소 길이 (수리 언어 소양)</span></div>
@@ -310,7 +387,10 @@
             </div>
             <div class="q-ans">정답: \(\sqrt{5}\).</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 섬과 육지 다리 최소 길이"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 7번 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 곡선 위/밖 검증 필수</span></div>
@@ -325,7 +405,21 @@
             <div class="q-ans">정답: <strong>\(1\)</strong>.</div>
             <div class="q-warn"><strong>발표 유도:</strong> "왜 \(f'(0)\)을 바로 못 쓰지?" 학생에게 직접 발표. "곡선 위가 아니라서, \(f'(0)\)은 \((0, 4)\)에서의 기울기일 뿐 \((0, 2)\)에서의 정보가 아니다"가 정답.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — 곡선 위인지 검증 필수 (오답률 1위)"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(오답률 1위)에서 "\(x = 0\)이니까 \(f'(0)\)이지?"라고 묻는 학생 함정을 표면화 → \(f(0) = 4 \neq 2\) 검증으로 곡선 밖 점 확정. 형성 8번은 모두에게 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 곡선 위/밖 검증을 빨간펜으로 한 줄 적기. 8번은 4분 안에 접선식 → 곡선과의 교점 풀이.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성 8번 (span2 fc) -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 접선이 곡선과 만나는 다른 한 점</span></div>
@@ -337,33 +431,8 @@
             </div>
             <div class="q-ans">정답: \((3, 7)\). <strong>핵심:</strong> 접점은 인수분해에서 <strong>중근</strong>으로 나타남 (\(x^2\) 인수).</div>
         </div>
-
-        <!-- 도전 1 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 도함수의 활용 1 유제 1 [26009-0075]</span></div>
-            <div class="q-stmt">\(y = -2x^4 + 3x^2 + a\) 위의 \((1, a+1)\)에서의 접선이 \((0, -3)\)을 지날 때 \(a\)는? ① \(-6\) ② \(-7\) ③ \(-8\) ④ \(-9\) ⑤ \(-10\).</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(f'(x) = -8x^3 + 6x\), \(f'(1) = -2\). (검증: \(f(1) = -2 + 3 + a = a + 1\) ✓ — 곡선 위.)</span>
-                <span class="step">STEP 2: 접선 \(y - (a+1) = -2(x - 1) \Rightarrow y = -2x + a + 3\).</span>
-                <span class="step">STEP 3: \((0, -3)\) 대입. \(-3 = a + 3 \Rightarrow a = -6\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>① \(-6\)</strong>. <strong>핵심:</strong> 곡선 위의 점에서의 접선이 외부의 한 점을 지나는 표준 유형. 사차함수도 다항함수이므로 미분 공식 그대로 적용.</div>
-        </div>
-
-        <!-- 도전 2 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 1998학년도 수능 나형 9번 [3점]</span></div>
-            <div class="q-stmt">포물선 \(y = -\tfrac{1}{4}x^2\)의 \((2, -1)\)에서의 접선과 \(x\)축, \(y\)축으로 둘러싸인 삼각형의 넓이는? ① \(\tfrac{1}{2}\) ② \(\tfrac{1}{4}\) ③ \(\tfrac{3}{4}\) ④ \(\tfrac{3}{2}\) ⑤ \(\tfrac{5}{4}\).</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(f'(x) = -\tfrac{1}{2}x\), \(f'(2) = -1\).</span>
-                <span class="step">STEP 2: 접선 \(y - (-1) = -1(x - 2) \Rightarrow y = -x + 1\).</span>
-                <span class="step">STEP 3: \(x\)절편 \((1, 0)\), \(y\)절편 \((0, 1)\). 둘 다 양 → 제1사분면 직각삼각형.</span>
-                <span class="step">STEP 4: 넓이 \(= \tfrac{1}{2} \cdot 1 \cdot 1 = \tfrac{1}{2}\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>①</strong> \(\tfrac{1}{2}\). <strong>핵심:</strong> "접선이 좌표축으로 둘러싸는 넓이"는 평가원·수능 단골. 4단 분해(도함수→접선→두 절편→넓이) 정확히.</div>
-        </div>
     </div>
-
+    <div class="nv-board" data-key="check.1" data-label="형성평가 8번 — 접선이 곡선과 다시 만나는 점"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
     <div class="rubric">
@@ -377,6 +446,53 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 도함수의 활용 1 유제 1 [26009-0075]</span></div>
+            <div class="q-stmt">\(y = -2x^4 + 3x^2 + a\) 위의 \((1, a+1)\)에서의 접선이 \((0, -3)\)을 지날 때 \(a\)는? ① \(-6\) ② \(-7\) ③ \(-8\) ④ \(-9\) ⑤ \(-10\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f'(x) = -8x^3 + 6x\), \(f'(1) = -2\). (검증: \(f(1) = -2 + 3 + a = a + 1\) ✓ — 곡선 위.)</span>
+                <span class="step">STEP 2: 접선 \(y - (a+1) = -2(x - 1) \Rightarrow y = -2x + a + 3\).</span>
+                <span class="step">STEP 3: \((0, -3)\) 대입. \(-3 = a + 3 \Rightarrow a = -6\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>① \(-6\)</strong>. <strong>핵심:</strong> 곡선 위의 점에서의 접선이 외부의 한 점을 지나는 표준 유형. 사차함수도 다항함수이므로 미분 공식 그대로 적용.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 사차함수 접선이 외부점을 지날 때"></div>
+    <div class="problems">
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 1998학년도 수능 나형 9번 [3점]</span></div>
+            <div class="q-stmt">포물선 \(y = -\tfrac{1}{4}x^2\)의 \((2, -1)\)에서의 접선과 \(x\)축, \(y\)축으로 둘러싸인 삼각형의 넓이는? ① \(\tfrac{1}{2}\) ② \(\tfrac{1}{4}\) ③ \(\tfrac{3}{4}\) ④ \(\tfrac{3}{2}\) ⑤ \(\tfrac{5}{4}\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f'(x) = -\tfrac{1}{2}x\), \(f'(2) = -1\).</span>
+                <span class="step">STEP 2: 접선 \(y - (-1) = -1(x - 2) \Rightarrow y = -x + 1\).</span>
+                <span class="step">STEP 3: \(x\)절편 \((1, 0)\), \(y\)절편 \((0, 1)\). 둘 다 양 → 제1사분면 직각삼각형.</span>
+                <span class="step">STEP 4: 넓이 \(= \tfrac{1}{2} \cdot 1 \cdot 1 = \tfrac{1}{2}\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>①</strong> \(\tfrac{1}{2}\). <strong>핵심:</strong> "접선이 좌표축으로 둘러싸는 넓이"는 평가원·수능 단골. 4단 분해(도함수→접선→두 절편→넓이) 정확히.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 접선과 두 축이 만드는 삼각형"></div>
+    </section>
+
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 새로 알게 된 한 가지"를 무작위 3명 발표. QR 성찰지 안내 + 도전 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 문제 사전 시도.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 차시 13 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -398,6 +514,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -405,11 +523,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_수학익힘책_미적분I_II1_미분계수와도함수.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_12_접선의방정식.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_12_접선의방정식.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_13_평균값정리.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_12.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

@@ -79,6 +79,20 @@
 .c-g { color: #15803d; }
 .nvb-missing { font-size: .8rem; color: #94a3b8; }
 
+/* 수업 중 보기 */
+.nv-live-btn {
+  padding: .5rem .875rem; border-radius: .5rem; border: 1px solid #f59e0b; background: #fffbeb;
+  color: #92400e; font: 800 .82rem/1.2 'Noto Sans KR', sans-serif; cursor: pointer;
+}
+.nv-live-btn.is-on { background: #f59e0b; color: #fff; }
+body.nv-live .watermark, body.nv-live .lesson-head, body.nv-live .big-idea, body.nv-live .meta-grid { display: none !important; }
+body.nv-live .nv-panel.is-on > *:not(.nv-board):not(.nv-panel-h):not(.timeline):not(.nv-legend) { display: none !important; }
+body.nv-live .lesson { max-width: 1280px; }
+body.nv-live .topnav { max-width: 1280px; }
+body.nv-live .nvb-sheet { aspect-ratio: 16 / 10; }
+body.nv-live .nvb-line { font-size: 1.85rem; }
+body.nv-live .nvb-zlabel { font-size: .9rem; }
+
 @media print {
   .nv-tabs, .nv-tab-open, .nvb-open { display: none !important; }
   .nv-panel { display: block !important; }

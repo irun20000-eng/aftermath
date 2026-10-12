@@ -61,6 +61,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -308,7 +309,7 @@
                 <strong>💡 풀이 흐름 (5단계):</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
                     <li><strong>STEP 1 — 부호 관계 정리</strong>: \(f(3)f(6) \lt 0\) → \(f(3), f(6)\) 부호 다름. \(f(3)f(20) \gt 0\) → \(f(3), f(20)\) 부호 같음. 따라서 \(f(6), f(20)\)은 부호 다름 ⇒ \( f(6)f(20) \lt 0 \).</li>
-                    <li><strong>STEP 2 — 사잇값 정리로 영점 위치 두 곳</strong>: \(f\)는 다항함수 ⇒ 연속. \([3, 6]\)에 영점 \(c_1\) 하나, \([6, 20]\)에 영점 \(c_2\) 하나 존재. \(f(x)\)의 실근은 \(0, a, a^2\)이므로 \(a \gt 3\)인 경우만 가능 (3보다 큰 영점 필요).</li>
+                    <li><strong>STEP 2 — 사잇값 정리로 영점 위치 두 곳</strong>: \(f\)는 다항함수 ⇒ 연속. \([3, 6]\)에 영점 \(c_1\) 하나, \([6, 20]\)에 영점 \(c_2\) 하나 존재. \(f(x)\)의 실근은 \(0, a, a^2\)이므로 \(a \gt 3\)인 경우만 가능 (3보다 큰 영점이 두 개 필요 → \(a\)와 \(a^2\) 모두 3보다 커야 함).</li>
                     <li><strong>STEP 3 — \(a, a^2\)의 위치</strong>: \(a \gt 3\)이면 \(a^2 \gt a\). 따라서 \(a \in (3, 6)\), \(a^2 \in (6, 20)\). 즉 \(3 \lt a \lt 6\) 그리고 \(6 \lt a^2 \lt 20\).</li>
                     <li><strong>STEP 4 — 두 부등식 교집합</strong>: \(a \gt 0\)이므로 \(6 \lt a^2 \lt 20\) ⇒ \(\sqrt{6} \lt a \lt 2\sqrt{5}\). \(\sqrt{6} \approx 2.45 \lt 3\), \(2\sqrt{5} \approx 4.47 \lt 6\)이므로 교집합은 \( 3 \lt a \lt 2\sqrt{5} \) ⇒ \(p = 3, q = 2\sqrt{5}\).</li>
                     <li><strong>STEP 5 — 최종</strong>: \(p^2 + q^2 = 9 + 20 = 29\). <span class="text-red-600 font-bold">정답: 29</span></li>
@@ -364,7 +365,7 @@
                     <li><strong>STEP 2 — ② 점검 (우함수 + 다 조건)</strong>: 조건 (가) \(f(x) = f(-x)\) \(\Rightarrow\) \(f\)는 우함수. \(f(c) = 10\)이 되는 \(c\)가 오직 하나라면 \(f(-c) = f(c) = 10\)도 같은 점이어야 하므로 \(c = -c\) \(\Rightarrow\) \(c = 0\). 다시 (다)에서 \(|f| \leq 10\)이므로 최댓값은 \(f(0) = 10\). ② <strong>옳음</strong>.</li>
                     <li><strong>STEP 3 — ③ 점검 (사잇값 정리)</strong>: \(f\)는 \([0, 5]\)에서 연속이고 \(f(0) = 10\), \(f(5) = 0\). 사잇값 정리에 의해 \(0 \lt 5 \lt 10\)인 \(5\)에 대해 \(f(c_1) = 5\)인 \(c_1 \in (0, 5)\)가 존재. 우함수이므로 \(f(-c_1) = 5\). 따라서 \(f(x) = 5\)인 \(x\)는 최소 두 개. ③ <strong>옳음</strong>.</li>
                     <li><strong>STEP 4 — ④ 점검 (반례 탐색)</strong>: 만약 \(f(x) \geq 0\)이면 최솟값은 \(0\)이고, \(|x| \geq 5\) 전체 구간에서 \(f = 0\) \(\Rightarrow\) 최소가 되는 \(x\)는 무수히 많음. 또한 \(f\)가 음수 값을 가질 때 그 최솟값 점이 \(x = a\)이면 우함수에 의해 \(x = -a\)에서도 같은 최솟값 \(\Rightarrow\) "오직 한 개"는 일반적으로 거짓. ④ <strong>옳지 않음</strong>.</li>
-                    <li><strong>STEP 5 — ⑤ 점검</strong>: \(x\)가 임의의 실수일 때 \(x+5\)와 \(x-5\)는 거리 10 떨어진 두 점. \(|x+5| \gt 5\) 또는 \(|x-5| \gt 5\) 중 적어도 하나는 항상 성립 (두 구간 \([-5,5]\)의 합집합은 길이 10인 구간, 두 점은 거리 10이므로 한 점은 반드시 밖). 따라서 \(f(x+5) = 0\) 또는 \(f(x-5) = 0\) \(\Rightarrow\) 곱은 항상 \(0\). ⑤ <strong>옳음</strong>. 결론: <span class="text-red-600 font-bold">정답: ④</span></li>
+                    <li><strong>STEP 5 — ⑤ 점검</strong>: \(x\)가 임의의 실수일 때 \(x+5\)와 \(x-5\)는 거리 10 떨어진 두 점. \(|x+5| \geq 5\) 또는 \(|x-5| \geq 5\) 중 적어도 하나는 항상 성립 (거리 10인 두 점이 열린구간 \((-5,5)\) 안에 함께 있을 수 없으므로 한 점은 반드시 그 밖, 예: \(x=0\)이면 둘 다 \(|\cdot| = 5\)). ①과 (나)에 의해 \(|t| \geq 5\)이면 \(f(t) = 0\)이므로 \(f(x+5) = 0\) 또는 \(f(x-5) = 0\) \(\Rightarrow\) 곱은 항상 \(0\). ⑤ <strong>옳음</strong>. 결론: <span class="text-red-600 font-bold">정답: ④</span></li>
                 </ol>
                 <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 사잇값 정리(③)와 최대·최소 정리(②, ④)를 동시에 활용하는 종합형. 추상 조건만 주어졌을 때 <strong>구체적 그래프를 머릿속으로 그려보는 능력</strong>이 결정적. ④의 반례는 "최솟값이 0일 때 최소를 만드는 점이 무수히 많다" 또는 "음수 최솟값일 때 우함수에 의해 짝으로 나타난다"의 두 가지를 모두 떠올려야 한다.</p>
             </div></details>
@@ -576,6 +577,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_06.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
