@@ -130,6 +130,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -140,12 +141,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_13_평균값정리.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_14_함수의증가와감소.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_14_함수의증가와감소.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_15_극대와극소.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_14_함수의증가와감소.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -173,6 +175,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_14_함수의증가와감소.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -203,6 +220,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 롤러코스터 레일 사진을 띄우고 "어디서 높이가 늘고 줄까?"를 묻는다. \(f(x) = x^3 - 3x^2 + 1\)의 머릿속 그래프 추측 발문.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 발문 1분 자유 메모. 도함수 부호로 증감 판정하는 직관 형성.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> \(f(x) = x^3 - 3x^2 + 1\)의 그래프를 머릿속에 그려 본 후, 어디서 증가하고 어디서 감소하는가? 도함수 \(f'(x)\)의 부호를 어떻게 활용할 수 있을지 추측.</p>
@@ -213,6 +245,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>차시 13 → 14 연결:</strong> 평균값 정리 \(\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)\)에서 분모 \(x_2 - x_1 \gt 0\). 따라서 분자 부호 = \(f'(c)\) 부호. "\(f'(c) \gt 0\) 모든 \(c\) \(\Rightarrow\) 분자 \(\gt 0\) \(\Rightarrow\) 증가"가 직접 따름.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 롤러코스터와 x³ − 3x² + 1 의 증감"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 4장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 정의 → \(x^2\) 직접 증명 한계 → 도함수 부호 판정 (평균값 따름) → 증감표 \(f(x) = x^3 - 3x^2 + 1\) 시연. \(x^3\) 반례 빨간펜.</div>
+            <div class="tl-s"><strong>학생:</strong> 4개 개념 박스 채우기. \(x^3\) 반례를 노트에 굵게 적어 차시 15와 연결.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -235,9 +280,30 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "증가 \(\Leftrightarrow f'(x) \gt 0\) 모든 \(x\)에서" — 거짓. \(f(x) = x^3\)에서 \(f'(0) = 0\)이지만 증가. L3 7번 함정의 핵심.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "증가·감소가 한 점에서 결정된다." → 한 점이 아니라 <strong>구간 단위</strong>로 말한다. "구간 안의 임의의 \(x_1, x_2\)" 정의 강조.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 증가·감소의 정의"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — 정의로 보이기: x² 은 [0, ∞) 에서 증가"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 도함수 부호 판정과 x³ 반례"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 증감표 3단계 루틴"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1 1번 4문항은 모둠 분담(2명 1조). 2·3번 짝활동. L2 4번(판별식), 5번(존재하지 않음 함정), 6번 도함수 그래프 읽기.</div>
+            <div class="tl-s"><strong>학생:</strong> L1 7분 (4문항), L2 8분 (3문항). 4번 \(D \leq 0\) 풀이를 칠판 한 학생 발표.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \gt 0\)이야!" 학생 주장 거짓 판정. \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 ③명제 거짓을 그림으로 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 (span2) -->
         <div class="prob-card span2">
@@ -251,7 +317,9 @@
             </div>
             <div class="q-ans">정답: 각 함수의 증감 구간 위와 같음. <strong>판서 포인트:</strong> (2)·(3)은 도함수가 단일 부호 → 항상 증가/감소; 도함수 그래프와 \(x\)축의 관계를 시각화.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 네 함수의 증감 조사"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">구간 한정 증감</span></div>
@@ -262,7 +330,9 @@
             </div>
             <div class="q-ans">정답: \([-2, 2]\)에서 \(f\)는 <strong>감소</strong>. 증가 구간 없음.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 구간 [−2, 2] 로 한정된 증감"></div>
+    <div class="problems">
         <!-- L1 3번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">전하량 감소 시각 (수학+과학)</span></div>
@@ -272,7 +342,10 @@
             </div>
             <div class="q-ans">정답: \(1 \lt t \lt 3\). <strong>해석:</strong> 전하량이 감소하는 동안 전류 방향이 반대.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — 전하량이 감소하는 시각"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">실수 전체에서 증가 — 판별식</span></div>
@@ -284,7 +357,9 @@
             </div>
             <div class="q-ans">정답: \(-3 \leq a \leq 3\). <strong>핵심:</strong> 삼차의 \(f'\)은 이차 → "모든 \(x\)에서 \(\geq 0\)"은 최고차 \(\gt 0\) + \(D \leq 0\) 결합.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 실수 전체에서 증가: 판별식"></div>
+    <div class="problems">
         <!-- L2 5번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">감소 구간 존재하지 않을 조건 함정</span></div>
@@ -295,7 +370,9 @@
             </div>
             <div class="q-ans">정답: <strong>그러한 \(k\)는 존재하지 않는다</strong>. <strong>함정:</strong> 학생들은 "\(k\) 범위가 있다"고 가정. 도함수 부호는 평행이동 \(k\)에 무관함을 강조.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 감소 구간이 없을 k? 함정"></div>
+    <div class="problems">
         <!-- L2 6번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">도함수 그래프 → 본함수 증감</span></div>
@@ -306,7 +383,10 @@
             </div>
             <div class="q-ans">정답: 위와 같음. <strong>핵심:</strong> 함수 그래프가 아니라 <strong>도함수</strong> 그래프 — \(y = 0\)인 점과 \(y\)의 부호만 읽으면 본함수 증감 즉시 결정.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 도함수 그래프로 증감 읽기"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 7번 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — "증가 \(\Rightarrow f'(x) \gt 0\)?" 학생 주장</span></div>
@@ -319,7 +399,21 @@
             <div class="q-ans">정답: 학생의 말은 <strong>거짓</strong>. 정확히는 "\(f'(x) \geq 0\)이고 \(f'(x) = 0\)은 고립점". <strong>핵심:</strong> 충분조건 vs 필요조건 구분 — 차시 15에서 "\(f'(a) = 0\)이지만 극값 아님(\(x^3\))" 함정으로 직결.</div>
             <div class="q-warn"><strong>발표 유도:</strong> "학생 말이 맞다고 생각한 학생 손!" → \(x^3\) 그래프를 칠판에 그려 \(f'(0) = 0\)을 직접 보인 후 "그래도 증가한다"를 한 학생이 정의로 증명하게 한다.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — 증가하면 f′ > 0 인가? 학생 주장 판정"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \gt 0\)이야!" 학생 주장 거짓 판정. \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 ③명제 거짓을 그림으로 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성 8번 (span2 fc) -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 매개변수 함정</span></div>
@@ -331,34 +425,8 @@
             </div>
             <div class="q-ans">정답: <strong>존재하지 않는다</strong>. <strong>의미:</strong> 매개변수 형태가 항상 "유효 \(a\) 범위"를 주는 건 아님. 판별식이 양수 일정이면 도함수에 항상 음의 구간 존재.</div>
         </div>
-
-        <!-- 도전 1 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 도함수의 활용 1 유제 5 [26009-0079]</span></div>
-            <div class="q-stmt">\(f(x) = x^3 - ax^2 + 4ax\), \(x_1 \lt x_2\)인 모든 실수에 대해 \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\)을 만족시키는 정수 \(a\)의 개수. ① 11 ② 12 ③ 13 ④ 14 ⑤ 15.</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: 조건 \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\) → \(x_1 \lt x_2\)에서 \(x_1 - x_2 \lt 0\) → \(f(x_1) - f(x_2) \lt 0\) → \(f\) 실수 전체 증가.</span>
-                <span class="step">STEP 2: \(f'(x) = 3x^2 - 2ax + 4a \geq 0\) 모든 \(x\) \(\Leftrightarrow\) 판별식 \(\leq 0\).</span>
-                <span class="step">STEP 3: \(D/4 = a^2 - 12a \leq 0 \Rightarrow a(a - 12) \leq 0 \Rightarrow 0 \leq a \leq 12\).</span>
-                <span class="step">STEP 4: 정수 \(a \in \{0, 1, 2, \ldots, 12\}\) → <strong>13개</strong>.</span>
-            </div>
-            <div class="q-ans">정답: <strong>③ 13</strong>. <strong>핵심:</strong> \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\)는 "증가함수"의 동치 표현. 다항함수 실수 전체 증가 \(\Leftrightarrow f'(x) \geq 0\) \(\Leftrightarrow\) 이차 \(f'\)이면 \(D \leq 0\).</div>
-        </div>
-
-        <!-- 도전 2 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2003년 6월 모평 가/나형 11번 [3점]</span></div>
-            <div class="q-stmt">\(f(x) = x^3 + (a - 1)x^2 + (a - 1)x + 1\)이 극값을 갖지 않을 \(a\) 범위. ① \(-1 \leq a \leq 2\) ② \(0 \leq a \leq 3\) ③ \(1 \leq a \leq 4\) ④ \(2 \leq a \leq 5\) ⑤ \(3 \leq a \leq 6\).</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: "극값 없음" \(\Leftrightarrow\) \(f'(x)\)가 부호 변화 없음 \(\Leftrightarrow f'(x) \geq 0\) 모든 \(x\).</span>
-                <span class="step">STEP 2: \(f'(x) = 3x^2 + 2(a - 1)x + (a - 1)\).</span>
-                <span class="step">STEP 3: \(D/4 = (a - 1)^2 - 3(a - 1) = (a - 1)\{(a - 1) - 3\} = (a - 1)(a - 4) \leq 0\) \(\Rightarrow 1 \leq a \leq 4\).</span>
-                <span class="step">STEP 4 검증: \(a = 1\)에서 \(f'(x) = 3x^2 \geq 0\) (등호 \(x = 0\)만), 극값 없음 ✓. \(a = 4\)에서 \(f'(x) = 3(x + 1)^2 \geq 0\) (등호 \(x = -1\)만), 극값 없음 ✓. 경계 포함.</span>
-            </div>
-            <div class="q-ans">정답: <strong>③ \(1 \leq a \leq 4\)</strong>. <strong>핵심:</strong> 본 차시의 표준 매개변수 응용. "극값 없음" 등호 포함 처리(중근에서 부호 변화 없음)가 함정. 차시 15에서 "극값 있음 \(\Leftrightarrow D \gt 0\)" (등호 제외)과 정확히 반대.</div>
-        </div>
     </div>
-
+    <div class="nv-board" data-key="check.1" data-label="형성평가 8번 — 판별식이 늘 양수인 함정"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
     <div class="rubric">
@@ -372,6 +440,54 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 도함수의 활용 1 유제 5 [26009-0079]</span></div>
+            <div class="q-stmt">\(f(x) = x^3 - ax^2 + 4ax\), \(x_1 \lt x_2\)인 모든 실수에 대해 \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\)을 만족시키는 정수 \(a\)의 개수. ① 11 ② 12 ③ 13 ④ 14 ⑤ 15.</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: 조건 \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\) → \(x_1 \lt x_2\)에서 \(x_1 - x_2 \lt 0\) → \(f(x_1) - f(x_2) \lt 0\) → \(f\) 실수 전체 증가.</span>
+                <span class="step">STEP 2: \(f'(x) = 3x^2 - 2ax + 4a \geq 0\) 모든 \(x\) \(\Leftrightarrow\) 판별식 \(\leq 0\).</span>
+                <span class="step">STEP 3: \(D/4 = a^2 - 12a \leq 0 \Rightarrow a(a - 12) \leq 0 \Rightarrow 0 \leq a \leq 12\).</span>
+                <span class="step">STEP 4: 정수 \(a \in \{0, 1, 2, \ldots, 12\}\) → <strong>13개</strong>.</span>
+            </div>
+            <div class="q-ans">정답: <strong>③ 13</strong>. <strong>핵심:</strong> \((x_1 - x_2)(f(x_1) - f(x_2)) \gt 0\)는 "증가함수"의 동치 표현. 다항함수 실수 전체 증가 \(\Leftrightarrow f'(x) \geq 0\) \(\Leftrightarrow\) 이차 \(f'\)이면 \(D \leq 0\).</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 조건식 해석과 정수 a 의 개수"></div>
+    <div class="problems">
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2003년 6월 모평 가/나형 11번 [3점]</span></div>
+            <div class="q-stmt">\(f(x) = x^3 + (a - 1)x^2 + (a - 1)x + 1\)이 극값을 갖지 않을 \(a\) 범위. ① \(-1 \leq a \leq 2\) ② \(0 \leq a \leq 3\) ③ \(1 \leq a \leq 4\) ④ \(2 \leq a \leq 5\) ⑤ \(3 \leq a \leq 6\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: "극값 없음" \(\Leftrightarrow\) \(f'(x)\)가 부호 변화 없음 \(\Leftrightarrow f'(x) \geq 0\) 모든 \(x\).</span>
+                <span class="step">STEP 2: \(f'(x) = 3x^2 + 2(a - 1)x + (a - 1)\).</span>
+                <span class="step">STEP 3: \(D/4 = (a - 1)^2 - 3(a - 1) = (a - 1)\{(a - 1) - 3\} = (a - 1)(a - 4) \leq 0\) \(\Rightarrow 1 \leq a \leq 4\).</span>
+                <span class="step">STEP 4 검증: \(a = 1\)에서 \(f'(x) = 3x^2 \geq 0\) (등호 \(x = 0\)만), 극값 없음 ✓. \(a = 4\)에서 \(f'(x) = 3(x + 1)^2 \geq 0\) (등호 \(x = -1\)만), 극값 없음 ✓. 경계 포함.</span>
+            </div>
+            <div class="q-ans">정답: <strong>③ \(1 \leq a \leq 4\)</strong>. <strong>핵심:</strong> 본 차시의 표준 매개변수 응용. "극값 없음" 등호 포함 처리(중근에서 부호 변화 없음)가 함정. 차시 15에서 "극값 있음 \(\Leftrightarrow D \gt 0\)" (등호 제외)과 정확히 반대.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 극값을 갖지 않을 조건"></div>
+    </section>
+
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "증감표 → 극값(차시 15) → 그래프(차시 16) → 방정식·부등식(차시 18)" 로드맵 한 줄. QR 성찰지.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰지 3유형 중 하나 이상 작성. 도전 문제 사전 시도.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 차시 15 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -393,6 +509,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -400,11 +518,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_13_평균값정리.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_14_함수의증가와감소.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_14_함수의증가와감소.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_15_극대와극소.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_14.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

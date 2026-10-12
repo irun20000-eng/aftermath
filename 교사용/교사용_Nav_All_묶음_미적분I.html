@@ -392,7 +392,7 @@
         <ol>
             <li>수직선 위에 점 \(a\)와 화살표 두 개(왼쪽·오른쪽)를 그리고 "둘 다 닿지는 않음"을 강조.</li>
             <li>함수 \(f(x) = x + 1\)의 \(x \to 2\) 극한을 그래프로 시각화 → \(L = 3\)을 점선으로 표시.</li>
-            <li>구간정의 함수(\(x &lt; 1\)에서 \(x+3\), \(x \geq 1\)에서 \(2x\))를 그려 좌·우극한이 일치하는 경우를 확인.</li>
+            <li>구간정의 함수(\(x &lt; 1\)에서 \(x+3\), \(x \geq 1\)에서 \(2x\))를 그려 좌·우극한이 일치하지 않는 경우(좌극한 \(4\) ≠ 우극한 \(2\))를 확인.</li>
             <li>점프 함수(\(\frac{|x|}{x}\))를 그려 좌·우극한이 다른 경우 → \(\lim_{x \to 0}\)이 존재하지 않음.</li>
             <li>구멍 뚫린 그래프(\(\frac{x^2-1}{x-1}\), \(x=1\)만 5로 재정의)로 \(f(1) \neq \lim_{x \to 1} f(x)\) 강조.</li>
         </ol>
@@ -1589,7 +1589,7 @@
             </div>
             <div class="q-ans">정답: (1) \(a=1,\ b=0\) &nbsp; (2) \(a=\dfrac{1}{2},\ b=-2\)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> 두 문항 모두 "분모 \(\to 0\), 극한 유한 ⟹ 분자 \(\to 0\)"이라는 핵심 명제에서 출발. 학습지 hint도 이전 버전에서 (1)을 \(a=3,b=-2\)로 잘못 표기했으나 PR #86으로 정정 완료.</div>
-            <div class="q-warn"><strong>주의:</strong> 학습지에는 정답이 명시되지 않음. (1)의 경우 \(a=3, b=-2\)도 가능한 인수분해 형태가 있는지 칠판 검산 필수. 본 풀이는 \((x-1)(ax+1)\) 가정.</div>
+            <div class="q-warn"><strong>주의:</strong> (1)에서 \(a=3, b=-2\)이면 분자 \(3x^2-2x-1=(x-1)(3x+1)\), 극한 \(4 \neq 2\) → 답은 \(a=1, b=0\) 하나.</div>
         </div>
 
         <!-- Q12 기본 span2 -->
@@ -2728,7 +2728,7 @@
                 <span class="step">② 최대 = \(f(0) = 10\): 우함수 + \(f(c) = 10\)이 오직 하나 ⇒ \(c = -c\) ⇒ \(c = 0\). (다)에 의해 \(|f| \leq 10\) ⇒ 최대 \(= 10 = f(0)\). <strong>옳음</strong>.</span>
                 <span class="step">③ \(f(x) = 5\)인 \(x\)가 두 개 이상: \([0,5]\)에서 \(f(0) = 10, f(5) = 0\), 연속 → IVT로 \(f(c_1) = 5\)인 \(c_1 \in (0, 5)\). 우함수 → \(f(-c_1) = 5\). 최소 2개. <strong>옳음</strong>.</span>
                 <span class="step">④ 최솟값을 갖는 \(x\)가 오직 하나? — 만약 최솟값 \(= 0\)이면 \(|x| \geq 5\) 전체에서 \(f = 0\) → 최솟점 무수히 많음. 음수 최솟이라도 우함수 → 짝으로 발생. <strong>옳지 않음</strong>.</span>
-                <span class="step">⑤ \(f(x+5)f(x-5) = 0\): \(x+5\)와 \(x-5\)는 거리 10. \(|x+5| \gt 5\) 또는 \(|x-5| \gt 5\) 중 적어도 하나 성립 → 한쪽이 0 → 곱 0. <strong>옳음</strong>.</span>
+                <span class="step">⑤ \(f(x+5)f(x-5) = 0\): \(x+5\)와 \(x-5\)는 거리 10. \(|x+5| \geq 5\) 또는 \(|x-5| \geq 5\) 중 적어도 하나 성립 (\(x=0\)이면 둘 다 \(=5\)) → ①·(나)에 의해 한쪽이 0 → 곱 0. <strong>옳음</strong>.</span>
             </div>
             <div class="q-ans">정답: <strong>④</strong>. 핵심: ④는 EVT의 "최댓·최솟 존재"만 보장하지 "유일성"은 보장 안 함 + 우함수 대칭성.</div>
         </div>
@@ -2994,7 +2994,7 @@
     </div>
 
     <div class="q-warn"><strong>오개념 ①:</strong> "분모 \(\to 0\)이면 발산이다." → 분자도 \(\to 0\)이면 \(\frac{0}{0}\) 부정형, 약분 후 극한이 실수가 될 수 있음.</div>
-    <div class="q-warn"><strong>오개념 ②:</strong> "Q5의 \(\lim_{x \to 0} f(x)\)는 \(f(0)\)과 같다." → 그래프상 \(x = 0\)에서 함숫값이 정의되지 않거나 곡선 끝일 수 있음. 정의역 \((0, 5)\)에 주목.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "Q5는 열린구간 \((0, 5)\)가 정의역이라 \(f(0)\)이 없으므로 ㄴ은 거짓이다." → \((0, 5)\)는 보기 ㄷ·ㄹ의 조건일 뿐. 그래프는 \(x = 0\)을 끊김 없이 지나므로 \(\lim_{x \to 0} f(x) = f(0) = 3\), ㄴ 참.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "Q14에서 \(f(-1) \gt 0\)일 수도 있다." → 만약 \(f(-1) \gt 0\)이면 \(f(-1)\)과 \(f(1) \lt 0\)의 부호가 달라 \((-1, 1)\)에 IVT 실근이 추가 발생 → 총 3실근 ≠ "오직 두 개" 조건 위배.</div>
 
     <!-- E. 문항별 해설 카드 — 14문항 -->
@@ -3048,7 +3048,7 @@
         <!-- Q5 (span2) -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">그래프 보기 판정 (calc_07_q5.png)</span></div>
-            <div class="q-stmt">열린구간 \((0, 5)\)의 그래프. ㄱ \(\lim_{x\to 1} f = 4\) ㄴ \(\lim_{x\to 0} f = f(0)\) ㄷ 불연속 \(x\)가 2개 ㄹ 극한 없는 \(x\)가 2개.</div>
+            <div class="q-stmt">\(y = f(x)\)의 그래프. ㄱ \(\lim_{x\to 1} f = 4\) ㄴ \(\lim_{x\to 0} f = f(0)\) ㄷ 불연속 \(x\)가 2개 ㄹ 극한 없는 \(x\)가 2개.</div>
             <div class="q-solve">
                 <span class="step">불연속·극한 후보점은 \(x = 1, 3, 4\). 표로:</span>
                 <span class="step">\(x=1\): 좌극한 \(=\) 우극한 \(=\) 곡선의 ○ \(= 4\), \(f(1) = \bullet = 1\). 극한 존재(4), 연속 아님 (4 \(\neq\) 1).</span>
@@ -3846,7 +3846,7 @@
                 <span class="step">\(y_P = a - u\), \(\overline{OQ} = y_P\). 비 \(\frac{y_P}{a} = 1 - \frac{u}{a}\).</span>
                 <span class="step">\(a \to 0^+\): \(\sqrt{1 + 4a^2} \approx 1 + 2a^2\) ⇒ \(u \approx a^2\) ⇒ \(\frac{u}{a} \approx a \to 0\). 따라서 비 \(\to 1\).</span>
             </div>
-            <div class="q-ans">정답: <strong>\(1\)</strong>. <span style="color:#b45309;font-weight:700;">[학습지 hint "\(\frac{1}{2}\)"는 오류로 보임 — 실제 극한은 \(1\). 학습지 본문 정정 권장.]</span></div>
+            <div class="q-ans">정답: <strong>\(1\)</strong>.</div>
             <div class="q-warn"><strong>판서 포인트:</strong> 도형 극한은 ① 두 식 연립 → ② 변수 분리 → ③ \(a \to 0^+\)에서 차수 비교 3단계. 학생들이 \(u\)의 차수가 \(a^2\)임을 놓치면 답이 틀리므로 차수 비교를 강조.</div>
         </div>
 
@@ -5063,7 +5063,7 @@
             <div class="q-stmt">\(P(x)=x^{100}-50x^2-ax+b\)를 \((x+1)^2\)로 나눈 나머지 \(x+2\). \(a, b\)?</div>
             <div class="q-solve">
                 <span class="step">항등식: \(P(x)=(x+1)^2 Q(x)+(x+2)\).</span>
-                <span class="step">① \(x=-1\) 대입: \(P(-1)=1-50+a+b=a+b-49=1+2=1 \cdot (-1+2)=1\). 정확히는 우변 \(=-1+2=1\), 좌변 \(=1-50+a+b\). \(a+b-49=1 \Rightarrow a+b=50\).</span>
+                <span class="step">① \(x=-1\) 대입: \(P(-1)=1-50+a+b=-1+2=1 \Rightarrow a+b=50\).</span>
                 <span class="step">② 양변 미분: \(P'(x)=100x^{99}-100x-a\). \(P'(-1)=-100+100-a=-a\).</span>
                 <span class="step">우변 미분: \(2(x+1)Q(x)+(x+1)^2 Q'(x)+1\). \(x=-1\)에서 \(=0+0+1=1\).</span>
                 <span class="step">\(-a=1 \Rightarrow a=-1\). ①에서 \(b=51\).</span>
@@ -6178,7 +6178,7 @@
             <div class="q-solve">
                 <span class="step">\(\dfrac{f(a) - f(-1)}{a - (-1)} = f'(1) = 4\). \(f(-1) = -1\).</span>
                 <span class="step">\(a^3 + a + 1 + 1 = 4(a + 1) \Rightarrow a^3 + a + 2 = 4a + 4 \Rightarrow a^3 - 3a - 2 = 0\).</span>
-                <span class="step">인수분해: \((a - 2)(a + 1)^2 = 0\). 검증: \((2)(9) = 18 = 8 - 6 - 2 + 18 \cdots\) 다항 전개 OK. \(a \gt 1 \Rightarrow a = 2\).</span>
+                <span class="step">인수분해: \((a - 2)(a + 1)^2 = 0\). 검증: \(a = 2\) 대입 \(8 - 6 - 2 = 0\) ✓. \(a \gt 1 \Rightarrow a = 2\).</span>
             </div>
             <div class="q-ans">정답: \(a = 2\).</div>
         </div>
@@ -6238,8 +6238,8 @@
             <div class="q-stmt">(가) 모든 \(x \gt 0\): \(f(x) - f(0) \geq 2px\). (나) \(x \gt 0\)에서 \(f'(x)\)의 최솟값 \(4\). \(p\)의 최댓값?</div>
             <div class="q-solve">
                 <span class="step">STEP 1: 임의의 \(x \gt 0\)에 대해 \([0, x]\)에서 평균값 정리 → \(f(x) - f(0) = x f'(c)\), \(c \in (0, x)\).</span>
-                <span class="step">STEP 2: (가)와 결합. \(x f'(c) \geq 2px\), \(x \gt 0\)이므로 \(f'(c) \geq 2p\). 임의의 \(x \gt 0\)에 대응되는 \(c \in (0, x)\)에서 성립 → \(x \gt 0\)에서 \(f'\)의 최솟값 \(\geq 2p\).</span>
-                <span class="step">STEP 3: (나)에서 \(f'\) 최솟값 \(= 4 \geq 2p \Rightarrow p \leq 2\).</span>
+                <span class="step">STEP 2: (나)와 결합. \(c \gt 0\)이므로 \(f'(c) \geq 4\) → \(f(x) - f(0) = x f'(c) \geq 4x\). 따라서 \(2p \leq 4\)이면 (가)가 모든 \(f\)에서 성립.</span>
+                <span class="step">STEP 3: \(p \gt 2\)이면 \(f(x) = 4x\)가 반례 (\(4x \lt 2px\)) → \(2p \leq 4 \Rightarrow p \leq 2\).</span>
                 <span class="step">STEP 4: \(p\) 최댓값 \(= 2\) (예: \(f(x) = 4x + C\)에서 등호 성립).</span>
             </div>
             <div class="q-ans">정답: <strong>\(p = 2\)</strong>. <strong>핵심:</strong> 전 구간 부등식을 평균값 정리로 \(f'(c)\) 조건으로 변환 → \(f'\)의 최솟값과 직결.</div>

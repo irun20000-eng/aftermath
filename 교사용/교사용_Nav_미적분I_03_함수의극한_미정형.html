@@ -112,6 +112,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -122,12 +123,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_03_함수의극한_미정형.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_03_함수의극한_미정형.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_04_중단원마무리_I_1.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_03_함수의극한_미정형.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -155,6 +157,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_03_함수의극한_미정형.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -185,6 +202,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> \(\lim_{x \to \infty}\dfrac{3x^2-x+1}{x^2+2x-5}\)에 대해 "답이 \(\infty\)? \(1\)? \(3\)?" 다지선다 발문 → 학생 의견 분포 보기.</div>
+            <div class="tl-s"><strong>학생:</strong> 1분 직관 답변 → 답이 갈리는 것 자체가 "부정형"이라는 걸 체감.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 큰 수 \(x=1000\)에서 \(3x^2 = 3{,}000{,}000\), \(-x+1 \approx -999\). 작은 항은 무시해도 될까?</p>
@@ -195,6 +227,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>02차시 연결:</strong> \(\dfrac{0}{0}\)은 인수분해/유리화로 해체 → 오늘 \(\dfrac{\infty}{\infty}\)는 "분모 최고차로 나누기"로 해체. 두 기술 다 "사칙 성질이 통과하는 모양으로 만든다"는 같은 발상.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 큰 수에서 지배하는 항 찾기"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 4장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 4가지 부정형 표 → \(\dfrac{\infty}{\infty}\) 분모 최고차 나누기 → \(\infty-\infty\) 유리화 → \(x \to -\infty\) 부호 처리 순.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01번 4개 박스 채우기. "한눈 판정 3줄" (차수 비교)을 형광펜.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -223,9 +268,30 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "\(x \to -\infty\)에서도 \(\sqrt{x^2} = x\)." → \(x \lt 0\)이므로 \(\sqrt{x^2} = |x| = -x\). 부호 1개 차이가 정답을 뒤집음.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "\(0 \cdot \infty\)은 그냥 0." → \(0\)으로 가는 속도 vs \(\infty\)로 가는 속도의 경쟁. 분수 형태로 환원해야 비교 가능.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 부정형의 네 가지 얼굴"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — ∞/∞ 형, 분모 최고차로 나누기"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — ∞−∞ 형, 켤레 유리화"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — x → −∞ 에서 √x² = −x"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1 (1·2번) 차수 비교, L2 (3·4번) 유리화 → 칠판 풀이. 4번 \(0\cdot\infty\) 변환은 별도 시연.</div>
+            <div class="tl-s"><strong>학생:</strong> 한눈 판정으로 답을 즉답 → 풀이로 검증. 4번은 \(\sqrt{x}\) 곱셈 단계 노트 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 5번에서 "답이 \(+1\)이라고 한 사람?" 발문 → 절댓값 함정 박스. 6번 근호 미정계수. 형성평가 7번 3문항.</div>
+            <div class="tl-s"><strong>학생:</strong> 5번에서 \(\dfrac{|x|}{x} = -1\) (\(x \to -\infty\)) 명시. 7번 5분 안에 \(-\dfrac{1}{6}, 0, -2\) 도출.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card">
@@ -237,7 +303,9 @@
             </div>
             <div class="q-ans">정답: (1) \(\dfrac{1}{2}\) &nbsp; (2) \(1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 차수가 같으면 계수의 비"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">차수 불균형</span></div>
@@ -248,7 +316,10 @@
             </div>
             <div class="q-ans">정답: (1) \(3\) &nbsp; (2) \(0\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 근호 분모와 차수 불균형"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 3번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">\(\infty-\infty\) 유리화</span></div>
@@ -259,7 +330,9 @@
             </div>
             <div class="q-ans">정답: (1) \(-\dfrac{3}{4}\) &nbsp; (2) \(1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — 켤레 유리화 두 문제"></div>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">\(0 \cdot \infty\) 변환</span></div>
@@ -271,7 +344,10 @@
             </div>
             <div class="q-ans">정답: \(1\). 핵심: \(0\cdot\infty\) → 괄호 안 유리화로 \(\dfrac{\infty}{\infty}\)로 환원.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 0·∞ 를 분수로 바꾸기"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 5번 span2 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 절댓값 함정 — \(x \to -\infty\)</span></div>
@@ -283,7 +359,9 @@
             </div>
             <div class="q-ans">정답: \(-1\). 함정: 무심코 \(|x| \approx x\)로 두면 \(+1\)이 나옴.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 절댓값 함정 (x → −∞)"></div>
+    <div class="problems">
         <!-- L3 6번 span2 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">6</span><span class="q-title">근호 안 미정계수</span></div>
@@ -295,7 +373,21 @@
             </div>
             <div class="q-ans">정답: \(a = 11\).</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 근호 안 미정계수 a"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 5번에서 "답이 \(+1\)이라고 한 사람?" 발문 → 절댓값 함정 박스. 6번 근호 미정계수. 형성평가 7번 3문항.</div>
+            <div class="tl-s"><strong>학생:</strong> 5번에서 \(\dfrac{|x|}{x} = -1\) (\(x \to -\infty\)) 명시. 7번 5분 안에 \(-\dfrac{1}{6}, 0, -2\) 도출.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성 7번 span2 fc -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">7</span><span class="q-title">형성평가 — 유리화 3종</span></div>
@@ -307,33 +399,8 @@
             </div>
             <div class="q-ans">정답: (1) \(-\dfrac{1}{6}\) &nbsp; (2) \(0\) &nbsp; (3) \(-2\)</div>
         </div>
-
-        <!-- 도전 1 span2 ch -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 함수의극한 유제 6 — \(x \to -\infty\) 치환</span></div>
-            <div class="q-stmt">\(\lim_{x \to -\infty}\dfrac{\sqrt{4x^2+3x}-2x}{x+4}\). 선택지 ① \(-5\) ② \(-4\) ③ \(-3\) ④ \(-2\) ⑤ \(-1\).</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(t = -x\) 치환. \(x \to -\infty\) ⇒ \(t \to +\infty\). \(x^2 = t^2, -2x = 2t, x+4 = -t+4\).</span>
-                <span class="step">STEP 2: 식 \(= \dfrac{\sqrt{4t^2-3t}+2t}{-t+4}\).</span>
-                <span class="step">STEP 3: \(\div t\): \(\dfrac{\sqrt{4-3/t}+2}{-1+4/t} \to \dfrac{2+2}{-1} = -4\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>② \(-4\)</strong>. 핵심: \(x \to -\infty\) 무리식은 \(t = -x\) 치환으로 부호 실수 차단.</div>
-        </div>
-
-        <!-- 도전 2 span2 ch -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 수능특강 함수의극한 기본 7 — 도형 + \(\infty\)</span></div>
-            <div class="q-stmt">곡선 \(y=\sqrt{x}\) 위 \(P(t^2, t)\), 기울기 \(-1\) 직선이 \(x\)축과 만나는 점 \(Q\), \(Q\)에서 \(OP\)에 내린 수선의 발 \(H\). \(\lim_{t \to \infty}(\overline{PH} - \overline{QH})\). 선택지 ① \(-5/2\) ② \(-2\) ③ \(-3/2\) ④ \(-1\) ⑤ \(-1/2\).</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(Q\) 좌표. \(P\)에서 기울기 \(-1\)로 \(y=0\)까지 가면 \(x\)는 \(t\)만큼 증가 → \(Q(t^2+t, 0)\). \(\overline{PQ} = \sqrt{2}\,t\).</span>
-                <span class="step">STEP 2: 직선 \(OP\): \(x - ty = 0\). 점 \(Q\)에서 거리 \(\overline{QH} = \dfrac{t^2+t}{\sqrt{1+t^2}}\).</span>
-                <span class="step">STEP 3: 피타고라스 \(\overline{PH}^2 = \overline{PQ}^2 - \overline{QH}^2\). 계산 → \(\overline{PH} = \dfrac{t^2-t}{\sqrt{1+t^2}}\) (\(t \gt 1\)이므로 양수).</span>
-                <span class="step">STEP 4: 차 \(= \dfrac{(t^2-t)-(t^2+t)}{\sqrt{1+t^2}} = \dfrac{-2t}{\sqrt{1+t^2}}\). \(\div t\): \(\dfrac{-2}{\sqrt{1/t^2+1}} \to -2\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>② \(-2\)</strong>. 핵심: 도형 길이를 \(t\)로 정확히 표현 → 차수 비교.</div>
-        </div>
     </div>
-
+    <div class="nv-board" data-key="check.1" data-label="형성평가 7번 — 유리화 3종을 세 구역에"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (7번 — 3문항)</h2>
     <div class="rubric">
@@ -347,6 +414,53 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
+        <!-- 도전 1 span2 ch -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 함수의극한 유제 6 — \(x \to -\infty\) 치환</span></div>
+            <div class="q-stmt">\(\lim_{x \to -\infty}\dfrac{\sqrt{4x^2+3x}-2x}{x+4}\). 선택지 ① \(-5\) ② \(-4\) ③ \(-3\) ④ \(-2\) ⑤ \(-1\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(t = -x\) 치환. \(x \to -\infty\) ⇒ \(t \to +\infty\). \(x^2 = t^2, -2x = 2t, x+4 = -t+4\).</span>
+                <span class="step">STEP 2: 식 \(= \dfrac{\sqrt{4t^2-3t}+2t}{-t+4}\).</span>
+                <span class="step">STEP 3: \(\div t\): \(\dfrac{\sqrt{4-3/t}+2}{-1+4/t} \to \dfrac{2+2}{-1} = -4\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② \(-4\)</strong>. 핵심: \(x \to -\infty\) 무리식은 \(t = -x\) 치환으로 부호 실수 차단.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — t = −x 치환으로 양의 무한대로"></div>
+    <div class="problems">
+        <!-- 도전 2 span2 ch -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 수능특강 함수의극한 기본 7 — 도형 + \(\infty\)</span></div>
+            <div class="q-stmt">곡선 \(y=\sqrt{x}\) 위 \(P(t^2, t)\), 기울기 \(-1\) 직선이 \(x\)축과 만나는 점 \(Q\), \(Q\)에서 \(OP\)에 내린 수선의 발 \(H\). \(\lim_{t \to \infty}(\overline{PH} - \overline{QH})\). 선택지 ① \(-5/2\) ② \(-2\) ③ \(-3/2\) ④ \(-1\) ⑤ \(-1/2\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(Q\) 좌표. \(P\)에서 기울기 \(-1\)로 \(y=0\)까지 가면 \(x\)는 \(t\)만큼 증가 → \(Q(t^2+t, 0)\). \(\overline{PQ} = \sqrt{2}\,t\).</span>
+                <span class="step">STEP 2: 직선 \(OP\): \(x - ty = 0\). 점 \(Q\)에서 거리 \(\overline{QH} = \dfrac{t^2+t}{\sqrt{1+t^2}}\).</span>
+                <span class="step">STEP 3: 피타고라스 \(\overline{PH}^2 = \overline{PQ}^2 - \overline{QH}^2\). 계산 → \(\overline{PH} = \dfrac{t^2-t}{\sqrt{1+t^2}}\) (\(t \gt 1\)이므로 양수).</span>
+                <span class="step">STEP 4: 차 \(= \dfrac{(t^2-t)-(t^2+t)}{\sqrt{1+t^2}} = \dfrac{-2t}{\sqrt{1+t^2}}\). \(\div t\): \(\dfrac{-2}{\sqrt{1/t^2+1}} \to -2\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② \(-2\)</strong>. 핵심: 도형 길이를 \(t\)로 정확히 표현 → 차수 비교.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 도형 길이의 차 PH − QH"></div>
+    </section>
+
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "3차시 종합 키 = 분모→0 또는 분모 최고차"를 한 줄로. 도전 1·2는 과제. 04차시 중단원 마무리 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 3유형 작성 + 도전 시도. 단원 마무리 채점에 사용될 키워드 정리.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 04차시 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -368,6 +482,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -375,11 +491,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_03_함수의극한_미정형.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_03_함수의극한_미정형.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_04_중단원마무리_I_1.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_03.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

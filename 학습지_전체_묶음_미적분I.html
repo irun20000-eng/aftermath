@@ -2729,7 +2729,7 @@ document.addEventListener('click', function(e) {
                 <strong>💡 풀이 흐름 (5단계):</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
                     <li><strong>STEP 1 — 부호 관계 정리</strong>: \(f(3)f(6) \lt 0\) → \(f(3), f(6)\) 부호 다름. \(f(3)f(20) \gt 0\) → \(f(3), f(20)\) 부호 같음. 따라서 \(f(6), f(20)\)은 부호 다름 ⇒ \( f(6)f(20) \lt 0 \).</li>
-                    <li><strong>STEP 2 — 사잇값 정리로 영점 위치 두 곳</strong>: \(f\)는 다항함수 ⇒ 연속. \([3, 6]\)에 영점 \(c_1\) 하나, \([6, 20]\)에 영점 \(c_2\) 하나 존재. \(f(x)\)의 실근은 \(0, a, a^2\)이므로 \(a \gt 3\)인 경우만 가능 (3보다 큰 영점 필요).</li>
+                    <li><strong>STEP 2 — 사잇값 정리로 영점 위치 두 곳</strong>: \(f\)는 다항함수 ⇒ 연속. \([3, 6]\)에 영점 \(c_1\) 하나, \([6, 20]\)에 영점 \(c_2\) 하나 존재. \(f(x)\)의 실근은 \(0, a, a^2\)이므로 \(a \gt 3\)인 경우만 가능 (3보다 큰 영점이 두 개 필요 → \(a\)와 \(a^2\) 모두 3보다 커야 함).</li>
                     <li><strong>STEP 3 — \(a, a^2\)의 위치</strong>: \(a \gt 3\)이면 \(a^2 \gt a\). 따라서 \(a \in (3, 6)\), \(a^2 \in (6, 20)\). 즉 \(3 \lt a \lt 6\) 그리고 \(6 \lt a^2 \lt 20\).</li>
                     <li><strong>STEP 4 — 두 부등식 교집합</strong>: \(a \gt 0\)이므로 \(6 \lt a^2 \lt 20\) ⇒ \(\sqrt{6} \lt a \lt 2\sqrt{5}\). \(\sqrt{6} \approx 2.45 \lt 3\), \(2\sqrt{5} \approx 4.47 \lt 6\)이므로 교집합은 \( 3 \lt a \lt 2\sqrt{5} \) ⇒ \(p = 3, q = 2\sqrt{5}\).</li>
                     <li><strong>STEP 5 — 최종</strong>: \(p^2 + q^2 = 9 + 20 = 29\). <span class="text-red-600 font-bold">정답: 29</span></li>
@@ -2785,7 +2785,7 @@ document.addEventListener('click', function(e) {
                     <li><strong>STEP 2 — ② 점검 (우함수 + 다 조건)</strong>: 조건 (가) \(f(x) = f(-x)\) \(\Rightarrow\) \(f\)는 우함수. \(f(c) = 10\)이 되는 \(c\)가 오직 하나라면 \(f(-c) = f(c) = 10\)도 같은 점이어야 하므로 \(c = -c\) \(\Rightarrow\) \(c = 0\). 다시 (다)에서 \(|f| \leq 10\)이므로 최댓값은 \(f(0) = 10\). ② <strong>옳음</strong>.</li>
                     <li><strong>STEP 3 — ③ 점검 (사잇값 정리)</strong>: \(f\)는 \([0, 5]\)에서 연속이고 \(f(0) = 10\), \(f(5) = 0\). 사잇값 정리에 의해 \(0 \lt 5 \lt 10\)인 \(5\)에 대해 \(f(c_1) = 5\)인 \(c_1 \in (0, 5)\)가 존재. 우함수이므로 \(f(-c_1) = 5\). 따라서 \(f(x) = 5\)인 \(x\)는 최소 두 개. ③ <strong>옳음</strong>.</li>
                     <li><strong>STEP 4 — ④ 점검 (반례 탐색)</strong>: 만약 \(f(x) \geq 0\)이면 최솟값은 \(0\)이고, \(|x| \geq 5\) 전체 구간에서 \(f = 0\) \(\Rightarrow\) 최소가 되는 \(x\)는 무수히 많음. 또한 \(f\)가 음수 값을 가질 때 그 최솟값 점이 \(x = a\)이면 우함수에 의해 \(x = -a\)에서도 같은 최솟값 \(\Rightarrow\) "오직 한 개"는 일반적으로 거짓. ④ <strong>옳지 않음</strong>.</li>
-                    <li><strong>STEP 5 — ⑤ 점검</strong>: \(x\)가 임의의 실수일 때 \(x+5\)와 \(x-5\)는 거리 10 떨어진 두 점. \(|x+5| \gt 5\) 또는 \(|x-5| \gt 5\) 중 적어도 하나는 항상 성립 (두 구간 \([-5,5]\)의 합집합은 길이 10인 구간, 두 점은 거리 10이므로 한 점은 반드시 밖). 따라서 \(f(x+5) = 0\) 또는 \(f(x-5) = 0\) \(\Rightarrow\) 곱은 항상 \(0\). ⑤ <strong>옳음</strong>. 결론: <span class="text-red-600 font-bold">정답: ④</span></li>
+                    <li><strong>STEP 5 — ⑤ 점검</strong>: \(x\)가 임의의 실수일 때 \(x+5\)와 \(x-5\)는 거리 10 떨어진 두 점. \(|x+5| \geq 5\) 또는 \(|x-5| \geq 5\) 중 적어도 하나는 항상 성립 (거리 10인 두 점이 열린구간 \((-5,5)\) 안에 함께 있을 수 없으므로 한 점은 반드시 그 밖, 예: \(x=0\)이면 둘 다 \(|\cdot| = 5\)). ①과 (나)에 의해 \(|t| \geq 5\)이면 \(f(t) = 0\)이므로 \(f(x+5) = 0\) 또는 \(f(x-5) = 0\) \(\Rightarrow\) 곱은 항상 \(0\). ⑤ <strong>옳음</strong>. 결론: <span class="text-red-600 font-bold">정답: ④</span></li>
                 </ol>
                 <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 사잇값 정리(③)와 최대·최소 정리(②, ④)를 동시에 활용하는 종합형. 추상 조건만 주어졌을 때 <strong>구체적 그래프를 머릿속으로 그려보는 능력</strong>이 결정적. ④의 반례는 "최솟값이 0일 때 최소를 만드는 점이 무수히 많다" 또는 "음수 최솟값일 때 우함수에 의해 짝으로 나타난다"의 두 가지를 모두 떠올려야 한다.</p>
             </div></details>
@@ -3018,7 +3018,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l2">[기본-그래프로 보기 판정]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \(y = f(x)\)의 그래프가 다음 그림과 같다. &lt;보기&gt; 중 옳은 것을 모두 고르시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.41 중단원 기본 05번)</span>
                         <div class="ml-6 mt-3 flex justify-center">
-                            <img src="images/calc_07_q5.png" alt="문제 5번 그래프 — 열린구간 (0,5) 위의 구간별 정의 함수" class="block mx-auto max-w-md w-full" />
+                            <img src="images/calc_07_q5.png" alt="문제 5번 그래프 — x=0을 끊김 없이 지나는 구간별 정의 함수 (x=1, 3, 4에 ○·● 표시)" class="block mx-auto max-w-md w-full" />
                         </div>
                         <div class="ml-6 mt-3 text-base bg-slate-50 border border-slate-200 rounded-lg p-4">
                             <strong>&lt;보기&gt;</strong>
@@ -4715,7 +4715,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l2">[기본-그래프 분석 + 기울기 비교]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">5. 미분가능한 함수 \(y = f(x)\)의 그래프와 직선 \(y = x\)가 다음 그림과 같다. 두 점 \(\mathrm{A}, \mathrm{B}\)가 함수 \(y = f(x)\)의 그래프 위에 있을 때, 보기 중 옳은 것을 모두 고르시오. (단, \(0 \lt a \lt b\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.65 중단원 기본 05번)</span>
                         <div class="ml-6 mt-3 flex justify-center">
-                            <img src="images/calc_11_q5.png" alt="문제 5번 그래프 — y=f(x) 곡선과 직선 y=x. 두 점 A(a, f(a))와 B(b, f(b))는 곡선 위에 있고, 곡선은 직선 y=x와 원점에서 만나며 b>a>0 영역에서 위로 볼록하게 증가" class="block mx-auto max-w-md w-full" />
+                            <img src="images/calc_11_q5.png" alt="문제 5번 그래프 — y=f(x) 곡선과 직선 y=x. 두 점 A(a, f(a))와 B(b, f(b))는 곡선 위에 있고, 곡선은 직선 y=x와 원점에서 만나며 b>a>0 영역에서 아래로 볼록하게 증가" class="block mx-auto max-w-md w-full" />
                         </div>
                         <div class="ml-6 mt-3 text-base bg-slate-50 border border-slate-200 rounded-lg p-4">
                             <strong>&lt;보기&gt;</strong>
@@ -4725,7 +4725,7 @@ document.addEventListener('click', function(e) {
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 그래프 해석. \(y = f(x)\)는 위로 볼록 증가(우상향, 기울기 점차 커짐) — "아래로 볼록"한 곡선. \(\dfrac{f(a)}{a}\)는 원점과 \(\mathrm{A}\) 잇는 직선의 기울기, \(\dfrac{f(b)}{b}\)는 원점과 \(\mathrm{B}\) 잇는 직선의 기울기. <br>
+                        <strong>💡 전략 힌트:</strong> 그래프 해석. \(y = f(x)\)는 아래로 볼록하게 증가(우상향, 기울기 점차 커짐)하는 곡선. \(\dfrac{f(a)}{a}\)는 원점과 \(\mathrm{A}\) 잇는 직선의 기울기, \(\dfrac{f(b)}{b}\)는 원점과 \(\mathrm{B}\) 잇는 직선의 기울기. <br>
                         <strong>ㄱ:</strong> 곡선이 아래로 볼록 + 원점 통과 \(\Rightarrow\) \(b\)가 더 멀수록 원점과 잇는 직선의 기울기가 더 커짐 \(\Rightarrow\) <strong>참</strong>. <br>
                         <strong>ㄴ:</strong> \(f'\)은 접선의 기울기. 곡선이 아래로 볼록 \(\Rightarrow\) 오른쪽으로 갈수록 접선 기울기가 점점 커짐 \(\Rightarrow\) \(f'(a) \lt f'(b)\). <strong>참</strong>. <br>
                         <strong>ㄷ:</strong> \(f(x) - x\)는 \(\mathrm{A}, \mathrm{B}\)에서 곡선과 직선 \(y = x\) 사이의 세로 거리. 그림에서 \(\mathrm{B}\)가 \(\mathrm{A}\)보다 \(y = x\)에서 더 멀리 떨어져 있음 \(\Rightarrow\) \(f(b) - b \gt f(a) - a\), 따라서 \(f(a) - a \gt f(b) - b\)는 <strong>거짓</strong>. <br>
@@ -5303,8 +5303,7 @@ document.addEventListener('click', function(e) {
                                 많은 학생이 "\(x = 0\)이니까 \(f'(0)\)을 그대로 기울기로 쓰면 되는 거 아닌가?"라고 점프한다. <strong>먼저 \((0, 2)\)가 곡선 위에 있는지 검증</strong>해야 한다. \(f(0) = -0 + 0 + 4 = 4 \neq 2\) — <strong>곡선 밖의 점</strong>이다! 따라서 접점을 매개변수 \(t\)로 두어야 한다.<br><br>
                                 <strong>STEP 1 — 곡선 위/밖 검증:</strong> \(f(0) = 4 \neq 2\) \(\Rightarrow\) 점 \((0, 2)\)는 곡선 밖. "곡선 밖의 점 \(\Rightarrow\) 시나리오 ③ (매개변수 \(t\))" 적용.<br><br>
                                 <strong>STEP 2 — 접점 \((t,\ -t^3 + t + 4)\)로 두기:</strong> \(f'(x) = -3x^2 + 1\), 기울기 \(f'(t) = -3t^2 + 1\). 접선식: \( y - (-t^3 + t + 4) = (-3t^2 + 1)(x - t) \).<br><br>
-                                <strong>STEP 3 — 점 \((0, 2)\) 대입으로 \(t\) 결정:</strong> \(2 + t^3 - t - 4 = (-3t^2 + 1)(0 - t) = 3t^3 - t\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2t^3 = 2\) \(\Rightarrow\) \(t = -1\). 접점 \((-1, 2)\), 기울기 \(-3 + 1 = -2\). 접선: \(y - 2 = -2(x + 1) \Rightarrow y = -2x\). (점 \((0, 2)\) 대입 확인: \(y = 2\) ✓ — 잠깐, \(-2 \cdot 0 = 0 \neq 2\). 다시 계산: 접선 \(y - 2 = -2(x - (-1))\), 즉 \(y = -2x\). 그런데 \((0, 2)\)를 지나려면 \(y\)절편 \(= 2\)여야 함. \(y = -2x + 0\)은 \((0, 0)\)을 지남. 식 점검 필요!)<br><br>
-                                <strong>STEP 3 (재정리):</strong> 정확한 식: \(y - (-t^3 + t + 4) = (-3t^2 + 1)(x - t)\)에 \(x = 0\), \(y = 2\) 대입. \(2 - (-t^3 + t + 4) = (-3t^2 + 1)(-t)\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2 = 2t^3\) \(\Rightarrow\) \(t^3 = -1\) \(\Rightarrow\) \(t = -1\). 접점 \((-1,\ 1 + (-1) + 4) = (-1, 4)\). 기울기 \(-3 + 1 = -2\). 접선: \(y - 4 = -2(x + 1) \Rightarrow y = -2x + 2\). 점 \((0, 2)\) 대입: \(2 = 2\) ✓.<br><br>
+                                <strong>STEP 3 — 점 \((0, 2)\) 대입으로 \(t\) 결정:</strong> \(2 + t^3 - t - 4 = (-3t^2 + 1)(0 - t) = 3t^3 - t\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2t^3 = 2\) \(\Rightarrow\) \(t = -1\). 접점 \((-1,\ 1 + (-1) + 4) = (-1, 4)\). 기울기 \(-3 + 1 = -2\). 접선: \(y - 4 = -2(x + 1) \Rightarrow y = -2x + 2\). 점 \((0, 2)\) 대입: \(2 = 2\) ✓.<br><br>
                                 <strong>STEP 4 — 둘러싸인 넓이:</strong> 접선 \(y = -2x + 2\)는 \(x\)축과 \((1, 0)\), \(y\)축과 \((0, 2)\)에서 만남. 둘러싸인 직각삼각형의 넓이 \(= \dfrac{1}{2} \cdot 1 \cdot 2 = 1\). <span class="text-red-600 font-bold">답: \(1\).</span><br><br>
                                 <strong>핵심 통찰:</strong> "주어진 점이 곡선 위/밖인지 먼저 검증"하는 한 줄 습관이 시나리오 ① vs ③의 분기점. 곡선 밖이면 반드시 접점을 \(t\)로 놓아야 한다. 식 정리 시에는 부호 실수에 매우 주의.
                                 </p>
@@ -5357,7 +5356,7 @@ document.addEventListener('click', function(e) {
                     <li><strong>STEP 3 — 점 \((0,\ -3)\) 대입</strong>: \(-3 = -2 \cdot 0 + a + 3 \Rightarrow a = -6\).</li>
                     <li><strong>STEP 4 — 최종</strong>: \(a = -6\). <span class="text-red-600 font-bold">정답: ① \(-6\)</span></li>
                 </ol>
-                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "곡선 위의 점 \((t,\ f(t))\)에서의 접선이 외부의 한 점 \((p,\ q)\)를 지난다"형 — ① 접선 기울기 \(= f'(t)\) ② 접선식 \(y - f(t) = f'(t)(x - t)\) ③ 외부점 대입 — 차시 12 시나리오 ②(곡선 위의 점에서의 접선)의 정공법. 사차함수도 다항함수이므로 미분 공식이 그대로 적용된다.</p>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "곡선 위의 점 \((t,\ f(t))\)에서의 접선이 외부의 한 점 \((p,\ q)\)를 지난다"형 — ① 접선 기울기 \(= f'(t)\) ② 접선식 \(y - f(t) = f'(t)(x - t)\) ③ 외부점 대입 — 차시 12 시나리오 ①(곡선 위의 점에서의 접선)의 정공법. 사차함수도 다항함수이므로 미분 공식이 그대로 적용된다.</p>
             </div></details>
 
             <div class="mt-4 text-sm text-slate-500 italic">
@@ -5793,8 +5792,8 @@ document.addEventListener('click', function(e) {
                 <strong>💡 풀이 흐름 (4단계):</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
                     <li><strong>STEP 1 — 평균값 정리 적용</strong>: 다항함수 \(f\)는 실수 전체에서 연속·미분가능. 임의의 \(x \gt 0\)에 대해 \([0,\ x]\)에서 평균값 정리 \(\Rightarrow\) \(\dfrac{f(x) - f(0)}{x - 0} = f'(c)\)인 \(c \in (0,\ x)\)가 존재. 즉 \(f(x) - f(0) = x f'(c)\).</li>
-                    <li><strong>STEP 2 — (가) 부등식과 결합 ⇒ \(f'(c) \geq 2p\)</strong>: \(x f'(c) \geq 2px\), \(x \gt 0\)이므로 양변을 \(x\)로 나누면 \(f'(c) \geq 2p\). 임의의 \(x \gt 0\)에 대해 대응되는 \(c \in (0,\ x)\)에서 성립하므로 \(x \gt 0\) 영역의 \(f'\) 전체에 대해 \(2p\) 이상 — 즉 \(f'\)의 최솟값 \(\geq 2p\).</li>
-                    <li><strong>STEP 3 — (나) \(\Rightarrow 4 \geq 2p\)</strong>: \(x \gt 0\)에서 \(f'\)의 최솟값 \(= 4 \geq 2p \Rightarrow p \leq 2\).</li>
+                    <li><strong>STEP 2 — (나)와 결합 ⇒ \(f(x) - f(0) \geq 4x\)</strong>: \(c \gt 0\)이므로 (나)에서 \(f'(c) \geq 4\). \(x \gt 0\)이므로 \(f(x) - f(0) = x f'(c) \geq 4x\). 따라서 \(2p \leq 4\)이면 \(f(x) - f(0) \geq 4x \geq 2px\) — (가)가 모든 \(f\)에서 성립.</li>
+                    <li><strong>STEP 3 — \(p \gt 2\)이면 반례 \(\Rightarrow 4 \geq 2p\)</strong>: \(f(x) = 4x\)는 (나)를 만족하지만 \(f(x) - f(0) = 4x \lt 2px\) — (가) 불성립. 따라서 \(2p \leq 4 \Rightarrow p \leq 2\).</li>
                     <li><strong>STEP 4 — 최종</strong>: \(p\)의 최댓값 \(= 2\) (예: \(f(x) = 4x + C\)일 때 등호 성립). <span class="text-red-600 font-bold">정답: \(2\)</span></li>
                 </ol>
                 <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "전 구간 부등식 \(f(x) - f(0) \geq g(x)\)" 형식은 평균값 정리로 \(f'(c)\)에 대한 조건으로 변환 — 차시 13의 표준 응용. 평균값 정리가 "어떤 \(c\)가 존재"라는 정보를 주므로, 임의의 \(x\)에 대해 대응되는 \(c\)를 모두 모으면 \(f'\)의 최솟·최댓값과 직결된다.</p>
@@ -7055,7 +7054,7 @@ document.addEventListener('click', function(e) {
                             </tbody>
                         </table>
                         <p class="text-base mb-1"><strong>STEP 4:</strong> 극솟값 \(f(-2) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1\)</span></span>, 극댓값 \(f(-1) = 0\), 극솟값 \(f(0) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1\)</span></span>. \(y\)절편 \(f(0) = -1\).</p>
-                        <p class="text-base"><strong>STEP 5:</strong> 양끝 모두 \(+\infty\)로 올라가며 \(W\) 모양. 두 극솟값이 같아 그래프는 \(x = -\dfrac{3}{2}\)을 기준으로 거의 대칭처럼 보인다.</p>
+                        <p class="text-base"><strong>STEP 5:</strong> 양끝 모두 \(+\infty\)로 올라가며 \(W\) 모양. 두 극솟값이 같고, \(f(x) = \{(x+1)^2 - 1\}^2 - 1\)이므로 그래프는 \(x = -1\)을 기준으로 대칭이다.</p>
                     </div>
                     <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 사차함수(최고차 \(+\))의 양끝은 \(+\infty\). 가운데 극값은 1개(\(\cup\) 모양) 또는 <strong>3개</strong>(\(W\) 모양 — 극소·극대·극소). 극값 3개의 경우 두 극솟값의 비교가 형성평가·도전의 핵심 포인트. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 예제 2 참고)</span></p>
                 </div>
