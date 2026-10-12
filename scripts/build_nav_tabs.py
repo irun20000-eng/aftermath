@@ -74,6 +74,9 @@ def build(nn: str):
     nav_path, ws = navs[0], sheets[0].name
     rel = "교사용/" + nav_path.name
     src = git_main(rel)
+    if 'class="nv-tabs' in src:
+        print(f"⏭  {nn}: main 의 Nav 가 이미 탭 구조 — 건너뜀 (다시 만들려면 원본 Nav 에서 시작해야 함)")
+        return
     plan = load_plan(nn)
     pages = plan["pages"]
 

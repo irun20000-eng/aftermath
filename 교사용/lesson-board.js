@@ -36,13 +36,20 @@
       // 판서 예시용 개형 — 계획 파일의 식을 표본점으로 그린다 (눈금 없음, 개형만)
       var f = new Function('t', 'return ' + plot.f);
       var a = plot.t[0], b = plot.t[1], n = 80, pts = [], lo = 0, hi = 0, i, tt, v;
-      for (i = 0; i <= n; i++) { tt = a + (b - a) * i / n; v = f(tt); pts.push([tt, v]); if (v < lo) lo = v; if (v > hi) hi = v; }
+      for (i = 0; i <= n; i++) { tt = a + (b - a) * i / n; v = f(tt); pts.push([tt, v]); if (!isFinite(v)) continue; if (v < lo) lo = v; if (v > hi) hi = v; }
       if (hi === lo) hi = lo + 1;
       var sx = function (t) { return L + (R - L) * (t - a) / (b - a); };
       var sy = function (v) { return B - (B - T) * (v - lo) / (hi - lo); };
       ox = sx(Math.max(a, Math.min(b, 0))); oy = sy(0);
-      body += '<polyline fill="none" stroke="#1e293b" stroke-width="2.2" vector-effect="non-scaling-stroke" points="' +
-        pts.map(function (p) { return sx(p[0]).toFixed(1) + ',' + sy(p[1]).toFixed(1); }).join(' ') + '"/>';
+      // 불연속 함수: f 가 NaN·null·±Infinity 를 돌려주는 곳에서 선을 끊는다 (점프가 세로선으로 이어지지 않게)
+      var segs = [[]];
+      pts.forEach(function (p) {
+        if (isFinite(p[1])) segs[segs.length - 1].push(sx(p[0]).toFixed(1) + ',' + sy(p[1]).toFixed(1));
+        else if (segs[segs.length - 1].length) segs.push([]);
+      });
+      segs.forEach(function (sg) {
+        if (sg.length > 1) body += '<polyline fill="none" stroke="#1e293b" stroke-width="2.2" vector-effect="non-scaling-stroke" points="' + sg.join(' ') + '"/>';
+      });
       (plot.marks || []).forEach(function (m) {
         var px = sx(m[0]), py = sy(f(m[0]));
         body += '<line x1="' + px + '" y1="' + py + '" x2="' + px + '" y2="' + oy + '" stroke="#94a3b8" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>' +

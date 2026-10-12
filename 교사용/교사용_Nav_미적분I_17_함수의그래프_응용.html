@@ -171,7 +171,7 @@
         </div>
         <div class="meta-item">
             <div class="meta-label">학습 목표</div>
-            <div class="meta-value">① 닫힌구간 최값 4단계 절차 ② 실생활 모델링 4단계(변수→제약→목적함수→정의역) ③ 단조 vs 극값 분기.</div>
+            <div class="meta-value">① 닫힌구간 최값 4단계 절차 ② 실생활 모델링 4단계(변수→제약→목적함수→정의역) ③ 극댓값 vs 끝점 비교(극값 ≠ 최값).</div>
         </div>
     </div>
 
@@ -210,8 +210,8 @@
         </div>
         <div class="tl-row">
             <div class="tl-time">L3·형성 10'</div>
-            <div class="tl-t"><strong>교사:</strong> 7번(단조 vs 극값 분류)에서 "\(a \geq 3\)일 때 단조해석" 시범 → 트랩 박스 공개. 형성 8번은 모두 풀이 의무.</div>
-            <div class="tl-s"><strong>학생:</strong> 7번에서 판별식 분기를 노트. 8번은 4분 안에 둘레 함수 \(L(x) = -2x^2 + 4x + 8\) 유도 + 최댓값 \(10\).</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(극댓값 vs 끝점)에서 "극댓값이 최댓값이면 \(a = 15\)?" 발문 → \(f(4) = 31\) 모순 확인 → 트랩 박스 공개. 형성 8번은 모두 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 후보 4개 표(\(f(-1), f(0), f(2), f(4)\))를 노트하고 최솟값을 갖는 \(x\) 두 곳 확인. 8번은 4분 안에 둘레 함수 \(L(x) = -2x^2 + 4x + 8\) 유도 + 최댓값 \(10\).</div>
         </div>
         <div class="tl-row">
             <div class="tl-time">정리 5'</div>
@@ -298,8 +298,8 @@
         </div>
         <div class="tl-row">
             <div class="tl-time">L3·형성 10'</div>
-            <div class="tl-t"><strong>교사:</strong> 7번(단조 vs 극값 분류)에서 "\(a \geq 3\)일 때 단조해석" 시범 → 트랩 박스 공개. 형성 8번은 모두 풀이 의무.</div>
-            <div class="tl-s"><strong>학생:</strong> 7번에서 판별식 분기를 노트. 8번은 4분 안에 둘레 함수 \(L(x) = -2x^2 + 4x + 8\) 유도 + 최댓값 \(10\).</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(극댓값 vs 끝점)에서 "극댓값이 최댓값이면 \(a = 15\)?" 발문 → \(f(4) = 31\) 모순 확인 → 트랩 박스 공개. 형성 8번은 모두 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 후보 4개 표(\(f(-1), f(0), f(2), f(4)\))를 노트하고 최솟값을 갖는 \(x\) 두 곳 확인. 8번은 4분 안에 둘레 함수 \(L(x) = -2x^2 + 4x + 8\) 유도 + 최댓값 \(10\).</div>
         </div>
     </div>
     <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
@@ -378,32 +378,34 @@
     <div class="problems">
         <!-- L2 6번 -->
         <div class="prob-card span2">
-            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">닫힌구간 최대 - 최소 = 상수 — 매개변수와 무관</span></div>
-            <div class="q-stmt">\([-2, 1]\)에서 \(f(x) = x^3 + 3x^2 + a\)의 최대·최소 차가 \(4\)인 \(a\).</div>
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">닫힌구간 최대 + 최소 = 10 — 합으로 \(a\) 결정</span></div>
+            <div class="q-stmt">\([-2, 1]\)에서 \(f(x) = x^3 + 3x^2 + a\)의 최댓값과 최솟값의 합이 \(10\)인 \(a\)와 그때의 최댓값.</div>
             <div class="q-solve">
                 <span class="step">\(f'(x) = 3x(x + 2)\). 구간 \([-2, 1]\) 내부 임계점은 \(x = 0\) (\(x = -2\)는 끝점). 후보 \(f(-2) = a + 4, f(0) = a, f(1) = a + 4\).</span>
-                <span class="step">\(\max = a + 4\) (\(x = -2\) 또는 \(x = 1\)), \(\min = a\) (\(x = 0\)). 차 \(= 4\) → <strong>모든 \(a\)에 대해 항상 성립</strong>.</span>
+                <span class="step">\(\max = a + 4\) (\(x = -2\), \(x = 1\) 두 곳), \(\min = a\) (\(x = 0\)). 합 \(2a + 4 = 10 \Rightarrow a = 3\) → 최댓값 \(7\), 최솟값 \(3\).</span>
             </div>
-            <div class="q-ans">정답: 모든 실수 \(a\)에 대해 차 = 4 (특정 값 결정 불가). 추가 조건(예: 최댓값 \(=\) 특정 수)이 필요. 학습 포인트: 후보를 모두 모으면 차가 \(a\)와 무관함이 보인다.</div>
+            <div class="q-ans">정답: \(a = 3\), 최댓값 \(7\)</div>
+            <div class="q-warn"><strong>발문:</strong> "최댓값 \(-\) 최솟값 \(= 4\)가 되게 하는 \(a\)는?" → 차는 \(a\)와 무관하게 항상 \(4\)라서 \(a\)를 정할 수 없다. "차"가 아니라 "합"(또는 최댓값 자체)이 주어져야 \(a\)가 결정됨을 짚는다.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.6" data-label="6번 — 최댓값과 최솟값의 차가 4"></div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 최댓값과 최솟값의 합이 10"></div>
     <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
     <div class="problems">
         <!-- L3 7번 span2 -->
         <div class="prob-card l3 span2">
-            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 단조 vs 극값 존재 분류</span></div>
-            <div class="q-stmt">\(f(x) = x^3 + 3x^2 + ax + 1\)이 \([-1, 2]\)에서 \(\max = 15, \min = 0\). \(a\) 및 임계점.</div>
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 극댓값 ≠ 최댓값 (끝점 비교)</span></div>
+            <div class="q-stmt">\(f(x) = x^3 - 3x^2 + a\)가 \([-1, 4]\)에서 최댓값 \(15\). \(a\), 최솟값, 최솟값을 갖는 \(x\).</div>
             <div class="q-solve">
-                <span class="step">STEP 1: \(f'(x) = 3x^2 + 6x + a\). 판별식 \(D/4 = 9 - 3a\). 단조 \(\Leftrightarrow a \geq 3\), 극값 존재 \(\Leftrightarrow a \lt 3\).</span>
-                <span class="step">STEP 2 (단조): \(a \geq 3\)이면 \(f' \geq 0\) → 단조증가. \(\min = f(-1) = 3 - a\), \(\max = f(2) = 21 + 2a\). 조건 \(3 - a = 0 \Rightarrow a = 3\), 검증 \(21 + 6 = 27 \neq 15\) → <strong>모순, 해 없음</strong>.</span>
-                <span class="step">STEP 3 (극값 존재): \(a \lt 3\)이면 임계점 두 개. 후보 4개를 \(a\)로 표현 + \(\max = 15, \min = 0\) 조건으로 \(a\) 결정. <em>일반적으로 정수해 안 나옴 — 학습 목표는 "절차 + 경우 분류" 자체.</em></span>
+                <span class="step">STEP 1: \(f'(x) = 3x(x - 2)\) → \(x = 0\)(극대), \(x = 2\)(극소), 둘 다 구간 내부.</span>
+                <span class="step">STEP 2: 후보 \(f(-1) = a - 4,\ f(0) = a,\ f(2) = a - 4,\ f(4) = a + 16\).</span>
+                <span class="step">STEP 3: 최댓값은 극댓값 \(a\)가 아니라 끝점 \(f(4) = a + 16\) → \(a + 16 = 15 \Rightarrow a = -1\).</span>
+                <span class="step">STEP 4: 최솟값 \(a - 4 = -5\), \(x = -1\)과 \(x = 2\) 두 곳. 검산 \(f(4) = 64 - 48 - 1 = 15\), \(f(0) = -1\), \(f(2) = 8 - 12 - 1 = -5\), \(f(-1) = -1 - 3 - 1 = -5\).</span>
             </div>
-            <div class="q-ans">정답: 단조 케이스 모순으로 해 없음 → \(a \lt 3\) 케이스에서 후보 비교(절차 학습). 핵심: <strong>"극값 = 최값" 자동 동일시 금지</strong> + 단조 vs 극값 분기 + 임계점 구간 내·외 점검.</div>
-            <div class="q-warn"><strong>발표 유도:</strong> 학생들이 빠지는 3가지 오답 패턴 — ① 극댓값을 무조건 최댓값으로 ② 단조함수면 "극값 없으니 답 없음"으로 잘못 결론 ③ 외부 임계점을 후보에 포함. 이 셋을 칠판에 적고 ✕로 표시.</div>
+            <div class="q-ans">정답: \(a = -1\), 최솟값 \(-5\) (\(x = -1, 2\)). 핵심: <strong>"극값 = 최값" 자동 동일시 금지</strong> + 끝점 포함 후보 4개 비교 + 같은 최솟값을 갖는 점 모두.</div>
+            <div class="q-warn"><strong>발표 유도:</strong> 학생들이 빠지는 2가지 오답 — ① 극댓값을 최댓값으로 두어 \(a = 15\) (그러면 \(f(4) = 31\)이 되어 모순) ② 최솟값을 갖는 \(x\)를 \(x = 2\) 한 곳만 적음. 둘을 칠판에 적고 ✕로 표시한 뒤, \(a = 15\)를 대입해 모순을 직접 확인시킨다.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.7" data-label="7번 — 단조 vs 극값 존재 경우 분류"></div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — 극댓값 ≠ 최댓값, 끝점 비교"></div>
     </section>
 
     <!-- ===== 4 형성평가 ===== -->
@@ -412,8 +414,8 @@
     <div class="timeline">
         <div class="tl-row">
             <div class="tl-time">L3·형성 10'</div>
-            <div class="tl-t"><strong>교사:</strong> 7번(단조 vs 극값 분류)에서 "\(a \geq 3\)일 때 단조해석" 시범 → 트랩 박스 공개. 형성 8번은 모두 풀이 의무.</div>
-            <div class="tl-s"><strong>학생:</strong> 7번에서 판별식 분기를 노트. 8번은 4분 안에 둘레 함수 \(L(x) = -2x^2 + 4x + 8\) 유도 + 최댓값 \(10\).</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(극댓값 vs 끝점)에서 "극댓값이 최댓값이면 \(a = 15\)?" 발문 → \(f(4) = 31\) 모순 확인 → 트랩 박스 공개. 형성 8번은 모두 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 후보 4개 표(\(f(-1), f(0), f(2), f(4)\))를 노트하고 최솟값을 갖는 \(x\) 두 곳 확인. 8번은 4분 안에 둘레 함수 \(L(x) = -2x^2 + 4x + 8\) 유도 + 최댓값 \(10\).</div>
         </div>
     </div>
     <div class="problems">

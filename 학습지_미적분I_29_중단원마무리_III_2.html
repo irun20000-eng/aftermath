@@ -210,13 +210,11 @@
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> ① \(f(x) = (x - 2)^2\) (\(x \geq 2\))의 역함수: \(y = (x-2)^2 \Rightarrow x - 2 = \sqrt{y}\) (\(x \geq 2\)) \(\Rightarrow g(y) = \sqrt{y} + 2\). 즉 \(g(x) = \sqrt{x} + 2\) (\(x \geq 0\)). <br>
-                        ② 교점: \(f, g\) 모두 \(y = x\)에 대칭. \((x - 2)^2 = x \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow x = 1, 4\). \(x \geq 2\)에서 \(x = 4\). 즉 \(f(4) = g(4) = 4\). <br>
-                        ③ 영역 분할: \(x \in [0, 2]\)에서는 윗변 \(g(x)\), 아랫변 \(x\)축. \(x \in [2, 4]\)에서는 윗변 \(g(x)\), 아랫변 \(f(x)\). <br>
-                        ④ \(S = \int_0^2 (\sqrt{x} + 2)\,dx + \int_2^4 (\sqrt{x} + 2 - (x-2)^2)\,dx\). <br>
-                        앞: \([\tfrac{2}{3}x^{3/2} + 2x]_0^2 = \tfrac{4\sqrt{2}}{3} + 4\). <br>
-                        뒤: \([\tfrac{2}{3}x^{3/2} + 2x - \tfrac{(x-2)^3}{3}]_2^4 = (\tfrac{16}{3} + 8 - \tfrac{8}{3}) - (\tfrac{4\sqrt{2}}{3} + 4 - 0) = \tfrac{32}{3} - \tfrac{4\sqrt{2}}{3} - 4 = \tfrac{20}{3} - \tfrac{4\sqrt{2}}{3}\). <br>
-                        합: \((\tfrac{4\sqrt{2}}{3} + 4) + (\tfrac{20}{3} - \tfrac{4\sqrt{2}}{3}) = \tfrac{20}{3} + 4 = \tfrac{32}{3}\). 답: \(\tfrac{32}{3}\).
+                        <strong>💡 전략 힌트:</strong> ① 대칭: 역함수의 그래프 \(y = g(x)\)는 \(y = f(x)\)와 직선 \(y = x\)에 대하여 대칭이므로, 두 곡선과 \(x\)축·\(y\)축으로 둘러싸인 도형도 \(y = x\)에 대하여 대칭이다 (\(x\)축 ↔ \(y\)축). 따라서 \(g(x)\)의 식을 구해 적분할 필요가 없다. <br>
+                        ② 교점: 두 곡선은 \(y = x\) 위에서 만난다. \((x - 2)^2 = x \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow x = 1, 4\). \(x \geq 2\)이므로 \(x = 4\), 교점 \((4, 4)\). <br>
+                        ③ 반쪽 넓이: 직선 \(y = x\) 아래쪽 부분 = (\(y = x\), \(x\)축, 직선 \(x = 4\)로 둘러싸인 삼각형) \(-\) (\(y = f(x)\), \(x\)축, 직선 \(x = 4\)로 둘러싸인 부분). <br>
+                        \(\int_0^4 x\,dx - \int_2^4 (x - 2)^2\,dx = 8 - \tfrac{8}{3} = \tfrac{16}{3}\). <br>
+                        ④ 전체 넓이: \(S = 2 \times \tfrac{16}{3} = \tfrac{32}{3}\). 답: \(\tfrac{32}{3}\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>

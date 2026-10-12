@@ -423,12 +423,13 @@ const PROBLEMS = [
 <div class="calc"><p>(가) 모든 양의 실수 \\(x\\)에 대하여 \\(f(x)-f(0)\\geq 2px\\)이다.</p>
 <p>(나) \\(x\\gt 0\\)에서 함수 \\(f\'(x)\\)의 최솟값이 \\(4\\)이다.</p></div>`,
     answerText:'\\(2\\)',
-    keypoint:'평균값 정리: \\(f(x)-f(0)=xf\'(c)\\). (가)에서 \\(f\'(c)\\geq 2p\\). (나) 최솟값 \\(4\\) ⇒ \\(2p\\leq 4\\).',
+    keypoint:'평균값 정리: \\(f(x)-f(0)=xf\'(c)\\) \\((0\\lt c\\lt x)\\). (나)에서 \\(f\'(c)\\geq 4\\) ⇒ \\(f(x)-f(0)\\geq 4x\\). \\(2p\\leq 4\\)이면 (가) 성립, \\(p\\gt 2\\)이면 \\(f(x)=4x\\)가 반례 ⇒ \\(p\\leq 2\\).',
     steps:[
       {tag:'STEP 1', title:'평균값 정리 적용 — \\(c\\in(0,x)\\)', body:`<div class="calc">\\(\\dfrac{f(x)-f(0)}{x-0}=f\'(c)\\Rightarrow f(x)-f(0)=xf\'(c)\\)</div>`},
-      {tag:'STEP 2', title:'(가) \\(\\Rightarrow f\'(c)\\geq 2p\\)', body:`<div class="calc">\\(xf\'(c)\\geq 2px\\Rightarrow f\'(c)\\geq 2p\\)</div>
-<p>임의 \\(x\\gt 0\\)에 대응되는 \\(c\\)도 \\(0\\lt c\\lt x\\). 그러므로 \\(x\\gt 0\\)에서 \\(f\'\\)의 최솟값이 \\(2p\\)보다 크거나 같아야 한다.</p>`},
-      {tag:'STEP 3', title:'(나) \\(\\Rightarrow 2p\\leq 4\\)', body:`<div class="calc">\\(4\\geq 2p\\Rightarrow p\\leq 2\\)</div>
+      {tag:'STEP 2', title:'(나) \\(\\Rightarrow f(x)-f(0)\\geq 4x\\)', body:`<div class="calc">\\(0\\lt c\\lt x\\)이므로 (나)에서 \\(f\'(c)\\geq 4\\Rightarrow f(x)-f(0)=xf\'(c)\\geq 4x\\)</div>
+<p>따라서 \\(2p\\leq 4\\)이면 \\(f(x)-f(0)\\geq 4x\\geq 2px\\) — (나)를 만족하는 모든 \\(f\\)에서 (가)가 성립한다.</p>`},
+      {tag:'STEP 3', title:'\\(p\\gt 2\\)이면 반례 \\(\\Rightarrow p\\leq 2\\)', body:`<div class="calc">\\(f(x)=4x\\): (나) 만족, 그런데 \\(f(x)-f(0)=4x\\lt 2px\\) — (가) 불성립</div>
+<p>따라서 \\(2p\\leq 4\\), 즉 \\(p\\leq 2\\). \\(p=2\\)이면 STEP 2에 의해 항상 성립한다 (예: \\(f(x)=4x+C\\)에서 등호).</p>
 <div class="calc purple">\\(p\\)의 최댓값 \\(=2\\)</div>`}
     ]
   },
