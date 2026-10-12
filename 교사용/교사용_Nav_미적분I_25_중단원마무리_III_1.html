@@ -112,6 +112,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -122,12 +123,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_24_정적분의계산.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_25_중단원마무리_III_1.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_25_중단원마무리_III_1.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_수학익힘책_미적분I_III1_부정적분과정적분.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_25_중단원마무리_III_1.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -155,6 +157,17 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="practice"><span class="k">1</span>실전 훈련</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">2</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_25_중단원마무리_III_1.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -185,6 +198,36 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 실전 훈련 ===== -->
+    <section class="nv-panel" data-key="practice">
+    <h2 class="nv-panel-h">1 실전 훈련 <small>14문항 · 문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> 14문항 분류표(기초 3 / 기본 9 / 도전 2)를 칠판에 제시. "각 문항에 사용하는 도구를 첫 줄에 적고 풀이 시작"을 안내. 학습지 thinking-space 200px임을 상기.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 펼치고 배지(기초/기본/도전) 확인. 단원 흐름 부정적분→정적분→기본정리 한 줄 메모.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기초 8'</div>
+            <div class="tl-t"><strong>교사:</strong> 1~3번 자율 풀이 + 짝 검산. 2~3분마다 호명 답 확인. 3번은 구간 분할 합치기 포인트 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 (1)\(\tfrac{1}{3}x^3-x^2+3x+C\) (2)\(\tfrac{2}{3}x^3+C\). 2번 (1)18 (2)9. 3번 16. 각 2분 완료 목표.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기본 22'</div>
+            <div class="tl-t"><strong>교사:</strong> 4~12번을 도구별로 묶어 풀이. 4번 도함수 일반항, 5번 접선 기울기, 6번 극값 조건, 7번 항등식 미분, 8번 정적분 미분+대입, 9번 이차식 최솟값, 10번 연립, 11번 구간 분할 합치기, 12번 절댓값 분할. 각 2~3분.</div>
+            <div class="tl-s"><strong>학생:</strong> 각 문항 첫 줄에 도구 태그 적기. 8번 \(x = a\) 대입 → \(0 = 6a^2+a-1\) 분해 단계 주의.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">도전 12'</div>
+            <div class="tl-t"><strong>교사:</strong> 13번 (정적분 항 k 치환) → 14번 (양변 미분으로 \(g' = f\) 도출). 서술 채점 포인트를 칠판에 미리 명시. 13번 6분, 14번 6분.</div>
+            <div class="tl-s"><strong>학생:</strong> "근거 → 식 → 결론" 3단 서술 구성. 13번에서 k 상수 처리, 14번에서 \(g(0) = 0\) 도출 명시.</div>
+        </div>
+    </div>
     <!-- C. 단원 회고 발문 (중단원 마무리 — Warm-up 대체) -->
     <h2 class="section-h"><span class="ico">C</span> 단원 회고 발문 (Warm-up 대체)</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "3차시 동안 가장 자주 막혔던 한 가지 도구는 무엇인가? 정적분에서 '상수인지 함수인지' 헷갈렸던 순간은?"</p>
@@ -222,9 +265,7 @@
 
     <div class="q-warn"><strong>가장 자주 틀리는 3가지:</strong> ① 정적분 항 \(\int_0^1 tf(t)\,dt\)를 x의 함수로 착각 ② \(\int_a^x f(t)\,dt\) 미분 시 결과를 F(x)가 아닌 f(x)로 혼동 ③ 절댓값 정적분에서 부호 변경점 미탐색으로 구간 분할 누락.</div>
 
-    <!-- E. 문항별 해설 카드 - 14문항 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (14문항 종합)</h2>
-
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
     <div class="problems">
         <!-- Q1 기초 -->
         <div class="prob-card">
@@ -236,7 +277,9 @@
             </div>
             <div class="q-ans">정답: (1) \(\dfrac{1}{3}x^3-x^2+3x+C\) &nbsp; (2) \(\dfrac{2}{3}x^3+C\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.1" data-label="1번 — 항별 적분과 곱셈 전개"></div>
+    <div class="problems">
         <!-- Q2 기초 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">정적분 기본 계산 (1)(2)</span></div>
@@ -247,7 +290,9 @@
             </div>
             <div class="q-ans">정답: (1) \(18\) &nbsp; (2) \(9\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.2" data-label="2번 — 기본정리 계산과 같은 구간 합치기"></div>
+    <div class="problems">
         <!-- Q3 기초 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">구간 분할 합치기</span></div>
@@ -259,7 +304,9 @@
             <div class="q-ans">정답: \(16\)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> 피적분이 같고 끝점이 맞닿으면 한 구간으로 합치기. \(\int_a^b + \int_b^c = \int_a^c\).</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.3" data-label="3번 — 맞닿은 구간 하나로 합치기"></div>
+    <div class="problems">
         <!-- Q4 기본 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">도함수 일반항 + 두 조건</span></div>
@@ -270,7 +317,9 @@
             </div>
             <div class="q-ans">정답: \(n = 6\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.4" data-label="4번 — 도함수 일반항과 두 조건"></div>
+    <div class="problems">
         <!-- Q5 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">접선 기울기 + 통과점</span></div>
@@ -281,7 +330,9 @@
             </div>
             <div class="q-ans">정답: \(f(-1) = 2\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.5" data-label="5번 — 접선 기울기와 지나는 점"></div>
+    <div class="problems">
         <!-- Q6 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">도함수 + 극값 조건</span></div>
@@ -292,7 +343,9 @@
             </div>
             <div class="q-ans">정답: \(f(x) = 2x^3-3x^2+6\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.6" data-label="6번 — 극값 조건으로 함수 결정"></div>
+    <div class="problems">
         <!-- Q7 기본 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">부정적분 항등식 + 양변 미분</span></div>
@@ -304,7 +357,9 @@
             <div class="q-ans">정답: \(f(2) = 25\)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> \(F' = f\)를 명시한 뒤 항등식 양변 미분. \(xf'(x)\) 항 도출이 핵심.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.7" data-label="7번 — F′ = f 로 항등식 양변 미분"></div>
+    <div class="problems">
         <!-- Q8 기본 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">정적분 항등식 → \(f(a)\) 결정</span></div>
@@ -317,7 +372,9 @@
             <div class="q-ans">정답: \(f(a) = 5\)</div>
             <div class="q-warn"><strong>2단계 루틴:</strong> ① 양변 미분 → \(f(x)\) 도출. ② \(x=a\) 대입 → 좌변 0 → a 방정식. 두 단계를 서술에 모두 명시.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.8" data-label="8번 — 끝점이 x인 정적분 항등식 2단계"></div>
+    <div class="problems">
         <!-- Q9 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">정적분 이차식 최솟값</span></div>
@@ -328,7 +385,9 @@
             </div>
             <div class="q-ans">정답: \(a = 2\), 최솟값 \(-3\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.9" data-label="9번 — 정적분 값의 최솟값"></div>
+    <div class="problems">
         <!-- Q10 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">선형결합 연립으로 정적분</span></div>
@@ -339,7 +398,9 @@
             </div>
             <div class="q-ans">정답: \(1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.10" data-label="10번 — 두 정적분을 미지수로 연립"></div>
+    <div class="problems">
         <!-- Q11 기본 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span><span class="q-title">구간 분할 합치기 — 3개 조건</span></div>
@@ -350,7 +411,9 @@
             <div class="q-ans">정답: \(7\)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> 공통 구간을 겹쳐 빼는 방법. \(\int_0^4 - \int_0^1 = \int_1^4\) 단계를 화살표로 명시.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.11" data-label="11번 — 겹친 구간 빼서 잇기"></div>
+    <div class="problems">
         <!-- Q12 기본 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span><span class="q-title">절댓값 정적분 — 구간 분할</span></div>
@@ -362,7 +425,9 @@
             <div class="q-ans">정답: \(-2\)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> \(|x|\)의 부호 변경점 \(x=0\) 먼저 찾기. \(x \lt 0\)이면 \(|x|=-x\), \(x \geq 0\)이면 \(|x|=x\). 구간 분리 후 각각 적분.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.12" data-label="12번 — |x| 를 구간별로 벗기기"></div>
+    <div class="problems">
         <!-- Q13 도전 span2 l3 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">⭐ 서술형 — 정적분 항 k 치환</span></div>
@@ -376,7 +441,9 @@
             </div>
             <div class="q-ans">정답: <strong>\(f(1) = 11\)</strong>. 서술 채점: ① k 치환 ② 정의식에 f(x) 대입 ③ 정적분 계산 ④ k 결정 ⑤ f(1) 계산. 5단계 모두 명시 시 만점.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.13" data-label="13번 — 서술형, 정적분 항을 k로 치환"></div>
+    <div class="problems">
         <!-- Q14 도전 span2 l3 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span><span class="q-title">⭐ 서술형 — 양변 미분으로 \(g' = f\) + 둘째 식 인수분해</span></div>
@@ -392,7 +459,7 @@
             <div class="q-ans">정답: <strong>\(f(0)g(1) = 12\)</strong>. 서술 채점: ① \(g' = f\) 도출 ② 일차 가정 + 상수결정 ③ \(g(0)=0\) ④ 인수분해 a·b 결정 ⑤ 최종 계산. 5단계.</div>
         </div>
     </div>
-
+    <div class="nv-board" data-key="practice.14" data-label="14번 — 서술형, 양변 미분으로 g′ = f"></div>
     <!-- F. 단원 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 채점 루브릭 — 서술형 13·14 (각 50점, 합 100점)</h2>
     <div class="rubric">
@@ -406,6 +473,19 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 2 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">2 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "III-1 단원 종합 한 줄" 발표 → III-2 넓이 단원 예고 ("\(\int_a^b |f(x)|\,dx\)" 한 문장). 성찰지 QR.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰지 3유형 작성. 부정적분과 정적분의 연결 흐름 한 문장 정리.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="단원 회고 — 도구 선택 트리와 III-2 예고"></div>
     <!-- G. 성찰지 우수 답안 (중단원 종합) -->
     <h2 class="section-h"><span class="ico">G</span> 중단원 성찰 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -427,6 +507,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록 + III-2 진입 점검)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -434,11 +516,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_24_정적분의계산.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_25_중단원마무리_III_1.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_25_중단원마무리_III_1.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_수학익힘책_미적분I_III1_부정적분과정적분.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_25.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

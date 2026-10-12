@@ -60,6 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -287,8 +288,7 @@
                                 많은 학생이 "\(x = 0\)이니까 \(f'(0)\)을 그대로 기울기로 쓰면 되는 거 아닌가?"라고 점프한다. <strong>먼저 \((0, 2)\)가 곡선 위에 있는지 검증</strong>해야 한다. \(f(0) = -0 + 0 + 4 = 4 \neq 2\) — <strong>곡선 밖의 점</strong>이다! 따라서 접점을 매개변수 \(t\)로 두어야 한다.<br><br>
                                 <strong>STEP 1 — 곡선 위/밖 검증:</strong> \(f(0) = 4 \neq 2\) \(\Rightarrow\) 점 \((0, 2)\)는 곡선 밖. "곡선 밖의 점 \(\Rightarrow\) 시나리오 ③ (매개변수 \(t\))" 적용.<br><br>
                                 <strong>STEP 2 — 접점 \((t,\ -t^3 + t + 4)\)로 두기:</strong> \(f'(x) = -3x^2 + 1\), 기울기 \(f'(t) = -3t^2 + 1\). 접선식: \( y - (-t^3 + t + 4) = (-3t^2 + 1)(x - t) \).<br><br>
-                                <strong>STEP 3 — 점 \((0, 2)\) 대입으로 \(t\) 결정:</strong> \(2 + t^3 - t - 4 = (-3t^2 + 1)(0 - t) = 3t^3 - t\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2t^3 = 2\) \(\Rightarrow\) \(t = -1\). 접점 \((-1, 2)\), 기울기 \(-3 + 1 = -2\). 접선: \(y - 2 = -2(x + 1) \Rightarrow y = -2x\). (점 \((0, 2)\) 대입 확인: \(y = 2\) ✓ — 잠깐, \(-2 \cdot 0 = 0 \neq 2\). 다시 계산: 접선 \(y - 2 = -2(x - (-1))\), 즉 \(y = -2x\). 그런데 \((0, 2)\)를 지나려면 \(y\)절편 \(= 2\)여야 함. \(y = -2x + 0\)은 \((0, 0)\)을 지남. 식 점검 필요!)<br><br>
-                                <strong>STEP 3 (재정리):</strong> 정확한 식: \(y - (-t^3 + t + 4) = (-3t^2 + 1)(x - t)\)에 \(x = 0\), \(y = 2\) 대입. \(2 - (-t^3 + t + 4) = (-3t^2 + 1)(-t)\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2 = 2t^3\) \(\Rightarrow\) \(t^3 = -1\) \(\Rightarrow\) \(t = -1\). 접점 \((-1,\ 1 + (-1) + 4) = (-1, 4)\). 기울기 \(-3 + 1 = -2\). 접선: \(y - 4 = -2(x + 1) \Rightarrow y = -2x + 2\). 점 \((0, 2)\) 대입: \(2 = 2\) ✓.<br><br>
+                                <strong>STEP 3 — 점 \((0, 2)\) 대입으로 \(t\) 결정:</strong> \(2 + t^3 - t - 4 = (-3t^2 + 1)(0 - t) = 3t^3 - t\) \(\Rightarrow\) \(t^3 - t - 2 = 3t^3 - t\) \(\Rightarrow\) \(-2t^3 = 2\) \(\Rightarrow\) \(t = -1\). 접점 \((-1,\ 1 + (-1) + 4) = (-1, 4)\). 기울기 \(-3 + 1 = -2\). 접선: \(y - 4 = -2(x + 1) \Rightarrow y = -2x + 2\). 점 \((0, 2)\) 대입: \(2 = 2\) ✓.<br><br>
                                 <strong>STEP 4 — 둘러싸인 넓이:</strong> 접선 \(y = -2x + 2\)는 \(x\)축과 \((1, 0)\), \(y\)축과 \((0, 2)\)에서 만남. 둘러싸인 직각삼각형의 넓이 \(= \dfrac{1}{2} \cdot 1 \cdot 2 = 1\). <span class="text-red-600 font-bold">답: \(1\).</span><br><br>
                                 <strong>핵심 통찰:</strong> "주어진 점이 곡선 위/밖인지 먼저 검증"하는 한 줄 습관이 시나리오 ① vs ③의 분기점. 곡선 밖이면 반드시 접점을 \(t\)로 놓아야 한다. 식 정리 시에는 부호 실수에 매우 주의.
                                 </p>
@@ -341,7 +341,7 @@
                     <li><strong>STEP 3 — 점 \((0,\ -3)\) 대입</strong>: \(-3 = -2 \cdot 0 + a + 3 \Rightarrow a = -6\).</li>
                     <li><strong>STEP 4 — 최종</strong>: \(a = -6\). <span class="text-red-600 font-bold">정답: ① \(-6\)</span></li>
                 </ol>
-                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "곡선 위의 점 \((t,\ f(t))\)에서의 접선이 외부의 한 점 \((p,\ q)\)를 지난다"형 — ① 접선 기울기 \(= f'(t)\) ② 접선식 \(y - f(t) = f'(t)(x - t)\) ③ 외부점 대입 — 차시 12 시나리오 ②(곡선 위의 점에서의 접선)의 정공법. 사차함수도 다항함수이므로 미분 공식이 그대로 적용된다.</p>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> "곡선 위의 점 \((t,\ f(t))\)에서의 접선이 외부의 한 점 \((p,\ q)\)를 지난다"형 — ① 접선 기울기 \(= f'(t)\) ② 접선식 \(y - f(t) = f'(t)(x - t)\) ③ 외부점 대입 — 차시 12 시나리오 ①(곡선 위의 점에서의 접선)의 정공법. 사차함수도 다항함수이므로 미분 공식이 그대로 적용된다.</p>
             </div></details>
 
             <div class="mt-4 text-sm text-slate-500 italic">
@@ -593,6 +593,8 @@
     </script>
 
         <script src="widgets.js"></script>
+            <script src="boardplans/calc_12.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

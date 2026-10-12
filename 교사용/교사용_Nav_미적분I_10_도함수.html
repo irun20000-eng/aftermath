@@ -112,6 +112,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -122,12 +123,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_09_미분계수.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_10_도함수.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_10_도함수.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_11_중단원마무리_II_1.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_10_도함수.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -155,6 +157,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_10_도함수.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -185,6 +202,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "\(f(x)=x^2\)에서 \(f'(1), f'(2), f'(3)\)을 일일이 정의식으로 계산하면 효율적인가?" 질문. 학생이 직접 셋을 계산해 \(2, 4, 6\) 도출 후 "\(f'(a)=2a\)" 패턴 발견 유도.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 Warm-up에서 세 미분계수 계산 → "\(f'(a)=2a\)"라는 새로운 함수 추측. 도함수 개념의 자연스러운 도출.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> \(f(x)=x^2\)에서 \(f'(1), f'(2), f'(3), f'(a)\)를 차례로 계산해 보고, 거기서 발견되는 규칙(공식)을 추측하라.</p>
@@ -195,6 +227,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>차시 09 연결:</strong> 09에서 한 점 \(a\)의 \(f'(a)\)를 정의했다면, 오늘은 \(a\)를 변수 \(x\)로 풀어 <strong>"\(x \mapsto f'(x)\)"라는 새로운 함수</strong>를 만든다. \(f'(a)\)는 도함수 \(f'(x)\)의 함숫값 — 단지 표기의 변화만이 아니라, "점별 도구 → 함수 도구"의 사고 전환이 핵심.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — f(x)=x² 의 미분계수에서 규칙 찾기"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 4장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> ① 도함수 정의 + 표기 4종 ② \((x^n)'=n x^{n-1}\) 인수분해 \(a^n-b^n\)으로 증명 시연 ③ 실수배·합·차 분배 ④ 곱의 미분법 — 순서로 판서. ④에서 "\(\{fg\}' \neq f' g'\)" 반례 \(f=g=x\) 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01 4개 박스 reveal-box 클릭으로 빈칸 채우기. 공식 카드 4장을 노트에 표 형태로 정리 — 첫 번째 무기 세트 완성.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 미분 공식 카드 4장 · 곱의 미분 시연</h2>
 
@@ -218,9 +263,30 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "상수의 미분은 1." → \((c)'=0\). 상수는 변하지 않으므로 변화율도 \(0\). 학습지 1번 (4) \(f(x)=100\)의 \(f'(x)=0\) 확인.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "\(f'(c)\)는 변수." → 미분계수 \(f'(c)\)는 상수 (특정 점의 값). 자기참조형 (4번)에서 \(f'(2)=k\)로 치환할 수 있는 근거.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 도함수의 정의와 표기"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — (xⁿ)′ = nxⁿ⁻¹ 과 상수함수의 도함수"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 실수배·합·차의 미분법"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 곱의 미분법과 {f(x)}²"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~3)은 짝활동. 1번은 정의로, 2번은 공식으로 같은 함수를 미분해 일치 확인 (검증 루틴). 3번 곱의 미분은 전개·검산 의무. L2(4·5·6)는 개별 후 무작위 호명.</div>
+            <div class="tl-s"><strong>학생:</strong> 1~3번 8분, 4·5·6번 7분. 4번 자기참조 \(f'(2)=k\) 치환, 5번 곱의 미분, 6번 정의식 변환 기술을 한 줄씩 노트.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 \(x^{10} \div (x-1)^2\) — "\(x=1\) 대입만 하면 끝"이라는 오개념 표면화 → "양변 미분" 핵심 발상을 칠판 분기 풀이. 형성 8번 \(\{f\}^2\) 곱의 미분 두 방법으로 검증.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 항등식 \(R(x)=ax+b\) 설정 → 미분 후 \(a=10,\ b=-9\) 도출. 8번 전개·공식 두 방법 일치 확인.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 span2 -->
         <div class="prob-card span2">
@@ -235,7 +301,9 @@
             <div class="q-ans">정답: (1) \(f'(x)=-5,\ f'(-2)=-5\) &nbsp; (2) \(4x-1,\ -9\) &nbsp; (3) \(3x^2,\ 12\) &nbsp; (4) \(0,\ 0\)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> 정의로 한 번 보인 뒤 공식으로 즉시 검증 — "공식은 정의의 결과"임을 학생이 체감하도록.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 정의로 미분하고 f′(−2) 구하기"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">공식으로 단번에 미분</span></div>
@@ -246,7 +314,9 @@
             </div>
             <div class="q-ans">정답: (1) \(2x\) (2) \(10x^9\) (3) \(0\) (4) \(3x^2+1\) (5) \(-4x^3+4x+1\) (6) \(10x^4-9x^2\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 공식으로 단번에 미분"></div>
+    <div class="problems">
         <!-- L1 3번 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">곱의 미분법 — 전개·검산</span></div>
@@ -259,7 +329,10 @@
             </div>
             <div class="q-ans">정답: (1) \(6x+17\) (2) \(12x^2+2x-5\) (3) \(-12x^3+8x\) (4) \(6x^2+6x-2\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — 곱의 미분법과 전개 검산"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">자기참조형 다항함수</span></div>
@@ -271,7 +344,9 @@
             </div>
             <div class="q-ans">정답: \(\mathbf{f'(1)=-12}\). 핵심: \(f'(c)\)는 상수이므로 미지수로 치환 가능.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — f′(2)를 상수 k로 치환"></div>
+    <div class="problems">
         <!-- L2 5번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">곱의 미분 — \(g'(1)\) 구하기</span></div>
@@ -282,7 +357,9 @@
             </div>
             <div class="q-ans">정답: \(\mathbf{g'(1)=7}\).</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 곱의 미분으로 g′(1)"></div>
+    <div class="problems">
         <!-- L2 6번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">극한식 \(\to\) 미분계수 변환</span></div>
@@ -293,7 +370,10 @@
             </div>
             <div class="q-ans">정답: \(\mathbf{12}\). 차시 09 Level 2 패턴의 직접 응용.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 극한식을 미분계수로 바꾸기"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 7번 span2 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 나머지정리 + 양변 미분 (\(x^{10} \div (x-1)^2\))</span></div>
@@ -308,7 +388,21 @@
             <div class="q-ans">정답: <strong>\(R(x)=10x-9\)</strong>. 핵심: "도함수는 모든 \(x\)에서 작동하는 새 함수"라는 인식이 있어야 "양변 미분" 발상이 가능 — 차시 10의 가장 중요한 사고 전환.</div>
             <div class="q-warn"><strong>판서 포인트:</strong> \((x-1)^2 Q(x)\) 미분에서 곱의 미분으로 \(2(x-1)Q\) 항이 생기지만 \(x=1\)에서 \(0\)이 되어 사라지는 것이 핵심. 곱의 미분 (D 박스 4번 공식)을 정확히 적용해야 함.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — x¹⁰ 을 (x−1)² 으로 나눈 나머지 (양변 미분)"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 \(x^{10} \div (x-1)^2\) — "\(x=1\) 대입만 하면 끝"이라는 오개념 표면화 → "양변 미분" 핵심 발상을 칠판 분기 풀이. 형성 8번 \(\{f\}^2\) 곱의 미분 두 방법으로 검증.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 항등식 \(R(x)=ax+b\) 설정 → 미분 후 \(a=10,\ b=-9\) 도출. 8번 전개·공식 두 방법 일치 확인.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성 8번 span2 -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — \(\{f\}^2\)의 도함수 = \(2 f f'\)</span></div>
@@ -321,7 +415,27 @@
             </div>
             <div class="q-ans">정답: 증명·검증 모두 \(y'=4x^3+4x\). 의의: 다항함수 합성 미분의 첫 사례 — 차시 12 이후 합성함수 미분으로 확장될 패턴.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="check.1" data-label="형성평가 8번 — {f(x)}² 를 두 방법으로 비교"></div>
+    <!-- F. 형성평가 채점 루브릭 -->
+    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
+    <div class="rubric">
+        <div class="rtitle">📋 채점 기준 (총 100점)</div>
+        <div class="rubric-grid">
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">\(y=f \cdot f\)로 분해 + 곱의 미분 공식 적용 + \(2 f f'\) 도출 + 두 방법 모두 \(4x^3+4x\) 일치 검증.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">공식 도출은 옳으나 검증에서 한 방법(전개 또는 공식)만 수행, 일치 비교 누락.</div>
+            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">곱의 미분법은 떠올렸으나 \(\{f g\}'=f' g+f g'\) 두 항 중 한 항만 적거나 부호 실수.</div>
+            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">\(\{f\}^2 \neq f \cdot f\)로 인식 못하거나 \(\{f g\}'=f' g'\) 잘못된 공식 사용. 부분 시도 점수.</div>
+            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "\(\{f g\}' \neq f' g'\). 반례 \(f=g=x\)로 자기점검 → \((x^2)'=2x \neq 1\). 곱의 미분은 반드시 두 항의 합."</div>
+        </div>
+    </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
         <!-- 도전 1 (span2 challenge) -->
         <div class="prob-card challenge span2">
             <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 미분계수와 도함수 유제 6 [26009-0056]</span></div>
@@ -336,7 +450,9 @@
             </div>
             <div class="q-ans">정답: <strong>① \(-\dfrac{5}{8}\)</strong>. 핵심: 함수방정식 → ① 차수 비교 ② 일반항 가정 ③ 도함수 사칙 ④ 계수 비교.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 차수 비교와 계수 비교로 f(0)"></div>
+    <div class="problems">
         <!-- 도전 2 (span2 challenge) -->
         <div class="prob-card challenge span2">
             <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2000학년도 수능 나형 20번 [3점] — 정의식 + 곱의 미분</span></div>
@@ -350,20 +466,20 @@
             <div class="q-ans">정답: <strong>① \(5\)</strong>. 핵심: 차시 09(미분계수 정의)와 차시 10(곱의 미분)이 한 문항에서 통합 — 평가원 표준 패턴.</div>
         </div>
     </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 극한식에서 함숫값·미분계수 꺼내기"></div>
+    </section>
 
-    <!-- F. 형성평가 채점 루브릭 -->
-    <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
-    <div class="rubric">
-        <div class="rtitle">📋 채점 기준 (총 100점)</div>
-        <div class="rubric-grid">
-            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">\(y=f \cdot f\)로 분해 + 곱의 미분 공식 적용 + \(2 f f'\) 도출 + 두 방법 모두 \(4x^3+4x\) 일치 검증.</div>
-            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">공식 도출은 옳으나 검증에서 한 방법(전개 또는 공식)만 수행, 일치 비교 누락.</div>
-            <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">곱의 미분법은 떠올렸으나 \(\{f g\}'=f' g+f g'\) 두 항 중 한 항만 적거나 부호 실수.</div>
-            <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">\(\{f\}^2 \neq f \cdot f\)로 인식 못하거나 \(\{f g\}'=f' g'\) 잘못된 공식 사용. 부분 시도 점수.</div>
-            <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "\(\{f g\}' \neq f' g'\). 반례 \(f=g=x\)로 자기점검 → \((x^2)'=2x \neq 1\). 곱의 미분은 반드시 두 항의 합."</div>
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 새로 얻은 무기 4개"를 학생 호명해 정리 (공식·실수배·합차·곱). 도전 1·2 과제 안내. 다음 차시(11) 중단원 마무리 14문항 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크. 도전 사전 시도.</div>
         </div>
     </div>
-
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 공식 카드 4장과 차시 11 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -385,6 +501,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -392,11 +510,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_09_미분계수.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_10_도함수.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_10_도함수.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_11_중단원마무리_II_1.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_10.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

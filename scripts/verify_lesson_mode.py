@@ -79,7 +79,7 @@ def main():
         if "lesson-mode.js" not in html:
             continue
         checked += 1
-        m = re.search(r'src="(boardplans/[^"]+\.js)"', html)
+        m = re.search(r'src="(boardplans/[^"?]+\.js)(?:\?[^"]*)?"', html)
         if not m:
             print(f"⚠️  {s.name}: 판서 계획 없음 (빈 판서 공간으로 동작)")
             continue

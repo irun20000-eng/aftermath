@@ -112,6 +112,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -122,12 +123,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_27_넓이_두곡선사이.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_28_속도와거리.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_28_속도와거리.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_29_중단원마무리_III_2.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_28_속도와거리.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -155,6 +157,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_28_속도와거리.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -185,6 +202,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 열기구 \(v(t)=2\,\text{m/s}\), 10초 후 높이를 발문. \(\int_0^{10}2\,dt=20\)이 높이와 같음을 확인 → 미적분 기본정리로 연결.</div>
+            <div class="tl-s"><strong>학생:</strong> 생각 열기 00. reveal-box ①② 클릭해 \(20\,\text{m}\)·정적분 \(20\) 확인. "두 값이 같은 이유"를 짝과 토의.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "속도 \(v(t)\)를 적분하면 위치가 나온다고? 그럼 속도가 음수가 되면 위치도 줄어든다 — 그때 '이동한 거리'는 어떻게 구할까?"</p>
@@ -195,6 +227,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>단원 통합:</strong> 차시 26 \(\int|f|\,dx\), 차시 27 \(\int|f-g|\,dx\), 차시 28 \(\int|v|\,dt\) — 절댓값 정적분이 III-2 전체를 관통하는 단 하나의 구조.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 열기구 속도를 적분하면 높이"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 4장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 위치 공식 → 변위 → 이동 거리 순으로 판서. <code>calc_28_vt_concept.png</code> 투사. 예제(\(v(t)=3-t\), \([2,6]\)) 변위 \(-4\)·거리 \(5\) 나란히 계산해 차이 강조. "변위 \(= 0\)이면 정지가 아니다" 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> 01 개념 구성 reveal-box 완성. "변위", "이동 거리", "방향 전환 시점"을 각자 카드로 메모.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -219,9 +264,30 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "변위가 0이면 점이 정지해 있었다." → 출발점으로 돌아온 것. 이동 거리는 0이 아닐 수 있음.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "두 점이 만난다 = 속도가 같다." → 만남은 위치 함수 \(x_P(t)=x_Q(t)\). 속도 같음은 "스침".</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (L1·L2·L3 + 형성평가 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 위치 = 초기 위치 + 변위 누적"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — 위치 변화량(변위)은 부호 있는 양"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 이동 거리는 |v|의 정적분"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 변위 vs 이동 거리 (v = 3 − t)"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 1번(L1 세 소문제) 4분 타이머. 2번(L1 공 쏘아 올리기) \(t=2\) 방향 전환 강조. 3번(L1 그래프형, <code>calc_28_q02_vt.png</code>) — 그림에서 삼각형 넓이로 즉답 훈련. 4~6번(L2) 개별 풀이 후 발표.</div>
+            <div class="tl-s"><strong>학생:</strong> 3번에서 그래프 보고 삼각형 넓이 합산 (3+2+4=9). 4번 방향 전환 \(t=1,3\)에서 구간 분리. 6번 "원점 복귀" \(x(T)=0\) 역산.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(L3 두 점 만남) 함정 경고 먼저 공개 — "만남 = 위치 비교, 스침 = 속도 비교". STEP 1~4 판서. 8번(형성) 모두 개별 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 \(x_P(t)=2t^2+5t\), \(x_Q(t)=-3+t^3-4t^2+14t\) 각자 작성 후 \(h(t)=t^3-6t^2+9t-3\) 도출. 8번 \(v=0\) 시점 \(t=5\) 확인 후 거리 \(50\,\text{m}\).</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card span2">
@@ -235,7 +301,9 @@
             </div>
             <div class="q-ans">정답: (1) \(0\) &nbsp; (2) \(-2\) &nbsp; (3) \(6\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 위치·변위·거리 세 물음 (v = 6t − 3t²)"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">공 쏘아 올리기 — 이동 거리</span></div>
@@ -246,7 +314,9 @@
             </div>
             <div class="q-ans">정답: \(40\,\text{m}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 쏘아 올린 공이 4초 동안 움직인 거리"></div>
+    <div class="problems">
         <!-- L1 3번 (그래프 의존) -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">그래프형 \(v(t)\) → 거리 (그림 <code>calc_28_q02_vt.png</code>)</span></div>
@@ -258,7 +328,10 @@
             <div class="q-ans">정답: \(9\)</div>
             <div class="q-warn"><strong>그림 포인트:</strong> 음수 영역도 절댓값으로 더함. 그래프에서 삼각형 넓이로 즉답 — 수식 계산보다 빠름.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — v 그래프의 삼각형 넓이로 거리"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">위치·변위·거리 종합 — \(v(t)=t^2-4t+3\)</span></div>
@@ -271,7 +344,9 @@
             </div>
             <div class="q-ans">정답: (1) \(-\dfrac{1}{3}\) &nbsp; (2) \(0\) &nbsp; (3) \(2\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 출발점 −1, 위치·변위·거리"></div>
+    <div class="problems">
         <!-- L2 5번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">구간별 속도 — 드론 높이</span></div>
@@ -282,7 +357,9 @@
             </div>
             <div class="q-ans">정답: \(33\,\text{m}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 구간별 속도, 드론의 12초 후 높이"></div>
+    <div class="problems">
         <!-- L2 6번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">원점 복귀 시각 — \(v(t)=4t^2-2t^3\)</span></div>
@@ -293,7 +370,10 @@
             </div>
             <div class="q-ans">정답: \(t = \dfrac{8}{3}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 다시 원점으로 돌아오는 시각"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 7번 (l3 span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 두 점 P·Q가 만나는 횟수 (위치 함수 비교)</span></div>
@@ -306,7 +386,21 @@
             <div class="q-ans">정답: <strong>3회</strong></div>
             <div class="q-warn"><strong>핵심 통찰:</strong> "만남 = 위치 비교 \(x_P=x_Q\)". 초기 위치(\(-3\)) 빠뜨리면 \(h(t)\)가 달라짐. 삼차 극값 분석으로 양의 실근 개수 판정.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — 두 점이 만나는 횟수 (위치 비교)"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(L3 두 점 만남) 함정 경고 먼저 공개 — "만남 = 위치 비교, 스침 = 속도 비교". STEP 1~4 판서. 8번(형성) 모두 개별 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 \(x_P(t)=2t^2+5t\), \(x_Q(t)=-3+t^3-4t^2+14t\) 각자 작성 후 \(h(t)=t^3-6t^2+9t-3\) 도출. 8번 \(v=0\) 시점 \(t=5\) 확인 후 거리 \(50\,\text{m}\).</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성평가 8번 (fc span2) -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 제동 거리</span></div>
@@ -317,33 +411,8 @@
             </div>
             <div class="q-ans">정답: \(50\,\text{m}\)</div>
         </div>
-
-        <!-- 도전 1 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 수학Ⅱ · 정적분의 활용 · 유제 4 — 방향 전환 시각 \(p\) 결정 + 이동 거리</span></div>
-            <div class="q-stmt">\(v(t)=2t^2-6t\). 시각 \(t=p\,(p\gt 0)\)에서 방향 전환. \(t=0\to p\) 이동 거리. ① 6 ② 7 ③ 8 ④ 9 ⑤ 10</div>
-            <div class="q-solve">
-                <span class="step">방향 전환: \(v=2t(t-3)=0\), 부호 변화 \(t=3\). \(\Rightarrow p=3\).</span>
-                <span class="step">\([0,3]\)에서 \(v\leq 0\). \(|v|=-v=-2t^2+6t\).</span>
-                <span class="step">\(\int_0^3(-2t^2+6t)\,dt=\big[-\tfrac{2t^3}{3}+3t^2\big]_0^3=-18+27=9\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>④ \(9\)</strong>. 핵심: 방향 전환 = \(v=0\)이고 부호 변화. 출발 시점 \(t=0\) 제외. 이동 거리는 항상 \(\int|v|\,dt\).</div>
-        </div>
-
-        <!-- 도전 2 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2007년 7월 학력평가 가형 21번 — 그래프에서 \(v(t)\) 복원 + 반대 방향 거리 \(12d\) (그림 <code>calc_28_chal2_kichul.png</code>)</span></div>
-            <div class="q-stmt">\(f'(0)=3\), \(t=1,3\)에서 \(f'(t)=0\). 출발 반대 방향 거리 \(d\). \(12d\)의 값.</div>
-            <div class="q-solve">
-                <span class="step">그림에서 \(f'(t)=a(t-1)(t-3)\). \(f'(0)=3a=3 \Rightarrow a=1\). 즉 \(v(t)=(t-1)(t-3)\).</span>
-                <span class="step">출발 방향: \(v(0)=3\gt 0\)(양의 방향). 반대 방향: \(v\lt 0\)인 구간 \([1,3]\).</span>
-                <span class="step">\(d=\int_1^3(-v)\,dt=\int_1^3(-t^2+4t-3)\,dt=\big[-\tfrac{1}{3}t^3+2t^2-3t\big]_1^3=0-(-\tfrac{4}{3})=\tfrac{4}{3}\).</span>
-                <span class="step">\(12d=12\cdot\tfrac{4}{3}=16\).</span>
-            </div>
-            <div class="q-ans">정답: \(16\). 핵심: 그래프 두 영점·초깃값으로 \(v(t)\) 완전 복원 → 반대 방향 구간 식별 → \(\int|v|\).</div>
-        </div>
     </div>
-
+    <div class="nv-board" data-key="check.1" data-label="형성평가 8번 — 제동 후 정지까지 달린 거리"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
     <div class="rubric">
@@ -357,6 +426,53 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">수능특강 수학Ⅱ · 정적분의 활용 · 유제 4 — 방향 전환 시각 \(p\) 결정 + 이동 거리</span></div>
+            <div class="q-stmt">\(v(t)=2t^2-6t\). 시각 \(t=p\,(p\gt 0)\)에서 방향 전환. \(t=0\to p\) 이동 거리. ① 6 ② 7 ③ 8 ④ 9 ⑤ 10</div>
+            <div class="q-solve">
+                <span class="step">방향 전환: \(v=2t(t-3)=0\), 부호 변화 \(t=3\). \(\Rightarrow p=3\).</span>
+                <span class="step">\([0,3]\)에서 \(v\leq 0\). \(|v|=-v=-2t^2+6t\).</span>
+                <span class="step">\(\int_0^3(-2t^2+6t)\,dt=\big[-\tfrac{2t^3}{3}+3t^2\big]_0^3=-18+27=9\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ \(9\)</strong>. 핵심: 방향 전환 = \(v=0\)이고 부호 변화. 출발 시점 \(t=0\) 제외. 이동 거리는 항상 \(\int|v|\,dt\).</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 방향 전환 시각 p까지 움직인 거리"></div>
+    <div class="problems">
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">2007년 7월 학력평가 가형 21번 — 그래프에서 \(v(t)\) 복원 + 반대 방향 거리 \(12d\) (그림 <code>calc_28_chal2_kichul.png</code>)</span></div>
+            <div class="q-stmt">\(f'(0)=3\), \(t=1,3\)에서 \(f'(t)=0\). 출발 반대 방향 거리 \(d\). \(12d\)의 값.</div>
+            <div class="q-solve">
+                <span class="step">그림에서 \(f'(t)=a(t-1)(t-3)\). \(f'(0)=3a=3 \Rightarrow a=1\). 즉 \(v(t)=(t-1)(t-3)\).</span>
+                <span class="step">출발 방향: \(v(0)=3\gt 0\)(양의 방향). 반대 방향: \(v\lt 0\)인 구간 \([1,3]\).</span>
+                <span class="step">\(d=\int_1^3(-v)\,dt=\int_1^3(-t^2+4t-3)\,dt=\big[-\tfrac{1}{3}t^3+2t^2-3t\big]_1^3=0-(-\tfrac{4}{3})=\tfrac{4}{3}\).</span>
+                <span class="step">\(12d=12\cdot\tfrac{4}{3}=16\).</span>
+            </div>
+            <div class="q-ans">정답: \(16\). 핵심: 그래프 두 영점·초깃값으로 \(v(t)\) 완전 복원 → 반대 방향 구간 식별 → \(\int|v|\).</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 그래프로 v 복원, 반대 방향 거리 12d"></div>
+    </section>
+
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 단원 III-2 세 차시 통합 — "세 공식이 모두 절댓값 정적분"을 판서 정리. 성찰 제출 + 차시 29 중단원 마무리 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 성찰 3유형 중 하나 이상 서술 제출. 도전 1 "\(p=3\)" 단계까지 혼자 확인.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 다음 차시 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -378,6 +494,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -385,11 +503,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_27_넓이_두곡선사이.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_28_속도와거리.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_28_속도와거리.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_29_중단원마무리_III_2.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_28.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

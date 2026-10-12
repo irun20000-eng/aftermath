@@ -155,6 +155,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -165,11 +166,12 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_30_대단원평가_III.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_31_학기말종합.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_31_학기말종합.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_31_학기말종합.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -197,6 +199,17 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="practice"><span class="k">1</span>실전 훈련</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">2</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_31_학기말종합.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -217,6 +230,26 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 실전 훈련 ===== -->
+    <section class="nv-panel" data-key="practice">
+    <h2 class="nv-panel-h">1 실전 훈련 <small>14문항 · 문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> "단원 I·II·III 도구 트리"를 칠판에 요약 판서. 학기 전체 흐름도 (극한→미분→적분) 한 줄로 정리 후 단원별 배지(badge) 색 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 펼치고 단원 구분 badge 색 확인 (파란=I, 초록=II, 보라=III).</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">풀이 42'</div>
+            <div class="tl-t"><strong>교사:</strong> 단원 I (Q1~3) 7분: 유리화·연속·사잇값. 단원 II (Q4~7) 14분: 미분계수·접선·최대최소·속도. 단원 III (Q8~10) 7분: 절댓값 정적분·두 곡선 넓이·적분 극값. 서술형 (Q11~14) 14분: I+II 연속·미분가능, 방정식 실근, II+III 접선+넓이, 속도·거리.</div>
+            <div class="tl-s"><strong>학생:</strong> 각 문항 첫 줄에 "단원 + 도구" 2단 메모 후 풀이. 서술형은 "근거→식→결론" 3단 구성 의식.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 학기 회고 발문 (학기말 종합 도입)</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "2학기 30차시에 걸쳐 배운 단원 I·II·III의 도구 중, 오늘 학기말 종합에서 가장 자신 있는 도구 하나와 가장 불안한 도구 하나를 각각 골라보자. 그 차이는 어디에서 생겼을까?"</p>
@@ -258,15 +291,7 @@
     <div class="q-warn"><strong>융합 포인트 ②:</strong> II+III 접선+넓이 — 접선식 도출(II 미분)이 먼저, 그다음 정적분으로 넓이(III). 순서 바꾸면 식 구성 불가.</div>
     <div class="q-warn"><strong>융합 포인트 ③:</strong> II+III 속도·거리 — 속도 인수분해+부호표(II)는 III 구간 분할의 전제. 부호표 없이 \(\int|v|\) 구간 분할은 불가.</div>
 
-    <!-- E. 문항별 해설 카드 — 단원별 묶음 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (14문항 — 단원별 묶음 + 서술형)</h2>
-
-    <!-- 단원 I 구분 -->
-    <div class="unit-divider">
-        <h3>📘 단원 I. 함수의 극한과 연속 — Q1~Q3</h3>
-        <p>극한 유리화 · 연속 미정 상수 · 사잇값 정리</p>
-    </div>
-
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
     <div class="problems">
         <!-- Q1 단원 I -->
         <div class="prob-card unit-i">
@@ -278,7 +303,9 @@
             </div>
             <div class="q-ans">정답: \(\dfrac{1}{8}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.1" data-label="1번 — 0/0 꼴 극한, 분자 유리화"></div>
+    <div class="problems">
         <!-- Q2 단원 I -->
         <div class="prob-card unit-i">
             <div class="prob-head"><span class="lvl lvl-ui">I</span><span class="q-num">2</span><span class="q-title">연속 — 미정 상수 \(a, b\)</span></div>
@@ -289,7 +316,9 @@
             </div>
             <div class="q-ans">정답: \(a=1\), \(b=5\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.2" data-label="2번 — 연속이 되게 하는 a, b"></div>
+    <div class="problems">
         <!-- Q3 단원 I (span2) -->
         <div class="prob-card unit-i span2">
             <div class="prob-head"><span class="lvl lvl-ui">I</span><span class="q-num">3</span><span class="q-title">사잇값 정리 — 실근 존재 증명</span></div>
@@ -301,13 +330,8 @@
             <div class="q-ans">정답: 사잇값 정리 적용. \((0,1)\)에서 부호 \(+\to-\), \((3,4)\)에서 부호 \(-\to+\). 각 구간에서 실근 존재.</div>
         </div>
     </div>
-
-    <!-- 단원 II 구분 -->
-    <div class="unit-divider unit-ii-bar">
-        <h3>📗 단원 II. 미분 — Q4~Q7</h3>
-        <p>미분계수 변형 · 접선(외부점) · 닫힌구간 최대최소 · 속도와 가속도</p>
     </div>
-
+    <div class="nv-board" data-key="practice.3" data-label="3번 — 사잇값 정리로 실근 존재 보이기"></div>
     <div class="problems">
         <!-- Q4 단원 II -->
         <div class="prob-card unit-ii">
@@ -320,7 +344,9 @@
             </div>
             <div class="q-ans">정답: \(-4\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.4" data-label="4번 — 미분계수의 정의로 극한 변형"></div>
+    <div class="problems">
         <!-- Q5 단원 II -->
         <div class="prob-card unit-ii">
             <div class="prob-head"><span class="lvl lvl-uii">II</span><span class="q-num">5</span><span class="q-title">접선의 방정식 — 외부점</span></div>
@@ -333,7 +359,9 @@
             <div class="q-ans">정답: \(y=\dfrac{3}{\sqrt[3]{4}}\,x+2\)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> 외부점 접선은 접점 \(t\) 설정→외부점 대입 방정식 풀기. 이 문항은 실수 근이 1개.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.5" data-label="5번 — 곡선 밖의 점에서 그은 접선"></div>
+    <div class="problems">
         <!-- Q6 단원 II -->
         <div class="prob-card unit-ii">
             <div class="prob-head"><span class="lvl lvl-uii">II</span><span class="q-num">6</span><span class="q-title">닫힌구간 최대·최소</span></div>
@@ -344,25 +372,22 @@
             </div>
             <div class="q-ans">정답: 최댓값 \(1\), 최솟값 \(-3\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.6" data-label="6번 — 닫힌구간의 최댓값·최솟값"></div>
+    <div class="problems">
         <!-- Q7 단원 II -->
         <div class="prob-card unit-ii">
             <div class="prob-head"><span class="lvl lvl-uii">II</span><span class="q-num">7</span><span class="q-title">속도와 가속도 — 첫 방향 전환</span></div>
             <div class="q-stmt">\(x(t)=t^3-6t^2+9t\). 처음 방향 전환 순간의 가속도.</div>
             <div class="q-solve">
-                <span class="step">\(v(t)=3t^2-12t+9=3(t-1)(t-3)\). 부호: \(0\lt t\lt 1\) 양, \(t\gt 1\) 음. 첫 전환 \(t=1\).</span>
+                <span class="step">\(v(t)=3t^2-12t+9=3(t-1)(t-3)\). 부호: \(0\lt t\lt 1\) 양, \(1\lt t\lt 3\) 음, \(t\gt 3\) 양. 첫 전환 \(t=1\).</span>
                 <span class="step">\(a(t)=6t-12\). \(a(1)=6-12=-6\).</span>
             </div>
             <div class="q-ans">정답: 가속도 \(-6\)</div>
         </div>
     </div>
-
-    <!-- 단원 III 구분 -->
-    <div class="unit-divider unit-iii-bar">
-        <h3>📕 단원 III. 적분 — Q8~Q10</h3>
-        <p>절댓값 정적분 · 두 곡선 넓이 · 적분으로 정의된 함수의 극값</p>
     </div>
-
+    <div class="nv-board" data-key="practice.7" data-label="7번 — 처음 방향을 바꿀 때의 가속도"></div>
     <div class="problems">
         <!-- Q8 단원 III -->
         <div class="prob-card unit-iii">
@@ -375,7 +400,9 @@
             </div>
             <div class="q-ans">정답: \(\dfrac{11}{6}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.8" data-label="8번 — 절댓값 정적분, 세 구간 분할"></div>
+    <div class="problems">
         <!-- Q9 단원 III -->
         <div class="prob-card unit-iii">
             <div class="prob-head"><span class="lvl lvl-uiii">III</span><span class="q-num">9</span><span class="q-title">두 곡선 사이의 넓이</span></div>
@@ -386,7 +413,9 @@
             </div>
             <div class="q-ans">정답: \(\dfrac{8}{3}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.9" data-label="9번 — 두 포물선 사이의 넓이"></div>
+    <div class="problems">
         <!-- Q10 단원 III (span2) -->
         <div class="prob-card unit-iii span2">
             <div class="prob-head"><span class="lvl lvl-uiii">III</span><span class="q-num">10</span><span class="q-title">적분으로 정의된 함수의 극솟값</span></div>
@@ -399,13 +428,8 @@
             <div class="q-ans">정답: 극솟값 \(-\dfrac{5}{3}\)</div>
         </div>
     </div>
-
-    <!-- 서술형 구분 -->
-    <div style="background:#fef2f2;border-left:6px solid #ef4444;border-radius:.75rem;padding:.875rem 1.25rem;margin:1.25rem 0 .75rem 0;">
-        <h3 style="font-size:1rem;font-weight:900;color:#991b1b;margin-bottom:.2rem;">✍️ 서술형 문제 [Q11~Q14] — 단원 간 융합</h3>
-        <p style="font-size:.8rem;color:#475569;">I+II 연속·미분가능 / II 방정식 실근 / II+III 접선+넓이 / II+III 속도·거리. "근거→식→결론" 3단 구성 필수.</p>
     </div>
-
+    <div class="nv-board" data-key="practice.10" data-label="10번 — 적분으로 정의된 함수의 극솟값"></div>
     <div class="problems">
         <!-- Q11 서술형 I+II (span2) -->
         <div class="prob-card l3 span2">
@@ -421,7 +445,9 @@
             <div class="q-ans">정답: \(a=0\), \(b=3\), \(c=2\)</div>
             <div class="q-warn"><strong>서술 채점 포인트:</strong> ① 연속 조건식 ② 미분가능 조건식 ③ \(f(-1)=4\) 조건식 ④ 연립 풀이+검증 — 4단계 모두 명시.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.11" data-label="11번 — 연속·미분가능 조건으로 a, b, c"></div>
+    <div class="problems">
         <!-- Q12 서술형 II 중심 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">12</span><span class="q-title">II 중심 — 방정식 세 실근 조건</span></div>
@@ -434,7 +460,9 @@
             <div class="q-ans">정답: \(0 \lt a \lt 4\)</div>
             <div class="q-warn"><strong>서술 채점 포인트:</strong> 보조함수 정의, 극값 좌표 명시, 극값 사이 수평선 교점 3개 조건 → 부등식 도출.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.12" data-label="12번 — 삼차방정식이 서로 다른 세 실근"></div>
+    <div class="problems">
         <!-- Q13 서술형 II+III (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">13</span><span class="q-title">II+III 융합 — 접선 + 넓이</span></div>
@@ -447,7 +475,9 @@
             <div class="q-ans">정답: (1) \(y=4x-4\) &nbsp; (2) \(\dfrac{8}{3}\)</div>
             <div class="q-warn"><strong>서술 채점 포인트:</strong> 접선식 도출, 위아래 판별 (제곱 차 \(\geq 0\)), 정적분 계산 — 3단계 명시.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.13" data-label="13번 — 접선과 곡선, y축 사이 넓이"></div>
+    <div class="problems">
         <!-- Q14 서술형 II+III (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">서술형</span><span class="q-num">14</span><span class="q-title">II+III 융합 — 속도·위치·거리</span></div>
@@ -462,7 +492,7 @@
             <div class="q-warn"><strong>서술 채점 포인트:</strong> \(v\) 인수분해+부호표, 위치 정적분 계산, 구간 분할 움직인 거리 \(\int|v|\) — 4단계.</div>
         </div>
     </div>
-
+    <div class="nv-board" data-key="practice.14" data-label="14번 — t = 5 의 위치와 움직인 거리"></div>
     <!-- F. 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 채점 루브릭 — 학기말 종합 서술형 Q11~Q14 (각 25점, 합 100점)</h2>
     <div class="rubric">
@@ -476,6 +506,19 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 2 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">2 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 학기 전체 오답률 Top 3 요약 (I: 미정형 유리화 누락, II: 부호표 끝점 비교 누락, III: 절댓값 구간 분할 누락). 학기말 성찰 QR + 미적분 II 예고.</div>
+            <div class="tl-s"><strong>학생:</strong> 학기말 종합 성찰 3유형 중 하나 이상 체크.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 학기 도구 트리와 미적분 II 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 학기말 종합 성찰 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -497,6 +540,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록 + 학기 종강 소감)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -504,10 +549,14 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_30_대단원평가_III.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_31_학기말종합.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_31_학기말종합.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_31.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

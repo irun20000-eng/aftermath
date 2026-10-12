@@ -17,9 +17,11 @@ window.LM_BOARD_PLAN = {
   lesson: 'calc_19',
   title: '19 속도와 가속도',
   legend: { k: '기본 식', b: '핵심 결과', r: '함정·주의', g: '학생 답' },
+  minutes: {'warmup': 5, 'concept': 15, 'level': 15, 'check': 10, 'reflect': 5},
   pages: {
     /* ---------- 생각 열기 ---------- */
     'warmup.1': {
+      label: '생각 열기 — 헬기 높이로 순간속도 끌어내기',
       bg: 'grid',
       zones: [
         { t: '평균 → 순간 (헬기 높이)', ex: [
@@ -40,6 +42,7 @@ window.LM_BOARD_PLAN = {
 
     /* ---------- 개념 구성 ---------- */
     'concept.1': {
+      label: '개념 1/5 — 속도와 가속도의 정의',
       bg: 'grid',
       zones: [
         { t: '사슬 그림', ex: [
@@ -56,6 +59,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'concept.2': {
+      label: '개념 2/5 — 운동 방향과 속도의 부호',
       bg: 'grid',
       zones: [
         { t: '수직선 위 방향 그림', ex: [
@@ -71,6 +75,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'concept.3': {
+      label: '개념 3/5 — 예제 x = −t³ + 6t²',
       bg: 'grid',
       zones: [
         { t: '속도·가속도 식', ex: [
@@ -89,6 +94,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'concept.4': {
+      label: '개념 4/5 — 쏘아 올린 물체',
       bg: 'grid',
       zones: [
         { t: '높이 그래프 (포물선)', axes: { x: 't', y: 'x' }, plot: { f: '-5*t*t+10*t+15', t: [0, 3], marks: [[1, '최고 20 m · v=0'], [3, '지면 t=3', '#dc2626']] }, h: 1.3, ex: [
@@ -106,6 +112,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'concept.5': {
+      label: '개념 5/5 — 구간 단속과 평균값 정리',
       bg: 'blank',
       zones: [
         { t: '평균속도 계산', ex: [
@@ -122,6 +129,7 @@ window.LM_BOARD_PLAN = {
 
     /* ---------- 수준별 훈련 ---------- */
     'level.1': {
+      label: '1번 — 부호표로 방향 전환 시각',
       bg: 'grid',
       zones: [
         { t: '속도·가속도 식', ex: [
@@ -138,6 +146,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'level.2': {
+      label: '2번 — 특정 높이에서의 속도',
       bg: 'grid',
       zones: [
         { t: '높이 2500 m가 되는 시각', ex: [
@@ -153,6 +162,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'level.3': {
+      label: '3번 — 속도·가속도 직접 계산',
       bg: 'grid',
       zones: [
         { t: '식', ex: [
@@ -164,6 +174,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'level.4': {
+      label: '4번 — 중근의 의미 (딱 한 번 같아진다)',
       bg: 'grid',
       zones: [
         { t: '두 속도 식', ex: [
@@ -180,6 +191,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'level.5': {
+      label: '5번 — 그래프 위에서 A·B·C 확인',
       bg: 'grid',
       zones: [
         { t: '그래프 옮겨 그리고 A·B 표시', axes: { x: 't', y: 'x' }, plot: { f: '(t-2)*(t-7)', t: [0, 10], marks: [[4.5, 'A 꼭짓점: v=0'], [10, 'B 끝점']] }, h: 1.7, ex: [
@@ -193,6 +205,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'level.6': {
+      label: '6번 — 가속도 0 = 속도의 극값',
       bg: 'grid',
       zones: [
         { t: '인수분해된 식', ex: [
@@ -210,6 +223,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'level.7': {
+      label: '7번 — 변위 vs 움직인 거리',
       bg: 'grid',
       zones: [
         { t: '위치 그래프 — 갔다, 돌아오고, 다시 간다', axes: { x: 't', y: 'x' }, plot: { f: 't*t*t-6*t*t+9*t', t: [0, 4], marks: [[1, '4 (전환)'], [3, '0 (전환)', '#dc2626'], [4, '4']] }, h: 1.4, ex: [
@@ -229,6 +243,7 @@ window.LM_BOARD_PLAN = {
 
     /* ---------- 형성평가 ---------- */
     'check.1': {
+      label: '형성평가 8번 — 세 물음을 세 구역에',
       bg: 'grid',
       zones: [
         { t: '(1) 최고 높이', ex: [
@@ -249,6 +264,7 @@ window.LM_BOARD_PLAN = {
 
     /* ---------- 도전 ---------- */
     'challenge.1': {
+      label: '도전 1 — 두 번째 만남 시각',
       bg: 'grid',
       zones: [
         { t: '만남 방정식', ex: [
@@ -265,6 +281,7 @@ window.LM_BOARD_PLAN = {
       ]
     },
     'challenge.2': {
+      label: '도전 2 — 보기 ㄱㄴㄷ',
       bg: 'grid',
       zones: [
         { t: '식 먼저', ex: [
@@ -284,6 +301,7 @@ window.LM_BOARD_PLAN = {
 
     /* ---------- 성찰 ---------- */
     'reflect.1': {
+      label: '정리 — 발표 키워드와 차시 23 예고',
       bg: 'blank',
       zones: [
         { t: '발표 키워드 모으기', ex: [

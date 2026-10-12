@@ -130,6 +130,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -140,12 +141,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_17_함수의그래프_응용.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_19_속도와가속도.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_18_방정식과부등식에의활용.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -173,6 +175,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -203,6 +220,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> 칠판에 \(x^3 - 3x + 1 = 0\)을 쓰고 "이걸 어떻게 풀까?"를 묻는다. 인수분해 시도 → 실패 → "근의 공식? 없다" → "<strong>그래도 실근 개수는 알 수 있다</strong>"고 선언.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00 발문에 대한 메모. \(y = f(x)\) 그래프 개형(차시 16) 활용 직관 발견.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> 이차방정식 \(x^2 - 2x - 3 = 0\)의 실근은 \(y = x^2 - 2x - 3\)과 \(x\)축의 교점. 삼차·사차로 확장하면? 매개변수 방정식 \(2x^3 - 6x = a\)의 실근 개수는 \(a\)에 따라 어떻게 달라질까?</p>
@@ -213,6 +245,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>차시 16·17 연결:</strong> 차시 16의 그래프 개형 + 차시 17의 최솟값 사고가 본 차시에서 <strong>방정식·부등식 해결 도구</strong>로 통합. 단원 II의 도함수 활용 시리즈 클라이맥스.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 인수분해 없이 실근 개수"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 5장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 삼차함수 실근 개수 4케이스 표를 칠판에 정리(\(Mm \lt 0\) → 3개, \(= 0\) → 2개, \(\gt 0\) → 1개, 단조 → 1개) → 매개변수 분리 예제 시연 → 부등식 = 최솟값 동치.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01의 5섹션을 자기 노트에 4케이스 표 + 분리법 + 최솟값 공식 3가지로 압축 정리. reveal-box 클릭.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -235,9 +280,31 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "매개변수 분리는 항상 가능하다." → 일부 식은 분리가 어려울 수 있음(예: \(ax^3 + b x = 1\)에서 \(a, b\) 두 매개변수). 분리 가능한 표준 패턴 \(f(x) = a\)를 우선 익힌다.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "강부등식 \(f \gt 0\) ⇔ \(\min f \gt 0\)" 단순 적용. → 등호 성립 가능성이 있는 경우(예: 어떤 \(x_0\)에서 \(f(x_0) = 0\)) 강부등식은 위배. <strong>등호 검증 필수</strong>.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/5 — 극값 부호로 보는 실근 개수 4케이스"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/5 — x³+6x²+9x+1=0 의 실근 개수"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/5 — 매개변수 분리 2x³−6x=a"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/5 — 부등식 f(x) ≥ 0 ⇔ 최솟값 ≥ 0"></div>
+    <div class="nv-board" data-key="concept.5" data-label="개념 5/5 — 차함수 h = f − g 와 매개변수"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1·2·3번) 짝활동 — 1번 (2)에서 "사차함수 극솟값 0 + 음수 + 극댓값 양수 = 실근 3" 추론 발표. L2(4·5·6번)는 매개변수 분리 시범.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 5분, 2번 3분, 3번 4분, 4~6번 8분. 6번에서 차함수 \(h(x) = f - g\) 환원 + \(\min h \geq 0\) 직접 유도.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(절댓값 \(|f(x)| = k\)) 그래프를 칠판에 단계적으로 그린다 → 수평선 위치별 교점 개수 표 → 트랩 박스 공개. 형성 8번은 모두 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 \(f \lt 0\) 영역을 \(x\)축 기준 위로 뒤집어 \(|f|\) 그래프 직접 작도. 8번은 4분 안에 \(-4 \lt k \lt 0\) 도출.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card span2">
@@ -251,7 +318,9 @@
             <div class="q-ans">정답: (1) 1개 &nbsp; (2) 3개</div>
             <div class="q-warn"><strong>판서 포인트:</strong> (2)에서 학생들이 가장 자주 놓치는 부분 — "극솟값 = 0"인 점은 접점이지만 <strong>서로 다른 실근 카운트에서는 1점</strong>으로 센다. 중복도와 서로 다른 실근 수의 차이를 명확히.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 단조함수와 사차함수의 실근 개수"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">매개변수 — 세 실근 조건</span></div>
@@ -262,7 +331,9 @@
             </div>
             <div class="q-ans">정답: \(-1 \lt a \lt 0\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 세 실근이 되는 a의 범위"></div>
+    <div class="problems">
         <!-- L1 3번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">3</span><span class="q-title">부등식 증명 — 최솟값 = 0 케이스</span></div>
@@ -273,7 +344,10 @@
             </div>
             <div class="q-ans">정답: (1) 등호 \(x = 2\)에서 성립 &nbsp; (2) 등호 \(x = 1\)에서 성립. (강부등식 \(\gt\)는 등호 성립점 제외하면 성립.)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — 최솟값이 0인 부등식 증명"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">두 곡선 교점 — 매개변수 분리</span></div>
@@ -285,7 +359,9 @@
             <div class="q-ans">정답: \(a \lt 1\) 또는 \(a \gt 5\) → 1개. \(a = 1\) 또는 \(a = 5\) → 2개. \(1 \lt a \lt 5\) → 3개.</div>
             <div class="q-warn"><strong>판서 포인트:</strong> "두 곡선의 교점" 문제는 항상 차함수 \(h = f_1 - f_2\)로 환원 → 매개변수 분리. 본질적으로 한 가지 전략으로 통합됨을 강조.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 두 곡선의 교점 개수와 a"></div>
+    <div class="problems">
         <!-- L2 5번 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">5</span><span class="q-title">부등식 매개변수 — 최솟값 \(k\)</span></div>
@@ -297,7 +373,9 @@
             </div>
             <div class="q-ans">정답: \(k = -1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 모든 x에서 성립하는 k의 최솟값"></div>
+    <div class="problems">
         <!-- L2 6번 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">두 함수 비교 + 매개변수</span></div>
@@ -309,21 +387,38 @@
             </div>
             <div class="q-ans">정답: \(k \geq 14\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.6" data-label="6번 — 차함수의 최솟값으로 k 범위"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 7번 span2 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — 절댓값 + 매개변수 (5개 실근)</span></div>
             <div class="q-stmt">\(f(x) = 2x^3 - 3x^2 - 12x + 4\)에 대해 \(|f(x)| = k\)가 서로 다른 5개의 실근을 갖는 \(k\).</div>
             <div class="q-solve">
                 <span class="step">STEP 1: \(f'(x) = 6(x-2)(x+1)\). 극댓값 \(f(-1) = -2 - 3 + 12 + 4 = 11\), 극솟값 \(f(2) = 16 - 12 - 24 + 4 = -16\).</span>
-                <span class="step">STEP 2: \(|f(x)|\) 그래프 — \(f \lt 0\) 영역(\(x\)축 사이)이 위로 뒤집힘. 원래 극솟값 \(-16\)이 새 극댓값 \(16\)으로 등장.</span>
-                <span class="step">STEP 3: \(|f|\)의 그래프 봉우리 패턴: 좌측 극대 \(11\), \(x\)축 접점, 큰 봉우리 \(16\), \(x\)축 접점, 우측 단조증가.</span>
-                <span class="step">STEP 4: 수평선 \(y = k\)가 정확히 5점에서 교차 ⇔ <strong>\(k = 11\)</strong>(좌측 극대값에서 접점 1 + 큰 봉우리 좌우 2 + 우측 단조 영역 2 = 총 5점).</span>
+                <span class="step">STEP 2: \(|f(x)|\) 그래프 — \(f \lt 0\) 영역(첫 \(x\)절편의 왼쪽, 둘째·셋째 \(x\)절편 사이)이 위로 뒤집힘. 원래 극솟값 \(-16\)이 새 극댓값 \(16\)으로 등장.</span>
+                <span class="step">STEP 3: \(|f|\)의 그래프 봉우리 패턴: 좌측 끝 감소, \(x\)축 접점, 좌측 극대 \(11\), \(x\)축 접점, 큰 봉우리 \(16\), \(x\)축 접점, 우측 단조증가.</span>
+                <span class="step">STEP 4: 수평선 \(y = k\)가 정확히 5점에서 교차 ⇔ <strong>\(k = 11\)</strong>(좌측 극대값에서 접점 1 + 큰 봉우리 좌우 2 + 좌측 끝 감소 구간 1 + 우측 증가 구간 1 = 총 5점; \(0 \lt k \lt 11\)이면 6점, \(11 \lt k \lt 16\)이면 4점).</span>
             </div>
             <div class="q-ans">정답: \(k = 11\) (정밀 그래프 분석 결과). 핵심: 절댓값 후의 "새 극댓값"이 원래 극솟값의 절댓값임을 인지.</div>
             <div class="q-warn"><strong>발표 유도:</strong> 학생이 \(|f|\) 그래프를 칠판에 직접 그리게 한다 — \(f \lt 0\) 부분을 빨간색으로 표시한 뒤 그 부분을 \(x\)축 기준 위로 반전. "절댓값 = 양수만"이라는 기계적 사고를 시각적으로 깨뜨리는 결정적 순간.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — |f(x)| = k 가 서로 다른 5개의 실근"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 7번(절댓값 \(|f(x)| = k\)) 그래프를 칠판에 단계적으로 그린다 → 수평선 위치별 교점 개수 표 → 트랩 박스 공개. 형성 8번은 모두 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번에서 \(f \lt 0\) 영역을 \(x\)축 기준 위로 뒤집어 \(|f|\) 그래프 직접 작도. 8번은 4분 안에 \(-4 \lt k \lt 0\) 도출.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성 8번 span2 fc -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">8</span><span class="q-title">형성평가 — 두 곡선 세 점 교차</span></div>
@@ -335,33 +430,8 @@
             </div>
             <div class="q-ans">정답: <strong>\(-4 \lt k \lt 0\)</strong></div>
         </div>
-
-        <!-- 도전 1 span2 challenge -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 도함수 활용 2 유제 5 — 세제곱합 인수분해 + 강부등식</span></div>
-            <div class="q-stmt">모든 실수 \(x\)에 대해 \(\dfrac{1}{4}x^4 + (k - 3)^3 x + 12 \gt 0\)이 성립하는 정수 \(k\)의 합. ① 6 ② 7 ③ 8 ④ 9 ⑤ 10</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(f'(x) = x^3 + (k-3)^3\). 세제곱합 \(= (x + k - 3)\{x^2 - (k-3)x + (k-3)^2\}\). 이차인수 \(= \bigl(x - \tfrac{k-3}{2}\bigr)^2 + \tfrac{3}{4}(k-3)^2 \geq 0\) 항상 → \(f' = 0\)은 \(x = 3 - k\) 유일.</span>
-                <span class="step">STEP 2: \(f(3 - k) = \tfrac{1}{4}(3 - k)^4 + (k - 3)^3 (3 - k) + 12 = \tfrac{1}{4}(k-3)^4 - (k-3)^4 + 12 = -\tfrac{3}{4}(k-3)^4 + 12\).</span>
-                <span class="step">STEP 3: \(-\tfrac{3}{4}(k-3)^4 + 12 \gt 0 \Rightarrow (k-3)^4 \lt 16 \Rightarrow (k-3)^2 \lt 4 \Rightarrow 1 \lt k \lt 5\).</span>
-                <span class="step">STEP 4: 정수 \(k = 2, 3, 4\). 합 \(= 9\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>④ \(9\)</strong>. 핵심: \(f' = x^3 + c^3\)는 세제곱합 인수분해로 임계점 유일 확인 → 그 지점에서 \(\min f \gt 0\).</div>
-        </div>
-
-        <!-- 도전 2 span2 challenge -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2015학년도 6월 모의평가 나형 17번 [4점] — 근의 부호 분포</span></div>
-            <div class="q-stmt">\(f(x) = 3x^3 - x^2 - 3x\), \(g(x) = x^3 - 4x^2 + 9x + a\)의 교점 방정식이 <strong>두 양의 실근 + 한 음의 실근</strong>인 정수 \(a\). ① 6 ② 7 ③ 8 ④ 9 ⑤ 10</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(f = g \Rightarrow 2x^3 + 3x^2 - 12x = a\). \(h(x) = 2x^3 + 3x^2 - 12x\), \(h'(x) = 6(x + 2)(x - 1)\). 극댓값 \(h(-2) = 20\), 극솟값 \(h(1) = -7\), \(h(0) = 0\).</span>
-                <span class="step">STEP 2: 세 실근 ⇔ \(-7 \lt a \lt 20\). 추가 조건: 음근 1 + 양근 2 ⇔ 수평선 \(y = a\)가 \(h(0) = 0\) 아래에 위치(즉 \(a \lt 0\)).</span>
-                <span class="step">STEP 3: 두 조건 결합 → \(-7 \lt a \lt 0\). 정수 \(a \in \{-6, -5, -4, -3, -2, -1\}\) → <strong>6개</strong>.</span>
-            </div>
-            <div class="q-ans">정답: <strong>① \(6\)</strong>. 핵심: 매개변수 분리 + \(h(0)\) 값을 기준으로 수평선의 부호 분포 통제.</div>
-        </div>
     </div>
-
+    <div class="nv-board" data-key="check.1" data-label="형성평가 8번 — 두 곡선이 세 점에서 만날 조건"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (8번 문항)</h2>
     <div class="rubric">
@@ -375,6 +445,53 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
+        <!-- 도전 1 span2 challenge -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 수학Ⅱ 도함수 활용 2 유제 5 — 세제곱합 인수분해 + 강부등식</span></div>
+            <div class="q-stmt">모든 실수 \(x\)에 대해 \(\dfrac{1}{4}x^4 + (k - 3)^3 x + 12 \gt 0\)이 성립하는 정수 \(k\)의 합. ① 6 ② 7 ③ 8 ④ 9 ⑤ 10</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f'(x) = x^3 + (k-3)^3\). 세제곱합 \(= (x + k - 3)\{x^2 - (k-3)x + (k-3)^2\}\). 이차인수 \(= \bigl(x - \tfrac{k-3}{2}\bigr)^2 + \tfrac{3}{4}(k-3)^2 \geq 0\) 항상 → \(f' = 0\)은 \(x = 3 - k\) 유일.</span>
+                <span class="step">STEP 2: \(f(3 - k) = \tfrac{1}{4}(3 - k)^4 + (k - 3)^3 (3 - k) + 12 = \tfrac{1}{4}(k-3)^4 - (k-3)^4 + 12 = -\tfrac{3}{4}(k-3)^4 + 12\).</span>
+                <span class="step">STEP 3: \(-\tfrac{3}{4}(k-3)^4 + 12 \gt 0 \Rightarrow (k-3)^4 \lt 16 \Rightarrow (k-3)^2 \lt 4 \Rightarrow 1 \lt k \lt 5\).</span>
+                <span class="step">STEP 4: 정수 \(k = 2, 3, 4\). 합 \(= 9\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ \(9\)</strong>. 핵심: \(f' = x^3 + c^3\)는 세제곱합 인수분해로 임계점 유일 확인 → 그 지점에서 \(\min f \gt 0\).</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 강부등식과 정수 k의 합"></div>
+    <div class="problems">
+        <!-- 도전 2 span2 challenge -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2015학년도 6월 모의평가 나형 17번 [4점] — 근의 부호 분포</span></div>
+            <div class="q-stmt">\(f(x) = 3x^3 - x^2 - 3x\), \(g(x) = x^3 - 4x^2 + 9x + a\)의 교점 방정식이 <strong>두 양의 실근 + 한 음의 실근</strong>인 정수 \(a\). ① 6 ② 7 ③ 8 ④ 9 ⑤ 10</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(f = g \Rightarrow 2x^3 + 3x^2 - 12x = a\). \(h(x) = 2x^3 + 3x^2 - 12x\), \(h'(x) = 6(x + 2)(x - 1)\). 극댓값 \(h(-2) = 20\), 극솟값 \(h(1) = -7\), \(h(0) = 0\).</span>
+                <span class="step">STEP 2: 세 실근 ⇔ \(-7 \lt a \lt 20\). 추가 조건: 음근 1 + 양근 2 ⇔ 수평선 \(y = a\)가 \(h(0) = 0\) 아래에 위치(즉 \(a \lt 0\)).</span>
+                <span class="step">STEP 3: 두 조건 결합 → \(-7 \lt a \lt 0\). 정수 \(a \in \{-6, -5, -4, -3, -2, -1\}\) → <strong>6개</strong>.</span>
+            </div>
+            <div class="q-ans">정답: <strong>① \(6\)</strong>. 핵심: 매개변수 분리 + \(h(0)\) 값을 기준으로 수평선의 부호 분포 통제.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 양근 둘·음근 하나가 되는 정수 a"></div>
+    </section>
+
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 배운 3가지 핵심 아이디어를 한 단어씩 줄이면?"을 무작위 3명. QR 성찰지 안내 + 도전 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 사전 시도.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 다음 차시 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -396,6 +513,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -403,11 +522,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_17_함수의그래프_응용.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_18_방정식과부등식에의활용.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_19_속도와가속도.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_18.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

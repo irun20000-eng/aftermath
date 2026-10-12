@@ -140,6 +140,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -149,12 +150,13 @@
     <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_학습지_미적분I_01_함수의극한.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_01_함수의극한.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_01_함수의극한.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -182,6 +184,21 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="warmup"><span class="k">1</span>생각 열기</button>
+        <button type="button" class="nv-tab" data-key="concept"><span class="k">2</span>개념 구성</button>
+        <button type="button" class="nv-tab" data-key="level"><span class="k">3</span>수준별 훈련</button>
+        <button type="button" class="nv-tab" data-key="check"><span class="k">4</span>형성평가</button>
+        <button type="button" class="nv-tab" data-key="challenge"><span class="k">5</span>도전</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">6</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_01_함수의극한.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -212,6 +229,21 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 생각 열기 ===== -->
+    <section class="nv-panel" data-key="warmup">
+    <h2 class="nv-panel-h">1 생각 열기 <small>도입 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "버스가 정류장에 닿는 순간의 속도"를 묻는다. 칠판에 키워드 "직전 vs 닿음"만 적고 정답을 주지 않는다.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 00. Warm-up 발문에 1분간 자유 메모 → 짝과 30초 공유.</div>
+        </div>
+    </div>
     <!-- C. 생각 열기 운영 가이드 -->
     <h2 class="section-h"><span class="ico">C</span> 생각 열기 운영 가이드</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "도착 직전"과 "도착한 순간"은 무엇이 다를까? 수학적으로 어떻게 표현할까?</p>
@@ -222,6 +254,19 @@
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>1학기 연결:</strong> 수열에서는 "\(n\)이 한없이 커질 때"였고, 오늘부터는 "\(x\)가 \(a\)에 한없이 가까워질 때"로 정의역이 이산 → 연속으로 확장된다.</p>
 
+    <div class="nv-board" data-key="warmup.1" data-label="생각 열기 — 버스 도착 직전 vs 도착한 순간"></div>
+    </section>
+
+    <!-- ===== 2 개념 구성 ===== -->
+    <section class="nv-panel" data-key="concept">
+    <h2 class="nv-panel-h">2 개념 구성 <small>개념 15' · 수업 화면 4장</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">개념 15'</div>
+            <div class="tl-t"><strong>교사:</strong> 직관 정의 → 좌·우극한 → 존재 조건 순으로 판서. 각 단계 reveal-box를 학생이 직접 클릭하도록 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 01번 4개 박스에 자기 언어로 핵심 단어를 적고, 빈칸을 채워가며 정의를 내면화.</div>
+        </div>
+    </div>
     <!-- D. 개념 지도 노트 -->
     <h2 class="section-h"><span class="ico">D</span> 개념 지도 노트 — 핵심 공식 · 판서 시연 · 흔한 오개념</h2>
 
@@ -235,7 +280,7 @@
         <ol>
             <li>수직선 위에 점 \(a\)와 화살표 두 개(왼쪽·오른쪽)를 그리고 "둘 다 닿지는 않음"을 강조.</li>
             <li>함수 \(f(x) = x + 1\)의 \(x \to 2\) 극한을 그래프로 시각화 → \(L = 3\)을 점선으로 표시.</li>
-            <li>구간정의 함수(\(x &lt; 1\)에서 \(x+3\), \(x \geq 1\)에서 \(2x\))를 그려 좌·우극한이 일치하는 경우를 확인.</li>
+            <li>구간정의 함수(\(x &lt; 1\)에서 \(x+3\), \(x \geq 1\)에서 \(2x\))를 그려 좌·우극한이 일치하지 않는 경우(좌극한 \(4\) ≠ 우극한 \(2\))를 확인.</li>
             <li>점프 함수(\(\frac{|x|}{x}\))를 그려 좌·우극한이 다른 경우 → \(\lim_{x \to 0}\)이 존재하지 않음.</li>
             <li>구멍 뚫린 그래프(\(\frac{x^2-1}{x-1}\), \(x=1\)만 5로 재정의)로 \(f(1) \neq \lim_{x \to 1} f(x)\) 강조.</li>
         </ol>
@@ -245,9 +290,30 @@
     <div class="q-warn"><strong>오개념 ②:</strong> "좌·우극한 중 하나만 있으면 극한이 존재한다." → 둘 다 존재 + 일치할 때만 존재.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "\(\infty\)는 큰 수다." → \(\infty\)는 수가 아니라 "한없이 커지는 상태"의 약속 기호.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (Level 1·2·3 + 형성평가 + 도전 1·2)</h2>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 함수의 극한 (직관적 정의)"></div>
+    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — 좌극한과 우극한"></div>
+    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 극한 존재의 필요충분조건"></div>
+    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 발산 ∞ 와 −∞"></div>
+    </section>
 
+    <!-- ===== 3 수준별 훈련 ===== -->
+    <section class="nv-panel" data-key="level">
+    <h2 class="nv-panel-h">3 수준별 훈련 <small>문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L1·L2 15'</div>
+            <div class="tl-t"><strong>교사:</strong> L1(1~2번)은 짝활동, L2(3~4번)는 개별 풀이 후 무작위 호명 발표. 4번 풀이는 칠판 분기 풀이.</div>
+            <div class="tl-s"><strong>학생:</strong> 1·2번 3분, 3·4번 5분. 4번에서 좌·우 풀이를 색깔로 분리하여 노트 정리.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 5번(오답률 1위 함정) 먼저 학생에게 "답이 5라고 생각하는 사람?"부터 물어 오개념을 표면화 → 트랩 박스 공개. 형성 6번은 모두에게 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 5번에서 \(f(1)\)과 \(\lim f(x)\)를 색깔로 분리 표기. 6번은 4분 안에 좌·우극한·존재 판정 세 줄로 정리.</div>
+        </div>
+    </div>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 1</h2>
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card">
@@ -260,7 +326,9 @@
             </div>
             <div class="q-ans">정답: (1) \(5\) &nbsp; (2) \(4\) &nbsp; (3) \(\dfrac{1}{2}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.1" data-label="1번 — 다항·유리함수 직접 대입"></div>
+    <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">그래프 읽기 — 좌·우극한 + 존재 판정</span></div>
@@ -273,7 +341,10 @@
             <div class="q-ans">정답: 좌극한 \(=1\), 우극한 \(=2\), \(\lim_{x \to 1} f(x)\) <strong>존재하지 않음</strong>. (참고: \(f(1)=2\)이지만 좌극한과 같지 않으므로 일반 극한 없음.)</div>
             <div class="q-warn"><strong>판서 포인트:</strong> 빈 원 \(\circ\)은 "그 점은 값이 없지만 함수가 그 점에 수렴한다"는 의미. 검은 점 \(\bullet\)은 정의값. 둘을 혼동하면 좌·우극한이 뒤바뀜.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.2" data-label="2번 — 그래프에서 좌·우극한 읽기"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
+    <div class="problems">
         <!-- L2 3번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">절댓값 함수 \(\frac{|x|}{x}\)</span></div>
@@ -285,7 +356,9 @@
             </div>
             <div class="q-ans">정답: 우극한 \(1\), 좌극한 \(-1\), 일반 극한 <strong>존재하지 않음</strong>.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.3" data-label="3번 — |x|/x 좌·우 분리"></div>
+    <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">구간정의 함수 좌·우극한</span></div>
@@ -297,7 +370,10 @@
             </div>
             <div class="q-ans">정답: 좌극한 \(4\), 우극한 \(2\), 일반 극한 <strong>존재하지 않음</strong>.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="level.4" data-label="4번 — 구간별 함수, 식을 골라 대입"></div>
+    <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
+    <div class="problems">
         <!-- L3 5번 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — 극한값과 함숫값의 분리</span></div>
@@ -310,7 +386,21 @@
             <div class="q-ans">정답: \(f(1) = 5\), \(\lim_{x \to 1} f(x) = 2\). <strong>두 값은 다르다.</strong></div>
             <div class="q-warn"><strong>발표 유도:</strong> "왜 다를 수 있는가?"를 학생에게 직접 한 문장으로 말하게 한다 — "극한은 \(x = 1\)이 아닌 주변만 보기 때문". 이 한 문장이 미적분 전체의 출발점.</div>
         </div>
+    </div>
+    <div class="nv-board" data-key="level.5" data-label="5번 — 극한값 ≠ 함숫값 (오답률 1위)"></div>
+    </section>
 
+    <!-- ===== 4 형성평가 ===== -->
+    <section class="nv-panel" data-key="check">
+    <h2 class="nv-panel-h">4 형성평가 <small>L3·형성 10'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">L3·형성 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 5번(오답률 1위 함정) 먼저 학생에게 "답이 5라고 생각하는 사람?"부터 물어 오개념을 표면화 → 트랩 박스 공개. 형성 6번은 모두에게 풀이 의무.</div>
+            <div class="tl-s"><strong>학생:</strong> 5번에서 \(f(1)\)과 \(\lim f(x)\)를 색깔로 분리 표기. 6번은 4분 안에 좌·우극한·존재 판정 세 줄로 정리.</div>
+        </div>
+    </div>
+    <div class="problems">
         <!-- 형성 6번 (span2 fc) -->
         <div class="prob-card fc span2">
             <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — \(\dfrac{x^2-4}{|x-2|}\) 좌·우극한</span></div>
@@ -322,34 +412,8 @@
             </div>
             <div class="q-ans">정답: 우극한 \(4\), 좌극한 \(-4\), 일반 극한 <strong>존재하지 않음</strong>.</div>
         </div>
-
-        <!-- 도전 1 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 함수의극한 유제 2 — 합성 극한</span></div>
-            <div class="q-stmt">그래프 \(y=f(x)\)에서 \(\lim_{x \to -1^-} f(x+2) + \lim_{x \to 1^+} f(-x)\). 선택지 ① \(-2\) ② \(-1\) ③ \(0\) ④ \(1\) ⑤ \(2\).</div>
-            <div class="q-solve">
-                <span class="step">STEP 1: \(s = x+2\) 치환. \(x \to -1^-\) ⇒ \(s \to 1^-\). 따라서 \(\lim_{x \to -1^-} f(x+2) = \lim_{s \to 1^-} f(s)\).</span>
-                <span class="step">STEP 2: 그래프에서 \(s=1\) 왼쪽 좌극한 \(= 0\).</span>
-                <span class="step">STEP 3: \(t = -x\) 치환. \(x \to 1^+\) ⇒ \(t \to -1^-\) (부호·방향 동시 반전). \(\lim_{x \to 1^+} f(-x) = \lim_{t \to -1^-} f(t) = -1\).</span>
-                <span class="step">STEP 4: 합 \(= 0 + (-1) = -1\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>② \(-1\)</strong>. 핵심: 합성 극한은 안쪽 변수의 접근 방향(±)까지 추적.</div>
-        </div>
-
-        <!-- 도전 2 (span2 challenge) -->
-        <div class="prob-card challenge span2">
-            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2022학년도 수능 4번 [3점]</span></div>
-            <div class="q-stmt">그래프 \(y=f(x)\)에서 \(\lim_{x \to -1^-} f(x) + \lim_{x \to 2} f(x)\). 선택지 ① 1 ② 2 ③ 3 ④ 4 ⑤ 5.</div>
-            <div class="q-solve">
-                <span class="step">그래프 구조: \(x \lt -1\) 우하향 직선이 \((-1, 3)\) 열린점으로, \(-1 \lt x \lt 1\) 대각선이 \((-1, 0)\)·\((1, 3)\) 열린점, \(1 \le x\)에서 \(y=1\) 수평선 (단 \(x=2\)는 열린점). 함숫값 \(f(-1) = 2\), \(f(2) = 3\)은 고립 닫힌점.</span>
-                <span class="step">\(\lim_{x \to -1^-} f(x) = 3\) (좌측 직선이 열린점 \((-1,3)\)에 접근).</span>
-                <span class="step">\(\lim_{x \to 2^-} f(x) = 1\), \(\lim_{x \to 2^+} f(x) = 1\) → \(\lim_{x \to 2} f(x) = 1\). 함숫값 \(f(2) = 3\)은 무관.</span>
-                <span class="step">합 \(= 3 + 1 = 4\).</span>
-            </div>
-            <div class="q-ans">정답: <strong>④ \(4\)</strong>. 핵심: 함숫값(●)과 극한값(○)이 다른 위치에 있어도 극한 계산에 함숫값을 쓰지 않는다.</div>
-        </div>
     </div>
-
+    <div class="nv-board" data-key="check.1" data-label="형성평가 6번 — 절댓값 분기 세 줄"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (6번 문항)</h2>
     <div class="rubric">
@@ -363,6 +427,54 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 5 도전 ===== -->
+    <section class="nv-panel" data-key="challenge">
+    <h2 class="nv-panel-h">5 도전 <small>과제 안내 · 다음 시간 풀이</small></h2>
+    <div class="problems">
+        <!-- 도전 1 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH1</span><span class="q-num">D1</span><span class="q-title">⭐ 수능특강 함수의극한 유제 2 — 합성 극한</span></div>
+            <div class="q-stmt">그래프 \(y=f(x)\)에서 \(\lim_{x \to -1^-} f(x+2) + \lim_{x \to 1^+} f(-x)\). 선택지 ① \(-2\) ② \(-1\) ③ \(0\) ④ \(1\) ⑤ \(2\).</div>
+            <div class="q-solve">
+                <span class="step">STEP 1: \(s = x+2\) 치환. \(x \to -1^-\) ⇒ \(s \to 1^-\). 따라서 \(\lim_{x \to -1^-} f(x+2) = \lim_{s \to 1^-} f(s)\).</span>
+                <span class="step">STEP 2: 그래프에서 \(s=1\) 왼쪽 좌극한 \(= 0\).</span>
+                <span class="step">STEP 3: \(t = -x\) 치환. \(x \to 1^+\) ⇒ \(t \to -1^-\) (부호·방향 동시 반전). \(\lim_{x \to 1^+} f(-x) = \lim_{t \to -1^-} f(t) = -1\).</span>
+                <span class="step">STEP 4: 합 \(= 0 + (-1) = -1\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>② \(-1\)</strong>. 핵심: 합성 극한은 안쪽 변수의 접근 방향(±)까지 추적.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.1" data-label="도전 1 — 합성 극한, 방향까지 추적"></div>
+    <div class="problems">
+        <!-- 도전 2 (span2 challenge) -->
+        <div class="prob-card challenge span2">
+            <div class="prob-head"><span class="lvl lvl-ch">CH2</span><span class="q-num">D2</span><span class="q-title">⭐ 2022학년도 수능 4번 [3점]</span></div>
+            <div class="q-stmt">그래프 \(y=f(x)\)에서 \(\lim_{x \to -1^-} f(x) + \lim_{x \to 2} f(x)\). 선택지 ① 1 ② 2 ③ 3 ④ 4 ⑤ 5.</div>
+            <div class="q-solve">
+                <span class="step">그래프 구조: \(x \lt -1\) 우하향 직선이 \((-1, 3)\) 열린점으로, \(-1 \lt x \lt 1\) 대각선이 \((-1, 0)\)·\((1, 3)\) 열린점, \(1 \le x\)에서 \(y=1\) 수평선 (단 \(x=2\)는 열린점). 함숫값 \(f(-1) = 2\), \(f(2) = 3\)은 고립 닫힌점.</span>
+                <span class="step">\(\lim_{x \to -1^-} f(x) = 3\) (좌측 직선이 열린점 \((-1,3)\)에 접근).</span>
+                <span class="step">\(\lim_{x \to 2^-} f(x) = 1\), \(\lim_{x \to 2^+} f(x) = 1\) → \(\lim_{x \to 2} f(x) = 1\). 함숫값 \(f(2) = 3\)은 무관.</span>
+                <span class="step">합 \(= 3 + 1 = 4\).</span>
+            </div>
+            <div class="q-ans">정답: <strong>④ \(4\)</strong>. 핵심: 함숫값(●)과 극한값(○)이 다른 위치에 있어도 극한 계산에 함숫값을 쓰지 않는다.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="challenge.2" data-label="도전 2 — 좌극한 + 일반 극한 (2022 수능 4번)"></div>
+    </section>
+
+    <!-- ===== 6 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">6 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 새로 알게 된 한 가지"를 무작위 3명 발표. QR 성찰지 안내 + 도전 문제 1·2는 과제.</div>
+            <div class="tl-s"><strong>학생:</strong> 메타인지 성찰 3유형 중 하나 이상 체크 + 통합 서술. 도전 문제 사전 시도.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 발표 키워드와 다음 차시 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -384,17 +496,23 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
     <a href="교사용_Nav_All_index_미적분I.html" target="aftermath_main_calc">🏠 메인</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_학습지_미적분I_01_함수의극한.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_01_함수의극한.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_미적분I_02_함수의극한값의계산.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_01.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

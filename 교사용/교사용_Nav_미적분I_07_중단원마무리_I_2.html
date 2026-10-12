@@ -130,6 +130,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -140,12 +141,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_06_연속함수의성질.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_수학익힘책_미적분I_I2_함수의연속.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_07_중단원마무리_I_2.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -173,6 +175,17 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="practice"><span class="k">1</span>실전 훈련</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">2</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_07_중단원마무리_I_2.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인 (마무리 비율: 도입 3' + 풀이 42' + 정리 5')</h2>
     <div class="timeline">
@@ -203,6 +216,36 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 실전 훈련 ===== -->
+    <section class="nv-panel" data-key="practice">
+    <h2 class="nv-panel-h">1 실전 훈련 <small>14문항 · 문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> 단원 I-2의 마인드맵을 칠판에 그린다 — 정의 → 사칙 → EVT/IVT. "오늘은 이 가지들을 14문항으로 한 번에 점검한다"고 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 첫 페이지 단원 구조 파악 + 풀이 순서 결정(기초 → 기본 → 도전).</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기초 8'</div>
+            <div class="tl-t"><strong>교사:</strong> Q1·2·3 (P.40 기초)을 짝활동으로. 순회하며 막힌 학생에게 "정의 3조건 표 다시 보자" 한마디.</div>
+            <div class="tl-s"><strong>학생:</strong> Q1 분수 vs 정의식 비교, Q2 정의역 분리, Q3 분모 영점만 점검 — 3분 안에.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기본 24'</div>
+            <div class="tl-t"><strong>교사:</strong> Q4~12 개별 풀이 후 무작위 호명. Q6·Q7·Q8 미정계수 3종을 비교 판서(분자 \(\to 0\) → 미정계수 결정 → 인수분해 → 약분 순). Q9 유리화·인수분해 결합. Q11·Q12는 짧게.</div>
+            <div class="tl-s"><strong>학생:</strong> Q5 그래프 표 작성, Q6·7 경계점 좌·우극한 표 색깔 분리, Q10 사칙 보기 ㄱㄴㄹ 표시.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">도전 10'</div>
+            <div class="tl-t"><strong>교사:</strong> Q13(곱 함수 두 경계 연속), Q14(IVT 두 그래프 교점)는 서술형 채점 포인트 사전 안내. Q14는 보조함수 \(h(x) = f(x) + 2x^3\) 정의가 결정타임을 강조.</div>
+            <div class="tl-s"><strong>학생:</strong> Q13 — 두 경계 \(x = \pm 1\)에서 각각 \(f(\pm 1) = 0\) 도출. Q14 — \(f(-1) \lt 0\) 도출 후 보조함수 양 끝 부호 계산.</div>
+        </div>
+    </div>
     <!-- C. 도입 운영 가이드 (마무리는 Warm-up이 짧음) -->
     <h2 class="section-h"><span class="ico">C</span> 도입 운영 가이드 — 단원 I-2 마인드맵</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "지난 두 차시에서 배운 핵심 한 줄을 적어 보자. 그 한 줄이 어떻게 14문항으로 펼쳐지는가?"</p>
@@ -240,12 +283,10 @@
     </div>
 
     <div class="q-warn"><strong>오개념 ①:</strong> "분모 \(\to 0\)이면 발산이다." → 분자도 \(\to 0\)이면 \(\frac{0}{0}\) 부정형, 약분 후 극한이 실수가 될 수 있음.</div>
-    <div class="q-warn"><strong>오개념 ②:</strong> "Q5의 \(\lim_{x \to 0} f(x)\)는 \(f(0)\)과 같다." → 그래프상 \(x = 0\)에서 함숫값이 정의되지 않거나 곡선 끝일 수 있음. 정의역 \((0, 5)\)에 주목.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "Q5는 열린구간 \((0, 5)\)가 정의역이라 \(f(0)\)이 없으므로 ㄴ은 거짓이다." → \((0, 5)\)는 보기 ㄷ·ㄹ의 조건일 뿐. 그래프는 \(x = 0\)을 끊김 없이 지나므로 \(\lim_{x \to 0} f(x) = f(0) = 3\), ㄴ 참.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "Q14에서 \(f(-1) \gt 0\)일 수도 있다." → 만약 \(f(-1) \gt 0\)이면 \(f(-1)\)과 \(f(1) \lt 0\)의 부호가 달라 \((-1, 1)\)에 IVT 실근이 추가 발생 → 총 3실근 ≠ "오직 두 개" 조건 위배.</div>
 
-    <!-- E. 문항별 해설 카드 — 14문항 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (14문항 — 기초 1~3 · 기본 4~12 · 도전 13·14)</h2>
-
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
     <div class="problems">
         <!-- Q1 -->
         <div class="prob-card">
@@ -257,7 +298,9 @@
             </div>
             <div class="q-ans">정답: (1) 연속 (2) 불연속</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.1" data-label="1번 — x = 3 에서 연속 판정"></div>
+    <div class="problems">
         <!-- Q2 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">연속인 구간</span></div>
@@ -268,7 +311,9 @@
             </div>
             <div class="q-ans">정답: (1) \((-\infty,\infty)\) (2) \([2,\infty)\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.2" data-label="2번 — 연속인 구간 구하기"></div>
+    <div class="problems">
         <!-- Q3 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">유리식 연속성</span></div>
@@ -279,7 +324,9 @@
             </div>
             <div class="q-ans">정답: (1) \(x = 3, -1\) 외 연속 &nbsp;(2) 모든 실수 연속</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.3" data-label="3번 — 분모의 영점만 점검"></div>
+    <div class="problems">
         <!-- Q4 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">닫힌구간 최대·최소</span></div>
@@ -290,11 +337,13 @@
             </div>
             <div class="q-ans">정답: (1) 최댓 \(3\), 최솟 \(-6\) (2) 최댓 \(2\), 최솟 \(1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.4" data-label="4번 — 닫힌구간의 최댓값·최솟값"></div>
+    <div class="problems">
         <!-- Q5 (span2) -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">그래프 보기 판정 (calc_07_q5.png)</span></div>
-            <div class="q-stmt">열린구간 \((0, 5)\)의 그래프. ㄱ \(\lim_{x\to 1} f = 4\) ㄴ \(\lim_{x\to 0} f = f(0)\) ㄷ 불연속 \(x\)가 2개 ㄹ 극한 없는 \(x\)가 2개.</div>
+            <div class="q-stmt">\(y = f(x)\)의 그래프. ㄱ \(\lim_{x\to 1} f = 4\) ㄴ \(\lim_{x\to 0} f = f(0)\) ㄷ 불연속 \(x\)가 2개 ㄹ 극한 없는 \(x\)가 2개.</div>
             <div class="q-solve">
                 <span class="step">불연속·극한 후보점은 \(x = 1, 3, 4\). 표로:</span>
                 <span class="step">\(x=1\): 좌극한 \(=\) 우극한 \(=\) 곡선의 ○ \(= 4\), \(f(1) = \bullet = 1\). 극한 존재(4), 연속 아님 (4 \(\neq\) 1).</span>
@@ -304,7 +353,9 @@
             </div>
             <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄹ</strong></div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.5" data-label="5번 — 그래프에서 극한·연속을 표로"></div>
+    <div class="problems">
         <!-- Q6 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">분기식 미정계수 \(a, b\)</span></div>
@@ -316,7 +367,9 @@
             </div>
             <div class="q-ans">정답: \(a = -1,\ b = -2\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.6" data-label="6번 — 분수식 경계점의 미정계수"></div>
+    <div class="problems">
         <!-- Q7 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">경계점 미정계수 — \(a\)의 곱</span></div>
@@ -327,7 +380,9 @@
             </div>
             <div class="q-ans">정답: \(-1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.7" data-label="7번 — 경계 x = a 에서 이어 붙이기"></div>
+    <div class="problems">
         <!-- Q8 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">근호 미정계수 + \(f(3)\)</span></div>
@@ -339,7 +394,9 @@
             </div>
             <div class="q-ans">정답: \(f(3) = \frac{1}{2}\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.8" data-label="8번 — 근호 미정계수와 f(3)"></div>
+    <div class="problems">
         <!-- Q9 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">극한 조건 → \(f(1)\)</span></div>
@@ -350,7 +407,9 @@
             </div>
             <div class="q-ans">정답: \(f(1) = 30\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.9" data-label="9번 — 극한 조건에서 f(1) 구하기"></div>
+    <div class="problems">
         <!-- Q10 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">사칙 보기 — 반드시 연속</span></div>
@@ -362,7 +421,9 @@
             </div>
             <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄹ</strong></div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.10" data-label="10번 — 반드시 연속인 것 고르기"></div>
+    <div class="problems">
         <!-- Q11 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span><span class="q-title">분수함수 최댓값 \(a\)</span></div>
@@ -373,7 +434,9 @@
             </div>
             <div class="q-ans">정답: \(a = 8\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.11" data-label="11번 — 분수함수 최댓값으로 a 구하기"></div>
+    <div class="problems">
         <!-- Q12 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span><span class="q-title">IVT 실근 구간 식별</span></div>
@@ -384,7 +447,9 @@
             </div>
             <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄷ</strong></div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.12" data-label="12번 — 사잇값 정리로 실근 구간 찾기"></div>
+    <div class="problems">
         <!-- Q13 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전(서술)</span><span class="q-num">13</span><span class="q-title">곱 함수 두 경계 연속 (서술형)</span></div>
@@ -397,7 +462,9 @@
             </div>
             <div class="q-ans">정답: \(a = 0,\ b = -1\). <strong>서술 채점:</strong> ① 두 경계점 좌·우극한 식 명시 ② \(f(\pm 1) = 0\) 도출 근거 ③ 연립 풀이.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.13" data-label="13번 — 곱 함수가 두 경계에서 연속 (서술형)"></div>
+    <div class="problems">
         <!-- Q14 (span2) -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전(서술)</span><span class="q-num">14</span><span class="q-title">IVT 두 그래프 교점 증명 (서술형)</span></div>
@@ -412,7 +479,7 @@
             <div class="q-ans">정답 (증명 완료). <strong>서술 채점:</strong> ① 두 실근 구간 식별 ② \(f(-1)\) 부호 결정 ③ 보조함수 정의 ④ 양 끝 부호 ⑤ IVT 인용. 5점 만점에서 단계 누락마다 -1.</div>
         </div>
     </div>
-
+    <div class="nv-board" data-key="practice.14" data-label="14번 — 사잇값 정리로 교점 증명 (서술형)"></div>
     <!-- F. 형성평가 채점 루브릭 (Q13·14 서술형 통합) -->
     <h2 class="section-h"><span class="ico">F</span> 채점 루브릭 (서술형 Q13·Q14 통합)</h2>
     <div class="rubric">
@@ -426,6 +493,19 @@
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 2 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">2 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "오늘 14문항을 풀며 가장 헷갈렸던 한 문항"을 무작위 3명 발표. QR 성찰지 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 중단원 성찰 3유형 통합 서술 + 가장 어려웠던 1문항 표시.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 단원 I-2 마인드맵과 대단원 평가 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 성찰지 운영 — 3유형 우수 답안 예 (중단원 단위)</h2>
     <div class="reflect-grid">
@@ -447,6 +527,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -454,11 +536,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_06_연속함수의성질.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_07_중단원마무리_I_2.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_수학익힘책_미적분I_I2_함수의연속.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_07.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

@@ -57,6 +57,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -142,7 +143,7 @@
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 평균변화율 \(\dfrac{f(b) - f(a)}{b - a}\)은 양 끝점을 잇는 직선의 기울기. 그래프에서 \(f(b) \gt f(a)\)이므로 양수. 평균변화율과 같은 순간변화율(접선 기울기)을 갖는 점 \(c\)의 개수를 그래프상에서 동일 기울기 접선이 몇 번 그어지는가로 센다. 그림의 봉우리·골짜기 개형에서는 같은 양의 기울기 접선이 두 군데(상승 구간 두 곳)에 생긴다 → \(c\)는 <strong>3개</strong>.
+                        <strong>💡 전략 힌트:</strong> 평균변화율 \(\dfrac{f(b) - f(a)}{b - a}\)은 양 끝점을 잇는 직선의 기울기. 그래프에서 \(f(b) \gt f(a)\)이므로 양수. 평균변화율과 같은 순간변화율(접선 기울기)을 갖는 점 \(c\)의 개수를 그래프상에서 동일 기울기 접선이 몇 번 그어지는가로 센다. 그림의 봉우리·골짜기 개형에서 상승 구간은 세 곳(\(a\)~작은 봉우리, 작은 골짜기~큰 봉우리, 큰 골짜기~\(b\))이고, 같은 양의 기울기 접선이 첫 구간에 1개, 가운데 구간에 2개, 마지막 구간에 1개 생긴다 → \(c\)는 <strong>4개</strong>.
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -476,6 +477,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_21.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

@@ -140,6 +140,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="lesson-board.css?v=20261012">
 </head>
 <body class="mathjax-process">
 
@@ -150,12 +151,13 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_19_속도와가속도.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_20_중단원마무리_II_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_20_중단원마무리_II_2.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_수학익힘책_미적분I_II2_도함수의활용.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
-<article class="lesson">
+<article class="lesson" data-lm-ws="교사용_학습지_미적분I_20_중단원마무리_II_2.html">
 
     <!-- A. 차시 개관 -->
     <div class="lesson-head">
@@ -183,6 +185,17 @@
         </div>
     </div>
 
+    <!-- 수업 모드와 같은 탭 순서 — 인쇄할 때는 모든 탭이 차례로 나온다 -->
+    <nav class="nv-tabs no-print" aria-label="수업 단계">
+        <button type="button" class="nv-tab" data-key="overview">개관</button>
+        <button type="button" class="nv-tab" data-key="practice"><span class="k">1</span>실전 훈련</button>
+        <button type="button" class="nv-tab" data-key="reflect"><span class="k">2</span>성찰·메모</button>
+        <button type="button" class="nv-live-btn" title="판서 예시만 크게 (태블릿·보조 화면)">수업 중 보기</button>
+        <a class="nv-tab-open" href="교사용_학습지_미적분I_20_중단원마무리_II_2.html?mode=class" target="aftermath_ws_calc">수업 모드로 학습지 열기 ↗</a>
+    </nav>
+
+    <!-- ===== 개관 ===== -->
+    <section class="nv-panel" data-key="overview">
     <!-- B. 50분 타임라인 -->
     <h2 class="section-h"><span class="ico">B</span> 50분 수업 타임라인</h2>
     <div class="timeline">
@@ -213,13 +226,43 @@
         </div>
     </div>
 
+    <h2 class="section-h"><span class="ico">P</span> 판서 운영 약속</h2>
+    <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;">수업 모드에서 학습지 오른쪽 절반이 판서 공간이다. 전자칠판 <strong>필기모드</strong>로 화면을 잡은 뒤, 흐리게 표시된 <strong>구역 ①②③ 순서대로</strong> 쓴다. 각 탭의 <strong>판서 예시</strong>가 그 구역에 무엇을 어떤 색으로 쓸지 보여 준다. 예시의 <strong>[수업 화면 열기]</strong>를 누르면 학습지의 같은 화면이 바로 열린다. <strong>[수업 중 보기]</strong>는 판서 예시만 크게 보여 준다 (태블릿·보조 화면용).</p>
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
+    </section>
+
+    <!-- ===== 1 실전 훈련 ===== -->
+    <section class="nv-panel" data-key="practice">
+    <h2 class="nv-panel-h">1 실전 훈련 <small>14문항 · 문항마다 해설 → 판서 예시</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">도입 3'</div>
+            <div class="tl-t"><strong>교사:</strong> 칠판에 14문항 Type 태그 분류 (기초 3 / 기본 9 / 도전 2). "각 문항에서 꺼낼 도구 1가지"를 첫 줄에 적은 뒤 풀이 시작 안내.</div>
+            <div class="tl-s"><strong>학생:</strong> 학습지 펼치고 단원별 Type 배지를 형광펜으로 표시.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기초 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 1번(접선), 2번(속도·가속도), 3번(접선 + 삼각형 넓이) 짝 검산 후 무작위 호명. 3번은 "접점 미지수화" 칠판 시연.</div>
+            <div class="tl-s"><strong>학생:</strong> 각 3~4분 안에 완료. 정답: 1번 \(y=-3x+5\), 2번 속도 1·가속도 12, 3번 넓이 1.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">기본 22'</div>
+            <div class="tl-t"><strong>교사:</strong> 4~12번 도구별 묶음 설명. 4번 공통접선, 5번 평균값 정리, 6번 \(f'\geq 0\) 판별식, 7번 \(f'\) 그래프, 8번 닫힌구간 최소, 9번 두 곡선 교점 개수, 10번 부등식 최솟값, 11번 속도 일치 순간, 12번 사차함수 극댓값. 각 2~3분.</div>
+            <div class="tl-s"><strong>학생:</strong> 첫 줄에 도구 표시 후 풀이. 8번에서 후보점(영점·양끝점) 모두 나열 확인.</div>
+        </div>
+        <div class="tl-row">
+            <div class="tl-time">도전 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 13번(\(|f(x)|=k\) 5실근) → 14번(평균값 정리 · 구간 단속). 서술 채점 포인트 칠판 미리 공개. 13번은 \(|f|\) 그래프 개형이 핵심.</div>
+            <div class="tl-s"><strong>학생:</strong> 풀이 "근거 → 식 → 결론" 3단 구성 의식하며 작성. 13번 \(|f|\) 개형 스케치 필수.</div>
+        </div>
+    </div>
     <!-- C. 단원 회고 발문 -->
     <h2 class="section-h"><span class="ico">C</span> 단원 회고 발문 (Warm-up 대체)</h2>
     <p style="font-size:.85rem;color:#475569;margin-bottom:.5rem;"><strong>발문:</strong> "12~19차시에서 가장 자주 막혔던 한 가지 도구는? 그 도구가 필요한 '신호'는 무엇인가?"</p>
     <div class="warm-grid">
         <div class="warm-card"><span class="resp">예상 반응 ①</span><span class="fb">"사차함수 극댓값 조건. 판별식 \(D\geq 0\)으로 통합해 틀렸다."</span><br><span class="fb"><strong>피드백:</strong> 신호 = "사차함수 + 극댓값". 도함수가 삼차식이므로 실근 1개·3개 분기를 먼저 확인. \(f'(x)=0\)이 서로 다른 세 실근 → \(f'\) 부호 변화표 → 극대 존재.</span></div>
         <div class="warm-card"><span class="resp">예상 반응 ②</span><span class="fb">"닫힌구간 최대·최소에서 양 끝점을 후보에서 빼먹었다."</span><br><span class="fb"><strong>피드백:</strong> 신호 = "닫힌구간 + 최대·최소". 루틴: ① 영점(\(f'=0\)) ② 구간 양 끝점 ③ 모두 함숫값 계산 ④ 비교. 영점만 쓰면 무조건 감점.</span></div>
-        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"\(|f(x)|=k\) 그래프 개형을 못 그렸다."</span><br><span class="fb"><strong>피드백:</strong> 신호 = "절댓값 + 방정식 실근 개수". \(y=|f(x)|\)의 개형은 \(f\)의 음의 부분을 위로 접은 것. 꺾임점과 두 극댓값의 높이 비교로 \(k\)의 범위 결정.</span></div>
+        <div class="warm-card"><span class="resp">예상 반응 ③</span><span class="fb">"\(|f(x)|=k\) 그래프 개형을 못 그렸다."</span><br><span class="fb"><strong>피드백:</strong> 신호 = "절댓값 + 방정식 실근 개수". \(y=|f(x)|\)의 개형은 \(f\)의 음의 부분을 위로 접은 것. 꺾임점과 두 극댓값의 높이 비교로 \(k\)의 값 결정.</span></div>
     </div>
     <p style="font-size:.82rem;color:#0f766e;font-weight:700;"><strong>대단원 예고:</strong> 다음 차시(21차시 대단원 평가 II)는 II-1(미분계수·도함수)과 II-2(도함수의 활용) 전 범위 종합. 평균변화율·미분계수 정의까지 포함.</p>
 
@@ -245,8 +288,8 @@
         <ol>
             <li>\(f(x)=2x^3-3x^2-12x+4\) 극값 계산: \(f'(x)=6(x-2)(x+1)=0\). 극대 \(f(-1)=11\), 극소 \(f(2)=-16\).</li>
             <li>\(y=|f(x)|\) 개형 스케치: 음수 부분 위로 접음. \(x=2\)에서 \(|f|=16\) (새로운 극대), \(f=0\)인 점에서 꺾임.</li>
-            <li>\(y=k\) 수평선과 5개 교점 조건: 두 극댓값(11과 16) 사이 → \(11 \lt k \lt 16\).</li>
-            <li>경계 확인: \(k=11\)이면 4개, \(k=16\)이면 4개 → 부등호 엄격(strict).</li>
+            <li>\(y=k\) 수평선과 5개 교점 조건: 작은 극댓값 11과 같을 때 → \(k=11\).</li>
+            <li>경계 확인: \(0 \lt k \lt 11\)이면 6개, \(k=11\)이면 5개, \(11 \lt k \lt 16\)이면 4개, \(k=16\)이면 3개 → \(k=11\)만 해당.</li>
         </ol>
     </div>
 
@@ -254,11 +297,8 @@
     <div class="q-warn"><strong>오개념 ②:</strong> \(f'(x)\geq 0\) 이면 증가라고만 외움 → \(f'=0\)인 점이 고립점(단일)이면 여전히 전체 증가.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> 사차함수 극댓값 조건에서 \(f'(x)=0\)의 근이 1개인 경우 극값 없음(접촉) vs. 3개인 경우 극대·극소 구분 — 반드시 부호 변화표 작성.</div>
 
-    <!-- E. 문항별 해설 카드 -->
-    <h2 class="section-h"><span class="ico">E</span> 문항별 해설 카드 (14문항 종합)</h2>
-
+    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
     <div class="problems">
-
         <!-- Q1 기초 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">1</span><span class="q-title">접선의 방정식 — 기울기 대입</span></div>
@@ -269,7 +309,9 @@
             </div>
             <div class="q-ans">정답: \(y = -3x + 5\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.1" data-label="1번 — 접점에서 그은 접선의 방정식"></div>
+    <div class="problems">
         <!-- Q2 기초 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">속도와 가속도 — \(t=1\)</span></div>
@@ -280,20 +322,24 @@
             </div>
             <div class="q-ans">정답: 속도 \(1\), 가속도 \(12\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.2" data-label="2번 — 속도와 가속도 (t = 1)"></div>
+    <div class="problems">
         <!-- Q3 기초 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">외부 점에서 접선 → 도형 넓이</span></div>
             <div class="q-stmt">점 \((0,2)\)에서 곡선 \(y=-x^3+x+4\)에 그은 접선과 \(x\)축, \(y\)축으로 둘러싸인 넓이.</div>
             <div class="q-solve">
-                <span class="step">접점 \((t, -t^3+t+4)\). \(f'(t)=-3t^2+1\). 접선이 \((0,2)\) 통과: \(-t^3+t+4-2=(-3t^2+1)(0-t)\) → \(-t^3+t+2=3t^3-t\) → \(4t^3-2t-2=0\) → \(2t^3-t-1=0\) → \((t+1)(2t^2-2t+1)=0\). \(t=-1\) (실수근).</span>
+                <span class="step">접점 \((t, -t^3+t+4)\). \(f'(t)=-3t^2+1\). 접선이 \((0,2)\) 통과: \(2-(-t^3+t+4)=(-3t^2+1)(0-t)\) → \(t^3-t-2=3t^3-t\) → \(2t^3+2=0\) → \((t+1)(t^2-t+1)=0\). \(t=-1\) (실수근).</span>
                 <span class="step">접점 \((-1, 4)\). 기울기 \(f'(-1)=-3+1=-2\). 접선 \(y=-2x+2\).</span>
                 <span class="step">\(x\)절편 \(1\), \(y\)절편 \(2\). 삼각형 넓이 \(=\dfrac{1}{2}\cdot 1\cdot 2=1\).</span>
             </div>
             <div class="q-ans">정답: 넓이 \(1\)</div>
             <div class="q-warn"><strong>핵심:</strong> 외부 점 → 접선 문제는 접점을 미지수 \(t\)로 두고 "통과 조건" 연립. 힌트의 \(2t^3+2=0\)은 \(-t^3+t+4-(-3t^2+1)(-t)-2=0\) 정리 과정의 중간 단계.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.3" data-label="3번 — 외부 점에서 그은 접선과 넓이"></div>
+    <div class="problems">
         <!-- Q4 기본 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">공통접선 — 두 조건 연립</span></div>
@@ -304,7 +350,9 @@
             </div>
             <div class="q-ans">정답: \(a=-1,\ b=2,\ c=1\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.4" data-label="4번 — 공통접선의 두 조건"></div>
+    <div class="problems">
         <!-- Q5 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">평균값 정리 — \(c=1\), \(a\) 결정</span></div>
@@ -315,7 +363,9 @@
             </div>
             <div class="q-ans">정답: \(a = 2\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.5" data-label="5번 — 평균값 정리로 a 구하기"></div>
+    <div class="problems">
         <!-- Q6 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">전 구간 증가 조건 — 판별식</span></div>
@@ -326,7 +376,9 @@
             </div>
             <div class="q-ans">정답: \(-3 \leq a \leq 3\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.6" data-label="6번 — 실수 전체에서 증가할 조건"></div>
+    <div class="problems">
         <!-- Q7 기본 span2 (그래프 의존) -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">🖼 도함수 그래프 해석 → 극솟값 ★ 이미지 확인</span></div>
@@ -339,7 +391,9 @@
             <div class="q-ans">정답: 극솟값 \(3\)</div>
             <div class="q-warn"><strong>이미지 대조 포인트:</strong> \(f'(x)\)가 \(x=0\)과 \(x=2\)에서 0이 되고 위로 볼록한 포물선인지 PNG 확인. 힌트 검증 완료: 직접 계산으로 극솟값 3 확인.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.7" data-label="7번 — 도함수 그래프에서 극솟값"></div>
+    <div class="problems">
         <!-- Q8 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">닫힌구간 최솟값 → \(a\)</span></div>
@@ -350,7 +404,9 @@
             </div>
             <div class="q-ans">정답: \(a = 6\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.8" data-label="8번 — 닫힌구간 최솟값의 후보"></div>
+    <div class="problems">
         <!-- Q9 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">9</span><span class="q-title">두 곡선 세 교점 → \(k\) 범위</span></div>
@@ -362,7 +418,9 @@
             </div>
             <div class="q-ans">정답: \(-4 \lt k \lt 0\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.9" data-label="9번 — 두 곡선이 세 점에서 만날 조건"></div>
+    <div class="problems">
         <!-- Q10 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">부등식 항상 성립 → \(k\)</span></div>
@@ -373,7 +431,9 @@
             </div>
             <div class="q-ans">정답: \(k \gt 14\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.10" data-label="10번 — 부등식이 항상 성립할 조건"></div>
+    <div class="problems">
         <!-- Q11 기본 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">11</span><span class="q-title">속도 일치 순간 두 점 거리</span></div>
@@ -384,7 +444,9 @@
             </div>
             <div class="q-ans">정답: \(5\)</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.11" data-label="11번 — 속도가 같아지는 순간의 거리"></div>
+    <div class="problems">
         <!-- Q12 기본 span2 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">12</span><span class="q-title">사차함수 극댓값 갖기 위한 \(a\) 범위</span></div>
@@ -392,25 +454,29 @@
             <div class="q-solve">
                 <span class="step">\(f'(x)=4x^3-12x^2-2ax=2x(2x^2-6x-a)\).</span>
                 <span class="step">사차(최고차 양수) 함수가 극댓값을 가지려면 \(f'(x)=0\)이 서로 다른 세 실근 → \(2x^2-6x-a=0\)이 \(x=0\)이 아닌 두 실근.</span>
-                <span class="step">판별식: \(D/4=9+2a\gt 0\) → \(a\gt -\dfrac{9}{2}\). 단 \(a=0\)이면 \(f'(x)=2x(2x-6)=0\) → 이중근, 극대 없음. 따라서 \(a\gt -\dfrac{9}{2}\)이고 \(a\neq 0\).</span>
+                <span class="step">판별식: \(D/4=9+2a\gt 0\) → \(a\gt -\dfrac{9}{2}\). 단 \(a=0\)이면 \(f'(x)=4x^2(x-3)=0\) → 이중근, 극대 없음. 따라서 \(a\gt -\dfrac{9}{2}\)이고 \(a\neq 0\).</span>
             </div>
             <div class="q-ans">정답: \(a \gt -\dfrac{9}{2}\)이고 \(a \neq 0\)</div>
             <div class="q-warn"><strong>핵심 포인트:</strong> \(a\gt 0\)이면 이차식 \(2x^2-6x-a=0\)의 두 근 모두 \(x=0\)과 다름(자동 성립). \(a\lt 0\)이면 \(a\gt -9/2\) 추가 확인 필요. \(a=0\) 경계는 이중근으로 극대 없음.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.12" data-label="12번 — 사차함수가 극댓값을 가질 조건"></div>
+    <div class="problems">
         <!-- Q13 도전 span2 l3 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">13</span><span class="q-title">⭐ 서술형 — \(|f(x)|=k\) 5실근 조건</span></div>
-            <div class="q-stmt">\(f(x)=2x^3-3x^2-12x+4\). \(|f(x)|-k=0\)이 서로 다른 5개의 실근. \(k\)의 값의 범위. 서술 풀이.</div>
+            <div class="q-stmt">\(f(x)=2x^3-3x^2-12x+4\). \(|f(x)|-k=0\)이 서로 다른 5개의 실근. \(k\)의 값. 서술 풀이.</div>
             <div class="q-solve">
                 <span class="step">① \(f'(x)=6x^2-6x-12=6(x-2)(x+1)=0\). 극대 \(f(-1)=-2-3+12+4=11\), 극소 \(f(2)=16-12-24+4=-16\).</span>
                 <span class="step">② \(y=|f(x)|\) 개형: 음수 부분(극소 근방) 위로 접음 → \(x=2\) 근방에서 \(|f(2)|=16\) (새 극대). 꺾임점 \(f(x)=0\)인 세 실수근에서 높이 0.</span>
-                <span class="step">③ \(y=k\)가 5개 교점 ⇔ \(|f|\)의 작은 극대(11)와 큰 극대(16) 사이. → \(11\lt k\lt 16\).</span>
+                <span class="step">③ \(y=k\)가 5개 교점 ⇔ \(|f|\)의 작은 극대(11)에서 접점 1 + 큰 봉우리 2 + 양 끝 2. → \(k=11\) (\(0\lt k\lt 11\)이면 6개, \(11\lt k\lt 16\)이면 4개).</span>
             </div>
-            <div class="q-ans">정답: <strong>\(11 \lt k \lt 16\)</strong>. 서술 채점: ① 극값 도출 ② \(|f|\) 개형 설명(두 극대 11·16) ③ \(k\) 범위 근거. 3단계 모두 필수.</div>
-            <div class="q-warn"><strong>발표 유도:</strong> "\(k=11\)일 때 교점이 4개인 이유"를 학생에게 그래프로 설명하게 한다 — 꺾임점이 극대와 겹쳐 실근이 중복됨.</div>
+            <div class="q-ans">정답: <strong>\(k=11\)</strong>. 서술 채점: ① 극값 도출 ② \(|f|\) 개형 설명(두 극대 11·16) ③ \(k\) 값 근거. 3단계 모두 필수.</div>
+            <div class="q-warn"><strong>발표 유도:</strong> "\(k=11\)일 때 교점이 5개인 이유"를 학생에게 그래프로 설명하게 한다 — 작은 극대(11)에서 접해 두 교점이 하나로 합쳐짐.</div>
         </div>
-
+    </div>
+    <div class="nv-board" data-key="practice.13" data-label="13번 — |f(x)|=k 가 다섯 실근을 가질 조건"></div>
+    <div class="problems">
         <!-- Q14 도전 span2 l3 -->
         <div class="prob-card l3 span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">14</span><span class="q-title">⭐ 서술형 — 평균값 정리 + 구간 단속 실생활</span></div>
@@ -424,20 +490,33 @@
             <div class="q-ans">정답: 제한 속도 초과 순간 <strong>반드시 존재</strong>. 서술 채점: ① 가정(연속·미분가능) ② 평균속도 90 도출(단위 환산) ③ 평균값 정리 적용 ④ 결론. 4단계.</div>
         </div>
     </div>
-
+    <div class="nv-board" data-key="practice.14" data-label="14번 — 구간 단속과 평균값 정리"></div>
     <!-- F. 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 채점 루브릭 — 서술형 13·14 (각 50점, 합 100점)</h2>
     <div class="rubric">
         <div class="rtitle">📋 채점 기준 (서술형 합산)</div>
         <div class="rubric-grid">
-            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">13번: 극값 도출·\(|f|\) 두 극대(11·16)·범위 근거 모두 명시. 14번: 가정·평균속도·정리 적용·결론 4단계 완전 서술.</div>
-            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">한 문항 만점 + 다른 문항에서 1단계 누락(예: 13번 \(|f|\) 개형 설명 없이 범위만 제시; 14번 단위 환산 과정 생략).</div>
+            <div class="lvl-box">만점</div><div class="score">100</div><div class="desc">13번: 극값 도출·\(|f|\) 두 극대(11·16)·\(k\) 값 근거 모두 명시. 14번: 가정·평균속도·정리 적용·결론 4단계 완전 서술.</div>
+            <div class="lvl-box">상위 부분</div><div class="score">70</div><div class="desc">한 문항 만점 + 다른 문항에서 1단계 누락(예: 13번 \(|f|\) 개형 설명 없이 값만 제시; 14번 단위 환산 과정 생략).</div>
             <div class="lvl-box">중간 부분</div><div class="score">50</div><div class="desc">두 문항 모두 핵심 단계(극값, 평균속도) 진행했으나 최종 답 또는 논리 연결 오류.</div>
             <div class="lvl-box">하위 부분</div><div class="score">30</div><div class="desc">한 문항만 접근 시도. 다른 문항 빈답.</div>
             <div class="lvl-box">빈답/오답</div><div class="score">0</div><div class="desc"><strong>피드백:</strong> "서술형은 답이 틀려도 '근거→식→결론' 3단계가 있으면 부분점. 백지 절대 금지."</div>
         </div>
     </div>
 
+    </section>
+
+    <!-- ===== 2 성찰·메모 ===== -->
+    <section class="nv-panel" data-key="reflect">
+    <h2 class="nv-panel-h">2 성찰·메모 <small>정리 5'</small></h2>
+    <div class="timeline">
+        <div class="tl-row">
+            <div class="tl-time">정리 5'</div>
+            <div class="tl-t"><strong>교사:</strong> "이 단원에서 가장 자주 쓴 한 가지 도구" 무작위 3명 발표 → 대단원 평가 예고 + 성찰지 QR.</div>
+            <div class="tl-s"><strong>학생:</strong> 중단원 성찰 3유형 중 1개 이상 체크 + 자기 언어로 서술.</div>
+        </div>
+    </div>
+    <div class="nv-board" data-key="reflect.1" data-label="정리 — 단원 도구 트리와 대단원 평가 예고"></div>
     <!-- G. 성찰지 우수 답안 -->
     <h2 class="section-h"><span class="ico">G</span> 중단원 성찰 — 3유형 우수 답안 예</h2>
     <div class="reflect-grid">
@@ -459,6 +538,8 @@
     <h2 class="section-h"><span class="ico">H</span> 수업 후 메모 (반 별 기록 + 대단원 평가 진입 점검)</h2>
     <div class="memo-area"></div>
 
+    </section>
+
 </article>
 
 <nav class="topnav no-print aft-bottom-nav" style="margin:2rem auto 3rem;">
@@ -466,11 +547,15 @@
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <a href="교사용_Nav_미적분I_19_속도와가속도.html">← 이전 차시 가이드</a>
         <a href="교사용_학습지_미적분I_20_중단원마무리_II_2.html" target="aftermath_ws_calc" class="ws-link">학습지 보기 →</a>
+        <a href="교사용_학습지_미적분I_20_중단원마무리_II_2.html?mode=class" target="aftermath_ws_calc" class="ws-link">수업 모드 ▶</a>
         <a href="교사용_Nav_수학익힘책_미적분I_II2_도함수의활용.html">다음 차시 가이드 →</a>
         <button onclick="window.print()">🖨 인쇄 (A4)</button>
     </div>
 </nav>
 
+
+<script src="boardplans/calc_20.js?v=20261012"></script>
+<script src="lesson-board.js?v=20261012"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

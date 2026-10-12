@@ -60,6 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261012">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -122,7 +123,7 @@
                     <span class="badge badge-l1">[기초-접선과 도형의 넓이]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 점 \((0, 2)\)에서 곡선 \(y = -x^3 + x + 4\)에 그은 접선과 \(x\)축, \(y\)축으로 둘러싸인 부분의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.97 중단원 기본 03번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 접점을 \((t, -t^3+t+4)\)라 하자. \(f'(x) = -3x^2 + 1\). 접선이 \((0, 2)\)를 지나므로 \(-t^3 + t + 4 = (-3t^2 + 1)(0 - t) + 2\) → \(2t^3 + 2 = 0\) → \(t = -1\). 접점 \((-1, 2)\), 기울기 \(-2\) → 접선 \(y = -2x + 2\). \(x\)절편 \(1\), \(y\)절편 \(2\) → 넓이 \(\dfrac{1}{2} \cdot 1 \cdot 2 = 1\).
+                        <strong>💡 전략 힌트:</strong> 접점을 \((t, -t^3+t+4)\)라 하자. \(f'(x) = -3x^2 + 1\). 접선이 \((0, 2)\)를 지나므로 \(2 - (-t^3 + t + 4) = (-3t^2 + 1)(0 - t)\) → \(2t^3 + 2 = 0\) → \(t = -1\). 접점 \((-1, 4)\), 기울기 \(-2\) → 접선 \(y = -2x + 2\). \(x\)절편 \(1\), \(y\)절편 \(2\) → 넓이 \(\dfrac{1}{2} \cdot 1 \cdot 2 = 1\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -230,7 +231,7 @@
                     <span class="badge badge-l3">[도전-방정식 |f(x)|=k의 5실근 (서술형)]</span>
                     <div class="text-xl font-bold text-slate-900 mb-4">13. 함수 \( f(x) = 2x^3 - 3x^2 - 12x + 4 \) 에 대하여 방정식 \( |f(x)| - k = 0 \)이 서로 다른 \(5\)개의 실근을 갖도록 하는 실수 \(k\)의 값을 풀이 과정과 함께 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.98 중단원 도전 13번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략:</strong> ① \(f'(x) = 6x^2 - 6x - 12 = 6(x-2)(x+1) = 0\) → \(x = -1, 2\). \(f(-1) = -2 - 3 + 12 + 4 = 11\) (극대), \(f(2) = 16 - 12 - 24 + 4 = -16\) (극소). ② \(|f(x)| = k\)의 실근 = 곡선 \(y = |f(x)|\)와 수평선 \(y = k\)의 교점 개수. \(y = |f(x)|\)의 극값은 \(f\)의 극값의 절댓값과 \(f(x) = 0\) 근에서의 0 (꺾임점). \(y = |f(x)|\)의 모양: \(x \to -\infty\)에서 \(|f| \to \infty\), \(x = -1\)에서 극대 11, \(f\)가 0이 되는 점에서 0 (꺾임), \(x = 2\)에서 \(|f| = 16\)이 극대 (원래 극소의 절댓값), \(x \to \infty\)에서 \(|f| \to \infty\). ③ 수평선 \(y = k\)와 5개의 교점을 가지려면 \(k\)가 작은 극대(11)과 큰 극대(16) 사이여야 한다 → <strong>\(11 \lt k \lt 16\)</strong>. <br><strong>서술 채점 포인트:</strong> \(f\)의 극값 도출, \(|f|\) 그래프 개형 설명 (특히 두 극대값 \(11, 16\)의 존재), \(k\) 범위 결정 근거.
+                        <strong>💡 전략:</strong> ① \(f'(x) = 6x^2 - 6x - 12 = 6(x-2)(x+1) = 0\) → \(x = -1, 2\). \(f(-1) = -2 - 3 + 12 + 4 = 11\) (극대), \(f(2) = 16 - 12 - 24 + 4 = -16\) (극소). ② \(|f(x)| = k\)의 실근 = 곡선 \(y = |f(x)|\)와 수평선 \(y = k\)의 교점 개수. \(y = |f(x)|\)의 극값은 \(f\)의 극값의 절댓값과 \(f(x) = 0\) 근에서의 0 (꺾임점). \(y = |f(x)|\)의 모양: \(x \to -\infty\)에서 \(|f| \to \infty\), \(x = -1\)에서 극대 11, \(f\)가 0이 되는 점에서 0 (꺾임), \(x = 2\)에서 \(|f| = 16\)이 극대 (원래 극소의 절댓값), \(x \to \infty\)에서 \(|f| \to \infty\). ③ 수평선 \(y = k\)와의 교점은 \(0 \lt k \lt 11\)이면 6개, \(k = 11\)이면 5개, \(11 \lt k \lt 16\)이면 4개, \(k = 16\)이면 3개 → 5개의 교점을 가지려면 \(k\)가 작은 극대(11)와 같아야 한다 → <strong>\(k = 11\)</strong>. <br><strong>서술 채점 포인트:</strong> \(f\)의 극값 도출, \(|f|\) 그래프 개형 설명 (특히 두 극대값 \(11, 16\)의 존재), \(k\) 값 결정 근거.
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -452,6 +453,8 @@
     </script>
 
             <script src="widgets.js"></script>
+            <script src="boardplans/calc_20.js?v=20261012"></script>
+            <script src="lesson-mode.js?v=20261012"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
