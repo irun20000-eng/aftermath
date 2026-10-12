@@ -7641,10 +7641,10 @@ document.addEventListener('click', function(e) {
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-닫힌구간 최댓값 = 최솟값 + \(k\)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 닫힌구간 \([-2, 1]\)에서 함수 \(f(x) = x^3 + 3x^2 + a\)의 최댓값과 최솟값의 차가 \(4\)가 되도록 하는 실수 \(a\)의 값과, 그때의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.88 예제 3 변형)</span></div>
+                        <span class="badge badge-l2">응용-닫힌구간 최댓값·최솟값으로 매개변수 결정</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 닫힌구간 \([-2, 1]\)에서 함수 \(f(x) = x^3 + 3x^2 + a\)의 최댓값과 최솟값의 합이 \(10\)이 되도록 하는 실수 \(a\)의 값과, 그때의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.88 예제 3 변형)</span></div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> \(f'(x) = 3x^2 + 6x = 3x(x + 2)\). 구간 \([-2, 1]\) 내부 임계점 \(x = -2\)(끝점), \(x = 0\). \(x = 0\)이 유일 내부 임계점. 후보값 \(f(-2) = -8 + 12 + a = a + 4,\ f(0) = a,\ f(1) = 1 + 3 + a = a + 4\). 최댓값 = \(a + 4\) (\(x = -2\) 또는 \(x = 1\)), 최솟값 = \(a\) (\(x = 0\)). 차 = \(4\)는 \(a\)와 무관하게 항상 성립 \(\Rightarrow\) 모든 실수 \(a\)에 대해 조건 만족. 추가 조건이 필요한 경우라면 (예) "최댓값 = \(8\)" \(\Rightarrow a + 4 = 8 \Rightarrow a = 4\). 핵심: 닫힌구간 양 끝과 내부 임계점을 <strong>전부 후보로 모으는 것</strong>이 결정적.
+                            <strong>💡 힌트:</strong> \(f'(x) = 3x^2 + 6x = 3x(x + 2)\). \(f'(x) = 0 \Rightarrow x = -2\)(끝점), \(x = 0\)(내부 임계점). 후보값 \(f(-2) = -8 + 12 + a = a + 4,\ f(0) = a,\ f(1) = 1 + 3 + a = a + 4\). 최댓값 = \(a + 4\) (\(x = -2\), \(x = 1\) 두 곳), 최솟값 = \(a\) (\(x = 0\)). 합 \((a + 4) + a = 2a + 4 = 10 \Rightarrow a = 3\). 이때 최댓값 \(7\), 최솟값 \(3\). <strong>정답: \(a = 3\), 최댓값 \(7\)</strong>. (생각해 보기: 최댓값 \(-\) 최솟값 \(= 4\)는 \(a\)와 무관하게 항상 성립 \(\Rightarrow\) "차"만 주어지면 \(a\)를 정할 수 없다.) 핵심: 닫힌구간 양 끝과 내부 임계점을 <strong>전부 후보로 모으는 것</strong>이 결정적.
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -7654,26 +7654,40 @@ document.addEventListener('click', function(e) {
                 <div class="space-y-6 mt-6">
                     <div class="flex items-center border-b-2 border-red-200 pb-2">
                         <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
-                        <p class="text-red-600 font-bold">"틀려야 는다!" 정의역 함정 + 단조함수의 최댓값</p>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 극댓값 ≠ 최댓값 — 끝점 함정</p>
                     </div>
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-단조함수의 닫힌구간 최댓값</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x) = x^3 + 3x^2 + a x + 1\)이 닫힌구간 \([-1, 2]\)에서 <strong>최댓값이 \(15\), 최솟값이 \(0\)</strong>이 되도록 하는 실수 \(a\)의 값과 그때의 임계점 위치를 구하시오. (단조 케이스와 극값 존재 케이스를 모두 분류해 답하라.) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 P.97 도전 06·08 통합 변형 + 학생 오답 함정)</span></div>
+                        <span class="badge badge-l3">심화-극댓값과 끝점 비교로 매개변수 결정</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x) = x^3 - 3x^2 + a\)가 닫힌구간 \([-1, 4]\)에서 <strong>최댓값 \(15\)</strong>를 가질 때, 실수 \(a\)의 값과 최솟값, 그리고 최솟값을 갖는 \(x\)의 값을 모두 구하시오. (극댓값이 곧 최댓값인지 반드시 확인하라.) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 P.97 기본 08 변형 + 학생 오답 함정)</span></div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
                                 <p class="text-slate-700 text-sm font-medium leading-relaxed">
-                                "극값 = 최댓값"으로 자동 동일시하는 학생 오답을 정조준하는 차시 17의 핵심 함정. <br><br>
-                                <strong>STEP 1 — 도함수 분석:</strong> \(f'(x) = 3x^2 + 6x + a\). 극값 존재 \(\Leftrightarrow D/4 = 9 - 3a \gt 0 \Rightarrow a \lt 3\). 단조 \(\Leftrightarrow a \geq 3\).<br><br>
-                                <strong>STEP 2 — 경우 분류 (단조):</strong> \(a \geq 3\)이면 \(f'(x) \geq 0\) 항상 \(\Rightarrow f\) 단조증가. 닫힌구간 \([-1, 2]\) 최솟값 \(f(-1) = -1 + 3 - a + 1 = 3 - a\), 최댓값 \(f(2) = 8 + 12 + 2a + 1 = 21 + 2a\). 조건 \(3 - a = 0,\ 21 + 2a = 15\) \(\Rightarrow\) 첫 식에서 \(a = 3\), 둘째 식 검증 \(21 + 6 = 27 \neq 15\) — 모순. 단조 케이스 해 없음.<br><br>
-                                <strong>STEP 3 — 경우 분류 (극값 존재):</strong> \(a \lt 3\)이면 임계점 두 개. \(f'(x) = 0\)의 두 근을 \(\alpha = \dfrac{-3 - \sqrt{9 - 3a}}{3},\ \beta = \dfrac{-3 + \sqrt{9 - 3a}}{3}\). \(\alpha + \beta = -2,\ \alpha\beta = \dfrac{a}{3}\). 후보 4개를 \(a\)로 정리 후 \(\max = 15,\ \min = 0\) 조건으로 \(a\) 결정. (구체 풀이는 본 문제의 학습 목표 — 경우 분류 + 후보값 모두 점검.) 예시: \(a = 0\)이면 임계점 \(0, -2\) (\(-2\)는 끝점), 후보 \(\{f(-1), f(0), f(2)\} = \{3, 1, 21\}\), \(\max = 21\) 조건 불일치. \(a = -9\)면 임계점 \(\dfrac{-3 \pm 6}{3} = 1, -3\), 내부 \(x = 1\). 후보 \(\{f(-1) = 12, f(1) = 1 + 3 - 9 + 1 = -4, f(2) = 8 + 12 - 18 + 1 = 3\}\), \(\max = 12 \neq 15\). 본 문제는 일반적으로 정수해가 깔끔하지 않음 — <strong>학습 목표는 "절차"</strong>.<br><br>
-                                <strong>STEP 4 — 학생들이 자주 빠지는 3가지 오답 패턴:</strong><br>
-                                ① "극댓값 = 최댓값"으로 자동 처리 (정답: 구간 끝점도 후보!).<br>
-                                ② 단조함수일 때 후보를 끝점만 보지 않고 "극값이 없으니 답 없음"으로 잘못 결론.<br>
-                                ③ 임계점이 구간 <strong>밖</strong>일 때 그 점의 함숫값을 후보에 포함시키는 실수.<br><br>
-                                <strong>핵심 통찰:</strong> 닫힌구간의 최대·최소 후보는 "(구간 내부의) 임계점에서의 값 + 구간 끝점의 값" 모두. 이 절차를 4단계 체크리스트로 외워 두면 함정에 빠지지 않는다.
+                                "극댓값 = 최댓값"으로 자동 동일시하는 학생 오답을 정조준하는 차시 17의 핵심 함정. <br><br>
+                                <strong>STEP 1 — 도함수:</strong> \(f'(x) = 3x^2 - 6x = 3x(x - 2)\). \(f'(x) = 0 \Rightarrow x = 0\)(극대), \(x = 2\)(극소). 두 점 모두 구간 \([-1, 4]\)의 <strong>내부</strong>.<br><br>
+                                <strong>STEP 2 — 후보 4개 표</strong> (끝점 2개 + 내부 임계점 2개):
+                                </p>
+                                <table class="sign-table">
+                                    <thead>
+                                        <tr>
+                                            <th>\(x\)</th><th>\(-1\) (끝점)</th><th>\(0\) (극대)</th><th>\(2\) (극소)</th><th>\(4\) (끝점)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>\(f(x)\)</th><td>\(a - 4\)</td><td>\(a\)</td><td>\(a - 4\)</td><td>\(a + 16\)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                <strong>STEP 3 — 최댓값 판정 (끝점):</strong> 후보 중 가장 큰 값은 극댓값 \(a\)가 아니라 끝점의 값 \(f(4) = a + 16\). 따라서 최댓값 \(= a + 16 = 15 \Rightarrow a = -1\).<br><br>
+                                <strong>STEP 4 — \(a\)·최솟값:</strong> \(a = -1\)이면 \(f(x) = x^3 - 3x^2 - 1\). 후보 \(f(-1) = -1 - 3 - 1 = -5,\ f(0) = -1,\ f(2) = 8 - 12 - 1 = -5,\ f(4) = 64 - 48 - 1 = 15\). 최솟값 \(a - 4 = -5\)는 \(x = -1\)(끝점)과 \(x = 2\)(극소) <strong>두 곳</strong>에서. <strong>정답: \(a = -1\), 최솟값 \(-5\) (\(x = -1, 2\))</strong>.<br><br>
+                                <strong>학생들이 자주 빠지는 오답:</strong><br>
+                                ① "극댓값 = 최댓값"으로 \(a = 15\)라 두면 \(f(4) = 64 - 48 + 15 = 31 \gt 15\) — 최댓값이 \(15\)가 아니므로 모순.<br>
+                                ② 최솟값을 갖는 \(x\)를 \(x = 2\) 한 곳만 적는 실수 — 끝점 \(x = -1\)에서도 같은 값 \(-5\).<br><br>
+                                <strong>핵심 통찰:</strong> 닫힌구간의 최대·최소 후보는 "(구간 내부의) 임계점에서의 값 + 구간 끝점의 값" 모두. 극댓값은 근처에서만 가장 큰 값일 뿐, 끝점과 비교해야 최댓값이 정해진다. 같은 최솟값이 여러 점에서 나오면 그 점을 모두 적는다.
                                 </p>
                             </div>
                         </details>
@@ -8066,16 +8080,16 @@ document.addEventListener('click', function(e) {
 
                     <div>
                         <span class="badge badge-l1">기초-부등식 증명</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 부등식이 성립함을 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 04 참고)</span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 부등식이 성립함을 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 04)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \(x \gt 0\)일 때, \(2x^3 - 6x^2 + 8 \gt 0\) &nbsp;&nbsp;
-                                (2) 모든 실수 \(x\)에 대하여 \(6x^4 - 2x^3 + x + 1 \gt 3x^4 + 2x^3 + x\)
+                                (1) \(x \geq 0\)일 때, \(2x^3 - 6x^2 + 8 \geq 0\) &nbsp;&nbsp;
+                                (2) 모든 실수 \(x\)에 대하여 \(6x^4 - 2x^3 + x + 1 \geq 3x^4 + 2x^3 + x\)
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong><br>
-                            <strong>(1)</strong> \(f(x) = 2x^3 - 6x^2 + 8\). \(f'(x) = 6x^2 - 12x = 6x(x - 2)\). \(x \gt 0\)에서 \(f' = 0 \Rightarrow x = 2\). 부호 \((-,+)\) \(\Rightarrow x = 2\)에서 극소 = 최소. \(f(2) = 16 - 24 + 8 = 0\). 단 등호 성립은 \(x = 2\)에서만 \(\Rightarrow\) \(x \gt 0,\ x \neq 2\)일 때 엄격 부등식. 결론: \(f(x) \geq 0\), 등호 \(x = 2\)에서만. (문제가 엄격 \(\gt 0\) 요구이면 일부 학생들은 \(x = 2\)에서 등호 성립으로 모순처럼 보일 수 있음 — 비상 교과서 문제의 의도는 "등호 포함 \(\geq 0\)"으로 해석.)<br>
-                            <strong>(2)</strong> 차함수 \(h(x) = (6x^4 - 2x^3 + x + 1) - (3x^4 + 2x^3 + x) = 3x^4 - 4x^3 + 1\). \(h'(x) = 12x^3 - 12x^2 = 12x^2(x - 1)\). \(h' = 0 \Rightarrow x = 0, 1\). \(x = 0\)은 중근, 부호 변화 없음. \(x = 1\) 좌우 \(-, +\) \(\Rightarrow\) 극소. \(h(1) = 3 - 4 + 1 = 0\). 따라서 \(\min h = 0\) \(\geq 0\), 등호는 \(x = 1\) ✓.
+                            <strong>(1)</strong> \(f(x) = 2x^3 - 6x^2 + 8\). \(f'(x) = 6x^2 - 12x = 6x(x - 2)\). \(x \geq 0\)에서 \(f' = 0 \Rightarrow x = 0, 2\). \(0 \lt x \lt 2\)에서 \(f' \lt 0\), \(x \gt 2\)에서 \(f' \gt 0\) \(\Rightarrow x = 2\)에서 극소 = 최소. 끝점 \(f(0) = 8\), 극솟값 \(f(2) = 16 - 24 + 8 = 0\). 따라서 \(x \geq 0\)에서 최솟값 \(f(2) = 0 \geq 0\) \(\Rightarrow f(x) \geq 0\) ✓ (등호는 \(x = 2\)일 때).<br>
+                            <strong>(2)</strong> 차함수 \(h(x) = (6x^4 - 2x^3 + x + 1) - (3x^4 + 2x^3 + x) = 3x^4 - 4x^3 + 1\). \(h'(x) = 12x^3 - 12x^2 = 12x^2(x - 1)\). \(h' = 0 \Rightarrow x = 0, 1\). \(x = 0\)은 중근, 부호 변화 없음. \(x = 1\) 좌우 \(-, +\) \(\Rightarrow\) 극소 = 최소. 최솟값 \(h(1) = 3 - 4 + 1 = 0 \geq 0\) \(\Rightarrow h(x) \geq 0\), 즉 주어진 부등식 성립 ✓ (등호는 \(x = 1\)일 때).
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -8102,9 +8116,9 @@ document.addEventListener('click', function(e) {
 
                     <div>
                         <span class="badge badge-l2">응용-부등식 매개변수 + 최솟값</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 모든 실수 \(x\)에 대하여 부등식 \(-x^4 + 4x^2 - 5 \lt k\)가 성립하도록 하는 실수 \(k\)의 <strong>최솟값</strong>을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 05 참고)</span></div>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 모든 실수 \(x\)에 대하여 부등식 \(-x^4 + 4x^2 - 5 \leq k\)가 성립하도록 하는 실수 \(k\)의 <strong>최솟값</strong>을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 05)</span></div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 모든 \(x\)에 대해 \(-x^4 + 4x^2 - 5 \lt k\) \(\Leftrightarrow k \gt \max_x (-x^4 + 4x^2 - 5)\). \(f(x) = -x^4 + 4x^2 - 5\)의 최댓값을 구한다. \(f'(x) = -4x^3 + 8x = -4x(x^2 - 2)\). \(f' = 0 \Rightarrow x = 0,\ \pm\sqrt{2}\). 부호 \((+,-,+,-)\). 극댓값 \(f(\pm\sqrt{2}) = -4 + 8 - 5 = -1\), 극솟값 \(f(0) = -5\). 최댓값 \(= -1\). 따라서 \(k \gt -1\), 최솟값(infimum)은 \(k = -1\) (엄격 부등식 \(\lt\)이므로 \(k = -1\) 자체는 등호 성립으로 불가, 단 본 비상 교과서는 "최솟값" 표현으로 \(k = -1\)을 답으로 한다). <strong>정답: \(k = -1\)</strong>.
+                            <strong>💡 힌트:</strong> 모든 \(x\)에 대해 \(-x^4 + 4x^2 - 5 \leq k\) \(\Leftrightarrow k \geq \max_x (-x^4 + 4x^2 - 5)\). \(f(x) = -x^4 + 4x^2 - 5\)의 최댓값을 구한다. \(f'(x) = -4x^3 + 8x = -4x(x^2 - 2)\). \(f' = 0 \Rightarrow x = 0,\ \pm\sqrt{2}\). 부호 \((+,-,+,-)\). 극댓값 \(f(\pm\sqrt{2}) = -4 + 8 - 5 = -1\), 극솟값 \(f(0) = -5\). 최댓값 \(= -1\). 따라서 \(k \geq -1\)이고, \(k = -1\)이어도 \(x = \pm\sqrt{2}\)에서 등호가 성립할 뿐 부등식 \(\leq\)는 성립하므로 \(k\)의 최솟값은 \(-1\). <strong>정답: \(k = -1\)</strong>.
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -12984,13 +12998,11 @@ document.addEventListener('click', function(e) {
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> ① \(f(x) = (x - 2)^2\) (\(x \geq 2\))의 역함수: \(y = (x-2)^2 \Rightarrow x - 2 = \sqrt{y}\) (\(x \geq 2\)) \(\Rightarrow g(y) = \sqrt{y} + 2\). 즉 \(g(x) = \sqrt{x} + 2\) (\(x \geq 0\)). <br>
-                        ② 교점: \(f, g\) 모두 \(y = x\)에 대칭. \((x - 2)^2 = x \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow x = 1, 4\). \(x \geq 2\)에서 \(x = 4\). 즉 \(f(4) = g(4) = 4\). <br>
-                        ③ 영역 분할: \(x \in [0, 2]\)에서는 윗변 \(g(x)\), 아랫변 \(x\)축. \(x \in [2, 4]\)에서는 윗변 \(g(x)\), 아랫변 \(f(x)\). <br>
-                        ④ \(S = \int_0^2 (\sqrt{x} + 2)\,dx + \int_2^4 (\sqrt{x} + 2 - (x-2)^2)\,dx\). <br>
-                        앞: \([\tfrac{2}{3}x^{3/2} + 2x]_0^2 = \tfrac{4\sqrt{2}}{3} + 4\). <br>
-                        뒤: \([\tfrac{2}{3}x^{3/2} + 2x - \tfrac{(x-2)^3}{3}]_2^4 = (\tfrac{16}{3} + 8 - \tfrac{8}{3}) - (\tfrac{4\sqrt{2}}{3} + 4 - 0) = \tfrac{32}{3} - \tfrac{4\sqrt{2}}{3} - 4 = \tfrac{20}{3} - \tfrac{4\sqrt{2}}{3}\). <br>
-                        합: \((\tfrac{4\sqrt{2}}{3} + 4) + (\tfrac{20}{3} - \tfrac{4\sqrt{2}}{3}) = \tfrac{20}{3} + 4 = \tfrac{32}{3}\). 답: \(\tfrac{32}{3}\).
+                        <strong>💡 전략 힌트:</strong> ① 대칭: 역함수의 그래프 \(y = g(x)\)는 \(y = f(x)\)와 직선 \(y = x\)에 대하여 대칭이므로, 두 곡선과 \(x\)축·\(y\)축으로 둘러싸인 도형도 \(y = x\)에 대하여 대칭이다 (\(x\)축 ↔ \(y\)축). 따라서 \(g(x)\)의 식을 구해 적분할 필요가 없다. <br>
+                        ② 교점: 두 곡선은 \(y = x\) 위에서 만난다. \((x - 2)^2 = x \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow x = 1, 4\). \(x \geq 2\)이므로 \(x = 4\), 교점 \((4, 4)\). <br>
+                        ③ 반쪽 넓이: 직선 \(y = x\) 아래쪽 부분 = (\(y = x\), \(x\)축, 직선 \(x = 4\)로 둘러싸인 삼각형) \(-\) (\(y = f(x)\), \(x\)축, 직선 \(x = 4\)로 둘러싸인 부분). <br>
+                        \(\int_0^4 x\,dx - \int_2^4 (x - 2)^2\,dx = 8 - \tfrac{8}{3} = \tfrac{16}{3}\). <br>
+                        ④ 전체 넓이: \(S = 2 \times \tfrac{16}{3} = \tfrac{32}{3}\). 답: \(\tfrac{32}{3}\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
