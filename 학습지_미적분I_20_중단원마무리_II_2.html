@@ -93,10 +93,10 @@
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
             <h2 class="section-title">01. 실전 훈련 (Textbook Mastery)</h2>
-            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 중단원 마무리 14문항을 그대로 학습지화. 기초 1~3 · 기본 4~12 · 도전 13·14 (서술형 킬러)</p>
+            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 중단원 마무리 14문항을 그대로 학습지화. 기초 1~2 · 기본 3~11 · 도전 12~14 (13·14 서술형 킬러)</p>
 
             <div class="grid grid-cols-1 gap-12">
-                <!-- ============ 기초 (1~3) ============ -->
+                <!-- ============ 기초 (1~2) ============ -->
 
                 <!-- Q1 -->
                 <div>
@@ -118,17 +118,17 @@
                     <div class="thinking-space"></div>
                 </div>
 
+                <!-- ============ 기본 (3~11) ============ -->
+
                 <!-- Q3 -->
                 <div>
-                    <span class="badge badge-l1">[기초-접선과 도형의 넓이]</span>
+                    <span class="badge badge-l2">[기본-접선과 도형의 넓이]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 점 \((0, 2)\)에서 곡선 \(y = -x^3 + x + 4\)에 그은 접선과 \(x\)축, \(y\)축으로 둘러싸인 부분의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.97 중단원 기본 03번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> 접점을 \((t, -t^3+t+4)\)라 하자. \(f'(x) = -3x^2 + 1\). 접선이 \((0, 2)\)를 지나므로 \(2 - (-t^3 + t + 4) = (-3t^2 + 1)(0 - t)\) → \(2t^3 + 2 = 0\) → \(t = -1\). 접점 \((-1, 4)\), 기울기 \(-2\) → 접선 \(y = -2x + 2\). \(x\)절편 \(1\), \(y\)절편 \(2\) → 넓이 \(\dfrac{1}{2} \cdot 1 \cdot 2 = 1\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
-
-                <!-- ============ 기본 (4~12) ============ -->
 
                 <!-- Q4 -->
                 <div>
@@ -187,7 +187,7 @@
                 <!-- Q9 -->
                 <div>
                     <span class="badge badge-l2">[기본-두 곡선이 세 점에서 만남]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">9. 두 곡선 \( y = x^3 + 4x^2 \), \( y = -2x^2 - 9x + k \) 가 서로 다른 세 점에서 만나도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.98 중단원 도전 09번)</span></div>
+                    <div class="text-xl font-bold text-slate-800 mb-2">9. 두 곡선 \( y = x^3 + 4x^2 \), \( y = -2x^2 - 9x + k \) 가 서로 다른 세 점에서 만나도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.98 중단원 기본 09번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> 두 곡선의 교점 ⇔ \(x^3 + 4x^2 = -2x^2 - 9x + k\) ⇔ \(x^3 + 6x^2 + 9x = k\). \(g(x) = x^3 + 6x^2 + 9x\)의 극값 분석: \(g'(x) = 3x^2 + 12x + 9 = 3(x+1)(x+3) = 0\) → \(x = -3, -1\). 극댓값 \(g(-3) = -27 + 54 - 27 = 0\), 극솟값 \(g(-1) = -1 + 6 - 9 = -4\). 서로 다른 세 점에서 만나려면 극솟값 \(\lt k \lt\) 극댓값 → \(-4 \lt k \lt 0\).
                     </div></details>
@@ -197,9 +197,9 @@
                 <!-- Q10 -->
                 <div>
                     <span class="badge badge-l2">[기본-부등식 항상 성립]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">10. \(x \gt 0\)일 때, 두 함수 \( f(x) = 3x^3 + 8x^2 - 18x + k \), \( g(x) = x^3 - x^2 + 6x + 1 \) 에 대하여 부등식 \( f(x) \gt g(x) \)가 성립하도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.98 중단원 도전 10번)</span></div>
+                    <div class="text-xl font-bold text-slate-800 mb-2">10. \(x \geq 0\)일 때, 두 함수 \( f(x) = 3x^3 + 8x^2 - 18x + k \), \( g(x) = x^3 - x^2 + 6x + 1 \) 에 대하여 부등식 \( f(x) \gt g(x) \)가 성립하도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.98 중단원 기본 10번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> \(h(x) = f(x) - g(x) = 2x^3 + 9x^2 - 24x + (k - 1)\). \(x \gt 0\)에서 \(h(x) \gt 0\) ⇔ \(x \gt 0\)에서 \(h\)의 최솟값 \(\gt 0\). \(h'(x) = 6x^2 + 18x - 24 = 6(x + 4)(x - 1)\). \(x \gt 0\)에서 \(x = 1\)에서 극소(유일). \(h(1) = 2 + 9 - 24 + k - 1 = k - 14 \gt 0\) → \(k \gt 14\).
+                        <strong>💡 전략 힌트:</strong> \(h(x) = f(x) - g(x) = 2x^3 + 9x^2 - 24x + (k - 1)\). \(x \geq 0\)에서 \(h(x) \gt 0\) ⇔ \(x \geq 0\)에서 \(h\)의 최솟값 \(\gt 0\). \(h'(x) = 6x^2 + 18x - 24 = 6(x + 4)(x - 1)\). \(x \geq 0\)에서 \(x = 1\)에서 극소(유일, 끝점 \(h(0) = k - 1\)보다 작음). \(h(1) = 2 + 9 - 24 + k - 1 = k - 14 \gt 0\) → \(k \gt 14\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -207,24 +207,24 @@
                 <!-- Q11 -->
                 <div>
                     <span class="badge badge-l2">[기본-두 점의 속도가 같아지는 거리]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">11. 수직선 위를 움직이는 두 점 \(P, Q\)의 시각 \(t\)에서 위치가 각각 \( x_P(t) = \dfrac{2}{3}t^3 + 18t - 20 \), \( x_Q(t) = 6t^2 - 7 \) 일 때, 두 점 \(P, Q\)의 속도가 같아지는 순간의 두 점 사이의 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.98 중단원 도전 11번)</span></div>
+                    <div class="text-xl font-bold text-slate-800 mb-2">11. 수직선 위를 움직이는 두 점 \(P, Q\)의 시각 \(t\)에서 위치가 각각 \( x_P(t) = \dfrac{2}{3}t^3 + 18t - 20 \), \( x_Q(t) = 6t^2 - 7 \) 일 때, 두 점 \(P, Q\)의 속도가 같아지는 순간의 두 점 사이의 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.98 중단원 기본 11번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> 속도 \(v_P(t) = 2t^2 + 18\), \(v_Q(t) = 12t\). 같아지는 시각: \(2t^2 + 18 = 12t\) → \(t^2 - 6t + 9 = 0\) → \((t-3)^2 = 0\) → \(t = 3\). 위치: \(x_P(3) = 18 + 54 - 20 = 52\), \(x_Q(3) = 54 - 7 = 47\). 거리 \(= |52 - 47| = 5\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
 
+                <!-- ============ 도전 (12~14 · 13·14 서술형 킬러) ============ -->
+
                 <!-- Q12 -->
                 <div>
-                    <span class="badge badge-l2">[기본-사차함수의 극댓값 조건]</span>
+                    <span class="badge badge-l3">[도전-사차함수의 극댓값 조건]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">12. 함수 \( f(x) = x^4 - 4x^3 - ax^2 \) 이 극댓값을 갖기 위한 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.98 중단원 도전 12번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> \(f'(x) = 4x^3 - 12x^2 - 2ax = 2x(2x^2 - 6x - a)\). 사차함수(최고차 양수)가 극댓값을 가지려면 \(f'(x) = 0\)이 서로 다른 세 실근을 가져야 한다 (그래야 부호 변화가 \(+ \to - \to + \to -\) 아닌 \(- \to + \to - \to +\) 등 극대 출현). \(2x = 0\)과 \(2x^2 - 6x - a = 0\)이 서로 다른 세 근을 가지려면 ① \(2x^2 - 6x - a = 0\)이 \(0\)이 아닌 서로 다른 두 실근 → \(a \neq 0\)이고 판별식 \(36 + 8a \gt 0 \Rightarrow a \gt -\dfrac{9}{2}\). 종합: \( a \gt -\dfrac{9}{2}\)이고 \(a \neq 0\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
-
-                <!-- ============ 도전 (13·14 · 서술형 킬러) ============ -->
 
                 <!-- Q13 -->
                 <div>
@@ -239,7 +239,7 @@
                 <!-- Q14 -->
                 <div>
                     <span class="badge badge-l3">[도전-평균값 정리 + 구간 단속 (서술형)]</span>
-                    <div class="text-xl font-bold text-slate-900 mb-4">14. 구간 단속제란 특정 지점이 아닌 구간의 시작 지점과 종료 지점에 단속 카메라를 설치하여 자동차의 구간 평균속도를 측정한 후 제한 속도 준수 여부를 판정하는 방식이다. 제한 속도가 \(80\,\text{km/h}\)인 도로에서 \(15\,\text{km}\) 구간에 대해 구간 단속을 실시하고 있다. 어느 자동차가 이 구간을 통과하는 데 \(10\)분 걸렸을 때, 이 자동차의 속도가 제한 속도를 초과한 순간이 있었는지 판단하고 그 이유를 평균값 정리를 사용하여 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.98 중단원 도전 14번)</span></div>
+                    <div class="text-xl font-bold text-slate-900 mb-4">14. 구간 단속제란 특정 지점이 아닌 구간의 시작 지점과 종료 지점에 단속 카메라를 설치하여 자동차의 구간 평균속도를 측정한 후 제한 속도 준수 여부를 판정하는 방식이다. 제한 속도가 \(80\,\text{km/h}\)인 도로에서 \(15\,\text{km}\) 구간에 대해 구간 단속을 실시하고 있다. 어느 자동차가 이 구간을 통과하는 데 \(10\)분 걸렸을 때, 이 자동차의 속도가 제한 속도를 초과한 순간이 있었는지 판단하고 그 이유를 평균값 정리를 사용하여 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.98 중단원 도전 14번 · 서술형 변형)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략:</strong> ① 시각 \(t\)(시간)에서 위치를 \(x(t)\)라 하자. \(x(t)\)는 \([0, \tfrac{1}{6}]\)에서 연속이고 \((0, \tfrac{1}{6})\)에서 미분가능하다고 가정한다. ② 구간 평균속도 \(= \dfrac{x(1/6) - x(0)}{1/6 - 0} = \dfrac{15}{1/6} = 90\,\text{km/h}\). ③ 평균값 정리: 어떤 시각 \(c \in (0, \tfrac{1}{6})\)가 존재하여 \(x'(c) = 90\,\text{km/h}\). ④ 즉, 이 자동차의 순간속도가 \(90\,\text{km/h}\)인 순간이 반드시 존재한다. \(90 \gt 80\)이므로 <strong>제한 속도를 초과한 순간이 반드시 있었다.</strong> <br><strong>서술 채점 포인트:</strong> 평균값 정리의 가정 (연속·미분가능), 평균속도 90 도출 (단위 환산 명확), 정리 적용 결론.
                     </div></details>

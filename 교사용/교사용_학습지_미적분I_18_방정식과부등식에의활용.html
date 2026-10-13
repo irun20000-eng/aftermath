@@ -168,8 +168,8 @@
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-center text-lg font-bold">\(\forall x \in I,\ f(x) \geq 0 \Leftrightarrow \min_{x \in I} f(x) \geq 0\).</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>예제:</strong> \(x \gt 0\)일 때 \(x^3 - x^2 - x + 1 \geq 0\) 증명.<br>
-                    \(f(x) = x^3 - x^2 - x + 1\)에 대해 \(f'(x) = 3x^2 - 2x - 1 = (3x + 1)(x - 1)\). \(x \gt 0\)에서 \(f' = 0 \Rightarrow x = 1\). 부호 \((-,+)\) \(\Rightarrow x = 1\)에서 극소 = 최소. \(f(1) = 1 - 1 - 1 + 1 = 0 \geq 0 \Rightarrow x \gt 0\)에서 \(f(x) \geq 0\) ✓. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 예제 3 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>예제:</strong> \(x \geq 0\)일 때 \(x^3 - x^2 - x + 1 \geq 0\) 증명.<br>
+                    \(f(x) = x^3 - x^2 - x + 1\)에 대해 \(f'(x) = 3x^2 - 2x - 1 = (3x + 1)(x - 1)\). \(x \geq 0\)에서 \(f' = 0 \Rightarrow x = 1\). 부호 \((-,+)\) \(\Rightarrow x = 1\)에서 극소 = 최소 (끝점 \(f(0) = 1\)보다 작다). \(f(1) = 1 - 1 - 1 + 1 = 0 \geq 0 \Rightarrow x \geq 0\)에서 \(f(x) \geq 0\) ✓. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 예제 3 참고)</span></p>
                 </div>
 
                 <!-- 5. 두 함수의 비교 -->
@@ -270,9 +270,9 @@
 
                     <div>
                         <span class="badge badge-l2">응용-두 함수 비교 + 매개변수</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(x \gt 0\)일 때, 두 함수 \(f(x) = 3x^3 + 8x^2 - 18x + k\), \(g(x) = x^3 - x^2 + 6x + 1\)에 대하여 부등식 \(f(x) \geq g(x)\)가 성립하도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 10 참고)</span></div>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(x \geq 0\)일 때, 두 함수 \(f(x) = 3x^3 + 8x^2 - 18x + k\), \(g(x) = x^3 - x^2 + 6x + 1\)에 대하여 부등식 \(f(x) \gt g(x)\)가 성립하도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 기본 10 참고)</span></div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 차함수 \(h(x) = f(x) - g(x) = 2x^3 + 9x^2 - 24x + (k - 1)\). \(x \gt 0\)에서 \(h(x) \geq 0\) \(\Leftrightarrow \min_{x \gt 0} h(x) \geq 0\). \(h'(x) = 6x^2 + 18x - 24 = 6(x^2 + 3x - 4) = 6(x + 4)(x - 1)\). \(x \gt 0\)에서 \(h' = 0 \Rightarrow x = 1\). 부호 \((-,+)\) \(\Rightarrow x = 1\)에서 극소 = 최소. \(h(1) = 2 + 9 - 24 + (k - 1) = k - 14\). 조건 \(k - 14 \geq 0 \Rightarrow k \geq 14\). 정답: \(k \geq 14\).
+                            <strong>💡 힌트:</strong> 차함수 \(h(x) = f(x) - g(x) = 2x^3 + 9x^2 - 24x + (k - 1)\). \(x \geq 0\)에서 \(h(x) \gt 0\) \(\Leftrightarrow \min_{x \geq 0} h(x) \gt 0\). \(h'(x) = 6x^2 + 18x - 24 = 6(x^2 + 3x - 4) = 6(x + 4)(x - 1)\). \(x \geq 0\)에서 \(h' = 0 \Rightarrow x = 1\). 부호 \((-,+)\) \(\Rightarrow x = 1\)에서 극소 = 최소 (끝점 \(h(0) = k - 1 \gt h(1)\)). \(h(1) = 2 + 9 - 24 + (k - 1) = k - 14\). 조건 \(k - 14 \gt 0 \Rightarrow k \gt 14\) (등호 없는 부등식이므로 \(k = 14\)는 제외). 정답: \(k \gt 14\).
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -320,7 +320,7 @@
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 두 곡선 \(y = x^3 + 4x^2\), \(y = -2x^2 - 9x + k\)가 서로 다른 <strong>세 점</strong>에서 만나도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 09 참고)</span></div>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 두 곡선 \(y = x^3 + 4x^2\), \(y = -2x^2 - 9x + k\)가 서로 다른 <strong>세 점</strong>에서 만나도록 하는 실수 \(k\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 기본 09 참고)</span></div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략 (5단계):</strong><br>
                 <strong>STEP 1 — 교점 방정식:</strong> 두 곡선의 \(x\)좌표는 \(x^3 + 4x^2 = -2x^2 - 9x + k\), 즉 \(x^3 + 6x^2 + 9x - k = 0\). 매개변수 분리: \(x^3 + 6x^2 + 9x = k\).<br>

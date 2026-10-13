@@ -381,13 +381,13 @@
         <!-- Q8 표준 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">8</span><span class="q-title">부등식 항상 성립 — 정수 \(n\) 최댓값</span></div>
-            <div class="q-stmt">\(x\gt 0\), \(x^3+\dfrac{1}{x^3}-24\!\left(x+\dfrac{1}{x}\right)\gt n\). 정수 \(n\) 최댓값.</div>
+            <div class="q-stmt">\(x\gt 0\), \(x^3+\dfrac{1}{x^3}-24\!\left(x+\dfrac{1}{x}\right)\geq n\). 정수 \(n\) 최댓값.</div>
             <div class="q-solve">
                 <span class="step">\(t=x+\dfrac{1}{x}\geq 2\) (AM-GM). \(x^3+\dfrac{1}{x^3}=t^3-3t\). 좌변 \(=t^3-27t=g(t)\).</span>
                 <span class="step">\(g'(t)=3t^2-27=0\) → \(t=3\) (극소). \(g(3)=27-81=-54\). \(g(2)=8-54=-46\).</span>
-                <span class="step">최솟값 \(=-54\) → \(n\lt -54\) → 정수 최댓값 \(=-55\).</span>
+                <span class="step">최솟값 \(=-54\) (\(t=3\)에서 실제로 나옴) → \(n\leq -54\) → 정수 최댓값 \(=-54\).</span>
             </div>
-            <div class="q-ans">정답: \(-55\)</div>
+            <div class="q-ans">정답: \(-54\)</div>
         </div>
     </div>
     <div class="nv-board" data-key="practice.8" data-label="8번 — 치환 후 최솟값 (정수 n의 최댓값)"></div>

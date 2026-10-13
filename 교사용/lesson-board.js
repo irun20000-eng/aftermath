@@ -64,13 +64,28 @@
     return s;
   }
 
+  // 통합본(여러 차시를 한 파일에)은 window.LM_BOARD_PLANS['NN'] 에 차시별 계획을 모은다.
+  // 칠판은 가장 가까운 [data-lesson] 의 계획을 쓴다. LM_BOARD_PLANS 가 없으면 기존처럼 LM_BOARD_PLAN 하나.
+  function planFor(b) {
+    var all = window.LM_BOARD_PLANS;
+    if (all) {
+      var host = b.closest ? b.closest('[data-lesson]') : null;
+      return host ? all[host.getAttribute('data-lesson')] : null;
+    }
+    return window.LM_BOARD_PLAN;
+  }
+  function wsFor(b) {
+    var host = b.closest ? b.closest('[data-lm-ws]') : null;
+    if (!host) host = document.querySelector('[data-lm-ws]');
+    return host ? host.getAttribute('data-lm-ws') : '';
+  }
+
   function renderBoards() {
-    var plan = window.LM_BOARD_PLAN;
-    var ws = (document.querySelector('[data-lm-ws]') || {}).getAttribute
-      ? document.querySelector('[data-lm-ws]').getAttribute('data-lm-ws') : '';
     var boards = Array.prototype.slice.call(document.querySelectorAll('.nv-board[data-key]'));
     boards.forEach(function (b) {
       var key = b.getAttribute('data-key');
+      var plan = planFor(b);
+      var ws = wsFor(b);
       var pp = plan && plan.pages && plan.pages[key];
       b.innerHTML = '';
       var head = document.createElement('div');

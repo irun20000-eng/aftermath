@@ -73,3 +73,11 @@ python3 scripts/verify_links.py
 3. `python3 scripts/build_nav_tabs.py NN …` 로 Nav 변환 (마무리 차시 04·07·08·11 은 실전 훈련 구조).
 4. 인덱스 3곳에 수업 모드 버튼 (교사용 인덱스는 기본 링크를 수업 모드로).
 5. 통합본(`build_bundle_calc.py`)에서는 수업 모드가 스스로 꺼진다(헤더 2개 이상).
+
+## 통합본 생성
+
+- `python scripts/build_teacher_bundles.py` → `교사용/교사용_Solutions_All_미적분I.html`(해설 모음)과 `교사용/교사용_Nav_All_묶음_미적분I.html`(Nav 통째 묶음)을 Nav 정본에서 다시 쓴다. 두 파일은 손으로 고치지 않는다.
+- **언제 다시 돌리나: Nav(`교사용_Nav_*.html`)나 `boardplans/calc_NN.js` 를 고친 뒤.** 실행하면 이전 파일 대비 차시별 변화(카드 수 · 문항 문장/정답이 달라진 카드 번호)를 출력한다. `--detail L17` 은 카드별 원문 비교, `--base main` 은 main 판과 비교, `--dry-run` 은 쓰지 않고 요약만.
+- Solutions_All: 외형(표지·목차·CSS)은 그대로, 차시 머리·한 줄 핵심·공식 박스·문항 해설 카드 전부를 Nav 에서 가져온다. '다음 차시' 한 줄은 Nav 에 없어 기존 파일 것을 이어 쓴다.
+- Nav_All 묶음: 탭 바를 빼고 모든 패널을 펼친다. 판서 칠판은 `window.LM_BOARD_PLANS['NN']` + `[data-lesson]` 으로 차시마다 자기 계획을 쓴다 (`lesson-board.js` 는 LM_BOARD_PLANS 가 없으면 예전처럼 LM_BOARD_PLAN 하나).
+- 돌린 뒤 `verify_links.py`(중복 id 0) · `verify_lesson_mode.py` 를 다시 돌린다.

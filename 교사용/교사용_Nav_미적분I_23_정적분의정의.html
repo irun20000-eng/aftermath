@@ -309,13 +309,13 @@
         <!-- L1 1번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">기하 도형으로 정적분 계산</span></div>
-            <div class="q-stmt">(1) \(\int_{-2}^{2}(x+4)\,dx\) &nbsp; (2) \(\int_{-2}^{4}\!\left(\tfrac{1}{2}x+1\right)\!dx\)</div>
+            <div class="q-stmt">(1) \(\int_{-2}^{2}(x+4)\,dx\) &nbsp; (2) \(\int_{2}^{-4}\!\left(\tfrac{1}{2}x+1\right)\!dx\)</div>
             <div class="q-solve">
                 <span class="step">(1) \([-2,2]\)에서 \(x+4 \geq 0\). \(x=-2\)에서 \(2\), \(x=2\)에서 \(6\). 사다리꼴 \(\dfrac{(2+6)\cdot4}{2} = 16\).</span>
-                <span class="step">(2) \([-2,4]\)에서 \(\tfrac{1}{2}x+1 \geq 0\). \(x=-2\)에서 \(0\), \(x=4\)에서 \(3\). 삼각형 \(\dfrac{1}{2}\cdot6\cdot3 = 9\).</span>
+                <span class="step">(2) 위끝 \(\lt\) 아래끝 → \(\int_{2}^{-4} = -\int_{-4}^{2}\). 영점 \(x=-2\): \([-4,-2]\)에서 음(삼각형 넓이 \(1\)), \([-2,2]\)에서 양(삼각형 넓이 \(4\)). \(\int_{-4}^{2} = -1+4 = 3\) → 답 \(-3\).</span>
             </div>
-            <div class="q-ans">정답: (1) \(16\) &nbsp; (2) \(9\)</div>
-            <div class="q-warn"><strong>판서 포인트:</strong> 그래프의 \(x\)절편 위치 확인 필수. \([-2,4]\)에서 \(\tfrac{1}{2}x+1=0 \Rightarrow x=-2\)이 구간 왼쪽 끝이므로 전체가 양수.</div>
+            <div class="q-ans">정답: (1) \(16\) &nbsp; (2) \(-3\)</div>
+            <div class="q-warn"><strong>판서 포인트:</strong> 그래프의 \(x\)절편 위치 확인 필수. \(\tfrac{1}{2}x+1=0 \Rightarrow x=-2\)가 구간 \([-4,2]\) 안에 있으므로 음·양 두 삼각형으로 나눈다. 위끝·아래끝이 뒤집혀 있으므로 마지막에 부호를 바꾼다 (약속 ②).</div>
         </div>
     </div>
     <div class="nv-board" data-key="level.1" data-label="1번 — 사다리꼴·삼각형으로 정적분"></div>

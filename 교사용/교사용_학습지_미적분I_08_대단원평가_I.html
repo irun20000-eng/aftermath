@@ -127,7 +127,7 @@
                     <span class="badge badge-type">[표준-미정계수 결정]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \(f(x) = ax + b\)가 \( \displaystyle \lim_{x \to 1}\dfrac{(x^2 + 1)\,f(x)}{x^4 - 1} = 2 \) 를 만족시킬 때, 실수 \(a, b\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.44 대단원 평가 03번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 분모 \(x^4 - 1 = (x-1)(x+1)(x^2+1)\). \(x \to 1\)일 때 분모 \(\to 0\), 극한이 실수 → 분자도 \(\to 0\) → \(f(1) = a + b = 0\). 약분 후 \( \dfrac{f(x)}{(x-1)(x+1)} \to \dfrac{a}{2 \cdot 2} \cdot ? \). 실제로 \(f(x) = a(x-1)\)이라야 약분 가능. 다시 정리하면 분자 \((x^2+1) \cdot a(x-1)\), 분모 \((x-1)(x+1)(x^2+1)\) → \( \dfrac{a}{x+1}\) → \(\dfrac{a}{2} = 2 \Rightarrow a = 4, b = -4\).
+                        <strong>💡 전략 힌트:</strong> 분모 \(x^4 - 1 = (x-1)(x+1)(x^2+1)\). \(x \to 1\)일 때 분모 \(\to 0\), 극한이 실수 → 분자도 \(\to 0\) → \(f(1) = a + b = 0\). \(f(1) = 0\)이므로 \(b = -a\), \(f(x) = a(x-1)\). 약분하면 \( \dfrac{(x^2+1) \cdot a(x-1)}{(x-1)(x+1)(x^2+1)} = \dfrac{a}{x+1} \to \dfrac{a}{2} = 2\) → \(a = 4,\ b = -4\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -196,7 +196,7 @@
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> \(f\)는 \(x = -2\)에서 분모 0 → 불연속. ㄱ — \([-4, 0]\)에 불연속점 포함, \(x \to -2^\pm\)에서 발산 → 최댓값 없음 ✓. ㄴ — \([-2, 0]\)의 좌끝 \(x=-2\)에서 정의 안 되므로 최댓값·최솟값 모두 갖지 못함 → ㄴ 거짓. ㄷ — \([0, 2]\)는 연속구간 → 최대최소 정리에 의해 둘 다 가짐 → ㄷ 참. 정답: <strong>ㄱ, ㄷ</strong>.
+                        <strong>💡 전략 힌트:</strong> \(f\)는 \(x = -2\)에서 분모 0 → 불연속. ㄱ — \([-4, 0]\)에 불연속점 포함, \(x \to -2^\pm\)에서 발산 → 최댓값 없음 ✓. ㄴ — \(f(x) = 3 - \dfrac{8}{x+2}\)는 \((-2, 0]\)에서 증가하고 \(x \to -2^+\)일 때 \(f(x) \to -\infty\) → 최솟값 없음 (최댓값은 \(f(0) = -1\)) → ㄴ 거짓. ㄷ — \([0, 2]\)는 연속구간 → 최대최소 정리에 의해 둘 다 가짐 → ㄷ 참. 정답: <strong>ㄱ, ㄷ</strong>.
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>

@@ -90,7 +90,7 @@
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
             <h2 class="section-title">01. 실전 훈련 (Textbook Mastery)</h2>
-            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 중단원 마무리(P.135~P.137) 13문항 + 익힘책 P.158 보강 1문항 = 14문항을 그대로 학습지화. <span class="text-teal-600">기초 1~3</span> · <span class="text-yellow-600">기본 4~12</span> · <span class="text-red-600">도전 13·14 (서술형 킬러)</span></p>
+            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 중단원 마무리(P.135~P.137) 13문항 + 익힘책 P.158 보강 1문항 = 14문항을 그대로 학습지화. <span class="text-teal-600">기초 1~3</span> · <span class="text-yellow-600">기본 4~11</span> · <span class="text-red-600">도전 12·13</span> + 익힘책 P.158 기본 06 보강(14) · 13·14 서술형</p>
 
             <div class="grid grid-cols-1 gap-12">
                 <!-- ============ 기초 (P.135 기초 01·02·03) ============ -->
@@ -222,7 +222,7 @@
                 <!-- Q10 기본 10 -->
                 <div>
                     <span class="badge badge-l2">[기본-구간별 속도 함수 + 위치 누적]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">10. 지면에 정지해 있던 드론이 지면과 수직 방향으로 출발한 지 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = \begin{cases} \tfrac{1}{2}t &amp; (0 \leq t \leq 10) \\ 15 - t &amp; (10 \leq t \leq 15) \end{cases} \]라고 한다. 출발한 지 \(12\)초 후의 드론의 높이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 기본 10번)</span></div>
+                    <div class="text-xl font-bold text-slate-800 mb-2">10. 지면에 정지해 있던 드론이 지면과 수직 방향으로 출발한 지 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = \begin{cases} \tfrac{1}{2}t &amp; (0 \leq t \leq 10) \\ 15 - t &amp; (10 \lt t \leq 15) \end{cases} \]라고 한다. 출발한 지 \(12\)초 후의 드론의 높이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 기본 10번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> \([0, 10]\)과 \([10, 12]\)에서 모두 \(v \geq 0\)이므로 높이 \(= \int_0^{12} v(t)\,dt = \int_0^{10}\tfrac{1}{2}t\,dt + \int_{10}^{12}(15 - t)\,dt\). 앞: \([\tfrac{1}{4}t^2]_0^{10} = 25\). 뒤: \([15t - \tfrac{1}{2}t^2]_{10}^{12} = (180 - 72) - (150 - 50) = 108 - 100 = 8\). 합: \(25 + 8 = 33\). 답: \(33\,\text{m}\).
                     </div></details>
@@ -239,10 +239,10 @@
                     <div class="thinking-space"></div>
                 </div>
 
-                <!-- Q12 기본 12 -->
+                <!-- Q12 도전 12 -->
                 <div>
-                    <span class="badge badge-l2">[기본-이차함수 + 넓이 비 \(A:B = 1:2\)]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">12. 이차함수 \(f(x) = x^2 - 6x + k\)에 대하여 다음 그림과 같이 곡선 \(y = f(x)\)와 \(x\)축 및 \(y\)축으로 둘러싸인 도형의 넓이를 \(A\)라 하고, 곡선 \(y = f(x)\)와 \(x\)축으로 둘러싸인 도형의 넓이를 \(B\)라고 할 때, \(A : B = 1 : 2\)이다. 이때 실수 \(k\)의 값을 구하시오. (단, \(0 \lt k \lt 9\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 기본 12번)</span>
+                    <span class="badge badge-l3">[도전-이차함수 + 넓이 비 \(A:B = 1:2\)]</span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">12. 이차함수 \(f(x) = x^2 - 6x + k\)에 대하여 다음 그림과 같이 곡선 \(y = f(x)\)와 \(x\)축 및 \(y\)축으로 둘러싸인 도형의 넓이를 \(A\)라 하고, 곡선 \(y = f(x)\)와 \(x\)축으로 둘러싸인 도형의 넓이를 \(B\)라고 할 때, \(A : B = 1 : 2\)이다. 이때 실수 \(k\)의 값을 구하시오. (단, \(0 \lt k \lt 9\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.137 중단원 도전 12번)</span>
                         <div class="mt-3 flex justify-center">
                             <img src="images/calc_29_q12.png" alt="문제 12 그림 — 아래로 볼록 포물선 y=x²-6x+k, y절편 k. y축·x축과 둘러싼 작은 영역 A (좌측 위), 곡선과 x축이 둘러싼 큰 영역 B (꼭지점 부근)" class="block max-w-xs w-full rounded-lg border border-slate-200" />
                         </div>
@@ -257,7 +257,7 @@
                     <div class="thinking-space"></div>
                 </div>
 
-                <!-- ============ 도전 (P.137 도전 13 + 익힘책 P.158 도전 06) ============ -->
+                <!-- ============ 도전 13 (P.137) + 익힘책 P.158 기본 06 보강 ============ -->
 
                 <!-- Q13 도전 13 (서술형) -->
                 <div>
@@ -275,10 +275,10 @@
                     <div class="thinking-space"></div>
                 </div>
 
-                <!-- Q14 도전 (익힘책 P.158 도전 06) -->
+                <!-- Q14 보강 (익힘책 P.158 기본 06) -->
                 <div>
-                    <span class="badge badge-l3">[도전-두 부분 넓이가 서로 같은 조건 (서술형)]</span>
-                    <div class="text-xl font-bold text-slate-900 mb-4">14. 곡선 \(y = x(x - a)(x - b)\)와 \(x\)축으로 둘러싸인 두 부분의 넓이가 서로 같을 때, \(\dfrac{b}{a}\)의 값을 풀이 과정과 함께 구하시오. (단, \(0 \lt a \lt b\)) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 익힘책 P.158 도전 06번 — 보강)</span></div>
+                    <span class="badge badge-l2">[기본-두 부분 넓이가 서로 같은 조건 (익힘책 보강 · 서술형)]</span>
+                    <div class="text-xl font-bold text-slate-900 mb-4">14. 곡선 \(y = x(x - a)(x - b)\)와 \(x\)축으로 둘러싸인 두 부분의 넓이가 서로 같을 때, \(\dfrac{b}{a}\)의 값을 풀이 과정과 함께 구하시오. (단, \(0 \lt a \lt b\)) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(익힘책 P.158 기본 06번 — 보강)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 (5단계):</strong> <br>
                         ① 영점: \(x = 0, a, b\). 두 부분: \([0, a]\)와 \([a, b]\). <br>
