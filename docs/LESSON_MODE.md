@@ -64,6 +64,7 @@
 ```bash
 python3 scripts/verify_lesson_mode.py
 python3 scripts/verify_links.py
+python3 scripts/verify_consistency.py   # 같은 문항이 학생용·교사용·Nav·판서·묶음에서 같은지 (허용: scripts/consistency_allow.json)
 ```
 
 ## 새 차시를 추가할 때

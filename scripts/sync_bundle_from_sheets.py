@@ -43,7 +43,7 @@ def main():
     raw = BUNDLE.read_text(encoding="utf-8")
     crlf = "\r\n" in raw
     B = raw.replace("\r\n", "\n").split("\n")
-    ok = fail = 0
+    ok = fail = skip = 0
     for sheet in sorted(ROOT.glob("학습지_미적분I_*.html")):
         rel = sheet.name
         old = git_show(a.base, rel)
@@ -80,6 +80,15 @@ def main():
                 ctx_a = min(ctx_a + 1, i1)
                 ctx_b = min(ctx_b + 1, len(old) - i2)
             if len(hits) != 1:
+                # 이미 반영된 덩어리(새 줄이 그대로 있음)는 건너뜀 — 재실행 안전
+                new_blk = [l for l in new[j1:j2] if l.strip()]
+                if new_blk and len(find_block(B, new[j1:j2], lo, hi)) >= 1:
+                    skip += 1
+                    continue
+                # 묶음에 없는 머리 줄(수업 모드·판서 스크립트 include)은 대상 아님
+                if blk_old and all(re.search(r"lesson-mode\.|boardplans/|^\s*$", l) for l in blk_old):
+                    skip += 1
+                    continue
                 print(f"❌ {n}: 묶음에서 위치 특정 실패 ({len(hits)}곳) — {blk_old[0].strip()[:70] if blk_old else '(빈 줄)'}")
                 fail += 1
                 continue
@@ -94,7 +103,7 @@ def main():
     if not a.dry_run:
         out = "\n".join(B)
         BUNDLE.write_text(out.replace("\n", "\r\n") if crlf else out, encoding="utf-8", newline="")
-    print(f"\n{'(dry-run) ' if a.dry_run else ''}묶음 반영 {ok}건 · 실패 {fail}건")
+    print(f"\n{'(dry-run) ' if a.dry_run else ''}묶음 반영 {ok}건 · 건너뜀 {skip}건(이미 반영/묶음에 없는 줄) · 실패 {fail}건")
     return 1 if fail else 0
 
 

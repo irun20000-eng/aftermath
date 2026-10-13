@@ -917,8 +917,8 @@ const PROBLEMS = [
     answerText:'\\(2\\)',
     keypoint:'"위쪽 넓이 = 아래쪽 넓이"는 <strong>부호를 살린 정적분의 합이 \\(0\\)</strong>이라는 뜻이다: \\(\\displaystyle\\int_0^b f(x)dx=0\\).',
     steps:[
-      {tag:'STEP 1', title:'조건을 정적분으로 번역', body:`<p>\\(0\\lt x\\lt a\\)에서는 곡선이 \\(x\\)축 아래, \\(a\\lt x\\lt b\\)에서는 위에 있습니다. 두 넓이가 같으면</p>
-<div class="calc">\\(\\displaystyle -\\int_{0}^{a}f\\,dx=\\int_{a}^{b}f\\,dx \\;\\Longleftrightarrow\\; \\int_{0}^{b}f(x)\\,dx=0\\)</div>`},
+      {tag:'STEP 1', title:'조건을 정적분으로 번역', body:`<p>\\(0\\lt x\\lt a\\)에서는 곡선이 \\(x\\)축 위, \\(a\\lt x\\lt b\\)에서는 아래에 있습니다. 두 넓이가 같으면</p>
+<div class="calc">\\(\\displaystyle \\int_{0}^{a}f\\,dx=-\\int_{a}^{b}f\\,dx \\;\\Longleftrightarrow\\; \\int_{0}^{b}f(x)\\,dx=0\\)</div>`},
       {tag:'STEP 2', title:'전개하여 적분', body:`<div class="calc">\\(f(x)=x(x-a)(x-b)=x^3-(a+b)x^2+abx\\)</div>
 <div class="calc">\\(\\displaystyle\\int_{0}^{b}f\\,dx=\\Big[\\frac{x^4}{4}-\\frac{(a+b)x^3}{3}+\\frac{abx^2}{2}\\Big]_{0}^{b}\\)</div>
 <div class="calc">\\(=\\dfrac{b^4}{4}-\\dfrac{(a+b)b^3}{3}+\\dfrac{ab^3}{2}\\)</div>`},

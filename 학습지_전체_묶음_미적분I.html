@@ -496,9 +496,9 @@
             <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
                 <strong>💡 풀이 흐름 (5단계):</strong>
                 <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
-                    <li><strong>그래프 구조 파악</strong>: \(y = f(x)\)는 세 조각으로 구성됨. ① \(x < -1\) 구간: 우하향 직선이 \((-1, 3)\) 열린점(○)으로 끝남. ② \(-1 < x < 1\) 구간: \((-1, 0)\) 열린점에서 \((1, 3)\) 열린점까지 우상향 대각선. ③ \(1 \le x\) 구간: \(y = 1\)인 수평선 (단 \(x=2\)는 열린점(○)). 함숫값 \(f(-1) = 2\)와 \(f(2) = 3\)은 고립된 닫힌점(●)으로 표시됨.</li>
+                    <li><strong>그래프 구조 파악</strong>: \(y = f(x)\)는 세 조각으로 구성됨. ① \(x \lt -1\) 구간: 우하향 직선이 \((-1, 3)\) 열린점(○)으로 끝남. ② \(-1 \lt x \lt 1\) 구간: \((-1, 0)\) 열린점에서 \((1, 3)\) 열린점까지 우상향 대각선. ③ \(1 \le x\) 구간: \(y = 1\)인 수평선 (단 \(x=2\)는 열린점(○)). 함숫값 \(f(-1) = 2\)와 \(f(2) = 3\)은 고립된 닫힌점(●)으로 표시됨.</li>
                     <li><strong>\(\lim_{x \to -1^-} f(x)\) 계산</strong>: 좌측 직선이 \((-1, 3)\) 열린점에 접근. 따라서 좌극한 = <strong>3</strong>. (함숫값 \(f(-1) = 2\)는 극한과 무관.)</li>
-                    <li><strong>\(\lim_{x \to 2^-} f(x)\) 계산</strong>: \(1 \le x < 2\)에서 \(f(x) = 1\)인 수평선. \(x \to 2^-\)일 때 \(f(x) \to\) <strong>1</strong>.</li>
+                    <li><strong>\(\lim_{x \to 2^-} f(x)\) 계산</strong>: \(1 \le x \lt 2\)에서 \(f(x) = 1\)인 수평선. \(x \to 2^-\)일 때 \(f(x) \to\) <strong>1</strong>.</li>
                     <li><strong>\(\lim_{x \to 2^+} f(x)\) 계산</strong>: \(x > 2\)에서도 \(f(x) = 1\)인 수평선. \(x \to 2^+\)일 때 \(f(x) \to\) <strong>1</strong>. 좌·우극한이 모두 1로 일치하므로 \(\lim_{x \to 2} f(x) = 1\). (함숫값 \(f(2) = 3\)은 극한과 무관.)</li>
                     <li><strong>최종</strong>: \(\lim_{x \to -1^-} f(x) + \lim_{x \to 2} f(x) = 3 + 1 = \boxed{4}\). 정답 <strong>④</strong>.</li>
                 </ol>
@@ -1385,7 +1385,7 @@ document.addEventListener('click', function(e) {
                     <li><strong>STEP 2 — 식 변환</strong>: \(x = -t\), \(x^2 = t^2\)이므로 \(\sqrt{4x^2+3x} = \sqrt{4t^2-3t}\), \(-2x = 2t\), \(x+4 = -t+4\). 식은 \( \dfrac{\sqrt{4t^2-3t}+2t}{-t+4} \).</li>
                     <li><strong>STEP 3 — 최고차로 나누기</strong>: 분자·분모를 \(t\)로 나누면 \( \dfrac{\sqrt{4-3/t}+2}{-1+4/t} \).</li>
                     <li><strong>STEP 4 — \(t \to \infty\) 대입</strong>: \( \dfrac{\sqrt{4}+2}{-1+0} = \dfrac{4}{-1} = -4 \).</li>
-                    <li><strong>STEP 5 — 검증</strong>: \(x<0\)에서 \(\sqrt{x^2}=|x|=-x\)임을 유의. 치환 없이 풀면 부호 실수 위험. <span class="text-red-600 font-bold">정답: ②</span></li>
+                    <li><strong>STEP 5 — 검증</strong>: \(x \lt 0\)에서 \(\sqrt{x^2}=|x|=-x\)임을 유의. 치환 없이 풀면 부호 실수 위험. <span class="text-red-600 font-bold">정답: ②</span></li>
                 </ol>
                 <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \(x \to -\infty\) 무리식은 \(t = -x\) 치환으로 \(t \to +\infty\) 문제로 환원해 부호 실수를 방지. 분자에 무리식이 있을 때 특히 효과적.</p>
             </div></details>
@@ -4944,7 +4944,7 @@ document.addEventListener('click', function(e) {
       <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
       <span class="px-5 py-2 rounded-lg shadow-sm" style="background:#ffedd5;color:#9a3412;border:1px solid #fed7aa">익힘책 Ⅱ-1: 미분계수와 도함수</span>
     </div>
-    <p class="mt-6 text-sm text-slate-500 font-medium">전체 12문항 · 기초 3 · 기본 6 · 도전 3 &nbsp;|&nbsp; 단계별 해설(STEP)은 웹 해설지에서 확인하세요.</p>
+    <p class="mt-6 text-sm text-slate-500 font-medium">전체 12문항 · 기초 4 · 기본 6 · 도전 2 &nbsp;|&nbsp; 단계별 해설(STEP)은 웹 해설지에서 확인하세요.</p>
   </header>
   <div class="card wb-problem">
     <span class="badge badge-l1">기초 1</span>
@@ -4965,7 +4965,7 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
   <div class="card wb-problem">
-    <span class="badge badge-l2">기본 4</span>
+    <span class="badge badge-l1">기초 4</span>
     <span class="wb-sub">곱의 미분법</span>
     <div class="wb-stmt"><p>미분가능한 두 함수 \(f(x)\), \(g(x)\)에 대하여</p>
 <div class="calc">\(f(2)=-1,\quad f'(2)=4,\quad g(2)=2,\quad g'(2)=-5\)</div>
@@ -5008,7 +5008,7 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
   <div class="card wb-problem">
-    <span class="badge badge-l3">도전 10</span>
+    <span class="badge badge-l2">기본 10</span>
     <span class="wb-sub">곱의 미분법 · 미정계수</span>
     <div class="wb-stmt"><p>함수 \(f(x)=(x-1)(x^3+ax^2+4)\)에 대하여 \(f'(2)=0\)일 때, 실수 \(a\)의 값을 구하시오.</p></div>
     <div class="thinking-space"></div>
@@ -5016,9 +5016,9 @@ document.addEventListener('click', function(e) {
   <div class="card wb-problem">
     <span class="badge badge-l3">도전 11</span>
     <span class="wb-sub">미정형 조건으로 \(n\)과 극한값 결정</span>
-    <div class="wb-stmt"><p>자연수 \(n\)과 실수 \(a\)에 대하여</p>
-<div class="calc">\(\displaystyle \lim_{x\to 2}\frac{x^n-3x^3-40}{x^2-4}=a\)</div>
-<p>일 때, \(n\)과 \(a\)의 값을 구하시오.</p></div>
+    <div class="wb-stmt"><p>자연수 \(n\)과 실수 \(\alpha\)에 대하여</p>
+<div class="calc">\(\displaystyle \lim_{x\to 2}\frac{x^n-3x^3-40}{x^2-4}=\alpha\)</div>
+<p>일 때, \(n\)과 \(\alpha\)의 값을 구하시오.</p></div>
     <div class="thinking-space"></div>
   </div>
   <div class="card wb-problem">
@@ -6193,30 +6193,34 @@ document.addEventListener('click', function(e) {
                 <div class="space-y-6 mt-6">
                     <div class="flex items-center border-b-2 border-red-200 pb-2">
                         <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
-                        <p class="text-red-600 font-bold">"틀려야 는다!" 증가 \(\Leftrightarrow f' \gt 0\)인가? — 단조성과 도함수의 미묘한 관계</p>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 증가하면 \(f' \gt 0\)인가, \(f' \geq 0\)인가? — 단조성과 도함수의 미묘한 관계</p>
                     </div>
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-내 역량: 학생의 주장 판정</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 최고차항의 계수가 양수인 삼차함수 \(f(x)\)에 대하여 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고 그 이유를 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.81 · 내 역량 키움·채움·나눔 변형 (원문: \(f'(x) \geq 0\) → 참))</span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 최고차항의 계수가 양수인 삼차함수 \(f(x)\)에 대하여 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고, 그 이유를 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.81 · 내 역량 키움·채움·나눔)</span>
                             <div class="mt-3 p-4 bg-white rounded-xl border-2 border-orange-200">
-                                <p class="text-base text-slate-700">📢 학생: "열린구간 \((a, b)\)에서 함수 \(f(x)\)가 <strong>증가</strong>하면 이 구간에서 <strong>\(f'(x) \gt 0\)</strong>이야!"</p>
+                                <p class="text-base text-slate-700">📢 학생: "열린구간 \((a, b)\)에서 함수 \(f(x)\)가 <strong>증가</strong>하면 이 구간에서 <strong>\(f'(x) \geq 0\)</strong>이야!"</p>
                             </div>
                         </div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
                                 <p class="text-slate-700 text-sm font-medium leading-relaxed">
-                                대다수 학생이 "증가이면 \(f' \gt 0\)"을 직관적으로 참이라고 단정한다. 그러나 본 차시의 개념 구성 3에서 다룬 대로 <strong>"역은 일반적으로 거짓"</strong>이다. 결론: <strong>학생의 말은 거짓</strong>.<br><br>
-                                <strong>STEP 1 — 반례 만들기:</strong> \(f(x) = x^3\)을 보자. 이 함수는 모든 실수 \(x\)에서 정의역 전체에서 <strong>증가</strong>한다 (정의에 의해 \(x_1 \lt x_2 \Rightarrow x_1^3 \lt x_2^3\)). 하지만 \(f'(x) = 3x^2\)이므로 \(f'(0) = 0\). 즉 <strong>증가하지만 \(f'(0) \gt 0\)이 아닌 점</strong>이 존재.<br><br>
-                                <strong>STEP 2 — 정확한 명제로 다듬기:</strong> 미분가능한 함수의 증가에 관한 정확한 명제는<br>
+                                이 문항의 함정은 <strong>부등호 하나</strong>다. 학생의 말은 "\(f'(x) \gt 0\)"이 아니라 <strong>"\(f'(x) \geq 0\)"</strong>(등호 허용)이다. 개념 구성 3의 \(x^3\) 반례를 떠올리고 "증가해도 \(f' = 0\)인 점이 있으니 거짓"이라고 성급히 답하기 쉽지만, 등호가 허용되어 있으므로 반례가 되지 않는다. 결론: <strong>학생의 말은 참</strong>.<br><br>
+                                <strong>STEP 1 — \(f'(x) = 0\)의 해로 경우 나누기 (교과서 해설 P.167 방식):</strong> 최고차항의 계수가 양수인 삼차함수 \(f(x)\)의 도함수 \(f'(x)\)는 최고차항의 계수가 양수인 이차함수이므로, 이차방정식 \(f'(x) = 0\)의 해는 다음 세 경우 중 하나이다.<br>
+                                (i) <strong>서로 다른 두 실근</strong>: 함수 \(f(x)\)가 증가하는 구간에 포함되는 임의의 열린구간에서 \(f'(x) \gt 0\).<br>
+                                (ii) <strong>중근</strong>: \(f(x)\)는 실수 전체의 구간에서 증가하고, 이 구간에 포함되는 임의의 열린구간에서 \(f'(x) \geq 0\) (중근에서 \(f' = 0\)).<br>
+                                (iii) <strong>서로 다른 두 허근</strong>: \(f(x)\)는 실수 전체의 구간에서 증가하고, 이 구간에 포함되는 임의의 열린구간에서 \(f'(x) \gt 0\).<br>
+                                따라서 (i)~(iii) 어느 경우든 열린구간 \((a, b)\)에서 \(f(x)\)가 증가하면 이 구간에서 \(f'(x) \geq 0\)이다.<br><br>
+                                <strong>STEP 2 — "\(\gt 0\)"이었다면? (대비):</strong> 경우 (ii)가 핵심. \(f(x) = x^3\)은 실수 전체에서 증가하지만 (\(x_1 \lt x_2 \Rightarrow x_1^3 \lt x_2^3\)) \(f'(x) = 3x^2\)이므로 \(f'(0) = 0\). 즉 열린구간 \((-1, 1)\)에서 \(f\)는 증가하지만 "\(f'(x) \gt 0\)"은 성립하지 않는다. 학생이 "\(f'(x) \gt 0\)이야!"라고 말했다면 <span class="text-red-700 font-bold">거짓</span>, "\(f'(x) \geq 0\)이야!"라고 말했으므로 <strong>참</strong>.<br><br>
+                                <strong>STEP 3 — 세 명제 정리:</strong><br>
                                 ① <strong>\(f'(x) \gt 0 \Rightarrow f\) 증가</strong> (참)<br>
-                                ② <strong>\(f\) 증가 \(\Rightarrow f'(x) \geq 0\)</strong> (참, 등호 허용)<br>
-                                ③ <strong>\(f\) 증가 \(\Rightarrow f'(x) \gt 0\) (모든 \(x\)에서)</strong> (<span class="text-red-700 font-bold">거짓</span>)<br><br>
-                                ②와 ③의 미묘한 차이가 핵심. 증가는 "\(f'(x) \geq 0\)이고 \(f'(x) = 0\)인 점이 고립된 점들"이라는 조건과 동치.<br><br>
-                                <strong>STEP 3 — 삼차함수 한정 분석:</strong> 최고차항의 계수가 양수인 삼차함수 \(f(x) = x^3 + bx^2 + cx + d\)가 실수 전체에서 증가하면 \(f'(x) = 3x^2 + 2bx + c \geq 0\) (모든 \(x\)) \(\Leftrightarrow\) 판별식 \(D = 4b^2 - 12c \leq 0\). 등호 \(f'(x_0) = 0\)이 어떤 \(x_0\)에서 성립하더라도 \(f\)는 여전히 증가 — 단 그 \(x_0\)는 고립된 점이어야 함. <strong>결론:</strong> 학생의 말 "증가이면 모든 \(x\)에서 \(f' \gt 0\)"은 거짓이며, 정확한 명제는 "\(f'(x) \geq 0\)이고 등호가 고립된 점에서만 성립"이다.<br><br>
-                                <strong>핵심 통찰:</strong> "충분조건"과 "필요조건"의 구분이 핵심. \(f' \gt 0\)은 증가의 <strong>충분조건</strong>이지만 <strong>필요조건이 아니다</strong>. \(f' \geq 0\) (모든 \(x\), 등호 고립)이 증가의 정확한 동치 조건. 차시 14의 핵심 함정이며, 차시 15(극대·극소)에서 \(f'(a) = 0\)이 극값을 보장하지 않는 함정(예: \(f(x) = x^3\)에서 \(x = 0\))으로 직접 연결된다.
+                                ② <strong>\(f\) 증가 \(\Rightarrow f'(x) \geq 0\)</strong> (참, 등호 허용 — 이 문항의 학생 말)<br>
+                                ③ <strong>\(f\) 증가 \(\Rightarrow f'(x) \gt 0\) (모든 \(x\)에서)</strong> (<span class="text-red-700 font-bold">거짓</span> — \(x^3\) 반례)<br><br>
+                                ②와 ③의 차이(등호 하나)가 핵심. 다항함수에서 증가는 "\(f'(x) \geq 0\)이고 \(f'(x) = 0\)인 점이 고립된 점들"이라는 조건과 동치.<br><br>
+                                <strong>핵심 통찰:</strong> "충분조건"과 "필요조건"의 구분이 핵심. \(f' \gt 0\)은 증가의 <strong>충분조건</strong>이지만 <strong>필요조건이 아니다</strong>. 증가의 필요조건은 \(f' \geq 0\)이고, 학생의 말이 바로 이 필요조건이므로 참이다. 차시 14의 핵심 함정이며, 차시 15(극대·극소)에서 \(f'(a) = 0\)이 극값을 보장하지 않는 함정(예: \(f(x) = x^3\)에서 \(x = 0\))으로 직접 연결된다.
                                 </p>
                             </div>
                         </details>
@@ -8922,7 +8926,7 @@ document.addEventListener('click', function(e) {
         <!-- 01. 실전 훈련 -->
         <section class="card" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
             <h2 class="section-title">01. 실전 훈련 (Textbook Mastery)</h2>
-            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 중단원 마무리 14문항을 그대로 학습지화. 기초 1~2 · 기본 3~11 · 도전 12~14 (13·14 서술형 킬러)</p>
+            <p class="text-slate-600 mb-10 font-bold">💡 비상 미적분 I 교과서 중단원 마무리 14문항을 학습지화 (13번은 '풀이 과정과 함께' 추가, 14번은 서술형으로 변형). 기초 1~2 · 기본 3~11 · 도전 12~14 (13·14 서술형 킬러)</p>
 
             <div class="grid grid-cols-1 gap-12">
                 <!-- ============ 기초 (1~2) ============ -->
@@ -9176,7 +9180,7 @@ document.addEventListener('click', function(e) {
       <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II. 미분</span>
       <span class="px-5 py-2 rounded-lg shadow-sm" style="background:#ffedd5;color:#9a3412;border:1px solid #fed7aa">익힘책 Ⅱ-2: 도함수의 활용</span>
     </div>
-    <p class="mt-6 text-sm text-slate-500 font-medium">전체 12문항 · 기초 3 · 기본 6 · 도전 3 &nbsp;|&nbsp; 단계별 해설(STEP)은 웹 해설지에서 확인하세요.</p>
+    <p class="mt-6 text-sm text-slate-500 font-medium">전체 12문항 · 기초 3 · 기본 7 · 도전 2 &nbsp;|&nbsp; 단계별 해설(STEP)은 웹 해설지에서 확인하세요.</p>
   </header>
   <div class="card wb-problem">
     <span class="badge badge-l1">기초 1</span>
@@ -9241,7 +9245,7 @@ document.addEventListener('click', function(e) {
     <div class="thinking-space"></div>
   </div>
   <div class="card wb-problem">
-    <span class="badge badge-l3">도전 10</span>
+    <span class="badge badge-l2">기본 10</span>
     <span class="wb-sub">속도·가속도 · 운동 방향 전환</span>
     <div class="wb-stmt"><p>원점을 출발하여 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x\)가</p>
 <div class="calc">\(x=t^3-9t^2+24t\)</div>

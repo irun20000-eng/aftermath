@@ -729,9 +729,9 @@ a{color:var(--color-primary);text-decoration:none}
   <!-- 난이도 필터 -->
   <div class="filter-bar" role="toolbar" aria-label="난이도 필터">
     <button class="filter-btn active" data-filter="all">전체 <span class="filter-count" id="cnt-all">12</span></button>
-    <button class="filter-btn" data-filter="basic">기초 <span class="filter-count" id="cnt-basic">3</span></button>
+    <button class="filter-btn" data-filter="basic">기초 <span class="filter-count" id="cnt-basic">4</span></button>
     <button class="filter-btn" data-filter="standard">기본 <span class="filter-count" id="cnt-standard">6</span></button>
-    <button class="filter-btn" data-filter="advanced">도전 <span class="filter-count" id="cnt-advanced">3</span></button>
+    <button class="filter-btn" data-filter="advanced">도전 <span class="filter-count" id="cnt-advanced">2</span></button>
   </div>
 </header>
 
@@ -865,7 +865,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-s1', level:'standard', levelLabel:'기본', num:4, type:'short',
+    id:'w3-b4', level:'basic', levelLabel:'기초', num:4, type:'short',
     subLabel:'곱의 미분법',
     title:'\\((fg)\'(2)\\) 계산',
     question:`<p>미분가능한 두 함수 \\(f(x)\\), \\(g(x)\\)에 대하여</p>
@@ -881,7 +881,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-s2', level:'standard', levelLabel:'기본', num:5, type:'short',
+    id:'w3-s1', level:'standard', levelLabel:'기본', num:5, type:'short',
     subLabel:'그래프에서 불연속·미분불가능 판정',
     title:'그래프로 \\(a+b\\) 구하기',
     question:`<p>함수 \\(y=f(x)\\)의 그래프가 다음 그림과 같다. 열린구간 \\((-2,\\ 7)\\)에서 함수 \\(f(x)\\)가 불연속인 점의 개수를 \\(a\\), 미분가능하지 않은 점의 개수를 \\(b\\)라고 할 때, \\(a+b\\)의 값을 구하시오.</p>
@@ -899,7 +899,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-s3', level:'standard', levelLabel:'기본', num:6, type:'short',
+    id:'w3-s2', level:'standard', levelLabel:'기본', num:6, type:'short',
     subLabel:'대칭형 극한을 도함수로 변형',
     title:'\\(\\dfrac{f(x+h)-f(x-h)}{h}\\) 꼴 처리',
     question:`<p>다항함수 \\(f(x)\\)가 모든 실수 \\(x\\)에 대하여</p>
@@ -918,7 +918,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-s4', level:'standard', levelLabel:'기본', num:7, type:'short',
+    id:'w3-s3', level:'standard', levelLabel:'기본', num:7, type:'short',
     subLabel:'합성 형태의 미분계수 · 인수분해',
     title:'\\(\\dfrac{f(x^3)-f(1)}{x^2-1}\\)의 극한',
     question:`<p>미분가능한 함수 \\(f(x)\\)에 대하여 \\(f'(1)=6\\)일 때, \\(\\displaystyle \\lim_{x\\to 1}\\frac{f(x^3)-f(1)}{x^2-1}\\)의 값을 구하시오.</p>`,
@@ -934,7 +934,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-s5', level:'standard', levelLabel:'기본', num:8, type:'short',
+    id:'w3-s4', level:'standard', levelLabel:'기본', num:8, type:'short',
     subLabel:'항등식으로 함수 결정 → 미분계수',
     title:'\\(f(x)+xf\'(x)\\) 조건에서 극한값',
     question:`<p>이차함수 \\(f(x)\\)가 모든 실수 \\(x\\)에 대하여</p>
@@ -955,7 +955,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-s6', level:'standard', levelLabel:'기본', num:9, type:'short',
+    id:'w3-s5', level:'standard', levelLabel:'기본', num:9, type:'short',
     subLabel:'조건 3개로 삼차함수 결정',
     title:'삼차함수 \\(f(x)\\) 구하기',
     question:`<p>삼차함수 \\(f(x)\\)가 \\(\\displaystyle \\lim_{x\\to 0}\\frac{f(x)-1}{x}=-3\\)을 만족시키고, 함수 \\(y=f(x)\\)의 그래프 위의 점 \\((-2,\\ 3)\\)에서의 접선의 기울기가 \\(-3\\)일 때, 함수 \\(f(x)\\)를 구하시오.</p>`,
@@ -974,7 +974,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-a1', level:'advanced', levelLabel:'도전', num:10, type:'short',
+    id:'w3-s6', level:'standard', levelLabel:'기본', num:10, type:'short',
     subLabel:'곱의 미분법 · 미정계수',
     title:'\\(f\'(2)=0\\)에서 \\(a\\) 구하기',
     question:`<p>함수 \\(f(x)=(x-1)(x^3+ax^2+4)\\)에 대하여 \\(f'(2)=0\\)일 때, 실수 \\(a\\)의 값을 구하시오.</p>`,
@@ -989,13 +989,13 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w3-a2', level:'advanced', levelLabel:'도전', num:11, type:'short',
+    id:'w3-a1', level:'advanced', levelLabel:'도전', num:11, type:'short',
     subLabel:'미정형 조건으로 \\(n\\)과 극한값 결정',
-    title:'\\(n\\)과 \\(a\\) 동시에 구하기',
-    question:`<p>자연수 \\(n\\)과 실수 \\(a\\)에 대하여</p>
-<div class="calc">\\(\\displaystyle \\lim_{x\\to 2}\\frac{x^n-3x^3-40}{x^2-4}=a\\)</div>
-<p>일 때, \\(n\\)과 \\(a\\)의 값을 구하시오.</p>`,
-    answerText:'\\(n=6,\\ a=39\\)',
+    title:'\\(n\\)과 \\(\\alpha\\) 동시에 구하기',
+    question:`<p>자연수 \\(n\\)과 실수 \\(\\alpha\\)에 대하여</p>
+<div class="calc">\\(\\displaystyle \\lim_{x\\to 2}\\frac{x^n-3x^3-40}{x^2-4}=\\alpha\\)</div>
+<p>일 때, \\(n\\)과 \\(\\alpha\\)의 값을 구하시오.</p>`,
+    answerText:'\\(n=6,\\ \\alpha=39\\)',
     keypoint:'분모 \\(\\to 0\\) → 분자도 \\(\\to 0\\)에서 <strong>\\(n\\)을 먼저 결정</strong>한 뒤 미분계수로 극한을 구한다.',
     steps:[
       {tag:'STEP 1', title:'분자 → 0 조건으로 \\(n\\) 결정', body:`<p>\\(x\\to 2\\)에서 분모 \\(x^2-4\\to 0\\)이고 극한이 유한하므로 분자도 \\(0\\).</p>
@@ -1004,12 +1004,12 @@ const PROBLEMS = [
       {tag:'STEP 2', title:'미분계수 꼴로 변형', body:`<p>\\(f(x)=x^6-3x^3-40\\)이라 하면 \\(f(2)=0\\)이므로</p>
 <div class="calc">\\(\\dfrac{f(x)-f(2)}{x^2-4}=\\dfrac{f(x)-f(2)}{x-2}\\cdot\\dfrac{1}{x+2}\\)</div>`},
       {tag:'STEP 3', title:'\\(f\'(2)\\) 계산', body:`<div class="calc">\\(f'(x)=6x^5-9x^2 \\;\\Rightarrow\\; f'(2)=6\\cdot 32-9\\cdot 4=192-36=156\\)</div>`},
-      {tag:'STEP 4', title:'최종 극한', body:`<div class="calc purple">\\(a=f'(2)\\cdot\\dfrac{1}{2+2}=156\\cdot\\dfrac{1}{4}=39\\)</div>
+      {tag:'STEP 4', title:'최종 극한', body:`<div class="calc purple">\\(\\alpha=f'(2)\\cdot\\dfrac{1}{2+2}=156\\cdot\\dfrac{1}{4}=39\\)</div>
 <div class="hint">📌 \\(n\\)을 모른 채 미분하려 하면 막힙니다. <strong>분자 \\(\\to 0\\)으로 \\(n\\)부터 확정</strong>하는 순서가 핵심입니다.</div>`}
     ]
   },
   {
-    id:'w3-a3', level:'advanced', levelLabel:'도전', num:12, type:'choice',
+    id:'w3-a2', level:'advanced', levelLabel:'도전', num:12, type:'choice',
     subLabel:'삼차함수의 중근 구조 · 접점',
     title:'\\(c\\)를 \\(a\\), \\(b\\)로 나타내기',
     question:`<p>삼차함수 \\(f(x)\\)가 서로 다른 세 실수 \\(a\\), \\(b\\), \\(c\\)에 대하여</p>
