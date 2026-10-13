@@ -18,6 +18,7 @@ Nav 원본·학습지는 읽기만 한다. 실행하면 두 파일을 다시 쓰
   python scripts/build_teacher_bundles.py              # 두 파일 다시 쓰기 + 변화 요약
   python scripts/build_teacher_bundles.py --base main  # 변화 요약의 기준을 git main 판으로
   python scripts/build_teacher_bundles.py --dry-run    # 쓰지 않고 변화 요약만
+  python scripts/build_teacher_bundles.py --check      # 쓰지 않고, 다시 만들면 두 파일이 바뀌는지만 (바뀌면 exit 1)
 
 언제 다시 돌리나: Nav(교사용_Nav_*.html)나 boardplans 를 고친 뒤.
 """
@@ -539,7 +540,11 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="파일을 쓰지 않는다")
     ap.add_argument("--detail", nargs="*", default=[], metavar="ID",
                     help="이 섹션(L17 · WI1 …)의 카드별 이전/새 문장·정답을 나란히 출력")
+    ap.add_argument("--check", action="store_true",
+                    help="쓰지 않고, 지금 파일이 Nav 에서 다시 만든 결과와 같은지만 본다 (다르면 exit 1)")
     a = ap.parse_args()
+    if a.check:
+        a.dry_run = True
 
     navs = nav_sources()
     sol_old = read(SOL)
@@ -550,6 +555,15 @@ def main():
 
     sol_new, rep, missing = build_solutions(navs, sol_old, sol_base)
     bun_new, brep = build_bundle(navs, bundle_old)
+
+    if a.check:
+        stale = [p.name for p, new, old in ((SOL, sol_new, sol_old), (BUNDLE, bun_new, bundle_old)) if new != old]
+        for name in stale:
+            print(f"CHECK 다시 만들어야 함: 교사용/{name} (Nav·boardplans 와 다름 — python scripts/build_teacher_bundles.py)")
+        if not stale:
+            print("CHECK 변화 없음: 교사용 통합본 2개가 Nav 정본과 같다")
+            return 0
+        # 무엇이 다른지는 아래 요약(기준: 지금 파일)으로 이어서 보여 준다
 
     if not a.dry_run:
         write(SOL, sol_new, crlf_sol)
@@ -615,7 +629,10 @@ def main():
         print(f"  {sid:12s} 탭 바 {n_tabs} 제거 · 칠판 {n_boards:2d}" + (" · " + " · ".join(extra) if extra else ""))
     print(f"  섹션 {len(brep)}개 · 칠판 {nb}개 · 판서 계획 {sum(1 for _, k, _ in navs if k == 'lesson')}개 로드")
     print(f"  크기 {len(bundle_old):,} → {len(bun_new):,} 자")
+    if a.check:
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

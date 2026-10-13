@@ -129,7 +129,7 @@
         .unit-divider.unit-iii-bar h3 { color: #6b21a8; }
         .unit-divider p { font-size: .8rem; color: #475569; }
     </style>
-    <link rel="stylesheet" href="lesson-board.css?v=20261012">
+    <link rel="stylesheet" href="lesson-board.css?v=20261013">
 
 <style id="aft-nav-bundle-css">
   /* 통합 묶음 화면용 — build_teacher_bundles.py */
@@ -3182,9 +3182,9 @@
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">구간별 함수의 곱·합 연속성</span></div>
             <div class="q-stmt">두 불연속 함수 \(f,g\)에 대하여 ㄱ·ㄴ·ㄷ 판정</div>
             <div class="q-solve">
-                <span class="step">각각은 \(|x|=1\)에서 불연속.</span>
-                <span class="step">곱 \(fg\)는 경계에서 좌·우가 모두 \(-1\)로 일치 → <strong>연속</strong>.</span>
-                <span class="step">합은 여전히 튄다 → 불연속.</span>
+                <span class="step">ㄱ: \(x\to-1^+\)이면 \(fg\to1\), \(x\to-1^-\)이면 \(fg\to-1\) → 극한 없음 (거짓).</span>
+                <span class="step">ㄴ: \(x=-1\)에서 \(f+g\)의 우극한 \(2\), 좌극한 \(0\) → <strong>불연속</strong> (참).</span>
+                <span class="step">ㄷ: \(x=1\)에서 \(fg\)의 좌·우극한과 함숫값이 모두 \(-1\) → <strong>연속</strong> (참).</span>
             </div>
             <div class="q-ans">정답: <strong>ㄴ, ㄷ</strong></div>
             <div class="q-warn"><strong>지도:</strong> "불연속 × 불연속 = 불연속"이라는 <strong>잘못된 직관</strong>을 깨는 문항. 경계에서 좌·우값을 표로 만들어 비교시킨다.</div>
@@ -3245,7 +3245,7 @@
             <div class="q-stmt">고도가 \(8500\,\mathrm{m}\)였던 순간이 적어도 몇 번</div>
             <div class="q-solve">
                 <span class="step">표에서 \(8500\)을 <strong>가로지르는 구간</strong>을 센다.</span>
-                <span class="step">올라감·내려감·올라감으로 3번 통과.</span>
+                <span class="step">9:00→9:02(↓), 9:04→9:06(↑), 9:06→9:08(↓) 세 구간에서 통과 → 3번.</span>
             </div>
             <div class="q-ans">정답: <strong>적어도 \(3\)번</strong></div>
             <div class="q-warn"><strong>지도:</strong> "적어도"라는 표현은 <strong>사잇값 정리가 보장하는 최소 횟수</strong>라는 뜻. 실제로는 더 많을 수 있음을 그래프로 보여 준다.</div>
@@ -3255,10 +3255,10 @@
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">10</span><span class="q-title">⭐ 합성함수의 연속</span></div>
             <div class="q-stmt">\(g(x)=x^3+ax^2+bx+2\), \(g(f(x))\)가 모든 실수에서 연속</div>
             <div class="q-solve">
-                <span class="step">그래프에서 \(f\)는 \(x=1\)에서 불연속: 좌극한 \(2\), 우극한 \(-2\) (함숫값 포함).</span>
-                <span class="step">\(g(f(x))\)가 연속이려면 \(g(2)=g(-2)\).</span>
-                <span class="step">\(8+4a+2b+2=-8+4a-2b+2 \Rightarrow 4b=-16,\ b=-4\).</span>
-                <span class="step">추가 불연속점 조건에서 \(a=0\).</span>
+                <span class="step">그래프에서 \(f\)는 \(x=2\)에서 불연속: \(x\to2^-\)이면 \(f(x)\to-2\), \(x\to2^+\)이면 \(f(x)\to2\), \(f(2)=0\).</span>
+                <span class="step">\(g\)는 연속이므로 \(x=2\)에서 \(g(f(x))\)가 연속이려면 \(g(-2)=g(2)=g(0)=2\).</span>
+                <span class="step">\(g(2)=4a+2b+10=2\), \(g(-2)=4a-2b-6=2\).</span>
+                <span class="step">연립하면 \(a=0,\ b=-4\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(a=0,\ b=-4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> <strong>\(f\)의 불연속점을 그래프에서 정확히 읽는 것</strong>이 절반. 좌극한·우극한·함숫값 세 값을 그림 옆에 표로 적게 한 뒤 \(g\)에 대입시킨다.</div>
@@ -4850,7 +4850,7 @@
     <div class="lesson-head">
         <span class="lesson-num">📗</span>
         <span class="lesson-tag">익힘책 Ⅱ-1 · 11차시 이후 심화</span>
-        <span class="lesson-title">수학 익힘책 Ⅱ-1 미분계수와 도함수 — 12문항 (기초 3 + 기본 6 + 도전 3)</span>
+        <span class="lesson-title">수학 익힘책 Ⅱ-1 미분계수와 도함수 — 12문항 (기초 4 + 기본 6 + 도전 2)</span>
     </div>
 
     <div class="big-idea">
@@ -4882,12 +4882,12 @@
         </div>
         <div class="tl-row">
             <div class="tl-time">기초 8'</div>
-            <div class="tl-t"><strong>교사:</strong> 1~3번 자율 풀이. <strong>1번의 평균변화율 vs 미분계수 구분</strong>과 <strong>3번의 연속 ≠ 미분가능</strong>을 판서로 못 박는다.</div>
-            <div class="tl-s"><strong>학생:</strong> 1번 \(15\), 2번 \(55\), 3번 "연속이지만 미분불가능". 3번은 좌·우 미분계수를 각각 계산해 표로 비교.</div>
+            <div class="tl-t"><strong>교사:</strong> 1~4번 자율 풀이. <strong>1번의 평균변화율 vs 미분계수 구분</strong>과 <strong>3번의 연속 ≠ 미분가능</strong>을 판서로 못 박는다.</div>
+            <div class="tl-s"><strong>학생:</strong> 1번 \(15\), 2번 \(55\), 3번 "연속이지만 미분불가능", 4번 \(13\). 3번은 좌·우 미분계수를 각각 계산해 표로 비교.</div>
         </div>
         <div class="tl-row">
             <div class="tl-time">기본 20'</div>
-            <div class="tl-t"><strong>교사:</strong> 6·7번에 10분 — <strong>극한식을 정의꼴로 되돌리는 변형</strong>을 시연. 6번은 \(f(x)\)를 더하고 빼기, 7번은 분모를 \(x^3-1\)로 바꾸기. 4·5·8·9번은 묶음.</div>
+            <div class="tl-t"><strong>교사:</strong> 6·7번에 10분 — <strong>극한식을 정의꼴로 되돌리는 변형</strong>을 시연. 6번은 \(f(x)\)를 더하고 빼기, 7번은 분모를 \(x^3-1\)로 바꾸기. 5·8·9·10번은 묶음.</div>
             <div class="tl-s"><strong>학생:</strong> 6번은 "\(\pm f(x)\) 삽입 → 정의꼴 2개 → \(2f'(x)\)". 7번은 "분모 교체 → 남은 비율 따로" 2단계로 정리.</div>
         </div>
         <div class="tl-row">
@@ -4970,7 +4970,7 @@
         </div>
 
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">곱의 미분법</span></div>
+            <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">4</span><span class="q-title">곱의 미분법</span></div>
             <div class="q-stmt">\(f(2)=-1, f'(2)=4, g(2)=2, g'(2)=-5\)</div>
             <div class="q-solve">
                 <span class="step">\((fg)'(2)=f'(2)g(2)+f(2)g'(2)\)</span>
@@ -5041,7 +5041,7 @@
         </div>
 
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">10</span><span class="q-title">곱의 미분법 · 미정계수</span></div>
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">곱의 미분법 · 미정계수</span></div>
             <div class="q-stmt">\(f(x)=(x-1)(x^3+ax^2+4)\), \(f'(2)=0\)</div>
             <div class="q-solve">
                 <span class="step">\(f'=1\cdot(x^3+ax^2+4)+(x-1)(3x^2+2ax)\).</span>
@@ -5054,13 +5054,13 @@
 
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">11</span><span class="q-title">⭐ 미정형으로 \(n\) 결정</span></div>
-            <div class="q-stmt">\(\lim\limits_{x\to2}\dfrac{x^n-3x^3-40}{x^2-4}=a\)</div>
+            <div class="q-stmt">\(\lim\limits_{x\to2}\dfrac{x^n-3x^3-40}{x^2-4}=\alpha\)</div>
             <div class="q-solve">
                 <span class="step">분모\(\to0\) ⟹ 분자\(\to0\): \(2^n-24-40=0 \Rightarrow 2^n=64 \Rightarrow n=6\).</span>
                 <span class="step">\(g(x)=x^6-3x^3-40\)로 두면 극한 \(=\frac{g'(2)}{4}\).</span>
                 <span class="step">\(g'(2)=6\cdot32-9\cdot4=156\), \(156/4=39\).</span>
             </div>
-            <div class="q-ans">정답: <strong>\(n=6,\ a=39\)</strong></div>
+            <div class="q-ans">정답: <strong>\(n=6,\ \alpha=39\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> Ⅰ-2 6·7번과 <strong>동일한 논리</strong>임을 반드시 연결해 준다. 학생들이 "또 이거네"라고 말하면 성공.</div>
         </div>
 
@@ -5069,10 +5069,10 @@
             <div class="q-stmt">\(f(a)=f(b)=0\), \(f'(b)=f'(c)=0\)일 때 \(c\)를 \(a,b\)로</div>
             <div class="q-solve">
                 <span class="step">\(f(b)=f'(b)=0\) ⟹ \(x=b\)는 <strong>중근</strong> ⟹ \(f=k(x-a)(x-b)^2\).</span>
-                <span class="step">\(f'=k(x-b)\{3x-(a+2b)\}\).</span>
-                <span class="step">\(f'(c)=0,\ c\ne b\) ⟹ \(c=\frac{a+2b}{3}\).</span>
+                <span class="step">\(f'=k(x-b)^2+2k(x-a)(x-b)=k(x-b)(3x-2a-b)\).</span>
+                <span class="step">\(f'(c)=0,\ c\ne b\) ⟹ \(3c-2a-b=0\), \(c=\frac{2a+b}{3}\).</span>
             </div>
-            <div class="q-ans">정답: <strong>\(c=\dfrac{a+2b}{3}\)</strong></div>
+            <div class="q-ans">정답: <strong>⑤ \(c=\dfrac{2a+b}{3}\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> "함숫값과 미분계수가 <strong>동시에 0</strong>이면 중근"은 Ⅱ-2 극값·접선에서 계속 쓰인다. 여기서 확실히 각인시킬 것.</div>
         </div>
 
@@ -5083,10 +5083,10 @@
     <div class="rubric">
         <div class="rtitle">📋 도달도 판정 (도구 선택 능력 중심)</div>
         <div class="rubric-grid">
-            <div class="lvl-box">A (우수)</div><div class="score">90+</div><div class="desc">도전 3문항 중 2개 이상 해결. 특히 11번에서 <strong>"분모\(\to0\)⟹분자\(\to0\)"</strong>을 스스로 적용했다.</div>
+            <div class="lvl-box">A (우수)</div><div class="score">90+</div><div class="desc">도전 2문항 중 1개 이상 해결. 특히 11번에서 <strong>"분모\(\to0\)⟹분자\(\to0\)"</strong>을 스스로 적용했다.</div>
             <div class="lvl-box">B (양호)</div><div class="score">75</div><div class="desc">기본 6문항 전부 해결. 6번의 \(\pm f(x)\) 삽입을 스스로 떠올렸다.</div>
-            <div class="lvl-box">C (보통)</div><div class="score">60</div><div class="desc">기초 3 + 기본 4 이상. 3번에서 연속과 미분가능을 <strong>따로</strong> 판정했다.</div>
-            <div class="lvl-box">D (보충)</div><div class="score">40</div><div class="desc">기초 3문항만 해결. 1번에서 평균변화율과 미분계수를 혼동했다. → 11차시 정의꼴 재지도.</div>
+            <div class="lvl-box">C (보통)</div><div class="score">60</div><div class="desc">기초 4 + 기본 4 이상. 3번에서 연속과 미분가능을 <strong>따로</strong> 판정했다.</div>
+            <div class="lvl-box">D (보충)</div><div class="score">40</div><div class="desc">기초 4문항만 해결. 1번에서 평균변화율과 미분계수를 혼동했다. → 11차시 정의꼴 재지도.</div>
             <div class="lvl-box">보충 지도</div><div class="score">—</div><div class="desc"><strong>우선순위:</strong> ① 정의꼴 3형태 암기 ② 연속/미분가능 구분 ③ 분모\(\to0\)⟹분자\(\to0\). 이 3개가 익힘책 Ⅱ-1의 뼈대.</div>
         </div>
     </div>
@@ -5924,8 +5924,8 @@
         </div>
         <div class="tl-row">
             <div class="tl-time">L3·형성 10'</div>
-            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \gt 0\)이야!" 학생 주장 거짓 판정. \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
-            <div class="tl-s"><strong>학생:</strong> 7번 ③명제 거짓을 그림으로 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \geq 0\)이야!" 학생 주장 참 판정 (P.167 세 경우). "\(\gt 0\)이었다면 거짓" 대비로 \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 ②명제(\(\geq 0\), 참)와 ③명제(\(\gt 0\), 거짓)를 그림으로 대비 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
         </div>
         <div class="tl-row">
             <div class="tl-time">정리 5'</div>
@@ -5991,7 +5991,7 @@
     </div>
 
     <div class="q-warn"><strong>오개념 ①:</strong> "\(f' \gt 0\)이면 증가, \(f \gt 0\)이면 증가" — \(f\)와 \(f'\)을 혼동. \(f'\) 부호가 증감을 결정한다는 점을 빨간 화살표로 칠판에 표시.</div>
-    <div class="q-warn"><strong>오개념 ②:</strong> "증가 \(\Leftrightarrow f'(x) \gt 0\) 모든 \(x\)에서" — 거짓. \(f(x) = x^3\)에서 \(f'(0) = 0\)이지만 증가. L3 7번 함정의 핵심.</div>
+    <div class="q-warn"><strong>오개념 ②:</strong> "증가 \(\Leftrightarrow f'(x) \gt 0\) 모든 \(x\)에서" — 거짓. \(f(x) = x^3\)에서 \(f'(0) = 0\)이지만 증가. L3 7번(학생 말 "\(f'(x) \geq 0\)" → 참)과 대비하는 함정의 핵심.</div>
     <div class="q-warn"><strong>오개념 ③:</strong> "증가·감소가 한 점에서 결정된다." → 한 점이 아니라 <strong>구간 단위</strong>로 말한다. "구간 안의 임의의 \(x_1, x_2\)" 정의 강조.</div>
 
     <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
@@ -6012,8 +6012,8 @@
         </div>
         <div class="tl-row">
             <div class="tl-time">L3·형성 10'</div>
-            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \gt 0\)이야!" 학생 주장 거짓 판정. \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
-            <div class="tl-s"><strong>학생:</strong> 7번 ③명제 거짓을 그림으로 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \geq 0\)이야!" 학생 주장 참 판정 (P.167 세 경우). "\(\gt 0\)이었다면 거짓" 대비로 \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 ②명제(\(\geq 0\), 참)와 ③명제(\(\gt 0\), 거짓)를 그림으로 대비 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
         </div>
     </div>
     <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
@@ -6103,18 +6103,18 @@
     <div class="problems">
         <!-- L3 7번 (span2) -->
         <div class="prob-card l3 span2">
-            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — "증가 \(\Rightarrow f'(x) \gt 0\)?" 학생 주장</span></div>
-            <div class="q-stmt">📢 학생: "\((a, b)\)에서 \(f\)가 증가하면 \(f'(x) \gt 0\)이야!" 참/거짓 판정.</div>
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">7</span><span class="q-title">🚨 오답률 1위 — "증가 \(\Rightarrow f'(x) \geq 0\)?" 학생 주장 (\(\geq\) vs \(\gt\))</span></div>
+            <div class="q-stmt">최고차항의 계수가 양수인 삼차함수 \(f(x)\). 📢 학생: "열린구간 \((a, b)\)에서 함수 \(f(x)\)가 증가하면 이 구간에서 \(f'(x) \geq 0\)이야!" 참/거짓 판정 + 이유.</div>
             <div class="q-solve">
-                <span class="step">STEP 1: 결론 — <strong>거짓</strong>. 반례 \(f(x) = x^3\)은 실수 전체에서 증가하지만 \(f'(0) = 0\).</span>
-                <span class="step">STEP 2: 정확한 명제 ① \(f'(x) \gt 0 \Rightarrow\) 증가 (참, 충분조건) ② 증가 \(\Rightarrow f'(x) \geq 0\) (참, 필요조건) ③ 증가 \(\Rightarrow f'(x) \gt 0\) 모든 \(x\) (<strong>거짓</strong>).</span>
-                <span class="step">STEP 3: 정확한 동치: "증가 \(\Leftrightarrow f'(x) \geq 0\)이고 등호는 고립점에서만 성립".</span>
+                <span class="step">STEP 1: 결론 — <strong>참</strong>. \(f'(x)\)는 최고차항의 계수가 양수인 이차함수 → \(f'(x) = 0\)의 해가 (i) 서로 다른 두 실근: 증가 구간 속 열린구간에서 \(f'(x) \gt 0\) (ii) 중근: 실수 전체 증가, \(f'(x) \geq 0\) (iii) 두 허근: 실수 전체 증가, \(f'(x) \gt 0\). 어느 경우든 \(f'(x) \geq 0\).</span>
+                <span class="step">STEP 2: 대비 — 말풍선이 "\(f'(x) \gt 0\)"이었다면 <strong>거짓</strong>: \(f(x) = x^3\)은 \((-1, 1)\)에서 증가하지만 \(f'(0) = 0\) (경우 (ii)).</span>
+                <span class="step">STEP 3: 세 명제 ① \(f'(x) \gt 0 \Rightarrow\) 증가 (참, 충분조건) ② 증가 \(\Rightarrow f'(x) \geq 0\) (참, 필요조건 — 학생의 말) ③ 증가 \(\Rightarrow f'(x) \gt 0\) 모든 \(x\) (<strong>거짓</strong>).</span>
             </div>
-            <div class="q-ans">정답: 학생의 말은 <strong>거짓</strong>. 정확히는 "\(f'(x) \geq 0\)이고 \(f'(x) = 0\)은 고립점". <strong>핵심:</strong> 충분조건 vs 필요조건 구분 — 차시 15에서 "\(f'(a) = 0\)이지만 극값 아님(\(x^3\))" 함정으로 직결.</div>
-            <div class="q-warn"><strong>발표 유도:</strong> "학생 말이 맞다고 생각한 학생 손!" → \(x^3\) 그래프를 칠판에 그려 \(f'(0) = 0\)을 직접 보인 후 "그래도 증가한다"를 한 학생이 정의로 증명하게 한다.</div>
+            <div class="q-ans">정답: 학생의 말은 <strong>참</strong> (교과서 해설 P.167). 증가 \(\Rightarrow f'(x) \geq 0\) (등호 가능 — 예 \(f(x) = x^3\)의 \(f'(0) = 0\)). <strong>핵심:</strong> "\(\gt 0\)"이면 거짓, "\(\geq 0\)"이면 참 — 충분조건 vs 필요조건 구분. 차시 15에서 "\(f'(a) = 0\)이지만 극값 아님(\(x^3\))" 함정으로 직결.</div>
+            <div class="q-warn"><strong>발표 유도:</strong> "학생 말이 틀렸다고 생각한 학생 손!" → \(x^3\) 반례를 든 학생에게 말풍선의 부등호(\(\geq\))를 다시 읽게 한다 — \(f'(0) = 0\)은 \(\geq 0\)에 포함되므로 반례가 아니다. 이어 "\(\gt 0\)이었다면?"을 물어, \(x^3\) 그래프로 거짓이 되는 대비를 판서한다.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.7" data-label="7번 — 증가하면 f′ > 0 인가? 학생 주장 판정"></div>
+    <div class="nv-board" data-key="level.7" data-label="7번 — 증가하면 f′ ≥ 0 인가? 학생 주장 판정"></div>
     </section>
 
     <!-- ===== 4 형성평가 ===== -->
@@ -6123,8 +6123,8 @@
     <div class="timeline">
         <div class="tl-row">
             <div class="tl-time">L3·형성 10'</div>
-            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \gt 0\)이야!" 학생 주장 거짓 판정. \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
-            <div class="tl-s"><strong>학생:</strong> 7번 ③명제 거짓을 그림으로 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
+            <div class="tl-t"><strong>교사:</strong> 7번 "증가 \(\Rightarrow f'(x) \geq 0\)이야!" 학생 주장 참 판정 (P.167 세 경우). "\(\gt 0\)이었다면 거짓" 대비로 \(x^3\) 반례 다시 강조. 형성 8번 (\(D \gt 0\) 항상 → 답 없음) 도전.</div>
+            <div class="tl-s"><strong>학생:</strong> 7번 ②명제(\(\geq 0\), 참)와 ③명제(\(\gt 0\), 거짓)를 그림으로 대비 정리. 8번 판별식 계산 후 "답 없음"이라는 결론에 도달.</div>
         </div>
     </div>
     <div class="problems">
@@ -8511,7 +8511,7 @@
     <div class="lesson-head">
         <span class="lesson-num">📗</span>
         <span class="lesson-tag">익힘책 Ⅱ-2 · 20차시 이후 심화</span>
-        <span class="lesson-title">수학 익힘책 Ⅱ-2 도함수의 활용 — 12문항 (기초 3 + 기본 6 + 도전 3)</span>
+        <span class="lesson-title">수학 익힘책 Ⅱ-2 도함수의 활용 — 12문항 (기초 3 + 기본 7 + 도전 2)</span>
     </div>
 
     <div class="big-idea">
@@ -8547,13 +8547,13 @@
             <div class="tl-s"><strong>학생:</strong> 1번 \(y=2x+7\), 2번 \(\frac{\sqrt3}{3}\)·\(\sqrt3\), 3번 증감 구간. 3번은 <strong>닫힌구간 표기</strong>로 답한다.</div>
         </div>
         <div class="tl-row">
-            <div class="tl-time">기본 20'</div>
-            <div class="tl-t"><strong>교사:</strong> 7·8번에 10분 — 7번은 <strong>변수 통일</strong>(구의 반지름 관계식), 8번은 <strong>\(f'\) 그래프 → \(f\) 개형 복원</strong>을 각각 시연. 4·5·6·9번은 묶음.</div>
+            <div class="tl-time">기본 24'</div>
+            <div class="tl-t"><strong>교사:</strong> 7·8번에 10분 — 7번은 <strong>변수 통일</strong>(구의 반지름 관계식), 8번은 <strong>\(f'\) 그래프 → \(f\) 개형 복원</strong>을 각각 시연. 4·5·6·9·10번은 묶음 (10번은 "두 번째" 방향 전환 확인).</div>
             <div class="tl-s"><strong>학생:</strong> 7번은 "\(r^2=9-\frac{h^2}{4}\) → \(V(h)\) 한 변수" 순으로 적는다. 8번은 극댓값·극솟값을 먼저 구하고 그 사이가 답.</div>
         </div>
         <div class="tl-row">
-            <div class="tl-time">도전 14'</div>
-            <div class="tl-t"><strong>교사:</strong> 10번(운동 방향 전환) 4분, 11번(곡선-원 최단거리) 5분 — <strong>"중심까지 거리 \(-\) 반지름"</strong>, 12번(닮음) 5분 — 그림자 길이를 시간의 식으로.</div>
+            <div class="tl-time">도전 10'</div>
+            <div class="tl-t"><strong>교사:</strong> 11번(곡선-원 최단거리) 5분 — <strong>"중심까지 거리 \(-\) 반지름"</strong>, 12번(닮음) 5분 — 그림자 길이를 시간의 식으로.</div>
             <div class="tl-s"><strong>학생:</strong> 11번은 원을 <strong>점(중심)으로 축소</strong>해서 먼저 최소화. 12번은 닮음비 식을 세운 뒤 미분.</div>
         </div>
         <div class="tl-row">
@@ -8646,7 +8646,8 @@
             <div class="q-stmt">\(f=x^3+ax^2+bx+3\), \(x=-3\)에서 극댓값 \(30\)</div>
             <div class="q-solve">
                 <span class="step">\(f'(-3)=0\), \(f(-3)=30\) 두 식.</span>
-                <span class="step">\(a=1, b=-15\)... 정리하면 극솟값 \(-2\).</span>
+                <span class="step">\(27-6a+b=0\), \(-24+9a-3b=30\) → \(a=3,\ b=-9\).</span>
+                <span class="step">\(f'(x)=3(x+3)(x-1)\) → \(x=1\)에서 극소, \(f(1)=-2\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(-2\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> "극값을 가진다"는 조건에서 <strong>식이 두 개</strong> 나온다는 점. 구한 뒤 반드시 증감표로 극대/극소를 재확인시킨다.</div>
@@ -8701,7 +8702,7 @@
         </div>
 
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">10</span><span class="q-title">운동 방향 전환 · 가속도</span></div>
+            <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">운동 방향 전환 · 가속도</span></div>
             <div class="q-stmt">\(x=t^3-9t^2+24t\), 두 번째 방향 전환 순간의 가속도</div>
             <div class="q-solve">
                 <span class="step">\(v=3t^2-18t+24=3(t-2)(t-4)\) → \(t=2,4\).</span>
@@ -8743,8 +8744,8 @@
     <div class="rubric">
         <div class="rtitle">📋 도달도 판정 (도구 선택 능력 중심)</div>
         <div class="rubric-grid">
-            <div class="lvl-box">A (우수)</div><div class="score">90+</div><div class="desc">도전 3문항 중 2개 이상 해결. 특히 11번에서 <strong>반지름을 빼는 마지막 단계</strong>를 놓치지 않았다.</div>
-            <div class="lvl-box">B (양호)</div><div class="score">75</div><div class="desc">기본 6문항 전부 해결. 7번에서 변수를 스스로 통일했다.</div>
+            <div class="lvl-box">A (우수)</div><div class="score">90+</div><div class="desc">도전 2문항 중 1개 이상 해결. 특히 11번에서 <strong>반지름을 빼는 마지막 단계</strong>를 놓치지 않았다.</div>
+            <div class="lvl-box">B (양호)</div><div class="score">75</div><div class="desc">기본 7문항 중 6개 이상 해결. 7번에서 변수를 스스로 통일했다.</div>
             <div class="lvl-box">C (보통)</div><div class="score">60</div><div class="desc">기초 3 + 기본 4 이상. 증감표를 빠뜨리지 않고 작성한다.</div>
             <div class="lvl-box">D (보충)</div><div class="score">40</div><div class="desc">기초 3문항만 해결. 3번 증감 구간을 부등식으로만 답했다. → 20차시 증감표 루틴 재지도.</div>
             <div class="lvl-box">보충 지도</div><div class="score">—</div><div class="desc"><strong>우선순위:</strong> ① 증감표 작성 루틴 ② 변수 통일(관계식 찾기) ③ 정의역 확인. 이 3개가 익힘책 Ⅱ-2의 뼈대.</div>
@@ -10775,21 +10776,21 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">적분과 미분의 관계</span></div>
-            <div class="q-stmt">(1) \(\frac{d}{dx}\int(-10x+7)dx\)류 (2) 합성 관계</div>
+            <div class="q-stmt">(1) \(\frac{d}{dx}\int_2^x(-5t^2+7t)\,dt\) &nbsp;(2) \(\frac{d}{dx}\int_{-4}^x(t+1)(t^2-4t)\,dt\)</div>
             <div class="q-solve">
-                <span class="step">미분과 적분이 이웃하면 <strong>순서에 따라</strong> 상수 유무가 갈린다.</span>
-                <span class="step">\(\frac{d}{dx}\int f = f\) / \(\int \frac{d}{dx}f = f+C\).</span>
+                <span class="step">\(\frac{d}{dx}\int_a^x f(t)\,dt=f(x)\) — 적분변수 \(t\)를 \(x\)로 바꾸면 끝.</span>
+                <span class="step">아래끝 \(2\), \(-4\)는 상수라 결과에 영향 없음 (전개·적분 불필요).</span>
             </div>
             <div class="q-ans">정답: <strong>(1) \(-5x^2+7x\) &nbsp; (2) \((x+1)(x^2-4x)\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> <strong>\(+C\)가 붙는 쪽과 안 붙는 쪽</strong>을 표로 정리해 판서. 시험에서 자주 묻는 구분이다.</div>
+            <div class="q-warn"><strong>지도:</strong> \(\frac{d}{dx}\int_a^x f(t)\,dt=f(x)\)(상수 없음)와 \(\int \frac{d}{dx}f(x)\,dx=f(x)+C\)(상수 있음)를 <strong>표로 대비</strong>해 판서. 시험에서 자주 묻는 구분이다.</div>
         </div>
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">정적분의 계산 · 구간 연결</span></div>
-            <div class="q-stmt">(1) 기본 계산 (2) 구간을 이어 붙이기</div>
+            <div class="q-stmt">(1) \(\int_{-1}^{3}(3x^2-2x+5)\,dx\) &nbsp;(2) \(\int_{-2}^{1}(2x^3-1)\,dx+\int_{1}^{2}(2x^3-1)\,dx\)</div>
             <div class="q-solve">
-                <span class="step">(2) \(\int_a^b+\int_b^c=\int_a^c\).</span>
-                <span class="step">같은 피적분함수면 구간을 합칠 수 있다.</span>
+                <span class="step">(1) \([x^3-x^2+5x]_{-1}^{3}=33-(-7)=40\). (2) \(\int_a^b+\int_b^c=\int_a^c\).</span>
+                <span class="step">같은 피적분함수면 구간을 합칠 수 있다 → \(\int_{-2}^{2}(2x^3-1)\,dx=0-4=-4\).</span>
             </div>
             <div class="q-ans">정답: <strong>(1) \(40\) &nbsp; (2) \(-4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> 구간 덧셈성은 Ⅲ-2 7번(넓이)에서 그대로 재사용된다. 여기서 확실히 익혀 둘 것.</div>
@@ -10797,10 +10798,10 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">부정적분 관계식 미분</span></div>
-            <div class="q-stmt">\(\int f(x)dx\) 조건에서 값 구하기</div>
+            <div class="q-stmt">\(2x^2f(x)=\int g(x)\,dx\), \(f(2)=3\), \(f'(2)=-1\)일 때 \(g(2)\)</div>
             <div class="q-solve">
-                <span class="step">양변 미분 → \(f(x)\) 확정.</span>
-                <span class="step">주어진 값을 대입해 상수 결정.</span>
+                <span class="step">양변 미분 → \(4xf(x)+2x^2f'(x)=g(x)\).</span>
+                <span class="step">\(x=2\) 대입: \(g(2)=8f(2)+8f'(2)=24-8=16\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(16\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> "적분식이 보이면 미분부터"라는 반사 신경을 만드는 문항. 미분 후 남는 미지수를 대입으로 없애는 흐름을 반복시킨다.</div>
@@ -10808,10 +10809,10 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">도함수 조건 + 극한 조건</span></div>
-            <div class="q-stmt">두 조건으로 \(f\) 결정</div>
+            <div class="q-stmt">\(f'(x)=4x^3+a\), \(\lim\limits_{x\to1}\frac{f(x)}{x-1}=2a+2\)일 때 \(f(a)\)</div>
             <div class="q-solve">
-                <span class="step">도함수 조건에서 \(f\)의 꼴 확보.</span>
-                <span class="step">극한 조건에서 미정계수 결정.</span>
+                <span class="step">\(f(x)=x^4+ax+C\). 극한 존재 → \(f(1)=0\): \(1+a+C=0\).</span>
+                <span class="step">극한 \(=f'(1)=4+a=2a+2\) → \(a=2,\ C=-3\), \(f(2)=17\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(17\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> 조건 개수와 미지수 개수를 <strong>먼저 세어 보게</strong> 한다. 부족하면 조건을 놓친 것.</div>
@@ -10819,32 +10820,33 @@
 
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">적분으로 정의된 함수의 극값</span></div>
-            <div class="q-stmt">\(F(x)=\int_a^x f(t)dt\)의 극값</div>
+            <div class="q-stmt">\(f(x)=\int_{-1}^{x}(2t^2-3t+1)\,dt\)의 극솟값</div>
             <div class="q-solve">
-                <span class="step">\(F'(x)=f(x)\).</span>
-                <span class="step">\(f(x)=0\)이 되는 점에서 부호 변화 확인 → 극값.</span>
+                <span class="step">\(f'(x)=2x^2-3x+1=(2x-1)(x-1)\) → \(x=\frac12\) 극대, \(x=1\) 극소.</span>
+                <span class="step">극솟값 \(f(1)=\int_{-1}^{1}(2t^2-3t+1)\,dt=\frac{10}{3}\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(\dfrac{10}{3}\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> <strong>\(F'=f\)</strong>이므로 \(f\)의 그래프가 곧 \(F\)의 증감표. Ⅱ-2 8번(도함수 그래프)과 같은 구조임을 연결.</div>
+            <div class="q-warn"><strong>지도:</strong> <strong>\(f'(x)\)=피적분함수</strong>이므로 피적분함수의 부호가 곧 \(f\)의 증감표. Ⅱ-2 8번(도함수 그래프)과 같은 구조임을 연결.</div>
         </div>
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">이차방정식의 근과 정적분</span></div>
-            <div class="q-stmt">근을 이용한 정적분 값</div>
+            <div class="q-stmt">\(x^2-3x-1=0\)의 두 근 \(\alpha\lt\beta\)에 대하여 \(\int_{\alpha}^{\beta}(6x-5)\,dx\)</div>
             <div class="q-solve">
                 <span class="step">근과 계수의 관계로 \(\alpha+\beta\), \(\alpha\beta\) 확보.</span>
-                <span class="step">\((\beta-\alpha)^2=(\alpha+\beta)^2-4\alpha\beta\).</span>
+                <span class="step">\((\beta-\alpha)^2=(\alpha+\beta)^2-4\alpha\beta=13\) → \(\beta-\alpha=\sqrt{13}\).</span>
+                <span class="step">\(\int_{\alpha}^{\beta}(6x-5)\,dx=(\beta-\alpha)\{3(\alpha+\beta)-5\}=4\sqrt{13}\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(4\sqrt{13}\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> 적분 결과가 \((\beta-\alpha)^3\) 꼴로 정리되는 <strong>넓이 공식의 원형</strong>. Ⅲ-2 1·5번의 예고편이다.</div>
+            <div class="q-warn"><strong>지도:</strong> 근을 직접 대입하지 않고 \(\alpha+\beta\), \(\beta-\alpha\)로 묶는 <strong>대칭식 처리</strong>. Ⅲ-2 1·5번에서 \(\beta-\alpha\)를 쓰는 넓이 계산의 예고편이다.</div>
         </div>
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">주기함수의 정적분</span></div>
-            <div class="q-stmt">주기성을 이용한 구간 이동</div>
+            <div class="q-stmt">\(f(x+6)=f(x)\), \(\int_{-1}^{1}f(x)\,dx=3\), \(\int_{1}^{7}f(x)\,dx=10\)일 때 \(\int_{1}^{5}f(x)\,dx\)</div>
             <div class="q-solve">
-                <span class="step">주기 \(p\)이면 \(\int_a^{a+p}\)는 위치와 무관.</span>
-                <span class="step">긴 구간을 주기 단위로 쪼갠다.</span>
+                <span class="step">주기 \(6\) → \(\int_5^7 f=\int_{-1}^{1}f=3\).</span>
+                <span class="step">\(\int_1^5 f=\int_1^7 f-\int_5^7 f=10-3=7\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(7\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> 주기를 <strong>그림으로</strong> 표시하고 "같은 모양이 반복"을 시각화하면 쪼개기가 쉬워진다.</div>
@@ -10864,10 +10866,10 @@
 
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">적분으로 정의된 함수의 극한</span></div>
-            <div class="q-stmt">\(\lim\frac{1}{x-a}\int_a^x f(t)dt\)</div>
+            <div class="q-stmt">\(\lim\limits_{x\to1}\frac{1}{x-1}\int_1^{x^2}(t^4-4t^3+5t^2)\,dt\)</div>
             <div class="q-solve">
-                <span class="step">\(F(x)=\int_a^x f\)로 두면 \(F(a)=0\).</span>
-                <span class="step">극한은 \(\frac{F(x)-F(a)}{x-a} \to F'(a)=f(a)\).</span>
+                <span class="step">\(f(t)=t^4-4t^3+5t^2\)의 한 부정적분 \(F\) → \(\frac{F(x^2)-F(1)}{x-1}=\frac{F(x^2)-F(1)}{x^2-1}\cdot(x+1)\).</span>
+                <span class="step">\(\to F'(1)\cdot2=2f(1)=2\cdot2=4\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> <strong>미분계수 정의꼴</strong>로 되돌아온다. Ⅱ-1에서 배운 변형 기술이 그대로 쓰임을 강조.</div>
@@ -10875,22 +10877,22 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">11</span><span class="q-title">적분·미분 항등식으로 함수 결정</span></div>
-            <div class="q-stmt">항등식에서 \(f\) 찾기</div>
+            <div class="q-stmt">\(f(x)=x^3-3x^2+5\), 삼차함수 \(g\): \(\int\{f(x)-g(x)\}\,dx=\frac{d}{dx}\{f(x)+g(x)\}\)일 때 \(g(1)\)</div>
             <div class="q-solve">
-                <span class="step">양변 미분 → 관계식.</span>
-                <span class="step">적분 구간이 \(0\)이 되는 값 대입 → 상수 결정.</span>
+                <span class="step">우변은 이차 이하 → \(f-g\)는 일차 이하 → \(g(x)=x^3-3x^2+ax+b\).</span>
+                <span class="step">\(-\frac a2x^2+(5-b)x+C=6x^2-12x+a\) 계수 비교 → \(a=-12,\ b=17\), \(g(1)=3\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(3\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> 미분과 대입을 <strong>짝으로</strong> 쓰는 것이 이 유형의 전부. 한쪽만 쓰면 반드시 미지수가 남는다.</div>
+            <div class="q-warn"><strong>지도:</strong> <strong>차수 비교</strong>가 출발점. 양변 차수를 먼저 맞추면 \(g\)의 꼴이 정해지고, 나머지는 계수 비교로 끝난다.</div>
         </div>
 
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">12</span><span class="q-title">⭐ 적분방정식 · 곱 형태</span></div>
-            <div class="q-stmt">\(xf(x)\)가 포함된 적분방정식</div>
+            <div class="q-stmt">\(\int_1^x(x-t)f(t)\,dt=x^3+ax^2+bx\)일 때 \(f(x)\)</div>
             <div class="q-solve">
-                <span class="step">양변 미분 → 곱의 미분법으로 \(f(x)+xf'(x)\).</span>
+                <span class="step">\(x\int_1^x f\,dt-\int_1^x tf\,dt\)로 쪼개 미분 → \(\int_1^x f(t)\,dt+xf(x)-xf(x)=3x^2+2ax+b\).</span>
                 <span class="step">\(xf(x)\)가 <strong>상쇄</strong>되어 \(f\)가 안 나옴 → 한 번 더 미분.</span>
-                <span class="step">\(f(x)=6x-4\).</span>
+                <span class="step">\(x=1\) 대입(원식·미분식) → \(a=-2,\ b=1\). 다시 미분 → \(f(x)=6x-4\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(f(x)=6x-4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> "한 번 미분했는데 \(f\)가 안 나오면 <strong>한 번 더</strong>"가 판단 기준. 상쇄되는 구조를 판서로 보여 준다.</div>
@@ -12936,7 +12938,7 @@
         <!-- Q6 표준 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">표준</span><span class="q-num">6</span><span class="q-title">넓이 이등분 + \(a\) 결정</span></div>
-            <div class="q-stmt">\(y=x^2\) (\(x\geq 0\)), \(y\)축, \(y=1\)로 둘러싼 넓이를 \(y=ax^2\) (\(a\gt 1\))이 이등분. \(a\).</div>
+            <div class="q-stmt">\(y=x^2\) (\(x\geq 0\)), \(y\)축, \(y=1\)로 둘러싼 넓이를 \(y=ax^2\) (\(a\)는 양수)이 이등분. \(a\).</div>
             <div class="q-solve">
                 <span class="step">전체 넓이 \(S = \int_0^1 \sqrt{y}\,dy = \dfrac{2}{3}\). 이등분 목표 \(= \dfrac{1}{3}\).</span>
                 <span class="step">두 곡선 사이 \(y\)방향 넓이: \(\int_0^1\!\left(\sqrt{y}-\sqrt{y/a}\right)dy = \dfrac{2}{3}\!\left(1-\dfrac{1}{\sqrt{a}}\right)\).</span>
@@ -13498,67 +13500,67 @@
 </section>
 
 <!-- 판서 계획: 차시마다 window.LM_BOARD_PLANS['NN'] 에 모은다 (lesson-board.js 가 [data-lesson] 으로 고름) -->
-<script src="boardplans/calc_01.js?v=20261012"></script>
+<script src="boardplans/calc_01.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['01'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_02.js?v=20261012"></script>
+<script src="boardplans/calc_02.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['02'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_03.js?v=20261012"></script>
+<script src="boardplans/calc_03.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['03'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_04.js?v=20261012"></script>
+<script src="boardplans/calc_04.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['04'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_05.js?v=20261012"></script>
+<script src="boardplans/calc_05.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['05'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_06.js?v=20261012"></script>
+<script src="boardplans/calc_06.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['06'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_07.js?v=20261012"></script>
+<script src="boardplans/calc_07.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['07'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_08.js?v=20261012"></script>
+<script src="boardplans/calc_08.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['08'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_09.js?v=20261012"></script>
+<script src="boardplans/calc_09.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['09'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_10.js?v=20261012"></script>
+<script src="boardplans/calc_10.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['10'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_11.js?v=20261012"></script>
+<script src="boardplans/calc_11.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['11'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_12.js?v=20261012"></script>
+<script src="boardplans/calc_12.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['12'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_13.js?v=20261012"></script>
+<script src="boardplans/calc_13.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['13'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_14.js?v=20261012"></script>
+<script src="boardplans/calc_14.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['14'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_15.js?v=20261012"></script>
+<script src="boardplans/calc_15.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['15'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_16.js?v=20261012"></script>
+<script src="boardplans/calc_16.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['16'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_17.js?v=20261012"></script>
+<script src="boardplans/calc_17.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['17'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_18.js?v=20261012"></script>
+<script src="boardplans/calc_18.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['18'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_19.js?v=20261012"></script>
+<script src="boardplans/calc_19.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['19'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_20.js?v=20261012"></script>
+<script src="boardplans/calc_20.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['20'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_21.js?v=20261012"></script>
+<script src="boardplans/calc_21.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['21'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_22.js?v=20261012"></script>
+<script src="boardplans/calc_22.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['22'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_23.js?v=20261012"></script>
+<script src="boardplans/calc_23.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['23'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_24.js?v=20261012"></script>
+<script src="boardplans/calc_24.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['24'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_25.js?v=20261012"></script>
+<script src="boardplans/calc_25.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['25'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_26.js?v=20261012"></script>
+<script src="boardplans/calc_26.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['26'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_27.js?v=20261012"></script>
+<script src="boardplans/calc_27.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['27'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_28.js?v=20261012"></script>
+<script src="boardplans/calc_28.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['28'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_29.js?v=20261012"></script>
+<script src="boardplans/calc_29.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['29'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_30.js?v=20261012"></script>
+<script src="boardplans/calc_30.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['30'] = window.LM_BOARD_PLAN;</script>
-<script src="boardplans/calc_31.js?v=20261012"></script>
+<script src="boardplans/calc_31.js?v=20261013"></script>
 <script>(window.LM_BOARD_PLANS = window.LM_BOARD_PLANS || {})['31'] = window.LM_BOARD_PLAN;</script>
 <script src="lesson-board.js?v=20261013"></script>
 

@@ -12,7 +12,7 @@ import json, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 T = ROOT / "교사용"
-VER = "20261012"
+VER = "20261013"
 
 LEGEND = ('    <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span>'
           '<span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span>'

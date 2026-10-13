@@ -233,21 +233,21 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">2</span><span class="q-title">적분과 미분의 관계</span></div>
-            <div class="q-stmt">(1) \(\frac{d}{dx}\int(-10x+7)dx\)류 (2) 합성 관계</div>
+            <div class="q-stmt">(1) \(\frac{d}{dx}\int_2^x(-5t^2+7t)\,dt\) &nbsp;(2) \(\frac{d}{dx}\int_{-4}^x(t+1)(t^2-4t)\,dt\)</div>
             <div class="q-solve">
-                <span class="step">미분과 적분이 이웃하면 <strong>순서에 따라</strong> 상수 유무가 갈린다.</span>
-                <span class="step">\(\frac{d}{dx}\int f = f\) / \(\int \frac{d}{dx}f = f+C\).</span>
+                <span class="step">\(\frac{d}{dx}\int_a^x f(t)\,dt=f(x)\) — 적분변수 \(t\)를 \(x\)로 바꾸면 끝.</span>
+                <span class="step">아래끝 \(2\), \(-4\)는 상수라 결과에 영향 없음 (전개·적분 불필요).</span>
             </div>
             <div class="q-ans">정답: <strong>(1) \(-5x^2+7x\) &nbsp; (2) \((x+1)(x^2-4x)\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> <strong>\(+C\)가 붙는 쪽과 안 붙는 쪽</strong>을 표로 정리해 판서. 시험에서 자주 묻는 구분이다.</div>
+            <div class="q-warn"><strong>지도:</strong> \(\frac{d}{dx}\int_a^x f(t)\,dt=f(x)\)(상수 없음)와 \(\int \frac{d}{dx}f(x)\,dx=f(x)+C\)(상수 있음)를 <strong>표로 대비</strong>해 판서. 시험에서 자주 묻는 구분이다.</div>
         </div>
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l1">기초</span><span class="q-num">3</span><span class="q-title">정적분의 계산 · 구간 연결</span></div>
-            <div class="q-stmt">(1) 기본 계산 (2) 구간을 이어 붙이기</div>
+            <div class="q-stmt">(1) \(\int_{-1}^{3}(3x^2-2x+5)\,dx\) &nbsp;(2) \(\int_{-2}^{1}(2x^3-1)\,dx+\int_{1}^{2}(2x^3-1)\,dx\)</div>
             <div class="q-solve">
-                <span class="step">(2) \(\int_a^b+\int_b^c=\int_a^c\).</span>
-                <span class="step">같은 피적분함수면 구간을 합칠 수 있다.</span>
+                <span class="step">(1) \([x^3-x^2+5x]_{-1}^{3}=33-(-7)=40\). (2) \(\int_a^b+\int_b^c=\int_a^c\).</span>
+                <span class="step">같은 피적분함수면 구간을 합칠 수 있다 → \(\int_{-2}^{2}(2x^3-1)\,dx=0-4=-4\).</span>
             </div>
             <div class="q-ans">정답: <strong>(1) \(40\) &nbsp; (2) \(-4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> 구간 덧셈성은 Ⅲ-2 7번(넓이)에서 그대로 재사용된다. 여기서 확실히 익혀 둘 것.</div>
@@ -255,10 +255,10 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">부정적분 관계식 미분</span></div>
-            <div class="q-stmt">\(\int f(x)dx\) 조건에서 값 구하기</div>
+            <div class="q-stmt">\(2x^2f(x)=\int g(x)\,dx\), \(f(2)=3\), \(f'(2)=-1\)일 때 \(g(2)\)</div>
             <div class="q-solve">
-                <span class="step">양변 미분 → \(f(x)\) 확정.</span>
-                <span class="step">주어진 값을 대입해 상수 결정.</span>
+                <span class="step">양변 미분 → \(4xf(x)+2x^2f'(x)=g(x)\).</span>
+                <span class="step">\(x=2\) 대입: \(g(2)=8f(2)+8f'(2)=24-8=16\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(16\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> "적분식이 보이면 미분부터"라는 반사 신경을 만드는 문항. 미분 후 남는 미지수를 대입으로 없애는 흐름을 반복시킨다.</div>
@@ -266,10 +266,10 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">5</span><span class="q-title">도함수 조건 + 극한 조건</span></div>
-            <div class="q-stmt">두 조건으로 \(f\) 결정</div>
+            <div class="q-stmt">\(f'(x)=4x^3+a\), \(\lim\limits_{x\to1}\frac{f(x)}{x-1}=2a+2\)일 때 \(f(a)\)</div>
             <div class="q-solve">
-                <span class="step">도함수 조건에서 \(f\)의 꼴 확보.</span>
-                <span class="step">극한 조건에서 미정계수 결정.</span>
+                <span class="step">\(f(x)=x^4+ax+C\). 극한 존재 → \(f(1)=0\): \(1+a+C=0\).</span>
+                <span class="step">극한 \(=f'(1)=4+a=2a+2\) → \(a=2,\ C=-3\), \(f(2)=17\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(17\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> 조건 개수와 미지수 개수를 <strong>먼저 세어 보게</strong> 한다. 부족하면 조건을 놓친 것.</div>
@@ -277,32 +277,33 @@
 
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">6</span><span class="q-title">적분으로 정의된 함수의 극값</span></div>
-            <div class="q-stmt">\(F(x)=\int_a^x f(t)dt\)의 극값</div>
+            <div class="q-stmt">\(f(x)=\int_{-1}^{x}(2t^2-3t+1)\,dt\)의 극솟값</div>
             <div class="q-solve">
-                <span class="step">\(F'(x)=f(x)\).</span>
-                <span class="step">\(f(x)=0\)이 되는 점에서 부호 변화 확인 → 극값.</span>
+                <span class="step">\(f'(x)=2x^2-3x+1=(2x-1)(x-1)\) → \(x=\frac12\) 극대, \(x=1\) 극소.</span>
+                <span class="step">극솟값 \(f(1)=\int_{-1}^{1}(2t^2-3t+1)\,dt=\frac{10}{3}\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(\dfrac{10}{3}\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> <strong>\(F'=f\)</strong>이므로 \(f\)의 그래프가 곧 \(F\)의 증감표. Ⅱ-2 8번(도함수 그래프)과 같은 구조임을 연결.</div>
+            <div class="q-warn"><strong>지도:</strong> <strong>\(f'(x)\)=피적분함수</strong>이므로 피적분함수의 부호가 곧 \(f\)의 증감표. Ⅱ-2 8번(도함수 그래프)과 같은 구조임을 연결.</div>
         </div>
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">7</span><span class="q-title">이차방정식의 근과 정적분</span></div>
-            <div class="q-stmt">근을 이용한 정적분 값</div>
+            <div class="q-stmt">\(x^2-3x-1=0\)의 두 근 \(\alpha\lt\beta\)에 대하여 \(\int_{\alpha}^{\beta}(6x-5)\,dx\)</div>
             <div class="q-solve">
                 <span class="step">근과 계수의 관계로 \(\alpha+\beta\), \(\alpha\beta\) 확보.</span>
-                <span class="step">\((\beta-\alpha)^2=(\alpha+\beta)^2-4\alpha\beta\).</span>
+                <span class="step">\((\beta-\alpha)^2=(\alpha+\beta)^2-4\alpha\beta=13\) → \(\beta-\alpha=\sqrt{13}\).</span>
+                <span class="step">\(\int_{\alpha}^{\beta}(6x-5)\,dx=(\beta-\alpha)\{3(\alpha+\beta)-5\}=4\sqrt{13}\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(4\sqrt{13}\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> 적분 결과가 \((\beta-\alpha)^3\) 꼴로 정리되는 <strong>넓이 공식의 원형</strong>. Ⅲ-2 1·5번의 예고편이다.</div>
+            <div class="q-warn"><strong>지도:</strong> 근을 직접 대입하지 않고 \(\alpha+\beta\), \(\beta-\alpha\)로 묶는 <strong>대칭식 처리</strong>. Ⅲ-2 1·5번에서 \(\beta-\alpha\)를 쓰는 넓이 계산의 예고편이다.</div>
         </div>
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">8</span><span class="q-title">주기함수의 정적분</span></div>
-            <div class="q-stmt">주기성을 이용한 구간 이동</div>
+            <div class="q-stmt">\(f(x+6)=f(x)\), \(\int_{-1}^{1}f(x)\,dx=3\), \(\int_{1}^{7}f(x)\,dx=10\)일 때 \(\int_{1}^{5}f(x)\,dx\)</div>
             <div class="q-solve">
-                <span class="step">주기 \(p\)이면 \(\int_a^{a+p}\)는 위치와 무관.</span>
-                <span class="step">긴 구간을 주기 단위로 쪼갠다.</span>
+                <span class="step">주기 \(6\) → \(\int_5^7 f=\int_{-1}^{1}f=3\).</span>
+                <span class="step">\(\int_1^5 f=\int_1^7 f-\int_5^7 f=10-3=7\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(7\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> 주기를 <strong>그림으로</strong> 표시하고 "같은 모양이 반복"을 시각화하면 쪼개기가 쉬워진다.</div>
@@ -322,10 +323,10 @@
 
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">10</span><span class="q-title">적분으로 정의된 함수의 극한</span></div>
-            <div class="q-stmt">\(\lim\frac{1}{x-a}\int_a^x f(t)dt\)</div>
+            <div class="q-stmt">\(\lim\limits_{x\to1}\frac{1}{x-1}\int_1^{x^2}(t^4-4t^3+5t^2)\,dt\)</div>
             <div class="q-solve">
-                <span class="step">\(F(x)=\int_a^x f\)로 두면 \(F(a)=0\).</span>
-                <span class="step">극한은 \(\frac{F(x)-F(a)}{x-a} \to F'(a)=f(a)\).</span>
+                <span class="step">\(f(t)=t^4-4t^3+5t^2\)의 한 부정적분 \(F\) → \(\frac{F(x^2)-F(1)}{x-1}=\frac{F(x^2)-F(1)}{x^2-1}\cdot(x+1)\).</span>
+                <span class="step">\(\to F'(1)\cdot2=2f(1)=2\cdot2=4\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> <strong>미분계수 정의꼴</strong>로 되돌아온다. Ⅱ-1에서 배운 변형 기술이 그대로 쓰임을 강조.</div>
@@ -333,22 +334,22 @@
 
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">11</span><span class="q-title">적분·미분 항등식으로 함수 결정</span></div>
-            <div class="q-stmt">항등식에서 \(f\) 찾기</div>
+            <div class="q-stmt">\(f(x)=x^3-3x^2+5\), 삼차함수 \(g\): \(\int\{f(x)-g(x)\}\,dx=\frac{d}{dx}\{f(x)+g(x)\}\)일 때 \(g(1)\)</div>
             <div class="q-solve">
-                <span class="step">양변 미분 → 관계식.</span>
-                <span class="step">적분 구간이 \(0\)이 되는 값 대입 → 상수 결정.</span>
+                <span class="step">우변은 이차 이하 → \(f-g\)는 일차 이하 → \(g(x)=x^3-3x^2+ax+b\).</span>
+                <span class="step">\(-\frac a2x^2+(5-b)x+C=6x^2-12x+a\) 계수 비교 → \(a=-12,\ b=17\), \(g(1)=3\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(3\)</strong></div>
-            <div class="q-warn"><strong>지도:</strong> 미분과 대입을 <strong>짝으로</strong> 쓰는 것이 이 유형의 전부. 한쪽만 쓰면 반드시 미지수가 남는다.</div>
+            <div class="q-warn"><strong>지도:</strong> <strong>차수 비교</strong>가 출발점. 양변 차수를 먼저 맞추면 \(g\)의 꼴이 정해지고, 나머지는 계수 비교로 끝난다.</div>
         </div>
 
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">12</span><span class="q-title">⭐ 적분방정식 · 곱 형태</span></div>
-            <div class="q-stmt">\(xf(x)\)가 포함된 적분방정식</div>
+            <div class="q-stmt">\(\int_1^x(x-t)f(t)\,dt=x^3+ax^2+bx\)일 때 \(f(x)\)</div>
             <div class="q-solve">
-                <span class="step">양변 미분 → 곱의 미분법으로 \(f(x)+xf'(x)\).</span>
+                <span class="step">\(x\int_1^x f\,dt-\int_1^x tf\,dt\)로 쪼개 미분 → \(\int_1^x f(t)\,dt+xf(x)-xf(x)=3x^2+2ax+b\).</span>
                 <span class="step">\(xf(x)\)가 <strong>상쇄</strong>되어 \(f\)가 안 나옴 → 한 번 더 미분.</span>
-                <span class="step">\(f(x)=6x-4\).</span>
+                <span class="step">\(x=1\) 대입(원식·미분식) → \(a=-2,\ b=1\). 다시 미분 → \(f(x)=6x-4\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(f(x)=6x-4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> "한 번 미분했는데 \(f\)가 안 나오면 <strong>한 번 더</strong>"가 판단 기준. 상쇄되는 구조를 판서로 보여 준다.</div>

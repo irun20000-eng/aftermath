@@ -730,8 +730,8 @@ a{color:var(--color-primary);text-decoration:none}
   <div class="filter-bar" role="toolbar" aria-label="난이도 필터">
     <button class="filter-btn active" data-filter="all">전체 <span class="filter-count" id="cnt-all">12</span></button>
     <button class="filter-btn" data-filter="basic">기초 <span class="filter-count" id="cnt-basic">3</span></button>
-    <button class="filter-btn" data-filter="standard">기본 <span class="filter-count" id="cnt-standard">6</span></button>
-    <button class="filter-btn" data-filter="advanced">도전 <span class="filter-count" id="cnt-advanced">3</span></button>
+    <button class="filter-btn" data-filter="standard">기본 <span class="filter-count" id="cnt-standard">7</span></button>
+    <button class="filter-btn" data-filter="advanced">도전 <span class="filter-count" id="cnt-advanced">2</span></button>
   </div>
 </header>
 
@@ -846,8 +846,8 @@ const PROBLEMS = [
       {tag:'STEP 1', title:'(1) 롤의 정리', body:`<p>\\(f(0)=-9\\), \\(f(1)=1-1-9=-9\\)로 같으므로 롤의 정리를 쓸 수 있습니다.</p>
 <div class="calc">\\(f'(x)=3x^2-1=0 \\;\\Rightarrow\\; x^2=\\dfrac{1}{3} \\;\\Rightarrow\\; x=\\pm\\dfrac{1}{\\sqrt{3}}\\)</div>
 <div class="calc purple">\\(0\\lt c\\lt 1\\)이므로 \\(c=\\dfrac{1}{\\sqrt{3}}=\\dfrac{\\sqrt{3}}{3}\\)</div>`},
-      {tag:'STEP 2', title:'(2) 평균변화율 계산', body:`<div class="calc">\\(\\dfrac{f(3)-f(0)}{3-0}=\\dfrac{(27-3-9)-(-9)}{3}=\\dfrac{15+9}{3}=\\dfrac{24}{3}\\)</div>
-<p>잠깐 — \\(f(3)=27-3-9=15\\), \\(f(0)=-9\\)이므로 \\(\\dfrac{15-(-9)}{3}=\\dfrac{24}{3}=8\\).</p>`},
+      {tag:'STEP 2', title:'(2) 평균변화율 계산', body:`<div class="calc">\\(\\dfrac{f(3)-f(0)}{3-0}=\\dfrac{(27-3-9)-(-9)}{3}=\\dfrac{15+9}{3}=\\dfrac{24}{3}=8\\)</div>
+<p>\\(f(3)=27-3-9=15\\), \\(f(0)=-9\\)이므로 평균변화율은 \\(8\\)입니다.</p>`},
       {tag:'STEP 3', title:'(2) \\(f\'(c)\\)와 일치시키기', body:`<div class="calc">\\(3c^2-1=8 \\;\\Rightarrow\\; 3c^2=9 \\;\\Rightarrow\\; c^2=3\\)</div>
 <div class="calc purple">\\(0\\lt c\\lt 3\\)이므로 \\(c=\\sqrt{3}\\)</div>
 <div class="hint">📌 두 정리 모두 <strong>열린구간 안의 \\(c\\)</strong>를 찾는 것이므로, 음수 해는 버려야 합니다.</div>`}
@@ -863,7 +863,7 @@ const PROBLEMS = [
     steps:[
       {tag:'STEP 1', title:'도함수와 임계점', body:`<div class="calc">\\(f'(x)=3x^2-3=3(x+1)(x-1)\\)</div>
 <div class="calc">\\(f'(x)=0 \\;\\Rightarrow\\; x=-1\\) 또는 \\(x=1\\)</div>`},
-      {tag:'STEP 2', title:'부호 조사', body:`<div class="calc">\\(x\\lt -1\\): \\((+)(-)\\cdots\\) 두 인수 모두 음수 곱 → \\(f'\\gt 0\\) (증가)<br>
+      {tag:'STEP 2', title:'부호 조사', body:`<div class="calc">\\(x\\lt -1\\): \\((-)(-)\\) → \\(f'\\gt 0\\) (증가)<br>
 \\(-1\\lt x\\lt 1\\): \\((+)(-)\\) → \\(f'\\lt 0\\) (감소)<br>
 \\(x\\gt 1\\): \\((+)(+)\\) → \\(f'\\gt 0\\) (증가)</div>`},
       {tag:'STEP 3', title:'결론 표기', body:`<div class="calc purple">증가: \\((-\\infty,\\,-1]\\), \\([1,\\,\\infty)\\) &nbsp;/&nbsp; 감소: \\([-1,\\,1]\\)</div>
@@ -981,7 +981,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w4-a1', level:'advanced', levelLabel:'도전', num:10, type:'short',
+    id:'w4-s7', level:'standard', levelLabel:'기본', num:10, type:'short',
     subLabel:'속도·가속도 · 운동 방향 전환',
     title:'두 번째로 방향을 바꾸는 순간의 가속도',
     question:`<p>원점을 출발하여 수직선 위를 움직이는 점 \\(\\mathrm{P}\\)의 시각 \\(t\\)에서 위치 \\(x\\)가</p>
@@ -998,7 +998,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w4-a2', level:'advanced', levelLabel:'도전', num:11, type:'short',
+    id:'w4-a1', level:'advanced', levelLabel:'도전', num:11, type:'short',
     subLabel:'곡선과 원 사이 최단거리',
     title:'선분 PQ 길이의 최솟값',
     question:`<p>다음 그림과 같이 곡선 \\(y=x^2-5\\) 위를 움직이는 점 \\(\\mathrm{P}\\)와 원 \\((x-6)^2+(y+2)^2=1\\) 위를 움직이는 점 \\(\\mathrm{Q}\\)에 대하여 선분 \\(\\mathrm{PQ}\\)의 길이의 최솟값을 구하시오.</p>
@@ -1019,7 +1019,7 @@ const PROBLEMS = [
     ]
   },
   {
-    id:'w4-a3', level:'advanced', levelLabel:'도전', num:12, type:'short',
+    id:'w4-a2', level:'advanced', levelLabel:'도전', num:12, type:'short',
     subLabel:'닮음 + 변화율',
     title:'가로등과 그림자 길이의 변화율',
     question:`<p>다음 그림과 같이 키가 \\(1.6\\,\\mathrm{m}\\)인 사람이 높이가 \\(3\\,\\mathrm{m}\\)인 가로등의 바로 밑에서 출발하여 매초 \\(1.4\\,\\mathrm{m}\\)의 속도로 일직선으로 걸어가고 있다. 이때 이 사람의 그림자의 길이의 변화율을 구하시오.</p>

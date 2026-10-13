@@ -257,9 +257,9 @@
             <div class="prob-head"><span class="lvl lvl-l2">기본</span><span class="q-num">4</span><span class="q-title">구간별 함수의 곱·합 연속성</span></div>
             <div class="q-stmt">두 불연속 함수 \(f,g\)에 대하여 ㄱ·ㄴ·ㄷ 판정</div>
             <div class="q-solve">
-                <span class="step">각각은 \(|x|=1\)에서 불연속.</span>
-                <span class="step">곱 \(fg\)는 경계에서 좌·우가 모두 \(-1\)로 일치 → <strong>연속</strong>.</span>
-                <span class="step">합은 여전히 튄다 → 불연속.</span>
+                <span class="step">ㄱ: \(x\to-1^+\)이면 \(fg\to1\), \(x\to-1^-\)이면 \(fg\to-1\) → 극한 없음 (거짓).</span>
+                <span class="step">ㄴ: \(x=-1\)에서 \(f+g\)의 우극한 \(2\), 좌극한 \(0\) → <strong>불연속</strong> (참).</span>
+                <span class="step">ㄷ: \(x=1\)에서 \(fg\)의 좌·우극한과 함숫값이 모두 \(-1\) → <strong>연속</strong> (참).</span>
             </div>
             <div class="q-ans">정답: <strong>ㄴ, ㄷ</strong></div>
             <div class="q-warn"><strong>지도:</strong> "불연속 × 불연속 = 불연속"이라는 <strong>잘못된 직관</strong>을 깨는 문항. 경계에서 좌·우값을 표로 만들어 비교시킨다.</div>
@@ -320,7 +320,7 @@
             <div class="q-stmt">고도가 \(8500\,\mathrm{m}\)였던 순간이 적어도 몇 번</div>
             <div class="q-solve">
                 <span class="step">표에서 \(8500\)을 <strong>가로지르는 구간</strong>을 센다.</span>
-                <span class="step">올라감·내려감·올라감으로 3번 통과.</span>
+                <span class="step">9:00→9:02(↓), 9:04→9:06(↑), 9:06→9:08(↓) 세 구간에서 통과 → 3번.</span>
             </div>
             <div class="q-ans">정답: <strong>적어도 \(3\)번</strong></div>
             <div class="q-warn"><strong>지도:</strong> "적어도"라는 표현은 <strong>사잇값 정리가 보장하는 최소 횟수</strong>라는 뜻. 실제로는 더 많을 수 있음을 그래프로 보여 준다.</div>
@@ -330,10 +330,10 @@
             <div class="prob-head"><span class="lvl lvl-l3">도전</span><span class="q-num">10</span><span class="q-title">⭐ 합성함수의 연속</span></div>
             <div class="q-stmt">\(g(x)=x^3+ax^2+bx+2\), \(g(f(x))\)가 모든 실수에서 연속</div>
             <div class="q-solve">
-                <span class="step">그래프에서 \(f\)는 \(x=1\)에서 불연속: 좌극한 \(2\), 우극한 \(-2\) (함숫값 포함).</span>
-                <span class="step">\(g(f(x))\)가 연속이려면 \(g(2)=g(-2)\).</span>
-                <span class="step">\(8+4a+2b+2=-8+4a-2b+2 \Rightarrow 4b=-16,\ b=-4\).</span>
-                <span class="step">추가 불연속점 조건에서 \(a=0\).</span>
+                <span class="step">그래프에서 \(f\)는 \(x=2\)에서 불연속: \(x\to2^-\)이면 \(f(x)\to-2\), \(x\to2^+\)이면 \(f(x)\to2\), \(f(2)=0\).</span>
+                <span class="step">\(g\)는 연속이므로 \(x=2\)에서 \(g(f(x))\)가 연속이려면 \(g(-2)=g(2)=g(0)=2\).</span>
+                <span class="step">\(g(2)=4a+2b+10=2\), \(g(-2)=4a-2b-6=2\).</span>
+                <span class="step">연립하면 \(a=0,\ b=-4\).</span>
             </div>
             <div class="q-ans">정답: <strong>\(a=0,\ b=-4\)</strong></div>
             <div class="q-warn"><strong>지도:</strong> <strong>\(f\)의 불연속점을 그래프에서 정확히 읽는 것</strong>이 절반. 좌극한·우극한·함숫값 세 값을 그림 옆에 표로 적게 한 뒤 \(g\)에 대입시킨다.</div>
