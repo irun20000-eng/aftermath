@@ -202,7 +202,7 @@ window.LM_BOARD_PLAN = {
       bg: 'grid',
       zones: [
         { t: '÷ x(x+1)  (양수)', ex: [
-          '\\(\\dfrac{2x-1}{x+1}\\le\\dfrac{f(x)}{x}\\le\\dfrac{2x+1}{x+1}\\)',
+          '\\(\\dfrac{2x-1}{x+1}\\lt\\dfrac{f(x)}{x}\\lt\\dfrac{2x+1}{x+1}\\)',
           'r:\\(x>0\\) → \\(x(x+1)>0\\), 부등호 방향 그대로'
         ] },
         { t: '샌드위치', h: 0.7, ex: [

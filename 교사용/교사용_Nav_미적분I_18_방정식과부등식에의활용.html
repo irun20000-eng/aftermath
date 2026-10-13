@@ -379,13 +379,13 @@
         <!-- L2 6번 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">두 함수 비교 + 매개변수</span></div>
-            <div class="q-stmt">\(x \gt 0\)에서 \(f(x) = 3x^3 + 8x^2 - 18x + k \geq g(x) = x^3 - x^2 + 6x + 1\) 성립하는 \(k\).</div>
+            <div class="q-stmt">\(x \geq 0\)에서 \(f(x) = 3x^3 + 8x^2 - 18x + k \gt g(x) = x^3 - x^2 + 6x + 1\) 성립하는 \(k\).</div>
             <div class="q-solve">
-                <span class="step">차함수 \(h(x) = f - g = 2x^3 + 9x^2 - 24x + (k - 1)\). 조건 ⇔ \(\min_{x \gt 0} h \geq 0\).</span>
-                <span class="step">\(h'(x) = 6(x + 4)(x - 1)\). \(x \gt 0\)에서 \(x = 1\) 극소. \(h(1) = 2 + 9 - 24 + (k - 1) = k - 14\).</span>
-                <span class="step">\(k - 14 \geq 0 \Rightarrow k \geq 14\).</span>
+                <span class="step">차함수 \(h(x) = f - g = 2x^3 + 9x^2 - 24x + (k - 1)\). 조건 ⇔ \(\min_{x \geq 0} h \gt 0\).</span>
+                <span class="step">\(h'(x) = 6(x + 4)(x - 1)\). \(x \geq 0\)에서 \(x = 1\) 극소 (끝점 \(h(0) = k - 1\)보다 작음). \(h(1) = 2 + 9 - 24 + (k - 1) = k - 14\).</span>
+                <span class="step">\(k - 14 \gt 0 \Rightarrow k \gt 14\) (등호 없는 부등식 → \(k = 14\) 제외).</span>
             </div>
-            <div class="q-ans">정답: \(k \geq 14\)</div>
+            <div class="q-ans">정답: \(k \gt 14\)</div>
         </div>
     </div>
     <div class="nv-board" data-key="level.6" data-label="6번 — 차함수의 최솟값으로 k 범위"></div>

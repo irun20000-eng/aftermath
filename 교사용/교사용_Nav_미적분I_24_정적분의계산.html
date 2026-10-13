@@ -309,14 +309,14 @@
         <!-- L1 1번 -->
         <div class="prob-card span2">
             <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">기본정리로 다항함수 정적분</span></div>
-            <div class="q-stmt">(1) \(\int_{-2}^{2}3x^2\,dx\) (2) \(\int_0^4 x^3\,dx\) (3) \(\int_1^3 4x\,dx\) (4) \(\int_{-2}^{1}5x^4\,dx\)</div>
+            <div class="q-stmt">(1) \(\int_{-2}^{2}3x^2\,dx\) (2) \(\int_0^4 x^3\,dx\) (3) \(\int_3^1 4x\,dx\) (4) \(\int_{1}^{-2}5x^4\,dx\)</div>
             <div class="q-solve">
                 <span class="step">(1) \([x^3]_{-2}^{2} = 8 - (-8) = 16\).</span>
                 <span class="step">(2) \([\tfrac{1}{4}x^4]_0^4 = 64 - 0 = 64\).</span>
-                <span class="step">(3) \([2x^2]_1^3 = 18 - 2 = 16\).</span>
-                <span class="step">(4) \([x^5]_{-2}^{1} = 1 - (-32) = 33\).</span>
+                <span class="step">(3) \([2x^2]_3^1 = 2 - 18 = -16\).</span>
+                <span class="step">(4) \([x^5]_1^{-2} = -32 - 1 = -33\) (위끝이 더 작아도 그대로 대입).</span>
             </div>
-            <div class="q-ans">정답: (1) \(16\) (2) \(64\) (3) \(16\) (4) \(33\)</div>
+            <div class="q-ans">정답: (1) \(16\) (2) \(64\) (3) \(-16\) (4) \(-33\)</div>
         </div>
     </div>
     <div class="nv-board" data-key="level.1" data-label="1번 — 기본정리로 다항함수 적분"></div>
@@ -378,10 +378,10 @@
         <!-- L2 6번 -->
         <div class="prob-card">
             <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">6</span><span class="q-title">구간별 도함수 → 연속 조건으로 \(f(-1)\)</span></div>
-            <div class="q-stmt">\(f'(x) = x - 3\,\,(x \geq 1)\), \(-2x^2\,\,(x \lt 1)\). \(f(2) = -2\)일 때 \(f(-1)\).</div>
+            <div class="q-stmt">\(f'(x) = x - 3\,\,(x \gt 1)\), \(-2x^2\,\,(x \leq 1)\). \(f(2) = -2\)일 때 \(f(-1)\).</div>
             <div class="q-solve">
-                <span class="step">\(x \geq 1\): \(f(x) = \tfrac{1}{2}x^2 - 3x + C_1\). \(f(2) = 2-6+C_1=-2 \Rightarrow C_1=2\). \(f(1) = \tfrac{1}{2}-3+2 = -\tfrac{1}{2}\).</span>
-                <span class="step">\(x \lt 1\): \(f(x) = -\tfrac{2}{3}x^3 + C_2\). 연속: \(-\tfrac{2}{3}+C_2 = -\tfrac{1}{2} \Rightarrow C_2 = \tfrac{1}{6}\).</span>
+                <span class="step">\(x \gt 1\): \(f(x) = \tfrac{1}{2}x^2 - 3x + C_1\). \(f(2) = 2-6+C_1=-2 \Rightarrow C_1=2\). \(\lim_{x\to1^+}f(x) = \tfrac{1}{2}-3+2 = -\tfrac{1}{2}\).</span>
+                <span class="step">\(x \leq 1\): \(f(x) = -\tfrac{2}{3}x^3 + C_2\). 연속 \(f(1)=f(1^+)\): \(-\tfrac{2}{3}+C_2 = -\tfrac{1}{2} \Rightarrow C_2 = \tfrac{1}{6}\).</span>
                 <span class="step">\(f(-1) = \tfrac{2}{3} + \tfrac{1}{6} = \tfrac{5}{6}\).</span>
             </div>
             <div class="q-ans">정답: \(f(-1) = \dfrac{5}{6}\)</div>

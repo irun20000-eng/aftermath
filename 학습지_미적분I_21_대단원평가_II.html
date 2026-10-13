@@ -183,9 +183,9 @@
                 <!-- Q8 -->
                 <div>
                     <span class="badge badge-type">[표준-부등식 정수 n 최댓값]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">8. \(x \gt 0\)인 모든 실수 \(x\)에 대하여 부등식 \( x^3 + \dfrac{1}{x^3} - 24\!\left(x + \dfrac{1}{x}\right) \gt n \) 을 만족시키는 정수 \(n\)의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.101 대단원 평가 08번)</span></div>
+                    <div class="text-xl font-bold text-slate-800 mb-2">8. \(x \gt 0\)인 모든 실수 \(x\)에 대하여 부등식 \( x^3 + \dfrac{1}{x^3} - 24\!\left(x + \dfrac{1}{x}\right) \geq n \) 을 만족시키는 정수 \(n\)의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.101 대단원 평가 08번)</span></div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> \(t = x + \dfrac{1}{x}\) 치환 (단, \(x \gt 0\)에서 \(t \geq 2\), AM-GM). \(t^3 = x^3 + 3x + \dfrac{3}{x} + \dfrac{1}{x^3}\) → \(x^3 + \dfrac{1}{x^3} = t^3 - 3t\). 좌변 \(= t^3 - 3t - 24t = t^3 - 27t = g(t)\) (단, \(t \geq 2\)). \(g'(t) = 3t^2 - 27 = 0\) → \(t = 3\) (극소). \(g(3) = 27 - 81 = -54\). \(g(2) = 8 - 54 = -46\). \(t \geq 2\)에서 최솟값 \(= g(3) = -54\). 부등식이 항상 성립하려면 \(n \lt -54\) → 정수 \(n\) 최댓값 \(= -55\).
+                        <strong>💡 전략 힌트:</strong> \(t = x + \dfrac{1}{x}\) 치환 (단, \(x \gt 0\)에서 \(t \geq 2\), AM-GM). \(t^3 = x^3 + 3x + \dfrac{3}{x} + \dfrac{1}{x^3}\) → \(x^3 + \dfrac{1}{x^3} = t^3 - 3t\). 좌변 \(= t^3 - 3t - 24t = t^3 - 27t = g(t)\) (단, \(t \geq 2\)). \(g'(t) = 3t^2 - 27 = 0\) → \(t = 3\) (극소). \(g(3) = 27 - 81 = -54\). \(g(2) = 8 - 54 = -46\). \(t \geq 2\)에서 최솟값 \(= g(3) = -54\). 최솟값 \(-54\)는 \(t = 3\), 즉 \(x = \tfrac{3 \pm \sqrt{5}}{2}\)에서 실제로 나온다. 부등식(등호 포함)이 항상 성립하려면 \(n \leq -54\) → 정수 \(n\) 최댓값 \(= -54\).
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
