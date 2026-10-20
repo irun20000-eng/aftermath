@@ -221,6 +221,11 @@ html.lm-on body { padding: 0 !important; background: #0f172a !important; }
 .lm-board-pop { flex-direction: column; align-items: stretch; }
 .lm-board-pop .lm-seg { display: flex; }
 .lm-board-pop .lm-seg .lm-btn { flex: 1; }
+/* 판서 설정 적용 범위 — 이 화면 · 이 차시 · 모든 차시 */
+.lm-board-pop { min-width: 300px; }
+.lm-scope .lm-btn.is-on { background: #f59e0b; border-color: #f59e0b; color: #1f2937; }
+.lm-board-where { font: 700 12px/1.45 'Noto Sans KR', sans-serif; color: #cbd5e1; padding: 2px 2px 0; }
+.lm-btn.lm-board-reset { font-size: 13px; color: #94a3b8; }
 .lm-reveal {
   min-height: 40px; padding: 0 14px; border-radius: 10px; border: 2px solid #f59e0b;
   background: #fffbeb; color: #92400e; font: 800 14px/1 'Noto Sans KR', sans-serif; cursor: pointer; white-space: nowrap;
