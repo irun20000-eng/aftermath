@@ -138,7 +138,11 @@ html.lm-on body { padding: 0 !important; background: #0f172a !important; }
   position: absolute; inset: 14px; display: flex; flex-direction: column; gap: 14px;
   pointer-events: none;
 }
-.lm-zones.is-hidden { display: none; }
+/* 구역 틀을 꺼도 이미 보인 판서 예시는 남긴다 (틀·제목·빈 좌표축만 숨김) */
+.lm-zones.is-hidden .lm-zone { border-color: transparent; }
+.lm-zones.is-hidden .lm-zone-label,
+.lm-zones.is-hidden .lm-zone > svg.lm-ax { visibility: hidden; }
+.lm-zones.has-ex { bottom: 64px; }
 .lm-zone {
   position: relative; flex: 1 1 0; min-height: 0;
   border: 2px dashed rgba(100,116,139,.45); border-radius: 14px;
@@ -149,6 +153,53 @@ html.lm-on body { padding: 0 !important; background: #0f172a !important; }
   font: 800 18px/1.4 'Noto Sans KR', sans-serif; white-space: nowrap;
 }
 .lm-zone svg { position: absolute; inset: 22px 14px 12px 14px; width: calc(100% - 28px); height: calc(100% - 34px); }
+
+/* ---------- 판서 예시 단계 공개 ---------- */
+.lm-zone.has-ex {
+  pointer-events: auto; cursor: pointer; -webkit-user-select: none; user-select: none;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.lm-zone.has-ex:active { background: rgba(13,148,136,.04); }
+.lm-zone-cnt { margin-left: 8px; font-size: 13px; font-weight: 800; color: #94a3b8; font-variant-numeric: tabular-nums; }
+.lm-zone-cnt.is-done { color: #0d9488; }
+.lm-ex {
+  position: absolute; inset: 22px 16px 8px 18px; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-start; gap: .18em;
+  font: 700 var(--lm-ex, 26px)/1.35 'Noto Sans KR', sans-serif; color: #1e293b;
+  pointer-events: none;
+}
+/* 좌표 구역: 글은 왼쪽, 그래프는 오른쪽 (글이 나오기 전에는 좌표축이 구역 전체) */
+.lm-zone.has-axes .lm-ex { right: 54%; }
+.lm-zone.is-split > svg { left: 47%; width: calc(53% - 14px); }
+/* 긴 식은 위에 글, 아래에 그래프 */
+.lm-zone.is-stack .lm-ex { right: 16px; bottom: auto; height: 36%; }
+.lm-zone.is-stack.is-split > svg {
+  left: 14px; width: calc(100% - 28px);
+  top: var(--lm-svg-top, 50%); height: calc(100% - var(--lm-svg-top, 50%) - 12px);
+}
+.lm-ex-line { visibility: hidden; opacity: 0; transition: opacity .25s ease; overflow-wrap: anywhere; }
+.lm-ex-line.is-shown { visibility: visible; opacity: 1; }
+.lm-ex-line mjx-container { font-size: 100% !important; margin: 0 !important; }
+.lm-ex .c-b { color: #1d4ed8; }
+.lm-ex .c-r { color: #dc2626; }
+.lm-ex .c-g { color: #15803d; }
+.lm-zone > svg.lm-ax.is-off { visibility: hidden; }
+.lm-zone > svg.lm-plot { visibility: hidden; opacity: 0; transition: opacity .25s ease; }
+.lm-zone > svg.lm-plot.is-shown { visibility: visible; opacity: 1; }
+.lm-exbar {
+  position: absolute; left: 14px; right: 14px; bottom: 10px; z-index: 6;
+  display: flex; align-items: center; gap: 6px; overflow: hidden; white-space: nowrap;
+}
+.lm-exb {
+  min-height: 44px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #cbd5e1;
+  background: #fff; color: #0f172a; font: 800 15px/1 'Noto Sans KR', sans-serif; cursor: pointer;
+  touch-action: manipulation; flex: none;
+}
+.lm-exb.is-main { background: #0f766e; border-color: #0f766e; color: #fff; min-width: 120px; }
+.lm-exb:disabled { opacity: .35; cursor: default; }
+.lm-excnt { margin-left: 4px; font: 800 14px/1 'Noto Sans KR', sans-serif; color: #64748b; font-variant-numeric: tabular-nums; flex: none; }
+.lm-exhint { margin-left: auto; font: 700 12px/1 'Noto Sans KR', sans-serif; color: #94a3b8; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.lm-pop-h { margin-top: 4px; font: 800 12px/1.2 'Noto Sans KR', sans-serif; color: #94a3b8; }
 .lm-board-note {
   position: absolute; right: 14px; bottom: 10px; font: 700 12px/1 'Noto Sans KR', sans-serif;
   color: #94a3b8; pointer-events: none;
@@ -244,4 +295,7 @@ html.lm-on body { padding: 0 !important; background: #0f172a !important; }
   padding: 5px 12px; border-radius: 8px; background: rgba(239, 246, 255, .96); border: 1.5px solid #93c5fd;
   color: #1e40af; font-weight: 700; font-size: 15px; pointer-events: none; max-width: 70%; }
 .lm-board-src b { font-weight: 900; }
+/* 판서 예시가 있는 화면: 한 줄로 (전체 출처는 왼쪽 머리줄에 그대로) — 첫 구역 글을 덜 가리게 */
+.lm-board-src.is-compact { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 3px 10px; font-size: 13px; }
+.lm-board-src.is-compact .lm-board-src-rel { margin-left: 6px; }
 .lm-board-src-rel { padding: 1px 8px; border-radius: 999px; background: #1e40af; color: #fff; font-size: 12px; }
