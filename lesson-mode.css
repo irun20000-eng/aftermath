@@ -217,3 +217,27 @@ html.lm-on body { padding: 0 !important; background: #0f172a !important; }
 .sub-qs--list { flex-direction: column; align-items: stretch; row-gap: .3em; }
 .sub-q { display: block; max-width: 100%; padding-left: 1.85em; text-indent: -1.85em; break-inside: avoid; }
 .sub-qs--row > .sub-q { display: inline-block; }
+
+/* ── 출처 칩 — 교과서 몇 쪽 몇 번 ───────────────────────────────
+   학습지: 수준 배지 옆 · 개념 블록 제목 아래 / 수업 모드: 머리줄 + 판서 공간 위쪽
+   관계 표시: 그대로(파랑) · 변형(주황) · 유형(보라) */
+.src-chip { display: inline-flex; align-items: center; gap: .4em; margin: 0 0 .35rem .5rem; padding: .18em .7em;
+  border-radius: 999px; background: #eff6ff; border: 1.5px solid #93c5fd; color: #1e40af;
+  font-weight: 800; font-size: .875rem; line-height: 1.45; vertical-align: middle; white-space: nowrap; }
+.src-chip::before { content: '📖'; font-size: .95em; }
+.src-chip .src-rel { padding: .02em .5em; border-radius: 999px; background: #1e40af; color: #fff; font-size: .8em; }
+.src-chip[data-src-rel="변형"] .src-rel { background: #c2410c; }
+.src-chip[data-src-rel="유형"] .src-rel { background: #7c3aed; }
+.src-chip--block { margin: .25rem 0 .5rem; }
+@media print {
+  .src-chip { background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+/* 수업 모드 */
+.lm-src { display: inline-flex; margin-left: 12px; }
+.lm-src .src-chip { margin: 0; font-size: 15px; }
+.lm-page .src-chip.lm-src-shown { display: none; }
+.lm-board-src { position: absolute; top: 8px; right: 16px; z-index: 6; display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 12px; border-radius: 8px; background: rgba(239, 246, 255, .96); border: 1.5px solid #93c5fd;
+  color: #1e40af; font-weight: 700; font-size: 15px; pointer-events: none; }
+.lm-board-src b { font-weight: 900; }
+.lm-board-src-rel { padding: 1px 8px; border-radius: 999px; background: #1e40af; color: #fff; font-size: 12px; }
