@@ -777,6 +777,10 @@ def check5_file(path: pathlib.Path, txt: str):
         for m in OLD_SOURCE_RE.finditer(txt):
             line = txt.count("\n", 0, m.start()) + 1
             fail(5, f"{path.relative_to(ROOT)}:{line}", "옛 출처 꼬리표 — 출처 칩(src-chip)으로: " + squash(txt[m.end():m.end() + 50]))
+        # 그림 설명도 칩과 같은 이름으로 — NotebookLM 판 PDF 에는 그림 대신 이 글이 들어간다
+        for m in re.finditer(r'alt="[^"]*\bP\.\s*\d[^"]*"', txt):
+            line = txt.count("\n", 0, m.start()) + 1
+            fail(5, f"{path.relative_to(ROOT)}:{line}", "그림 설명에 옛 쪽 표기 'P.N' — '(교과서 N쪽 · …)' 로: " + squash(m.group(0))[:80])
 
 
 def check5_sheet(nn, probs):
