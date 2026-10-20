@@ -95,6 +95,20 @@
       var title = document.createElement('span');
       title.className = 'nvb-title'; title.textContent = b.getAttribute('data-label') || key;
       head.appendChild(tag); head.appendChild(title);
+      var srcLabel = b.getAttribute('data-src-label');       // 출처 — 학습지 칩과 같은 이름 (수업 모드 판서 공간 오른쪽 위와 같은 정보)
+      if (srcLabel) {
+        var chip = document.createElement('span');
+        chip.className = 'src-chip';
+        var rel = b.getAttribute('data-src-rel') || '';
+        chip.setAttribute('data-src-rel', rel);
+        chip.textContent = srcLabel;
+        if (rel) {
+          var badge = document.createElement('span');
+          badge.className = 'src-rel'; badge.textContent = rel;
+          chip.appendChild(document.createTextNode(' ')); chip.appendChild(badge);
+        }
+        head.appendChild(chip);
+      }
       if (ws) {
         var a = document.createElement('a');
         a.className = 'nvb-open';

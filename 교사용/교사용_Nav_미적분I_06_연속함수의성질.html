@@ -130,7 +130,7 @@
 
         }
     </style>
-    <link rel="stylesheet" href="lesson-board.css?v=20261013">
+    <link rel="stylesheet" href="lesson-board.css?v=20261020">
 </head>
 <body class="mathjax-process">
 
@@ -286,10 +286,10 @@
     <div class="q-warn"><strong>오개념 ④:</strong> "방정식 \(f = g\)의 실근 증명에 사잇값 정리를 직접 쓴다." → <strong>보조함수 \(h = f - g\)</strong>를 정의한 뒤 IVT 적용이 표준 절차.</div>
 
     <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
-    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 최대·최소 정리와 두 반례"></div>
-    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — 사잇값 정리"></div>
-    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 방정식 f(x)=0의 실근 존재"></div>
-    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 합성함수의 연속"></div>
+    <div class="nv-board" data-key="concept.1" data-src-label="교과서 37쪽 · 최대·최소 정리" data-src-rel="" data-label="개념 1/4 — 최대·최소 정리와 두 반례"></div>
+    <div class="nv-board" data-key="concept.2" data-src-label="교과서 38쪽 · 사잇값 정리" data-src-rel="" data-label="개념 2/4 — 사잇값 정리"></div>
+    <div class="nv-board" data-key="concept.3" data-src-label="교과서 39쪽 · 예제 2" data-src-rel="" data-label="개념 3/4 — 방정식 f(x)=0의 실근 존재"></div>
+    <div class="nv-board" data-key="concept.4" data-src-label="자체 정리 · 교과서에 없는 내용" data-src-rel="" data-label="개념 4/4 — 합성함수의 연속"></div>
     </section>
 
     <!-- ===== 3 수준별 훈련 ===== -->
@@ -312,7 +312,7 @@
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">닫힌구간 최댓값·최솟값</span></div>
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">닫힌구간 최댓값·최솟값</span><span class="src-chip" data-src-label="교과서 37쪽 · 문제 2(1) / 40쪽 · 중단원 학습 점검 기초 4(2)" data-src-rel="그대로">교과서 37쪽 · 문제 2(1) / 40쪽 · 중단원 학습 점검 기초 4(2) <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">(1) \(x^2 - 4x + 5\) on \([1, 4]\) &nbsp;(2) \(\sqrt{x-2}\) on \([3, 6]\)</div>
             <div class="q-solve">
                 <span class="step">(1) 꼭짓점 \(x = 2 \in [1, 4]\), \(f(2) = 1\) (최솟). 양 끝 \(f(1) = 2, f(4) = 5\) → 최댓 \(5\).</span>
@@ -321,11 +321,11 @@
             <div class="q-ans">정답: (1) 최댓 \(5\), 최솟 \(1\) &nbsp;(2) 최댓 \(2\), 최솟 \(1\)</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.1" data-label="1번 — 닫힌구간의 최댓값·최솟값"></div>
+    <div class="nv-board" data-key="level.1" data-src-label="교과서 37쪽 · 문제 2(1) / 40쪽 · 중단원 학습 점검 기초 4(2)" data-src-rel="그대로" data-label="1번 — 닫힌구간의 최댓값·최솟값"></div>
     <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">IVT로 실근 존재 증명</span></div>
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">IVT로 실근 존재 증명</span><span class="src-chip" data-src-label="교과서 39쪽 · 예제 2" data-src-rel="그대로">교과서 39쪽 · 예제 2 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\(x^3 - x - 1 = 0\)이 \((-1, 2)\)에 적어도 하나의 실근을 가짐을 보이시오.</div>
             <div class="q-solve">
                 <span class="step">① \(f(x) = x^3 - x - 1\)은 다항함수 → \([-1, 2]\)에서 연속.</span>
@@ -335,12 +335,12 @@
             <div class="q-ans">정답: 위 ①②③을 답안으로 작성. <strong>표준 4단계 (연속 + 두 끝 부호 + IVT 인용)</strong>.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.2" data-label="2번 — 사잇값 정리로 실근 존재 증명"></div>
+    <div class="nv-board" data-key="level.2" data-src-label="교과서 39쪽 · 예제 2" data-src-rel="그대로" data-label="2번 — 사잇값 정리로 실근 존재 증명"></div>
     <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
     <div class="problems">
         <!-- L2 3번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">실근 구간 식별 — 부호표</span></div>
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">실근 구간 식별 — 부호표</span><span class="src-chip" data-src-label="교과서 42쪽 · 중단원 학습 점검 기본 12" data-src-rel="그대로">교과서 42쪽 · 중단원 학습 점검 기본 12 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\(2x^3 - 3x^2 - x + 1 = 0\)은 서로 다른 세 실근. \((-1,0), (0,1), (1,2), (2,3)\) 중?</div>
             <div class="q-solve">
                 <span class="step">\(f(-1) = -2 - 3 + 1 + 1 = -3\), \(f(0) = 1\), \(f(1) = 2 - 3 - 1 + 1 = -1\), \(f(2) = 16 - 12 - 2 + 1 = 3\), \(f(3) = 54 - 27 - 3 + 1 = 25\).</span>
@@ -349,11 +349,11 @@
             <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄷ</strong>. 세 실근이 정확히 이 세 구간에 1개씩 분배됨을 명시.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.3" data-label="3번 — 부호표로 실근 구간 찾기"></div>
+    <div class="nv-board" data-key="level.3" data-src-label="교과서 42쪽 · 중단원 학습 점검 기본 12" data-src-rel="그대로" data-label="3번 — 부호표로 실근 구간 찾기"></div>
     <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">분수함수 최댓값 — 절댓값 분기</span></div>
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">분수함수 최댓값 — 절댓값 분기</span><span class="src-chip" data-src-label="교과서 42쪽 · 중단원 학습 점검 기본 11" data-src-rel="그대로">교과서 42쪽 · 중단원 학습 점검 기본 11 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\([1, 3]\)에서 \(f(x) = \frac{a}{|x-4|}\)의 최댓값 \(= 8\). 양수 \(a\)?</div>
             <div class="q-solve">
                 <span class="step">\([1, 3]\)에서 \(x \lt 4\) → \(|x-4| = 4 - x\). 따라서 \(f(x) = \frac{a}{4 - x}\).</span>
@@ -363,12 +363,12 @@
             <div class="q-ans">정답: <strong>\(a = 8\)</strong>.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.4" data-label="4번 — 절댓값 분수함수의 최댓값"></div>
+    <div class="nv-board" data-key="level.4" data-src-label="교과서 42쪽 · 중단원 학습 점검 기본 11" data-src-rel="그대로" data-label="4번 — 절댓값 분수함수의 최댓값"></div>
     <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
     <div class="problems">
         <!-- L3 5번 (span2) -->
         <div class="prob-card l3 span2">
-            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — IVT의 가정·결론 혼동</span></div>
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — IVT의 가정·결론 혼동</span><span class="src-chip" data-src-label="교과서 38쪽 · 사잇값 정리" data-src-rel="유형">교과서 38쪽 · 사잇값 정리 <span class="src-rel">유형</span></span></div>
             <div class="q-stmt">참인 명제 모두 + 거짓 명제는 반례. ㄱ "연속+부호반전 \(\Rightarrow\) 정확히 하나의 실근" ㄴ "연속+같은 부호 \(\Rightarrow\) 실근 없음" ㄷ "연속+\(k\) 사이 \(\Rightarrow\) \(f(c)=k\)인 \(c\) 존재".</div>
             <div class="q-solve">
                 <span class="step"><strong>ㄱ (거짓):</strong> IVT는 "적어도 하나". 반례 \(f(x) = x^3 - x\), \([-2, 2]\): \(f(-2) = -6, f(2) = 6\) → 부호 다름. 실근 \(x = -1, 0, 1\) <strong>3개</strong>.</span>
@@ -379,7 +379,7 @@
             <div class="q-warn"><strong>발표 유도:</strong> "IVT가 '적어도 하나'라고 진술하는 이유는?"을 학생에게 직접 말하게 한다 — "그래프가 출렁이면 더 많이 만날 수 있기 때문". 추후 미분 단원의 "도함수 부호 → 실근 개수 정확 결정"의 동기.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.5" data-label="5번 — 적어도 하나 vs 정확히 하나 (반례 쓰기)"></div>
+    <div class="nv-board" data-key="level.5" data-src-label="교과서 38쪽 · 사잇값 정리" data-src-rel="유형" data-label="5번 — 적어도 하나 vs 정확히 하나 (반례 쓰기)"></div>
     </section>
 
     <!-- ===== 4 형성평가 ===== -->
@@ -395,7 +395,7 @@
     <div class="problems">
         <!-- 형성 6번 (span2 fc) -->
         <div class="prob-card fc span2">
-            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 사칙으로 연속 보장되는 함수 식별</span></div>
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 사칙으로 연속 보장되는 함수 식별</span><span class="src-chip" data-src-label="교과서 42쪽 · 중단원 학습 점검 기본 10" data-src-rel="그대로">교과서 42쪽 · 중단원 학습 점검 기본 10 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\(f, g\)가 \(x=a\)에서 연속. ㄱ \(2f - g\) &nbsp;ㄴ \(\{f\}^2\) &nbsp;ㄷ \(\frac{f}{g}\) &nbsp;ㄹ \(\frac{2}{\{f\}^2 + 1}\). 반드시 연속?</div>
             <div class="q-solve">
                 <span class="step">ㄱ 실수배 + 차 → 사칙에 의해 항상 연속 ✓.</span>
@@ -406,7 +406,7 @@
             <div class="q-ans">정답: <strong>ㄱ, ㄴ, ㄹ</strong>.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="check.1" data-label="형성평가 6번 — 반드시 연속인 함수 고르기"></div>
+    <div class="nv-board" data-key="check.1" data-src-label="교과서 42쪽 · 중단원 학습 점검 기본 10" data-src-rel="그대로" data-label="형성평가 6번 — 반드시 연속인 함수 고르기"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (6번 문항)</h2>
     <div class="rubric">
@@ -508,7 +508,7 @@
 
 
 <script src="boardplans/calc_06.js?v=20261013"></script>
-<script src="lesson-board.js?v=20261013"></script>
+<script src="lesson-board.js?v=20261020"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */

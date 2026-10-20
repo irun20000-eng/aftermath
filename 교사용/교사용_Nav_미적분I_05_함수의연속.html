@@ -140,7 +140,7 @@
 
         }
     </style>
-    <link rel="stylesheet" href="lesson-board.css?v=20261013">
+    <link rel="stylesheet" href="lesson-board.css?v=20261020">
 </head>
 <body class="mathjax-process">
 
@@ -293,10 +293,10 @@
     <div class="q-warn"><strong>오개념 ④:</strong> "닫힌구간 끝점에서 양쪽 극한이 필요하다." → 끝점 바깥은 정의되지 않으므로 <strong>한쪽 극한</strong>만 일치하면 충분.</div>
 
     <div class="nv-legend"><span><i style="background:#1e293b"></i>검정 · 기본 식</span><span><i style="background:#1d4ed8"></i>파랑 · 핵심 결과</span><span><i style="background:#dc2626"></i>빨강 · 함정·주의</span><span><i style="background:#15803d"></i>초록 · 학생 답·발표</span></div>
-    <div class="nv-board" data-key="concept.1" data-label="개념 1/4 — 한 점에서의 연속, 세 조건"></div>
-    <div class="nv-board" data-key="concept.2" data-label="개념 2/4 — 불연속의 세 유형"></div>
-    <div class="nv-board" data-key="concept.3" data-label="개념 3/4 — 구간에서의 연속, 끝점은 한쪽만"></div>
-    <div class="nv-board" data-key="concept.4" data-label="개념 4/4 — 연속함수의 사칙, 연속은 전염된다"></div>
+    <div class="nv-board" data-key="concept.1" data-src-label="교과서 32쪽 · 함수의 연속" data-src-rel="" data-label="개념 1/4 — 한 점에서의 연속, 세 조건"></div>
+    <div class="nv-board" data-key="concept.2" data-src-label="자체 정리 · 교과서 31쪽 개념 탐구 연계" data-src-rel="" data-label="개념 2/4 — 불연속의 세 유형"></div>
+    <div class="nv-board" data-key="concept.3" data-src-label="교과서 33쪽 · 연속함수" data-src-rel="" data-label="개념 3/4 — 구간에서의 연속, 끝점은 한쪽만"></div>
+    <div class="nv-board" data-key="concept.4" data-src-label="교과서 35쪽 · 연속함수의 성질" data-src-rel="" data-label="개념 4/4 — 연속함수의 사칙, 연속은 전염된다"></div>
     </section>
 
     <!-- ===== 3 수준별 훈련 ===== -->
@@ -319,7 +319,7 @@
     <div class="problems">
         <!-- L1 1번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">3조건 직접 점검</span></div>
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">1</span><span class="q-title">3조건 직접 점검</span><span class="src-chip" data-src-label="교과서 32쪽 · 예제 1" data-src-rel="그대로">교과서 32쪽 · 예제 1 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">(1) \(f(x) = x^2 - 1\) — \(x=0\) 연속? &nbsp;(2) \(g(x) = |x|\,(x\neq 0)\), \(g(0)=2\) — \(x=0\) 연속?</div>
             <div class="q-solve">
                 <span class="step">(1) 다항함수 → 모든 실수 연속. \(f(0) = -1\), \(\lim_{x\to 0} f(x) = -1\) → 일치 → <strong>연속</strong>.</span>
@@ -328,11 +328,11 @@
             <div class="q-ans">정답: (1) 연속 (2) 불연속(제거 가능형)</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.1" data-label="1번 — 세 조건 직접 점검"></div>
+    <div class="nv-board" data-key="level.1" data-src-label="교과서 32쪽 · 예제 1" data-src-rel="그대로" data-label="1번 — 세 조건 직접 점검"></div>
     <div class="problems">
         <!-- L1 2번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">연속인 구간 (정의역 자체가 연속구간)</span></div>
+            <div class="prob-head"><span class="lvl lvl-l1">L1</span><span class="q-num">2</span><span class="q-title">연속인 구간 (정의역 자체가 연속구간)</span><span class="src-chip" data-src-label="교과서 34쪽 · 문제 3" data-src-rel="그대로">교과서 34쪽 · 문제 3 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">(1) \(x^2 - 4x + 2\) &nbsp;(2) \(\frac{3}{x+2}\) &nbsp;(3) \(\sqrt{1-x}\) &nbsp;(4) \(6\)</div>
             <div class="q-solve">
                 <span class="step">(1) 다항 → \((-\infty, \infty)\). (4) 상수 → \((-\infty, \infty)\).</span>
@@ -342,12 +342,12 @@
             <div class="q-ans">정답: (1) \((-\infty, \infty)\) &nbsp;(2) \((-\infty,-2)\cup(-2,\infty)\) &nbsp;(3) \((-\infty, 1]\) &nbsp;(4) \((-\infty, \infty)\)</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.2" data-label="2번 — 연속인 구간을 기호로"></div>
+    <div class="nv-board" data-key="level.2" data-src-label="교과서 34쪽 · 문제 3" data-src-rel="그대로" data-label="2번 — 연속인 구간을 기호로"></div>
     <h2 class="section-h"><span class="ico">E</span> Level 2</h2>
     <div class="problems">
         <!-- L2 3번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">한 점 연속 미정계수 \(a, b\)</span></div>
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">3</span><span class="q-title">한 점 연속 미정계수 \(a, b\)</span><span class="src-chip" data-src-label="교과서 34쪽 · 예제 2" data-src-rel="그대로">교과서 34쪽 · 예제 2 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\(f(x) = \frac{2x+a}{x-2}\,(x\neq 2)\), \(f(2)=b\). 모든 실수 연속.</div>
             <div class="q-solve">
                 <span class="step">모든 실수 연속 ⇒ \(x=2\)에서 연속 ⇒ \(\lim_{x\to 2}\frac{2x+a}{x-2} = b\).</span>
@@ -357,11 +357,11 @@
             <div class="q-ans">정답: \(a = -4,\ b = 2\)</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.3" data-label="3번 — 분자 → 0 으로 a 먼저, 그다음 b"></div>
+    <div class="nv-board" data-key="level.3" data-src-label="교과서 34쪽 · 예제 2" data-src-rel="그대로" data-label="3번 — 분자 → 0 으로 a 먼저, 그다음 b"></div>
     <div class="problems">
         <!-- L2 4번 -->
         <div class="prob-card">
-            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">구간 분기 연속 — 모든 \(a\)의 곱</span></div>
+            <div class="prob-head"><span class="lvl lvl-l2">L2</span><span class="q-num">4</span><span class="q-title">구간 분기 연속 — 모든 \(a\)의 곱</span><span class="src-chip" data-src-label="교과서 41쪽 · 중단원 학습 점검 기본 7" data-src-rel="그대로">교과서 41쪽 · 중단원 학습 점검 기본 7 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\(f(x) = 3x^2 - 1\,(x \geq a)\), \(2 - 5x\,(x \lt a)\). 모든 실수 연속.</div>
             <div class="q-solve">
                 <span class="step">두 다항식은 각 구간 연속 → 경계 \(x=a\)에서만 점검.</span>
@@ -371,12 +371,12 @@
             <div class="q-ans">정답: <strong>\(-1\)</strong>. (실제 근을 구할 필요 없이 계수만으로 곱 도출.)</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.4" data-label="4번 — 경계점에서만 점검, 근의 곱"></div>
+    <div class="nv-board" data-key="level.4" data-src-label="교과서 41쪽 · 중단원 학습 점검 기본 7" data-src-rel="그대로" data-label="4번 — 경계점에서만 점검, 근의 곱"></div>
     <h2 class="section-h"><span class="ico">E</span> Level 3</h2>
     <div class="problems">
         <!-- L3 5번 (span2) -->
         <div class="prob-card l3 span2">
-            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — 극한 존재 \(\neq\) 연속</span></div>
+            <div class="prob-head"><span class="lvl lvl-l3">L3</span><span class="q-num">5</span><span class="q-title">🚨 오답률 1위 — 극한 존재 \(\neq\) 연속</span><span class="src-chip" data-src-label="교과서 32쪽 · 문제 1(2)" data-src-rel="그대로">교과서 32쪽 · 문제 1(2) <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\(f(x) = \frac{x^2 - x}{|x-1|}\,(x \neq 1)\), \(f(1) = 1\). \(f(1)\), 좌·우극한, 극한 존재 여부, 연속/불연속.</div>
             <div class="q-solve">
                 <span class="step">(1) \(f(1) = 1\) (정의).</span>
@@ -389,7 +389,7 @@
             <div class="q-warn"><strong>발표 유도:</strong> "왜 \(f(1) = 1\)과 우극한이 같은데도 연속이 아닌가?"를 학생에게 직접 한 문장으로 말하게 한다 — "양쪽이 모두 같지 않으면 극한 자체가 없기 때문." 02차시 \(\frac{|x|}{x}\)의 확장판임을 환기.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="level.5" data-label="5번 — 극한 존재 ≠ 연속 (오답률 1위)"></div>
+    <div class="nv-board" data-key="level.5" data-src-label="교과서 32쪽 · 문제 1(2)" data-src-rel="그대로" data-label="5번 — 극한 존재 ≠ 연속 (오답률 1위)"></div>
     </section>
 
     <!-- ===== 4 형성평가 ===== -->
@@ -405,7 +405,7 @@
     <div class="problems">
         <!-- 형성 6번 (span2 fc) -->
         <div class="prob-card fc span2">
-            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 유리식 연속성 조사</span></div>
+            <div class="prob-head"><span class="lvl lvl-fc">FC</span><span class="q-num">6</span><span class="q-title">형성평가 — 유리식 연속성 조사</span><span class="src-chip" data-src-label="교과서 40쪽 · 중단원 학습 점검 기초 3" data-src-rel="그대로">교과서 40쪽 · 중단원 학습 점검 기초 3 <span class="src-rel">그대로</span></span></div>
             <div class="q-stmt">\(f(x) = x^2+1\), \(g(x) = x^2 - 2x - 3\). (1) \(\frac{f}{g}\) &nbsp;(2) \(\frac{g}{f}\) — 연속/불연속 판정 (불연속이면 \(x\) 모두).</div>
             <div class="q-solve">
                 <span class="step">\(f, g\) 모두 다항함수 → 분자·분모 모두 모든 실수에서 연속. 유리식의 연속성은 분모의 영점만 점검.</span>
@@ -415,7 +415,7 @@
             <div class="q-ans">정답: (1) \(x = 3, -1\)에서 불연속 &nbsp; (2) 모든 실수에서 연속.</div>
         </div>
     </div>
-    <div class="nv-board" data-key="check.1" data-label="형성평가 6번 — 분모의 영점만 점검"></div>
+    <div class="nv-board" data-key="check.1" data-src-label="교과서 40쪽 · 중단원 학습 점검 기초 3" data-src-rel="그대로" data-label="형성평가 6번 — 분모의 영점만 점검"></div>
     <!-- F. 형성평가 채점 루브릭 -->
     <h2 class="section-h"><span class="ico">F</span> 형성평가 채점 루브릭 (6번 문항)</h2>
     <div class="rubric">
@@ -515,7 +515,7 @@
 
 
 <script src="boardplans/calc_05.js?v=20261013"></script>
-<script src="lesson-board.js?v=20261013"></script>
+<script src="lesson-board.js?v=20261020"></script>
 
 <script id="aft-fit-math">
 /* 카드 폭을 넘는 수식만 축소 — 폭은 고정, 수식이 양보한다 */
