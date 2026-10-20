@@ -15,6 +15,10 @@
               ↓/↑ 다음 줄·이전 단계. [판서 ▾ → 키로 한 줄씩] 을 켜면 →/PageDown 이
               먼저 다음 줄을 보이고 다 보이면 다음 화면 (←/PageUp 은 거꾸로).
               [그래프 개형] 을 켜면 plot 이 있는 구역은 마지막 단계에 개형이 나온다.
+   판서 설정: 배경(빈칸·모눈·좌표) · 구역 틀 · 판서 넓게 — [판서 ▾] 에서 적용 범위를
+              [이 화면 · 이 차시 · 모든 차시] 로 골라 바꾼다. 기본값은 빈칸 · 구역 틀 · 넓게.
+              기본값 → 모든 차시 → 이 차시 → 이 화면 순으로 덮어쓴다. 모든 차시·이 차시는
+              이 브라우저(localStorage)에 기억, 이 화면은 수업 중에만 (새로고침해도 유지).
    ============================================================ */
 (function () {
   'use strict';
@@ -33,8 +37,14 @@
     { re: /실전/, key: 'practice', name: '실전 훈련', split: 'problems' }
   ];
   var ZONE_NUM = ['①', '②', '③', '④', '⑤', '⑥'];
+  var BOARD_DEFAULT = { bg: 'blank', zones: true, wide: true };
+  var SCOPES = [['screen', '이 화면', '지금 화면에만 (수업 중에만 기억)'],
+                ['lesson', '이 차시', '이 차시의 모든 화면에 (이 브라우저에 기억)'],
+                ['all', '모든 차시', '1~31차시 전체에 — 차시마다 따로 정한 같은 항목은 지운다']];
+  var FROM = { 'default': '기본', all: '모든 차시', lesson: '이 차시', screen: '이 화면' };
+  var LS_ALL = 'lm:board:all', LS_LESSON = 'lm:board:lesson:';
 
-  var state = { on: false, tab: 0, page: 0, bg: null, zones: true, wide: false, cls: null,
+  var state = { on: false, tab: 0, page: 0, cls: null, scr: {}, scope: 'lesson',
     rev: {}, stepKeys: false, plot: false };
   var tabs = [];          // [{key,name,pages:[{el,sub}]}]
   var homes = [];         // 원위치 복원용 [{el, marker}]
@@ -294,29 +304,43 @@
     ui.boardBtn = h('button', 'lm-btn', '판서 ▾');
     ui.boardBtn.type = 'button';
     ui.boardMenu = h('div', 'lm-pop lm-board-pop');
+    ui.boardMenu.appendChild(h('div', 'lm-pop-h', '적용 범위'));
+    var sc = h('div', 'lm-seg lm-scope');
+    ui.scopeBtns = {};
+    SCOPES.forEach(function (p) {
+      var b = h('button', 'lm-btn', p[1]);
+      b.type = 'button';
+      b.title = p[2];
+      b.addEventListener('click', function () { state.scope = p[0]; savePref(); renderBoardMenu(); });
+      ui.scopeBtns[p[0]] = b;
+      sc.appendChild(b);
+    });
+    ui.boardMenu.appendChild(sc);
     var seg = h('div', 'lm-seg');
     ui.bgBtns = {};
     [['blank', '빈칸'], ['grid', '모눈'], ['axes', '좌표']].forEach(function (p) {
       var b = h('button', 'lm-btn', p[1]);
       b.type = 'button';
-      b.addEventListener('click', function () { state.bg = p[0]; renderBoard(); });
+      b.addEventListener('click', function () { setBoard('bg', p[0]); });
       ui.bgBtns[p[0]] = b;
       seg.appendChild(b);
     });
     ui.boardMenu.appendChild(seg);
     ui.zoneBtn = h('button', 'lm-btn', '구역 틀');
     ui.zoneBtn.type = 'button';
-    ui.zoneBtn.addEventListener('click', function () { state.zones = !state.zones; renderBoard(); });
+    ui.zoneBtn.addEventListener('click', function () { setBoard('zones', !boardVal('zones').v); });
     ui.boardMenu.appendChild(ui.zoneBtn);
     ui.wideBtn = h('button', 'lm-btn', '판서 넓게');
     ui.wideBtn.type = 'button';
-    ui.wideBtn.addEventListener('click', function () {
-      state.wide = !state.wide;
-      app.classList.toggle('is-wide', state.wide);
-      ui.wideBtn.classList.toggle('is-on', state.wide);
-      fit();
-    });
+    ui.wideBtn.addEventListener('click', function () { setBoard('wide', !boardVal('wide').v); });
     ui.boardMenu.appendChild(ui.wideBtn);
+    ui.boardWhere = h('div', 'lm-board-where');
+    ui.boardMenu.appendChild(ui.boardWhere);
+    var rs = h('button', 'lm-btn lm-board-reset', '처음 설정으로 (빈칸 · 구역 틀 · 넓게)');
+    rs.type = 'button';
+    rs.title = '모든 차시·이 차시·이 화면에서 바꾼 판서 설정을 지우고 기본값으로';
+    rs.addEventListener('click', resetBoard);
+    ui.boardMenu.appendChild(rs);
     // 판서 예시 — 프레젠터 키로 한 줄씩 · 그래프 개형 (브라우저에 기억)
     ui.boardMenu.appendChild(h('div', 'lm-pop-h', '판서 예시'));
     ui.stepKeyBtn = h('button', 'lm-btn', '→ 키로 한 줄씩');
@@ -392,18 +416,18 @@
     if (p >= pages.length) p = pages.length - 1;
     // 이전 페이지 내용을 원위치로
     while (ui.page.firstChild) restoreOne(ui.page.firstChild);
-    if (t !== state.tab || p !== state.page) state.bg = null;   // 배경 수동 선택은 그 화면에서만
     tap.zone = -1;
     state.tab = t; state.page = p;
     var u = pages[p];
     park(u.el);
     ui.page.appendChild(u.el);
     renderChrome();
+    applyWide();
     renderBoard();
     fit();
     try {
       history.replaceState(null, '', location.pathname + location.search + '#lm=' + tabs[t].key + '.' + (p + 1));
-      sessionStorage.setItem('lm:' + location.pathname, JSON.stringify({ t: t, p: p, bg: state.bg, z: state.zones, w: state.wide }));
+      sessionStorage.setItem('lm:' + location.pathname, JSON.stringify({ t: t, p: p, scr: state.scr }));
       saveProg();
     } catch (e) { /* 무시 */ }
   }
@@ -505,6 +529,72 @@
     };
   }
 
+  /* ---------- 판서 설정 (배경 · 구역 틀 · 판서 넓게) ---------- */
+  // 기본값 → 모든 차시 → 이 차시 → 이 화면 순으로 덮어쓴다 (뒤가 이긴다).
+  // 판서 계획의 bg 는 쓰지 않는다 — 선생님이 정한 기본(빈칸)이 화면마다 모눈으로 돌아가던 문제.
+  function lessonId() {
+    var f = decodeURIComponent(location.pathname.split('/').pop() || '');
+    var m = /미적분I_(\d\d)_/.exec(f);
+    return m ? 'calc-' + m[1] : f.replace(/^교사용_/, '');   // 학생용·교사용 사본이 같은 차시 설정을 쓴다
+  }
+  function lsGet(k) { try { return JSON.parse(localStorage.getItem(k) || 'null') || {}; } catch (e) { return {}; } }
+  function lsSet(k, v) {
+    try { if (Object.keys(v).length) localStorage.setItem(k, JSON.stringify(v)); else localStorage.removeItem(k); } catch (e) { /* 무시 */ }
+  }
+  function lsKeys(prefix) {
+    var out = [];
+    try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && k.indexOf(prefix) === 0) out.push(k); } } catch (e) { /* 무시 */ }
+    return out;
+  }
+  function pageKey() { return tabs[state.tab].key + '.' + (state.page + 1); }
+  function boardVal(k) {              // { v: 값, from: 'default'|'all'|'lesson'|'screen' }
+    var r = { v: BOARD_DEFAULT[k], from: 'default' };
+    [['all', lsGet(LS_ALL)], ['lesson', lsGet(LS_LESSON + lessonId())], ['screen', state.scr[pageKey()] || {}]]
+      .forEach(function (l) { if (l[1][k] !== undefined) r = { v: l[1][k], from: l[0] }; });
+    return r;
+  }
+  function setBoard(k, v) {
+    if (state.scope === 'screen') {
+      var s = state.scr[pageKey()] = state.scr[pageKey()] || {};
+      s[k] = v;
+    } else {
+      // 넓은 범위로 정하면 더 좁은 범위에 남은 같은 항목은 지운다 (정한 값이 바로 보이게)
+      Object.keys(state.scr).forEach(function (pk) { delete state.scr[pk][k]; });
+      if (state.scope === 'all') {
+        var a = lsGet(LS_ALL); a[k] = v; lsSet(LS_ALL, a);
+        lsKeys(LS_LESSON).forEach(function (key) { var o = lsGet(key); delete o[k]; lsSet(key, o); });
+      } else {
+        var lk = LS_LESSON + lessonId(), o = lsGet(lk); o[k] = v; lsSet(lk, o);
+      }
+    }
+    saveSession();
+    if (k === 'wide') { applyWide(); renderBoard(); fit(); } else renderBoard();
+  }
+  function resetBoard() {
+    state.scr = {};
+    lsSet(LS_ALL, {});
+    lsKeys(LS_LESSON).forEach(function (key) { lsSet(key, {}); });
+    saveSession();
+    applyWide(); renderBoard(); fit();
+  }
+  function applyWide() {
+    var w = !!boardVal('wide').v;
+    app.classList.toggle('is-wide', w);
+  }
+  function renderBoardMenu() {
+    var bg = boardVal('bg'), z = boardVal('zones'), w = boardVal('wide');
+    Object.keys(ui.scopeBtns).forEach(function (k) { ui.scopeBtns[k].classList.toggle('is-on', k === state.scope); });
+    Object.keys(ui.bgBtns).forEach(function (k) { ui.bgBtns[k].classList.toggle('is-on', k === bg.v); });
+    ui.zoneBtn.classList.toggle('is-on', !!z.v);
+    ui.wideBtn.classList.toggle('is-on', !!w.v);
+    var BGN = { blank: '빈칸', grid: '모눈', axes: '좌표' };
+    ui.boardWhere.textContent = '지금: ' + BGN[bg.v] + '(' + FROM[bg.from] + ') · 구역 틀 ' + (z.v ? '켬' : '끔') + '(' + FROM[z.from] + ') · 넓게 '
+      + (w.v ? '켬' : '끔') + '(' + FROM[w.from] + ')';
+  }
+  function saveSession() {
+    try { sessionStorage.setItem('lm:' + location.pathname, JSON.stringify({ t: state.tab, p: state.page, scr: state.scr })); } catch (e) { /* 무시 */ }
+  }
+
   /* ---------- 판서 공간 ---------- */
   function pagePlan() {
     var p = plan();
@@ -596,7 +686,7 @@
     try { return JSON.parse(localStorage.getItem('lm:pref') || 'null') || {}; } catch (e) { return {}; }
   }
   function savePref() {
-    try { localStorage.setItem('lm:pref', JSON.stringify({ step: state.stepKeys, plot: state.plot })); } catch (e) { /* 무시 */ }
+    try { localStorage.setItem('lm:pref', JSON.stringify({ step: state.stepKeys, plot: state.plot, scope: state.scope })); } catch (e) { /* 무시 */ }
   }
   function zoneSteps(z) {
     return (z && z.ex ? z.ex.length : 0) + (state.plot && z && z.plot && z.axes ? 1 : 0);
@@ -752,7 +842,7 @@
 
   function renderBoard() {
     var pp = pagePlan();
-    var bg = state.bg || (pp && pp.bg) || 'grid';
+    var bg = boardVal('bg').v;
     if (window.MathJax && MathJax.typesetClear) { try { MathJax.typesetClear([ui.board]); } catch (e) { /* 무시 */ } }
     ui.board.innerHTML = '';
     ui.zoneEls = [];
@@ -760,14 +850,13 @@
     ui.stepKeyBtn.classList.toggle('is-on', state.stepKeys);
     ui.plotBtn.classList.toggle('is-on', state.plot);
     ui.board.className = 'lm-board' + (bg === 'grid' ? ' bg-grid' : '');
-    Object.keys(ui.bgBtns).forEach(function (k) { ui.bgBtns[k].classList.toggle('is-on', k === bg); });
-    ui.zoneBtn.classList.toggle('is-on', state.zones);
+    renderBoardMenu();
     if (bg === 'axes') {
       var ax = h('div', 'lm-board-axes');
       ax.appendChild(axesSVG(pp && pp.axes, false));
       ui.board.appendChild(ax);
     }
-    var zones = h('div', 'lm-zones' + (state.zones ? '' : ' is-hidden'));
+    var zones = h('div', 'lm-zones' + (boardVal('zones').v ? '' : ' is-hidden'));
     var anyEx = false;
     if (pp && pp.zones && pp.zones.length) {
       pp.zones.forEach(function (z, i) {
@@ -910,9 +999,8 @@
     var pf = loadPref();
     state.stepKeys = !!pf.step;
     state.plot = !!pf.plot;
-    if (o.bg) state.bg = o.bg;
-    if (typeof o.z === 'boolean') state.zones = o.z;
-    if (o.w) { state.wide = true; app.classList.add('is-wide'); ui.wideBtn.classList.add('is-on'); }
+    if (pf.scope && FROM[pf.scope] && pf.scope !== 'default') state.scope = pf.scope;
+    if (o.scr && typeof o.scr === 'object') state.scr = o.scr;
     var pr = loadProg();
     state.cls = (pr.cls && classes().indexOf(pr.cls) >= 0) ? pr.cls : classes()[0];
     var t = 0, p = 0;
@@ -970,7 +1058,7 @@
     try { saved = JSON.parse(sessionStorage.getItem('lm:' + location.pathname) || 'null'); } catch (e) { /* 무시 */ }
     if (/[?&]mode=class\b/.test(location.search) || /#lm=/.test(location.hash) || saved) {
       whenReady(function () {
-        enter(saved ? { t: saved.t, p: saved.p, bg: saved.bg, z: saved.z, w: saved.w } : null);
+        enter(saved ? { t: saved.t, p: saved.p, scr: saved.scr } : null);
       });
     }
   }
