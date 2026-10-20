@@ -61,7 +61,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -113,12 +113,12 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         평균변화율 — 두 점을 잇는 직선의 기울기
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 51쪽 · 평균변화율" data-src-rel="">교과서 51쪽 · 평균변화율</span>
                     <p class="mb-3 text-slate-700">함수 \(y = f(x)\)에서 \(x\)의 값이 \(a\)에서 \(b\)까지 변할 때, \(x\)의 증분 \(\Delta x = b - a\), \(y\)의 증분 \(\Delta y = f(b) - f(a)\)에 대하여</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">평균변화율 \( = \dfrac{\Delta y}{\Delta x} = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \dfrac{f(b) - f(a)}{b - a} = \dfrac{f(a + \Delta x) - f(a)}{\Delta x} \)</span></span></p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>기하적 의미:</strong> 두 점 \(\mathrm{A}(a, f(a))\), \(\mathrm{B}(b, f(b))\)를 지나는 직선 \(\mathrm{AB}\)의 <span class="calc-accent font-bold">기울기</span>와 같다. 어떤 구간 동안의 "평균적인 변화 속도"를 측정한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.51 · 평균변화율 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>기하적 의미:</strong> 두 점 \(\mathrm{A}(a, f(a))\), \(\mathrm{B}(b, f(b))\)를 지나는 직선 \(\mathrm{AB}\)의 <span class="calc-accent font-bold">기울기</span>와 같다. 어떤 구간 동안의 "평균적인 변화 속도"를 측정한다.</p>
                 </div>
 
                 <!-- 2. 미분계수 -->
@@ -126,7 +126,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         미분계수 \(f'(a)\) — 한 점에서의 순간변화율
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 52~53쪽 · 미분계수" data-src-rel="">교과서 52~53쪽 · 미분계수</span>
                     <p class="mb-3 text-slate-700">평균변화율에서 \(\Delta x \to 0\)으로 보낸 <strong>극한값이 존재하면</strong>, 함수 \(f(x)\)는 \(x = a\)에서 <span class="calc-accent font-bold">미분가능</span>하다고 하고, 그 극한값을 \(x = a\)에서의 미분계수라 한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold mb-3">\( f'(a) = \displaystyle \lim_{\Delta x \to 0} \dfrac{\Delta y}{\Delta x} = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{\Delta x \to 0} \dfrac{f(a + \Delta x) - f(a)}{\Delta x} \)</span></span></p>
@@ -135,7 +135,7 @@
                         <p class="text-sm text-slate-500 mb-2">\(a + h = x\)로 치환하면 \(h = x - a\), \(h \to 0 \Leftrightarrow x \to a\)이므로</p>
                         <p class="text-xl font-bold">\( f'(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to a} \dfrac{f(x) - f(a)}{x - a} \)</span></span></p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>세 가지 표현 모두 같다.</strong> 문제 조건에 따라 가장 편리한 형태를 골라 쓴다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.52~53 · 미분계수 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>세 가지 표현 모두 같다.</strong> 문제 조건에 따라 가장 편리한 형태를 골라 쓴다.</p>
                 </div>
 
                 <!-- 3. 미분계수의 기하적 의미 -->
@@ -143,12 +143,12 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         미분계수의 기하적 의미 — 접선의 기울기
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 54~55쪽 · 미분계수의 기하적 의미" data-src-rel="">교과서 54~55쪽 · 미분계수의 기하적 의미</span>
                     <p class="mb-3 text-slate-700">점 \(\mathrm{P}(a, f(a))\)를 고정하고 점 \(\mathrm{Q}(a + \Delta x, f(a + \Delta x))\)를 곡선을 따라 \(\mathrm{P}\)에 가까이 보내면, 직선 \(\mathrm{PQ}\)는 점 \(\mathrm{P}\)를 지나는 한 직선 \(\ell\)에 한없이 가까워진다. 이 직선 \(\ell\)을 곡선 \(y = f(x)\) 위의 점 \(\mathrm{P}\)에서의 <span class="calc-accent font-bold">접선</span>이라 한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-center text-lg font-bold">\( f'(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">점 \((a, f(a))\)에서의 접선의 기울기</span></span></p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "미분계수 \(=\) 그 점에서의 접선의 기울기". 평균변화율(두 점 직선 기울기)의 극한을 통해 "할선 \(\to\) 접선"으로 자연스럽게 옮겨간다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.54~55 · 미분계수의 기하적 의미 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "미분계수 \(=\) 그 점에서의 접선의 기울기". 평균변화율(두 점 직선 기울기)의 극한을 통해 "할선 \(\to\) 접선"으로 자연스럽게 옮겨간다.</p>
                 </div>
 
                 <!-- 4. 미분가능성과 연속성 -->
@@ -156,12 +156,12 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         미분가능성과 연속성 — 일방통행 화살표
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 56쪽 · 미분가능성과 연속성" data-src-rel="">교과서 56쪽 · 미분가능성과 연속성</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 \(x = a\)에서 미분가능하면, \(f(x)\)는 \(x = a\)에서 연속이다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-lg font-bold">\( f \text{가 } x = a \text{에서 미분가능} \;\Rightarrow\; \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f \text{는 } x = a \text{에서 연속} \)</span></span></p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>증명 아이디어:</strong> \( \displaystyle \lim_{x \to a}[f(x) - f(a)] = \lim_{x \to a}\dfrac{f(x)-f(a)}{x-a} \cdot (x-a) = f'(a) \cdot 0 = 0 \) \(\Rightarrow\) \( \lim_{x \to a} f(x) = f(a) \). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.56 · 미분가능성과 연속성 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>증명 아이디어:</strong> \( \displaystyle \lim_{x \to a}[f(x) - f(a)] = \lim_{x \to a}\dfrac{f(x)-f(a)}{x-a} \cdot (x-a) = f'(a) \cdot 0 = 0 \) \(\Rightarrow\) \( \lim_{x \to a} f(x) = f(a) \).</p>
                     <div class="mt-4 bg-red-50 p-4 rounded-xl border-2 border-red-200">
                         <p class="text-sm font-bold text-red-900 mb-1">⚠️ 역은 성립하지 않는다!</p>
                         <p class="text-sm text-red-800">"연속 \(\Rightarrow\) 미분가능"은 일반적으로 <strong>거짓</strong>. 대표 반례: \(f(x) = |x|\)는 \(x = 0\)에서 연속이지만, 좌·우 미분계수가 \(-1, +1\)로 달라 미분가능하지 않다. 그래프가 <strong>"뾰족점"</strong>을 가지면 미분 불가능.</p>
@@ -182,8 +182,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-평균변화율 직접 계산</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) = x^2 - 3x \)에서 \(x\)의 값이 다음과 같이 변할 때의 평균변화율을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.52 · 문제 01 참고)</span>
+                        <span class="badge badge-l1">기초-평균변화율 직접 계산</span> <span class="src-chip" data-src-label="교과서 52쪽 · 문제 1" data-src-rel="그대로">교과서 52쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) = x^2 - 3x \)에서 \(x\)의 값이 다음과 같이 변할 때의 평균변화율을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(0\)에서 \(2\)까지</span><span class="sub-q">(2) \(1\)에서 \(1 + \Delta x\)까지</span></span>
                             </div>
@@ -197,8 +197,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-미분계수 정의로 계산</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 \(x = -1\)에서의 미분계수를 정의에 따라 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.53 · 문제 02 참고)</span>
+                        <span class="badge badge-l1">기초-미분계수 정의로 계산</span> <span class="src-chip" data-src-label="교과서 53쪽 · 문제 2" data-src-rel="그대로">교과서 53쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 \(x = -1\)에서의 미분계수를 정의에 따라 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = 2x + 1 \)</span><span class="sub-q">(2) \( f(x) = -x^2 + 4x \)</span></span>
                             </div>
@@ -212,8 +212,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-접선의 기울기</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 곡선 위의 주어진 점에서의 접선의 기울기를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.55 · 문제 04 참고)</span>
+                        <span class="badge badge-l1">기초-접선의 기울기</span> <span class="src-chip" data-src-label="교과서 55쪽 · 문제 4" data-src-rel="그대로">교과서 55쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 곡선 위의 주어진 점에서의 접선의 기울기를 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = -x^2 + 3x \), &nbsp;점 \((1, 2)\)</span><span class="sub-q">(2) \( y = 3x^2 - 2x - 1 \), &nbsp;점 \((-1, 4)\)</span></span>
                             </div>
@@ -235,8 +235,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-정의식 변형 (계수 끄집어내기)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \(f(x)\)가 \(x = a\)에서 미분가능할 때, 극한값 \( \displaystyle \lim_{\Delta x \to 0}\dfrac{f(a + 2\Delta x) - f(a)}{\Delta x} \) 를 미분계수 \(f'(a)\)를 사용하여 나타내시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.54 · 문제 03 변형)</span></div>
+                        <span class="badge badge-l2">응용-정의식 변형 (계수 끄집어내기)</span> <span class="src-chip" data-src-label="교과서 54쪽 · 문제 3" data-src-rel="변형">교과서 54쪽 · 문제 3 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \(f(x)\)가 \(x = a\)에서 미분가능할 때, 극한값 \( \displaystyle \lim_{\Delta x \to 0}\dfrac{f(a + 2\Delta x) - f(a)}{\Delta x} \) 를 미분계수 \(f'(a)\)를 사용하여 나타내시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 분모를 정의식 모양으로 강제 일치시키기. \(\dfrac{f(a+2\Delta x) - f(a)}{\Delta x} = \dfrac{f(a+2\Delta x) - f(a)}{2\Delta x} \cdot 2\). \(2\Delta x = t\)로 두면 \(\Delta x \to 0 \Leftrightarrow t \to 0\). \( \Rightarrow \displaystyle \lim_{t \to 0}\dfrac{f(a+t) - f(a)}{t} \cdot 2 = \bm{2 f'(a)} \).
                         </div></details>
@@ -244,8 +244,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-두 극한식의 결합</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 미분가능한 함수 \(f(x)\)에 대하여 \(f'(2) = 5\)일 때, \( \displaystyle \lim_{h \to 0}\dfrac{f(2 + 3h) - f(2 - h)}{h} \)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 정의식 분리·결합 패턴)</span></div>
+                        <span class="badge badge-l2">응용-두 극한식의 결합</span> <span class="src-chip" data-src-label="교과서 65쪽 · 중단원 학습 점검 기본 6" data-src-rel="유형">교과서 65쪽 · 중단원 학습 점검 기본 6 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 미분가능한 함수 \(f(x)\)에 대하여 \(f'(2) = 5\)일 때, \( \displaystyle \lim_{h \to 0}\dfrac{f(2 + 3h) - f(2 - h)}{h} \)의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(\pm f(2)\)를 끼워 넣어 두 정의식으로 쪼개기. 분자 \(= [f(2+3h) - f(2)] - [f(2-h) - f(2)]\). 첫 항 \(\to 3 f'(2)\) (계수 3 끄집기), 둘째 항 \(\to -(-1)f'(2) = f'(2)\) (\(-h\)에 부호 처리). 합: \(3 \cdot 5 + 1 \cdot 5 = \bm{20}\).
                         </div></details>
@@ -253,8 +253,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-\(\dfrac{0}{0}\) 부정형과 미분계수 결합</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 미분가능한 함수 \(f(x)\)가 \(f(2) = 1\), \(f'(2) = -6\)을 만족시킬 때, \( \displaystyle \lim_{x \to 2}\dfrac{f(x) - 1}{x^2 - x - 2} \) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.65 · 중단원 기본 07번 참고)</span></div>
+                        <span class="badge badge-l2">응용-\(\dfrac{0}{0}\) 부정형과 미분계수 결합</span> <span class="src-chip" data-src-label="교과서 65쪽 · 중단원 학습 점검 기본 7" data-src-rel="그대로">교과서 65쪽 · 중단원 학습 점검 기본 7 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 미분가능한 함수 \(f(x)\)가 \(f(2) = 1\), \(f'(2) = -6\)을 만족시킬 때, \( \displaystyle \lim_{x \to 2}\dfrac{f(x) - 1}{x^2 - x - 2} \) 의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(x^2 - x - 2 = (x-2)(x+1)\). \(f(x) - 1 = f(x) - f(2)\). 식 \(= \dfrac{f(x) - f(2)}{x - 2} \cdot \dfrac{1}{x+1}\). \(x \to 2\) 극한 \(\to f'(2) \cdot \dfrac{1}{3} = -6 \cdot \dfrac{1}{3} = \bm{-2}\).
                         </div></details>
@@ -271,8 +271,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-연속이지만 미분불가능 판별</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \( f(x) = |x^2 - 4| \)에 대하여 \(x = 2\)에서의 <strong>연속성</strong>과 <strong>미분가능성</strong>을 모두 조사하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.57 · 문제 05 참고)</span></div>
+                        <span class="badge badge-l3">심화-연속이지만 미분불가능 판별</span> <span class="src-chip" data-src-label="교과서 57쪽 · 문제 5" data-src-rel="그대로">교과서 57쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \( f(x) = |x^2 - 4| \)에 대하여 \(x = 2\)에서의 <strong>연속성</strong>과 <strong>미분가능성</strong>을 모두 조사하시오.</div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
@@ -295,8 +295,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \( f(x) = x^2 + x + 1 \)에서 \(x\)의 값이 \(a\)에서 \(a + 3\)까지 변할 때의 평균변화율이 \(6\)이다. 이때 실수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.65 · 중단원 기본 04번 참고)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 65쪽 · 중단원 학습 점검 기본 4" data-src-rel="그대로">교과서 65쪽 · 중단원 학습 점검 기본 4 <span class="src-rel">그대로</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \( f(x) = x^2 + x + 1 \)에서 \(x\)의 값이 \(a\)에서 \(a + 3\)까지 변할 때의 평균변화율이 \(6\)이다. 이때 실수 \(a\)의 값을 구하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략:</strong> 평균변화율 \(= \dfrac{f(a+3) - f(a)}{3}\). \(f(a+3) - f(a) = [(a+3)^2 + (a+3) + 1] - [a^2 + a + 1] = 6a + 9 + 3 = 6a + 12\). \(\dfrac{6a + 12}{3} = 2a + 4 = 6\) \(\Rightarrow\) \(\bm{a = 1}\).
             </div></details>
@@ -593,7 +593,7 @@
 
         <script src="widgets.js"></script>
             <script src="boardplans/calc_09.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

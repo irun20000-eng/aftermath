@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -92,7 +92,7 @@
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
-            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 129쪽 · 두 곡선 사이의 넓이" data-src-rel="">교과서 129쪽 · 두 곡선 사이의 넓이</span>
             <div class="text-lg text-slate-700 font-medium">
                 <p class="mb-4">차시 26에서 곡선 \(y = f(x)\)와 \(x\)축이 둘러싸는 넓이를 \(S = \displaystyle\int_a^b |f(x)|\,dx\)로 통합했다. 그렇다면 \(x\)축이 아닌 <strong>다른 곡선</strong> \(y = g(x)\)와 \(y = f(x)\)가 둘러싸는 도형의 넓이는?</p>
                 <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
@@ -100,7 +100,7 @@
                     <div class="flex justify-center my-2">
                         <img src="images/calc_27_concept_case1.png" alt="case 1 그림 — [a,b]에서 y=f(x)가 위, y=g(x)가 아래에 있는 두 곡선과 직선 x=a, x=b로 둘러싸인 영역 S" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
                     </div>
-                    <p>위 도형의 넓이 \(S\)는 "\(y = f(x)\) 아래 넓이"에서 "\(y = g(x)\) 아래 넓이"를 빼면 된다 — 즉 \(S = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b f(x)\,dx - \int_a^b g(x)\,dx \)</span></span> \(= \displaystyle\int_a^b \{f(x) - g(x)\}\,dx\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.129 · 두 곡선 사이의 넓이 ❶ 참고)</span></p>
+                    <p>위 도형의 넓이 \(S\)는 "\(y = f(x)\) 아래 넓이"에서 "\(y = g(x)\) 아래 넓이"를 빼면 된다 — 즉 \(S = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b f(x)\,dx - \int_a^b g(x)\,dx \)</span></span> \(= \displaystyle\int_a^b \{f(x) - g(x)\}\,dx\).</p>
                     <p>그렇다면 \(g(x)\)가 음수 부분을 포함한다면? 두 곡선이 도중에 교차해서 위·아래가 바뀐다면? — 차시 26의 절댓값 발상을 그대로 이어 받자.</p>
                     <div class="thinking-space bg-teal-50/30"></div>
                 </div>
@@ -117,7 +117,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         두 곡선 사이의 넓이 — 통합 공식
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 129~130쪽 · 두 곡선 사이의 넓이" data-src-rel="">교과서 129~130쪽 · 두 곡선 사이의 넓이</span>
                     <p class="mb-3 text-slate-700">두 함수 \(f(x), g(x)\)가 닫힌구간 \([a, b]\)에서 연속일 때, 두 곡선 \(y = f(x)\), \(y = g(x)\)와 두 직선 \(x = a\), \(x = b\)로 둘러싸인 도형의 넓이 \(S\):</p>
                     <div class="bg-cyan-50 p-4 rounded-xl border-2 border-cyan-300 my-3">
                         <p class="text-center text-2xl font-black text-teal-700">\( \displaystyle S = \int_a^b |f(x) - g(x)|\,dx \)</p>
@@ -131,7 +131,7 @@
                     <div class="flex justify-center my-3">
                         <img src="images/calc_27_concept_case3.png" alt="case 3 그림 — [a,c]에서 위쪽 곡선, [c,b]에서 아래쪽 곡선이 서로 바뀌는 두 곡선 사이 영역. 교점 c에서 위·아래 관계가 역전됨" class="block mx-auto max-w-md w-full rounded-lg border border-slate-200" />
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 절댓값은 ① 양수에는 그대로, ② 음수에는 \(-\)를 붙여 부호를 통일. "어느 쪽이 위인가"를 매 구간 판단해 큰 함수에서 작은 함수를 빼면 자동으로 양수. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.129~130 · 두 곡선 사이의 넓이 정리 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 절댓값은 ① 양수에는 그대로, ② 음수에는 \(-\)를 붙여 부호를 통일. "어느 쪽이 위인가"를 매 구간 판단해 큰 함수에서 작은 함수를 빼면 자동으로 양수.</p>
                 </div>
 
                 <!-- 2. 예제 3 시연 -->
@@ -139,7 +139,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         예제 — 두 곡선 \(y = x^2 - 3x + 2\), \(y = -x^2 + x + 2\) 사이 넓이
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 130쪽 · 예제 3" data-src-rel="">교과서 130쪽 · 예제 3</span>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-2"><strong>풀이 흐름:</strong></p>
                         <ul class="list-disc ml-6 text-base space-y-1">
@@ -149,7 +149,7 @@
                             <li>④ 적분: \(S = \int_0^2 (-2x^2 + 4x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \big[-\tfrac{2}{3}x^3 + 2x^2\big]_0^2 = -\tfrac{16}{3} + 8 = \tfrac{8}{3} \)</span></span></li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심 절차:</strong> 교점 \(\to\) 상하 \(\to\) 차의 적분. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.130 · 예제 3 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심 절차:</strong> 교점 \(\to\) 상하 \(\to\) 차의 적분.</p>
                 </div>
 
                 <!-- 3. 예제 4 — 상하 역전 -->
@@ -157,7 +157,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         상하 역전이 있는 경우 — 예제 \(y = x^2(x - 1)\)과 \(y = 2x\)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 131쪽 · 예제 4" data-src-rel="">교과서 131쪽 · 예제 4</span>
                     <div class="flex justify-center my-3">
                         <img src="images/calc_27_ex4.png" alt="예제 4 그림 — 삼차곡선 y=x²(x-1)과 직선 y=2x가 x=-1, 0, 2에서 교차. [-1, 0]에서 곡선이 직선 위, [0, 2]에서 직선이 곡선 위. 두 영역이 색칠됨" class="block mx-auto max-w-xs w-full rounded-lg border border-slate-200" />
                     </div>
@@ -171,7 +171,7 @@
                             \(= \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \tfrac{5}{12} + \tfrac{8}{3} = \tfrac{37}{12} \)</span></span></li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 교점이 셋이면 구간이 둘로 나뉘고, 두 구간의 상하 관계가 반대. 각각 큰 함수 \(-\) 작은 함수의 정적분을 구해 합산. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 예제 4 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 교점이 셋이면 구간이 둘로 나뉘고, 두 구간의 상하 관계가 반대. 각각 큰 함수 \(-\) 작은 함수의 정적분을 구해 합산.</p>
                 </div>
             </div>
         </section>
@@ -188,8 +188,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-곡선과 직선 사이</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 곡선 \(y = -2x^2 + 1\)과 직선 \(y = 2x - 3\)으로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.130 · 문제 03 (1) 참고)</span></div>
+                        <span class="badge badge-l1">기초-곡선과 직선 사이</span> <span class="src-chip" data-src-label="교과서 130쪽 · 문제 3(1)" data-src-rel="그대로">교과서 130쪽 · 문제 3(1) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 곡선 \(y = -2x^2 + 1\)과 직선 \(y = 2x - 3\)으로 둘러싸인 도형의 넓이를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 교점: \(-2x^2 + 1 = 2x - 3 \Rightarrow -2x^2 - 2x + 4 = 0 \Rightarrow x^2 + x - 2 = 0 \Rightarrow (x + 2)(x - 1) = 0 \Rightarrow x = -2, 1\). \([-2, 1]\)에서 \(x = 0\) 대입: 곡선 \(= 1\), 직선 \(= -3\). 곡선이 위. \(S = \int_{-2}^{1}\{(-2x^2 + 1) - (2x - 3)\}\,dx = \int_{-2}^{1}(-2x^2 - 2x + 4)\,dx = \big[-\tfrac{2}{3}x^3 - x^2 + 4x\big]_{-2}^{1} = \tfrac{7}{3} - (-\tfrac{20}{3}) = 9\).
                         </div></details>
@@ -197,8 +197,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-두 곡선 사이</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 두 곡선 \(y = 2x^2 - 7x + 5\), \(y = -x^2 + 5x - 4\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.130 · 문제 03 (2) 참고)</span></div>
+                        <span class="badge badge-l1">기초-두 곡선 사이</span> <span class="src-chip" data-src-label="교과서 130쪽 · 문제 3(2)" data-src-rel="그대로">교과서 130쪽 · 문제 3(2) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 두 곡선 \(y = 2x^2 - 7x + 5\), \(y = -x^2 + 5x - 4\)로 둘러싸인 도형의 넓이를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 교점: \(2x^2 - 7x + 5 = -x^2 + 5x - 4 \Rightarrow 3x^2 - 12x + 9 = 0 \Rightarrow x^2 - 4x + 3 = 0 \Rightarrow (x - 1)(x - 3) = 0 \Rightarrow x = 1, 3\). \([1, 3]\)에서 \(x = 2\) 대입: 첫 곡선 \(= -1\), 둘째 \(= 2\). 둘째가 위. \(S = \int_1^3 \{(-x^2 + 5x - 4) - (2x^2 - 7x + 5)\}\,dx = \int_1^3 (-3x^2 + 12x - 9)\,dx = -3\int_1^3(x^2 - 4x + 3)\,dx = -3 \cdot \big[\tfrac{1}{3}x^3 - 2x^2 + 3x\big]_1^3 = -3 \cdot (0 - \tfrac{4}{3}) = 4\).
                         </div></details>
@@ -206,8 +206,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-두 곡선 사이 (단축공식 확인)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 두 곡선 \(y = x^2 - 6x + 9\), \(y = -2x^2 + 6x\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.135 · 중단원 기초 02번 참고)</span></div>
+                        <span class="badge badge-l1">기초-두 곡선 사이 (단축공식 확인)</span> <span class="src-chip" data-src-label="교과서 135쪽 · 중단원 학습 점검 기초 2" data-src-rel="그대로">교과서 135쪽 · 중단원 학습 점검 기초 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 두 곡선 \(y = x^2 - 6x + 9\), \(y = -2x^2 + 6x\)로 둘러싸인 도형의 넓이를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 교점: \(x^2 - 6x + 9 = -2x^2 + 6x \Rightarrow 3x^2 - 12x + 9 = 0 \Rightarrow x^2 - 4x + 3 = 0 \Rightarrow x = 1, 3\). \([1, 3]\)에서 \(x = 2\) 대입: 첫 \(= 1\), 둘째 \(= 4\). 둘째가 위. \(S = \int_1^3 \{(-2x^2 + 6x) - (x^2 - 6x + 9)\}\,dx = \int_1^3 (-3x^2 + 12x - 9)\,dx = 4\). (두 이차함수 차의 정적분 단축공식 \(\tfrac{|a|}{6}(\beta - \alpha)^3 = \tfrac{3}{6} \cdot 2^3 = 4\)로도 즉답 가능.)
                         </div></details>
@@ -223,8 +223,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-상하 역전 (삼차 \(\times\) 이차)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 두 곡선 \(y = x^3 - x^2 - x\), \(y = -x^2 + 3x\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 문제 05 (1) 참고)</span></div>
+                        <span class="badge badge-l2">응용-상하 역전 (삼차 \(\times\) 이차)</span> <span class="src-chip" data-src-label="교과서 131쪽 · 문제 5(1)" data-src-rel="그대로">교과서 131쪽 · 문제 5(1) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 두 곡선 \(y = x^3 - x^2 - x\), \(y = -x^2 + 3x\)로 둘러싸인 도형의 넓이를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 차: \((x^3 - x^2 - x) - (-x^2 + 3x) = x^3 - 4x = x(x - 2)(x + 2)\). 영점 \(= 0, \pm 2\). \([-2, 0]\)에서 \(x = -1\) 대입: \(x^3 - 4x = -1 + 4 = 3 \gt 0 \Rightarrow\) 첫 곡선이 위. \([0, 2]\)에서 \(x = 1\) 대입: \(1 - 4 = -3 \lt 0 \Rightarrow\) 둘째 곡선이 위. \(S = \int_{-2}^{0}(x^3 - 4x)\,dx + \int_{0}^{2}(-x^3 + 4x)\,dx = \big[\tfrac{1}{4}x^4 - 2x^2\big]_{-2}^{0} + \big[-\tfrac{1}{4}x^4 + 2x^2\big]_{0}^{2} = -(4 - 8) + (-4 + 8) = 4 + 4 = 8\).
                         </div></details>
@@ -232,8 +232,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-삼차곡선 \(\times\) 삼차곡선</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 두 곡선 \(y = x^3\), \(y = -x^3 + 2x\)로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 문제 05 (2) 참고)</span></div>
+                        <span class="badge badge-l2">응용-삼차곡선 \(\times\) 삼차곡선</span> <span class="src-chip" data-src-label="교과서 131쪽 · 문제 5(2)" data-src-rel="그대로">교과서 131쪽 · 문제 5(2) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 두 곡선 \(y = x^3\), \(y = -x^3 + 2x\)로 둘러싸인 도형의 넓이를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 차: \(x^3 - (-x^3 + 2x) = 2x^3 - 2x = 2x(x^2 - 1) = 2x(x-1)(x+1)\). 영점 \(\pm 1, 0\). 두 곡선 모두 원점 대칭(기함수)이므로 영역도 원점 대칭. \([-1, 0]\)에서 \(x = -\tfrac{1}{2}\) 대입: \(2 \cdot (-\tfrac{1}{2})(\tfrac{1}{4} - 1) = \tfrac{3}{4} \gt 0 \Rightarrow\) 첫 곡선이 위. \([0, 1]\)에서 반대. 대칭으로 \(S = 2 \int_0^1 (-2x^3 + 2x)\,dx = 2 \cdot \big[-\tfrac{1}{2}x^4 + x^2\big]_0^1 = 2 \cdot \tfrac{1}{2} = 1\).
                         </div></details>
@@ -241,8 +241,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-역함수 대칭 활용</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 두 함수 \(f(x) = \dfrac{1}{5}x^2 + \dfrac{4}{5}\,(x \geq 0)\), \(g(x) = \sqrt{5x - 4}\)에 대하여 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 도형의 넓이를 구하시오. \(g\)가 \(f\)의 역함수임을 활용. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.131 · 문제 06 참고)</span></div>
+                        <span class="badge badge-l2">응용-역함수 대칭 활용</span> <span class="src-chip" data-src-label="교과서 131쪽 · 문제 6" data-src-rel="그대로">교과서 131쪽 · 문제 6 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 두 함수 \(f(x) = \dfrac{1}{5}x^2 + \dfrac{4}{5}\,(x \geq 0)\), \(g(x) = \sqrt{5x - 4}\)에 대하여 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 도형의 넓이를 구하시오. \(g\)가 \(f\)의 역함수임을 활용.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f\)와 \(g\)는 직선 \(y = x\)에 대칭(역함수 관계)이므로 두 곡선이 둘러싸는 영역도 직선 \(y = x\)에 대칭. \(y = x\)와 \(y = f(x)\) 사이의 한 쪽 영역을 두 배 하면 전체 넓이가 된다. \(f(x) = x \Rightarrow \tfrac{1}{5}x^2 + \tfrac{4}{5} = x \Rightarrow x^2 - 5x + 4 = 0 \Rightarrow x = 1, 4\). \([1, 4]\)에서 \(x = 2\) 대입: \(f(2) = \tfrac{4}{5} + \tfrac{4}{5} = \tfrac{8}{5} \lt 2\), 직선 \(y = x\)가 포물선보다 위. 한 쪽 영역 \(= \int_1^4 \{x - (\tfrac{1}{5}x^2 + \tfrac{4}{5})\}\,dx = \int_1^4 (-\tfrac{1}{5}x^2 + x - \tfrac{4}{5})\,dx\). 단축공식 \(\tfrac{|a|}{6}(\beta - \alpha)^3 = \tfrac{1/5}{6} \cdot 3^3 = \tfrac{9}{10}\). 전체 \(S = 2 \cdot \tfrac{9}{10} = \tfrac{9}{5}\). (역함수 대칭으로 \(\sqrt{\,\,}\)를 직접 적분하지 않아도 됨이 핵심.)
                         </div></details>
@@ -259,8 +259,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-포물선과 절댓값 함수</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 두 함수 \(y = x^2 - 4x + 2\), \(y = |x - 2|\)의 그래프로 둘러싸인 도형의 넓이를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.136 · 중단원 기본 07번 참고)</span></div>
+                        <span class="badge badge-l3">심화-포물선과 절댓값 함수</span> <span class="src-chip" data-src-label="교과서 136쪽 · 중단원 학습 점검 기본 7" data-src-rel="그대로">교과서 136쪽 · 중단원 학습 점검 기본 7 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 두 함수 \(y = x^2 - 4x + 2\), \(y = |x - 2|\)의 그래프로 둘러싸인 도형의 넓이를 구하시오.</div>
                         <div class="flex justify-center my-3">
                             <img src="images/calc_29_q07.png" alt="문제 07 그림 — V자 모양 y=|x-2|와 아래로 볼록한 포물선 y=x²-4x+2. 두 그래프가 둘러싸는 영역이 색칠됨" class="block mx-auto max-w-xs w-full rounded-lg border border-slate-200" />
                         </div>
@@ -292,8 +292,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 다음 그림과 같이 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 세 도형의 넓이를 각각 \(A, B, C\)라고 할 때, \(A = 12, B = 6, C = 5\)이다. 정적분 \(\displaystyle\int_0^9 \{f(x) - g(x)\}\,dx\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.136 · 중단원 기본 08번 참고)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 136쪽 · 중단원 학습 점검 기본 8" data-src-rel="그대로">교과서 136쪽 · 중단원 학습 점검 기본 8 <span class="src-rel">그대로</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 다음 그림과 같이 두 곡선 \(y = f(x)\), \(y = g(x)\)로 둘러싸인 세 도형의 넓이를 각각 \(A, B, C\)라고 할 때, \(A = 12, B = 6, C = 5\)이다. 정적분 \(\displaystyle\int_0^9 \{f(x) - g(x)\}\,dx\)의 값을 구하시오.</div>
             <div class="flex justify-center my-3">
                 <img src="images/calc_29_q08.png" alt="문제 08 그림 — 두 곡선 y=f(x), y=g(x)가 x=0, 4, 7, 9에서 교차하여 세 영역 A([0,4]), B([4,7]), C([7,9])를 형성. A는 f 위, B는 g 위, C는 f 위" class="block mx-auto max-w-xs w-full rounded-lg border border-slate-200" />
             </div>
@@ -586,7 +586,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_27.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

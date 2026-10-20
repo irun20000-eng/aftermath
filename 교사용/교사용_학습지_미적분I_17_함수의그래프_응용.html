@@ -64,7 +64,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -96,14 +96,14 @@
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
-            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 89쪽 · 예제 4" data-src-rel="">교과서 89쪽 · 예제 4</span>
             <div class="text-lg text-slate-700 font-medium">
                 <p class="mb-4">한 변이 \(12\,\text{cm}\)인 정사각형 종이의 네 귀퉁이를 잘라내 뚜껑 없는 직육면체 상자를 만든다. <strong>잘라낼 정사각형의 한 변</strong>이 \(0\)에 가까우면 바닥은 넓지만 높이가 거의 \(0\). 너무 크면 바닥이 거의 \(0\). 따라서 부피가 <strong>가장 큰 순간</strong>이 그 사이 어딘가에 있다. 이 "가장 큰 순간"을 찾는 도구가 차시 17의 주제 — <span class="calc-accent font-bold">최댓값·최솟값</span>.</p>
                 <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
-                    <p><strong>[개방형 발문]</strong> "극값과 최댓값·최솟값은 같은 말인가?" 닫힌구간 \([-1, 2]\)에서 \(f(x) = 2x^3 - 3x^2 + 2\)의 극댓값은 \(f(0) = 2\)이지만 그 구간의 최댓값은 \(f(2) = 6\)이다. 왜 극값이 최댓값보다 작을 수 있는가? <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 예제 3 참고)</span></p>
+                    <p><strong>[개방형 발문]</strong> "극값과 최댓값·최솟값은 같은 말인가?" 닫힌구간 \([-1, 2]\)에서 \(f(x) = 2x^3 - 3x^2 + 2\)의 극댓값은 \(f(0) = 2\)이지만 그 구간의 최댓값은 \(f(2) = 6\)이다. 왜 극값이 최댓값보다 작을 수 있는가?</p>
                     <div class="thinking-space bg-teal-50/30"></div>
                 </div>
-                <p><strong>[연결]</strong> 차시 15에서 익힌 <strong>극값</strong>은 "지역적" 봉우리/골짜기. 차시 17에서 다루는 <strong>최댓값·최솟값</strong>은 "전역적" 최고/최저. 닫힌구간 \([a, b]\)에서는 극값과 <strong>구간 끝 점의 값</strong> \(f(a),\ f(b)\)를 모두 비교해야 한다. 또한 실생활(상자 부피, 도형 넓이, 비용)에서 변수의 정의역을 정확히 설정하는 것이 핵심 — 이 부분에서 학생들이 가장 많이 실수한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88~89 · 최댓값·최솟값과 실생활 활용 참고)</span></p>
+                <p><strong>[연결]</strong> 차시 15에서 익힌 <strong>극값</strong>은 "지역적" 봉우리/골짜기. 차시 17에서 다루는 <strong>최댓값·최솟값</strong>은 "전역적" 최고/최저. 닫힌구간 \([a, b]\)에서는 극값과 <strong>구간 끝 점의 값</strong> \(f(a),\ f(b)\)를 모두 비교해야 한다. 또한 실생활(상자 부피, 도형 넓이, 비용)에서 변수의 정의역을 정확히 설정하는 것이 핵심 — 이 부분에서 학생들이 가장 많이 실수한다.</p>
             </div>
         </section>
 
@@ -116,12 +116,12 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         닫힌구간에서의 최댓값·최솟값 정리 (최대·최소 정리)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 88쪽 · 최댓값과 최솟값" data-src-rel="">교과서 88쪽 · 최댓값과 최솟값</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 닫힌구간 \([a, b]\)에서 <strong>연속</strong>이면, 이 구간에서 \(f\)는 반드시 <span class="calc-accent font-bold">최댓값과 최솟값을 갖는다</span>(차시 06의 최대·최소 정리).</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-center text-lg font-bold">최댓값 = \(\max\{\text{극댓값들},\ f(a),\ f(b)\}\), 최솟값 = \(\min\{\text{극솟값들},\ f(a),\ f(b)\}\).</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 닫힌구간에서 최대/최소 후보는 (i) 구간 내부의 <strong>극값</strong>과 (ii) <strong>구간 끝점</strong> 두 가지뿐. 이 두 종류만 모두 모아 그 중 가장 큰/작은 것을 고르면 끝. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 최댓값·최솟값 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 닫힌구간에서 최대/최소 후보는 (i) 구간 내부의 <strong>극값</strong>과 (ii) <strong>구간 끝점</strong> 두 가지뿐. 이 두 종류만 모두 모아 그 중 가장 큰/작은 것을 고르면 끝.</p>
                     <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
                         <p class="text-sm text-red-900 font-bold mb-1">⚠ 극값 ≠ 최댓값·최솟값!</p>
                         <p class="text-sm text-slate-700">극댓값이 반드시 최댓값이 되는 것은 <strong>아니다</strong>. 예: \([-1, 2]\)에서 \(f(x) = 2x^3 - 3x^2 + 2\)의 극댓값 \(f(0) = 2\)는 구간 끝점 \(f(2) = 6\)보다 작다 \(\to\) 최댓값은 \(6\). 또한 열린구간에서는 최댓값·최솟값이 존재하지 않을 수 있다(연속성 + 닫힘 둘 다 필요).</p>
@@ -133,7 +133,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         예제 — 닫힌구간 \([-1, 2]\)에서 \(f(x) = 2x^3 - 3x^2 + 2\)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 88쪽 · 예제 3" data-src-rel="">교과서 88쪽 · 예제 3</span>
                     <p class="mb-3 text-slate-700">"내부 극값 + 구간 끝점" 4단계 루틴.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-1"><strong>STEP 1·2:</strong> \(f'(x) = 6x^2 - 6x = 6x(x - 1)\). \(f' = 0 \Rightarrow x = 0,\ 1\). 둘 다 구간 \([-1, 2]\) 내부.</p>
@@ -147,7 +147,7 @@
                         </table>
                         <p class="text-base mb-1"><strong>STEP 4 (후보 비교):</strong> 후보값 \(\{f(-1), f(0), f(1), f(2)\} = \{-3, 2, 1, 6\}\). 최댓값 = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(f(2) = 6\)</span></span>, 최솟값 = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(f(-1) = -3\)</span></span>.</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 극댓값 \(f(0) = 2\)는 구간 내부의 봉우리지만 구간 끝 \(f(2) = 6\)이 더 크다 \(\Rightarrow\) <strong>최댓값은 구간 끝</strong>에서. 이처럼 "극값 따로 끝점 따로" 모두 보는 것이 차시 17의 핵심 절차. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 예제 3 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 극댓값 \(f(0) = 2\)는 구간 내부의 봉우리지만 구간 끝 \(f(2) = 6\)이 더 크다 \(\Rightarrow\) <strong>최댓값은 구간 끝</strong>에서. 이처럼 "극값 따로 끝점 따로" 모두 보는 것이 차시 17의 핵심 절차.</p>
                 </div>
 
                 <!-- 3. 실생활 활용 — 상자 부피 -->
@@ -155,7 +155,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         실생활 활용 — 정사각형 종이로 상자 부피 최대화
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 89쪽 · 예제 4" data-src-rel="">교과서 89쪽 · 예제 4</span>
                     <p class="mb-3 text-slate-700">한 변 \(12\,\text{cm}\) 정사각형 종이 네 귀퉁이에서 한 변 \(x\,\text{cm}\)의 정사각형을 잘라내 뚜껑 없는 상자.</p>
                     <div class="mt-2 mb-3 flex justify-center">
                         <img src="images/calc_17_ex_box.png" alt="P.89 12cm 정사각형 종이 + 귀퉁이 x cm 자른 후 직육면체 상자" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:200px;">
@@ -168,7 +168,7 @@
                         <p class="text-base mb-1"><strong>STEP 4 — 증감표:</strong> \(0 \lt x \lt 2\)에서 \(V' \gt 0\), \(2 \lt x \lt 6\)에서 \(V' \lt 0\) \(\Rightarrow x = 2\)에서 극대 = 최대. 최댓값 \(V(2) = 2 \cdot 8^2 = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(128\,\text{cm}^3\)</span></span>.</p>
                         <p class="text-base"><strong>답:</strong> 잘라낼 정사각형의 한 변의 길이 = <span class="calc-accent font-bold">\(2\,\text{cm}\)</span>.</p>
                     </div>
-                    <p class="mt-3 text-sm text-red-700"><strong>⚠ 학생 오류 1순위:</strong> 정의역 \(0 \lt x \lt 6\) 설정을 생략하면 \(x = 6\) 근방에서 식이 \(0\)에 가까운데도 "부피가 최대"라 잘못 추측. 실생활 문항은 <strong>물리적 의미가 있는 변수 범위</strong>를 명시해야 한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 예제 4 참고)</span></p>
+                    <p class="mt-3 text-sm text-red-700"><strong>⚠ 학생 오류 1순위:</strong> 정의역 \(0 \lt x \lt 6\) 설정을 생략하면 \(x = 6\) 근방에서 식이 \(0\)에 가까운데도 "부피가 최대"라 잘못 추측. 실생활 문항은 <strong>물리적 의미가 있는 변수 범위</strong>를 명시해야 한다.</p>
                 </div>
 
                 <!-- 4. 열린구간에서의 최댓값·최솟값 -->
@@ -176,7 +176,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         열린구간 / 정의역 전체에서의 최대·최소 — 단조성 활용
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="자체 정리 · 교과서 89쪽 문제 4·5 연계" data-src-rel="">자체 정리 · 교과서 89쪽 문제 4·5 연계</span>
                     <p class="mb-3 text-slate-700">실생활 문제에서는 정의역이 <strong>열린구간</strong>(끝점 미포함)이거나 <strong>무한구간</strong>인 경우가 많다. 이때는 다음을 점검한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ul class="space-y-2 text-base font-medium">
@@ -185,7 +185,7 @@
                             <li>③ <strong>닫힌구간이 아닌 한, 최대(또는 최소)가 존재하지 않을 수도 있다</strong>. 예: \((0, 6)\)에서 \(V(x)\)의 최댓값은 존재하지만 (내부 극대), \(g(x) = x\)는 \((0, 6)\)에서 최댓값 없음(끝점 \(6\)은 포함되지 않으므로 \(g(x) \lt 6\)이지만 도달 불가).</li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 실생활 문항의 95%는 ① 패턴 — "임계점 한 개 + 극값 = 최값". 이 사고 패턴이 본 차시의 핵심 무기. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 문제 04·05 + 자체 정리)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 실생활 문항의 95%는 ① 패턴 — "임계점 한 개 + 극값 = 최값". 이 사고 패턴이 본 차시의 핵심 무기.</p>
                 </div>
             </div>
         </section>
@@ -202,8 +202,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-닫힌구간 최대·최소</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 구간에서 함수의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 문제 03 참고)</span>
+                        <span class="badge badge-l1">기초-닫힌구간 최대·최소</span> <span class="src-chip" data-src-label="교과서 88쪽 · 문제 3" data-src-rel="그대로">교과서 88쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 구간에서 함수의 최댓값과 최솟값을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^3 - 3x^2 - 9x + 5,\ x \in [-2, 4] \)</span><span class="sub-q">(2) \( f(x) = x^4 - 8x^3 + 16x^2 + 1,\ x \in [-1, 2] \)</span></span>
                             </div>
@@ -217,8 +217,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-매개변수 + 최솟값</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 닫힌구간 \([0, 3]\)에서 함수 \( f(x) = 2x^3 - 3x^2 + a \)의 최솟값이 \(5\)일 때, 실수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 08)</span></div>
+                        <span class="badge badge-l1">기초-매개변수 + 최솟값</span> <span class="src-chip" data-src-label="교과서 97쪽 · 중단원 학습 점검 기본 8" data-src-rel="그대로">교과서 97쪽 · 중단원 학습 점검 기본 8 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 닫힌구간 \([0, 3]\)에서 함수 \( f(x) = 2x^3 - 3x^2 + a \)의 최솟값이 \(5\)일 때, 실수 \(a\)의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = 6x^2 - 6x = 6x(x - 1)\). 구간 \([0, 3]\) 내부 임계점 \(x = 1\). 후보값 \(f(0) = a,\ f(1) = 2 - 3 + a = a - 1,\ f(3) = 54 - 27 + a = a + 27\). 최솟값 = \(\min\{a, a - 1, a + 27\} = a - 1 = 5 \Rightarrow a = 6\). 정답 \(a = 6\).
                         </div></details>
@@ -226,8 +226,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-실생활: 상자 부피</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 한 변의 길이가 \(18\,\text{cm}\)인 정사각형 종이의 네 귀퉁이에서 같은 크기의 정사각형을 잘라내고 남은 부분을 접어 뚜껑이 없는 직육면체 상자를 만들 때, 부피의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.89 예제 4 변형)</span></div>
+                        <span class="badge badge-l1">기초-실생활: 상자 부피</span> <span class="src-chip" data-src-label="교과서 89쪽 · 예제 4" data-src-rel="변형">교과서 89쪽 · 예제 4 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 한 변의 길이가 \(18\,\text{cm}\)인 정사각형 종이의 네 귀퉁이에서 같은 크기의 정사각형을 잘라내고 남은 부분을 접어 뚜껑이 없는 직육면체 상자를 만들 때, 부피의 최댓값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 잘라낸 한 변 \(x\,\text{cm}\), \(0 \lt x \lt 9\). \(V(x) = x(18 - 2x)^2\). \(V'(x) = (18 - 2x)^2 + x \cdot 2(18 - 2x)(-2) = (18 - 2x)\bigl[(18 - 2x) - 4x\bigr] = (18 - 2x)(18 - 6x)\). \(V' = 0 \Rightarrow x = 9\) (정의역 밖) 또는 \(x = 3\). 부호: \(0 \lt x \lt 3\) \(+\), \(3 \lt x \lt 9\) \(-\) \(\Rightarrow x = 3\)에서 극대 = 최대. \(V(3) = 3 \cdot 12^2 = 432\,\text{cm}^3\). 정답: \(432\,\text{cm}^3\).
                         </div></details>
@@ -243,8 +243,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-도형 넓이 최대화 (포물선 위 직사각형)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 그림과 같이 꼭짓점 \(\mathrm{A,\ B}\)는 곡선 \(y = -x^2 + 9\) 위에 있고, 꼭짓점 \(\mathrm{C,\ D}\)는 \(x\)축 위에 있는 직사각형 \(\mathrm{ABCD}\)의 넓이의 최댓값을 구하시오. (단, 점 \(\mathrm{A}\)는 제1사분면 위의 점.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 문제 04 참고)</span>
+                        <span class="badge badge-l2">응용-도형 넓이 최대화 (포물선 위 직사각형)</span> <span class="src-chip" data-src-label="교과서 89쪽 · 문제 4" data-src-rel="그대로">교과서 89쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 그림과 같이 꼭짓점 \(\mathrm{A,\ B}\)는 곡선 \(y = -x^2 + 9\) 위에 있고, 꼭짓점 \(\mathrm{C,\ D}\)는 \(x\)축 위에 있는 직사각형 \(\mathrm{ABCD}\)의 넓이의 최댓값을 구하시오. (단, 점 \(\mathrm{A}\)는 제1사분면 위의 점.)
                             <div class="mt-3 flex justify-center">
                                 <img src="images/calc_17_q_rect_parabola.png" alt="P.89 포물선 y=-x^2+9 위 직사각형 ABCD" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:220px;">
                                 <!-- TODO: 위 이미지는 P.89 문제 04 자동 크롭. -->
@@ -257,8 +257,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-원뿔 내접 원기둥 (부피)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 그림과 같이 밑면의 반지름의 길이가 \(5\,\text{cm}\)이고 높이가 \(10\,\text{cm}\)인 원뿔에 내접하는 원기둥 중에서 부피가 최대인 원기둥의 밑면의 반지름의 길이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.89 · 문제 05 참고)</span>
+                        <span class="badge badge-l2">응용-원뿔 내접 원기둥 (부피)</span> <span class="src-chip" data-src-label="교과서 89쪽 · 문제 5" data-src-rel="그대로">교과서 89쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 그림과 같이 밑면의 반지름의 길이가 \(5\,\text{cm}\)이고 높이가 \(10\,\text{cm}\)인 원뿔에 내접하는 원기둥 중에서 부피가 최대인 원기둥의 밑면의 반지름의 길이를 구하시오.
                             <div class="mt-3 flex justify-center">
                                 <img src="images/calc_17_q_cone_cylinder.png" alt="P.89 원뿔 내접 원기둥" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:240px;">
                                 <!-- TODO: 위 이미지는 P.89 문제 05 자동 크롭. -->
@@ -271,8 +271,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-닫힌구간 최댓값·최솟값으로 매개변수 결정</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 닫힌구간 \([-2, 1]\)에서 함수 \(f(x) = x^3 + 3x^2 + a\)의 최댓값과 최솟값의 합이 \(10\)이 되도록 하는 실수 \(a\)의 값과, 그때의 최댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.88 예제 3 변형)</span></div>
+                        <span class="badge badge-l2">응용-닫힌구간 최댓값·최솟값으로 매개변수 결정</span> <span class="src-chip" data-src-label="교과서 88쪽 · 예제 3" data-src-rel="변형">교과서 88쪽 · 예제 3 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 닫힌구간 \([-2, 1]\)에서 함수 \(f(x) = x^3 + 3x^2 + a\)의 최댓값과 최솟값의 합이 \(10\)이 되도록 하는 실수 \(a\)의 값과, 그때의 최댓값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = 3x^2 + 6x = 3x(x + 2)\). \(f'(x) = 0 \Rightarrow x = -2\)(끝점), \(x = 0\)(내부 임계점). 후보값 \(f(-2) = -8 + 12 + a = a + 4,\ f(0) = a,\ f(1) = 1 + 3 + a = a + 4\). 최댓값 = \(a + 4\) (\(x = -2\), \(x = 1\) 두 곳), 최솟값 = \(a\) (\(x = 0\)). 합 \((a + 4) + a = 2a + 4 = 10 \Rightarrow a = 3\). 이때 최댓값 \(7\), 최솟값 \(3\). <strong>정답: \(a = 3\), 최댓값 \(7\)</strong>. (생각해 보기: 최댓값 \(-\) 최솟값 \(= 4\)는 \(a\)와 무관하게 항상 성립 \(\Rightarrow\) "차"만 주어지면 \(a\)를 정할 수 없다.) 핵심: 닫힌구간 양 끝과 내부 임계점을 <strong>전부 후보로 모으는 것</strong>이 결정적.
                         </div></details>
@@ -289,8 +289,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-극댓값과 끝점 비교로 매개변수 결정</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x) = x^3 - 3x^2 + a\)가 닫힌구간 \([-1, 4]\)에서 <strong>최댓값 \(15\)</strong>를 가질 때, 실수 \(a\)의 값과 최솟값, 그리고 최솟값을 갖는 \(x\)의 값을 모두 구하시오. (극댓값이 곧 최댓값인지 반드시 확인하라.) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 P.97 기본 08 변형 + 학생 오답 함정)</span></div>
+                        <span class="badge badge-l3">심화-극댓값과 끝점 비교로 매개변수 결정</span> <span class="src-chip" data-src-label="교과서 97쪽 · 중단원 학습 점검 기본 8" data-src-rel="변형">교과서 97쪽 · 중단원 학습 점검 기본 8 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x) = x^3 - 3x^2 + a\)가 닫힌구간 \([-1, 4]\)에서 <strong>최댓값 \(15\)</strong>를 가질 때, 실수 \(a\)의 값과 최솟값, 그리고 최솟값을 갖는 \(x\)의 값을 모두 구하시오. (극댓값이 곧 최댓값인지 반드시 확인하라.)</div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
@@ -329,8 +329,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 그림과 같이 좌표평면에서 곡선 \(y = -x^2 + 4\) (\(-2 \leq x \leq 2\))와 \(x\)축으로 둘러싸인 영역에 내접하는 직사각형 중 둘레가 최대인 것의 둘레의 길이를 구하시오. (단, 직사각형의 두 변은 좌표축에 평행이다.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.89 문제 04 변형 — 넓이 \(\to\) 둘레)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 89쪽 · 문제 4" data-src-rel="변형">교과서 89쪽 · 문제 4 <span class="src-rel">변형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 그림과 같이 좌표평면에서 곡선 \(y = -x^2 + 4\) (\(-2 \leq x \leq 2\))와 \(x\)축으로 둘러싸인 영역에 내접하는 직사각형 중 둘레가 최대인 것의 둘레의 길이를 구하시오. (단, 직사각형의 두 변은 좌표축에 평행이다.)</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략 (4단계):</strong><br>
                 <strong>STEP 1 — 변수 설정:</strong> 제1사분면 점 \((x, -x^2 + 4)\), \(0 \lt x \lt 2\). 대칭으로 가로 \(2x\), 세로 \(-x^2 + 4\).<br>
@@ -626,7 +626,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_17.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

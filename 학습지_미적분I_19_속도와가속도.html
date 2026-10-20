@@ -64,7 +64,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -96,14 +96,14 @@
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
-            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 93쪽 · 개념 탐구" data-src-rel="">교과서 93쪽 · 개념 탐구</span>
             <div class="text-lg text-slate-700 font-medium">
                 <p class="mb-4">지면에서 수직으로 이륙한 어느 소방 헬기의 \(t\)초 후의 높이를 \(f(t) = t^2 + 2t\,\text{m}\) (\(0 \leq t \leq 10\))이라 한다. \(t = 1\)에서의 <strong>순간속도</strong>는 얼마인가? 평균변화율 \(\dfrac{f(1 + h) - f(1)}{h} = 4 + h\)에서 \(h \to 0\)을 취하면 \(4\,\text{m/s}\). 이것이 바로 \(f'(1) = 4\). 즉 <span class="calc-accent font-bold">속도 = 위치의 도함수</span>, 그리고 <span class="calc-accent font-bold">가속도 = 속도의 도함수</span>가 본 차시의 핵심 발견이다.</p>
                 <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
-                    <p><strong>[개방형 발문]</strong> 운동 방향이 "양 \(\to\) 음"으로 바뀌는 순간 속도는 어떤 값이어야 할까? 또한 가속도가 \(0\)이라는 것은 운동에서 어떤 물리적 의미를 갖는지 추측해 보자. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.93 · 개념 탐구 참고)</span></p>
+                    <p><strong>[개방형 발문]</strong> 운동 방향이 "양 \(\to\) 음"으로 바뀌는 순간 속도는 어떤 값이어야 할까? 또한 가속도가 \(0\)이라는 것은 운동에서 어떤 물리적 의미를 갖는지 추측해 보자.</p>
                     <div class="thinking-space bg-teal-50/30"></div>
                 </div>
-                <p><strong>[연결]</strong> 차시 14·15에서 익힌 <strong>"도함수의 부호 변화 = 함수의 증감"</strong> 사고가 본 차시에서는 <strong>"속도의 부호 변화 = 운동 방향 전환"</strong>으로 자연 확장된다. 즉 운동의 위치 \(x = f(t)\)를 함수, 속도 \(v(t) = f'(t)\)를 그 도함수로 보면 차시 14·15·16의 모든 도구를 그대로 운동 해석에 적용할 수 있다. 가속도 \(a(t) = v'(t) = f''(t)\)는 한 단계 더 높은 도함수. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.93 · 단원 통합 개념 참고)</span></p>
+                <p><strong>[연결]</strong> 차시 14·15에서 익힌 <strong>"도함수의 부호 변화 = 함수의 증감"</strong> 사고가 본 차시에서는 <strong>"속도의 부호 변화 = 운동 방향 전환"</strong>으로 자연 확장된다. 즉 운동의 위치 \(x = f(t)\)를 함수, 속도 \(v(t) = f'(t)\)를 그 도함수로 보면 차시 14·15·16의 모든 도구를 그대로 운동 해석에 적용할 수 있다. 가속도 \(a(t) = v'(t) = f''(t)\)는 한 단계 더 높은 도함수.</p>
             </div>
         </section>
 
@@ -116,7 +116,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         속도와 가속도의 정의 — 도함수의 물리적 해석
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 93~94쪽 · 속도와 가속도" data-src-rel="">교과서 93~94쪽 · 속도와 가속도</span>
                     <p class="mb-3 text-slate-700">수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서의 위치를 \(x = f(t)\)라 하자.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ul class="space-y-2 text-lg font-medium">
@@ -126,7 +126,7 @@
                             <li>④ <strong>(속력)</strong> = \(|v(t)|\) (방향을 무시한 빠르기).</li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "<strong>위치 \(\to\) (미분) \(\to\) 속도 \(\to\) (미분) \(\to\) 가속도</strong>"의 2단계 도함수 사슬. 미분이라는 도구가 <strong>물리량 사이의 관계</strong>를 정량화하는 핵심 언어임을 보여주는 단원. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.93~94 · 정의 + 정리 박스 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "<strong>위치 \(\to\) (미분) \(\to\) 속도 \(\to\) (미분) \(\to\) 가속도</strong>"의 2단계 도함수 사슬. 미분이라는 도구가 <strong>물리량 사이의 관계</strong>를 정량화하는 핵심 언어임을 보여주는 단원.</p>
                 </div>
 
                 <!-- 2. 운동 방향 전환 -->
@@ -134,7 +134,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         운동 방향 — 속도의 부호
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 94쪽 · 예제 1" data-src-rel="">교과서 94쪽 · 예제 1</span>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ul class="space-y-2 text-lg font-medium">
                             <li>① \(v(t) \gt 0\) \(\Rightarrow\) 양의 방향(\(x\)축 양의 쪽)으로 운동.</li>
@@ -142,7 +142,7 @@
                             <li>③ \(v(t) = 0\) \(\Rightarrow\) <span class="calc-accent font-bold">순간 정지</span>. 이 순간 좌우에서 부호가 바뀌면 <strong>운동 방향이 전환</strong>된다.</li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "운동 방향을 바꾸는 시각" 문제 \(\Leftrightarrow\) "\(v(t) = 0\) AND 좌우 부호 변화". 이것은 차시 15의 <strong>극값 판정</strong>과 정확히 동일한 절차다 — 위치 \(x = f(t)\)의 극값 = 운동 방향 전환점. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.94 · 예제 1 + 참고 박스)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "운동 방향을 바꾸는 시각" 문제 \(\Leftrightarrow\) "\(v(t) = 0\) AND 좌우 부호 변화". 이것은 차시 15의 <strong>극값 판정</strong>과 정확히 동일한 절차다 — 위치 \(x = f(t)\)의 극값 = 운동 방향 전환점.</p>
                 </div>
 
                 <!-- 3. 예제 — 직선 운동 -->
@@ -150,14 +150,14 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         예제 — \(x(t) = -t^3 + 6t^2\)의 직선 운동
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 94쪽 · 예제 1" data-src-rel="">교과서 94쪽 · 예제 1</span>
                     <p class="mb-3 text-slate-700">수직선 위 점 \(\mathrm{P}\)의 위치가 \(x = -t^3 + 6t^2\) (\(t \geq 0\)).</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-1"><strong>STEP 1 (속도·가속도 식):</strong> \(v(t) = \dfrac{dx}{dt} = -3t^2 + 12t\), \(a(t) = \dfrac{dv}{dt} = -6t + 12\).</p>
                         <p class="text-base mb-1"><strong>STEP 2 (\(t = 1\) 값):</strong> \(v(1) = -3 + 12 = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(9\)</span></span>, \(a(1) = -6 + 12 = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(6\)</span></span>.</p>
                         <p class="text-base mb-1"><strong>STEP 3 (방향 전환):</strong> \(v(t) = 0 \Rightarrow -3t(t - 4) = 0 \Rightarrow t = 0\) 또는 \(t = 4\). \(t \gt 0\)이므로 \(t = 4\). 그 좌우에서 \(v\)의 부호 \((+, -)\) \(\Rightarrow t = 4\)에서 <strong>운동 방향 전환</strong>(양 \(\to\) 음).</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 운동 방향 전환은 위치 함수의 <strong>극값</strong>과 동치. \(x(4) = -64 + 96 = 32\)이 이 운동에서 도달한 <strong>최고 지점</strong>(극댓값)이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.94 · 예제 1 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 운동 방향 전환은 위치 함수의 <strong>극값</strong>과 동치. \(x(4) = -64 + 96 = 32\)이 이 운동에서 도달한 <strong>최고 지점</strong>(극댓값)이다.</p>
                 </div>
 
                 <!-- 4. 자유낙하 -->
@@ -165,13 +165,13 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         예제 — 자유낙하 · 쏘아 올린 물체
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 95쪽 · 예제 2" data-src-rel="">교과서 95쪽 · 예제 2</span>
                     <p class="mb-3 text-slate-700">지상 \(15\,\text{m}\)에서 \(10\,\text{m/s}\)로 수직으로 쏘아 올린 물체의 \(t\)초 후 높이 \(x = -5t^2 + 10t + 15\,\text{m}\).</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-1"><strong>(1) 최고 높이까지의 시간 + 그때 높이:</strong> \(v(t) = -10t + 10\). 최고점에서 \(v = 0 \Rightarrow t = 1\). 높이 \(x(1) = -5 + 10 + 15 = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(20\,\text{m}\)</span></span>.</p>
                         <p class="text-base mb-1"><strong>(2) 지면에 떨어지는 순간의 속도:</strong> \(x(t) = 0 \Rightarrow -5(t + 1)(t - 3) = 0 \Rightarrow t = 3\) (양수). \(v(3) = -30 + 10 = -20\,\text{m/s}\). 부호 음수 = 아래 방향. <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-20\,\text{m/s}\)</span></span>.</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>물리적 해석:</strong> "<strong>최고점 = 속도 \(0\)인 순간</strong>"은 일상 직관과 정확히 일치 (공을 던지면 정점에서 잠시 멈춤). 떨어질 때의 속도 부호 음수 = 아래 방향. 가속도 \(a(t) = -10\,\text{m/s}^2\) 일정(중력가속도 근사). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.95 · 예제 2 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>물리적 해석:</strong> "<strong>최고점 = 속도 \(0\)인 순간</strong>"은 일상 직관과 정확히 일치 (공을 던지면 정점에서 잠시 멈춤). 떨어질 때의 속도 부호 음수 = 아래 방향. 가속도 \(a(t) = -10\,\text{m/s}^2\) 일정(중력가속도 근사).</p>
                 </div>
 
                 <!-- 5. 평균값 정리 + 구간 단속 -->
@@ -179,14 +179,14 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
                         실생활 활용 — 구간 단속과 평균값 정리
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 98쪽 · 중단원 학습 점검 도전 14" data-src-rel="">교과서 98쪽 · 중단원 학습 점검 도전 14</span>
                     <p class="mb-3 text-slate-700">제한 속도 \(80\,\text{km/h}\)인 \(15\,\text{km}\) 구간을 \(10\)분(\(\dfrac{1}{6}\)시간)에 통과한 자동차가 있다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-1"><strong>평균속도</strong> = \(\dfrac{15}{1/6} = 90\,\text{km/h}\) \(\gt 80\).</p>
                         <p class="text-base mb-1"><strong>차시 13의 평균값 정리</strong>: 운동이 미분가능하므로 어떤 시각 \(c\)에서 순간속도 \(v(c) = 90\,\text{km/h}\)인 점이 존재한다.</p>
                         <p class="text-base"><strong>결론:</strong> 평균속도가 \(90 \gt 80\)이므로 적어도 한 번은 순간속도 \(90\,\text{km/h}\)로 초과한 시점이 있다. <strong>제한 속도 초과한 순간이 있다</strong> ✓.</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 구간 단속 제도의 수학적 정당성은 평균값 정리. 운동 해석 + 평균값 정리(차시 13) + 도함수(차시 09·10·11)의 단원 통합 응용. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 14 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> 구간 단속 제도의 수학적 정당성은 평균값 정리. 운동 해석 + 평균값 정리(차시 13) + 도함수(차시 09·10·11)의 단원 통합 응용.</p>
                 </div>
             </div>
         </section>
@@ -203,8 +203,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-속도·가속도 + 방향 전환</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = t^3 - t^2 - 8t\)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.94 · 문제 01 참고)</span>
+                        <span class="badge badge-l1">기초-속도·가속도 + 방향 전환</span> <span class="src-chip" data-src-label="교과서 94쪽 · 문제 1" data-src-rel="그대로">교과서 94쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = t^3 - t^2 - 8t\)일 때, 다음을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(t = 3\)일 때 점 \(\mathrm{P}\)의 속도와 가속도</span><span class="sub-q">(2) 점 \(\mathrm{P}\)가 운동 방향을 바꾸는 시각</span></span>
                             </div>
@@ -218,8 +218,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-쏘아 올린 물체</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 어느 스카이다이버가 지상 \(3000\,\text{m}\) 높이에서 뛰어내린 후 \(20\)초 동안 자유 낙하한다. 뛰어내린 지 \(t\)초가 지났을 때의 높이를 \(h\,\text{m}\)라 하면 \(h = -5t^2 + 3000\) (\(0 \leq t \leq 20\)). 지상 \(2500\,\text{m}\) 높이에서의 낙하 <strong>속도</strong>를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.95 · 문제 02 참고)</span></div>
+                        <span class="badge badge-l1">기초-쏘아 올린 물체</span> <span class="src-chip" data-src-label="교과서 95쪽 · 문제 2" data-src-rel="그대로">교과서 95쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 어느 스카이다이버가 지상 \(3000\,\text{m}\) 높이에서 뛰어내린 후 \(20\)초 동안 자유 낙하한다. 뛰어내린 지 \(t\)초가 지났을 때의 높이를 \(h\,\text{m}\)라 하면 \(h = -5t^2 + 3000\) (\(0 \leq t \leq 20\)). 지상 \(2500\,\text{m}\) 높이에서의 낙하 <strong>속도</strong>를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 높이 \(2500\)에 도달하는 시각: \(-5t^2 + 3000 = 2500 \Rightarrow 5t^2 = 500 \Rightarrow t^2 = 100 \Rightarrow t = 10\) (양수). 속도 \(v(t) = \dfrac{dh}{dt} = -10t\). \(v(10) = -100\,\text{m/s}\). 부호 음수 = 아래 방향. 정답: \(-100\,\text{m/s}\) (속력 \(100\,\text{m/s}\)).
                         </div></details>
@@ -227,8 +227,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-수직선 위 운동 + 가속도</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = 2t^3 - 5t\)일 때, \(t = 1\)에서 점 \(\mathrm{P}\)의 속도와 가속도를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.96 · 기초 02 참고)</span></div>
+                        <span class="badge badge-l1">기초-수직선 위 운동 + 가속도</span> <span class="src-chip" data-src-label="교과서 96쪽 · 중단원 학습 점검 기초 2" data-src-rel="그대로">교과서 96쪽 · 중단원 학습 점검 기초 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = 2t^3 - 5t\)일 때, \(t = 1\)에서 점 \(\mathrm{P}\)의 속도와 가속도를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(v(t) = 6t^2 - 5\), \(a(t) = 12t\). \(v(1) = 6 - 5 = 1\), \(a(1) = 12\). 속도 \(1\), 가속도 \(12\).
                         </div></details>
@@ -244,8 +244,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-두 점의 속도 같아지는 순간</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 수직선 위를 움직이는 두 점 \(\mathrm{P,\ Q}\)의 시각 \(t\)에서 위치가 각각 \(x_\mathrm{P}(t) = \dfrac{2}{3}t^3 + 18t - 20\), \(x_\mathrm{Q}(t) = 6t^2 - 7\)일 때, 두 점 \(\mathrm{P,\ Q}\)의 <strong>속도가 같아지는 순간</strong>의 두 점 사이의 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 기본 11 참고)</span></div>
+                        <span class="badge badge-l2">응용-두 점의 속도 같아지는 순간</span> <span class="src-chip" data-src-label="교과서 98쪽 · 중단원 학습 점검 기본 11" data-src-rel="그대로">교과서 98쪽 · 중단원 학습 점검 기본 11 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 수직선 위를 움직이는 두 점 \(\mathrm{P,\ Q}\)의 시각 \(t\)에서 위치가 각각 \(x_\mathrm{P}(t) = \dfrac{2}{3}t^3 + 18t - 20\), \(x_\mathrm{Q}(t) = 6t^2 - 7\)일 때, 두 점 \(\mathrm{P,\ Q}\)의 <strong>속도가 같아지는 순간</strong>의 두 점 사이의 거리를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(v_\mathrm{P}(t) = 2t^2 + 18\), \(v_\mathrm{Q}(t) = 12t\). 속도 같아짐: \(2t^2 + 18 = 12t \Rightarrow 2t^2 - 12t + 18 = 0 \Rightarrow t^2 - 6t + 9 = 0 \Rightarrow (t - 3)^2 = 0 \Rightarrow t = 3\). \(t = 3\)일 때 \(x_\mathrm{P}(3) = 18 + 54 - 20 = 52\), \(x_\mathrm{Q}(3) = 54 - 7 = 47\). 거리 \(|x_\mathrm{P} - x_\mathrm{Q}| = |52 - 47| = 5\). 정답: \(5\).
                         </div></details>
@@ -253,8 +253,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-그래프로 운동 해석</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 다음 그림은 \(0\)초부터 \(10\)초까지 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x(t)\)를 나타낸 이차함수의 그래프의 일부이다. 점 \(\mathrm{P}\)에 대해 다음 중 <strong>옳게 말한 학생</strong>을 모두 찾으시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.95 · 내 역량 활동 변형)</span>
+                        <span class="badge badge-l2">응용-그래프로 운동 해석</span> <span class="src-chip" data-src-label="교과서 95쪽 · 내 역량" data-src-rel="변형">교과서 95쪽 · 내 역량 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 다음 그림은 \(0\)초부터 \(10\)초까지 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x(t)\)를 나타낸 이차함수의 그래프의 일부이다. 점 \(\mathrm{P}\)에 대해 다음 중 <strong>옳게 말한 학생</strong>을 모두 찾으시오.
                             <div class="mt-3 flex justify-center">
                                 <img src="images/calc_19_q_speed_position.png" alt="P.95 점 P의 위치 그래프 (이차함수 일부)" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:240px;">
                                 <!-- TODO: 위 이미지는 P.95 학생 대화 + 위치 그래프 영역 자동 크롭. -->
@@ -276,8 +276,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-가속도 \(0\)인 시각</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = t^3 - 6t^2 + 9t + 1\) (\(t \geq 0\))일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.94 예제 1 변형)</span>
+                        <span class="badge badge-l2">응용-가속도 \(0\)인 시각</span> <span class="src-chip" data-src-label="교과서 94쪽 · 예제 1" data-src-rel="변형">교과서 94쪽 · 예제 1 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = t^3 - 6t^2 + 9t + 1\) (\(t \geq 0\))일 때, 다음을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 운동 방향을 바꾸는 모든 시각</span><span class="sub-q">(2) 가속도가 \(0\)이 되는 시각과 그때의 속도</span></span>
                             </div>
@@ -300,9 +300,9 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-운동 거리 vs 변위 — 미적분 I 최고 함정</span>
+                        <span class="badge badge-l3">심화-운동 거리 vs 변위 — 미적분 I 최고 함정</span> <span class="src-chip" data-src-label="교과서 133쪽 · 움직인 거리" data-src-rel="유형">교과서 133쪽 · 움직인 거리 <span class="src-rel">유형</span></span>
                         <div class="text-xl font-bold text-slate-900 mb-4">
-7. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치가 \(x(t) = t^3 - 6t^2 + 9t\) (\(0 \leq t \leq 4\))일 때, 다음을 비교해 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 차시 23 정적분의 활용 미리보기)</span>
+7. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치가 \(x(t) = t^3 - 6t^2 + 9t\) (\(0 \leq t \leq 4\))일 때, 다음을 비교해 답하시오.
 <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(t = 0\)부터 \(t = 4\)까지의 <strong>위치 변화량(변위)</strong>.</span><span class="sub-q">(2) 같은 구간에서 점 \(\mathrm{P}\)가 <strong>실제로 움직인 거리</strong>(왕복 포함). 두 값이 같지 않은 이유를 설명하라.</span></span>
 </div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
@@ -335,9 +335,9 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 95쪽 · 예제 2" data-src-rel="변형">교과서 95쪽 · 예제 2 <span class="src-rel">변형</span></span>
             <div class="text-xl font-bold text-slate-800 mb-4">
-8. 지상에서 \(40\,\text{m/s}\)의 속도로 수직으로 쏘아 올린 물체의 \(t\)초 후의 높이 \(h\,\text{m}\)가 \(h = -5t^2 + 40t\)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.95 예제 2 변형 + Level 3 확장)</span>
+8. 지상에서 \(40\,\text{m/s}\)의 속도로 수직으로 쏘아 올린 물체의 \(t\)초 후의 높이 \(h\,\text{m}\)가 \(h = -5t^2 + 40t\)일 때, 다음을 구하시오.
 <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 물체의 최고 높이와 그때의 시각</span><span class="sub-q">(2) 물체가 지면에 떨어지는 순간의 속도</span><span class="sub-q">(3) 최고점부터 지면에 떨어질 때까지 물체가 움직인 거리.</span></span>
 </div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
@@ -642,7 +642,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_19.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

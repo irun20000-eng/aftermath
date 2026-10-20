@@ -57,7 +57,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -96,8 +96,8 @@
             <div class="grid grid-cols-1 gap-12">
                 <!-- Q1 -->
                 <div>
-                    <span class="badge badge-type">[표준-부정적분 정의 + f(0)]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) \)가 \( \displaystyle \int \{x^2 - 2f(x)\}\,dx = 3x^2 + 4x + C \) 를 만족시킬 때, \( f(0) \)의 값을 구하시오. (단, \(C\)는 적분상수) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.140 대단원 평가 01번)</span></div>
+                    <span class="badge badge-type">[표준-부정적분 정의 + f(0)]</span> <span class="src-chip" data-src-label="교과서 140쪽 · 대단원 학습 평가 1" data-src-rel="그대로">교과서 140쪽 · 대단원 학습 평가 1 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) \)가 \( \displaystyle \int \{x^2 - 2f(x)\}\,dx = 3x^2 + 4x + C \) 를 만족시킬 때, \( f(0) \)의 값을 구하시오. (단, \(C\)는 적분상수)</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> 양변을 \(x\)에 대해 미분하면 \( x^2 - 2 f(x) = 6x + 4 \). 따라서 \( f(x) = \dfrac{x^2 - 6x - 4}{2} \). \( f(0) = \dfrac{-4}{2} = -2 \).
                     </div></details>
@@ -106,8 +106,8 @@
 
                 <!-- Q2 -->
                 <div>
-                    <span class="badge badge-type">[표준-두 부정적분의 차]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \( f(x) \)가 \( \displaystyle f(x) = \int\!\left(x + \dfrac{1}{x}\right)^2 dx - \int\!\left(x - \dfrac{1}{x}\right)^2 dx \) 이고 \( f(1) = -3 \)일 때, \( f(3) \)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.140 대단원 평가 02번)</span></div>
+                    <span class="badge badge-type">[표준-두 부정적분의 차]</span> <span class="src-chip" data-src-label="교과서 140쪽 · 대단원 학습 평가 2" data-src-rel="그대로">교과서 140쪽 · 대단원 학습 평가 2 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \( f(x) \)가 \( \displaystyle f(x) = \int\!\left(x + \dfrac{1}{x}\right)^2 dx - \int\!\left(x - \dfrac{1}{x}\right)^2 dx \) 이고 \( f(1) = -3 \)일 때, \( f(3) \)의 값을 구하시오.</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> 두 부정적분을 합쳐 \( f(x) = \displaystyle\int\!\left[\left(x + \dfrac{1}{x}\right)^2 - \left(x - \dfrac{1}{x}\right)^2\right] dx \). 괄호 안 = \(4 \cdot x \cdot \dfrac{1}{x} = 4\). 따라서 \( f(x) = \int 4\,dx = 4x + C \). \( f(1) = 4 + C = -3 \Rightarrow C = -7 \). 그러므로 \( f(3) = 12 - 7 = 5 \).
                     </div></details>
@@ -116,8 +116,8 @@
 
                 <!-- Q3 -->
                 <div>
-                    <span class="badge badge-type">[기본-정적분 조건 + a 결정]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">3. 등식 \( \displaystyle \int_0^2 (-4x^3 + 3x^2 + ax)\,dx = 0 \) 을 만족시키는 실수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.140 대단원 평가 03번)</span></div>
+                    <span class="badge badge-type">[기본-정적분 조건 + a 결정]</span> <span class="src-chip" data-src-label="교과서 140쪽 · 대단원 학습 평가 3" data-src-rel="그대로">교과서 140쪽 · 대단원 학습 평가 3 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">3. 등식 \( \displaystyle \int_0^2 (-4x^3 + 3x^2 + ax)\,dx = 0 \) 을 만족시키는 실수 \(a\)의 값을 구하시오.</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> \( \int_0^2 (-4x^3) dx = -[x^4]_0^2 = -16 \), \( \int_0^2 3x^2\,dx = [x^3]_0^2 = 8 \), \( \int_0^2 ax\,dx = \left[\dfrac{a x^2}{2}\right]_0^2 = 2a \). 합 \(= -16 + 8 + 2a = -8 + 2a = 0 \Rightarrow a = 4\).
                     </div></details>
@@ -126,8 +126,8 @@
 
                 <!-- Q4 -->
                 <div>
-                    <span class="badge badge-type">[표준-유리 절댓값 정적분]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">4. 정적분 \( \displaystyle \int_0^2 \dfrac{|x^2 - 1|}{x + 1}\,dx \) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.140 대단원 평가 04번)</span></div>
+                    <span class="badge badge-type">[표준-유리 절댓값 정적분]</span> <span class="src-chip" data-src-label="교과서 140쪽 · 대단원 학습 평가 4" data-src-rel="그대로">교과서 140쪽 · 대단원 학습 평가 4 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">4. 정적분 \( \displaystyle \int_0^2 \dfrac{|x^2 - 1|}{x + 1}\,dx \) 의 값을 구하시오.</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> \( \dfrac{|x^2 - 1|}{x + 1} = \dfrac{|x-1||x+1|}{x+1} = |x-1| \) (단, \(x \geq 0\)에서 \(x + 1 \gt 0\)). 구간 분할: \( \int_0^1 (1 - x)\,dx + \int_1^2 (x - 1)\,dx = \left[x - \dfrac{x^2}{2}\right]_0^1 + \left[\dfrac{x^2}{2} - x\right]_1^2 = \dfrac{1}{2} + \dfrac{1}{2} = 1 \).
                     </div></details>
@@ -136,8 +136,8 @@
 
                 <!-- Q5 -->
                 <div>
-                    <span class="badge badge-type">[표준-적분으로 정의된 함수의 극값]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">5. \( x \geq 0 \)에서 정의된 함수 \( \displaystyle f(x) = \int_0^x (t^2 - 3t + 2)\,dt \) 의 극댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.140 대단원 평가 05번)</span></div>
+                    <span class="badge badge-type">[표준-적분으로 정의된 함수의 극값]</span> <span class="src-chip" data-src-label="교과서 140쪽 · 대단원 학습 평가 5" data-src-rel="그대로">교과서 140쪽 · 대단원 학습 평가 5 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">5. \( x \geq 0 \)에서 정의된 함수 \( \displaystyle f(x) = \int_0^x (t^2 - 3t + 2)\,dt \) 의 극댓값을 구하시오.</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> \( f'(x) = x^2 - 3x + 2 = (x - 1)(x - 2) \). \(x \geq 0\)에서 \( f'(x) = 0 \Rightarrow x = 1, 2 \). 부호: \(0 \leq x \lt 1\)에서 \(+\), \(1 \lt x \lt 2\)에서 \(-\), \(x \gt 2\)에서 \(+\). 따라서 \(x = 1\)에서 극대. \( f(1) = \int_0^1 (t^2 - 3t + 2)\,dt = \left[\dfrac{t^3}{3} - \dfrac{3 t^2}{2} + 2t\right]_0^1 = \dfrac{1}{3} - \dfrac{3}{2} + 2 = \dfrac{2 - 9 + 12}{6} = \dfrac{5}{6} \).
                     </div></details>
@@ -146,8 +146,8 @@
 
                 <!-- Q6 -->
                 <div>
-                    <span class="badge badge-type">[표준-넓이 이등분 + a 결정]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림과 같이 곡선 \(y = x^2\) (\(x \geq 0\))과 \(y\)축 및 직선 \(y = 1\)로 둘러싸인 도형의 넓이가 곡선 \(y = a x^2\) (\(x \geq 0\))에 의하여 이등분될 때, 양수 \(a\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.140 대단원 평가 06번)</span>
+                    <span class="badge badge-type">[표준-넓이 이등분 + a 결정]</span> <span class="src-chip" data-src-label="교과서 140쪽 · 대단원 학습 평가 6" data-src-rel="그대로">교과서 140쪽 · 대단원 학습 평가 6 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림과 같이 곡선 \(y = x^2\) (\(x \geq 0\))과 \(y\)축 및 직선 \(y = 1\)로 둘러싸인 도형의 넓이가 곡선 \(y = a x^2\) (\(x \geq 0\))에 의하여 이등분될 때, 양수 \(a\)의 값을 구하시오.
                         <div class="ml-6 mt-3 flex justify-center">
                             <img src="images/calc_30_q06.png" alt="문제 6번 그림 — 곡선 y=x^2과 y=ax^2, y=1로 둘러싸인 도형" class="block mx-auto max-w-md w-full border border-slate-200 rounded-lg bg-white p-2" />
                         </div>
@@ -160,8 +160,8 @@
 
                 <!-- Q7 -->
                 <div>
-                    <span class="badge badge-type">[표준-곡선과 직선 넓이 → m]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">7. 곡선 \(y = x^2 - x\)와 직선 \(y = m(x - 1)\)로 둘러싸인 도형의 넓이가 \(\dfrac{9}{2}\)일 때, 실수 \(m\)의 값을 구하시오. (단, \(m \gt 1\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.141 대단원 평가 07번)</span></div>
+                    <span class="badge badge-type">[표준-곡선과 직선 넓이 → m]</span> <span class="src-chip" data-src-label="교과서 141쪽 · 대단원 학습 평가 7" data-src-rel="그대로">교과서 141쪽 · 대단원 학습 평가 7 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">7. 곡선 \(y = x^2 - x\)와 직선 \(y = m(x - 1)\)로 둘러싸인 도형의 넓이가 \(\dfrac{9}{2}\)일 때, 실수 \(m\)의 값을 구하시오. (단, \(m \gt 1\))</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> 교점: \(x^2 - x = m(x - 1) \Rightarrow x^2 - (m + 1) x + m = 0 \Rightarrow (x - 1)(x - m) = 0 \Rightarrow x = 1, m\) (단 \(m \gt 1\)). 넓이 \( = \int_1^m [m(x - 1) - (x^2 - x)]\,dx = \int_1^m [-x^2 + (m + 1)x - m]\,dx = -\int_1^m (x - 1)(x - m)\,dx \). 공식 \( \int_\alpha^\beta (x - \alpha)(x - \beta)\,dx = -\dfrac{(\beta - \alpha)^3}{6} \) 적용: 넓이 \( = \dfrac{(m - 1)^3}{6} = \dfrac{9}{2} \Rightarrow (m - 1)^3 = 27 \Rightarrow m - 1 = 3 \Rightarrow m = 4 \).
                     </div></details>
@@ -170,8 +170,8 @@
 
                 <!-- Q8 -->
                 <div>
-                    <span class="badge badge-type">[표준-속도 그래프 + 위치]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">8. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도 \(v(t)\)의 그래프가 다음 그림과 같다. 시각 \(t = 5\)에서 점 P의 위치가 \(-\dfrac{5}{2}\)일 때, 실수 \(k\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.141 대단원 평가 08번)</span>
+                    <span class="badge badge-type">[표준-속도 그래프 + 위치]</span> <span class="src-chip" data-src-label="교과서 141쪽 · 대단원 학습 평가 8" data-src-rel="그대로">교과서 141쪽 · 대단원 학습 평가 8 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">8. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도 \(v(t)\)의 그래프가 다음 그림과 같다. 시각 \(t = 5\)에서 점 P의 위치가 \(-\dfrac{5}{2}\)일 때, 실수 \(k\)의 값을 구하시오.
                         <div class="ml-6 mt-3 flex justify-center">
                             <img src="images/calc_30_q08.png" alt="문제 8번 그림 — v(t) 그래프 (꺾은선): 0→2→0→-2→-1→k" class="block mx-auto max-w-md w-full border border-slate-200 rounded-lg bg-white p-2" />
                         </div>
@@ -189,8 +189,8 @@
 
                 <!-- Q9 -->
                 <div>
-                    <span class="badge badge-type">[표준-속도와 거리 (정지까지)]</span>
-                    <div class="text-xl font-bold text-slate-800 mb-2">9. 직선 도로를 초속 \(20\,\text{m}\)로 달리고 있는 자동차가 있다. 이 자동차가 제동을 걸고 \(t\)초 후의 속도가 \( v(t) = (20 - 4t)\,\text{m/s} \)일 때, 제동을 건 순간부터 자동차가 정지할 때까지 달린 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.141 대단원 평가 09번)</span></div>
+                    <span class="badge badge-type">[표준-속도와 거리 (정지까지)]</span> <span class="src-chip" data-src-label="교과서 141쪽 · 대단원 학습 평가 9" data-src-rel="그대로">교과서 141쪽 · 대단원 학습 평가 9 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">9. 직선 도로를 초속 \(20\,\text{m}\)로 달리고 있는 자동차가 있다. 이 자동차가 제동을 걸고 \(t\)초 후의 속도가 \( v(t) = (20 - 4t)\,\text{m/s} \)일 때, 제동을 건 순간부터 자동차가 정지할 때까지 달린 거리를 구하시오.</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략 힌트:</strong> 정지 시점: \( v(t) = 20 - 4t = 0 \Rightarrow t = 5\,\text{s} \). 달린 거리 \( = \int_0^5 (20 - 4t)\,dt = \left[20t - 2 t^2\right]_0^5 = 100 - 50 = 50\,\text{m} \).
                     </div></details>
@@ -205,8 +205,8 @@
 
                 <!-- Q10 (서술형) -->
                 <div>
-                    <span class="badge badge-hard">[서술형-함수방정식 + 미분]</span>
-                    <div class="text-xl font-bold text-slate-900 mb-2">10. 미분가능한 함수 \( f(x) \)가 모든 실수 \(x, y\)에 대하여 \( f(x + y) = f(x) + f(y) + 3xy \) 를 만족시키고 \( f'(0) = 5 \)일 때, 함수 \( f(x) \)를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.141 대단원 평가 10번 서술형)</span></div>
+                    <span class="badge badge-hard">[서술형-함수방정식 + 미분]</span> <span class="src-chip" data-src-label="교과서 141쪽 · 대단원 학습 평가 10" data-src-rel="그대로">교과서 141쪽 · 대단원 학습 평가 10 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">10. 미분가능한 함수 \( f(x) \)가 모든 실수 \(x, y\)에 대하여 \( f(x + y) = f(x) + f(y) + 3xy \) 를 만족시키고 \( f'(0) = 5 \)일 때, 함수 \( f(x) \)를 구하시오.</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략:</strong> ① \(x = y = 0\) 대입: \( f(0) = 2 f(0) \Rightarrow f(0) = 0 \). ② 미분계수 정의로 \( f'(x) \)를 \(f'(0)\)로 환원: \( f'(x) = \lim_{h \to 0} \dfrac{f(x + h) - f(x)}{h} = \lim_{h \to 0} \dfrac{f(x) + f(h) + 3 x h - f(x)}{h} = \lim_{h \to 0} \dfrac{f(h)}{h} + 3x = f'(0) + 3x = 5 + 3x \). ③ 부정적분: \( f(x) = \int (3x + 5)\,dx = \dfrac{3}{2} x^2 + 5x + C \). \( f(0) = 0 \Rightarrow C = 0 \). 답: \( f(x) = \dfrac{3}{2} x^2 + 5x \). <br><strong>서술 채점 포인트:</strong> \(f(0) = 0\) 도출, 미분계수 정의에서 \(f'(0)\) 활용, 적분 및 적분상수 결정.
                     </div></details>
@@ -215,8 +215,8 @@
 
                 <!-- Q11 (서술형) -->
                 <div>
-                    <span class="badge badge-hard">[서술형-두 함수의 합·곱의 도함수 + 함수 결정]</span>
-                    <div class="text-xl font-bold text-slate-900 mb-2">11. 두 다항함수 \( f(x), g(x) \)가 \( \dfrac{d}{dx}\{f(x) + g(x)\} = 4x - 2 \), \( \dfrac{d}{dx}\{f(x) g(x)\} = 6 x^2 - 14 x + 10 \) 을 만족시키고 \( f(0) = 4 \), \( g(0) = -2 \)일 때, 두 함수 \( f(x), g(x) \)를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.141 대단원 평가 11번 서술형)</span></div>
+                    <span class="badge badge-hard">[서술형-두 함수의 합·곱의 도함수 + 함수 결정]</span> <span class="src-chip" data-src-label="교과서 141쪽 · 대단원 학습 평가 11" data-src-rel="그대로">교과서 141쪽 · 대단원 학습 평가 11 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">11. 두 다항함수 \( f(x), g(x) \)가 \( \dfrac{d}{dx}\{f(x) + g(x)\} = 4x - 2 \), \( \dfrac{d}{dx}\{f(x) g(x)\} = 6 x^2 - 14 x + 10 \) 을 만족시키고 \( f(0) = 4 \), \( g(0) = -2 \)일 때, 두 함수 \( f(x), g(x) \)를 구하시오.</div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
                         <strong>💡 전략:</strong> ① 합의 부정적분: \( f(x) + g(x) = \int (4x - 2)\,dx = 2 x^2 - 2 x + C_1 \). \(x = 0\) 대입: \(4 + (-2) = C_1 \Rightarrow C_1 = 2\). 즉 \( f(x) + g(x) = 2 x^2 - 2 x + 2 \). ② 곱의 부정적분: \( f(x) g(x) = \int (6 x^2 - 14 x + 10)\,dx = 2 x^3 - 7 x^2 + 10 x + C_2 \). \(x = 0\) 대입: \( f(0) g(0) = 4 \cdot (-2) = -8 = C_2 \). 즉 \( f(x) g(x) = 2 x^3 - 7 x^2 + 10 x - 8 \). ③ \(f\)와 \(g\)는 합 \(=2x^2 - 2x + 2\)인 두 일차식 + 상수형 또는 일차 + 이차 가능. \(2 x^3 - 7 x^2 + 10 x - 8 = (2x^2 + Ax + B)(x + C)\) 또는 그 반대 형식 인수분해 시도. \( 2 x^3 - 7 x^2 + 10 x - 8 \)을 \(x = 2\)에서 평가하면 \(16 - 28 + 20 - 8 = 0\). 따라서 \(x - 2\) 인수: \( 2 x^3 - 7 x^2 + 10 x - 8 = (x - 2)(2 x^2 - 3 x + 4) \). 합 \(= (x - 2) + (2 x^2 - 3 x + 4) = 2 x^2 - 2 x + 2 \) ✓. ④ \( f(0) = 4, g(0) = -2 \)에서 상수항으로 식별: \(2 x^2 - 3 x + 4\)의 상수 \(= 4 \Rightarrow f(x) = 2 x^2 - 3 x + 4\). \(x - 2\)의 상수 \(= -2 \Rightarrow g(x) = x - 2\). <br><strong>서술 채점 포인트:</strong> 합·곱 각각 부정적분 및 적분상수 결정, 곱의 인수분해 (인수정리 \(x - 2\)), 상수항으로 \(f, g\) 식별.
                     </div></details>
@@ -225,8 +225,8 @@
 
                 <!-- Q12 (서술형) -->
                 <div>
-                    <span class="badge badge-hard">[서술형-정적분 안에 함수 / 자기참조]</span>
-                    <div class="text-xl font-bold text-slate-900 mb-2">12. 함수 \( f(x) \)가 \( \displaystyle f(x) = -4 x^3 + 3 x^2 + \int_{-1}^{1} f(t)\,dt \) 를 만족시킬 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.141 대단원 평가 12번 서술형)</span>
+                    <span class="badge badge-hard">[서술형-정적분 안에 함수 / 자기참조]</span> <span class="src-chip" data-src-label="교과서 141쪽 · 대단원 학습 평가 12" data-src-rel="그대로">교과서 141쪽 · 대단원 학습 평가 12 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">12. 함수 \( f(x) \)가 \( \displaystyle f(x) = -4 x^3 + 3 x^2 + \int_{-1}^{1} f(t)\,dt \) 를 만족시킬 때, 다음 물음에 답하시오.
                         <div class="ml-6 mt-2 text-lg font-medium">
                             <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \( f(0) \)의 값을 구하시오.</span><span class="sub-q">(2) 정적분 \( \displaystyle \int_{-2}^{2} f(x)\,dx \)의 값을 구하시오.</span></span>
                         </div>
@@ -242,8 +242,8 @@
 
                 <!-- Q13 (서술형) -->
                 <div>
-                    <span class="badge badge-hard">[서술형-함수방정식 (정적분 안)] </span>
-                    <div class="text-xl font-bold text-slate-900 mb-2">13. 다항함수 \( f(x) \)가 \( \displaystyle x^2 f(x) = \dfrac{1}{5} x^5 - x^4 + \int_0^x 2 t\,f(t)\,dt \) 를 만족시키고 \( f(0) = 0 \)일 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.142 대단원 평가 13번 서술형)</span>
+                    <span class="badge badge-hard">[서술형-함수방정식 (정적분 안)] </span> <span class="src-chip" data-src-label="교과서 142쪽 · 대단원 학습 평가 13" data-src-rel="그대로">교과서 142쪽 · 대단원 학습 평가 13 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">13. 다항함수 \( f(x) \)가 \( \displaystyle x^2 f(x) = \dfrac{1}{5} x^5 - x^4 + \int_0^x 2 t\,f(t)\,dt \) 를 만족시키고 \( f(0) = 0 \)일 때, 다음 물음에 답하시오.
                         <div class="ml-6 mt-2 text-lg font-medium">
                             <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 함수 \( f(x) \)를 구하시오.</span><span class="sub-q">(2) 함수 \( y = f(x) \)의 그래프와 \(x\)축으로 둘러싸인 도형의 넓이를 구하시오.</span></span>
                         </div>
@@ -258,8 +258,8 @@
 
                 <!-- Q14 (서술형) -->
                 <div>
-                    <span class="badge badge-hard">[서술형-속도와 거리 (방향 전환)]</span>
-                    <div class="text-xl font-bold text-slate-900 mb-2">14. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \( v(t) = -3 t^2 + 12 t - 9 \) 일 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.142 대단원 평가 14번 서술형)</span>
+                    <span class="badge badge-hard">[서술형-속도와 거리 (방향 전환)]</span> <span class="src-chip" data-src-label="교과서 142쪽 · 대단원 학습 평가 14" data-src-rel="그대로">교과서 142쪽 · 대단원 학습 평가 14 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-2">14. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \( v(t) = -3 t^2 + 12 t - 9 \) 일 때, 다음 물음에 답하시오.
                         <div class="ml-6 mt-2 text-lg font-medium">
                             <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 점 P의 속도가 최대일 때, 점 P의 위치를 구하시오.</span><span class="sub-q">(2) 점 P가 원점을 출발한 후 두 번째로 운동 방향을 바꿀 때까지 움직인 거리를 구하시오.</span></span>
                         </div>
@@ -484,7 +484,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_30.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

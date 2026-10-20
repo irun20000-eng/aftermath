@@ -83,6 +83,22 @@
 
 ---
 
+## 출처 표기 (DECISIONS D-14)
+
+문항·개념 블록마다 **출처 칩 하나**. 꼬리표 `(… P.71 · 문제 01 참고)` 는 쓰지 않는다 (검사 5번이 실패로 잡는다).
+
+```html
+<span class="badge badge-l1">기초-…</span> <span class="src-chip" data-src-label="교과서 71쪽 · 문제 1" data-src-rel="그대로">교과서 71쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+<h3>…</h3><span class="src-chip src-chip--block" data-src-label="교과서 70쪽 · 접선의 방정식" data-src-rel="">교과서 70쪽 · 접선의 방정식</span>
+```
+
+- 관계 `data-src-rel` : 그대로 · 변형 · 유형 (개념 블록·생각 열기는 빈칸 = 배지 없음)
+- 이름 `data-src-label` : `교과서|익힘책|문제북 N쪽 · <교과서의 꼭지 이름>` 또는 `자체 정리 · …`
+- 형성평가·생각 열기는 섹션 제목(h2) 바로 아래. 도전 문제는 기존 '📖 출처' 줄 + `data-aft-source-label`
+- **원본과 대조한 뒤** 단다. 꼬리표만 보고 옮기면 다른 문항을 가리킨 채 남는다
+
+---
+
 ## 난이도 판정
 
 문제집은 **페이지 상단 탭이나 단 구분**으로 난이도를 표시한다.

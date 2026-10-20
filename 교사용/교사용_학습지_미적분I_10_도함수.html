@@ -61,7 +61,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -113,7 +113,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         도함수의 정의 — \(x\)를 변수로 본 미분계수
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 58~59쪽 · 도함수" data-src-rel="">교과서 58~59쪽 · 도함수</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 정의역 \(X\)에서 미분가능할 때, 각 \(x \in X\)에 미분계수 \(f'(x)\)를 대응시킨 함수를 \(f(x)\)의 <span class="calc-accent font-bold">도함수</span>라 한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">\( f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{\Delta x \to 0}\dfrac{f(x+\Delta x) - f(x)}{\Delta x} = \lim_{h \to 0}\dfrac{f(x+h) - f(x)}{h} \)</span></span></p>
@@ -122,7 +122,7 @@
                     <div class="bg-white p-3 rounded-xl border border-teal-100 text-center">
                         <p class="text-lg font-bold">\( f'(x), \;\; y', \;\; \dfrac{dy}{dx}, \;\; \dfrac{d}{dx} f(x) \)</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> \(f'(a)\)는 도함수 \(f'(x)\)에 \(x = a\)를 대입한 값. 즉 <span class="calc-accent font-bold">"미분계수 = 도함수의 함숫값"</span>. 도함수를 한 번 구해 두면 모든 점의 미분계수를 즉시 얻는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.58~59 · 도함수 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> \(f'(a)\)는 도함수 \(f'(x)\)에 \(x = a\)를 대입한 값. 즉 <span class="calc-accent font-bold">"미분계수 = 도함수의 함숫값"</span>. 도함수를 한 번 구해 두면 모든 점의 미분계수를 즉시 얻는다.</p>
                 </div>
 
                 <!-- 2. x^n의 도함수 -->
@@ -130,7 +130,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         \(x^n\)과 상수함수의 도함수 — 첫 번째 공식 카드
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 60쪽 · xⁿ과 상수함수의 도함수" data-src-rel="">교과서 60쪽 · xⁿ과 상수함수의 도함수</span>
                     <p class="mb-3 text-slate-700">자연수 \(n\)에 대하여 \(f(x) = x^n\)의 도함수는 정의식 + \(a^n - b^n\) 인수분해 공식으로 도출된다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ol class="space-y-3 text-lg font-medium">
@@ -139,7 +139,7 @@
                             <li>③ \( f(x) = c \) (상수)이면 \(f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(0\)</span></span></li>
                         </ol>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "\(x\)의 거듭제곱 \(\Rightarrow\) 지수 내려서 곱하고, 지수는 \(1\) 감소". 즉 <span class="calc-accent font-bold">\((x^n)' = n x^{n-1}\)</span>. 상수의 도함수는 항상 \(0\) — 상수는 변하지 않으므로 변화율도 \(0\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.60 · \(x^n\)·상수함수의 도함수 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "\(x\)의 거듭제곱 \(\Rightarrow\) 지수 내려서 곱하고, 지수는 \(1\) 감소". 즉 <span class="calc-accent font-bold">\((x^n)' = n x^{n-1}\)</span>. 상수의 도함수는 항상 \(0\) — 상수는 변하지 않으므로 변화율도 \(0\).</p>
                 </div>
 
                 <!-- 3. 실수배·합·차의 미분법 -->
@@ -147,7 +147,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         실수배·합·차의 미분법 — 미분은 "분배"된다
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 61쪽 · 실수배·합·차의 미분법" data-src-rel="">교과서 61쪽 · 실수배·합·차의 미분법</span>
                     <p class="mb-3 text-slate-700">미분가능한 두 함수 \(f(x), g(x)\)에 대하여 (단 \(k\)는 실수)</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ol class="space-y-3 text-lg font-medium">
@@ -156,7 +156,7 @@
                             <li>③ \( \{f(x) - g(x)\}' = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(x) - g'(x) \)</span></span></li>
                         </ol>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 미분계수 정의 + 극한의 사칙연산. 단원 I에서 배운 \(\lim(f+g) = \lim f + \lim g\)가 한 줄 위로 옮겨졌을 뿐. ②, ③은 항이 3개 이상일 때에도 그대로 성립. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.61 · 실수배·합·차의 미분법 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 미분계수 정의 + 극한의 사칙연산. 단원 I에서 배운 \(\lim(f+g) = \lim f + \lim g\)가 한 줄 위로 옮겨졌을 뿐. ②, ③은 항이 3개 이상일 때에도 그대로 성립.</p>
                     <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
                         <p class="text-sm font-bold text-cyan-900 mb-1">🎯 즉시 활용 — 다항함수의 미분</p>
                         <p class="text-sm text-cyan-800">\( y = x^3 - 5x^2 + 2x - 6 \)의 도함수는 \(\Rightarrow\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( y' = 3x^2 - 10x + 2 \)</span></span>. 한 줄로 끝!</p>
@@ -168,7 +168,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         곱의 미분법 — "한 쪽씩 미분, 두 항 합"
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 62~63쪽 · 곱의 미분법" data-src-rel="">교과서 62~63쪽 · 곱의 미분법</span>
                     <p class="mb-3 text-slate-700">미분가능한 두 함수 \(f(x), g(x)\)에 대하여</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">\( \{f(x) g(x)\}' = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(x) g(x) + f(x) g'(x) \)</span></span></p>
@@ -177,7 +177,7 @@
                     <div class="bg-white p-3 rounded-xl border border-teal-100 text-center">
                         <p class="text-base font-medium">\( \{f g h\}' = f' g h + f g' h + f g h' \) &nbsp; (각 위치에 차례로 미분)</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>주의 — 잘못된 직관:</strong> \(\{f g\}' \neq f' \cdot g'\). 합·차에서는 분배되지만, <strong>곱·몫에서는 분배되지 않는다</strong>. 곱의 미분은 반드시 두 항의 합 형태. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.62~63 · 곱의 미분법 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의 — 잘못된 직관:</strong> \(\{f g\}' \neq f' \cdot g'\). 합·차에서는 분배되지만, <strong>곱·몫에서는 분배되지 않는다</strong>. 곱의 미분은 반드시 두 항의 합 형태.</p>
                     <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
                         <p class="text-sm font-bold text-cyan-900 mb-1">🎯 응용 — \(\{f(x)\}^2\)의 미분</p>
                         <p class="text-sm text-cyan-800">\(y = \{f(x)\}^2 = f(x) \cdot f(x)\)에 곱의 미분 적용 \(\Rightarrow\) \(y' = f'(x) f(x) + f(x) f'(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 2 f(x) f'(x) \)</span></span>. (다항함수 합성의 첫 사례)</p>
@@ -198,8 +198,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-도함수 정의로 계산</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 도함수를 정의에 따라 구하고, \(x = -2\)에서의 미분계수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.59 · 문제 01 참고)</span>
+                        <span class="badge badge-l1">기초-도함수 정의로 계산</span> <span class="src-chip" data-src-label="교과서 59쪽 · 문제 1" data-src-rel="그대로">교과서 59쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 도함수를 정의에 따라 구하고, \(x = -2\)에서의 미분계수를 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -5x \)</span><span class="sub-q">(2) \( f(x) = 2x^2 - x \)</span><span class="sub-q">(3) \( f(x) = x^3 \)</span><span class="sub-q">(4) \( f(x) = 100 \)</span></span>
                             </div>
@@ -213,8 +213,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-공식으로 단번에 미분</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 도함수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.60·62 · 문제 02·03 참고)</span>
+                        <span class="badge badge-l1">기초-공식으로 단번에 미분</span> <span class="src-chip" data-src-label="교과서 60쪽 · 문제 2 / 62쪽 · 문제 3(1)~(3)" data-src-rel="그대로">교과서 60쪽 · 문제 2 / 62쪽 · 문제 3(1)~(3) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 도함수를 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = x^2 \)</span><span class="sub-q">(2) \( y = x^{10} \)</span><span class="sub-q">(3) \( y = 7 \)</span><span class="sub-q">(4) \( y = x^3 + x - 5 \)</span><span class="sub-q">(5) \( y = -x^4 + 2x^2 + x + 1 \)</span><span class="sub-q">(6) \( y = 2x^5 - 3x^3 - 3 \)</span></span>
                             </div>
@@ -228,8 +228,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-곱의 미분법</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 곱의 미분법을 이용하여 다음 함수를 미분하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.63 · 문제 05 참고)</span>
+                        <span class="badge badge-l1">기초-곱의 미분법</span> <span class="src-chip" data-src-label="교과서 63쪽 · 문제 5" data-src-rel="그대로">교과서 63쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 곱의 미분법을 이용하여 다음 함수를 미분하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = (x + 6)(3x - 1) \)</span><span class="sub-q">(2) \( y = (4x + 5)(x^2 - x) \)</span><span class="sub-q">(3) \( y = (3x^2 + 2)(2 - x^2) \)</span><span class="sub-q">(4) \( y = x(x + 2)(2x - 1) \)</span></span>
                             </div>
@@ -251,8 +251,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-자기참조형 다항함수</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다항함수 \(f(x)\)가 \( f(x) = 2x^3 - 3x \, f'(2) \) 를 만족시킬 때, \(f'(1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.65 · 중단원 기본 08번 참고)</span></div>
+                        <span class="badge badge-l2">응용-자기참조형 다항함수</span> <span class="src-chip" data-src-label="교과서 65쪽 · 중단원 학습 점검 기본 8" data-src-rel="그대로">교과서 65쪽 · 중단원 학습 점검 기본 8 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다항함수 \(f(x)\)가 \( f(x) = 2x^3 - 3x \, f'(2) \) 를 만족시킬 때, \(f'(1)\)의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(2)\)는 상수 \(=k\)로 두자. \(f(x) = 2x^3 - 3kx\) \(\Rightarrow\) \(f'(x) = 6x^2 - 3k\). \(x = 2\) 대입: \(f'(2) = 24 - 3k = k\) \(\Rightarrow\) \(24 = 4k\) \(\Rightarrow\) \(k = 6\). 따라서 \(f'(x) = 6x^2 - 18\). \(f'(1) = 6 - 18 = -12\).
                         </div></details>
@@ -260,8 +260,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-곱의 미분으로 \(g'(1)\) 구하기</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 미분가능한 두 함수 \(f(x), g(x)\)가 \( g(x) = (x^3 - x + 1) f(x) \) 를 만족시킨다. \(f(1) = 1\), \(f'(1) = 5\)일 때, \(g'(1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.66 · 중단원 기본 10번 참고)</span></div>
+                        <span class="badge badge-l2">응용-곱의 미분으로 \(g'(1)\) 구하기</span> <span class="src-chip" data-src-label="교과서 66쪽 · 중단원 학습 점검 기본 10" data-src-rel="그대로">교과서 66쪽 · 중단원 학습 점검 기본 10 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 미분가능한 두 함수 \(f(x), g(x)\)가 \( g(x) = (x^3 - x + 1) f(x) \) 를 만족시킨다. \(f(1) = 1\), \(f'(1) = 5\)일 때, \(g'(1)\)의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(p(x) = x^3 - x + 1\)로 두면 \(p'(x) = 3x^2 - 1\), \(p(1) = 1\), \(p'(1) = 2\). 곱의 미분: \(g'(x) = p'(x) f(x) + p(x) f'(x)\). \(x = 1\): \(g'(1) = p'(1) f(1) + p(1) f'(1) = 2 \cdot 1 + 1 \cdot 5 = 7\).
                         </div></details>
@@ -269,8 +269,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-극한식 \(\to\) 미분계수 변환</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 함수 \( f(x) = 3x^3 - x + 2 \)에 대하여 \( \displaystyle \lim_{h \to 0}\dfrac{f(1 + 3h) - f(1)}{2h} \) 의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.65 · 중단원 기본 06번 참고)</span></div>
+                        <span class="badge badge-l2">응용-극한식 \(\to\) 미분계수 변환</span> <span class="src-chip" data-src-label="교과서 65쪽 · 중단원 학습 점검 기본 6" data-src-rel="그대로">교과서 65쪽 · 중단원 학습 점검 기본 6 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 함수 \( f(x) = 3x^3 - x + 2 \)에 대하여 \( \displaystyle \lim_{h \to 0}\dfrac{f(1 + 3h) - f(1)}{2h} \) 의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 분모 \(2h\)를 분자의 변화량 \(3h\)와 맞추기. \(\dfrac{f(1+3h) - f(1)}{2h} = \dfrac{f(1+3h)-f(1)}{3h} \cdot \dfrac{3}{2}\) \(\to\) \(\dfrac{3}{2} f'(1)\). \(f'(x) = 9x^2 - 1\), \(f'(1) = 8\). 답: \(\dfrac{3}{2} \cdot 8 = 12\).
                         </div></details>
@@ -287,8 +287,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-나머지정리 + 곱의 미분</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 다항식 \( x^{10} \) 을 \( (x - 1)^2 \) 으로 나누었을 때의 나머지를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.63 · 내 역량 키움·채움·나눔 참고)</span></div>
+                        <span class="badge badge-l3">심화-나머지정리 + 곱의 미분</span> <span class="src-chip" data-src-label="교과서 63쪽 · 내 역량" data-src-rel="그대로">교과서 63쪽 · 내 역량 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 다항식 \( x^{10} \) 을 \( (x - 1)^2 \) 으로 나누었을 때의 나머지를 구하시오.</div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
@@ -309,8 +309,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 미분가능한 함수 \(f(x)\)에 대하여 \( y = \{f(x)\}^2 \)의 도함수가 \( y' = 2 f(x) f'(x) \) 임을 곱의 미분법으로 직접 보이시오. 또한 \(f(x) = x^2 + 1\)일 때 \(\{f(x)\}^2\)의 도함수를 두 가지 방법(① 전개 후 미분, ② 위 공식 사용)으로 구해 결과를 비교하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.63 · 문제 06 변형)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 63쪽 · 문제 6" data-src-rel="변형">교과서 63쪽 · 문제 6 <span class="src-rel">변형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 미분가능한 함수 \(f(x)\)에 대하여 \( y = \{f(x)\}^2 \)의 도함수가 \( y' = 2 f(x) f'(x) \) 임을 곱의 미분법으로 직접 보이시오. 또한 \(f(x) = x^2 + 1\)일 때 \(\{f(x)\}^2\)의 도함수를 두 가지 방법(① 전개 후 미분, ② 위 공식 사용)으로 구해 결과를 비교하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략:</strong> \(y = f(x) \cdot f(x)\)에 곱의 미분법 적용 \(\Rightarrow\) \(y' = f'(x) f(x) + f(x) f'(x) = 2 f(x) f'(x)\). 검증: \(f(x) = x^2 + 1\), ① \(y = (x^2+1)^2 = x^4 + 2x^2 + 1\) \(\Rightarrow\) \(y' = 4x^3 + 4x\). ② \(y' = 2(x^2+1)(2x) = 4x^3 + 4x\). 일치 ✓.
             </div></details>
@@ -601,7 +601,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_10.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

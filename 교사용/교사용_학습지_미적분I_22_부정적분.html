@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -112,7 +112,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         부정적분의 정의 — 미분의 역연산
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 107~108쪽 · 부정적분" data-src-rel="">교과서 107~108쪽 · 부정적분</span>
                     <p class="mb-3 text-slate-700">함수 \(F(x)\)의 도함수가 \(f(x)\)일 때, 즉 \(F'(x) = f(x)\)일 때, \(F(x)\)를 \(f(x)\)의 <span class="calc-accent font-bold">부정적분</span>이라 한다. 같은 도함수를 가지는 두 함수는 상수만큼만 차이가 나므로, \(f(x)\)의 부정적분은 일반적으로 다음과 같이 나타낸다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">\( \displaystyle \int f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( F(x) + C \)</span></span> &nbsp;(\(C\)는 적분상수)</p>
@@ -121,7 +121,7 @@
                     <div class="bg-white p-3 rounded-xl border border-teal-100 text-center">
                         <p class="text-lg font-bold">\( \displaystyle \dfrac{d}{dx}\int f(x)\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f(x) \)</span></span></p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> "적분 \(\to\) 미분" 하면 원래로 돌아온다. \(f(x)\)를 적분한다 = \(f(x)\)의 부정적분을 구한다 = "<span class="calc-accent font-bold">미분하면 \(f(x)\)가 되는 함수</span>를 찾는다". <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.107~108 · 부정적분의 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> "적분 \(\to\) 미분" 하면 원래로 돌아온다. \(f(x)\)를 적분한다 = \(f(x)\)의 부정적분을 구한다 = "<span class="calc-accent font-bold">미분하면 \(f(x)\)가 되는 함수</span>를 찾는다".</p>
                 </div>
 
                 <!-- 2. x^n의 부정적분 -->
@@ -129,7 +129,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         \(x^n\)과 상수함수의 부정적분 — 첫 번째 공식 카드
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 109쪽 · xⁿ과 상수함수의 부정적분" data-src-rel="">교과서 109쪽 · xⁿ과 상수함수의 부정적분</span>
                     <p class="mb-3 text-slate-700">\(\left(\dfrac{1}{n+1}x^{n+1}\right)' = x^n\)이므로, 이 식이 \(\int x^n\,dx\)의 공식의 출발점이다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ol class="space-y-3 text-lg font-medium">
@@ -138,7 +138,7 @@
                             <li>③ 특히 \( \displaystyle \int 1\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x + C \)</span></span></li>
                         </ol>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "지수를 \(1\) 올리고, 그 새 지수로 나눈다". 즉 \( \int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C \). 이는 미분 공식 \((x^n)' = n x^{n-1}\)의 정확한 역방향이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.109 · \(x^n\)·상수함수의 부정적분 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "지수를 \(1\) 올리고, 그 새 지수로 나눈다". 즉 \( \int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C \). 이는 미분 공식 \((x^n)' = n x^{n-1}\)의 정확한 역방향이다.</p>
                 </div>
 
                 <!-- 3. 실수배·합·차의 부정적분 -->
@@ -146,7 +146,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         실수배·합·차의 부정적분 — 적분도 "분배"된다
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 110~111쪽 · 부정적분의 성질 · 예제 1" data-src-rel="">교과서 110~111쪽 · 부정적분의 성질 · 예제 1</span>
                     <p class="mb-3 text-slate-700">두 함수 \(f(x), g(x)\)가 부정적분을 가질 때 (단 \(k\)는 \(0\)이 아닌 실수)</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ol class="space-y-3 text-lg font-medium">
@@ -155,10 +155,10 @@
                             <li>③ \( \displaystyle \int \{f(x) - g(x)\}\,dx = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int f(x)\,dx - \int g(x)\,dx \)</span></span></li>
                         </ol>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 미분의 \((kF)' = kF'\), \((F \pm G)' = F' \pm G'\)을 그대로 역방향으로 읽은 것. ②·③은 항이 3개 이상일 때도 성립. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.110 · 실수배·합·차의 부정적분 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 미분의 \((kF)' = kF'\), \((F \pm G)' = F' \pm G'\)을 그대로 역방향으로 읽은 것. ②·③은 항이 3개 이상일 때도 성립.</p>
                     <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
                         <p class="text-sm font-bold text-cyan-900 mb-1">🎯 즉시 활용 — 다항함수의 부정적분</p>
-                        <p class="text-sm text-cyan-800">\( \displaystyle \int (3x^2 + 4x - 2)\,dx \) = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x^3 + 2x^2 - 2x + C \)</span></span>. 항별로 \(\int x^n\,dx\) 공식 적용 후 적분상수를 하나로 묶는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 예제 1 참고)</span></p>
+                        <p class="text-sm text-cyan-800">\( \displaystyle \int (3x^2 + 4x - 2)\,dx \) = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x^3 + 2x^2 - 2x + C \)</span></span>. 항별로 \(\int x^n\,dx\) 공식 적용 후 적분상수를 하나로 묶는다.</p>
                     </div>
                 </div>
 
@@ -167,13 +167,13 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         적분상수 \(C\)의 결정 — "초기조건"이라는 단 한 줄
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 111쪽 · 예제 2" data-src-rel="">교과서 111쪽 · 예제 2</span>
                     <p class="mb-3 text-slate-700">부정적분 결과 \(F(x) + C\)에는 미지 상수 \(C\)가 남는다. <strong>한 점에서의 함숫값</strong> 같은 추가 조건이 한 줄 주어지면 \(C\)가 확정된다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base font-medium mb-2"><strong>예시:</strong> \(f'(x) = 6x^2 - 4x + 3\), \(f(0) = 4\)일 때 \(f(x)\)는?</p>
                         <p class="text-base">\(f(x) = \displaystyle\int (6x^2 - 4x + 3)\,dx = 2x^3 - 2x^2 + 3x + C\). \(f(0) = 4\)에서 \(C = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 4 \)</span></span>. 따라서 \(f(x) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 2x^3 - 2x^2 + 3x + 4 \)</span></span>.</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>기하적 해석:</strong> 도함수가 같은 함수들 \(F(x) + C\)는 그래프가 모두 <strong>\(y\)축 방향 평행이동</strong> 관계. "한 점을 지난다"는 조건 한 줄이 평행이동 위치를 못박는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 예제 2 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>기하적 해석:</strong> 도함수가 같은 함수들 \(F(x) + C\)는 그래프가 모두 <strong>\(y\)축 방향 평행이동</strong> 관계. "한 점을 지난다"는 조건 한 줄이 평행이동 위치를 못박는다.</p>
                     <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
                         <p class="text-sm font-bold text-cyan-900 mb-1">🎯 그래프형 응용 — 접선의 기울기</p>
                         <p class="text-sm text-cyan-800">"곡선 \(y = f(x)\) 위 점 \((x, y)\)에서의 접선의 기울기가 \(g(x)\)이고, 곡선이 점 \((p, q)\)를 지난다" \(\Rightarrow\) \(f'(x) = g(x)\), \(f(p) = q\)로 옮기면 위 절차 그대로 적용된다.</p>
@@ -194,8 +194,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-거듭제곱·상수의 부정적분</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.109 · 문제 02 변형 — (4) 추가)</span>
+                        <span class="badge badge-l1">기초-거듭제곱·상수의 부정적분</span> <span class="src-chip" data-src-label="교과서 109쪽 · 문제 2" data-src-rel="그대로">교과서 109쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 부정적분을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int x^6\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int x^9\,dx \)</span><span class="sub-q">(3) \( \displaystyle \int 10\,dx \)</span><span class="sub-q">(4) \( \displaystyle \int x\,dx \)</span></span>
                             </div>
@@ -209,8 +209,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-다항함수의 부정적분</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 03 참고)</span>
+                        <span class="badge badge-l1">기초-다항함수의 부정적분</span> <span class="src-chip" data-src-label="교과서 111쪽 · 문제 3" data-src-rel="그대로">교과서 111쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 부정적분을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int (4x^3 - 6x^2 + x - 4)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int (-x^4 + 2x + 5)\,dx \)</span></span>
                             </div>
@@ -224,8 +224,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-도함수 + 초기조건</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 조건을 모두 만족시키는 함수 \(f(x)\)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 04 참고)</span>
+                        <span class="badge badge-l1">기초-도함수 + 초기조건</span> <span class="src-chip" data-src-label="교과서 111쪽 · 문제 4" data-src-rel="그대로">교과서 111쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 조건을 모두 만족시키는 함수 \(f(x)\)를 구하시오.
                             <div class="ml-6 mt-2 text-lg font-medium">
                                 \( f'(x) = -8x^3 + 3x^2 - 4,\quad f(0) = -1 \)
                             </div>
@@ -245,8 +245,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-곱셈 전개 후 적분</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.121 · 중단원 기초 01번 참고)</span>
+                        <span class="badge badge-l2">응용-곱셈 전개 후 적분</span> <span class="src-chip" data-src-label="교과서 121쪽 · 중단원 학습 점검 기초 1" data-src-rel="그대로">교과서 121쪽 · 중단원 학습 점검 기초 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 부정적분을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int (x^2 - 2x + 3)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)</span></span>
                             </div>
@@ -259,8 +259,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-접선의 기울기 + 통과점</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 곡선 \(y = f(x)\) 위의 점 \((x, y)\)에서의 접선의 기울기는 \(x - 3\)이다. 이 곡선이 점 \((2, 4)\)를 지날 때, 함수 \(f(x)\)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 05 참고)</span></div>
+                        <span class="badge badge-l2">응용-접선의 기울기 + 통과점</span> <span class="src-chip" data-src-label="교과서 111쪽 · 문제 5" data-src-rel="그대로">교과서 111쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 곡선 \(y = f(x)\) 위의 점 \((x, y)\)에서의 접선의 기울기는 \(x - 3\)이다. 이 곡선이 점 \((2, 4)\)를 지날 때, 함수 \(f(x)\)를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> "접선의 기울기 \(= f'(x)\)" — 단원 II의 핵심을 적분으로 되돌린다. \(f'(x) = x - 3 \Rightarrow f(x) = \dfrac{1}{2}x^2 - 3x + C\). \(f(2) = 2 - 6 + C = 4 \Rightarrow C = 8\). 답: \(f(x) = \dfrac{1}{2}x^2 - 3x + 8\).
                         </div></details>
@@ -268,8 +268,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-도함수 형식이 다항식</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 점 \((-2, 1)\)을 지나는 곡선 \(y = f(x)\) 위의 임의의 점 \((x, y)\)에서의 접선의 기울기가 \(6x^2 + 12x + 5\)일 때, \(f(-1)\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 04번 참고)</span></div>
+                        <span class="badge badge-l2">응용-도함수 형식이 다항식</span> <span class="src-chip" data-src-label="교과서 122쪽 · 중단원 학습 점검 기본 4" data-src-rel="그대로">교과서 122쪽 · 중단원 학습 점검 기본 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 점 \((-2, 1)\)을 지나는 곡선 \(y = f(x)\) 위의 임의의 점 \((x, y)\)에서의 접선의 기울기가 \(6x^2 + 12x + 5\)일 때, \(f(-1)\)의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = 6x^2 + 12x + 5 \Rightarrow f(x) = 2x^3 + 6x^2 + 5x + C\). \(f(-2) = -16 + 24 - 10 + C = -2 + C = 1 \Rightarrow C = 3\). \(f(x) = 2x^3 + 6x^2 + 5x + 3\). \(f(-1) = -2 + 6 - 5 + 3 = 2\).
                         </div></details>
@@ -286,8 +286,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-도함수 일반항 + 두 조건</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x)\)가 \( f'(x) = 1 + 2x + 3x^2 + \cdots + n x^{n-1} \)을 만족시키고 \( f(0) = 5,\; f(1) = 11 \) 일 때, 자연수 \(n\)의 값을 구하시오. (단, \(n \geq 2\)) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 03번 참고)</span></div>
+                        <span class="badge badge-l3">심화-도함수 일반항 + 두 조건</span> <span class="src-chip" data-src-label="교과서 122쪽 · 중단원 학습 점검 기본 3" data-src-rel="그대로">교과서 122쪽 · 중단원 학습 점검 기본 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(f(x)\)가 \( f'(x) = 1 + 2x + 3x^2 + \cdots + n x^{n-1} \)을 만족시키고 \( f(0) = 5,\; f(1) = 11 \) 일 때, 자연수 \(n\)의 값을 구하시오. (단, \(n \geq 2\))</div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
@@ -309,8 +309,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 미분가능한 함수 \(f(x)\)에 대하여 \( f'(x) = ax^2 - ax \) 이고, 함수 \(f(x)\)의 극댓값이 \(6\), 극솟값이 \(5\)일 때, 함수 \(f(x)\)를 구하시오. (단, \(a \gt 0\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.122 · 중단원 기본 05번 참고)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 122쪽 · 중단원 학습 점검 기본 5" data-src-rel="그대로">교과서 122쪽 · 중단원 학습 점검 기본 5 <span class="src-rel">그대로</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 미분가능한 함수 \(f(x)\)에 대하여 \( f'(x) = ax^2 - ax \) 이고, 함수 \(f(x)\)의 극댓값이 \(6\), 극솟값이 \(5\)일 때, 함수 \(f(x)\)를 구하시오. (단, \(a \gt 0\))</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략:</strong> ① \(f'(x) = ax(x - 1) = 0 \Rightarrow x = 0, 1\). \(a \gt 0\)이므로 \(x = 0\)에서 극대, \(x = 1\)에서 극소. <br>
                 ② 적분: \(f(x) = \dfrac{a}{3}x^3 - \dfrac{a}{2}x^2 + C\). <br>
@@ -603,7 +603,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_22.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

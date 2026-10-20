@@ -64,7 +64,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -116,7 +116,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         함수의 증가와 감소 — 정의
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 78쪽 · 함수의 증가와 감소" data-src-rel="">교과서 78쪽 · 함수의 증가와 감소</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 어떤 구간에 속하는 임의의 두 실수 \(x_1, x_2\)에 대하여</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ul class="space-y-2 text-lg font-medium">
@@ -124,7 +124,7 @@
                             <li>② \(x_1 \lt x_2\)일 때 \(f(x_1) \gt f(x_2)\) \(\Rightarrow\) \(f\)는 그 구간에서 <span class="calc-accent font-bold">감소</span>한다.</li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 증가·감소는 <strong>"구간 단위"</strong>로 말한다. \(x = a\)라는 한 점 자체가 "증가"한다고 말하지 않는다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.78 · 증가·감소의 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 증가·감소는 <strong>"구간 단위"</strong>로 말한다. \(x = a\)라는 한 점 자체가 "증가"한다고 말하지 않는다.</p>
                 </div>
 
                 <!-- 2. 정의에 의한 증감 보이기 -->
@@ -132,14 +132,14 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         정의에 의한 증감 보이기 — \(f(x) = x^2\) 예시
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 79쪽 · 예제 1" data-src-rel="">교과서 79쪽 · 예제 1</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x) = x^2\)이 구간 \([0, \infty)\)에서 증가함을 보이자.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base">\(0 \leq x_1 \lt x_2\)인 임의의 두 실수에 대해</p>
                         <p class="text-base mt-2 text-center">\( f(x_2) - f(x_1) = x_2^2 - x_1^2 = (x_2 - x_1)(x_2 + x_1) \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \gt 0 \)</span></span></p>
                         <p class="text-base mt-2">이므로 \(f(x_1) \lt f(x_2)\). 따라서 \(f\)는 \([0, \infty)\)에서 증가한다. \(\blacksquare\)</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>한계:</strong> 함수가 복잡해지면 \(f(x_2) - f(x_1)\)의 부호를 인수분해로 보이기 어렵다. 일반적인 도구가 필요 \(\to\) <strong>도함수의 부호</strong>. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.79 · 예제 1 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한계:</strong> 함수가 복잡해지면 \(f(x_2) - f(x_1)\)의 부호를 인수분해로 보이기 어렵다. 일반적인 도구가 필요 \(\to\) <strong>도함수의 부호</strong>.</p>
                 </div>
 
                 <!-- 3. 도함수 부호 판정 -->
@@ -147,7 +147,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         도함수 부호로 증감 판정 — 평균값 정리의 따름정리
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 79~80쪽 · 증가와 감소의 판정" data-src-rel="">교과서 79~80쪽 · 증가와 감소의 판정</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 어떤 열린구간 \((a, b)\)에서 미분가능할 때:</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ol class="space-y-2 text-lg font-medium">
@@ -156,7 +156,7 @@
                         </ol>
                     </div>
                     <p class="mt-3 text-sm text-slate-700"><strong>정당화:</strong> 평균값 정리에서 \(\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)\) (\(c \in (x_1, x_2)\)). 분모 \(x_2 - x_1 \gt 0\)이므로 분자 \(f(x_2) - f(x_1)\)의 부호와 \(f'(c)\)의 부호가 일치.</p>
-                    <p class="mt-3 text-sm text-slate-600"><strong>⚠ 역은 일반적으로 거짓:</strong> \(f(x) = x^3\)은 \((-\infty, \infty)\)에서 증가하지만 \(f'(0) = 0\). 즉 "증가하면 \(f' \gt 0\)"은 항상 참은 아니다 — <strong>"\(f' \geq 0\)이고 등호가 고립된 점에서만 성립"</strong>까지 확장해야 정확. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.79~80 · 증가·감소의 판정 + \(x^3\) 반례 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>⚠ 역은 일반적으로 거짓:</strong> \(f(x) = x^3\)은 \((-\infty, \infty)\)에서 증가하지만 \(f'(0) = 0\). 즉 "증가하면 \(f' \gt 0\)"은 항상 참은 아니다 — <strong>"\(f' \geq 0\)이고 등호가 고립된 점에서만 성립"</strong>까지 확장해야 정확.</p>
                 </div>
 
                 <!-- 4. 증감표 작성 -->
@@ -164,7 +164,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         증감표(Sign Table) 작성법 — 함수 \(f(x) = x^3 - 3x^2 + 1\)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 80쪽 · 예제 2" data-src-rel="">교과서 80쪽 · 예제 2</span>
                     <p class="mb-3 text-slate-700">3단계 루틴: ① \(f'(x)\) 구하기 ② \(f'(x) = 0\)의 해 찾기 ③ \(f'\)의 부호를 영역별로 조사하여 표 작성.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-2">\(f'(x) = 3x^2 - 6x = 3x(x - 2)\). \(f'(x) = 0 \Rightarrow x = 0\) 또는 \(x = 2\).</p>
@@ -185,7 +185,7 @@
                         </table>
                         <p class="text-base mt-3">따라서 \(f\)는 구간 \((-\infty, 0]\), \([2, \infty)\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">증가</span></span>하고, 구간 \([0, 2]\)에서 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">감소</span></span>한다.</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 증감표는 단원 II-2 전체(증감·극값·그래프·방정식과 부등식)의 <strong>공통 작업판</strong>. 매번 정확히 작성하는 습관이 후속 차시 15~18 전체의 기반. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.80 · 예제 2 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 증감표는 단원 II-2 전체(증감·극값·그래프·방정식과 부등식)의 <strong>공통 작업판</strong>. 매번 정확히 작성하는 습관이 후속 차시 15~18 전체의 기반.</p>
                 </div>
             </div>
         </section>
@@ -202,8 +202,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-증감 조사 (삼차·사차함수)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 증가와 감소를 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.81 · 문제 02 참고)</span>
+                        <span class="badge badge-l1">기초-증감 조사 (삼차·사차함수)</span> <span class="src-chip" data-src-label="교과서 81쪽 · 문제 2" data-src-rel="그대로">교과서 81쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 증가와 감소를 조사하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -2x^3 + 3x^2 + 12x - 3 \)</span><span class="sub-q">(2) \( f(x) = 2x^3 + 6x^2 + 6x + 7 \)</span><span class="sub-q">(3) \( f(x) = -x^3 - 6x + 1 \)</span><span class="sub-q">(4) \( f(x) = x^4 - 2x^2 + 5 \)</span></span>
                             </div>
@@ -215,8 +215,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-구간 한정 증감</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \(f(x) = x^3 - 12x + 5\)가 구간 \([-2, 2]\)에서 증가하는 구간과 감소하는 구간을 각각 찾으시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.80 · 예제 2 변형 참고)</span></div>
+                        <span class="badge badge-l1">기초-구간 한정 증감</span> <span class="src-chip" data-src-label="교과서 80쪽 · 예제 2" data-src-rel="유형">교과서 80쪽 · 예제 2 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \(f(x) = x^3 - 12x + 5\)가 구간 \([-2, 2]\)에서 증가하는 구간과 감소하는 구간을 각각 찾으시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)\). \(f'(x) = 0 \Rightarrow x = \pm 2\). 구간 \([-2, 2]\) 내부에서 \(f'(x) \lt 0\) 일관 \(\Rightarrow\) 전 구간 감소. 따라서 \([-2, 2]\)에서 \(f\)는 감소하고, 증가 구간은 없다.
                         </div></details>
@@ -224,8 +224,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-증감과 현실 (전하량)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 시각 \(t\)에서 어느 전선의 한 단면을 지나는 전하량 \(Q(t)\,\mathrm{C}\)이 \( Q(t) = t^3 - 6t^2 + 9t + 2 \)라고 할 때, 전하량이 <strong>감소하는</strong> 시각 \(t\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.81 · 문제 03 (수학+과학) 참고)</span></div>
+                        <span class="badge badge-l1">기초-증감과 현실 (전하량)</span> <span class="src-chip" data-src-label="교과서 81쪽 · 문제 3" data-src-rel="그대로">교과서 81쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 시각 \(t\)에서 어느 전선의 한 단면을 지나는 전하량 \(Q(t)\,\mathrm{C}\)이 \( Q(t) = t^3 - 6t^2 + 9t + 2 \)라고 할 때, 전하량이 <strong>감소하는</strong> 시각 \(t\)의 값의 범위를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(Q'(t) = 3t^2 - 12t + 9 = 3(t - 1)(t - 3)\). \(1 \lt t \lt 3\)에서 \(Q'(t) \lt 0\)이고 \(Q(t)\)는 연속이므로 끝점을 포함한 닫힌구간 \([1,\ 3]\)에서 감소한다. 따라서 \(1 \leq t \leq 3\)에서 전하량이 감소. (교과서도 감소하는 범위를 닫힌구간으로 답한다.)
                         </div></details>
@@ -241,8 +241,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-실수 전체에서 증가하는 삼차함수</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 삼차함수 \( f(x) = x^3 + ax^2 + 3x + 1 \)이 구간 \((-\infty, \infty)\)에서 증가하도록 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 06번 참고)</span></div>
+                        <span class="badge badge-l2">응용-실수 전체에서 증가하는 삼차함수</span> <span class="src-chip" data-src-label="교과서 97쪽 · 중단원 학습 점검 기본 6" data-src-rel="그대로">교과서 97쪽 · 중단원 학습 점검 기본 6 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 삼차함수 \( f(x) = x^3 + ax^2 + 3x + 1 \)이 구간 \((-\infty, \infty)\)에서 증가하도록 하는 실수 \(a\)의 값의 범위를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = 3x^2 + 2ax + 3\). 실수 전체에서 증가 \(\Leftrightarrow f'(x) \geq 0\) (모든 \(x\)). \(f'\)는 위로 볼록한 포물선이 아닌 <strong>아래로 볼록</strong>한 이차함수이므로 판별식 \(D \leq 0\). \(D/4 = a^2 - 9 \leq 0 \Rightarrow -3 \leq a \leq 3\). <strong>핵심:</strong> 삼차의 일계도함수는 이차 \(\Rightarrow\) "모든 \(x\)에서 \(\geq 0\)" 조건은 <strong>최고차계수 \(\gt 0\) + 판별식 \(\leq 0\)</strong>의 결합. (등호 포함은 \(f'(x) = 0\)이 고립된 점에서만 성립할 때 함수가 여전히 증가함을 활용.)
                         </div></details>
@@ -250,8 +250,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-구간 한정 + 매개변수</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \( f(x) = 2x^3 - 9x^2 + 12x + k \)가 구간 \([0, 3]\)에서 <strong>감소</strong>하는 구간이 존재하지 않도록 하는 실수 \(k\)의 값의 범위를 구하시오. (단, "감소하는 구간이 존재하지 않음"은 그 구간에서 함수가 일관 증가함을 뜻한다.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 3 함정 기반 변형)</span></div>
+                        <span class="badge badge-l2">응용-구간 한정 + 매개변수</span> <span class="src-chip" data-src-label="교과서 79~80쪽 · 증가와 감소의 판정" data-src-rel="유형">교과서 79~80쪽 · 증가와 감소의 판정 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \( f(x) = 2x^3 - 9x^2 + 12x + k \)가 구간 \([0, 3]\)에서 <strong>감소</strong>하는 구간이 존재하지 않도록 하는 실수 \(k\)의 값의 범위를 구하시오. (단, "감소하는 구간이 존재하지 않음"은 그 구간에서 함수가 일관 증가함을 뜻한다.)</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2)\). 구간 \([0, 3]\) 내부에 \(f'(x) = 0\)인 점 \(x = 1, 2\)가 있고 \(1 \lt x \lt 2\)에서 \(f'(x) \lt 0\) — <strong>이 부분이 감소 구간</strong>. \(k\)의 값과 무관하게 \(f'\)의 부호 분포는 동일하므로, "감소 구간이 존재하지 않도록 하는 \(k\)"는 <strong>존재하지 않는다</strong>. 핵심: 도함수의 부호는 평행이동 \(k\)와 무관 \(\Rightarrow\) <strong>"이런 \(k\)는 없다"가 정답</strong>. (수업 중 함정 분석으로 사용 가능. 학생들은 "\(k\) 범위가 있다"고 가정하기 쉽다.)
                         </div></details>
@@ -259,8 +259,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-수리 언어 소양: 도함수의 그래프로 증감 읽기</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림은 이차함수 \(f(x)\)와 삼차함수 \(g(x)\)의 <strong>도함수</strong> \(y = f'(x)\), \(y = g'(x)\)의 그래프이다. 두 함수 \(f(x), g(x)\)의 증가와 감소를 조사하고 그 이유를 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.81 · 문제 04 (수리 언어 소양) 참고)</span>
+                        <span class="badge badge-l2">응용-수리 언어 소양: 도함수의 그래프로 증감 읽기</span> <span class="src-chip" data-src-label="교과서 81쪽 · 문제 4" data-src-rel="그대로">교과서 81쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림은 이차함수 \(f(x)\)와 삼차함수 \(g(x)\)의 <strong>도함수</strong> \(y = f'(x)\), \(y = g'(x)\)의 그래프이다. 두 함수 \(f(x), g(x)\)의 증가와 감소를 조사하고 그 이유를 설명하시오.
                             <div class="mt-3 flex justify-center">
                                 <img src="images/calc_14_q5_derivgraph.png" alt="P.81 f'(x), g'(x) 그래프" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:260px;">
                             </div>
@@ -281,8 +281,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-내 역량: 학생의 주장 판정</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 최고차항의 계수가 양수인 삼차함수 \(f(x)\)에 대하여 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고, 그 이유를 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.81 · 내 역량 키움·채움·나눔)</span>
+                        <span class="badge badge-l3">심화-내 역량: 학생의 주장 판정</span> <span class="src-chip" data-src-label="교과서 81쪽 · 내 역량" data-src-rel="그대로">교과서 81쪽 · 내 역량 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 최고차항의 계수가 양수인 삼차함수 \(f(x)\)에 대하여 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고, 그 이유를 설명하시오.
                             <div class="mt-3 p-4 bg-white rounded-xl border-2 border-orange-200">
                                 <p class="text-base text-slate-700">📢 학생: "열린구간 \((a, b)\)에서 함수 \(f(x)\)가 <strong>증가</strong>하면 이 구간에서 <strong>\(f'(x) \geq 0\)</strong>이야!"</p>
                             </div>
@@ -315,8 +315,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(f(x) = x^3 - 3ax^2 + 3(a^2 - 1)x + 1\)이 구간 \((-\infty, \infty)\)에서 <strong>증가</strong>하도록 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 2 문제 4번 일반화)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 97쪽 · 중단원 학습 점검 기본 6" data-src-rel="유형">교과서 97쪽 · 중단원 학습 점검 기본 6 <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(f(x) = x^3 - 3ax^2 + 3(a^2 - 1)x + 1\)이 구간 \((-\infty, \infty)\)에서 <strong>증가</strong>하도록 하는 실수 \(a\)의 값의 범위를 구하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략:</strong> \(f'(x) = 3x^2 - 6ax + 3(a^2 - 1) = 3(x^2 - 2ax + a^2 - 1)\). 실수 전체 증가 \(\Leftrightarrow f'(x) \geq 0\) (모든 \(x\)) \(\Leftrightarrow\) 판별식 \(D \leq 0\). \(D/4 = a^2 - (a^2 - 1) = 1 \gt 0\) — 항상! \(\Rightarrow\) 어떤 \(a\)에 대해서도 \(f'(x) \geq 0\)이 모든 \(x\)에서 성립하지 않는다. 따라서 <strong>그러한 \(a\)는 존재하지 않는다</strong>. <strong>의미:</strong> 매개변수 형태가 항상 "유효한 \(a\) 범위"를 만들어 주는 것은 아니다. 판별식이 양수 일정이면 도함수에 항상 음의 구간이 존재 — Level 2 문제 5의 일반화 패턴.
             </div></details>
@@ -610,7 +610,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_14.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
