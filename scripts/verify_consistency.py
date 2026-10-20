@@ -9,6 +9,7 @@
        · 적분·극한·합 첨자(∫_a^b, lim_{x→a})는 같은 종류끼리 따로 비교
        · Nav 가 수식을 말로 바꾼 정상 사례는 scripts/consistency_allow.json 에 (차시, 문항, 검사, 이유) 로 허용
        · 학습지 문항 배지(기초·기본·도전) ↔ Nav 카드 lvl 표시가 다르면 실패
+       · 출처 칩: Nav 판서 칠판(data-src-label·rel)과 카드 머리줄 칩이 학습지의 같은 화면 칩과 다르면 실패
   3) 정답 : Nav q-ans 의 핵심 값(수식·숫자)이 학습지 힌트/풀이와 판서 계획('b:' 결과 줄)에 나오는지 — 경고 (휴리스틱)
   4) 묶음 최신 여부 : 학습지_전체_묶음_미적분I.html 에 각 학습지 문항 블록이 그대로 있는지 — 실패
                      교사용 통합본 2개는 build_teacher_bundles.py --check 로 '변화 없음'인지 — 실패
@@ -545,6 +546,63 @@ def drop_choices(s: str) -> str:
     return re.sub(r"[①②③④⑤]\s*(?:<[^>]*>\s*)*\\\([\s\S]*?\\\)", " ", s)
 
 
+NAV_BOARD_RE = re.compile(r'<div class="nv-board" data-key="([^"]+)"(?: data-label="[^"]*")?'
+                          r'(?: data-src-label="([^"]*)" data-src-rel="([^"]*)")?')
+
+
+def check2_src(nn, page, nav):
+    """출처 칩 — 학습지(정본) 화면 키별 칩 ↔ Nav 칠판 · 카드 머리줄"""
+    def norm_src(lab, rel):
+        return html.unescape(lab) + (" · " + rel if rel else "")
+    boards = {}
+    for m in re.finditer(r'<div class="nv-board"[^>]*>', nav):
+        tag = m.group(0)
+        k = re.search(r'data-key="([^"]+)"', tag)
+        lab = re.search(r'data-src-label="([^"]*)"', tag)
+        rel = re.search(r'data-src-rel="([^"]*)"', tag)
+        if k:
+            boards[k.group(1)] = norm_src(lab.group(1), rel.group(1) if rel else "") if lab else ""
+    # 학습지 쪽 — 문항 탭은 배지 단위, 생각 열기·개념·형성평가는 섹션 안 칩 순서
+    want = {}
+    cnt = collections.Counter()
+    for tab, title, sec, _ in sections(page):
+        if tab in (None, "reflect", "challenge"):
+            continue
+        sec = re.sub(r"<!--[\s\S]*?-->", "", sec)
+        if tab in ("level", "practice"):
+            for b in re.finditer(r'<span class="badge ', sec):
+                cnt[tab] += 1
+                cm = CHIP_RE.search(sec, b.start(), b.start() + 600)
+                if cm:
+                    want[f"{tab}.{cnt[tab]}"] = chip_source(cm)
+        elif tab == "concept":
+            for cm in CHIP_RE.finditer(sec):
+                cnt[tab] += 1
+                want[f"concept.{cnt[tab]}"] = chip_source(cm)
+        else:
+            cm = CHIP_RE.search(sec)
+            if cm:
+                want[f"{tab}.1"] = chip_source(cm)
+    for k, v in want.items():
+        if boards.get(k) is None:
+            fail(2, f"{nn}차시 {k}", "Nav 에 이 화면의 판서 칠판 없음 — 출처를 달 곳이 없다")
+        elif boards[k] != v:
+            fail(2, f"{nn}차시 {k}", f"출처 다름 — 학습지 '{v}' · Nav 칠판 '{boards[k] or '(없음)'}'")
+    for k, v in boards.items():
+        if v and k not in want:
+            fail(2, f"{nn}차시 {k}", f"Nav 칠판에만 출처 '{v}' (학습지에 칩 없음)")
+    # 카드 머리줄 칩은 바로 뒤 칠판과 같아야 한다
+    for m in re.finditer(r'<div class="prob-card[^"]*">', nav):
+        el = element_at(nav, m.start())
+        bm = NAV_BOARD_RE.search(nav, m.start() + len(el))
+        if not bm or bm.group(1).startswith("challenge"):
+            continue
+        cm = CHIP_RE.search(el)
+        got = chip_source(cm) if cm else ""
+        if got != boards.get(bm.group(1), ""):
+            fail(2, f"{nn}차시 {bm.group(1)}", f"카드 칩 '{got or '(없음)'}' ↔ 칠판 '{boards.get(bm.group(1)) or '(없음)'}'")
+
+
 def check2(nn, probs, cards, allow):
     by_num = {c["num"]: c for c in cards}
     seen = set()
@@ -839,6 +897,7 @@ def main():
             fail(2, f"{nn}차시", "교사용 Nav 없음")
         if 2 in only and np_:
             check2(nn, probs, cards, allow)
+            check2_src(nn, read(sp), read(np_))
         if 3 in only and np_:
             check3(nn, probs, cards, board_pages(nn))
         if 4 in only and bsecs:
