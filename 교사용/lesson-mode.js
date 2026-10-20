@@ -10,6 +10,11 @@
    키보드   : ←/→ · PageUp/PageDown(프레젠터) 이전/다음, 1~9 탭
    판서 구역: window.LM_BOARD_PLAN (boardplans/<차시>.js) 이 있으면
               페이지별 구역 틀(①②③ 제목)을 그린다. 없으면 빈 칠판.
+   판서 예시: 구역의 ex 줄을 숨겨 두고 누르면 한 줄씩 보인다 (두 번 누르면 그 구역 전체).
+              판서 공간 아래 [◀ 이전 단계 · 다음 줄 ▶ · 모두 보이기 · 모두 숨기기].
+              ↓/↑ 다음 줄·이전 단계. [판서 ▾ → 키로 한 줄씩] 을 켜면 →/PageDown 이
+              먼저 다음 줄을 보이고 다 보이면 다음 화면 (←/PageUp 은 거꾸로).
+              [그래프 개형] 을 켜면 plot 이 있는 구역은 마지막 단계에 개형이 나온다.
    ============================================================ */
 (function () {
   'use strict';
@@ -29,7 +34,8 @@
   ];
   var ZONE_NUM = ['①', '②', '③', '④', '⑤', '⑥'];
 
-  var state = { on: false, tab: 0, page: 0, bg: null, zones: true, wide: false, cls: null };
+  var state = { on: false, tab: 0, page: 0, bg: null, zones: true, wide: false, cls: null,
+    rev: {}, stepKeys: false, plot: false };
   var tabs = [];          // [{key,name,pages:[{el,sub}]}]
   var homes = [];         // 원위치 복원용 [{el, marker}]
   var app, ui = {};
@@ -117,6 +123,7 @@
     if (c === state.cls) return;
     saveProg();
     state.cls = c;
+    state.rev = {};                // 반이 바뀌면 판서 예시는 다시 처음부터
     var pos = loadProg().pos[c];
     go(pos ? pos.t : 0, pos ? pos.p : 0);
     openPickerSilently(function (api) { api.setClass(c); });
@@ -310,6 +317,21 @@
       fit();
     });
     ui.boardMenu.appendChild(ui.wideBtn);
+    // 판서 예시 — 프레젠터 키로 한 줄씩 · 그래프 개형 (브라우저에 기억)
+    ui.boardMenu.appendChild(h('div', 'lm-pop-h', '판서 예시'));
+    ui.stepKeyBtn = h('button', 'lm-btn', '→ 키로 한 줄씩');
+    ui.stepKeyBtn.type = 'button';
+    ui.stepKeyBtn.title = '켜면 →·PageDown(프레젠터)이 판서 예시를 한 줄씩 보이고, 다 보이면 다음 화면으로 (←·PageUp 은 거꾸로)';
+    ui.stepKeyBtn.addEventListener('click', function () {
+      state.stepKeys = !state.stepKeys; savePref();
+      ui.stepKeyBtn.classList.toggle('is-on', state.stepKeys);
+    });
+    ui.boardMenu.appendChild(ui.stepKeyBtn);
+    ui.plotBtn = h('button', 'lm-btn', '그래프 개형');
+    ui.plotBtn.type = 'button';
+    ui.plotBtn.title = '켜면 개형이 있는 구역은 마지막 단계에 그래프가 나온다 (끄면 선생님이 직접 그릴 빈 좌표축)';
+    ui.plotBtn.addEventListener('click', function () { state.plot = !state.plot; savePref(); renderBoard(); });
+    ui.boardMenu.appendChild(ui.plotBtn);
     ui.boardBtn.addEventListener('click', function (e) { e.stopPropagation(); togglePop(ui.boardMenu, ui.boardBtn); });
     ui.boardMenu.addEventListener('click', function (e) { e.stopPropagation(); });
     tools.appendChild(ui.boardBtn);
@@ -371,6 +393,7 @@
     // 이전 페이지 내용을 원위치로
     while (ui.page.firstChild) restoreOne(ui.page.firstChild);
     if (t !== state.tab || p !== state.page) state.bg = null;   // 배경 수동 선택은 그 화면에서만
+    tap.zone = -1;
     state.tab = t; state.page = p;
     var u = pages[p];
     park(u.el);
@@ -510,10 +533,232 @@
     s.appendChild(lx); s.appendChild(ly);
     return s;
   }
+  // 판서 계획의 개형 — 교사용 Nav(lesson-board.js) 와 같은 방식 (눈금 없음, 개형만)
+  function plotSVG(lbl, plot) {
+    var f;
+    try { f = new Function('t', 'return ' + plot.f); } catch (e) { return null; }
+    var x = (lbl && lbl.x) || 'x', y = (lbl && lbl.y) || 'y';
+    var ns = 'http://www.w3.org/2000/svg';
+    var L = 90, R = 960, T = 50, B = 560;
+    var a = plot.t[0], b = plot.t[1], n = 120, pts = [], lo = 0, hi = 0, i, tt, v;
+    for (i = 0; i <= n; i++) {
+      tt = a + (b - a) * i / n;
+      try { v = f(tt); } catch (e) { v = NaN; }
+      pts.push([tt, v]);
+      if (!isFinite(v)) continue;
+      if (v < lo) lo = v; if (v > hi) hi = v;
+    }
+    if (hi === lo) hi = lo + 1;
+    var sx = function (t) { return L + (R - L) * (t - a) / (b - a); };
+    var sy = function (v) { return B - (B - T) * (v - lo) / (hi - lo); };
+    var ox = sx(Math.max(a, Math.min(b, 0))), oy = sy(0), body = '';
+    var segs = [[]];      // f 가 NaN·±Infinity 인 곳에서 선을 끊는다 (점프가 세로선으로 이어지지 않게)
+    pts.forEach(function (p) {
+      if (isFinite(p[1])) segs[segs.length - 1].push(sx(p[0]).toFixed(1) + ',' + sy(p[1]).toFixed(1));
+      else if (segs[segs.length - 1].length) segs.push([]);
+    });
+    segs.forEach(function (sg) {
+      if (sg.length > 1) body += '<polyline fill="none" stroke="#1e293b" stroke-width="3" vector-effect="non-scaling-stroke" points="' + sg.join(' ') + '"/>';
+    });
+    (plot.marks || []).forEach(function (m) {
+      var mv; try { mv = f(m[0]); } catch (e) { mv = NaN; }
+      if (!isFinite(mv)) return;
+      var px = sx(m[0]), py = sy(mv), c = m[2] || '#1d4ed8';
+      body += '<line x1="' + px + '" y1="' + py + '" x2="' + px + '" y2="' + oy + '" stroke="#94a3b8" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"/>' +
+        '<circle cx="' + px + '" cy="' + py + '" r="9" fill="' + c + '"/>' +
+        '<text x="' + (px + 14) + '" y="' + (py - 16) + '" fill="' + c + '" font-size="34" font-weight="700"></text>';
+    });
+    var s = document.createElementNS(ns, 'svg');
+    s.setAttribute('class', 'lm-plot');
+    s.setAttribute('viewBox', '0 0 1000 600');
+    s.setAttribute('preserveAspectRatio', 'none');
+    s.innerHTML = '<line x1="30" y1="' + oy + '" x2="985" y2="' + oy + '" stroke="#94a3b8" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+      '<line x1="' + ox + '" y1="590" x2="' + ox + '" y2="10" stroke="#94a3b8" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+      '<text x="955" y="' + Math.min(590, oy + 40) + '" fill="#64748b" font-size="34" font-style="italic"></text>' +
+      '<text x="' + (ox + 16) + '" y="40" fill="#64748b" font-size="34" font-style="italic"></text>' + body;
+    // 글자는 textContent 로 — 계획 문장의 < > 가 태그로 먹히지 않게
+    var texts = s.querySelectorAll('text');
+    texts[0].textContent = x; texts[1].textContent = y;
+    var mi = 2;
+    (plot.marks || []).forEach(function (m) {
+      var mv; try { mv = f(m[0]); } catch (e) { mv = NaN; }
+      if (isFinite(mv) && texts[mi]) texts[mi++].textContent = m[1];
+    });
+    return s;
+  }
+
+  /* ---------- 판서 예시 단계 공개 ---------- */
+  // 화면마다 공개 상태(구역별 몇 단계)와 되돌리기 기록을 기억한다.
+  // 다른 화면에 갔다 와도 그대로, 반을 바꾸면 처음부터. 숨긴 줄도 자리는 차지한다(공개할 때 글이 밀리지 않게).
+  var tap = { zone: -1, t: 0, before: null, histLen: 0 };
+  var mjChain = Promise.resolve();
+  function loadPref() {
+    try { return JSON.parse(localStorage.getItem('lm:pref') || 'null') || {}; } catch (e) { return {}; }
+  }
+  function savePref() {
+    try { localStorage.setItem('lm:pref', JSON.stringify({ step: state.stepKeys, plot: state.plot })); } catch (e) { /* 무시 */ }
+  }
+  function zoneSteps(z) {
+    return (z && z.ex ? z.ex.length : 0) + (state.plot && z && z.plot && z.axes ? 1 : 0);
+  }
+  function revState() {
+    var pp = pagePlan(), zs = (pp && pp.zones) || [];
+    var k = tabs[state.tab].key + '.' + (state.page + 1);
+    var r = state.rev[k];
+    if (!r || r.n.length !== zs.length) r = state.rev[k] = { n: zs.map(function () { return 0; }), hist: [] };
+    r.n = r.n.map(function (v, i) { return Math.min(v, zoneSteps(zs[i])); });   // 그래프를 끄면 단계가 줄어든다
+    return { r: r, zs: zs };
+  }
+  function revTotals() {
+    var s = revState(), shown = 0, all = 0;
+    s.zs.forEach(function (z, i) { all += zoneSteps(z); shown += s.r.n[i]; });
+    return { shown: shown, all: all };
+  }
+  function revSet(n) {
+    var s = revState();
+    if (n.join() === s.r.n.join()) return false;
+    s.r.hist.push(s.r.n.slice());
+    if (s.r.hist.length > 300) s.r.hist.shift();
+    s.r.n = n;
+    applyReveal();
+    return true;
+  }
+  // 다음 한 줄 — 아직 덜 보인 첫 구역에서
+  function revNext() {
+    var s = revState(), n = s.r.n.slice();
+    for (var i = 0; i < s.zs.length; i++) {
+      if (n[i] < zoneSteps(s.zs[i])) { n[i]++; return revSet(n); }
+    }
+    return false;
+  }
+  // 이전 단계 — 마지막으로 한 일을 되돌린다 (두 번 눌러 구역 전체를 연 것도 한 번에)
+  function revUndo() {
+    var s = revState();
+    if (!s.r.hist.length) return false;
+    s.r.n = s.r.hist.pop();
+    applyReveal();
+    return true;
+  }
+  // 키보드 ←/↑ — 보이는 줄이 있을 때만 되돌리고, 없으면 false (→ 이전 화면)
+  function revBack() {
+    var s = revState();
+    if (!revTotals().shown) return false;
+    if (revUndo()) return true;
+    var n = s.r.n.slice();
+    for (var i = n.length - 1; i >= 0; i--) if (n[i] > 0) { n[i]--; s.r.n = n; applyReveal(); return true; }
+    return false;
+  }
+  function revAll(show) {
+    var s = revState();
+    return revSet(s.zs.map(function (z) { return show ? zoneSteps(z) : 0; }));
+  }
+  function onZoneTap(i) {
+    var s = revState(), now = Date.now();
+    if (tap.zone === i && now - tap.t < 450 && tap.before) {
+      // 두 번 누름 → 그 구역 전체. 앞의 한 번 누름은 기록에서 지워 [이전 단계] 한 번에 원래대로
+      s.r.hist.length = tap.histLen;
+      var all = tap.before.slice();
+      all[i] = zoneSteps(s.zs[i]);
+      s.r.n = tap.before.slice();
+      tap.zone = -1;
+      revSet(all);
+      return;
+    }
+    tap = { zone: i, t: now, before: s.r.n.slice(), histLen: s.r.hist.length };
+    if (s.r.n[i] < zoneSteps(s.zs[i])) { var n = s.r.n.slice(); n[i]++; revSet(n); }
+  }
+  function applyReveal() {
+    if (!ui.zoneEls || !ui.zoneEls.length) return;
+    var s = revState(), tot = 0, all = 0;
+    ui.zoneEls.forEach(function (ze, i) {
+      var z = s.zs[i], n = s.r.n[i], m = zoneSteps(z), exn = (z.ex || []).length;
+      tot += n; all += m;
+      ze.lines.forEach(function (ln, j) { ln.classList.toggle('is-shown', j < n); });
+      var pon = !!ze.pl && n > exn;
+      if (ze.pl) ze.pl.classList.toggle('is-shown', pon);
+      if (ze.ax) ze.ax.classList.toggle('is-off', pon);
+      ze.el.classList.toggle('is-split', !!(ze.ax || ze.pl) && n > 0 && exn > 0);
+      ze.cnt.textContent = m ? n + '/' + m : '';
+      ze.cnt.classList.toggle('is-done', m > 0 && n >= m);
+    });
+    if (ui.exCnt) {
+      ui.exCnt.textContent = tot + '/' + all;
+      ui.exPrev.disabled = !s.r.hist.length;
+      ui.exNext.disabled = tot >= all;
+      ui.exAll.disabled = tot >= all;
+      ui.exNone.disabled = tot === 0;
+    }
+  }
+  function exLine(src) {
+    var cls = '';
+    src = String(src);
+    var m = /^([bgr]):/.exec(src);
+    if (m) { cls = ' c-' + m[1]; src = src.slice(2); }
+    // 계획 문장은 글자 그대로 — < > & 가 태그로 먹히지 않게 (PITFALLS A-3)
+    src = src.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    src = src.replace(/\[\[([bgr]):([\s\S]*?)\]\]/g, function (_, c, t) { return '<span class="c-' + c + '">' + t + '</span>'; });
+    var d = h('div', 'lm-ex-line' + cls);
+    d.innerHTML = src;
+    return d;
+  }
+  // 판서 예시 글자 크기 — 구역마다 넘치지 않는 가장 큰 크기로 (숨긴 줄 포함해 미리 맞춘다)
+  // 한 구역의 긴 줄 때문에 다른 구역까지 작아지지 않게 따로 맞춘다. transform 아닌 font-size (PITFALLS C-9)
+  function fitBoard() {
+    if (!state.on || !ui.zoneEls || !ui.zoneEls.length) return;
+    var w = ui.board.clientWidth || 960;
+    var max = Math.max(18, Math.min(44, Math.round(w / 960 * 34)));   // 교실 뒤에서도 읽히게 크게 시작해 줄인다
+    var chip = ui.board.querySelector('.lm-board-src');
+    ui.zoneEls.forEach(function (z, i) {
+      var b = z.box;
+      if (!b.children.length) return;
+      z.el.classList.remove('is-stack');
+      b.style.top = '';
+      // 오른쪽 위 출처 표시가 첫 구역의 첫 줄을 가리지 않게 아래로 내린다
+      if (i === 0 && chip) {
+        var need = Math.ceil(chip.getBoundingClientRect().bottom - z.el.getBoundingClientRect().top + 6);
+        if (need > 22) b.style.top = need + 'px';
+      }
+      var s = fitBox(b, max);
+      // 좌표 구역: 옆에 두면 너무 작아지는 긴 식은 그래프 위로 올린다 (더 크게 보이는 쪽)
+      if ((z.ax || z.pl) && s < max * 0.8) {
+        z.el.classList.add('is-stack');
+        var s2 = fitBox(b, max);
+        if (s2 > s) {
+          var last = b.lastElementChild;
+          z.el.style.setProperty('--lm-svg-top', (b.offsetTop + last.offsetTop + last.offsetHeight + 6) + 'px');
+        } else {
+          z.el.classList.remove('is-stack');
+          fitBox(b, max);
+        }
+      }
+    });
+  }
+  function fitBox(b, max) {
+    var size = max;
+    b.style.setProperty('--lm-ex', size + 'px');
+    while (size > 11 && (b.scrollHeight > b.clientHeight + 1 || b.scrollWidth > b.clientWidth + 1)) {
+      size -= 1;
+      b.style.setProperty('--lm-ex', size + 'px');
+    }
+    return size;
+  }
+  function exBtn(label, cls, title, fn) {
+    var b = h('button', 'lm-exb' + (cls ? ' ' + cls : ''), label);
+    b.type = 'button';
+    b.title = title;
+    b.addEventListener('click', function (e) { e.stopPropagation(); closePops(); fn(); });
+    return b;
+  }
+
   function renderBoard() {
     var pp = pagePlan();
     var bg = state.bg || (pp && pp.bg) || 'grid';
+    if (window.MathJax && MathJax.typesetClear) { try { MathJax.typesetClear([ui.board]); } catch (e) { /* 무시 */ } }
     ui.board.innerHTML = '';
+    ui.zoneEls = [];
+    ui.exCnt = null;
+    ui.stepKeyBtn.classList.toggle('is-on', state.stepKeys);
+    ui.plotBtn.classList.toggle('is-on', state.plot);
     ui.board.className = 'lm-board' + (bg === 'grid' ? ' bg-grid' : '');
     Object.keys(ui.bgBtns).forEach(function (k) { ui.bgBtns[k].classList.toggle('is-on', k === bg); });
     ui.zoneBtn.classList.toggle('is-on', state.zones);
@@ -523,24 +768,67 @@
       ui.board.appendChild(ax);
     }
     var zones = h('div', 'lm-zones' + (state.zones ? '' : ' is-hidden'));
+    var anyEx = false;
     if (pp && pp.zones && pp.zones.length) {
       pp.zones.forEach(function (z, i) {
         var d = h('div', 'lm-zone');
         d.style.flexGrow = String(z.h || 1);
-        d.appendChild(h('span', 'lm-zone-label', ZONE_NUM[i] + ' ' + String(z.t).replace(/^\s*[①-⑩]\s*/, '')));
-        if (z.axes) d.appendChild(axesSVG(z.axes === true ? null : z.axes, true));
+        var lab = h('span', 'lm-zone-label', ZONE_NUM[i] + ' ' + String(z.t).replace(/^\s*[①-⑩]\s*/, ''));
+        var cnt = h('span', 'lm-zone-cnt');
+        lab.appendChild(cnt);
+        d.appendChild(lab);
+        var ax = null, pl = null;
+        if (z.axes) {
+          ax = axesSVG(z.axes === true ? null : z.axes, true);
+          ax.setAttribute('class', 'lm-ax');
+          d.appendChild(ax);
+          d.classList.add('has-axes');
+          if (z.plot && state.plot) { pl = plotSVG(z.axes === true ? null : z.axes, z.plot); if (pl) d.appendChild(pl); }
+        }
+        var box = h('div', 'lm-ex');
+        (z.ex || []).forEach(function (src) { box.appendChild(exLine(src)); });
+        d.appendChild(box);
+        if (zoneSteps(z)) {
+          anyEx = true;
+          d.classList.add('has-ex');
+          d.title = '누르면 판서 예시 한 줄 · 두 번 누르면 이 구역 전체';
+          d.addEventListener('click', function (e) { e.stopPropagation(); closePops(); onZoneTap(i); });
+        }
+        ui.zoneEls.push({ el: d, box: box, lines: Array.prototype.slice.call(box.children), cnt: cnt, ax: ax, pl: pl });
         zones.appendChild(d);
       });
+      if (anyEx) zones.classList.add('has-ex');
       ui.board.appendChild(zones);
     }
+    if (anyEx) {
+      var exbar = h('div', 'lm-exbar');
+      ui.exPrev = exBtn('◀ 이전 단계', '', '마지막으로 보인 것을 되돌린다 (↑)', revUndo);
+      ui.exNext = exBtn('다음 줄 ▶', 'is-main', '판서 예시 다음 한 줄 (↓)', revNext);
+      ui.exAll = exBtn('모두 보이기', '', '이 화면의 판서 예시를 모두 보인다', function () { revAll(true); });
+      ui.exNone = exBtn('모두 숨기기', '', '이 화면의 판서 예시를 모두 숨긴다', function () { revAll(false); });
+      ui.exCnt = h('span', 'lm-excnt');
+      exbar.appendChild(ui.exPrev); exbar.appendChild(ui.exNext);
+      exbar.appendChild(ui.exAll); exbar.appendChild(ui.exNone); exbar.appendChild(ui.exCnt);
+      exbar.appendChild(h('span', 'lm-exhint', '구역 누르기: 한 줄 · 두 번: 구역 전체'));
+      ui.board.appendChild(exbar);
+    }
     if (state.src) {
-      var bs = h('div', 'lm-board-src');
+      var bs = h('div', 'lm-board-src' + (anyEx ? ' is-compact' : ''));
+      bs.title = state.src.where + ' · ' + state.src.label + (state.src.rel ? ' (' + state.src.rel + ')' : '');
       bs.appendChild(h('b', null, state.src.where));
       bs.appendChild(document.createTextNode(' · ' + state.src.label));
       if (state.src.rel) bs.appendChild(h('span', 'lm-board-src-rel', state.src.rel));
       ui.board.appendChild(bs);
     }
-    ui.board.appendChild(h('span', 'lm-board-note', '전자칠판 필기모드로 이 공간에 판서'));
+    if (!anyEx) ui.board.appendChild(h('span', 'lm-board-note', '전자칠판 필기모드로 이 공간에 판서'));
+    applyReveal();
+    // 수식 조판 → 글자 크기 맞춤 (MathJax 는 한 번에 하나씩 — 사슬로 잇는다)
+    var root = ui.board;
+    if (anyEx && window.MathJax && MathJax.typesetPromise) {
+      mjChain = mjChain.then(function () { return MathJax.typesetPromise([root]); })
+        .catch(function () { /* 조판 실패해도 원문은 보인다 */ })
+        .then(fitBoard);
+    } else fitBoard();
   }
 
   /* ---------- 한 화면 맞춤: 글자 크기로 줄인다 (transform 금지 — PITFALLS C-9) ---------- */
@@ -560,6 +848,7 @@
     // 하한에서도 넘치면 그 화면만 스크롤 허용 (내용을 잃지 않는다)
     if (ui.body.scrollHeight > ui.body.clientHeight + 1) ui.body.classList.add('is-scroll');
     ui.body.scrollTop = 0;
+    fitBoard();
   }
 
   /* ---------- 타이머 ---------- */
@@ -598,8 +887,10 @@
     var picker = document.getElementById('aft-picker-modal');
     if (picker && picker.classList.contains('is-open')) return;    // 뽑기 창은 자기 키 처리
     var k = e.key, handled = true;
-    if (k === 'ArrowRight' || k === 'PageDown') step(1);
-    else if (k === 'ArrowLeft' || k === 'PageUp') step(-1);
+    if (k === 'ArrowRight' || k === 'PageDown') { if (!(state.stepKeys && revNext())) step(1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp') { if (!(state.stepKeys && revBack())) step(-1); }
+    else if (k === 'ArrowDown' && ui.exCnt) revNext();
+    else if (k === 'ArrowUp' && ui.exCnt) revBack();
     else if (/^[1-9]$/.test(k) && +k <= tabs.length) go(+k - 1, 0);
     else if (k === 'Escape' || k === 'h' || k === 'H') { closePops(); /* 수업 중 실수로 메인으로 나가지 않게 막는다 */ }
     else handled = false;
@@ -616,6 +907,9 @@
     document.documentElement.classList.add('lm-on');
     if (!app) build(); else { app.style.display = ''; }
     var o = opts || {};
+    var pf = loadPref();
+    state.stepKeys = !!pf.step;
+    state.plot = !!pf.plot;
     if (o.bg) state.bg = o.bg;
     if (typeof o.z === 'boolean') state.zones = o.z;
     if (o.w) { state.wide = true; app.classList.add('is-wide'); ui.wideBtn.classList.add('is-on'); }
@@ -680,7 +974,15 @@
       });
     }
   }
-  window.aftLessonMode = { enter: enter, exit: exit, go: go, tabs: function () { return tabs; } };
+  window.aftLessonMode = {
+    enter: enter, exit: exit, go: go, tabs: function () { return tabs; },
+    reveal: {
+      next: revNext, back: revBack, undo: revUndo,
+      all: function () { return revAll(true); }, none: function () { return revAll(false); },
+      zone: onZoneTap, totals: revTotals,
+      ready: function () { return mjChain; }
+    }
+  };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
