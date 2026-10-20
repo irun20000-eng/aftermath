@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -112,7 +112,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         함수의 극한 (직관적 정의)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 11쪽 · 함수의 수렴" data-src-rel="">교과서 11쪽 · 함수의 수렴</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)에서 \(x\)가 \(a\)가 <strong>아니면서</strong> \(a\)에 한없이 가까워질 때, \(f(x)\)의 값이 일정한 값 \(L\)에 한없이 가까워지면 \(L\)을 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">함수 \(f(x)\)의 \(x \to a\)에서의 극한값</span></span>이라 한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center text-lg">
                         기호: \( \displaystyle \lim_{x \to a} f(x) = L \) &nbsp;또는&nbsp; \( x \to a \) 일 때 \( f(x) \to L \)
@@ -125,7 +125,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         좌극한과 우극한 (한쪽 극한)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 16쪽 · 우극한과 좌극한" data-src-rel="">교과서 16쪽 · 우극한과 좌극한</span>
                     <p class="mb-3 text-slate-700">\(x\)가 \(a\)에 가까워지는 방향에 따라 두 가지 극한을 정의한다.</p>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div class="bg-white p-5 rounded-xl border border-teal-100">
@@ -146,7 +146,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         극한 존재의 필요충분조건
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 16~17쪽 · 우극한과 좌극한" data-src-rel="">교과서 16~17쪽 · 우극한과 좌극한</span>
                     <div class="flex items-center justify-center gap-3 bg-teal-50 p-5 rounded-xl border border-teal-200 font-bold text-lg text-slate-800 flex-wrap">
                         \( \displaystyle \lim_{x \to a} f(x) = L \) &nbsp;⟺&nbsp;
                         <span class="reveal-box min-w-[260px]" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L \)</span></span>
@@ -159,7 +159,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         발산 — \(\infty\)와 \(-\infty\)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 14쪽 · 함수의 발산" data-src-rel="">교과서 14쪽 · 함수의 발산</span>
                     <p class="mb-3 text-slate-700">\(x \to a\)일 때 \(f(x)\)가 한없이 커지면 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">양의 무한대로 발산</span></span>한다고 하고, \( \lim_{x \to a} f(x) = \infty \)로 나타낸다.</p>
                     <p class="text-sm text-slate-600 italic"><strong>⚠ 표기 주의:</strong> \(\infty\)는 수가 <em>아니다</em>. "\(f(x) = \infty\)"라는 등식이 아니라 "한없이 커진다"는 발산 상태를 가리키는 약속된 기호이다.</p>
                 </div>
@@ -178,8 +178,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-다항함수 극한</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 미적분 I P.12 예제 1 유형)</span>
+                        <span class="badge badge-l1">기초-다항함수 극한</span> <span class="src-chip" data-src-label="교과서 12쪽 · 예제 1" data-src-rel="유형">교과서 12쪽 · 예제 1 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 극한값을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 2}(3x - 1) \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to -1}(x^2 + 2x + 5) \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 3}\dfrac{x-1}{x+1} \)</span></span>
                             </div>
@@ -188,8 +188,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-그래프 읽기</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \(y = f(x)\)가 \(x = 1\) 부근에서 다음 그래프와 같을 때, \( \displaystyle \lim_{x \to 1^-} f(x) \), \( \displaystyle \lim_{x \to 1^+} f(x) \), \( \displaystyle \lim_{x \to 1} f(x) \)를 각각 구하시오 (없으면 "존재하지 않는다"라고 쓰시오). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.16 · 스스로 확인하기 그래프)</span></div>
+                        <span class="badge badge-l1">기초-그래프 읽기</span> <span class="src-chip" data-src-label="교과서 16쪽 · 스스로 확인하기" data-src-rel="그대로">교과서 16쪽 · 스스로 확인하기 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \(y = f(x)\)가 \(x = 1\) 부근에서 다음 그래프와 같을 때, \( \displaystyle \lim_{x \to 1^-} f(x) \), \( \displaystyle \lim_{x \to 1^+} f(x) \), \( \displaystyle \lim_{x \to 1} f(x) \)를 각각 구하시오 (없으면 "존재하지 않는다"라고 쓰시오).</div>
                         <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 my-3">
                             <!-- 비상 미적분 I P.16 '스스로 확인하기' 그래프(좌·우극한 개념도) — PyMuPDF 자동 cropping. 학습지 SVG는 좌극한=2/우극한=3 케이스, PDF 원본은 좌극한=1/우극한=2 케이스로 미세한 수치 차이가 있으나 풀이 패턴은 동일. 정확한 수치 정합이 필요하면 사용자 수동 보정. -->
                             <img src="images/calc_01_q2.png" alt="2번 문제 그림 — x=1 부근에서 좌·우극한이 다른 구간별 정의 함수 그래프 (비상 미적분 I P.16 · 스스로 확인하기 그래프)" class="w-full max-w-md mx-auto" />
@@ -206,8 +206,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-절댓값 함수</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. \( \displaystyle \lim_{x \to 0^-}\dfrac{|x|}{x} \), \( \displaystyle \lim_{x \to 0^+}\dfrac{|x|}{x} \)를 각각 구하고, \( \displaystyle \lim_{x \to 0}\dfrac{|x|}{x} \)의 존재 여부를 판정하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.17 · 예제 2)</span></div>
+                        <span class="badge badge-l2">응용-절댓값 함수</span> <span class="src-chip" data-src-label="교과서 17쪽 · 예제 2" data-src-rel="그대로">교과서 17쪽 · 예제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. \( \displaystyle \lim_{x \to 0^-}\dfrac{|x|}{x} \), \( \displaystyle \lim_{x \to 0^+}\dfrac{|x|}{x} \)를 각각 구하고, \( \displaystyle \lim_{x \to 0}\dfrac{|x|}{x} \)의 존재 여부를 판정하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(x &gt; 0\)이면 \(|x| = x\), \(x &lt; 0\)이면 \(|x| = -x\). 좌·우극한을 분리해서 대입하라.
                         </div></details>
@@ -215,8 +215,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-구간별 정의 함수</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = \begin{cases} x + 3 &amp; (x &lt; 1) \\ 2x &amp; (x \geq 1) \end{cases} \) 에 대하여 \( \displaystyle \lim_{x \to 1^-} f(x) \), \( \displaystyle \lim_{x \to 1^+} f(x) \), \( \displaystyle \lim_{x \to 1} f(x) \)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.16 · 문제 06 변형)</span></div>
+                        <span class="badge badge-l2">응용-구간별 정의 함수</span> <span class="src-chip" data-src-label="교과서 16쪽 · 문제 6" data-src-rel="변형">교과서 16쪽 · 문제 6 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = \begin{cases} x + 3 &amp; (x &lt; 1) \\ 2x &amp; (x \geq 1) \end{cases} \) 에 대하여 \( \displaystyle \lim_{x \to 1^-} f(x) \), \( \displaystyle \lim_{x \to 1^+} f(x) \), \( \displaystyle \lim_{x \to 1} f(x) \)를 구하시오.</div>
                         <div class="thinking-space"></div>
                     </div>
                 </div>
@@ -230,8 +230,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-극한값과 함숫값의 분리</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - 1}{x - 1} &amp; (x \neq 1) \\ 5 &amp; (x = 1) \end{cases} \)에 대하여 다음을 모두 구하고, <strong>각각이 같은지 다른지</strong> 판정하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 미적분 I P.31 \(g(x)\) 유형)</span>
+                        <span class="badge badge-l3">심화-극한값과 함숫값의 분리</span> <span class="src-chip" data-src-label="교과서 31쪽 · 개념 탐구" data-src-rel="유형">교과서 31쪽 · 개념 탐구 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - 1}{x - 1} &amp; (x \neq 1) \\ 5 &amp; (x = 1) \end{cases} \)에 대하여 다음을 모두 구하고, <strong>각각이 같은지 다른지</strong> 판정하시오.
                             <div class="ml-6 mt-2 text-lg font-medium">
 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(f(1)\)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1} f(x) \)</span></span>
 </div>
@@ -254,8 +254,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">6. 함수 \( f(x) = \dfrac{x^2 - 4}{|x - 2|} \)에 대하여 \( \displaystyle \lim_{x \to 2^-} f(x) \), \( \displaystyle \lim_{x \to 2^+} f(x) \)를 각각 구하고, \( \displaystyle \lim_{x \to 2} f(x) \)의 존재 여부를 판정하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.26 · 중단원 기본 04 변형)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 26쪽 · 중단원 학습 점검 기본 4" data-src-rel="변형">교과서 26쪽 · 중단원 학습 점검 기본 4 <span class="src-rel">변형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">6. 함수 \( f(x) = \dfrac{x^2 - 4}{|x - 2|} \)에 대하여 \( \displaystyle \lim_{x \to 2^-} f(x) \), \( \displaystyle \lim_{x \to 2^+} f(x) \)를 각각 구하고, \( \displaystyle \lim_{x \to 2} f(x) \)의 존재 여부를 판정하시오.</div>
             <div class="thinking-space"></div>
         </section>
 
@@ -549,7 +549,7 @@
 
         <script src="widgets.js"></script>
             <script src="boardplans/calc_01.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

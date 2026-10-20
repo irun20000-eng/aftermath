@@ -13,7 +13,8 @@
   4) 묶음 최신 여부 : 학습지_전체_묶음_미적분I.html 에 각 학습지 문항 블록이 그대로 있는지 — 실패
                      교사용 통합본 2개는 build_teacher_bundles.py --check 로 '변화 없음'인지 — 실패
   5) 출처 표기 lint : 'P.?' 금지 · 출처의 기초/기본/도전 ↔ 배지 · 배지 글머리(기초-/기본-/심화-) ↔ 배지 색 — 실패
-                     출처 어휘가 '변형'·'자체 출제'·'참고' 외의 말(유형·응용·연계 …)을 쓰면 목록 — 경고
+                     출처 칩(src-chip)의 관계가 그대로·변형·유형 이외이거나, 이름이 '교과서/익힘책/문제북 N쪽 · …'·'자체 정리 · …'
+                     꼴이 아니거나, 옛 꼬리표 '(… 참고)' 가 다시 생기면 — 실패
 
 사용:
   python scripts/verify_consistency.py                 # 전체
@@ -43,10 +44,17 @@ RULES = [
 PROBLEM_TABS = {"level", "check", "challenge", "practice"}
 BADGE_LV = {"l1": "기초", "l2": "기본", "l3": "도전", "hard": "도전"}
 NAV_LV = {"lvl-l1": "기초", "lvl-l2": "기본", "lvl-l3": "도전"}
-SOURCE_RE = re.compile(r'<span class="text-base font-normal[^"]*">([\s\S]*?)</span>')
-SOURCE_VOCAB_OK = ("변형", "자체 출제", "참고")
-SOURCE_VOCAB_OTHER = ("유형", "응용", "연계", "통합", "일반화", "보강", "패턴", "기반", "미리보기", "확장",
-                      "자체 정리", "추가", "재구성", "각색", "발췌", "수정", "개작", "유사")
+# 출처 칩 — 2026-10 교과서 전수 대조 뒤 옛 꼬리표 '(비상 미적분 I P.71 · 문제 01 참고)' 를 이것으로 바꿨다
+CHIP_RE = re.compile(r'<span class="src-chip[^"]*" data-src-label="([^"]*)" data-src-rel="([^"]*)">'
+                     r'[^<]*(?:<span class="src-rel">[^<]*</span>)?</span>')
+OLD_SOURCE_RE = re.compile(r'<span class="text-base font-normal text-(?:slate-400|red-500) ml-2 tracking-normal">\(')
+SOURCE_REL_OK = ("그대로", "변형", "유형", "")          # '' = 개념 블록 (배지 없음)
+SOURCE_LABEL_RE = re.compile(r"^(?:(?:교과서|익힘책|문제북) \d+(?:~\d+)?쪽 · \S|자체 정리 · \S)")
+
+
+def chip_source(m):
+    lab, rel = html.unescape(m.group(1)), m.group(2)
+    return lab + (" · " + rel if rel else "")
 
 fails, warns, notes = [], [], []
 used_allow = set()
@@ -339,9 +347,9 @@ def problem_from(tab, idx, block, num_hint=None):
     badge_cls = bm.group(1) if bm else ""
     badge_txt = squash(strip_tags(bm.group(2))) if bm else ""
     stmt, hint = split_details(block[bm.end():] if bm else block)
-    src = SOURCE_RE.search(stmt)
-    source = squash(strip_tags(src.group(1))) if src else ""
-    stmt_wo_src = SOURCE_RE.sub(" ", stmt)
+    src = CHIP_RE.search(stmt)
+    source = chip_source(src) if src else ""
+    stmt_wo_src = CHIP_RE.sub(" ", stmt)
     text = squash(strip_tags(stmt_wo_src))
     nm = re.match(r"(\d+)\s*[.．]", text)
     num = nm.group(1) if nm else (num_hint or "")
@@ -753,6 +761,22 @@ def check5_file(path: pathlib.Path, txt: str):
     for m in re.finditer(r"\\\((?:(?!\\\)).){0,300}?<(?![a-zA-Z/!])", body, re.S):
         line = txt.count("\n", 0, off + m.end()) + 1
         fail(5, f"{path.relative_to(ROOT)}:{line}", "수식 안 맨 '<' → \\lt 로: " + squash(m.group(0))[-60:])
+    # 출처 칩 — 관계 어휘·이름 꼴, 그리고 옛 꼬리표가 다시 생기지 않았는지
+    for m in re.finditer(r'<span class="src-chip', txt):
+        line = txt.count("\n", 0, m.start()) + 1
+        cm = CHIP_RE.match(txt, m.start())
+        if not cm:
+            fail(5, f"{path.relative_to(ROOT)}:{line}", "출처 칩 꼴이 다름: " + squash(txt[m.start():m.start() + 160]))
+            continue
+        lab, rel = html.unescape(cm.group(1)), cm.group(2)
+        if rel not in SOURCE_REL_OK:
+            fail(5, f"{path.relative_to(ROOT)}:{line}", f"출처 칩 관계 '{rel}' (그대로·변형·유형 또는 빈칸만)")
+        if not SOURCE_LABEL_RE.match(lab):
+            fail(5, f"{path.relative_to(ROOT)}:{line}", f"출처 칩 이름 꼴: '{lab}'")
+    if "학습지" in path.name and "미적분I" in path.name:
+        for m in OLD_SOURCE_RE.finditer(txt):
+            line = txt.count("\n", 0, m.start()) + 1
+            fail(5, f"{path.relative_to(ROOT)}:{line}", "옛 출처 꼬리표 — 출처 칩(src-chip)으로: " + squash(txt[m.end():m.end() + 50]))
 
 
 def check5_sheet(nn, probs):
@@ -767,18 +791,15 @@ def check5_sheet(nn, probs):
         if p.source:
             sm = re.search(r"(?<![가-힣])(기초|기본|도전)(?=\s*\d|\s*[0-9]{2}번|\s*\d+번)", p.source)
             if sm and lv and sm.group(1) != lv:
-                derived = any(k in p.source for k in ("참고", "변형", "자체", "유형", "패턴", "연계", "기반", "보강", "응용", "일반화"))
+                derived = p.source.endswith((" · 변형", " · 유형")) or "자체" in p.source
                 msg = f"출처 '{p.source}' 는 {sm.group(1)} 인데 배지는 {p.badge_cls}({lv})"
                 if p.tab != "practice":
                     # 차시 학습지의 배지는 학습지 Level(1·2·3) — 교과서 기초·기본·도전과 다를 수 있다
                     warn(5, w, msg + " — 차시 학습지 Level 배지라 경고만")
                 elif derived:
-                    warn(5, w, msg + " — 참고·변형 문항이라 경고만")
+                    warn(5, w, msg + " — 변형·유형 문항이라 경고만")
                 else:
                     fail(5, w, msg)
-            other = [k for k in SOURCE_VOCAB_OTHER if k in p.source]
-            if other:
-                warn(5, w, f"출처 어휘 {other} (권장: {'·'.join(SOURCE_VOCAB_OK)}) — '{p.source}'")
 
 
 # ───────────────────────── 실행 ─────────────────────────
@@ -832,6 +853,8 @@ def main():
     if 5 in only and not a.lesson:
         for p in sorted(ROOT.glob("수학익힘책_미적분I_*.html")) + sorted(T.glob("교사용*수학익힘책_미적분I_*.html")):
             check5_file(p, read(p))
+        if BUNDLE.exists():
+            check5_file(BUNDLE, read(BUNDLE))
 
     names = {1: "학생용↔교사용", 2: "학습지↔Nav", 3: "정답", 4: "묶음 최신", 5: "출처 표기"}
     for c in sorted(only):

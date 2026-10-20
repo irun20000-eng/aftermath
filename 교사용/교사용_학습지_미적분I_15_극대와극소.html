@@ -64,7 +64,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -96,14 +96,14 @@
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
-            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 82쪽 · 개념 탐구" data-src-rel="">교과서 82쪽 · 개념 탐구</span>
             <div class="text-lg text-slate-700 font-medium">
                 <p class="mb-4">시간대별 주택용 전력 소비 그래프를 떠올려 보자. 새벽에는 낮고, 점심·저녁에는 <strong>봉우리</strong>를 이루고, 그 사이에는 잠깐 <strong>골짜기</strong>가 생긴다. 이 "봉우리"와 "골짜기"가 바로 함수의 <span class="calc-accent font-bold">극대</span>와 <span class="calc-accent font-bold">극소</span>이다.</p>
                 <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
                     <p><strong>[개방형 발문]</strong> 차시 14에서 만든 함수 \(f(x) = x^3 - 3x^2 + 1\)의 증감표를 다시 살펴보자. \(f\)는 \(x = 0\)에서 증가 \(\to\) 감소로 바뀌고, \(x = 2\)에서 감소 \(\to\) 증가로 바뀐다. 이때 두 점 중 어느 쪽이 "봉우리"이고 어느 쪽이 "골짜기"인지, 그리고 도함수 \(f'(x)\)의 부호 변화와 어떻게 연결되는지 추측해 보자.</p>
                     <div class="thinking-space bg-teal-50/30"></div>
                 </div>
-                <p><strong>[연결]</strong> 차시 14의 <strong>증감표</strong>는 도함수 부호 \(+\to-\to+\)의 전환점 \(x = 0,\ 2\)를 정확히 짚었다. 본 차시는 그 전환점에서 <span class="calc-accent font-bold">함수가 봉우리(극대)인지 골짜기(극소)인지</span>를 판정하는 도구를 배운다. 핵심 함정 — \(f'(a) = 0\)이라고 해서 \(a\)에서 반드시 극값을 갖는 것은 아니다 (예: \(f(x) = x^3\)에서 \(x = 0\)). 차시 14 Level 3에서 만난 이 함정이 본 차시의 출발점이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.82 · 극대와 극소 개념 탐구 참고)</span></p>
+                <p><strong>[연결]</strong> 차시 14의 <strong>증감표</strong>는 도함수 부호 \(+\to-\to+\)의 전환점 \(x = 0,\ 2\)를 정확히 짚었다. 본 차시는 그 전환점에서 <span class="calc-accent font-bold">함수가 봉우리(극대)인지 골짜기(극소)인지</span>를 판정하는 도구를 배운다. 핵심 함정 — \(f'(a) = 0\)이라고 해서 \(a\)에서 반드시 극값을 갖는 것은 아니다 (예: \(f(x) = x^3\)에서 \(x = 0\)). 차시 14 Level 3에서 만난 이 함정이 본 차시의 출발점이다.</p>
             </div>
         </section>
 
@@ -116,7 +116,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         극대·극소의 정의 — "어떤 열린구간 내부의 최대/최소"
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 82쪽 · 극대와 극소" data-src-rel="">교과서 82쪽 · 극대와 극소</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)에서 \(x = a\)를 포함하는 어떤 열린구간에 속하는 모든 \(x\)에 대하여</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ul class="space-y-2 text-lg font-medium">
@@ -125,7 +125,7 @@
                         </ul>
                         <p class="mt-3 text-base text-slate-700">극댓값과 극솟값을 통틀어 <strong>극값(extreme value)</strong>이라 한다.</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> "극"은 <strong>지역적(local)</strong> 개념이다. 정의역 전체의 최댓값/최솟값이 아니라, "\(x = a\) 주변의 어떤 작은 열린구간 안에서 가장 크다/작다"는 뜻. 그래서 한 함수에 극값이 여러 개 있을 수 있고, <strong>극댓값이 극솟값보다 작을 수도 있다</strong>. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.82 · 극대와 극소의 정의 + 문제 06 「극댓값이 극솟값보다 항상 큰가?」 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> "극"은 <strong>지역적(local)</strong> 개념이다. 정의역 전체의 최댓값/최솟값이 아니라, "\(x = a\) 주변의 어떤 작은 열린구간 안에서 가장 크다/작다"는 뜻. 그래서 한 함수에 극값이 여러 개 있을 수 있고, <strong>극댓값이 극솟값보다 작을 수도 있다</strong>.</p>
                 </div>
 
                 <!-- 2. 극값의 필요조건 -->
@@ -133,13 +133,13 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         극값의 필요조건 — \(f'(a) = 0\) (페르마 정리)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 83쪽 · 극값과 미분계수" data-src-rel="">교과서 83쪽 · 극값과 미분계수</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 \(x = a\)에서 극값을 갖고 \(x = a\)를 포함하는 어떤 열린구간에서 <strong>미분가능</strong>할 때:</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-center text-lg font-bold">미분가능한 함수 \(f(x)\)가 \(x = a\)에서 극값을 가지면 \(f'(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(0\)</span></span>.</p>
                     </div>
                     <p class="mt-3 text-sm text-slate-700"><strong>정당화 (극댓값 사례):</strong> \(x = a\)에서 극댓값이면 \(h\)의 절댓값이 충분히 작을 때 \(f(a + h) - f(a) \leq 0\). 따라서<br>
-                    좌극한 \(\displaystyle\lim_{h\to 0^-}\dfrac{f(a+h) - f(a)}{h} \geq 0\), 우극한 \(\displaystyle\lim_{h\to 0^+}\dfrac{f(a+h) - f(a)}{h} \leq 0\). 미분가능 \(\Rightarrow\) 두 극한이 같으므로 \(f'(a) = 0\). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.83 · 극값과 미분계수 참고)</span></p>
+                    좌극한 \(\displaystyle\lim_{h\to 0^-}\dfrac{f(a+h) - f(a)}{h} \geq 0\), 우극한 \(\displaystyle\lim_{h\to 0^+}\dfrac{f(a+h) - f(a)}{h} \leq 0\). 미분가능 \(\Rightarrow\) 두 극한이 같으므로 \(f'(a) = 0\).</p>
                     <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
                         <p class="text-sm text-red-900 font-bold mb-1">⚠ 역은 일반적으로 거짓!</p>
                         <p class="text-sm text-slate-700">\(f'(a) = 0\)이라고 해서 \(f\)가 \(x = a\)에서 반드시 극값을 갖는 것은 아니다. 예: \(f(x) = x^3\)은 \(f'(0) = 0\)이지만 \(x = 0\)에서 증가만 — 극값 없음. 또, 극값을 갖더라도 미분가능하지 않을 수 있다. 예: \(f(x) = |x|\)는 \(x = 0\)에서 극솟값을 갖지만 미분가능 X.</p>
@@ -151,7 +151,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         극대·극소의 판정 — 도함수의 <strong>부호 변화</strong>가 결정한다
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 84쪽 · 극대와 극소의 판정" data-src-rel="">교과서 84쪽 · 극대와 극소의 판정</span>
                     <p class="mb-3 text-slate-700">미분가능한 함수 \(f(x)\)에 대하여 \(f'(a) = 0\)일 때:</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ol class="space-y-2 text-lg font-medium">
@@ -160,7 +160,7 @@
                             <li>③ \(x = a\)의 좌우에서 \(f'(x)\)의 부호가 <strong>바뀌지 않으면</strong> 극값 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">아님</span></span>.</li>
                         </ol>
                     </div>
-                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "\(f'(a) = 0\)"이라는 <em>필요조건</em>만으로는 부족하다. 반드시 \(f'\)의 <strong>부호 변화 패턴</strong>까지 봐야 극값 여부와 그 종류(극대/극소)가 결정된다. 차시 14에서 익힌 <strong>증감표</strong>가 본 차시의 핵심 무기. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.84 · 함수의 극대와 극소의 판정 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-700"><strong>핵심:</strong> "\(f'(a) = 0\)"이라는 <em>필요조건</em>만으로는 부족하다. 반드시 \(f'\)의 <strong>부호 변화 패턴</strong>까지 봐야 극값 여부와 그 종류(극대/극소)가 결정된다. 차시 14에서 익힌 <strong>증감표</strong>가 본 차시의 핵심 무기.</p>
                 </div>
 
                 <!-- 4. 예제 — 극값 구하기 -->
@@ -168,7 +168,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         예제 풀이 — \(f(x) = x^3 - 3x + 5\)의 극값
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 84쪽 · 예제 3" data-src-rel="">교과서 84쪽 · 예제 3</span>
                     <p class="mb-3 text-slate-700">3단계 루틴: ① \(f'(x)\) 구하기 ② \(f'(x) = 0\) 해 ③ 증감표로 부호 변화 분석.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-2">\(f'(x) = 3x^2 - 3 = 3(x + 1)(x - 1)\). \(f'(x) = 0 \Rightarrow x = -1\) 또는 \(x = 1\).</p>
@@ -189,7 +189,7 @@
                         </table>
                         <p class="text-base mt-3">\(x = -1\) 좌우 \(+ \to -\) \(\Rightarrow\) 극댓값 \(f(-1) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(7\)</span></span>. \(x = 1\) 좌우 \(- \to +\) \(\Rightarrow\) 극솟값 \(f(1) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(3\)</span></span>.</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>주목:</strong> 극댓값 \(7\)이 극솟값 \(3\)보다 크다 — 본 예제에서는 우리의 직관과 같지만, 일반적으로는 그렇지 않다 (예: \(y = x + \dfrac{1}{x}\)에서 극댓값 \(-2\), 극솟값 \(2\)). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.84 · 예제 3 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주목:</strong> 극댓값 \(7\)이 극솟값 \(3\)보다 크다 — 본 예제에서는 우리의 직관과 같지만, 일반적으로는 그렇지 않다 (예: \(y = x + \dfrac{1}{x}\)에서 극댓값 \(-2\), 극솟값 \(2\)).</p>
                 </div>
 
                 <!-- 5. 매개변수 결정 -->
@@ -197,7 +197,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
                         매개변수 결정 — 극값 조건이 주어졌을 때
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 85쪽 · 예제 4" data-src-rel="">교과서 85쪽 · 예제 4</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x) = x^3 + ax^2 + bx + 4\)가 \(x = 1\)에서 극댓값 \(8\)을 가질 때 \(a, b\)와 극솟값을 구하라.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base mb-1"><strong>STEP 1 (필요조건):</strong> \(f'(x) = 3x^2 + 2ax + b\), \(f'(1) = 0 \Rightarrow 3 + 2a + b = 0\) … ①</p>
@@ -206,7 +206,7 @@
                         <p class="text-base mb-1"><strong>STEP 4 (확인):</strong> \(f'(x) = 3x^2 - 12x + 9 = 3(x-1)(x-3)\). \(x = 1\) 좌우 \(+ \to -\) (극대 ✓), \(x = 3\) 좌우 \(- \to +\) (극소).</p>
                         <p class="text-base mb-1"><strong>STEP 5 (극솟값):</strong> \(f(3) = 27 - 54 + 27 + 4 = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(4\)</span></span>.</p>
                     </div>
-                    <p class="mt-3 text-sm text-red-700"><strong>⚠ 함정:</strong> STEP 1, 2만 풀고 끝내면 안 된다. <strong>STEP 4에서 부호 변화를 확인</strong>해야 한다. 만약 \(x = 1\)이 실제 극댓값이 아니면 (예: 변곡점) 답을 다시 풀어야 한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 예제 4 참고)</span></p>
+                    <p class="mt-3 text-sm text-red-700"><strong>⚠ 함정:</strong> STEP 1, 2만 풀고 끝내면 안 된다. <strong>STEP 4에서 부호 변화를 확인</strong>해야 한다. 만약 \(x = 1\)이 실제 극댓값이 아니면 (예: 변곡점) 답을 다시 풀어야 한다.</p>
                 </div>
             </div>
         </section>
@@ -223,8 +223,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-삼차·사차함수 극값</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 극값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 문제 07 참고)</span>
+                        <span class="badge badge-l1">기초-삼차·사차함수 극값</span> <span class="src-chip" data-src-label="교과서 85쪽 · 문제 7" data-src-rel="그대로">교과서 85쪽 · 문제 7 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 극값을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -2x^3 + 3x^2 + 1 \)</span><span class="sub-q">(2) \( f(x) = x^4 - 8x^2 + 6 \)</span></span>
                             </div>
@@ -238,8 +238,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-매개변수 결정</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \( f(x) = -2x^3 + 3x^2 + ax + b \)가 \(x = -1\)에서 극솟값 \(-2\)를 가질 때, 실수 \(a, b\)의 값과 극댓값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 문제 08 참고)</span></div>
+                        <span class="badge badge-l1">기초-매개변수 결정</span> <span class="src-chip" data-src-label="교과서 85쪽 · 문제 8" data-src-rel="그대로">교과서 85쪽 · 문제 8 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \( f(x) = -2x^3 + 3x^2 + ax + b \)가 \(x = -1\)에서 극솟값 \(-2\)를 가질 때, 실수 \(a, b\)의 값과 극댓값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = -6x^2 + 6x + a\). 필요조건 \(f'(-1) = 0 \Rightarrow -6 - 6 + a = 0 \Rightarrow a = 12\). 함숫값 \(f(-1) = 2 + 3 - 12 + b = -2 \Rightarrow b = 5\). 검증: \(f'(x) = -6x^2 + 6x + 12 = -6(x - 2)(x + 1)\). \(x = -1\) 좌우 \(- \to +\) (극소 ✓), \(x = 2\) 좌우 \(+ \to -\) (극대). 극댓값 \(f(2) = -16 + 12 + 24 + 5 = 25\). 정답: \(a = 12,\ b = 5\), 극댓값 \(25\).
                         </div></details>
@@ -247,8 +247,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-극값의 합·곱</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \(f(x) = 2x^3 - 9x^2 + 12x - 3\)의 극댓값과 극솟값의 차(극댓값 \(-\) 극솟값)를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 극댓값과 극솟값의 차 유형)</span></div>
+                        <span class="badge badge-l1">기초-극값의 합·곱</span> <span class="src-chip" data-src-label="교과서 84쪽 · 예제 3" data-src-rel="유형">교과서 84쪽 · 예제 3 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \(f(x) = 2x^3 - 9x^2 + 12x - 3\)의 극댓값과 극솟값의 차(극댓값 \(-\) 극솟값)를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f'(x) = 6x^2 - 18x + 12 = 6(x-1)(x-2)\). \(f' = 0 \Rightarrow x = 1,\ 2\). 부호 \((+,-,+)\). 극댓값 \(f(1) = 2 - 9 + 12 - 3 = 2\), 극솟값 \(f(2) = 16 - 36 + 24 - 3 = 1\). 차 \(= 2 - 1 = 1\).
                         </div></details>
@@ -264,8 +264,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-극값을 갖지 않을 조건</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 삼차함수 \( f(x) = x^3 + 3x^2 + ax + 1 \)이 <strong>극값을 갖지 않도록</strong> 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.97 기본 08 패턴)</span></div>
+                        <span class="badge badge-l2">응용-극값을 갖지 않을 조건</span> <span class="src-chip" data-src-label="교과서 97쪽 · 중단원 학습 점검 기본 6" data-src-rel="유형">교과서 97쪽 · 중단원 학습 점검 기본 6 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 삼차함수 \( f(x) = x^3 + 3x^2 + ax + 1 \)이 <strong>극값을 갖지 않도록</strong> 하는 실수 \(a\)의 값의 범위를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 삼차함수가 극값을 갖지 않을 \(\Leftrightarrow\) \(f'(x) = 3x^2 + 6x + a\)가 <strong>실수 전체에서 부호 변화 없음</strong> \(\Leftrightarrow\) 판별식 \(D \leq 0\). \(D/4 = 9 - 3a \leq 0 \Rightarrow a \geq 3\). 정답: \(a \geq 3\). <strong>차시 14와 연결:</strong> "극값 없음 = 단조증가(단조감소)" — 차시 14의 매개변수 응용 패턴과 동일.
                         </div></details>
@@ -273,8 +273,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-극값을 가질 조건</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 삼차함수 \( f(x) = x^3 - 3ax^2 + 3x + 2 \)가 <strong>극댓값과 극솟값을 모두 갖도록</strong> 하는 실수 \(a\)의 값의 범위를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 2 도전 1 기반 패턴)</span></div>
+                        <span class="badge badge-l2">응용-극값을 가질 조건</span> <span class="src-chip" data-src-label="교과서 101쪽 · 대단원 학습 평가 7" data-src-rel="유형">교과서 101쪽 · 대단원 학습 평가 7 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 삼차함수 \( f(x) = x^3 - 3ax^2 + 3x + 2 \)가 <strong>극댓값과 극솟값을 모두 갖도록</strong> 하는 실수 \(a\)의 값의 범위를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 삼차함수가 극값(극댓값·극솟값 모두) \(\Leftrightarrow\) \(f'(x) = 3x^2 - 6ax + 3 = 0\)이 <strong>서로 다른 두 실근</strong> \(\Leftrightarrow\) 판별식 \(D \gt 0\). \(D/4 = 9a^2 - 9 \gt 0 \Rightarrow a^2 \gt 1 \Rightarrow a \lt -1\) 또는 \(a \gt 1\). <strong>핵심 대비:</strong> 4번(극값 없음 \(\Leftrightarrow D \leq 0\))과 5번(극값 있음 \(\Leftrightarrow D \gt 0\))은 부등호와 등호 포함 여부가 다르다. 4번에서 \(D = 0\)일 때 도함수가 중근 \(\to\) 부호 변화 없음 \(\to\) 극값 없음 (포함됨).
                         </div></details>
@@ -282,8 +282,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-내 역량: 도함수 그래프로 극값 판정</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림은 삼차함수 \(f(x)\)의 <strong>도함수</strong> \(y = f'(x)\)의 그래프를 그린 것이다. 각 경우에 대하여 함수 \(f(x)\)가 극값을 갖는지 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 내 역량 키움·채움·나눔 참고)</span>
+                        <span class="badge badge-l2">응용-내 역량: 도함수 그래프로 극값 판정</span> <span class="src-chip" data-src-label="교과서 85쪽 · 내 역량" data-src-rel="그대로">교과서 85쪽 · 내 역량 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 그림은 삼차함수 \(f(x)\)의 <strong>도함수</strong> \(y = f'(x)\)의 그래프를 그린 것이다. 각 경우에 대하여 함수 \(f(x)\)가 극값을 갖는지 조사하시오.
                             <div class="mt-3 flex justify-center">
                                 <img src="images/calc_15_q_deriv3graphs.png" alt="P.85 f'(x) 도함수 3가지 그래프" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:240px;">
                             </div>
@@ -308,8 +308,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-수리 언어 소양: 학생의 주장 판정 + 반례 제시</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고, 거짓이면 <strong>반례</strong>를 들어 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.83 · 본문 「일반적으로 위의 역은 성립하지 않는다」 + \(f(x) = x^3\) 반례 참고)</span>
+                        <span class="badge badge-l3">심화-수리 언어 소양: 학생의 주장 판정 + 반례 제시</span> <span class="src-chip" data-src-label="교과서 83쪽 · 극값과 미분계수" data-src-rel="유형">교과서 83쪽 · 극값과 미분계수 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 다음 학생의 말이 <strong>참인지 거짓인지</strong> 판별하고, 거짓이면 <strong>반례</strong>를 들어 설명하시오.
                             <div class="mt-3 p-4 bg-white rounded-xl border-2 border-orange-200 space-y-2">
                                 <p class="text-base text-slate-700">📢 학생 A: "미분가능한 함수 \(f(x)\)에 대해 \(f'(a) = 0\)이면 \(f\)는 \(x = a\)에서 반드시 극값을 가져!"</p>
                                 <p class="text-base text-slate-700">📢 학생 B: "함수 \(f(x)\)가 \(x = a\)에서 극값을 가지면 \(f\)는 \(x = a\)에서 반드시 미분가능해!"</p>
@@ -339,8 +339,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(f(x) = x^3 + 3x^2 + ax - 4\)의 극댓값과 극솟값의 합이 \(0\)이 되도록 하는 실수 \(a\)의 값을 구하시오. (단, 극값이 존재하도록 \(a \lt 3\)임을 활용한다.) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · Level 1·2 통합)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 84~85쪽 · 극대와 극소의 판정" data-src-rel="유형">교과서 84~85쪽 · 극대와 극소의 판정 <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(f(x) = x^3 + 3x^2 + ax - 4\)의 극댓값과 극솟값의 합이 \(0\)이 되도록 하는 실수 \(a\)의 값을 구하시오. (단, 극값이 존재하도록 \(a \lt 3\)임을 활용한다.)</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략 (4단계):</strong><br>
                 <strong>STEP 1 — 극값 조건:</strong> \(f'(x) = 3x^2 + 6x + a\). 극값 존재 \(\Leftrightarrow D/4 = 9 - 3a \gt 0 \Rightarrow a \lt 3\).<br>
@@ -641,7 +641,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_15.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

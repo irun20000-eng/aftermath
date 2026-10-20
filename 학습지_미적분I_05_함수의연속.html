@@ -61,7 +61,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -113,7 +113,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         한 점에서의 연속 — 세 가지 조건
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 32쪽 · 함수의 연속" data-src-rel="">교과서 32쪽 · 함수의 연속</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 실수 \(a\)에 대하여 다음 <strong>세 가지 조건을 모두</strong> 만족시킬 때, \(f(x)\)는 \(x=a\)에서 <span class="calc-accent font-bold">연속(continuous)</span>이라 한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ol class="space-y-2 text-lg font-medium">
@@ -122,7 +122,7 @@
                             <li>③ <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to a} f(x) = f(a) \)</span></span></li>
                         </ol>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> 세 값 \(f(a)\), 좌극한, 우극한이 <strong>모두 존재</strong>하고 <strong>한 값으로 일치</strong>해야 연속. 셋 중 어느 하나라도 어긋나면 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">불연속</span></span>이다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.32 · 함수의 연속 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> 세 값 \(f(a)\), 좌극한, 우극한이 <strong>모두 존재</strong>하고 <strong>한 값으로 일치</strong>해야 연속. 셋 중 어느 하나라도 어긋나면 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">불연속</span></span>이다.</p>
                 </div>
 
                 <!-- 2. 불연속 분류 -->
@@ -130,7 +130,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         불연속의 세 가지 유형
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="자체 정리 · 교과서 31쪽 개념 탐구 연계" data-src-rel="">자체 정리 · 교과서 31쪽 개념 탐구 연계</span>
                     <p class="mb-3 text-slate-700">세 조건 중 <strong>어느 것이 깨졌는가</strong>에 따라 불연속의 모습이 달라진다.</p>
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="bg-white p-5 rounded-xl border border-teal-100">
@@ -156,7 +156,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         구간에서의 연속 — 연속함수
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 33쪽 · 연속함수" data-src-rel="">교과서 33쪽 · 연속함수</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 <strong>어떤 열린구간</strong>에 속하는 모든 \(x\)에서 연속이면 \(f(x)\)는 그 구간에서 <strong>연속</strong>이라 한다.</p>
                     <p class="mb-3 text-slate-700">닫힌구간 \([a, b]\)에서 정의된 \(f(x)\)가 다음 두 조건을 모두 만족할 때 \([a, b]\)에서 연속이라 한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
@@ -165,7 +165,7 @@
                             <li>② <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to a^+} f(x) = f(a) \)</span></span>, &nbsp; <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle \lim_{x \to b^-} f(x) = f(b) \)</span></span></li>
                         </ol>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 끝점에서는 <span class="calc-accent font-bold">한쪽 극한(우극한 또는 좌극한)</span>만 일치하면 충분. 구간 바깥은 정의되어 있지 않으므로 양쪽 극한을 요구할 수 없다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.33 · 연속함수 정의 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 끝점에서는 <span class="calc-accent font-bold">한쪽 극한(우극한 또는 좌극한)</span>만 일치하면 충분. 구간 바깥은 정의되어 있지 않으므로 양쪽 극한을 요구할 수 없다.</p>
                 </div>
 
                 <!-- 4. 연속함수의 사칙 -->
@@ -173,7 +173,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         연속함수의 사칙 — 연속은 "전염"된다
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 35쪽 · 연속함수의 성질" data-src-rel="">교과서 35쪽 · 연속함수의 성질</span>
                     <p class="mb-3 text-slate-700">두 함수 \(f(x), g(x)\)가 \(x=a\)에서 연속이면, 다음 함수들도 모두 \(x=a\)에서 연속이다.</p>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div class="bg-white p-4 rounded-xl border border-teal-100 text-center">
@@ -189,7 +189,7 @@
                             <p class="text-lg font-bold text-teal-700">\(\dfrac{f(x)}{g(x)}\) &nbsp; (단, <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(g(a) \neq 0\)</span></span>)</p>
                         </div>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 극한의 사칙연산 + 연속의 정의. \( \lim_{x \to a} \{f(x) \pm g(x)\} = f(a) \pm g(a) \)이고 우변이 곧 \((f \pm g)(a)\)이므로 좌변 = 우변. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.35 · 연속함수의 성질 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>도출 근거:</strong> 극한의 사칙연산 + 연속의 정의. \( \lim_{x \to a} \{f(x) \pm g(x)\} = f(a) \pm g(a) \)이고 우변이 곧 \((f \pm g)(a)\)이므로 좌변 = 우변.</p>
                     <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
                         <p class="text-sm font-bold text-cyan-900 mb-1">🎯 응용 — 어떤 함수들이 모든 실수에서 연속인가?</p>
                         <p class="text-sm text-cyan-800">상수함수와 \(y = x\)가 연속 \(\Rightarrow\) 사칙으로 빌드되는 <strong>모든 다항함수</strong>는 모든 실수에서 연속. 또 두 다항함수 \(f, g\)의 유리함수 \(\dfrac{f}{g}\)는 \(g(x) \neq 0\)인 모든 \(x\)에서 연속.</p>
@@ -210,8 +210,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-정의 직접 적용</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수가 \(x=0\)에서 연속인지 불연속인지 판정하시오. 세 조건 ①②③을 순서대로 확인하라. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.32 · 예제 1 참고)</span>
+                        <span class="badge badge-l1">기초-정의 직접 적용</span> <span class="src-chip" data-src-label="교과서 32쪽 · 예제 1" data-src-rel="그대로">교과서 32쪽 · 예제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수가 \(x=0\)에서 연속인지 불연속인지 판정하시오. 세 조건 ①②③을 순서대로 확인하라.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 - 1 \)</span><span class="sub-q">(2) \( g(x) = \begin{cases} |x| &amp; (x \neq 0) \\ 2 &amp; (x = 0) \end{cases} \)</span></span>
                             </div>
@@ -225,8 +225,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-구간 연속</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수가 연속인 구간을 구간의 기호로 나타내시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.34 · 문제 03 참고)</span>
+                        <span class="badge badge-l1">기초-구간 연속</span> <span class="src-chip" data-src-label="교과서 34쪽 · 문제 3" data-src-rel="그대로">교과서 34쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수가 연속인 구간을 구간의 기호로 나타내시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 - 4x + 2 \)</span><span class="sub-q">(2) \( f(x) = \dfrac{3}{x+2} \)</span><span class="sub-q">(3) \( f(x) = \sqrt{1-x} \)</span><span class="sub-q">(4) \( f(x) = 6 \)</span></span>
                             </div>
@@ -243,8 +243,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-한 점 연속 미정계수</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \( f(x) = \begin{cases} \dfrac{2x + a}{x - 2} &amp; (x \neq 2) \\ b &amp; (x = 2) \end{cases} \) 가 모든 실수 \(x\)에서 연속이 되도록 하는 실수 \(a, b\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.34 · 예제 2 참고)</span></div>
+                        <span class="badge badge-l2">응용-한 점 연속 미정계수</span> <span class="src-chip" data-src-label="교과서 34쪽 · 예제 2" data-src-rel="그대로">교과서 34쪽 · 예제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \( f(x) = \begin{cases} \dfrac{2x + a}{x - 2} &amp; (x \neq 2) \\ b &amp; (x = 2) \end{cases} \) 가 모든 실수 \(x\)에서 연속이 되도록 하는 실수 \(a, b\)의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 모든 실수에서 연속 \(\Rightarrow\) \(x=2\)에서 연속 \(\Rightarrow\) \(\lim_{x \to 2}\dfrac{2x+a}{x-2} = b\). 분모 \(\to 0\)이고 극한값이 실수 \(\Rightarrow\) 분자도 \(\to 0\) \(\Rightarrow\) \(4 + a = 0\). 답: \(a = -4, b = 2\).
                         </div></details>
@@ -252,8 +252,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-구간 분기 함수의 연속</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = \begin{cases} 3x^2 - 1 &amp; (x \geq a) \\ 2 - 5x &amp; (x \lt a) \end{cases} \) 가 모든 실수 \(x\)에서 연속이 되도록 하는 모든 실수 \(a\)의 값의 곱을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.41 · 중단원 기본 07 참고)</span></div>
+                        <span class="badge badge-l2">응용-구간 분기 함수의 연속</span> <span class="src-chip" data-src-label="교과서 41쪽 · 중단원 학습 점검 기본 7" data-src-rel="그대로">교과서 41쪽 · 중단원 학습 점검 기본 7 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = \begin{cases} 3x^2 - 1 &amp; (x \geq a) \\ 2 - 5x &amp; (x \lt a) \end{cases} \) 가 모든 실수 \(x\)에서 연속이 되도록 하는 모든 실수 \(a\)의 값의 곱을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 두 다항식은 각 구간에서 연속이므로 경계 \(x=a\)에서만 점검. 좌극한 \(2 - 5a\) = 우극한·함숫값 \(3a^2 - 1\). 방정식 \(3a^2 + 5a - 3 = 0\). 두 근의 곱 = 비에타에 의해 \(\dfrac{-3}{3} = -1\).
                         </div></details>
@@ -270,8 +270,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-극한 존재와 연속의 분리</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - x}{|x - 1|} &amp; (x \neq 1) \\ 1 &amp; (x = 1) \end{cases} \) 에 대하여 다음을 모두 구하고, \(x=1\)에서 <strong>연속/불연속</strong>을 판정하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.32 · 문제 01 (2) 참고)</span>
+                        <span class="badge badge-l3">심화-극한 존재와 연속의 분리</span> <span class="src-chip" data-src-label="교과서 32쪽 · 문제 1(2)" data-src-rel="그대로">교과서 32쪽 · 문제 1(2) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - x}{|x - 1|} &amp; (x \neq 1) \\ 1 &amp; (x = 1) \end{cases} \) 에 대하여 다음을 모두 구하고, \(x=1\)에서 <strong>연속/불연속</strong>을 판정하시오.
                             <div class="ml-6 mt-2 text-lg font-medium">
 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(f(1)\)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1^-} f(x) \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 1^+} f(x) \)</span><span class="sub-q">(4) \( \displaystyle \lim_{x \to 1} f(x) \) 존재 여부</span></span>
 </div>
@@ -295,8 +295,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">6. 두 함수 \(f(x) = x^2 + 1\), \(g(x) = x^2 - 2x - 3\)에 대하여 다음 함수의 연속성을 조사하시오 (불연속이라면 그 \(x\)의 값을 모두 답하시오). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.40 · 중단원 기초 03)</span>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 40쪽 · 중단원 학습 점검 기초 3" data-src-rel="그대로">교과서 40쪽 · 중단원 학습 점검 기초 3 <span class="src-rel">그대로</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">6. 두 함수 \(f(x) = x^2 + 1\), \(g(x) = x^2 - 2x - 3\)에 대하여 다음 함수의 연속성을 조사하시오 (불연속이라면 그 \(x\)의 값을 모두 답하시오).
                 <div class="ml-6 mt-2 text-lg font-medium">
                     <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \dfrac{f(x)}{g(x)} \)</span><span class="sub-q">(2) \( \dfrac{g(x)}{f(x)} \)</span></span>
                 </div>
@@ -594,7 +594,7 @@
 
         <script src="widgets.js"></script>
             <script src="boardplans/calc_05.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

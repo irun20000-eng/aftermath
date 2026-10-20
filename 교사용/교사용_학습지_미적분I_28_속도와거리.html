@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -92,7 +92,7 @@
 
         <!-- 00. 생각 열기 -->
         <section class="card bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-100">
-            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <h2 class="section-title text-teal-900 border-teal-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 132쪽 · 개념 탐구" data-src-rel="">교과서 132쪽 · 개념 탐구</span>
             <div class="text-lg text-slate-700 font-medium">
                 <p class="mb-4">차시 19에서 위치 \(x(t)\)의 도함수가 속도 \(v(t)\)임을 배웠다. 즉 \(v(t) = x'(t)\). 그렇다면 그 역연산 — <strong>속도 \(v(t)\)로부터 위치 \(x(t)\)를 복원</strong>하는 것은 어떤 연산일까?</p>
                 <div class="bg-white p-6 rounded-xl border border-teal-100 mb-6 flex flex-col gap-4">
@@ -102,7 +102,7 @@
                         <li>② 정적분 \(\displaystyle\int_0^{10} v(t)\,dt = \int_0^{10} 2\,dt = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 20 \)</span></span></li>
                         <li>③ ①과 ②의 결과를 비교해 보면? — <strong>속도를 시간에 대해 적분하면 위치(거리)가 나온다!</strong></li>
                     </ul>
-                    <p class="text-base text-slate-600">이는 \(x'(t) = v(t)\)의 양변을 \([0, 10]\)에서 적분 \(\Rightarrow x(10) - x(0) = \int_0^{10} v(t)\,dt\). 미적분 기본정리(차시 24)가 운동학에 즉시 적용됨. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.132 · 개념 탐구 참고)</span></p>
+                    <p class="text-base text-slate-600">이는 \(x'(t) = v(t)\)의 양변을 \([0, 10]\)에서 적분 \(\Rightarrow x(10) - x(0) = \int_0^{10} v(t)\,dt\). 미적분 기본정리(차시 24)가 운동학에 즉시 적용됨.</p>
                     <div class="thinking-space bg-teal-50/30"></div>
                 </div>
                 <p><strong>[연결]</strong> 그런데 \(v(t)\)가 음수가 되면 — 점이 뒤로 움직이면 — 위치는 줄어들지만 "이동한 거리"는 계속 늘어난다. 즉 <strong>변위(위치 변화) \(\neq\) 이동 거리</strong>. 차시 27의 두 곡선 사이 넓이에서 절댓값이 위·아래 부호를 통합했듯이, 운동학에서도 절댓값 \(|v(t)|\)가 부호 있는 변위와 항상 양수인 거리의 차이를 메운다. 오늘 우리는 ① 위치 \(x(t) = x_0 + \int_{t_0}^t v(s)\,ds\), ② 위치 변화량(변위) \(\int_a^b v(t)\,dt\), ③ 이동 거리 \(\int_a^b |v(t)|\,dt\) — 세 가지를 명확히 구분하고 ④ 방향 전환 시점(\(v = 0\)) 기준 구간 분할로 거리를 정확히 구하는 절차를 익힌다.</p>
@@ -118,13 +118,13 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         시각 \(t\)에서의 위치 \(x(t)\) — 초기 위치 + 변위 누적
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 132쪽 · 속도와 위치" data-src-rel="">교과서 132쪽 · 속도와 위치</span>
                     <p class="mb-3 text-slate-700">수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t)\)이고, 시각 \(t_0\)에서 위치가 \(x_0\)일 때:</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">\( x(t) = x_0 + \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_{t_0}^{t} v(s)\,ds \)</span></span></p>
                     </div>
                     <p class="mt-3 text-slate-700"><strong>유도:</strong> \(x'(t) = v(t)\)의 양변을 \([t_0, t]\)에서 적분 \(\Rightarrow x(t) - x(t_0) = \int_{t_0}^t v(s)\,ds\). 미적분 기본정리(차시 24).</p>
-                    <p class="mt-3 text-sm text-slate-600">적분 변수에 \(t\)를 쓰면 위 끝과 충돌하므로 \(s\)로 바꾸어 표기. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.132 · 위치 공식 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600">적분 변수에 \(t\)를 쓰면 위 끝과 충돌하므로 \(s\)로 바꾸어 표기.</p>
                 </div>
 
                 <!-- 2. 위치 변화량(변위) -->
@@ -132,13 +132,13 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         위치 변화량(변위) — 부호 있는 양
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 132쪽 · 위치의 변화량" data-src-rel="">교과서 132쪽 · 위치의 변화량</span>
                     <p class="mb-3 text-slate-700">시각 \(t = a\)에서 \(t = b\)까지 점 P의 <strong>위치 변화량</strong>(변위):</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">\( x(b) - x(a) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_a^b v(t)\,dt \)</span></span></p>
                     </div>
                     <p class="mt-3 text-slate-700"><strong>핵심:</strong> 변위는 부호를 가짐. \(v \gt 0\)이면 앞으로 진행하여 \(+\), \(v \lt 0\)이면 뒤로 진행하여 \(-\). 출발점과 도착점의 직선 거리·방향을 함께 나타낸다.</p>
-                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 변위 \(= 0\)은 점이 정지했다는 뜻이 아니라 <strong>"출발점과 도착점이 같다"</strong>는 뜻. 도중에 멀리 갔다가 되돌아온 경우 가능. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.132 · 위치의 변화량 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 변위 \(= 0\)은 점이 정지했다는 뜻이 아니라 <strong>"출발점과 도착점이 같다"</strong>는 뜻. 도중에 멀리 갔다가 되돌아온 경우 가능.</p>
                 </div>
 
                 <!-- 3. 이동 거리 -->
@@ -146,7 +146,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         이동 거리 — 항상 양수, 절댓값으로 통합
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 133쪽 · 움직인 거리" data-src-rel="">교과서 133쪽 · 움직인 거리</span>
                     <div class="flex justify-center my-3">
                         <img src="images/calc_28_vt_concept.png" alt="v(t) 그래프 — [a,c]에서 v(t)≥0이고 색칠된 양의 영역, [c,b]에서 v(t)≤0이고 색칠된 음의 영역. 이동 거리는 두 영역 넓이의 합" class="block mx-auto max-w-sm w-full rounded-lg border border-slate-200" />
                     </div>
@@ -162,7 +162,7 @@
                     <div class="bg-cyan-50 p-4 rounded-xl border-2 border-cyan-300 mt-3">
                         <p class="text-center text-2xl font-black text-teal-700">총 이동 거리 \(= \displaystyle\int_a^b |v(t)|\,dt\)</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>실전 절차:</strong> ① \(v(t) = 0\)의 해(\(\to\) 방향 전환 시점) ② 각 구간의 부호 ③ 부호별로 \(v\) 또는 \(-v\) 적분 ④ 합산. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.133 · 이동 거리 정리 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>실전 절차:</strong> ① \(v(t) = 0\)의 해(\(\to\) 방향 전환 시점) ② 각 구간의 부호 ③ 부호별로 \(v\) 또는 \(-v\) 적분 ④ 합산.</p>
                 </div>
 
                 <!-- 4. 변위 vs 이동 거리 비교 -->
@@ -170,7 +170,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         변위 vs. 이동 거리 — 절대 혼동 금지
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="자체 정리 · 교과서 134쪽 예제 1 연계" data-src-rel="">자체 정리 · 교과서 134쪽 예제 1 연계</span>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ul class="space-y-2 text-base">
                             <li>📌 <strong>변위</strong> \(\int_a^b v(t)\,dt\): 부호 있음. 출발 \(\to\) 도착 직선 변화. 음수 또는 \(0\) 가능.</li>
@@ -178,7 +178,7 @@
                             <li>📌 \(v(t) \geq 0\)인 구간에서만 두 값이 일치. 그 외에는 \(|\text{변위}| \leq \text{이동 거리}\).</li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>예 (예제 1 P.134):</strong> 좌표 2에서 출발, \(v(t) = 3 - t\). \(v = 0 \Rightarrow t = 3\). \([2, 6]\) 변위 \(= \int_2^6 (3 - t)\,dt = -4\) (4만큼 뒤로). 이동 거리 \(= \int_2^3 (3 - t)\,dt + \int_3^6 (t - 3)\,dt = \tfrac{1}{2} + \tfrac{9}{2} = 5\) (총 5만큼 움직임). 두 값이 명확히 다름. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 예제 1 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>예 (예제 1 P.134):</strong> 좌표 2에서 출발, \(v(t) = 3 - t\). \(v = 0 \Rightarrow t = 3\). \([2, 6]\) 변위 \(= \int_2^6 (3 - t)\,dt = -4\) (4만큼 뒤로). 이동 거리 \(= \int_2^3 (3 - t)\,dt + \int_3^6 (t - 3)\,dt = \tfrac{1}{2} + \tfrac{9}{2} = 5\) (총 5만큼 움직임). 두 값이 명확히 다름.</p>
                 </div>
             </div>
         </section>
@@ -195,8 +195,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-위치·변위·거리 종합</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 6t - 3t^2\)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 문제 01 참고)</span>
+                        <span class="badge badge-l1">기초-위치·변위·거리 종합</span> <span class="src-chip" data-src-label="교과서 134쪽 · 문제 1" data-src-rel="그대로">교과서 134쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 6t - 3t^2\)일 때, 다음을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 시각 \(t = 3\)에서 점 P의 위치</span><span class="sub-q">(2) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P의 위치의 변화량</span><span class="sub-q">(3) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P가 움직인 거리</span></span>
                             </div>
@@ -211,8 +211,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-실생활 (쏘아 올린 공)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 지면으로부터 1\,m 높이에서 20\,m/s의 속도로 지면과 수직으로 쏘아 올린 공의 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = 20 - 10t\quad (0 \leq t \leq 4) \] 인 관계가 성립한다. 공을 쏘아 올린 후 4초 동안 공이 움직인 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 문제 03 참고)</span></div>
+                        <span class="badge badge-l1">기초-실생활 (쏘아 올린 공)</span> <span class="src-chip" data-src-label="교과서 134쪽 · 문제 3" data-src-rel="그대로">교과서 134쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 지면으로부터 1\,m 높이에서 20\,m/s의 속도로 지면과 수직으로 쏘아 올린 공의 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = 20 - 10t\quad (0 \leq t \leq 4) \] 인 관계가 성립한다. 공을 쏘아 올린 후 4초 동안 공이 움직인 거리를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(v = 0 \Rightarrow t = 2\). \([0, 2]\)에서 \(v \geq 0\) (위로 올라감), \([2, 4]\)에서 \(v \leq 0\) (떨어짐). 이동 거리 \(= \int_0^2 (20 - 10t)\,dt + \int_2^4 (10t - 20)\,dt = \big[20t - 5t^2\big]_0^2 + \big[5t^2 - 20t\big]_2^4 = 20 + 20 = 40\). <strong>답: 40\,m</strong>.
                         </div></details>
@@ -220,8 +220,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-그래프형 v(t) → 거리</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도 \(v(t)\)의 그래프가 오른쪽 그림과 같다. 시각 \(t = 0\)에서 \(t = 9\)까지 점 P가 움직인 거리를 구하시오. (단, \(0 \leq t \leq 9\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 문제 02 참고)</span></div>
+                        <span class="badge badge-l1">기초-그래프형 v(t) → 거리</span> <span class="src-chip" data-src-label="교과서 134쪽 · 문제 2" data-src-rel="그대로">교과서 134쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도 \(v(t)\)의 그래프가 오른쪽 그림과 같다. 시각 \(t = 0\)에서 \(t = 9\)까지 점 P가 움직인 거리를 구하시오. (단, \(0 \leq t \leq 9\))</div>
                         <div class="flex justify-center my-3">
                             <img src="images/calc_28_q02_vt.png" alt="문제 02 v(t) 그래프 — 꺾은선 형태. (0,0) → (2,2) → (3,0) → (4,-2) → (5,0) → (6,2) → (9,0) 형태로 정삼각형 4개" class="block mx-auto max-w-md w-full rounded-lg border border-slate-200" />
                         </div>
@@ -240,8 +240,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-위치·변위·거리 종합 (3·4차 식)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 좌표가 \(-1\)인 점에서 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \[ v(t) = t^2 - 4t + 3 \] 일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.135 · 중단원 기초 03번 참고)</span>
+                        <span class="badge badge-l2">응용-위치·변위·거리 종합 (3·4차 식)</span> <span class="src-chip" data-src-label="교과서 135쪽 · 중단원 학습 점검 기초 3" data-src-rel="그대로">교과서 135쪽 · 중단원 학습 점검 기초 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 좌표가 \(-1\)인 점에서 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \[ v(t) = t^2 - 4t + 3 \] 일 때, 다음을 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 시각 \(t = 2\)에서 점 P의 위치</span><span class="sub-q">(2) 시각 \(t = 0\)에서 \(t = 3\)까지 점 P의 위치의 변화량</span><span class="sub-q">(3) 시각 \(t = 0\)에서 \(t = 2\)까지 점 P가 움직인 거리</span></span>
                             </div>
@@ -256,8 +256,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-구간별 속도 정의 (드론)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 지면에 정지해 있던 드론이 지면과 수직 방향으로 출발한 지 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = \begin{cases} \dfrac{1}{2} t & (0 \leq t \leq 10) \\ 15 - t & (10 \lt t \leq 15) \end{cases} \] 라고 한다. 출발한 지 \(12\)초 후의 드론의 높이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.137 · 중단원 기본 10번 참고)</span></div>
+                        <span class="badge badge-l2">응용-구간별 속도 정의 (드론)</span> <span class="src-chip" data-src-label="교과서 137쪽 · 중단원 학습 점검 기본 10" data-src-rel="그대로">교과서 137쪽 · 중단원 학습 점검 기본 10 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 지면에 정지해 있던 드론이 지면과 수직 방향으로 출발한 지 \(t\)초 후의 속도를 \(v(t)\,\text{m/s}\)라고 하면 \[ v(t) = \begin{cases} \dfrac{1}{2} t & (0 \leq t \leq 10) \\ 15 - t & (10 \lt t \leq 15) \end{cases} \] 라고 한다. 출발한 지 \(12\)초 후의 드론의 높이를 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 두 구간 모두 \(0 \leq t \leq 12\) 범위에서 \(v(t) \geq 0\) (드론이 계속 올라감). 따라서 높이 \(=\) 변위 \(= \int_0^{12} v\,dt\). 두 구간으로 나누어 적분:<br>
                             \(\int_0^{10} \tfrac{1}{2}t\,dt + \int_{10}^{12}(15 - t)\,dt = \big[\tfrac{1}{4}t^2\big]_0^{10} + \big[15t - \tfrac{1}{2}t^2\big]_{10}^{12}\)<br>
@@ -267,8 +267,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-원점 복귀 시각</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 4t^2 - 2t^3\)일 때, 점 P가 다시 원점으로 돌아오는 시각을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.137 · 중단원 기본 11번 참고)</span></div>
+                        <span class="badge badge-l2">응용-원점 복귀 시각</span> <span class="src-chip" data-src-label="교과서 137쪽 · 중단원 학습 점검 기본 11" data-src-rel="그대로">교과서 137쪽 · 중단원 학습 점검 기본 11 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 4t^2 - 2t^3\)일 때, 점 P가 다시 원점으로 돌아오는 시각을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 원점 복귀 \(\Leftrightarrow x(T) = 0\) (단, \(T \gt 0\)). \(x(T) = 0 + \int_0^T (4t^2 - 2t^3)\,dt = \big[\tfrac{4}{3}t^3 - \tfrac{1}{2}t^4\big]_0^T = \tfrac{4}{3}T^3 - \tfrac{1}{2}T^4 = T^3 \cdot (\tfrac{4}{3} - \tfrac{T}{2})\). \(x(T) = 0 \Rightarrow T = 0\) 또는 \(\tfrac{4}{3} = \tfrac{T}{2} \Rightarrow T = \tfrac{8}{3}\). <strong>답: \(t = \dfrac{8}{3}\)</strong>.
                         </div></details>
@@ -285,8 +285,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-두 점 P, Q의 만남 횟수</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 점 P는 원점에서, 점 Q는 좌표가 \(-3\)인 점에서 동시에 출발하여 수직선 위를 움직이고 있다. 두 점 P, Q의 시각 \(t\)에서 속도가 각각 \[ v_\text{P}(t) = 4t + 5,\quad v_\text{Q}(t) = 3t^2 - 8t + 14 \] 일 때, 두 점 P, Q가 만나는 횟수를 구하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.137 · 중단원 도전 13번 참고)</span></div>
+                        <span class="badge badge-l3">심화-두 점 P, Q의 만남 횟수</span> <span class="src-chip" data-src-label="교과서 137쪽 · 중단원 학습 점검 도전 13" data-src-rel="그대로">교과서 137쪽 · 중단원 학습 점검 도전 13 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 점 P는 원점에서, 점 Q는 좌표가 \(-3\)인 점에서 동시에 출발하여 수직선 위를 움직이고 있다. 두 점 P, Q의 시각 \(t\)에서 속도가 각각 \[ v_\text{P}(t) = 4t + 5,\quad v_\text{Q}(t) = 3t^2 - 8t + 14 \] 일 때, 두 점 P, Q가 만나는 횟수를 구하시오.</div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
@@ -314,8 +314,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 직선 도로를 초속 \(20\,\text{m}\)로 달리고 있는 자동차가 있다. 이 자동차가 제동을 걸고 \(t\)초 후의 속도가 \(v(t) = (20 - 4t)\,\text{m/s}\)일 때, 제동을 건 순간부터 자동차가 정지할 때까지 달린 거리를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.141 · 대단원평가 09번 참고)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 141쪽 · 대단원 학습 평가 9" data-src-rel="그대로">교과서 141쪽 · 대단원 학습 평가 9 <span class="src-rel">그대로</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 직선 도로를 초속 \(20\,\text{m}\)로 달리고 있는 자동차가 있다. 이 자동차가 제동을 걸고 \(t\)초 후의 속도가 \(v(t) = (20 - 4t)\,\text{m/s}\)일 때, 제동을 건 순간부터 자동차가 정지할 때까지 달린 거리를 구하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략:</strong> 정지 시점 \(v = 0 \Rightarrow 20 - 4t = 0 \Rightarrow t = 5\). \([0, 5]\)에서 \(v \geq 0\)이므로 변위 \(=\) 이동 거리 \(= \int_0^5 (20 - 4t)\,dt = \big[20t - 2t^2\big]_0^5 = 100 - 50 = 50\). <strong>답: 50\,m</strong>.
             </div></details>
@@ -603,7 +603,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_28.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */

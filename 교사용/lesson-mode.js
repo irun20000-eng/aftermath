@@ -327,11 +327,14 @@
     var head = h('div', 'lm-head');
     ui.tabname = h('span', 'lm-tabname');
     ui.sub = h('span', 'lm-sub');
+    ui.src = h('span', 'lm-src');
     ui.count = h('span', 'lm-count');
     ui.reveal = h('button', 'lm-reveal', '정답·풀이 열기');
     ui.reveal.type = 'button';
     ui.reveal.addEventListener('click', revealAll);
-    head.appendChild(ui.tabname); head.appendChild(ui.sub); head.appendChild(ui.reveal); head.appendChild(ui.count);
+    var headMain = h('div', 'lm-headmain');          // 제목 + 그 아래 출처 칩 (제목이 출처에 밀려 꺾이지 않게)
+    headMain.appendChild(ui.sub); headMain.appendChild(ui.src);
+    head.appendChild(ui.tabname); head.appendChild(headMain); head.appendChild(ui.reveal); head.appendChild(ui.count);
     ui.body = h('div', 'lm-body');
     ui.page = h('div', 'lm-page');
     ui.body.appendChild(ui.page);
@@ -415,6 +418,7 @@
     if (u.subNode) ui.sub.appendChild(u.subNode.cloneNode(true));
     else ui.sub.textContent = u.sub || '';
     ui.page.setAttribute('data-tab', t.key);
+    renderSource(u);
     var total = 0, idx = 0;
     tabs.forEach(function (x, i) { if (i < state.tab) idx += x.pages.length; total += x.pages.length; });
     idx += state.page + 1;
@@ -441,6 +445,41 @@
     ui.next.textContent = (state.page === t.pages.length - 1 && a) ? a.name + ' ▶' : '다음 ▶';
     var ae = ui.tabs.children[state.tab];
     if (ae && ae.scrollIntoView) ae.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+
+  /* ---------- 출처 (교과서 몇 쪽 몇 번) ---------- */
+  function unitChip(u) {
+    if (!u || !u.el) return null;
+    return u.el.classList && u.el.classList.contains('src-chip') ? u.el : $('.src-chip', u.el);
+  }
+  function renderSource(u) {
+    $all('.src-chip.lm-src-shown').forEach(function (c) { c.classList.remove('lm-src-shown'); });
+    ui.src.textContent = '';
+    state.src = null;
+    var chip = unitChip(u), label = '', rel = '';
+    if (chip) {
+      chip.classList.add('lm-src-shown');           // 화면 안의 칩은 머리줄로 옮겨 보이므로 숨긴다
+      label = chip.getAttribute('data-src-label') || txt(chip);
+      rel = chip.getAttribute('data-src-rel') || '';
+    } else if (u && u.el) {                         // 도전 문제 — 기존 '📖 출처' 줄의 이름표
+      var s = u.el.hasAttribute && u.el.hasAttribute('data-aft-source-label') ? u.el : $('[data-aft-source-label]', u.el);
+      if (s) label = s.getAttribute('data-aft-source-label');
+    }
+    if (!label) { ui.src.style.display = 'none'; return; }
+    // 머리줄은 한 줄로 — 길면 말줄임, 전체는 마우스를 올리거나 판서 공간에서 본다
+    var c = h('span', 'src-chip');
+    c.setAttribute('data-src-rel', rel);
+    c.title = label;
+    c.appendChild(h('span', 'src-lab', label));
+    if (rel) c.appendChild(h('span', 'src-rel', rel));
+    ui.src.appendChild(c);
+    ui.src.style.display = '';
+    var n = (u.sub || '').match(/(\d+)번/);
+    state.src = {
+      where: n ? n[1] + '번' : (tabs[state.tab].key === 'concept' ? '개념 ' + (state.page + 1) : tabs[state.tab].name),
+      label: label,
+      rel: rel
+    };
   }
 
   /* ---------- 판서 공간 ---------- */
@@ -493,6 +532,13 @@
         zones.appendChild(d);
       });
       ui.board.appendChild(zones);
+    }
+    if (state.src) {
+      var bs = h('div', 'lm-board-src');
+      bs.appendChild(h('b', null, state.src.where));
+      bs.appendChild(document.createTextNode(' · ' + state.src.label));
+      if (state.src.rel) bs.appendChild(h('span', 'lm-board-src-rel', state.src.rel));
+      ui.board.appendChild(bs);
     }
     ui.board.appendChild(h('span', 'lm-board-note', '전자칠판 필기모드로 이 공간에 판서'));
   }

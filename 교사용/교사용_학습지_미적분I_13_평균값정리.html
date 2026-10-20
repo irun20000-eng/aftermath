@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020b">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -112,12 +112,12 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
                         롤의 정리 (Rolle's Theorem)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 73~74쪽 · 롤의 정리" data-src-rel="">교과서 73~74쪽 · 롤의 정리</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 닫힌구간 \([a, b]\)에서 <strong>연속</strong>이고 열린구간 \((a, b)\)에서 <strong>미분가능</strong>하며 \(f(a) = f(b)\)이면, 다음을 만족시키는 \(c\)가 적어도 하나 존재한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">\( f'(c) = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( 0 \)</span></span>, &nbsp; \( c \in (a, b) \)</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>기하학적 의미:</strong> 양 끝의 함숫값이 같으면 그 사이 어딘가에서 <strong>\(x\)축에 평행한 접선</strong>이 존재한다. <span class="calc-accent font-bold">세 가지 조건(연속·미분가능·\(f(a)=f(b)\))</span>이 모두 갖춰져야 한다. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.73~74 · 롤의 정리 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>기하학적 의미:</strong> 양 끝의 함숫값이 같으면 그 사이 어딘가에서 <strong>\(x\)축에 평행한 접선</strong>이 존재한다. <span class="calc-accent font-bold">세 가지 조건(연속·미분가능·\(f(a)=f(b)\))</span>이 모두 갖춰져야 한다.</p>
                 </div>
 
                 <!-- 2. 롤의 정리 반례 점검 -->
@@ -125,7 +125,7 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                         세 조건 — 빠지면 결론도 무너진다
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 75쪽 · 문제 2" data-src-rel="">교과서 75쪽 · 문제 2</span>
                     <p class="mb-3 text-slate-700">조건 한 가지라도 빠지면 결론(존재성)이 보장되지 않는다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <ul class="space-y-2 text-base">
@@ -133,7 +133,7 @@
                             <li>② <strong>\(f(a) \neq f(b)\) 반례:</strong> \(f(x) = x\)는 \([0, 1]\)에서 모든 조건이 좋으나 \(f(0)=0 \neq 1 = f(1)\). \(f'(x) = 1\)로 \(0\)이 되는 점이 없다.</li>
                         </ul>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 정리를 적용하기 전에 <strong>"세 조건을 모두 확인"</strong>하는 습관. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.75 · 문제 02 (수리 언어 소양) 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 정리를 적용하기 전에 <strong>"세 조건을 모두 확인"</strong>하는 습관.</p>
                 </div>
 
                 <!-- 3. 평균값 정리 -->
@@ -141,13 +141,13 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                         평균값 정리 (Mean Value Theorem)
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 75~76쪽 · 평균값 정리" data-src-rel="">교과서 75~76쪽 · 평균값 정리</span>
                     <p class="mb-3 text-slate-700">함수 \(f(x)\)가 닫힌구간 \([a, b]\)에서 연속이고 열린구간 \((a, b)\)에서 미분가능할 때, 다음을 만족시키는 \(c\)가 적어도 하나 존재한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100 text-center">
                         <p class="text-xl font-bold">\( \dfrac{f(b) - f(a)}{b - a} = \) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( f'(c) \)</span></span>, &nbsp; \( c \in (a, b) \)</p>
                     </div>
                     <p class="mt-3 text-sm text-slate-700"><strong>기하학적 의미:</strong> 두 점 \((a, f(a))\), \((b, f(b))\)를 잇는 <strong>평균 변화율</strong>(= 직선 \(\mathrm{AB}\)의 기울기)과 같은 <strong>순간 변화율</strong>(= 접선의 기울기)을 갖는 점 \(c\)가 구간 안에 존재한다.</p>
-                    <p class="mt-3 text-sm text-slate-600"><strong>롤의 정리와의 관계:</strong> 평균값 정리에서 \(f(a) = f(b)\)인 특수 경우가 롤의 정리. 즉 <span class="calc-accent font-bold">롤 \(\subset\) 평균값</span>의 일반화 구조. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.75~76 · 평균값 정리 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>롤의 정리와의 관계:</strong> 평균값 정리에서 \(f(a) = f(b)\)인 특수 경우가 롤의 정리. 즉 <span class="calc-accent font-bold">롤 \(\subset\) 평균값</span>의 일반화 구조.</p>
                 </div>
 
                 <!-- 4. 평균값 정리 응용: f'=0 ⇒ 상수함수 -->
@@ -155,13 +155,13 @@
                     <h3 class="font-black text-xl text-teal-800 mb-4 flex items-center gap-2">
                         <span class="bg-teal-200 text-teal-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
                         응용 — "\(f'(x) = 0 \Rightarrow f\)는 상수함수"의 증명
-                    </h3>
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 77쪽 · 예제 3 · 문제 4" data-src-rel="">교과서 77쪽 · 예제 3 · 문제 4</span>
                     <p class="mb-3 text-slate-700">"상수함수의 도함수는 \(0\)"은 자명. 그 <strong>역</strong>도 참인가? 평균값 정리로 증명한다.</p>
                     <div class="bg-white p-5 rounded-xl border border-teal-100">
                         <p class="text-base"><strong>주장:</strong> \(f(x)\)가 \([a, b]\)에서 연속이고 \((a, b)\)에서 미분가능하며, \((a, b)\)의 모든 \(x\)에 대해 \(f'(x) = 0\)이면, \(f(x)\)는 \([a, b]\)에서 <strong>상수함수</strong>이다.</p>
                         <p class="text-base mt-3"><strong>증명:</strong> 임의의 \(a \lt x \leq b\)에 대해 평균값 정리를 \([a, x]\)에 적용 \(\Rightarrow\) \(\dfrac{f(x) - f(a)}{x - a} = f'(c)\)인 \(c \in (a, x)\) 존재. 가정에서 \(f'(c) = 0 \Rightarrow f(x) = f(a)\). 모든 \(x\)에 대해 같으므로 상수함수. \(\blacksquare\)</p>
                     </div>
-                    <p class="mt-3 text-sm text-slate-600"><strong>따름정리:</strong> 같은 구간에서 \(f'(x) = g'(x)\)이면 \(f(x) = g(x) + k\) (상수 \(k\)). 부정적분(차시 22)의 모든 일반해가 "\(+ C\)"를 갖는 이유의 핵심 정당화. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.77 · 예제 3 + 문제 04 참고)</span></p>
+                    <p class="mt-3 text-sm text-slate-600"><strong>따름정리:</strong> 같은 구간에서 \(f'(x) = g'(x)\)이면 \(f(x) = g(x) + k\) (상수 \(k\)). 부정적분(차시 22)의 모든 일반해가 "\(+ C\)"를 갖는 이유의 핵심 정당화.</p>
                 </div>
             </div>
         </section>
@@ -178,8 +178,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-롤의 정리의 \(c\) 구하기</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) = x^2 - 4x + 3 \)에 대하여 닫힌구간 \([1, 3]\)에서 롤의 정리를 만족시키는 실수 \(c\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.74 · 본문 + 예제 1 변형 참고)</span></div>
+                        <span class="badge badge-l1">기초-롤의 정리의 \(c\) 구하기</span> <span class="src-chip" data-src-label="교과서 74쪽 · 예제 1" data-src-rel="변형">교과서 74쪽 · 예제 1 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) = x^2 - 4x + 3 \)에 대하여 닫힌구간 \([1, 3]\)에서 롤의 정리를 만족시키는 실수 \(c\)의 값을 구하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> ① 조건 확인: \(f(1) = 1 - 4 + 3 = 0\), \(f(3) = 9 - 12 + 3 = 0\), 연속·미분가능 ✓. ② \(f'(x) = 2x - 4\), \(f'(c) = 0 \Rightarrow c = 2 \in (1, 3)\) ✓.
                         </div></details>
@@ -187,8 +187,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-평균값 정리의 \(c\) 구하기</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 구간에서 평균값 정리를 만족시키는 실수 \(c\)의 값을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.76 · 문제 03 참고)</span>
+                        <span class="badge badge-l1">기초-평균값 정리의 \(c\) 구하기</span> <span class="src-chip" data-src-label="교과서 76쪽 · 문제 3" data-src-rel="그대로">교과서 76쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 구간에서 평균값 정리를 만족시키는 실수 \(c\)의 값을 모두 구하시오.
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
                                 <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -2x^2 + 4x \), \([0, 4]\)</span><span class="sub-q">(2) \( f(x) = x^3 \), \([-3, 3]\)</span></span>
                             </div>
@@ -202,8 +202,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l1">기초-롤의 정리 적용 가능성 판단</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \( f(x) = |x| \)가 닫힌구간 \([-1, 1]\)에서 롤의 정리를 만족시키지 <strong>않는</strong> 이유를 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.75 · 문제 02 (수리 언어 소양) 참고)</span></div>
+                        <span class="badge badge-l1">기초-롤의 정리 적용 가능성 판단</span> <span class="src-chip" data-src-label="교과서 75쪽 · 문제 2" data-src-rel="그대로">교과서 75쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \( f(x) = |x| \)가 닫힌구간 \([-1, 1]\)에서 롤의 정리를 만족시키지 <strong>않는</strong> 이유를 설명하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 롤의 정리의 세 조건 중 ① 연속 (\([-1, 1]\)에서 ✓), ③ \(f(-1) = 1 = f(1)\) (✓). 그러나 ② <strong>미분가능</strong>이 \(x = 0\)에서 깨진다 (좌미분 \(-1\), 우미분 \(+1\)). 따라서 정리 적용 불가. 실제로 \(f'(x) = \pm 1\)이 \(0\)이 되는 점이 없다.
                         </div></details>
@@ -219,8 +219,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-\(c\)가 주어졌을 때 미지수 결정</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = x^3 + x + 1 \)에 대하여 닫힌구간 \([-1, a]\)에서 평균값 정리를 만족시키는 실수 \(c\)의 값이 \(1\)일 때, 실수 \(a\)의 값을 구하시오. (단, \(a \gt 1\)) <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.97 · 기본 05번 참고)</span></div>
+                        <span class="badge badge-l2">응용-\(c\)가 주어졌을 때 미지수 결정</span> <span class="src-chip" data-src-label="교과서 97쪽 · 중단원 학습 점검 기본 5" data-src-rel="그대로">교과서 97쪽 · 중단원 학습 점검 기본 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \( f(x) = x^3 + x + 1 \)에 대하여 닫힌구간 \([-1, a]\)에서 평균값 정리를 만족시키는 실수 \(c\)의 값이 \(1\)일 때, 실수 \(a\)의 값을 구하시오. (단, \(a \gt 1\))</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 평균값 정리 식 \(\dfrac{f(a) - f(-1)}{a + 1} = f'(1)\). \(f(-1) = -1\), \(f'(x) = 3x^2 + 1\), \(f'(1) = 4\). \(a^3 + a + 1 + 1 = 4(a + 1) \Rightarrow a^3 - 3a - 2 = 0\). 인수분해 \((a - 2)(a + 1)^2 = 0 \Rightarrow a = 2\) (조건 \(a \gt 1\)).
                         </div></details>
@@ -228,8 +228,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-구간 단속 (평균값 정리의 현실 응용)</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">5. 구간 단속제는 구간의 시작과 종료 지점에 카메라를 설치하여 자동차의 구간 평균속도를 측정해 제한 속도 준수 여부를 판정한다. 제한 속도가 \(80\,\mathrm{km/h}\)인 도로의 \(15\,\mathrm{km}\) 구간을 어느 자동차가 통과하는 데 \(10\)분 걸렸을 때, 이 자동차의 속도가 <strong>제한 속도를 초과한 순간</strong>이 있었는지 평균값 정리를 이용해 판정하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.98 · 도전 14번 참고)</span></div>
+                        <span class="badge badge-l2">응용-구간 단속 (평균값 정리의 현실 응용)</span> <span class="src-chip" data-src-label="교과서 98쪽 · 중단원 학습 점검 도전 14" data-src-rel="그대로">교과서 98쪽 · 중단원 학습 점검 도전 14 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 구간 단속제는 구간의 시작과 종료 지점에 카메라를 설치하여 자동차의 구간 평균속도를 측정해 제한 속도 준수 여부를 판정한다. 제한 속도가 \(80\,\mathrm{km/h}\)인 도로의 \(15\,\mathrm{km}\) 구간을 어느 자동차가 통과하는 데 \(10\)분 걸렸을 때, 이 자동차의 속도가 <strong>제한 속도를 초과한 순간</strong>이 있었는지 평균값 정리를 이용해 판정하시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> 평균속도 \(= \dfrac{15}{10/60} = 90\,\mathrm{km/h}\). 시각 \(t\)에 대한 위치 \(f(t)\)는 연속·미분가능 (현실적). 평균값 정리에 의해 \(f'(c) = 90\)인 \(c\)가 존재 \(\Rightarrow\) 어느 순간 순간속도 \(= 90\,\mathrm{km/h}\). <strong>제한속도 \(80\,\mathrm{km/h}\)를 초과한 순간이 반드시 있었다.</strong> 핵심 슬로건: <strong>"평균이 \(M\)이면 어느 순간 속도도 \(M\)인 점이 존재"</strong>.
                         </div></details>
@@ -237,8 +237,8 @@
                     </div>
 
                     <div>
-                        <span class="badge badge-l2">응용-부등식 증명에 평균값 정리 적용</span>
-                        <div class="text-xl font-bold text-slate-800 mb-2">6. 자연수 \(n \geq 2\)에 대하여 함수 \(f(x) = x^2\)에 닫힌구간 \([n - 1,\ n]\)에서 평균값 정리를 적용하여 \[ 2(n - 1) \lt n^2 - (n - 1)^2 \lt 2n \] 이 성립함을 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 평균값 정리 응용)</span></div>
+                        <span class="badge badge-l2">응용-부등식 증명에 평균값 정리 적용</span> <span class="src-chip" data-src-label="교과서 76쪽 · 예제 2" data-src-rel="유형">교과서 76쪽 · 예제 2 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 자연수 \(n \geq 2\)에 대하여 함수 \(f(x) = x^2\)에 닫힌구간 \([n - 1,\ n]\)에서 평균값 정리를 적용하여 \[ 2(n - 1) \lt n^2 - (n - 1)^2 \lt 2n \] 이 성립함을 보이시오.</div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
                             <strong>💡 힌트:</strong> \(f(x) = x^2\)는 \([n - 1, n]\)에서 연속·미분가능, \(f'(x) = 2x\). 평균값 정리 \(\Rightarrow n^2 - (n - 1)^2 = 2c \cdot 1 = 2c\), \(c \in (n - 1, n)\). \(n - 1 \lt c \lt n \Rightarrow 2(n - 1) \lt 2c \lt 2n\). \(\blacksquare\) <strong>패턴:</strong> "함수의 차분 = 미분계수 × 구간 길이", \(c\)의 위치 정보로 부등식 양변을 묶는다.
                         </div></details>
@@ -255,8 +255,8 @@
 
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
-                        <span class="badge badge-l3">심화-내 역량: 카드의 참/거짓</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 모든 실수 \(x\)에서 미분가능하고 그래프가 세 점 \((0, 0)\), \((2, 2)\), \((4, 0)\)을 지나는 임의의 함수 \(f(x)\)에 대하여 다음 각 카드의 명제가 <strong>항상 참인지</strong> 판정하고 그 이유를 설명하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.77 · 내 역량 키움·채움·나눔 참고)</span>
+                        <span class="badge badge-l3">심화-내 역량: 카드의 참/거짓</span> <span class="src-chip" data-src-label="교과서 77쪽 · 내 역량" data-src-rel="그대로">교과서 77쪽 · 내 역량 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 모든 실수 \(x\)에서 미분가능하고 그래프가 세 점 \((0, 0)\), \((2, 2)\), \((4, 0)\)을 지나는 임의의 함수 \(f(x)\)에 대하여 다음 각 카드의 명제가 <strong>항상 참인지</strong> 판정하고 그 이유를 설명하시오.
                             <div class="mt-3 flex justify-center">
                                 <img src="images/calc_13_q5_threepoints.png" alt="P.77 세 점 통과 함수 카드 1·2·3" class="rounded-lg border border-slate-200 max-w-full h-auto" style="max-height:300px;">
                             </div>
@@ -286,8 +286,8 @@
 
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
-            <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 두 함수 \(f(x), g(x)\)가 닫힌구간 \([a, b]\)에서 연속이고 열린구간 \((a, b)\)에서 미분가능할 때, 열린구간 \((a, b)\)에 속하는 모든 \(x\)에 대하여 \(f'(x) = g'(x)\)이면 \(f(x) = g(x) + k\) (\(k\)는 상수)임을 평균값 정리(또는 그 따름정리)를 이용하여 설명하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.77 · 문제 04 참고)</span></div>
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 77쪽 · 문제 4" data-src-rel="그대로">교과서 77쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 두 함수 \(f(x), g(x)\)가 닫힌구간 \([a, b]\)에서 연속이고 열린구간 \((a, b)\)에서 미분가능할 때, 열린구간 \((a, b)\)에 속하는 모든 \(x\)에 대하여 \(f'(x) = g'(x)\)이면 \(f(x) = g(x) + k\) (\(k\)는 상수)임을 평균값 정리(또는 그 따름정리)를 이용하여 설명하시오.</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략:</strong> \(h(x) = f(x) - g(x)\)로 두면 \(h\)는 \([a, b]\)에서 연속·\((a, b)\)에서 미분가능하며 \(h'(x) = f'(x) - g'(x) = 0\) (모든 \(x \in (a, b)\)). 차시 내 응용 결과 "\(h'(x) = 0 \Rightarrow h\)는 상수함수"에 의해 \(h(x) = k\). 따라서 \(f(x) - g(x) = k \Rightarrow f(x) = g(x) + k\). \(\blacksquare\) <strong>의미:</strong> 두 함수의 도함수가 같으면 두 함수는 상수 차이일 뿐 — 부정적분(차시 22) "\(+ C\)"의 정당화.
             </div></details>
@@ -589,7 +589,7 @@
 
             <script src="widgets.js"></script>
             <script src="boardplans/calc_13.js?v=20261013"></script>
-            <script src="lesson-mode.js?v=20261013"></script>
+            <script src="lesson-mode.js?v=20261020b"></script>
 
 <script>
 /* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
