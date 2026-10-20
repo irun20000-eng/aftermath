@@ -332,7 +332,9 @@
     ui.reveal = h('button', 'lm-reveal', '정답·풀이 열기');
     ui.reveal.type = 'button';
     ui.reveal.addEventListener('click', revealAll);
-    head.appendChild(ui.tabname); head.appendChild(ui.sub); head.appendChild(ui.src); head.appendChild(ui.reveal); head.appendChild(ui.count);
+    var headMain = h('div', 'lm-headmain');          // 제목 + 그 아래 출처 칩 (제목이 출처에 밀려 꺾이지 않게)
+    headMain.appendChild(ui.sub); headMain.appendChild(ui.src);
+    head.appendChild(ui.tabname); head.appendChild(headMain); head.appendChild(ui.reveal); head.appendChild(ui.count);
     ui.body = h('div', 'lm-body');
     ui.page = h('div', 'lm-page');
     ui.body.appendChild(ui.page);
@@ -453,17 +455,30 @@
   function renderSource(u) {
     $all('.src-chip.lm-src-shown').forEach(function (c) { c.classList.remove('lm-src-shown'); });
     ui.src.textContent = '';
-    var chip = unitChip(u);
     state.src = null;
-    if (!chip) { ui.src.style.display = 'none'; return; }
-    chip.classList.add('lm-src-shown');
-    ui.src.appendChild(chip.cloneNode(true));
+    var chip = unitChip(u), label = '', rel = '';
+    if (chip) {
+      chip.classList.add('lm-src-shown');           // 화면 안의 칩은 머리줄로 옮겨 보이므로 숨긴다
+      label = chip.getAttribute('data-src-label') || txt(chip);
+      rel = chip.getAttribute('data-src-rel') || '';
+    } else if (u && u.el) {                         // 도전 문제 — 기존 '📖 출처' 줄의 이름표
+      var s = u.el.hasAttribute && u.el.hasAttribute('data-aft-source-label') ? u.el : $('[data-aft-source-label]', u.el);
+      if (s) label = s.getAttribute('data-aft-source-label');
+    }
+    if (!label) { ui.src.style.display = 'none'; return; }
+    // 머리줄은 한 줄로 — 길면 말줄임, 전체는 마우스를 올리거나 판서 공간에서 본다
+    var c = h('span', 'src-chip');
+    c.setAttribute('data-src-rel', rel);
+    c.title = label;
+    c.appendChild(h('span', 'src-lab', label));
+    if (rel) c.appendChild(h('span', 'src-rel', rel));
+    ui.src.appendChild(c);
     ui.src.style.display = '';
     var n = (u.sub || '').match(/(\d+)번/);
     state.src = {
       where: n ? n[1] + '번' : (tabs[state.tab].key === 'concept' ? '개념 ' + (state.page + 1) : tabs[state.tab].name),
-      label: chip.getAttribute('data-src-label') || txt(chip),
-      rel: chip.getAttribute('data-src-rel') || ''
+      label: label,
+      rel: rel
     };
   }
 
