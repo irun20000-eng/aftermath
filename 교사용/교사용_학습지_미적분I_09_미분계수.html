@@ -61,7 +61,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261013">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -185,12 +185,13 @@
                         <span class="badge badge-l1">기초-평균변화율 직접 계산</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) = x^2 - 3x \)에서 \(x\)의 값이 다음과 같이 변할 때의 평균변화율을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.52 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \(0\)에서 \(2\)까지 &nbsp;&nbsp;
-                                (2) \(1\)에서 \(1 + \Delta x\)까지
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(0\)에서 \(2\)까지</span><span class="sub-q">(2) \(1\)에서 \(1 + \Delta x\)까지</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> (1) \(\dfrac{f(2)-f(0)}{2-0} = \dfrac{-2-0}{2} = -1\). (2) \(\dfrac{f(1+\Delta x) - f(1)}{\Delta x}\). \(f(1) = -2\), \(f(1+\Delta x) = (1+\Delta x)^2 - 3(1+\Delta x) = -2 - \Delta x + (\Delta x)^2\). \(\Rightarrow\) 평균변화율 \(= \dfrac{-\Delta x + (\Delta x)^2}{\Delta x} = -1 + \Delta x\).
+                            
+                            <strong>💡 힌트:</strong>
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\dfrac{f(2)-f(0)}{2-0} = \dfrac{-2-0}{2} = -1\).</span><span class="sub-q">(2) \(\dfrac{f(1+\Delta x) - f(1)}{\Delta x}\). \(f(1) = -2\), \(f(1+\Delta x) = (1+\Delta x)^2 - 3(1+\Delta x) = -2 - \Delta x + (\Delta x)^2\). \(\Rightarrow\) 평균변화율 \(= \dfrac{-\Delta x + (\Delta x)^2}{\Delta x} = -1 + \Delta x\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -199,12 +200,13 @@
                         <span class="badge badge-l1">기초-미분계수 정의로 계산</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 \(x = -1\)에서의 미분계수를 정의에 따라 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.53 · 문제 02 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = 2x + 1 \) &nbsp;&nbsp;
-                                (2) \( f(x) = -x^2 + 4x \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = 2x + 1 \)</span><span class="sub-q">(2) \( f(x) = -x^2 + 4x \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> \(f'(-1) = \displaystyle\lim_{\Delta x \to 0}\dfrac{f(-1+\Delta x) - f(-1)}{\Delta x}\). (1) \(f(-1) = -1\), \(f(-1+\Delta x) = -1 + 2\Delta x\) \(\Rightarrow\) \(\dfrac{2\Delta x}{\Delta x} = 2\). 답: \(\bm{f'(-1) = 2}\). (2) \(f(-1) = -5\), 전개 후 \(\Rightarrow\) \(f'(-1) = 6\).
+                            
+                            <strong>💡 힌트:</strong> \(f'(-1) = \displaystyle\lim_{\Delta x \to 0}\dfrac{f(-1+\Delta x) - f(-1)}{\Delta x}\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f(-1) = -1\), \(f(-1+\Delta x) = -1 + 2\Delta x\) \(\Rightarrow\) \(\dfrac{2\Delta x}{\Delta x} = 2\). 답: \(\bm{f'(-1) = 2}\).</span><span class="sub-q">(2) \(f(-1) = -5\), 전개 후 \(\Rightarrow\) \(f'(-1) = 6\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -213,12 +215,13 @@
                         <span class="badge badge-l1">기초-접선의 기울기</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 곡선 위의 주어진 점에서의 접선의 기울기를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.55 · 문제 04 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = -x^2 + 3x \), &nbsp;점 \((1, 2)\) &nbsp;&nbsp;
-                                (2) \( y = 3x^2 - 2x - 1 \), &nbsp;점 \((-1, 4)\)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = -x^2 + 3x \), &nbsp;점 \((1, 2)\)</span><span class="sub-q">(2) \( y = 3x^2 - 2x - 1 \), &nbsp;점 \((-1, 4)\)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 접선의 기울기 \(= f'(\text{주어진 } x)\). (1) \(f(x) = -x^2 + 3x\), \(f'(1) = \lim_{h \to 0}\dfrac{f(1+h)-f(1)}{h} = \lim_{h \to 0}\dfrac{(-2h-h^2+3h)}{h} = \lim(1-h) = 1\). (2) \(f'(-1) = \lim_{h \to 0}\dfrac{(3(-1+h)^2 - 2(-1+h) - 1) - 4}{h} \to -8\).
+                            
+                            <strong>💡 힌트:</strong> 접선의 기울기 \(= f'(\text{주어진 } x)\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f(x) = -x^2 + 3x\), \(f'(1) = \lim_{h \to 0}\dfrac{f(1+h)-f(1)}{h} = \lim_{h \to 0}\dfrac{(-2h-h^2+3h)}{h} = \lim(1-h) = 1\).</span><span class="sub-q">(2) \(f'(-1) = \lim_{h \to 0}\dfrac{(3(-1+h)^2 - 2(-1+h) - 1) - 4}{h} \to -8\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>

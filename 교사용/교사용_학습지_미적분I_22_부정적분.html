@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261013">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -197,14 +197,13 @@
                         <span class="badge badge-l1">기초-거듭제곱·상수의 부정적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.109 · 문제 02 변형 — (4) 추가)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int x^6\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int x^9\,dx \) &nbsp;&nbsp;
-                                (3) \( \displaystyle \int 10\,dx \) &nbsp;&nbsp;
-                                (4) \( \displaystyle \int x\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int x^6\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int x^9\,dx \)</span><span class="sub-q">(3) \( \displaystyle \int 10\,dx \)</span><span class="sub-q">(4) \( \displaystyle \int x\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 공식 \(\int x^n\,dx = \dfrac{1}{n+1}x^{n+1} + C\) 직접 적용. (1) \(\dfrac{1}{7}x^7 + C\). (2) \(\dfrac{1}{10}x^{10} + C\). (3) \(10x + C\). (4) \(\dfrac{1}{2}x^2 + C\). — 적분상수 \(C\)를 빼먹지 말 것.
+                            
+                            <strong>💡 힌트:</strong> 공식 \(\int x^n\,dx = \dfrac{1}{n+1}x^{n+1} + C\) 직접 적용.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\dfrac{1}{7}x^7 + C\).</span><span class="sub-q">(2) \(\dfrac{1}{10}x^{10} + C\).</span><span class="sub-q">(3) \(10x + C\).</span><span class="sub-q">(4) \(\dfrac{1}{2}x^2 + C\). — 적분상수 \(C\)를 빼먹지 말 것.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -213,12 +212,13 @@
                         <span class="badge badge-l1">기초-다항함수의 부정적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int (4x^3 - 6x^2 + x - 4)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int (-x^4 + 2x + 5)\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int (4x^3 - 6x^2 + x - 4)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int (-x^4 + 2x + 5)\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 항별 적분 후 적분상수 하나로 묶기. (1) \(x^4 - 2x^3 + \dfrac{1}{2}x^2 - 4x + C\). (2) \(-\dfrac{1}{5}x^5 + x^2 + 5x + C\). — 각 항의 지수를 \(1\) 올리고 그 새 지수로 나눈다.
+                            
+                            <strong>💡 힌트:</strong> 항별 적분 후 적분상수 하나로 묶기.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(x^4 - 2x^3 + \dfrac{1}{2}x^2 - 4x + C\).</span><span class="sub-q">(2) \(-\dfrac{1}{5}x^5 + x^2 + 5x + C\). — 각 항의 지수를 \(1\) 올리고 그 새 지수로 나눈다.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -248,8 +248,7 @@
                         <span class="badge badge-l2">응용-곱셈 전개 후 적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.121 · 중단원 기초 01번 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int (x^2 - 2x + 3)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int (x^2 - 2x + 3)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
