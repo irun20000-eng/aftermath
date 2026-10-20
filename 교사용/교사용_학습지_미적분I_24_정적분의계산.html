@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261013">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -194,14 +194,13 @@
                         <span class="badge badge-l1">기초-기본정리로 다항함수 적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.117 · 문제 05 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{-2}^{2} 3x^2\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{0}^{4} x^3\,dx \) &nbsp;&nbsp;
-                                (3) \( \displaystyle \int_{3}^{1} 4x\,dx \) &nbsp;&nbsp;
-                                (4) \( \displaystyle \int_{1}^{-2} 5x^4\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{-2}^{2} 3x^2\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int_{0}^{4} x^3\,dx \)</span><span class="sub-q">(3) \( \displaystyle \int_{3}^{1} 4x\,dx \)</span><span class="sub-q">(4) \( \displaystyle \int_{1}^{-2} 5x^4\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 부정적분을 구한 뒤 위·아래 끝 대입. (1) \([x^3]_{-2}^{2} = 8 - (-8) = 16\). (2) \([\tfrac{1}{4}x^4]_0^4 = 64\). (3) \([2x^2]_3^1 = 2 - 18 = -16\). (4) \([x^5]_1^{-2} = -32 - 1 = -33\). (위끝이 아래끝보다 작아도 기본정리는 그대로 성립한다.) — 적분상수는 항상 소거되므로 신경 쓰지 않는다.
+                            
+                            <strong>💡 힌트:</strong> 부정적분을 구한 뒤 위·아래 끝 대입.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \([x^3]_{-2}^{2} = 8 - (-8) = 16\).</span><span class="sub-q">(2) \([\tfrac{1}{4}x^4]_0^4 = 64\).</span><span class="sub-q">(3) \([2x^2]_3^1 = 2 - 18 = -16\).</span><span class="sub-q">(4) \([x^5]_1^{-2} = -32 - 1 = -33\). (위끝이 아래끝보다 작아도 기본정리는 그대로 성립한다.) — 적분상수는 항상 소거되므로 신경 쓰지 않는다.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -210,8 +209,7 @@
                         <span class="badge badge-l1">기초-선형성과 구간 분할</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.119 · 문제 06 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{0}^{2}(8x^3 - x + 5)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{-1}^{3}(x+1)^3\,dx - \int_{-1}^{3}(x-1)^3\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{0}^{2}(8x^3 - x + 5)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int_{-1}^{3}(x+1)^3\,dx - \int_{-1}^{3}(x-1)^3\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -225,8 +223,7 @@
                         <span class="badge badge-l1">기초-구간 분할로 합치기</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.120 · 문제 07 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{0}^{5}(4x^3 + x)\,dx + \int_{5}^{2}(4x^3 + x)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{-1}^{4}(x+2)^2\,dx - \int_{2}^{4}(x+2)^2\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{0}^{5}(4x^3 + x)\,dx + \int_{5}^{2}(4x^3 + x)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int_{-1}^{4}(x+2)^2\,dx - \int_{2}^{4}(x+2)^2\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">

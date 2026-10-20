@@ -207,3 +207,13 @@ html.lm-on body { padding: 0 !important; background: #0f172a !important; }
 }
 
 @media print { .lm-app { display: none !important; } }
+
+/* ── 소문항 (1)(2)… ─────────────────────────────────────────────
+   한 소문항은 한 덩어리 — 자리가 모자라면 소문항 전체가 다음 줄로 간다(중간에 꺾이지 않음).
+   --row  : 짧은 수식 소문항은 나란히, 넘치면 덩어리째 줄바꿈
+   --list : 문장 소문항은 한 줄에 하나, 줄이 길면 번호 뒤로 들여쓰기 정렬
+   (일반 보기·수업 모드·인쇄 공용) */
+.sub-qs { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 2.25em; row-gap: .35em; margin-top: .3em; }
+.sub-qs--list { flex-direction: column; align-items: stretch; row-gap: .3em; }
+.sub-q { display: block; max-width: 100%; padding-left: 1.85em; text-indent: -1.85em; break-inside: avoid; }
+.sub-qs--row > .sub-q { display: inline-block; }

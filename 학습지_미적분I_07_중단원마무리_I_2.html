@@ -58,7 +58,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261013">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -101,12 +101,13 @@
                     <span class="badge badge-l1">[기초-한 점 연속·불연속 판정]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수가 \(x = 3\)에서 연속인지 불연속인지 판정하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 01번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( f(x) = \dfrac{2}{x+1} \) &nbsp;&nbsp;
-                            (2) \( f(x) = \begin{cases} x + 1 &amp; (x \neq 3) \\ -2 &amp; (x = 3) \end{cases} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = \dfrac{2}{x+1} \)</span><span class="sub-q">(2) \( f(x) = \begin{cases} x + 1 &amp; (x \neq 3) \\ -2 &amp; (x = 3) \end{cases} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) \(f(3) = \dfrac{2}{4} = \dfrac{1}{2}\), \(\lim_{x \to 3} f(x) = \dfrac{1}{2}\) 일치 → <strong>연속</strong>. (2) \(\lim_{x \to 3}(x+1) = 4\)이지만 \(f(3) = -2\) → 두 값이 다름 → <strong>불연속</strong> (제거 가능형).
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f(3) = \dfrac{2}{4} = \dfrac{1}{2}\), \(\lim_{x \to 3} f(x) = \dfrac{1}{2}\) 일치 → <strong>연속</strong>.</span><span class="sub-q">(2) \(\lim_{x \to 3}(x+1) = 4\)이지만 \(f(3) = -2\) → 두 값이 다름 → <strong>불연속</strong> (제거 가능형).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -116,12 +117,13 @@
                     <span class="badge badge-l1">[기초-연속인 구간 구하기]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수가 연속인 구간을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 02번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( f(x) = x^2 + x + 3 \) &nbsp;&nbsp;
-                            (2) \( f(x) = \sqrt{2x - 4} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 + x + 3 \)</span><span class="sub-q">(2) \( f(x) = \sqrt{2x - 4} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) 다항함수 → 모든 실수에서 연속, 즉 \((-\infty, \infty)\). (2) 근호 안 \(2x - 4 \geq 0 \iff x \geq 2\). 끝점 \(x = 2\)에서 우극한 = \(f(2) = 0\)이므로 \([2, \infty)\)에서 연속.
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 다항함수 → 모든 실수에서 연속, 즉 \((-\infty, \infty)\).</span><span class="sub-q">(2) 근호 안 \(2x - 4 \geq 0 \iff x \geq 2\). 끝점 \(x = 2\)에서 우극한 = \(f(2) = 0\)이므로 \([2, \infty)\)에서 연속.</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -131,11 +133,13 @@
                     <span class="badge badge-l1">[기초-유리함수의 연속성 조사]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 두 함수 \( f(x) = x^2 + 1 \), \( g(x) = x^2 - 2x - 3 \) 에 대하여 다음 함수의 연속성을 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 03번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \dfrac{f(x)}{g(x)} \) &nbsp;&nbsp; (2) \( \dfrac{g(x)}{f(x)} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \dfrac{f(x)}{g(x)} \)</span><span class="sub-q">(2) \( \dfrac{g(x)}{f(x)} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 두 다항함수의 비. 분모 영점만 점검. (1) \(g(x) = (x-3)(x+1) = 0\) → \(x = 3, -1\)에서 불연속, 그 외 연속. (2) \(f(x) = x^2 + 1 \geq 1 \gt 0\) → 분모 0 안 됨 → 모든 실수에서 연속.
+                        
+                        <strong>💡 전략 힌트:</strong> 두 다항함수의 비. 분모 영점만 점검.
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(g(x) = (x-3)(x+1) = 0\) → \(x = 3, -1\)에서 불연속, 그 외 연속.</span><span class="sub-q">(2) \(f(x) = x^2 + 1 \geq 1 \gt 0\) → 분모 0 안 됨 → 모든 실수에서 연속.</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -147,12 +151,13 @@
                     <span class="badge badge-l1">[기초-닫힌구간 최댓값·최솟값]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 구간에서 함수의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 04번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( f(x) = x^2 + 2x - 5 \), &nbsp;\([-4, 1]\) &nbsp;&nbsp;
-                            (2) \( f(x) = \sqrt{x - 2} \), &nbsp;\([3, 6]\)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 + 2x - 5 \), &nbsp;\([-4, 1]\)</span><span class="sub-q">(2) \( f(x) = \sqrt{x - 2} \), &nbsp;\([3, 6]\)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) 꼭짓점 \(x = -1\)에서 최솟값 \(-6\), 양끝 \(f(-4) = 3, f(1) = -2\) → 최댓값 \(3\). (2) 증가함수, 최솟값 \(f(3) = 1\), 최댓값 \(f(6) = 2\).
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 꼭짓점 \(x = -1\)에서 최솟값 \(-6\), 양끝 \(f(-4) = 3, f(1) = -2\) → 최댓값 \(3\).</span><span class="sub-q">(2) 증가함수, 최솟값 \(f(3) = 1\), 최댓값 \(f(6) = 2\).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>

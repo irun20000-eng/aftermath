@@ -61,7 +61,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261013">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -213,12 +213,13 @@
                         <span class="badge badge-l1">기초-정의 직접 적용</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수가 \(x=0\)에서 연속인지 불연속인지 판정하시오. 세 조건 ①②③을 순서대로 확인하라. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.32 · 예제 1 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = x^2 - 1 \) &nbsp;&nbsp;
-                                (2) \( g(x) = \begin{cases} |x| &amp; (x \neq 0) \\ 2 &amp; (x = 0) \end{cases} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 - 1 \)</span><span class="sub-q">(2) \( g(x) = \begin{cases} |x| &amp; (x \neq 0) \\ 2 &amp; (x = 0) \end{cases} \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> (1) 다항함수이므로 모든 \(x\)에서 연속. \(f(0) = -1, \lim_{x \to 0} f(x) = -1\) 일치 → 연속. (2) 좌·우극한 모두 0이지만 \(g(0)=2\). 극한값과 함숫값이 다르므로 <em>제거 가능 불연속</em>.
+                            
+                            <strong>💡 힌트:</strong>
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 다항함수이므로 모든 \(x\)에서 연속. \(f(0) = -1, \lim_{x \to 0} f(x) = -1\) 일치 → 연속.</span><span class="sub-q">(2) 좌·우극한 모두 0이지만 \(g(0)=2\). 극한값과 함숫값이 다르므로 <em>제거 가능 불연속</em>.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -227,10 +228,7 @@
                         <span class="badge badge-l1">기초-구간 연속</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수가 연속인 구간을 구간의 기호로 나타내시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.34 · 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = x^2 - 4x + 2 \) &nbsp;&nbsp;
-                                (2) \( f(x) = \dfrac{3}{x+2} \) &nbsp;&nbsp;
-                                (3) \( f(x) = \sqrt{1-x} \) &nbsp;&nbsp;
-                                (4) \( f(x) = 6 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 - 4x + 2 \)</span><span class="sub-q">(2) \( f(x) = \dfrac{3}{x+2} \)</span><span class="sub-q">(3) \( f(x) = \sqrt{1-x} \)</span><span class="sub-q">(4) \( f(x) = 6 \)</span></span>
                             </div>
                         </div>
                         <div class="thinking-space"></div>
@@ -274,7 +272,9 @@
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-극한 존재와 연속의 분리</span>
                         <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - x}{|x - 1|} &amp; (x \neq 1) \\ 1 &amp; (x = 1) \end{cases} \) 에 대하여 다음을 모두 구하고, \(x=1\)에서 <strong>연속/불연속</strong>을 판정하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.32 · 문제 01 (2) 참고)</span>
-                            <div class="ml-6 mt-2 text-lg font-medium">(1) \(f(1)\) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 1^-} f(x) \) &nbsp;&nbsp; (3) \( \displaystyle \lim_{x \to 1^+} f(x) \) &nbsp;&nbsp; (4) \( \displaystyle \lim_{x \to 1} f(x) \) 존재 여부</div>
+                            <div class="ml-6 mt-2 text-lg font-medium">
+<span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(f(1)\)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1^-} f(x) \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 1^+} f(x) \)</span><span class="sub-q">(4) \( \displaystyle \lim_{x \to 1} f(x) \) 존재 여부</span></span>
+</div>
                         </div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
@@ -298,11 +298,13 @@
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4">6. 두 함수 \(f(x) = x^2 + 1\), \(g(x) = x^2 - 2x - 3\)에 대하여 다음 함수의 연속성을 조사하시오 (불연속이라면 그 \(x\)의 값을 모두 답하시오). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.40 · 중단원 기초 03)</span>
                 <div class="ml-6 mt-2 text-lg font-medium">
-                    (1) \( \dfrac{f(x)}{g(x)} \) &nbsp;&nbsp; (2) \( \dfrac{g(x)}{f(x)} \)
+                    <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \dfrac{f(x)}{g(x)} \)</span><span class="sub-q">(2) \( \dfrac{g(x)}{f(x)} \)</span></span>
                 </div>
             </div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
-                <strong>💡 전략:</strong> \(f, g\) 모두 다항함수 \(\Rightarrow\) 모든 실수에서 연속. 따라서 유리식의 연속성은 분모의 영점만 점검하면 된다. (1) \(g(x) = (x-3)(x+1) = 0\) → \(x=3, x=-1\)에서 불연속. (2) \(f(x) = x^2 + 1 \geq 1 \gt 0\)이므로 분모가 0이 되는 실수 없음 → 모든 실수에서 연속.
+                
+                <strong>💡 전략:</strong> \(f, g\) 모두 다항함수 \(\Rightarrow\) 모든 실수에서 연속. 따라서 유리식의 연속성은 분모의 영점만 점검하면 된다.
+                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(g(x) = (x-3)(x+1) = 0\) → \(x=3, x=-1\)에서 불연속.</span><span class="sub-q">(2) \(f(x) = x^2 + 1 \geq 1 \gt 0\)이므로 분모가 0이 되는 실수 없음 → 모든 실수에서 연속.</span></span>
             </div></details>
             <div class="thinking-space"></div>
         </section>

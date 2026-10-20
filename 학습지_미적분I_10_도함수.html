@@ -61,7 +61,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261013">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -201,14 +201,13 @@
                         <span class="badge badge-l1">기초-도함수 정의로 계산</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 도함수를 정의에 따라 구하고, \(x = -2\)에서의 미분계수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.59 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = -5x \) &nbsp;&nbsp;
-                                (2) \( f(x) = 2x^2 - x \) &nbsp;&nbsp;
-                                (3) \( f(x) = x^3 \) &nbsp;&nbsp;
-                                (4) \( f(x) = 100 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -5x \)</span><span class="sub-q">(2) \( f(x) = 2x^2 - x \)</span><span class="sub-q">(3) \( f(x) = x^3 \)</span><span class="sub-q">(4) \( f(x) = 100 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 정의 \(f'(x) = \lim_{h \to 0}\dfrac{f(x+h) - f(x)}{h}\). (1) \(f'(x) = -5\), \(f'(-2) = -5\). (2) \(f'(x) = 4x - 1\), \(f'(-2) = -9\). (3) \(f'(x) = 3x^2\), \(f'(-2) = 12\). (4) \(f'(x) = 0\) (상수), \(f'(-2) = 0\). — 모두 \((x^n)' = n x^{n-1}\) 공식과 일치함을 확인.
+                            
+                            <strong>💡 힌트:</strong> 정의 \(f'(x) = \lim_{h \to 0}\dfrac{f(x+h) - f(x)}{h}\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f'(x) = -5\), \(f'(-2) = -5\).</span><span class="sub-q">(2) \(f'(x) = 4x - 1\), \(f'(-2) = -9\).</span><span class="sub-q">(3) \(f'(x) = 3x^2\), \(f'(-2) = 12\).</span><span class="sub-q">(4) \(f'(x) = 0\) (상수), \(f'(-2) = 0\). — 모두 \((x^n)' = n x^{n-1}\) 공식과 일치함을 확인.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -217,16 +216,13 @@
                         <span class="badge badge-l1">기초-공식으로 단번에 미분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 도함수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.60·62 · 문제 02·03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = x^2 \) &nbsp;&nbsp;
-                                (2) \( y = x^{10} \) &nbsp;&nbsp;
-                                (3) \( y = 7 \) &nbsp;&nbsp;
-                                (4) \( y = x^3 + x - 5 \) &nbsp;&nbsp;
-                                (5) \( y = -x^4 + 2x^2 + x + 1 \) &nbsp;&nbsp;
-                                (6) \( y = 2x^5 - 3x^3 - 3 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = x^2 \)</span><span class="sub-q">(2) \( y = x^{10} \)</span><span class="sub-q">(3) \( y = 7 \)</span><span class="sub-q">(4) \( y = x^3 + x - 5 \)</span><span class="sub-q">(5) \( y = -x^4 + 2x^2 + x + 1 \)</span><span class="sub-q">(6) \( y = 2x^5 - 3x^3 - 3 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 모두 \((x^n)' = n x^{n-1}\), \((cf)' = c f'\), \((f \pm g)' = f' \pm g'\)의 직접 적용. (1) \(2x\). (2) \(10 x^9\). (3) \(0\). (4) \(3x^2 + 1\). (5) \(-4x^3 + 4x + 1\). (6) \(10 x^4 - 9 x^2\). — 항별로 미분, 상수항은 \(0\).
+                            
+                            <strong>💡 힌트:</strong> 모두 \((x^n)' = n x^{n-1}\), \((cf)' = c f'\), \((f \pm g)' = f' \pm g'\)의 직접 적용.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(2x\).</span><span class="sub-q">(2) \(10 x^9\).</span><span class="sub-q">(3) \(0\).</span><span class="sub-q">(4) \(3x^2 + 1\).</span><span class="sub-q">(5) \(-4x^3 + 4x + 1\).</span><span class="sub-q">(6) \(10 x^4 - 9 x^2\). — 항별로 미분, 상수항은 \(0\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -235,14 +231,13 @@
                         <span class="badge badge-l1">기초-곱의 미분법</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 곱의 미분법을 이용하여 다음 함수를 미분하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.63 · 문제 05 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = (x + 6)(3x - 1) \) &nbsp;&nbsp;
-                                (2) \( y = (4x + 5)(x^2 - x) \) &nbsp;&nbsp;
-                                (3) \( y = (3x^2 + 2)(2 - x^2) \) &nbsp;&nbsp;
-                                (4) \( y = x(x + 2)(2x - 1) \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = (x + 6)(3x - 1) \)</span><span class="sub-q">(2) \( y = (4x + 5)(x^2 - x) \)</span><span class="sub-q">(3) \( y = (3x^2 + 2)(2 - x^2) \)</span><span class="sub-q">(4) \( y = x(x + 2)(2x - 1) \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> \( \{f g\}' = f' g + f g' \) 적용. (1) \(y' = 1 \cdot (3x-1) + (x+6) \cdot 3 = 6x + 17\). (2) \(y' = 4(x^2 - x) + (4x+5)(2x - 1) = 12 x^2 + 2 x - 5\). (3) \(y' = 6x(2 - x^2) + (3x^2+2)(-2x) = -12 x^3 + 8x\). (4) 세 함수 곱: \(y' = (x+2)(2x-1) + x(2x-1) + 2x(x+2) = 6x^2 + 6x - 2\). 전개해서 검산해도 좋다.
+                            
+                            <strong>💡 힌트:</strong> \( \{f g\}' = f' g + f g' \) 적용.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(y' = 1 \cdot (3x-1) + (x+6) \cdot 3 = 6x + 17\).</span><span class="sub-q">(2) \(y' = 4(x^2 - x) + (4x+5)(2x - 1) = 12 x^2 + 2 x - 5\).</span><span class="sub-q">(3) \(y' = 6x(2 - x^2) + (3x^2+2)(-2x) = -12 x^3 + 8x\).</span><span class="sub-q">(4) 세 함수 곱: \(y' = (x+2)(2x-1) + x(2x-1) + 2x(x+2) = 6x^2 + 6x - 2\). 전개해서 검산해도 좋다.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>

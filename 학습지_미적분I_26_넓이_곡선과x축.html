@@ -60,7 +60,7 @@
         }
     </style>
     <link rel="stylesheet" href="widgets.css">
-    <link rel="stylesheet" href="lesson-mode.css?v=20261013">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261020">
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process">
     <script>
@@ -100,7 +100,10 @@
                     <div class="flex justify-center my-2">
                         <img src="images/calc_26_warmup_S1S2.png" alt="개념탐구 — 왼쪽: x축 위로 솟은 곡선 y=f(x)와 x축이 둘러싼 넓이 S1, 오른쪽: x축 아래로 처진 곡선 y=g(x)와 x축이 둘러싼 넓이 S2" class="block mx-auto max-w-2xl w-full rounded-lg border border-slate-200" />
                     </div>
-                    <p>(1) \(S_1\)을 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_0^3 f(x)\,dx \)</span></span>. (2) \(S_2\)를 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle -\int_0^3 g(x)\,dx \)</span></span> 또는 \(\displaystyle\int_0^3 |g(x)|\,dx\). 왜 \(S_2\)에는 \(-\)나 절댓값이 필요할까? <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.126 · 개념 탐구 참고)</span></p>
+                    <p>
+<span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.126 · 개념 탐구 참고)</span>
+<span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(S_1\)을 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_0^3 f(x)\,dx \)</span></span>.</span><span class="sub-q">(2) \(S_2\)를 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle -\int_0^3 g(x)\,dx \)</span></span> 또는 \(\displaystyle\int_0^3 |g(x)|\,dx\). 왜 \(S_2\)에는 \(-\)나 절댓값이 필요할까?</span></span>
+</p>
                     <div class="thinking-space bg-teal-50/30"></div>
                 </div>
                 <p><strong>[연결]</strong> 정적분 \(\int_a^b f(x)\,dx\)는 부호 있는 양 — \(x\)축 위 부분은 \(+\), 아래 부분은 \(-\)로 잡힌다. 그러나 "도형의 <strong>넓이</strong>"는 항상 \(\geq 0\). 두 값을 일치시키려면 음의 부분에 \(-\)를 붙여 양수로 되돌려야 한다. 이를 한 번에 처리하는 도구가 바로 <span class="calc-accent font-bold">절댓값 \(|f(x)|\)</span>이다. 오늘 우리는 ① 곡선과 \(x\)축이 둘러싸는 넓이의 정적분 공식 \(S = \displaystyle\int_a^b |f(x)|\,dx\), ② \(f\)의 부호가 바뀌는 점(=\(x\)축 교점)을 기준으로 한 구간 분할, ③ "정적분 값"과 "넓이"의 명확한 구별까지 익힌다.</p>
@@ -202,8 +205,7 @@
                         <span class="badge badge-l1">기초-단일 부호 구간</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.127 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) 곡선 \(y = -x^2 + 2x + 8\)과 \(x\)축으로 둘러싸인 도형 &nbsp;&nbsp;
-                                (2) 곡선 \(y = 3x^2(x - 2)\)와 \(x\)축으로 둘러싸인 도형
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 곡선 \(y = -x^2 + 2x + 8\)과 \(x\)축으로 둘러싸인 도형</span><span class="sub-q">(2) 곡선 \(y = 3x^2(x - 2)\)와 \(x\)축으로 둘러싸인 도형</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -217,8 +219,7 @@
                         <span class="badge badge-l1">기초-부호가 섞이는 구간 분할</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.128 · 문제 02 (1)(2))</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) 닫힌구간 \([-1, 3]\)에서 곡선 \(y = x^2 + x - 2\)와 \(x\)축 및 두 직선 \(x = -1\), \(x = 3\)으로 둘러싸인 도형 &nbsp;&nbsp;
-                                (2) 닫힌구간 \([0, 4]\)에서 곡선 \(y = -x(x+2)(x-2)\)와 \(x\)축 및 두 직선 \(x = 0\), \(x = 4\)로 둘러싸인 도형
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 닫힌구간 \([-1, 3]\)에서 곡선 \(y = x^2 + x - 2\)와 \(x\)축 및 두 직선 \(x = -1\), \(x = 3\)으로 둘러싸인 도형</span><span class="sub-q">(2) 닫힌구간 \([0, 4]\)에서 곡선 \(y = -x(x+2)(x-2)\)와 \(x\)축 및 두 직선 \(x = 0\), \(x = 4\)로 둘러싸인 도형</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">

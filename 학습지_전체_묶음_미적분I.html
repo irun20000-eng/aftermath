@@ -163,6 +163,17 @@
   body { opacity: 1 !important; }
 </style>
 
+<style id="aft-subq-css">
+/* ── 소문항 (1)(2)… ─────────────────────────────────────────────
+   한 소문항은 한 덩어리 — 자리가 모자라면 소문항 전체가 다음 줄로 간다(중간에 꺾이지 않음).
+   --row  : 짧은 수식 소문항은 나란히, 넘치면 덩어리째 줄바꿈
+   --list : 문장 소문항은 한 줄에 하나, 줄이 길면 번호 뒤로 들여쓰기 정렬
+   (일반 보기·수업 모드·인쇄 공용) */
+.sub-qs { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 2.25em; row-gap: .35em; margin-top: .3em; }
+.sub-qs--list { flex-direction: column; align-items: stretch; row-gap: .3em; }
+.sub-q { display: block; max-width: 100%; padding-left: 1.85em; text-indent: -1.85em; break-inside: avoid; }
+.sub-qs--row > .sub-q { display: inline-block; }
+</style>
 </head>
 <body class="p-4 md:p-8 lg:p-12 mathjax-process mathjax-ready">
 
@@ -347,7 +358,7 @@
                         <span class="badge badge-l1">기초-다항함수 극한</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 미적분 I P.12 예제 1 유형)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to 2}(3x - 1) \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to -1}(x^2 + 2x + 5) \) &nbsp;&nbsp; (3) \( \displaystyle \lim_{x \to 3}\dfrac{x-1}{x+1} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 2}(3x - 1) \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to -1}(x^2 + 2x + 5) \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 3}\dfrac{x-1}{x+1} \)</span></span>
                             </div>
                         </div>
                         <div class="thinking-space"></div>
@@ -398,7 +409,9 @@
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-극한값과 함숫값의 분리</span>
                         <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - 1}{x - 1} &amp; (x \neq 1) \\ 5 &amp; (x = 1) \end{cases} \)에 대하여 다음을 모두 구하고, <strong>각각이 같은지 다른지</strong> 판정하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 미적분 I P.31 \(g(x)\) 유형)</span>
-                            <div class="ml-6 mt-2 text-lg font-medium">(1) \(f(1)\) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 1} f(x) \)</div>
+                            <div class="ml-6 mt-2 text-lg font-medium">
+<span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(f(1)\)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1} f(x) \)</span></span>
+</div>
                         </div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
@@ -806,8 +819,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-다항·유리식 대입</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.19 · 문제 01)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to 3}(5x - 1) \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to -2}(x^2 - x + 2) \) <br>
-                                (3) \( \displaystyle \lim_{x \to 4}(x+2)(x-3) \) &nbsp;&nbsp; (4) \( \displaystyle \lim_{x \to 1}\dfrac{x-4}{x^2+x+1} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 3}(5x - 1) \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to -2}(x^2 - x + 2) \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 4}(x+2)(x-3) \)</span><span class="sub-q">(4) \( \displaystyle \lim_{x \to 1}\dfrac{x-4}{x^2+x+1} \)</span></span>
                             </div>
                         </div>
                         <div class="thinking-space"></div>
@@ -817,8 +829,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-극한값의 사칙 결합</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 두 함수 \(f(x), g(x)\)가 \( \displaystyle \lim_{x \to 1} f(x) = 2 \), \( \displaystyle \lim_{x \to 1} g(x) = 3 \)을 만족시킬 때, 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.25 · 중단원 학습 점검 기초 03번 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to 1}\{3f(x) + g(x)\} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 1}\{f(x) - 2g(x)\} \) <br>
-                                (3) \( \displaystyle \lim_{x \to 1} 2f(x)g(x) \) &nbsp;&nbsp; (4) \( \displaystyle \lim_{x \to 1}\dfrac{f(x)}{g(x)} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 1}\{3f(x) + g(x)\} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1}\{f(x) - 2g(x)\} \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 1} 2f(x)g(x) \)</span><span class="sub-q">(4) \( \displaystyle \lim_{x \to 1}\dfrac{f(x)}{g(x)} \)</span></span>
                             </div>
                         </div>
                         <div class="thinking-space"></div>
@@ -836,11 +847,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l2">응용-인수분해 변형</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.20 · 예제 1 + 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to 4}\dfrac{x^2 - x - 12}{x - 4} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 1}\dfrac{x - 1}{x^3 - 1} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 4}\dfrac{x^2 - x - 12}{x - 4} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1}\dfrac{x - 1}{x^3 - 1} \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> (1) 분자를 \((x-4)(x+\square)\)로 인수분해. (2) \(x^3 - 1 = (x-1)(x^2+x+1)\) 공식을 활용해 분모를 분해.
+                            
+                            <strong>💡 힌트:</strong>
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 분자를 \((x-4)(x+\square)\)로 인수분해.</span><span class="sub-q">(2) \(x^3 - 1 = (x-1)(x^2+x+1)\) 공식을 활용해 분모를 분해.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -849,7 +862,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l2">응용-유리화 변형</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.20 · 예제 1(2) + 문제 03(3)(4) 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to -1}\dfrac{x + 1}{\sqrt{x+2} - 1} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 2}\dfrac{\sqrt{4x+1} - 3}{x - 2} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to -1}\dfrac{x + 1}{\sqrt{x+2} - 1} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 2}\dfrac{\sqrt{4x+1} - 3}{x - 2} \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -1254,7 +1267,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-차수 비교</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.21 · 문제 05 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to \infty}\dfrac{x^2 + x + 4}{2x^2 - x + 1} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\dfrac{(2x+1)(3x-1)}{6x^2 + x + 1} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to \infty}\dfrac{x^2 + x + 4}{2x^2 - x + 1} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to \infty}\dfrac{(2x+1)(3x-1)}{6x^2 + x + 1} \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-400 bg-green-50"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -1267,7 +1280,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-차수 불균형</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 극한값을 구하시오 (수렴하지 않으면 "발산"이라 쓰시오). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.26 · 중단원 기본 08(2) 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to \infty}\dfrac{3x + 1}{\sqrt{x^2 + 1} - 2} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\dfrac{x - 5}{x^2 + x - 1} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to \infty}\dfrac{3x + 1}{\sqrt{x^2 + 1} - 2} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to \infty}\dfrac{x - 5}{x^2 + x - 1} \)</span></span>
                             </div>
                         </div>
                         <div class="thinking-space"></div>
@@ -1285,7 +1298,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l2">응용-유리화 처리</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.21 · 예제 2(2) + 문제 05(3)(4) 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \lim_{x \to \infty}\left(2x - \sqrt{4x^2 + 3x}\right) \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 + x} - \sqrt{x^2 - x}\right) \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to \infty}\left(2x - \sqrt{4x^2 + 3x}\right) \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 + x} - \sqrt{x^2 - x}\right) \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -1346,7 +1359,7 @@ document.addEventListener('click', function(e) {
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4">7. 다음 극한값을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I 문제북 P.8 · 02번(5)(6)(7) 참고)</span>
                 <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                    (1) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{9x^2 - x} - 3x\right) \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to \infty}\left(x - \sqrt{x^2 - 1}\right) \) &nbsp;&nbsp; (3) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 - 2x} - \sqrt{x^2 + 2x}\right) \)
+                    <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{9x^2 - x} - 3x\right) \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to \infty}\left(x - \sqrt{x^2 - 1}\right) \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to \infty}\left(\sqrt{x^2 - 2x} - \sqrt{x^2 + 2x}\right) \)</span></span>
                 </div>
             </div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-400 bg-emerald-50"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
@@ -1610,12 +1623,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-함수의 발산·극한 조사]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">1. 다음을 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.25 중단원 기초 01번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \displaystyle \lim_{x \to \infty}\left(1 + \dfrac{2}{x}\right) \) &nbsp;&nbsp;
-                            (2) \( \displaystyle \lim_{x \to -1}\dfrac{3}{(x+1)^2} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to \infty}\left(1 + \dfrac{2}{x}\right) \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to -1}\dfrac{3}{(x+1)^2} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) \(x \to \infty\)일 때 \(\dfrac{2}{x} \to 0\). (2) \(x \to -1\)에서 \((x+1)^2 \to 0^+\)이므로 \(\dfrac{3}{(x+1)^2}\)은 양의 무한대로 발산. 수렴/발산 판정을 명확히 적을 것.
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(x \to \infty\)일 때 \(\dfrac{2}{x} \to 0\).</span><span class="sub-q">(2) \(x \to -1\)에서 \((x+1)^2 \to 0^+\)이므로 \(\dfrac{3}{(x+1)^2}\)은 양의 무한대로 발산. 수렴/발산 판정을 명확히 적을 것.</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -1625,7 +1639,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-구간 분기 좌·우극한]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">2. 함수 \( f(x) = \begin{cases} x^2 + 1 & (x \geq 2) \\ -x^2 + 2 & (x &lt; 2) \end{cases} \)에서 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.25 중단원 기초 02번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \displaystyle \lim_{x \to 2^+} f(x) \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 2^-} f(x) \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 2^+} f(x) \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 2^-} f(x) \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
@@ -1639,12 +1653,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-극한의 사칙연산]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 두 함수 \(f(x), g(x)\)가 \( \displaystyle \lim_{x \to 1} f(x) = 2 \), \( \displaystyle \lim_{x \to 1} g(x) = 3 \)을 만족시킬 때, 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.25 중단원 기초 03번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \displaystyle \lim_{x \to 1}\{3f(x) + g(x)\} \) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 1}\{f(x) - 2g(x)\} \) <br>
-                            (3) \( \displaystyle \lim_{x \to 1} 2f(x)g(x) \) &nbsp;&nbsp; (4) \( \displaystyle \lim_{x \to 1}\dfrac{f(x)}{g(x)} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 1}\{3f(x) + g(x)\} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1}\{f(x) - 2g(x)\} \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 1} 2f(x)g(x) \)</span><span class="sub-q">(4) \( \displaystyle \lim_{x \to 1}\dfrac{f(x)}{g(x)} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 극한의 성질 ①~⑤를 그대로 적용. 두 극한이 모두 실수이고 분모 극한값 \(3 \neq 0\)이므로 사칙연산이 모두 통과한다. 답: (1) 9 (2) -4 (3) 12 (4) \(\dfrac{2}{3}\).
+                        
+                        <strong>💡 전략 힌트:</strong> 극한의 성질 ①~⑤를 그대로 적용. 두 극한이 모두 실수이고 분모 극한값 \(3 \neq 0\)이므로 사칙연산이 모두 통과한다. 답:
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 9</span><span class="sub-q">(2) -4</span><span class="sub-q">(3) 12</span><span class="sub-q">(4) \(\dfrac{2}{3}\).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -1698,13 +1713,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l2">[기본-인수분해·유리화 종합]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">7. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.26 중단원 기본 07번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \displaystyle \lim_{x \to 2}\dfrac{x - 2}{x^2 - x - 2} \) &nbsp;&nbsp;
-                            (2) \( \displaystyle \lim_{x \to 9}\dfrac{x - 9}{\sqrt{x} - 3} \) &nbsp;&nbsp;
-                            (3) \( \displaystyle \lim_{x \to -2}(x+2)\left(1 - \dfrac{3}{x+2}\right) \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 2}\dfrac{x - 2}{x^2 - x - 2} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 9}\dfrac{x - 9}{\sqrt{x} - 3} \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to -2}(x+2)\left(1 - \dfrac{3}{x+2}\right) \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) 분모 \( = (x-2)(x+1) \) 인수분해 후 약분 → \(\dfrac{1}{3}\). (2) 켤레 \(\sqrt{x}+3\)을 분자·분모에 곱해 유리화 → \(6\). (3) 분배해서 \((x+2) - 3\)으로 정리, \(x \to -2\) → \(-3\).
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 분모 \( = (x-2)(x+1) \) 인수분해 후 약분 → \(\dfrac{1}{3}\).</span><span class="sub-q">(2) 켤레 \(\sqrt{x}+3\)을 분자·분모에 곱해 유리화 → \(6\).</span><span class="sub-q">(3) 분배해서 \((x+2) - 3\)으로 정리, \(x \to -2\) → \(-3\).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -1714,12 +1729,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l2">[기본-∞형/x→−∞ 변형]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">8. 다음 극한값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.26 중단원 기본 08번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \displaystyle \lim_{x \to -\infty}\dfrac{x - 1}{|x| + 3} \) &nbsp;&nbsp;
-                            (2) \( \displaystyle \lim_{x \to \infty}\dfrac{3x + 1}{\sqrt{x^2 + 1} - 2} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to -\infty}\dfrac{x - 1}{|x| + 3} \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to \infty}\dfrac{3x + 1}{\sqrt{x^2 + 1} - 2} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) \(x \to -\infty\)이므로 \(|x| = -x\). 분자·분모를 \(x\)로 나누면 \(\dfrac{1 - 1/x}{-1 + 3/x} \to -1\). (2) 분자·분모를 \(x\)로 나누면 \(\sqrt{x^2+1}/x = \sqrt{1 + 1/x^2}\) (\(x &gt; 0\)이므로 양수). 극한값 → \(3\).
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(x \to -\infty\)이므로 \(|x| = -x\). 분자·분모를 \(x\)로 나누면 \(\dfrac{1 - 1/x}{-1 + 3/x} \to -1\).</span><span class="sub-q">(2) 분자·분모를 \(x\)로 나누면 \(\sqrt{x^2+1}/x = \sqrt{1 + 1/x^2}\) (\(x &gt; 0\)이므로 양수). 극한값 → \(3\).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -1749,12 +1765,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l2">[기본-미정계수 결정 (분자→0)]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">11. 다음 등식이 성립하도록 하는 실수 \(a, b\)의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.27 중단원 기본 11번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \displaystyle \lim_{x \to 1}\dfrac{ax^2 + bx - 1}{x - 1} = 2 \) <br>
-                            (2) \( \displaystyle \lim_{x \to 4}\dfrac{ax + b}{\sqrt{x+1} - \sqrt{5}} = \sqrt{5} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \lim_{x \to 1}\dfrac{ax^2 + bx - 1}{x - 1} = 2 \)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 4}\dfrac{ax + b}{\sqrt{x+1} - \sqrt{5}} = \sqrt{5} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 두 문항 모두 분모 \(\to 0\)인데 극한값이 실수 → 분자도 \(\to 0\). (1) \(a + b - 1 = 0\) → \(b = 1 - a\). 분자를 \((x-1)(ax+1)\)로 인수분해해 약분 → \(\lim_{x \to 1}(ax+1) = a+1 = 2\) → \(a = 1,\ b = 0\). (2) 분자 \(\to 0\) → \(4a + b = 0\) → \(b = -4a\). 켤레 \(\sqrt{x+1}+\sqrt{5}\) 곱해 유리화 후 약분 → \(\lim_{x \to 4} a(\sqrt{x+1}+\sqrt{5}) = 2\sqrt{5}\,a = \sqrt{5}\) → \(a = \dfrac{1}{2},\ b = -2\).
+                        
+                        <strong>💡 전략 힌트:</strong> 두 문항 모두 분모 \(\to 0\)인데 극한값이 실수 → 분자도 \(\to 0\).
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(a + b - 1 = 0\) → \(b = 1 - a\). 분자를 \((x-1)(ax+1)\)로 인수분해해 약분 → \(\lim_{x \to 1}(ax+1) = a+1 = 2\) → \(a = 1,\ b = 0\).</span><span class="sub-q">(2) 분자 \(\to 0\) → \(4a + b = 0\) → \(b = -4a\). 켤레 \(\sqrt{x+1}+\sqrt{5}\) 곱해 유리화 후 약분 → \(\lim_{x \to 4} a(\sqrt{x+1}+\sqrt{5}) = 2\sqrt{5}\,a = \sqrt{5}\) → \(a = \dfrac{1}{2},\ b = -2\).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -2183,12 +2200,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-정의 직접 적용</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수가 \(x=0\)에서 연속인지 불연속인지 판정하시오. 세 조건 ①②③을 순서대로 확인하라. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.32 · 예제 1 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = x^2 - 1 \) &nbsp;&nbsp;
-                                (2) \( g(x) = \begin{cases} |x| &amp; (x \neq 0) \\ 2 &amp; (x = 0) \end{cases} \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 - 1 \)</span><span class="sub-q">(2) \( g(x) = \begin{cases} |x| &amp; (x \neq 0) \\ 2 &amp; (x = 0) \end{cases} \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> (1) 다항함수이므로 모든 \(x\)에서 연속. \(f(0) = -1, \lim_{x \to 0} f(x) = -1\) 일치 → 연속. (2) 좌·우극한 모두 0이지만 \(g(0)=2\). 극한값과 함숫값이 다르므로 <em>제거 가능 불연속</em>.
+                            
+                            <strong>💡 힌트:</strong>
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 다항함수이므로 모든 \(x\)에서 연속. \(f(0) = -1, \lim_{x \to 0} f(x) = -1\) 일치 → 연속.</span><span class="sub-q">(2) 좌·우극한 모두 0이지만 \(g(0)=2\). 극한값과 함숫값이 다르므로 <em>제거 가능 불연속</em>.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -2197,10 +2215,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-구간 연속</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수가 연속인 구간을 구간의 기호로 나타내시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.34 · 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = x^2 - 4x + 2 \) &nbsp;&nbsp;
-                                (2) \( f(x) = \dfrac{3}{x+2} \) &nbsp;&nbsp;
-                                (3) \( f(x) = \sqrt{1-x} \) &nbsp;&nbsp;
-                                (4) \( f(x) = 6 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 - 4x + 2 \)</span><span class="sub-q">(2) \( f(x) = \dfrac{3}{x+2} \)</span><span class="sub-q">(3) \( f(x) = \sqrt{1-x} \)</span><span class="sub-q">(4) \( f(x) = 6 \)</span></span>
                             </div>
                         </div>
                         <div class="thinking-space"></div>
@@ -2244,7 +2259,9 @@ document.addEventListener('click', function(e) {
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-극한 존재와 연속의 분리</span>
                         <div class="text-xl font-bold text-slate-900 mb-4">5. 함수 \( f(x) = \begin{cases} \dfrac{x^2 - x}{|x - 1|} &amp; (x \neq 1) \\ 1 &amp; (x = 1) \end{cases} \) 에 대하여 다음을 모두 구하고, \(x=1\)에서 <strong>연속/불연속</strong>을 판정하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(비상 미적분 I P.32 · 문제 01 (2) 참고)</span>
-                            <div class="ml-6 mt-2 text-lg font-medium">(1) \(f(1)\) &nbsp;&nbsp; (2) \( \displaystyle \lim_{x \to 1^-} f(x) \) &nbsp;&nbsp; (3) \( \displaystyle \lim_{x \to 1^+} f(x) \) &nbsp;&nbsp; (4) \( \displaystyle \lim_{x \to 1} f(x) \) 존재 여부</div>
+                            <div class="ml-6 mt-2 text-lg font-medium">
+<span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(f(1)\)</span><span class="sub-q">(2) \( \displaystyle \lim_{x \to 1^-} f(x) \)</span><span class="sub-q">(3) \( \displaystyle \lim_{x \to 1^+} f(x) \)</span><span class="sub-q">(4) \( \displaystyle \lim_{x \to 1} f(x) \) 존재 여부</span></span>
+</div>
                         </div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
@@ -2268,11 +2285,13 @@ document.addEventListener('click', function(e) {
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
             <div class="text-xl font-bold text-slate-800 mb-4">6. 두 함수 \(f(x) = x^2 + 1\), \(g(x) = x^2 - 2x - 3\)에 대하여 다음 함수의 연속성을 조사하시오 (불연속이라면 그 \(x\)의 값을 모두 답하시오). <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.40 · 중단원 기초 03)</span>
                 <div class="ml-6 mt-2 text-lg font-medium">
-                    (1) \( \dfrac{f(x)}{g(x)} \) &nbsp;&nbsp; (2) \( \dfrac{g(x)}{f(x)} \)
+                    <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \dfrac{f(x)}{g(x)} \)</span><span class="sub-q">(2) \( \dfrac{g(x)}{f(x)} \)</span></span>
                 </div>
             </div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
-                <strong>💡 전략:</strong> \(f, g\) 모두 다항함수 \(\Rightarrow\) 모든 실수에서 연속. 따라서 유리식의 연속성은 분모의 영점만 점검하면 된다. (1) \(g(x) = (x-3)(x+1) = 0\) → \(x=3, x=-1\)에서 불연속. (2) \(f(x) = x^2 + 1 \geq 1 \gt 0\)이므로 분모가 0이 되는 실수 없음 → 모든 실수에서 연속.
+                
+                <strong>💡 전략:</strong> \(f, g\) 모두 다항함수 \(\Rightarrow\) 모든 실수에서 연속. 따라서 유리식의 연속성은 분모의 영점만 점검하면 된다.
+                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(g(x) = (x-3)(x+1) = 0\) → \(x=3, x=-1\)에서 불연속.</span><span class="sub-q">(2) \(f(x) = x^2 + 1 \geq 1 \gt 0\)이므로 분모가 0이 되는 실수 없음 → 모든 실수에서 연속.</span></span>
             </div></details>
             <div class="thinking-space"></div>
         </section>
@@ -2607,12 +2626,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-최대·최소 정리 직접 적용</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 닫힌구간에서 함수의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.37·40 · 문제 02 (1), 중단원 기초 04 (2) 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = x^2 - 4x + 5 \), &nbsp;\([1, 4]\) &nbsp;&nbsp;
-                                (2) \( f(x) = \sqrt{x - 2} \), &nbsp;\([3, 6]\)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 - 4x + 5 \), &nbsp;\([1, 4]\)</span><span class="sub-q">(2) \( f(x) = \sqrt{x - 2} \), &nbsp;\([3, 6]\)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> (1) 다항함수, 꼭짓점 \((2, 1)\)이 구간 내부 → 최솟값 \(1\). 양 끝점 비교 \(f(1)=2, f(4)=5\) → 최댓값 \(5\). (2) 증가함수, \(f(3)=1\), \(f(6)=2\) → 최솟값 1, 최댓값 2.
+                            
+                            <strong>💡 힌트:</strong>
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 다항함수, 꼭짓점 \((2, 1)\)이 구간 내부 → 최솟값 \(1\). 양 끝점 비교 \(f(1)=2, f(4)=5\) → 최댓값 \(5\).</span><span class="sub-q">(2) 증가함수, \(f(3)=1\), \(f(6)=2\) → 최솟값 1, 최댓값 2.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -2957,12 +2977,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-한 점 연속·불연속 판정]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수가 \(x = 3\)에서 연속인지 불연속인지 판정하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 01번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( f(x) = \dfrac{2}{x+1} \) &nbsp;&nbsp;
-                            (2) \( f(x) = \begin{cases} x + 1 &amp; (x \neq 3) \\ -2 &amp; (x = 3) \end{cases} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = \dfrac{2}{x+1} \)</span><span class="sub-q">(2) \( f(x) = \begin{cases} x + 1 &amp; (x \neq 3) \\ -2 &amp; (x = 3) \end{cases} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) \(f(3) = \dfrac{2}{4} = \dfrac{1}{2}\), \(\lim_{x \to 3} f(x) = \dfrac{1}{2}\) 일치 → <strong>연속</strong>. (2) \(\lim_{x \to 3}(x+1) = 4\)이지만 \(f(3) = -2\) → 두 값이 다름 → <strong>불연속</strong> (제거 가능형).
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f(3) = \dfrac{2}{4} = \dfrac{1}{2}\), \(\lim_{x \to 3} f(x) = \dfrac{1}{2}\) 일치 → <strong>연속</strong>.</span><span class="sub-q">(2) \(\lim_{x \to 3}(x+1) = 4\)이지만 \(f(3) = -2\) → 두 값이 다름 → <strong>불연속</strong> (제거 가능형).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -2972,12 +2993,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-연속인 구간 구하기]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수가 연속인 구간을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 02번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( f(x) = x^2 + x + 3 \) &nbsp;&nbsp;
-                            (2) \( f(x) = \sqrt{2x - 4} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 + x + 3 \)</span><span class="sub-q">(2) \( f(x) = \sqrt{2x - 4} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) 다항함수 → 모든 실수에서 연속, 즉 \((-\infty, \infty)\). (2) 근호 안 \(2x - 4 \geq 0 \iff x \geq 2\). 끝점 \(x = 2\)에서 우극한 = \(f(2) = 0\)이므로 \([2, \infty)\)에서 연속.
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 다항함수 → 모든 실수에서 연속, 즉 \((-\infty, \infty)\).</span><span class="sub-q">(2) 근호 안 \(2x - 4 \geq 0 \iff x \geq 2\). 끝점 \(x = 2\)에서 우극한 = \(f(2) = 0\)이므로 \([2, \infty)\)에서 연속.</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -2987,11 +3009,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-유리함수의 연속성 조사]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 두 함수 \( f(x) = x^2 + 1 \), \( g(x) = x^2 - 2x - 3 \) 에 대하여 다음 함수의 연속성을 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 03번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( \dfrac{f(x)}{g(x)} \) &nbsp;&nbsp; (2) \( \dfrac{g(x)}{f(x)} \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \dfrac{f(x)}{g(x)} \)</span><span class="sub-q">(2) \( \dfrac{g(x)}{f(x)} \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> 두 다항함수의 비. 분모 영점만 점검. (1) \(g(x) = (x-3)(x+1) = 0\) → \(x = 3, -1\)에서 불연속, 그 외 연속. (2) \(f(x) = x^2 + 1 \geq 1 \gt 0\) → 분모 0 안 됨 → 모든 실수에서 연속.
+                        
+                        <strong>💡 전략 힌트:</strong> 두 다항함수의 비. 분모 영점만 점검.
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(g(x) = (x-3)(x+1) = 0\) → \(x = 3, -1\)에서 불연속, 그 외 연속.</span><span class="sub-q">(2) \(f(x) = x^2 + 1 \geq 1 \gt 0\) → 분모 0 안 됨 → 모든 실수에서 연속.</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -3003,12 +3027,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-닫힌구간 최댓값·최솟값]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 구간에서 함수의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.40 중단원 기초 04번)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( f(x) = x^2 + 2x - 5 \), &nbsp;\([-4, 1]\) &nbsp;&nbsp;
-                            (2) \( f(x) = \sqrt{x - 2} \), &nbsp;\([3, 6]\)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^2 + 2x - 5 \), &nbsp;\([-4, 1]\)</span><span class="sub-q">(2) \( f(x) = \sqrt{x - 2} \), &nbsp;\([3, 6]\)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) 꼭짓점 \(x = -1\)에서 최솟값 \(-6\), 양끝 \(f(-4) = 3, f(1) = -2\) → 최댓값 \(3\). (2) 증가함수, 최솟값 \(f(3) = 1\), 최댓값 \(f(6) = 2\).
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 꼭짓점 \(x = -1\)에서 최솟값 \(-6\), 양끝 \(f(-4) = 3, f(1) = -2\) → 최댓값 \(3\).</span><span class="sub-q">(2) 증가함수, 최솟값 \(f(3) = 1\), 최댓값 \(f(6) = 2\).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -3534,7 +3559,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-hard">[서술형-다항함수 결정 + 미정계수]</span>
                     <div class="text-xl font-bold text-slate-900 mb-2">9. 다항함수 \(f(x)\)가 \( \displaystyle \lim_{x \to 1}\dfrac{f(x)}{x - 1} = 2,\quad \lim_{x \to \infty}\dfrac{f(x) - 3x^2}{2x - 1} = k \) 를 만족시킬 때, 다음 물음에 답하시오. (단, \(k\)는 실수) <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.45 대단원 평가 09번 서술형)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) 함수 \(f(x)\)를 구하시오. &nbsp;&nbsp; (2) 실수 \(k\)의 값을 구하시오.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 함수 \(f(x)\)를 구하시오.</span><span class="sub-q">(2) 실수 \(k\)의 값을 구하시오.</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
@@ -3838,12 +3863,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-평균변화율 직접 계산</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 함수 \( f(x) = x^2 - 3x \)에서 \(x\)의 값이 다음과 같이 변할 때의 평균변화율을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.52 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \(0\)에서 \(2\)까지 &nbsp;&nbsp;
-                                (2) \(1\)에서 \(1 + \Delta x\)까지
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(0\)에서 \(2\)까지</span><span class="sub-q">(2) \(1\)에서 \(1 + \Delta x\)까지</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> (1) \(\dfrac{f(2)-f(0)}{2-0} = \dfrac{-2-0}{2} = -1\). (2) \(\dfrac{f(1+\Delta x) - f(1)}{\Delta x}\). \(f(1) = -2\), \(f(1+\Delta x) = (1+\Delta x)^2 - 3(1+\Delta x) = -2 - \Delta x + (\Delta x)^2\). \(\Rightarrow\) 평균변화율 \(= \dfrac{-\Delta x + (\Delta x)^2}{\Delta x} = -1 + \Delta x\).
+                            
+                            <strong>💡 힌트:</strong>
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\dfrac{f(2)-f(0)}{2-0} = \dfrac{-2-0}{2} = -1\).</span><span class="sub-q">(2) \(\dfrac{f(1+\Delta x) - f(1)}{\Delta x}\). \(f(1) = -2\), \(f(1+\Delta x) = (1+\Delta x)^2 - 3(1+\Delta x) = -2 - \Delta x + (\Delta x)^2\). \(\Rightarrow\) 평균변화율 \(= \dfrac{-\Delta x + (\Delta x)^2}{\Delta x} = -1 + \Delta x\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -3852,12 +3878,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-미분계수 정의로 계산</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 \(x = -1\)에서의 미분계수를 정의에 따라 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.53 · 문제 02 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = 2x + 1 \) &nbsp;&nbsp;
-                                (2) \( f(x) = -x^2 + 4x \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = 2x + 1 \)</span><span class="sub-q">(2) \( f(x) = -x^2 + 4x \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> \(f'(-1) = \displaystyle\lim_{\Delta x \to 0}\dfrac{f(-1+\Delta x) - f(-1)}{\Delta x}\). (1) \(f(-1) = -1\), \(f(-1+\Delta x) = -1 + 2\Delta x\) \(\Rightarrow\) \(\dfrac{2\Delta x}{\Delta x} = 2\). 답: \(\bm{f'(-1) = 2}\). (2) \(f(-1) = -5\), 전개 후 \(\Rightarrow\) \(f'(-1) = 6\).
+                            
+                            <strong>💡 힌트:</strong> \(f'(-1) = \displaystyle\lim_{\Delta x \to 0}\dfrac{f(-1+\Delta x) - f(-1)}{\Delta x}\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f(-1) = -1\), \(f(-1+\Delta x) = -1 + 2\Delta x\) \(\Rightarrow\) \(\dfrac{2\Delta x}{\Delta x} = 2\). 답: \(\bm{f'(-1) = 2}\).</span><span class="sub-q">(2) \(f(-1) = -5\), 전개 후 \(\Rightarrow\) \(f'(-1) = 6\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -3866,12 +3893,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-접선의 기울기</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 곡선 위의 주어진 점에서의 접선의 기울기를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.55 · 문제 04 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = -x^2 + 3x \), &nbsp;점 \((1, 2)\) &nbsp;&nbsp;
-                                (2) \( y = 3x^2 - 2x - 1 \), &nbsp;점 \((-1, 4)\)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = -x^2 + 3x \), &nbsp;점 \((1, 2)\)</span><span class="sub-q">(2) \( y = 3x^2 - 2x - 1 \), &nbsp;점 \((-1, 4)\)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 접선의 기울기 \(= f'(\text{주어진 } x)\). (1) \(f(x) = -x^2 + 3x\), \(f'(1) = \lim_{h \to 0}\dfrac{f(1+h)-f(1)}{h} = \lim_{h \to 0}\dfrac{(-2h-h^2+3h)}{h} = \lim(1-h) = 1\). (2) \(f'(-1) = \lim_{h \to 0}\dfrac{(3(-1+h)^2 - 2(-1+h) - 1) - 4}{h} \to -8\).
+                            
+                            <strong>💡 힌트:</strong> 접선의 기울기 \(= f'(\text{주어진 } x)\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f(x) = -x^2 + 3x\), \(f'(1) = \lim_{h \to 0}\dfrac{f(1+h)-f(1)}{h} = \lim_{h \to 0}\dfrac{(-2h-h^2+3h)}{h} = \lim(1-h) = 1\).</span><span class="sub-q">(2) \(f'(-1) = \lim_{h \to 0}\dfrac{(3(-1+h)^2 - 2(-1+h) - 1) - 4}{h} \to -8\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -4302,14 +4330,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-도함수 정의로 계산</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 도함수를 정의에 따라 구하고, \(x = -2\)에서의 미분계수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.59 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = -5x \) &nbsp;&nbsp;
-                                (2) \( f(x) = 2x^2 - x \) &nbsp;&nbsp;
-                                (3) \( f(x) = x^3 \) &nbsp;&nbsp;
-                                (4) \( f(x) = 100 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -5x \)</span><span class="sub-q">(2) \( f(x) = 2x^2 - x \)</span><span class="sub-q">(3) \( f(x) = x^3 \)</span><span class="sub-q">(4) \( f(x) = 100 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 정의 \(f'(x) = \lim_{h \to 0}\dfrac{f(x+h) - f(x)}{h}\). (1) \(f'(x) = -5\), \(f'(-2) = -5\). (2) \(f'(x) = 4x - 1\), \(f'(-2) = -9\). (3) \(f'(x) = 3x^2\), \(f'(-2) = 12\). (4) \(f'(x) = 0\) (상수), \(f'(-2) = 0\). — 모두 \((x^n)' = n x^{n-1}\) 공식과 일치함을 확인.
+                            
+                            <strong>💡 힌트:</strong> 정의 \(f'(x) = \lim_{h \to 0}\dfrac{f(x+h) - f(x)}{h}\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f'(x) = -5\), \(f'(-2) = -5\).</span><span class="sub-q">(2) \(f'(x) = 4x - 1\), \(f'(-2) = -9\).</span><span class="sub-q">(3) \(f'(x) = 3x^2\), \(f'(-2) = 12\).</span><span class="sub-q">(4) \(f'(x) = 0\) (상수), \(f'(-2) = 0\). — 모두 \((x^n)' = n x^{n-1}\) 공식과 일치함을 확인.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -4318,16 +4345,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-공식으로 단번에 미분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 도함수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.60·62 · 문제 02·03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = x^2 \) &nbsp;&nbsp;
-                                (2) \( y = x^{10} \) &nbsp;&nbsp;
-                                (3) \( y = 7 \) &nbsp;&nbsp;
-                                (4) \( y = x^3 + x - 5 \) &nbsp;&nbsp;
-                                (5) \( y = -x^4 + 2x^2 + x + 1 \) &nbsp;&nbsp;
-                                (6) \( y = 2x^5 - 3x^3 - 3 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = x^2 \)</span><span class="sub-q">(2) \( y = x^{10} \)</span><span class="sub-q">(3) \( y = 7 \)</span><span class="sub-q">(4) \( y = x^3 + x - 5 \)</span><span class="sub-q">(5) \( y = -x^4 + 2x^2 + x + 1 \)</span><span class="sub-q">(6) \( y = 2x^5 - 3x^3 - 3 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 모두 \((x^n)' = n x^{n-1}\), \((cf)' = c f'\), \((f \pm g)' = f' \pm g'\)의 직접 적용. (1) \(2x\). (2) \(10 x^9\). (3) \(0\). (4) \(3x^2 + 1\). (5) \(-4x^3 + 4x + 1\). (6) \(10 x^4 - 9 x^2\). — 항별로 미분, 상수항은 \(0\).
+                            
+                            <strong>💡 힌트:</strong> 모두 \((x^n)' = n x^{n-1}\), \((cf)' = c f'\), \((f \pm g)' = f' \pm g'\)의 직접 적용.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(2x\).</span><span class="sub-q">(2) \(10 x^9\).</span><span class="sub-q">(3) \(0\).</span><span class="sub-q">(4) \(3x^2 + 1\).</span><span class="sub-q">(5) \(-4x^3 + 4x + 1\).</span><span class="sub-q">(6) \(10 x^4 - 9 x^2\). — 항별로 미분, 상수항은 \(0\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -4336,14 +4360,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-곱의 미분법</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 곱의 미분법을 이용하여 다음 함수를 미분하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.63 · 문제 05 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = (x + 6)(3x - 1) \) &nbsp;&nbsp;
-                                (2) \( y = (4x + 5)(x^2 - x) \) &nbsp;&nbsp;
-                                (3) \( y = (3x^2 + 2)(2 - x^2) \) &nbsp;&nbsp;
-                                (4) \( y = x(x + 2)(2x - 1) \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = (x + 6)(3x - 1) \)</span><span class="sub-q">(2) \( y = (4x + 5)(x^2 - x) \)</span><span class="sub-q">(3) \( y = (3x^2 + 2)(2 - x^2) \)</span><span class="sub-q">(4) \( y = x(x + 2)(2x - 1) \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> \( \{f g\}' = f' g + f g' \) 적용. (1) \(y' = 1 \cdot (3x-1) + (x+6) \cdot 3 = 6x + 17\). (2) \(y' = 4(x^2 - x) + (4x+5)(2x - 1) = 12 x^2 + 2 x - 5\). (3) \(y' = 6x(2 - x^2) + (3x^2+2)(-2x) = -12 x^3 + 8x\). (4) 세 함수 곱: \(y' = (x+2)(2x-1) + x(2x-1) + 2x(x+2) = 6x^2 + 6x - 2\). 전개해서 검산해도 좋다.
+                            
+                            <strong>💡 힌트:</strong> \( \{f g\}' = f' g + f g' \) 적용.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(y' = 1 \cdot (3x-1) + (x+6) \cdot 3 = 6x + 17\).</span><span class="sub-q">(2) \(y' = 4(x^2 - x) + (4x+5)(2x - 1) = 12 x^2 + 2 x - 5\).</span><span class="sub-q">(3) \(y' = 6x(2 - x^2) + (3x^2+2)(-2x) = -12 x^3 + 8x\).</span><span class="sub-q">(4) 세 함수 곱: \(y' = (x+2)(2x-1) + x(2x-1) + 2x(x+2) = 6x^2 + 6x - 2\). 전개해서 검산해도 좋다.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -4686,14 +4709,13 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-도함수 공식 + 곱의 미분]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 함수를 미분하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.64 중단원 기초 03번)</span>
                         <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                            (1) \( y = 10 \) &nbsp;&nbsp;
-                            (2) \( y = -4x^2 + 2x + 1 \) &nbsp;&nbsp;
-                            (3) \( y = (x - 1)(x^2 + x + 6) \) &nbsp;&nbsp;
-                            (4) \( y = (x - 2)(x + 1)(x + 3) \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = 10 \)</span><span class="sub-q">(2) \( y = -4x^2 + 2x + 1 \)</span><span class="sub-q">(3) \( y = (x - 1)(x^2 + x + 6) \)</span><span class="sub-q">(4) \( y = (x - 2)(x + 1)(x + 3) \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
-                        <strong>💡 전략 힌트:</strong> (1) 상수 \(\Rightarrow\) \(y' = 0\). (2) 항별 미분 \(\Rightarrow\) \(y' = -8x + 2\). (3) 곱의 미분 \(y' = (x^2+x+6) + (x-1)(2x+1) = 3x^2 + 5\). 검산: 전개 후 미분 결과와 일치. (4) 삼중 곱: \(y' = (x+1)(x+3) + (x-2)(x+3) + (x-2)(x+1) = 3x^2 + 4x - 5\).
+                        
+                        <strong>💡 전략 힌트:</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 상수 \(\Rightarrow\) \(y' = 0\).</span><span class="sub-q">(2) 항별 미분 \(\Rightarrow\) \(y' = -8x + 2\).</span><span class="sub-q">(3) 곱의 미분 \(y' = (x^2+x+6) + (x-1)(2x+1) = 3x^2 + 5\). 검산: 전개 후 미분 결과와 일치.</span><span class="sub-q">(4) 삼중 곱: \(y' = (x+1)(x+3) + (x-2)(x+3) + (x-2)(x+1) = 3x^2 + 4x - 5\).</span></span>
                     </div></details>
                     <div class="thinking-space"></div>
                 </div>
@@ -5207,12 +5229,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-접점 주어진 접선</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 곡선 위의 점에서의 접선의 방정식을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.71 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = -2x^2 + 3x - 1 \), 점 \((2, -3)\) &nbsp;&nbsp;
-                                (2) \( y = x^3 + 2x^2 - 1 \), 점 \((-1, 0)\)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = -2x^2 + 3x - 1 \), 점 \((2, -3)\)</span><span class="sub-q">(2) \( y = x^3 + 2x^2 - 1 \), 점 \((-1, 0)\)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> "도함수 \(\to\) 기울기 \(\to\) 점-기울기 공식". (1) \(f'(x) = -4x + 3\), \(f'(2) = -5\). 접선: \(y + 3 = -5(x - 2)\) \(\Rightarrow\) \(y = -5x + 7\). (2) \(f'(x) = 3x^2 + 4x\), \(f'(-1) = 3 - 4 = -1\). 접선: \(y - 0 = -1(x + 1)\) \(\Rightarrow\) \(y = -x - 1\).
+                            
+                            <strong>💡 힌트:</strong> "도함수 \(\to\) 기울기 \(\to\) 점-기울기 공식".
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f'(x) = -4x + 3\), \(f'(2) = -5\). 접선: \(y + 3 = -5(x - 2)\) \(\Rightarrow\) \(y = -5x + 7\).</span><span class="sub-q">(2) \(f'(x) = 3x^2 + 4x\), \(f'(-1) = 3 - 4 = -1\). 접선: \(y - 0 = -1(x + 1)\) \(\Rightarrow\) \(y = -x - 1\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -5221,12 +5244,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-기울기 주어진 접선</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 곡선에 접하고 <strong>기울기가 \(1\)</strong>인 접선의 방정식을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.71 · 문제 02 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = 2x^2 - 7x + 3 \) &nbsp;&nbsp;
-                                (2) \( y = x^3 - 2x + 1 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = 2x^2 - 7x + 3 \)</span><span class="sub-q">(2) \( y = x^3 - 2x + 1 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 접점을 \((t, f(t))\)로 두고 \(f'(t) = 1\)에서 \(t\)를 구한다. (1) \(f'(x) = 4x - 7\), \(4t - 7 = 1 \Rightarrow t = 2\). 접점 \((2, -3)\), 접선 \(y = x - 5\). (2) \(f'(x) = 3x^2 - 2\), \(3t^2 - 2 = 1 \Rightarrow t = \pm 1\). \(t = 1\)에서 접점 \((1, 0)\), 접선 \(y = x - 1\). \(t = -1\)에서 접점 \((-1, 2)\), 접선 \(y = x + 3\).
+                            
+                            <strong>💡 힌트:</strong> 접점을 \((t, f(t))\)로 두고 \(f'(t) = 1\)에서 \(t\)를 구한다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f'(x) = 4x - 7\), \(4t - 7 = 1 \Rightarrow t = 2\). 접점 \((2, -3)\), 접선 \(y = x - 5\).</span><span class="sub-q">(2) \(f'(x) = 3x^2 - 2\), \(3t^2 - 2 = 1 \Rightarrow t = \pm 1\). \(t = 1\)에서 접점 \((1, 0)\), 접선 \(y = x - 1\). \(t = -1\)에서 접점 \((-1, 2)\), 접선 \(y = x + 3\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -5252,12 +5276,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l2">응용-곡선 밖의 점에서의 접선</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 점에서 곡선에 그은 접선의 방정식을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.72 · 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = x^2 - 4x \), 점 \((-2, 3)\) &nbsp;&nbsp;
-                                (2) \( y = -x^3 + 2x + 7 \), 점 \((0, 5)\)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = x^2 - 4x \), 점 \((-2, 3)\)</span><span class="sub-q">(2) \( y = -x^3 + 2x + 7 \), 점 \((0, 5)\)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 접점을 \((t, f(t))\)로 두고 접선식 작성 \(\to\) 주어진 점을 대입 \(\to\) \(t\)에 대한 방정식 풀기. (1) \(f'(x) = 2x - 4\). 접선: \(y - (t^2 - 4t) = (2t - 4)(x - t)\). 점 \((-2, 3)\) 대입: \(3 - t^2 + 4t = (2t - 4)(-2 - t) \Rightarrow t^2 + 4t - 5 = 0 \Rightarrow t = 1\ \text{또는}\ -5\). \(t = 1\): 기울기 \(-2\), 접점 \((1, -3)\), 접선 \(y = -2x - 1\). \(t = -5\): 기울기 \(-14\), 접점 \((-5, 45)\), 접선 \(y = -14x - 25\). (2) \(f'(x) = -3x^2 + 2\). 접점 \((t,\ -t^3 + 2t + 7)\). 점 \((0, 5)\) 대입 후 정리하면 \(2t^3 = -2 \Rightarrow t = -1\). 기울기 \(-1\), 접점 \((-1, 6)\), 접선 \(y = -x + 5\).
+                            
+                            <strong>💡 힌트:</strong> 접점을 \((t, f(t))\)로 두고 접선식 작성 \(\to\) 주어진 점을 대입 \(\to\) \(t\)에 대한 방정식 풀기.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f'(x) = 2x - 4\). 접선: \(y - (t^2 - 4t) = (2t - 4)(x - t)\). 점 \((-2, 3)\) 대입: \(3 - t^2 + 4t = (2t - 4)(-2 - t) \Rightarrow t^2 + 4t - 5 = 0 \Rightarrow t = 1\ \text{또는}\ -5\). \(t = 1\): 기울기 \(-2\), 접점 \((1, -3)\), 접선 \(y = -2x - 1\). \(t = -5\): 기울기 \(-14\), 접점 \((-5, 45)\), 접선 \(y = -14x - 25\).</span><span class="sub-q">(2) \(f'(x) = -3x^2 + 2\). 접점 \((t,\ -t^3 + 2t + 7)\). 점 \((0, 5)\) 대입 후 정리하면 \(2t^3 = -2 \Rightarrow t = -1\). 기울기 \(-1\), 접점 \((-1, 6)\), 접선 \(y = -x + 5\).</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -5657,12 +5682,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-평균값 정리의 \(c\) 구하기</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 구간에서 평균값 정리를 만족시키는 실수 \(c\)의 값을 모두 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.76 · 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = -2x^2 + 4x \), \([0, 4]\) &nbsp;&nbsp;
-                                (2) \( f(x) = x^3 \), \([-3, 3]\)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -2x^2 + 4x \), \([0, 4]\)</span><span class="sub-q">(2) \( f(x) = x^3 \), \([-3, 3]\)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 공식 \(\dfrac{f(b) - f(a)}{b - a} = f'(c)\) 대입. (1) \(f(0) = 0\), \(f(4) = -16\). 평균변화율 \(= -4\). \(f'(x) = -4x + 4\), \(-4c + 4 = -4 \Rightarrow c = 2\). (2) \(f(-3) = -27\), \(f(3) = 27\). 평균변화율 \(= 9\). \(f'(x) = 3x^2\), \(3c^2 = 9 \Rightarrow c = \pm\sqrt{3}\). 둘 다 \((-3, 3)\)에 속함.
+                            
+                            <strong>💡 힌트:</strong> 공식 \(\dfrac{f(b) - f(a)}{b - a} = f'(c)\) 대입.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f(0) = 0\), \(f(4) = -16\). 평균변화율 \(= -4\). \(f'(x) = -4x + 4\), \(-4c + 4 = -4 \Rightarrow c = 2\).</span><span class="sub-q">(2) \(f(-3) = -27\), \(f(3) = 27\). 평균변화율 \(= 9\). \(f'(x) = 3x^2\), \(3c^2 = 9 \Rightarrow c = \pm\sqrt{3}\). 둘 다 \((-3, 3)\)에 속함.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -6119,10 +6145,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-증감 조사 (삼차·사차함수)</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 증가와 감소를 조사하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.81 · 문제 02 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = -2x^3 + 3x^2 + 12x - 3 \) &nbsp;&nbsp;
-                                (2) \( f(x) = 2x^3 + 6x^2 + 6x + 7 \) &nbsp;&nbsp;
-                                (3) \( f(x) = -x^3 - 6x + 1 \) &nbsp;&nbsp;
-                                (4) \( f(x) = x^4 - 2x^2 + 5 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -2x^3 + 3x^2 + 12x - 3 \)</span><span class="sub-q">(2) \( f(x) = 2x^3 + 6x^2 + 6x + 7 \)</span><span class="sub-q">(3) \( f(x) = -x^3 - 6x + 1 \)</span><span class="sub-q">(4) \( f(x) = x^4 - 2x^2 + 5 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -6612,8 +6635,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-삼차·사차함수 극값</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 극값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.85 · 문제 07 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = -2x^3 + 3x^2 + 1 \) &nbsp;&nbsp;
-                                (2) \( f(x) = x^4 - 8x^2 + 6 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = -2x^3 + 3x^2 + 1 \)</span><span class="sub-q">(2) \( f(x) = x^4 - 8x^2 + 6 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -7097,8 +7119,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-삼차함수 개형</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 함수의 그래프의 개형을 그리시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = x^3 + 3x^2 - 2 \) &nbsp;&nbsp;
-                                (2) \( y = -x^3 + 6x^2 - 12x + 4 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = x^3 + 3x^2 - 2 \)</span><span class="sub-q">(2) \( y = -x^3 + 6x^2 - 12x + 4 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -7113,8 +7134,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-사차함수 개형</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 함수의 그래프의 개형을 그리시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.87 · 문제 02 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( y = x^4 - 2x^2 - 2 \) &nbsp;&nbsp;
-                                (2) \( y = -\dfrac{3}{4}x^4 + 2x^3 + 1 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( y = x^4 - 2x^2 - 2 \)</span><span class="sub-q">(2) \( y = -\dfrac{3}{4}x^4 + 2x^3 + 1 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -7185,7 +7205,10 @@ document.addEventListener('click', function(e) {
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-사차함수 극값 개수 분류</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 사차함수 \(f(x) = x^4 + ax^2 + b\) (\(a, b\)는 실수)의 그래프가 다음과 같을 때, \(a\)의 부호로 가능한 경우를 모두 말하시오. (1) 극값이 <strong>1개</strong>인 경우 (2) 극값이 <strong>3개</strong>인 경우 <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 P.87 예제 2·문제 02 연계)</span></div>
+                        <div class="text-xl font-bold text-slate-900 mb-4">
+7. 사차함수 \(f(x) = x^4 + ax^2 + b\) (\(a, b\)는 실수)의 그래프가 다음과 같을 때, \(a\)의 부호로 가능한 경우를 모두 말하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 비상 P.87 예제 2·문제 02 연계)</span>
+<span class="sub-qs sub-qs--list"><span class="sub-q">(1) 극값이 <strong>1개</strong>인 경우</span><span class="sub-q">(2) 극값이 <strong>3개</strong>인 경우</span></span>
+</div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
@@ -7578,8 +7601,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-닫힌구간 최대·최소</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 구간에서 함수의 최댓값과 최솟값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.88 · 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( f(x) = x^3 - 3x^2 - 9x + 5,\ x \in [-2, 4] \) &nbsp;&nbsp;
-                                (2) \( f(x) = x^4 - 8x^3 + 16x^2 + 1,\ x \in [-1, 2] \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( f(x) = x^3 - 3x^2 - 9x + 5,\ x \in [-2, 4] \)</span><span class="sub-q">(2) \( f(x) = x^4 - 8x^3 + 16x^2 + 1,\ x \in [-1, 2] \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -8061,8 +8083,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-실근 개수</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 방정식의 서로 다른 실근의 개수를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.91 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( x^3 - 6x^2 + 12x + 1 = 0 \) &nbsp;&nbsp;
-                                (2) \( 3x^4 - 4x^3 - 12x^2 + 5 = 0 \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( x^3 - 6x^2 + 12x + 1 = 0 \)</span><span class="sub-q">(2) \( 3x^4 - 4x^3 - 12x^2 + 5 = 0 \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -8086,8 +8107,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-부등식 증명</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 부등식이 성립함을 보이시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.92 · 문제 04)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \(x \geq 0\)일 때, \(2x^3 - 6x^2 + 8 \geq 0\) &nbsp;&nbsp;
-                                (2) 모든 실수 \(x\)에 대하여 \(6x^4 - 2x^3 + x + 1 \geq 3x^4 + 2x^3 + x\)
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(x \geq 0\)일 때, \(2x^3 - 6x^2 + 8 \geq 0\)</span><span class="sub-q">(2) 모든 실수 \(x\)에 대하여 \(6x^4 - 2x^3 + x + 1 \geq 3x^4 + 2x^3 + x\)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -8542,8 +8562,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-속도·가속도 + 방향 전환</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = t^3 - t^2 - 8t\)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.94 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \(t = 3\)일 때 점 \(\mathrm{P}\)의 속도와 가속도 &nbsp;&nbsp;
-                                (2) 점 \(\mathrm{P}\)가 운동 방향을 바꾸는 시각
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(t = 3\)일 때 점 \(\mathrm{P}\)의 속도와 가속도</span><span class="sub-q">(2) 점 \(\mathrm{P}\)가 운동 방향을 바꾸는 시각</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -8616,8 +8635,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l2">응용-가속도 \(0\)인 시각</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">6. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치 \(x = t^3 - 6t^2 + 9t + 1\) (\(t \geq 0\))일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.94 예제 1 변형)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) 운동 방향을 바꾸는 모든 시각 &nbsp;&nbsp;
-                                (2) 가속도가 \(0\)이 되는 시각과 그때의 속도
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 운동 방향을 바꾸는 모든 시각</span><span class="sub-q">(2) 가속도가 \(0\)이 되는 시각과 그때의 속도</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -8639,7 +8657,10 @@ document.addEventListener('click', function(e) {
                     <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
                         <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
                         <span class="badge badge-l3">심화-운동 거리 vs 변위 — 미적분 I 최고 함정</span>
-                        <div class="text-xl font-bold text-slate-900 mb-4">7. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치가 \(x(t) = t^3 - 6t^2 + 9t\) (\(0 \leq t \leq 4\))일 때, 다음을 비교해 답하시오. (1) \(t = 0\)부터 \(t = 4\)까지의 <strong>위치 변화량(변위)</strong>. (2) 같은 구간에서 점 \(\mathrm{P}\)가 <strong>실제로 움직인 거리</strong>(왕복 포함). 두 값이 같지 않은 이유를 설명하라. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 차시 23 정적분의 활용 미리보기)</span></div>
+                        <div class="text-xl font-bold text-slate-900 mb-4">
+7. 수직선 위를 움직이는 점 \(\mathrm{P}\)의 시각 \(t\)에서 위치가 \(x(t) = t^3 - 6t^2 + 9t\) (\(0 \leq t \leq 4\))일 때, 다음을 비교해 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(자체 출제 · 차시 23 정적분의 활용 미리보기)</span>
+<span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(t = 0\)부터 \(t = 4\)까지의 <strong>위치 변화량(변위)</strong>.</span><span class="sub-q">(2) 같은 구간에서 점 \(\mathrm{P}\)가 <strong>실제로 움직인 거리</strong>(왕복 포함). 두 값이 같지 않은 이유를 설명하라.</span></span>
+</div>
                         <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
                             <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
                             <div class="trap-body px-5 pb-5">
@@ -8671,7 +8692,10 @@ document.addEventListener('click', function(e) {
         <!-- 03. 형성평가 -->
         <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
             <h2 class="section-title">03. 형성평가 (Final Check)</h2>
-            <div class="text-xl font-bold text-slate-800 mb-4">8. 지상에서 \(40\,\text{m/s}\)의 속도로 수직으로 쏘아 올린 물체의 \(t\)초 후의 높이 \(h\,\text{m}\)가 \(h = -5t^2 + 40t\)일 때, 다음을 구하시오. (1) 물체의 최고 높이와 그때의 시각, (2) 물체가 지면에 떨어지는 순간의 속도, (3) 최고점부터 지면에 떨어질 때까지 물체가 움직인 거리. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.95 예제 2 변형 + Level 3 확장)</span></div>
+            <div class="text-xl font-bold text-slate-800 mb-4">
+8. 지상에서 \(40\,\text{m/s}\)의 속도로 수직으로 쏘아 올린 물체의 \(t\)초 후의 높이 \(h\,\text{m}\)가 \(h = -5t^2 + 40t\)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(자체 출제 · 비상 P.95 예제 2 변형 + Level 3 확장)</span>
+<span class="sub-qs sub-qs--list"><span class="sub-q">(1) 물체의 최고 높이와 그때의 시각</span><span class="sub-q">(2) 물체가 지면에 떨어지는 순간의 속도</span><span class="sub-q">(3) 최고점부터 지면에 떨어질 때까지 물체가 움직인 거리.</span></span>
+</div>
             <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
                 <strong>💡 전략 (4단계):</strong><br>
                 <strong>STEP 1 — 속도 식:</strong> \(v(t) = \dfrac{dh}{dt} = -10t + 40\).<br>
@@ -9463,8 +9487,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-hard">[서술형-미분계수 정의 + 곱 함수의 미분]</span>
                     <div class="text-xl font-bold text-slate-900 mb-2">10. 미분가능한 두 함수 \(f(x), g(x)\)에 대하여 \( \displaystyle \lim_{x \to 3}\dfrac{f(x) + 1}{x - 3} = 2,\quad \lim_{x \to 3}\dfrac{g(x) - 2}{x^2 - 9} = 1 \) 일 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.101 대단원 평가 10번 서술형)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \(f'(3), g'(3)\)의 값을 구하시오. <br>
-                            (2) 함수 \(f(x) g(x)\)의 \(x = 3\)에서의 미분계수를 구하시오.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(f'(3), g'(3)\)의 값을 구하시오.</span><span class="sub-q">(2) 함수 \(f(x) g(x)\)의 \(x = 3\)에서의 미분계수를 구하시오.</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
@@ -9785,14 +9808,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-거듭제곱·상수의 부정적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.109 · 문제 02 변형 — (4) 추가)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int x^6\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int x^9\,dx \) &nbsp;&nbsp;
-                                (3) \( \displaystyle \int 10\,dx \) &nbsp;&nbsp;
-                                (4) \( \displaystyle \int x\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int x^6\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int x^9\,dx \)</span><span class="sub-q">(3) \( \displaystyle \int 10\,dx \)</span><span class="sub-q">(4) \( \displaystyle \int x\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 공식 \(\int x^n\,dx = \dfrac{1}{n+1}x^{n+1} + C\) 직접 적용. (1) \(\dfrac{1}{7}x^7 + C\). (2) \(\dfrac{1}{10}x^{10} + C\). (3) \(10x + C\). (4) \(\dfrac{1}{2}x^2 + C\). — 적분상수 \(C\)를 빼먹지 말 것.
+                            
+                            <strong>💡 힌트:</strong> 공식 \(\int x^n\,dx = \dfrac{1}{n+1}x^{n+1} + C\) 직접 적용.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\dfrac{1}{7}x^7 + C\).</span><span class="sub-q">(2) \(\dfrac{1}{10}x^{10} + C\).</span><span class="sub-q">(3) \(10x + C\).</span><span class="sub-q">(4) \(\dfrac{1}{2}x^2 + C\). — 적분상수 \(C\)를 빼먹지 말 것.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -9801,12 +9823,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-다항함수의 부정적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.111 · 문제 03 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int (4x^3 - 6x^2 + x - 4)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int (-x^4 + 2x + 5)\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int (4x^3 - 6x^2 + x - 4)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int (-x^4 + 2x + 5)\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 항별 적분 후 적분상수 하나로 묶기. (1) \(x^4 - 2x^3 + \dfrac{1}{2}x^2 - 4x + C\). (2) \(-\dfrac{1}{5}x^5 + x^2 + 5x + C\). — 각 항의 지수를 \(1\) 올리고 그 새 지수로 나눈다.
+                            
+                            <strong>💡 힌트:</strong> 항별 적분 후 적분상수 하나로 묶기.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(x^4 - 2x^3 + \dfrac{1}{2}x^2 - 4x + C\).</span><span class="sub-q">(2) \(-\dfrac{1}{5}x^5 + x^2 + 5x + C\). — 각 항의 지수를 \(1\) 올리고 그 새 지수로 나눈다.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -9836,8 +9859,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l2">응용-곱셈 전개 후 적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.121 · 중단원 기초 01번 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int (x^2 - 2x + 3)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int (x^2 - 2x + 3)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -10248,8 +10270,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-기하 도형으로 정적분 계산</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 정적분의 값을 기하적 의미(부호 있는 면적)로 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.113 · 예제 1·문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{-2}^{2} (x + 4)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{2}^{-4} \left(\tfrac{1}{2}x + 1\right)\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{-2}^{2} (x + 4)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int_{2}^{-4} \left(\tfrac{1}{2}x + 1\right)\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -10263,8 +10284,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-적분과 미분의 관계</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음을 \(x\)에 대하여 미분하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.115 · 문제 02 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{2}^{x} (3t^2 - 2t + 1)\,dt \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{-3}^{x} (t - 1)(2t^3 + t - 1)\,dt \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{2}^{x} (3t^2 - 2t + 1)\,dt \)</span><span class="sub-q">(2) \( \displaystyle \int_{-3}^{x} (t - 1)(2t^3 + t - 1)\,dt \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -10694,14 +10714,13 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-기본정리로 다항함수 적분</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.117 · 문제 05 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{-2}^{2} 3x^2\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{0}^{4} x^3\,dx \) &nbsp;&nbsp;
-                                (3) \( \displaystyle \int_{3}^{1} 4x\,dx \) &nbsp;&nbsp;
-                                (4) \( \displaystyle \int_{1}^{-2} 5x^4\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{-2}^{2} 3x^2\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int_{0}^{4} x^3\,dx \)</span><span class="sub-q">(3) \( \displaystyle \int_{3}^{1} 4x\,dx \)</span><span class="sub-q">(4) \( \displaystyle \int_{1}^{-2} 5x^4\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
-                            <strong>💡 힌트:</strong> 부정적분을 구한 뒤 위·아래 끝 대입. (1) \([x^3]_{-2}^{2} = 8 - (-8) = 16\). (2) \([\tfrac{1}{4}x^4]_0^4 = 64\). (3) \([2x^2]_3^1 = 2 - 18 = -16\). (4) \([x^5]_1^{-2} = -32 - 1 = -33\). (위끝이 아래끝보다 작아도 기본정리는 그대로 성립한다.) — 적분상수는 항상 소거되므로 신경 쓰지 않는다.
+                            
+                            <strong>💡 힌트:</strong> 부정적분을 구한 뒤 위·아래 끝 대입.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \([x^3]_{-2}^{2} = 8 - (-8) = 16\).</span><span class="sub-q">(2) \([\tfrac{1}{4}x^4]_0^4 = 64\).</span><span class="sub-q">(3) \([2x^2]_3^1 = 2 - 18 = -16\).</span><span class="sub-q">(4) \([x^5]_1^{-2} = -32 - 1 = -33\). (위끝이 아래끝보다 작아도 기본정리는 그대로 성립한다.) — 적분상수는 항상 소거되므로 신경 쓰지 않는다.</span></span>
                         </div></details>
                         <div class="thinking-space"></div>
                     </div>
@@ -10710,8 +10729,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-선형성과 구간 분할</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.119 · 문제 06 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{0}^{2}(8x^3 - x + 5)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{-1}^{3}(x+1)^3\,dx - \int_{-1}^{3}(x-1)^3\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{0}^{2}(8x^3 - x + 5)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int_{-1}^{3}(x+1)^3\,dx - \int_{-1}^{3}(x-1)^3\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -10725,8 +10743,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-구간 분할로 합치기</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.120 · 문제 07 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) \( \displaystyle \int_{0}^{5}(4x^3 + x)\,dx + \int_{5}^{2}(4x^3 + x)\,dx \) &nbsp;&nbsp;
-                                (2) \( \displaystyle \int_{-1}^{4}(x+2)^2\,dx - \int_{2}^{4}(x+2)^2\,dx \)
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle \int_{0}^{5}(4x^3 + x)\,dx + \int_{5}^{2}(4x^3 + x)\,dx \)</span><span class="sub-q">(2) \( \displaystyle \int_{-1}^{4}(x+2)^2\,dx - \int_{2}^{4}(x+2)^2\,dx \)</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -11058,8 +11075,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-부정적분 (다항식+곱셈전개)]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 부정적분을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.121 중단원 기초 01번)</span>
                         <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                            (1) \( \displaystyle\int(x^2 - 2x + 3)\,dx \) &nbsp;&nbsp;
-                            (2) \( \displaystyle\int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle\int(x^2 - 2x + 3)\,dx \)</span><span class="sub-q">(2) \( \displaystyle\int x(x+1)^2\,dx - \int x(x^2 + 1)\,dx \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
@@ -11074,8 +11090,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-정적분 기본 계산]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 정적분의 값을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.121 중단원 기초 02번 (1)(2))</span>
                         <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                            (1) \( \displaystyle\int_0^2 (3x^2 + 5)\,dx \) &nbsp;&nbsp;
-                            (2) \( \displaystyle\int_{-2}^{1}(x+2)^2\,dx - \int_{-2}^{1}(2x+1)\,dx \)
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \( \displaystyle\int_0^2 (3x^2 + 5)\,dx \)</span><span class="sub-q">(2) \( \displaystyle\int_{-2}^{1}(x+2)^2\,dx - \int_{-2}^{1}(2x+1)\,dx \)</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
@@ -11513,7 +11528,10 @@ document.addEventListener('click', function(e) {
                     <div class="flex justify-center my-2">
                         <img src="images/calc_26_warmup_S1S2.png" alt="개념탐구 — 왼쪽: x축 위로 솟은 곡선 y=f(x)와 x축이 둘러싼 넓이 S1, 오른쪽: x축 아래로 처진 곡선 y=g(x)와 x축이 둘러싼 넓이 S2" class="block mx-auto max-w-2xl w-full rounded-lg border border-slate-200" />
                     </div>
-                    <p>(1) \(S_1\)을 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_0^3 f(x)\,dx \)</span></span>. (2) \(S_2\)를 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle -\int_0^3 g(x)\,dx \)</span></span> 또는 \(\displaystyle\int_0^3 |g(x)|\,dx\). 왜 \(S_2\)에는 \(-\)나 절댓값이 필요할까? <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.126 · 개념 탐구 참고)</span></p>
+                    <p>
+<span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.126 · 개념 탐구 참고)</span>
+<span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(S_1\)을 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle\int_0^3 f(x)\,dx \)</span></span>.</span><span class="sub-q">(2) \(S_2\)를 정적분으로 나타내면? <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( \displaystyle -\int_0^3 g(x)\,dx \)</span></span> 또는 \(\displaystyle\int_0^3 |g(x)|\,dx\). 왜 \(S_2\)에는 \(-\)나 절댓값이 필요할까?</span></span>
+</p>
                     <div class="thinking-space bg-teal-50/30"></div>
                 </div>
                 <p><strong>[연결]</strong> 정적분 \(\int_a^b f(x)\,dx\)는 부호 있는 양 — \(x\)축 위 부분은 \(+\), 아래 부분은 \(-\)로 잡힌다. 그러나 "도형의 <strong>넓이</strong>"는 항상 \(\geq 0\). 두 값을 일치시키려면 음의 부분에 \(-\)를 붙여 양수로 되돌려야 한다. 이를 한 번에 처리하는 도구가 바로 <span class="calc-accent font-bold">절댓값 \(|f(x)|\)</span>이다. 오늘 우리는 ① 곡선과 \(x\)축이 둘러싸는 넓이의 정적분 공식 \(S = \displaystyle\int_a^b |f(x)|\,dx\), ② \(f\)의 부호가 바뀌는 점(=\(x\)축 교점)을 기준으로 한 구간 분할, ③ "정적분 값"과 "넓이"의 명확한 구별까지 익힌다.</p>
@@ -11615,8 +11633,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-단일 부호 구간</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.127 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) 곡선 \(y = -x^2 + 2x + 8\)과 \(x\)축으로 둘러싸인 도형 &nbsp;&nbsp;
-                                (2) 곡선 \(y = 3x^2(x - 2)\)와 \(x\)축으로 둘러싸인 도형
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 곡선 \(y = -x^2 + 2x + 8\)과 \(x\)축으로 둘러싸인 도형</span><span class="sub-q">(2) 곡선 \(y = 3x^2(x - 2)\)와 \(x\)축으로 둘러싸인 도형</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -11630,8 +11647,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-부호가 섞이는 구간 분할</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 도형의 넓이를 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.128 · 문제 02 (1)(2))</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) 닫힌구간 \([-1, 3]\)에서 곡선 \(y = x^2 + x - 2\)와 \(x\)축 및 두 직선 \(x = -1\), \(x = 3\)으로 둘러싸인 도형 &nbsp;&nbsp;
-                                (2) 닫힌구간 \([0, 4]\)에서 곡선 \(y = -x(x+2)(x-2)\)와 \(x\)축 및 두 직선 \(x = 0\), \(x = 4\)로 둘러싸인 도형
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 닫힌구간 \([-1, 3]\)에서 곡선 \(y = x^2 + x - 2\)와 \(x\)축 및 두 직선 \(x = -1\), \(x = 3\)으로 둘러싸인 도형</span><span class="sub-q">(2) 닫힌구간 \([0, 4]\)에서 곡선 \(y = -x(x+2)(x-2)\)와 \(x\)축 및 두 직선 \(x = 0\), \(x = 4\)로 둘러싸인 도형</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -12524,9 +12540,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l1">기초-위치·변위·거리 종합</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">1. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \(v(t) = 6t - 3t^2\)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.134 · 문제 01 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) 시각 \(t = 3\)에서 점 P의 위치 &nbsp;&nbsp;
-                                (2) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P의 위치의 변화량 &nbsp;&nbsp;
-                                (3) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P가 움직인 거리
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 시각 \(t = 3\)에서 점 P의 위치</span><span class="sub-q">(2) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P의 위치의 변화량</span><span class="sub-q">(3) 시각 \(t = 1\)에서 \(t = 3\)까지 점 P가 움직인 거리</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -12571,9 +12585,7 @@ document.addEventListener('click', function(e) {
                         <span class="badge badge-l2">응용-위치·변위·거리 종합 (3·4차 식)</span>
                         <div class="text-xl font-bold text-slate-800 mb-2">4. 좌표가 \(-1\)인 점에서 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \[ v(t) = t^2 - 4t + 3 \] 일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(비상 미적분 I P.135 · 중단원 기초 03번 참고)</span>
                             <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                                (1) 시각 \(t = 2\)에서 점 P의 위치 &nbsp;&nbsp;
-                                (2) 시각 \(t = 0\)에서 \(t = 3\)까지 점 P의 위치의 변화량 &nbsp;&nbsp;
-                                (3) 시각 \(t = 0\)에서 \(t = 2\)까지 점 P가 움직인 거리
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 시각 \(t = 2\)에서 점 P의 위치</span><span class="sub-q">(2) 시각 \(t = 0\)에서 \(t = 3\)까지 점 P의 위치의 변화량</span><span class="sub-q">(3) 시각 \(t = 0\)에서 \(t = 2\)까지 점 P가 움직인 거리</span></span>
                             </div>
                         </div>
                         <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
@@ -12912,9 +12924,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-l1">[기초-위치·변위·이동거리 (속도와 거리)]</span>
                     <div class="text-xl font-bold text-slate-800 mb-2">3. 좌표가 \(-1\)인 점에서 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \( v(t) = t^2 - 4t + 3 \)일 때, 다음을 구하시오. <span class="text-base font-normal text-slate-400 ml-2 tracking-normal">(교과서 P.135 중단원 기초 03번)</span>
                         <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
-                            (1) 시각 \(t = 2\)에서 점 P의 위치 <br>
-                            (2) 시각 \(t = 0\)에서 \(t = 3\)까지 점 P의 위치의 변화량 <br>
-                            (3) 시각 \(t = 0\)에서 \(t = 2\)까지 점 P가 움직인 거리
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 시각 \(t = 2\)에서 점 P의 위치</span><span class="sub-q">(2) 시각 \(t = 0\)에서 \(t = 3\)까지 점 P의 위치의 변화량</span><span class="sub-q">(3) 시각 \(t = 0\)에서 \(t = 2\)까지 점 P가 움직인 거리</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-slate-300 bg-white"><summary>🎯 풀이 전략 보기</summary><div class="hint-content">
@@ -13478,8 +13488,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-hard">[서술형-정적분 안에 함수 / 자기참조]</span>
                     <div class="text-xl font-bold text-slate-900 mb-2">12. 함수 \( f(x) \)가 \( \displaystyle f(x) = -4 x^3 + 3 x^2 + \int_{-1}^{1} f(t)\,dt \) 를 만족시킬 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.141 대단원 평가 12번 서술형)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) \( f(0) \)의 값을 구하시오. <br>
-                            (2) 정적분 \( \displaystyle \int_{-2}^{2} f(x)\,dx \)의 값을 구하시오.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \( f(0) \)의 값을 구하시오.</span><span class="sub-q">(2) 정적분 \( \displaystyle \int_{-2}^{2} f(x)\,dx \)의 값을 구하시오.</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
@@ -13496,8 +13505,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-hard">[서술형-함수방정식 (정적분 안)] </span>
                     <div class="text-xl font-bold text-slate-900 mb-2">13. 다항함수 \( f(x) \)가 \( \displaystyle x^2 f(x) = \dfrac{1}{5} x^5 - x^4 + \int_0^x 2 t\,f(t)\,dt \) 를 만족시키고 \( f(0) = 0 \)일 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.142 대단원 평가 13번 서술형)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) 함수 \( f(x) \)를 구하시오. <br>
-                            (2) 함수 \( y = f(x) \)의 그래프와 \(x\)축으로 둘러싸인 도형의 넓이를 구하시오.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 함수 \( f(x) \)를 구하시오.</span><span class="sub-q">(2) 함수 \( y = f(x) \)의 그래프와 \(x\)축으로 둘러싸인 도형의 넓이를 구하시오.</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
@@ -13513,8 +13521,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-hard">[서술형-속도와 거리 (방향 전환)]</span>
                     <div class="text-xl font-bold text-slate-900 mb-2">14. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \( v(t) = -3 t^2 + 12 t - 9 \) 일 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(교과서 P.142 대단원 평가 14번 서술형)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) 점 P의 속도가 최대일 때, 점 P의 위치를 구하시오. <br>
-                            (2) 점 P가 원점을 출발한 후 두 번째로 운동 방향을 바꿀 때까지 움직인 거리를 구하시오.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 점 P의 속도가 최대일 때, 점 P의 위치를 구하시오.</span><span class="sub-q">(2) 점 P가 원점을 출발한 후 두 번째로 운동 방향을 바꿀 때까지 움직인 거리를 구하시오.</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
@@ -13854,8 +13861,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-hard">[서술형 · II+III 융합 — 접선 + 넓이]</span>
                     <div class="text-xl font-bold text-slate-900 mb-2">13. 곡선 \( y = x^2 \) 위의 점 \( (2, 4) \)에서의 접선을 \(\ell\)이라 하자. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(학기말 종합 — II·III 융합 서술형)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) 접선 \(\ell\)의 방정식을 구하시오. <br>
-                            (2) 곡선 \(y = x^2\), 접선 \(\ell\), \(y\)축으로 둘러싸인 도형의 넓이를 구하시오.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 접선 \(\ell\)의 방정식을 구하시오.</span><span class="sub-q">(2) 곡선 \(y = x^2\), 접선 \(\ell\), \(y\)축으로 둘러싸인 도형의 넓이를 구하시오.</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
@@ -13871,8 +13877,7 @@ document.addEventListener('click', function(e) {
                     <span class="badge badge-hard">[서술형 · II+III 융합 — 속도와 거리]</span>
                     <div class="text-xl font-bold text-slate-900 mb-2">14. 원점을 출발하여 수직선 위를 움직이는 점 P의 시각 \(t\)에서 속도가 \( v(t) = t^2 - 6 t + 8 \) 일 때, 다음 물음에 답하시오. <span class="text-base font-normal text-red-500 ml-2 tracking-normal">(학기말 종합 — II·III 융합 서술형)</span>
                         <div class="ml-6 mt-2 text-lg font-medium">
-                            (1) 점 P의 시각 \(t = 5\)에서의 위치를 구하시오. <br>
-                            (2) 점 P가 출발 후 \(t = 5\)까지 움직인 거리를 구하시오.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 점 P의 시각 \(t = 5\)에서의 위치를 구하시오.</span><span class="sub-q">(2) 점 P가 출발 후 \(t = 5\)까지 움직인 거리를 구하시오.</span></span>
                         </div>
                     </div>
                     <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>🎯 서술형 풀이 전략 보기</summary><div class="hint-content">
