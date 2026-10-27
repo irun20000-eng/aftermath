@@ -45,11 +45,12 @@
   function aftSetupDrag(widget, key) {
     var head = widget.querySelector('.aft-widget-head');
     if (!head) return;
-    var dragging = false, startX = 0, startY = 0, baseX = 0, baseY = 0;
+    var dragging = false, moved = false, startX = 0, startY = 0, baseX = 0, baseY = 0;
 
     head.addEventListener('pointerdown', function (e) {
       if (e.target.closest('.aft-widget-collapse')) return;
       dragging = true;
+      moved = false;
       try { head.setPointerCapture(e.pointerId); } catch (err) {}
       startX = e.clientX;
       startY = e.clientY;
@@ -61,6 +62,8 @@
       if (!dragging) return;
       var nx = baseX + (e.clientX - startX);
       var ny = baseY + (e.clientY - startY);
+      if (Math.abs(nx - baseX) + Math.abs(ny - baseY) > 6) moved = true;
+      if (!moved) return;
       widget.dataset.x = nx;
       widget.dataset.y = ny;
       widget.style.transform = 'translate3d(' + nx + 'px, ' + ny + 'px, 0)';
@@ -69,6 +72,10 @@
       if (!dragging) return;
       dragging = false;
       try { head.releasePointerCapture(e.pointerId); } catch (err) {}
+      // 접힌 상태에서 머리를 끌지 않고 톡 누르면 펼침 (펜으로 ▾를 정확히 노리지 않아도 됨)
+      if (!moved && e.type === 'pointerup' && widget.classList.contains('aft-collapsed')) {
+        widget.classList.remove('aft-collapsed');
+      }
       aftSaveState(widget, key);
     }
     head.addEventListener('pointerup', endDrag);
@@ -78,7 +85,7 @@
   function aftSetupResize(widget, key) {
     var grip = widget.querySelector('.aft-widget-resize');
     if (!grip) return;
-    var resizing = false, startX = 0, startY = 0, startW = 0, startH = 0;
+    var resizing = false, startX = 0, startY = 0, startW = 0, startH = 0, startTY = 0;
 
     grip.addEventListener('pointerdown', function (e) {
       resizing = true;
@@ -88,6 +95,7 @@
       var rect = widget.getBoundingClientRect();
       startW = rect.width;
       startH = rect.height;
+      startTY = parseInt(widget.dataset.y || '0', 10);
       e.preventDefault();
       e.stopPropagation();
     });
@@ -97,6 +105,12 @@
       var nh = Math.max(120, startH + (e.clientY - startY));
       widget.style.width = nw + 'px';
       widget.style.height = nh + 'px';
+      // 아래 기준(bottom) 위젯은 높이가 위로 늘어나므로, 잇대 만큼 아래로 옮겨 손잡이가 펜을 따라오게 함
+      if (widget.dataset.anchor === 'bottom') {
+        var ty = startTY + (nh - startH);
+        widget.dataset.y = ty;
+        widget.style.transform = 'translate3d(' + parseInt(widget.dataset.x || '0', 10) + 'px, ' + ty + 'px, 0)';
+      }
     });
     function endResize(e) {
       if (!resizing) return;
@@ -123,7 +137,8 @@
 
   var aftTimer = { total: 60, remaining: 60, running: false, intervalId: null };
   var aftAudioCtx = null;
-  var TIMER_KEY = 'aft-widget-timer-state';
+  // v2: 기본 위치를 왼쪽 아래로 옮기면서 예전 오프셋(오른쪽 위 기준)을 버림
+  var TIMER_KEY = 'aft-widget-timer-state-v2';
 
   function aftGetAudio() {
     if (!aftAudioCtx) {
@@ -202,6 +217,10 @@
     if (!widget) return;
 
     aftLoadState(widget, TIMER_KEY);
+    // 첫 화면 선택지를 줄이려고 페이지를 열 때마다 접힌 상태(작은 버튼 하나)로 시작.
+    // 위치·크기는 기억하고, 펼침 여부만 매번 접힘으로 되돌린다.
+    widget.classList.add('aft-collapsed');
+    widget.dataset.anchor = 'bottom';  // widgets.css: 왼쪽 아래 기준 위치
     aftUpdateDisplay();
 
     // 프리셋 버튼만 사용 (직접입력 input은 UX 혼선으로 제거됨)
@@ -388,6 +407,74 @@
     aftInitTimer();
     aftInitProblemViewer();
     aftInitPdfWidget();
+    aftInitToolsMenu();
+  }
+
+  /* ============================================================
+     도구 메뉴 — 떠 있는 보조 버튼(학생 뽑기·문제 모아보기·PDF)을 한 버튼 아래로 묶음
+     - 기존 버튼 요소를 그대로 옮김(이벤트·ID 유지 → lesson-mode.js의 fab.click() 등 그대로 동작)
+     - 기능은 하나도 지우지 않음. [도구 ▴]를 누르면 목록이 펼쳐짐
+     ============================================================ */
+  function aftInitToolsMenu() {
+    if (document.getElementById('aft-tools')) return;
+    var ids = ['aft-picker-fab', 'aft-problems-fab', 'aft-pdf-fab'];
+    var items = [];
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el || el.style.display === 'none') return;
+      items.push(el);
+    });
+    if (items.length === 0) return;
+
+    var wrap = document.createElement('div');
+    wrap.id = 'aft-tools';
+    wrap.className = 'aft-tools no-print';
+
+    var panel = document.createElement('div');
+    panel.id = 'aft-tools-panel';
+    panel.className = 'aft-tools-panel';
+    panel.setAttribute('role', 'menu');
+    panel.hidden = true;
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.id = 'aft-tools-toggle';
+    toggle.className = 'aft-tools-toggle';
+    toggle.setAttribute('aria-haspopup', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'aft-tools-panel');
+    toggle.textContent = '도구 ▴';
+
+    items.forEach(function (el) {
+      if (el.id === 'aft-pdf-fab' && !el.querySelector('.aft-tools-label')) {
+        var lab = document.createElement('span');
+        lab.className = 'aft-tools-label';
+        lab.textContent = 'PDF로 저장';
+        el.appendChild(lab);
+      }
+      el.setAttribute('role', 'menuitem');
+      el.classList.add('aft-tools-item');
+      panel.appendChild(el);
+    });
+
+    function setOpen(open) {
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? '닫기 ▾' : '도구 ▴';
+    }
+    toggle.addEventListener('click', function () { setOpen(panel.hidden); });
+    // 항목을 누르면 메뉴는 닫고, 항목 자신의 동작(모달 열기)은 그대로 진행
+    panel.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('pointerdown', function (e) {
+      if (!panel.hidden && !wrap.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+    });
+
+    wrap.appendChild(panel);
+    wrap.appendChild(toggle);
+    document.body.appendChild(wrap);
   }
 
   /* ============================================================

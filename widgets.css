@@ -88,6 +88,117 @@
 }
 
 /* ============================================================
+   T-20261027-02 첫 화면 정리 — 전자칠판(펜) 기준
+   - 타이머: 왼쪽 아래 기본 위치, 접히면 작은 알약 버튼 하나
+   - 펜으로 누르는 버튼은 44px 이상
+   ============================================================ */
+#aft-timer-widget {
+  top: auto;
+  right: auto;
+  bottom: 24px;
+  left: 24px;
+}
+.aft-widget-collapse {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.aft-widget-head { padding: 4px 4px 4px 14px; min-height: 52px; }
+.aft-widget.aft-collapsed {
+  width: auto !important;
+  min-width: 0;
+  border-radius: 999px;
+}
+.aft-widget.aft-collapsed .aft-widget-head {
+  border-radius: 999px;
+  gap: 6px;
+  cursor: pointer;
+}
+/* 접힘: ▾를 위쪽(▴, 펼치면 위로 열림)으로 */
+.aft-widget.aft-collapsed .aft-widget-collapse { transform: rotate(180deg); }
+#aft-timer-widget .aft-preset { min-height: 44px; font-size: 15px; }
+#aft-timer-widget .aft-timer-controls button { min-height: 44px; font-size: 15px; }
+/* 리셋은 시작·일시정지와 떼어 놓아 오조작을 줄임 */
+#aft-timer-reset { margin-left: 10px; flex: 0.8; }
+/* 학습지 위·아래 이동 줄(메인·이전·다음·수업 모드) 높이 44px */
+nav.no-print > a,
+nav.no-print > div > a,
+nav.no-print > button,
+nav.no-print > div > button { min-height: 44px; }
+
+/* 도구 메뉴 — 학생 뽑기·문제 모아보기·PDF를 한 버튼 아래로 */
+.aft-tools {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.aft-tools-toggle {
+  min-height: 52px;
+  min-width: 96px;
+  padding: 0 22px;
+  background: #1e293b;
+  color: #f8fafc;
+  border: none;
+  border-radius: 28px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15,23,42,.10), 0 8px 24px rgba(15,23,42,.20);
+}
+.aft-tools-toggle:hover { background: #0f172a; }
+.aft-tools-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15,23,42,.18);
+  min-width: 200px;
+}
+.aft-tools-panel[hidden] { display: none; }
+.aft-tools-panel .aft-tools-item,
+.aft-tools-panel .aft-fab,
+.aft-tools-panel .aft-pdf-fab {
+  position: static;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  min-height: 52px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  transform: none;
+  text-align: left;
+}
+.aft-tools-panel .aft-tools-item:hover { background: #e2e8f0; transform: none; }
+.aft-tools-panel .aft-pdf-fab { font-size: 18px; }
+.aft-tools-panel .aft-tools-label { font-size: 16px; }
+@media print { .aft-tools { display: none !important; } }
+
+/* ============================================================
    타이머 위젯 전용
    ============================================================ */
 
