@@ -588,7 +588,7 @@ details.trap-box .trap-body {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  background: #1e293b;
   color: white;
   border: none;
   cursor: pointer;
@@ -596,13 +596,13 @@ details.trap-box .trap-body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.20);
   z-index: 9999;
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .aft-pdf-fab:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.5);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.28);
 }
 .aft-pdf-fab:active { transform: translateY(0); }
 
@@ -656,10 +656,10 @@ details.trap-box .trap-body {
   transition: all 0.15s;
 }
 .aft-pdf-radio:hover {
-  border-color: #818cf8;
-  background: #eef2ff;
+  border-color: #94a3b8;
+  background: #f1f5f9;
 }
-.aft-pdf-radio input { accent-color: #4f46e5; margin-top: 2px; }
+.aft-pdf-radio input { accent-color: #1e293b; margin-top: 2px; }
 .aft-pdf-radio-text {
   display: flex;
   flex-direction: column;
@@ -695,7 +695,7 @@ details.trap-box .trap-body {
 }
 .aft-pdf-btn-cancel:hover { background: #e2e8f0; }
 .aft-pdf-btn-confirm {
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  background: #1e293b;
   color: white;
 }
 .aft-pdf-btn-confirm:hover { filter: brightness(1.1); }
