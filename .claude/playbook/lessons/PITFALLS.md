@@ -206,6 +206,20 @@
 - **검증법** CDN 이 막혀 수식을 못 그리면, **폭을 아는 가짜 `mjx-container` 를 심어** 로직만 검증한다.
   실측: 1020px → 82%로 836px, 1530px → 55%(하한)로 842px, 765px 이하는 손대지 않음.
 
+### C-10. Playwright `page.pdf()` 조판 — 쪽 나눔 함정 4종 (모의고사 조판기)
+
+`scripts/mock_exam_build.js` 를 만들며 한 번씩 당했다. 모두 **화면에서는 안 보이고 PDF에서만** 드러난다.
+
+| 증상 | 원인 | 방지 |
+|---|---|---|
+| 그림 있는 문항이 단 아래로 넘침 | `data:` 그림이 **디코딩되기 전에** 높이를 잼 | `Promise.all([document.fonts.ready, ...img.decode()])` 뒤에 쪽 나눔 |
+| 반쪽보다 큰 문항이 넘침 | 문항에 `flex: 1 1 0` → 단을 **정확히 반씩** 나눔 | `flex: 1 0 auto` (내용 높이 먼저, 남는 공간만 균등 분배) |
+| 쪽 경계의 줄이 아래 여백까지 넘침 | `display: grid` 항목은 Chromium 인쇄에서 **쪼개지지 않음** / 한 쪽보다 긴 카드에 `break-inside: avoid-page` | 블록 + 절대배치 태그. 분리 금지는 머리줄·STEP 단위로만 |
+| `page.pdf({margin})` 이 무시됨 | 공통 CSS의 `@page { margin: 0 }` 이 이김 | `@page` 를 문서별로 두고 `preferCSSPageSize: true` |
+
+- **검증법** 화면 측정 대신 **배치 후** `col.scrollHeight > col.clientHeight` 를 보고서에 넣고,
+  해설지는 `pdftotext -bbox` 로 아래 여백 띠에 본문 글자가 있는지 검사한다. 둘 다 0이어야 한다.
+
 ---
 
 ## D. 배포 · 이식
