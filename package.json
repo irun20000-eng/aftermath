@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "@fontsource/nanum-myeongjo": "^5.0.13",
+    "katex": "^0.16.11",
     "playwright": "^1.62.1"
   }
 }
