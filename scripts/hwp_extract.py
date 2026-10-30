@@ -7,6 +7,7 @@ LibreOffice·pyhwp 는 HWP 5.0 수식(EQEDIT 레코드)을 버리므로 레코�
 """
 import io
 import os
+import re
 import struct
 import sys
 import zlib
@@ -16,6 +17,7 @@ from PIL import Image
 
 PARA_HEADER, PARA_TEXT, CTRL_HEADER, LIST_HEADER = 66, 67, 71, 72
 SHAPE_PICTURE, EQEDIT = 85, 88
+BIN_DATA = 18
 EXT_CTRL = {1, 2, 3, 11, 12, 14, 15, 16, 17, 18, 21, 22, 23}
 INLINE_CTRL = {4, 5, 6, 7, 8, 9, 19, 20}
 
@@ -58,6 +60,19 @@ def parse_text(b):
 class Node:
     def __init__(self, kind, level):
         self.kind, self.level, self.children, self.tokens, self.cid, self.data = kind, level, [], [], None, None
+
+
+def bin_names(ole, compressed):
+    """그림 레코드의 BinItem ID(1부터) → BinData 스트림 이름.
+    ID 는 스트림 번호가 아니라 DocInfo 의 BIN_DATA 목록 순번이다 (첫 항목이 jpg면 번호가 밀린다)."""
+    raw = ole.openstream('DocInfo').read()
+    data = zlib.decompress(raw, -15) if compressed else raw
+    names = []
+    for tag, _, body in records(data):
+        if tag == BIN_DATA:
+            attr, = struct.unpack_from('<H', body, 0)
+            names.append('BIN%04X' % struct.unpack_from('<H', body, 2)[0] if attr & 0xF in (1, 2) else None)
+    return names
 
 
 def build(ole):
@@ -103,14 +118,14 @@ def build(ole):
     return roots
 
 
-def render(node):
+def render(node, names=()):
     if node.kind == 'para':
         ctrls = iter([c for c in node.children if c.kind == 'ctrl'])
         out = []
         for t in node.tokens:
             if isinstance(t, tuple):
                 c = next(ctrls, None)
-                out.append(render(c) if c else '')
+                out.append(render(c, names) if c else '')
             else:
                 out.append(t)
         return ''.join(out).rstrip()
@@ -118,11 +133,12 @@ def render(node):
     if cid == 'eqed':
         return ' ⟦EQ: %s⟧ ' % (node.data or '').strip()
     if cid == 'gso ':
-        inner = ' '.join(render(p) for p in node.children if p.kind == 'para').strip()
-        fig = ' ⟦FIG: BIN%04X.png⟧ ' % node.data if node.data else ''
+        inner = ' '.join(render(p, names) for p in node.children if p.kind == 'para').strip()
+        name = names[node.data - 1] if node.data and node.data <= len(names) else None
+        fig = ' ⟦FIG: %s.png⟧ ' % name if name else ''
         return fig + (' ⟦BOX: %s⟧ ' % inner if inner else '')
     if cid == 'tbl ':
-        cells = [render(p) for p in node.children if p.kind == 'para']
+        cells = [render(p, names) for p in node.children if p.kind == 'para']
         return '\n⟦TABLE: ' + ' | '.join(c for c in cells if c.strip()) + ' ⟧\n'
     return ''
 
@@ -130,11 +146,13 @@ def render(node):
 def main(src, out):
     os.makedirs(os.path.join(out, 'figs'), exist_ok=True)
     ole = olefile.OleFileIO(src)
-    roots = build(ole)
-    text = '\n'.join(render(p) for p in roots)
-    open(os.path.join(out, 'text.txt'), 'w', encoding='utf-8').write(text)
     header = ole.openstream('FileHeader').read()
     compressed = struct.unpack_from('<I', header, 36)[0] & 1
+    roots = build(ole)
+    names = bin_names(ole, compressed)
+    text = '\n'.join(render(p, names) for p in roots)
+    text = re.sub(r'\n\s*\n+', '\n', text)
+    open(os.path.join(out, 'text.txt'), 'w', encoding='utf-8').write(text)
     n = 0
     for e in ole.listdir():
         if e[0] != 'BinData':
