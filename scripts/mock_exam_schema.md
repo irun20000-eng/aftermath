@@ -57,4 +57,42 @@ node scripts/mock_exam_build.js --data <json 폴더> --figs <그림 폴더> --me
 `meta.json` 예: `{"year":"2027","title":"…모의고사","subtitle":"수업용 재구성본 …","copyright":"이 문제지에 관한 저작권은 …에 있습니다.","file_stem":"2027_…_수학"}`
 
 빌드 보고서의 `colOverflow` 와 `katexErrors` 는 반드시 빈 배열·0이어야 한다 (PITFALLS C-10).
+
+정답 대조: `python3 -I scripts/mock_exam_check_answers.py <세트 폴더>` — `source_answers` 가 46이고 `mismatch`·`missing` 이 비어 있어야 한다.
 산출 PDF(`*.pdf`)는 `.gitignore` 대상이다.
+
+## HWP 원자료
+
+PDF가 없고 HWP만 있으면 `python3 -I scripts/hwp_extract.py src.hwp ext/` 로 `ext/text.txt` 와 `ext/figs/` 를 만든 뒤 아래 규칙으로 전사한다.
+
+- `⟦EQ: …⟧` : 한글 수식 편집기 스크립트. **LaTeX로 변환**해서 `$…$` 로 쓴다.
+- `⟦FIG: BINxxxx.png⟧` : 그림. 파일은 `ext/figs/BINxxxx.png`. **반드시 Read로 열어 눈으로 보고** 문제용/해설용을 판단한다. figure 필드에는 `"BINxxxx.png"` 처럼 파일명만 쓴다.
+- `⟦TABLE: a | b | …⟧` : 표(셀을 ` | ` 로 이음). 문항 머리의 `교재명 | … | Page | …` 표는 무시한다. 확률분포표·정규분포표 등은 `<table class='ptable'>` / `<table class='ztable'>` 로 다시 짠다.
+- `⟦BOX: …⟧` : 글상자(조건 박스·보기 등일 가능성이 높음).
+- 앞부분은 문제(번호. 본문 [n점] 보기)이고, 뒷부분은 해설(`번호. [출제의도] …` 또는 `번호. 단원명`)이다. 정답은 해설 안이나 정답표에서 찾는다(`grep -n` 으로 위치를 찾아 그 범위만 읽어라).
+
+## 한글 수식 스크립트 → LaTeX 대응
+
+| 한글 | LaTeX |
+|---|---|
+| `{a} over {b}` | `\dfrac{a}{b}` (인라인이면 `\displaystyle` 고려) |
+| `sqrt {x}`, `root {3} of {x}` | `\sqrt{x}`, `\sqrt[3]{x}` |
+| `x ^{2}`, `a _{n}` | `x^{2}`, `a_{n}` |
+| `TIMES`, `CDOT`, `DIV` | `\times`, `\cdot`, `\div` |
+| `LEQ` `GEQ` `NEQ` `<=` `>=` | `\le` `\ge` `\ne` |
+| `rarrow`, `->` | `\to` |
+| `lim _{x rarrow a}` | `\lim\limits_{x\to a}` |
+| `sum _{k=1} ^{n}` / `sum from {k=1} to {n}` | `\sum\limits_{k=1}^{n}` |
+| `int _{a} ^{b}` / `int from a to b` | `\int_{a}^{b}` |
+| `LEFT ( … RIGHT )` | `\left( … \right)` |
+| `cases{a & b # c & d}` | `\begin{cases} a & b \\ c & d \end{cases}` |
+| `pi theta alpha beta` | `\pi \theta \alpha \beta` |
+| `prime`, `f prime (x)` | `'`, `f'(x)` |
+| `bar {X}`, `overline {AB}`, `vec {a}`, `dyad {AB}` | `\overline{X}`, `\overline{AB}`, `\vec{a}`, `\overrightarrow{AB}` |
+| `rm {P}`, `it` | `\mathrm{P}`, (무시) |
+| `log _{2}`, `sin`, `ln` | `\log_{2}`, `\sin`, `\ln` |
+| `~`, `` ` `` (공백) | 공백 |
+| `DEG`, `ANGLE`, `TRIANGLE` | `^{\circ}`, `\angle`, `\triangle` |
+| `#` (줄바꿈, `matrix`/`cases` 안) | `\\` |
+
+스크립트 해석이 모호하면 해설의 계산과 맞춰 보고, 그래도 모호하면 `verify` 에 `UNCERTAIN:` 으로 남긴다.
