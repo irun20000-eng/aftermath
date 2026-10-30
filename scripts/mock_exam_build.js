@@ -9,7 +9,7 @@
  *     [--modules <node_modules 경로>] [--paper B4|A4] [--html]
  *
  * data_dir : common_*.json, prob_*.json, calc_*.json, geom_*.json (형식은 아래 Problem 참조)
- * meta.json: { "year": "2027", "title": "…", "subtitle": "…", "copyright": "…", "file_stem": "…" }
+ * meta.json: { "year": "2027"(생략 가능), "title": "…", "subtitle": "…", "copyright": "…", "file_stem": "…" }
  *
  * Problem = { no, section: common|prob|calc|geom, points, type: mc|short, stem, figure, figure_width,
  *             choices[], answer, answer_value, concept, solution_steps[{title, body}],
@@ -184,7 +184,7 @@ const book = document.getElementById('book');
 let pageNo = 0;
 function header(sec, first) {
   pageNo++;
-  if (first) return '<div class="fhead"><div class="yr">' + META.year + '학년도 대학수학능력시험 대비 · ' + META.title + '</div>'
+  if (first) return '<div class="fhead"><div class="yr">' + (META.year ? META.year + '학년도 대학수학능력시험 대비 · ' : '') + META.title + '</div>'
     + '<div class="row"><span class="kyosi">제 2 교시</span><span class="big">수학 영역</span><span class="odd">홀수형</span></div>'
     + '<div class="who">성명 <span>&nbsp;</span> 수험 번호 <span>&nbsp;</span></div>'
     + '<div class="sub">' + META.subtitle + '</div><hr></div>';
@@ -299,7 +299,7 @@ function solHtml() {
   }).join('')).join('');
 
   return head(meta.title + ' 해설', solCss) + `<div class="sheet"><div class="cover"><div class="t">정답과 해설</div>`
-    + `<div class="s">${meta.year}학년도 대학수학능력시험 대비 · ${meta.title} · 수학 영역</div></div>`
+    + `<div class="s">${meta.year ? `${meta.year}학년도 대학수학능력시험 대비 · ` : ''}${meta.title} · 수학 영역</div></div>`
     + `<h2>빠른 정답</h2>${ansTables}${cards}</div>
 <script>${RENDER_MATH}
 document.fonts.ready.then(() => window.__report = { katexErrors: document.querySelectorAll('.katex-error').length, cards: document.querySelectorAll('.card').length });
