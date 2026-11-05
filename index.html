@@ -232,6 +232,9 @@
         .semester-switch:hover { border-color: #0f766e; transform: translateY(-1px); }
         html.dark .semester-switch { background: #1e293b; border-color: #475569; color: #5eead4; }
         html.dark .semester-switch:hover { border-color: #5eead4; }
+        .lm-pill { display: inline-flex; align-items: center; padding: 0 0.875rem; border-radius: 0.75rem; background: #0f766e; color: #fff; font-weight: 800; font-size: 0.8rem; text-decoration: none; white-space: nowrap; border: 1px solid #0f766e; }
+        .lm-pill:hover { background: #115e59; color: #fff; }
+        html.dark .lm-pill { background: #0d9488; border-color: #0d9488; }
     </style>
 </head>
 <body class="p-6 md:p-10 relative">
@@ -253,7 +256,7 @@
             <div class="mt-4 flex items-center justify-center gap-3">
                 <span class="progress-badge">
                     <span>📈</span>
-                    <span>교과서 <span id="progressCountTextbook">0</span> / 19 · 수능특강 <span id="progressCountSuneung">0</span> / 3</span>
+                    <span>교과서 <span id="progressCountTextbook">0</span> / 39 · 수능특강 <span id="progressCountSuneung">0</span> / 3</span>
                 </span>
                 <button id="resetProgressBtn" class="text-xs text-slate-400 hover:text-slate-600 underline" title="모든 진도 체크 초기화">초기화</button>
             </div>
@@ -308,7 +311,186 @@
             </div>
         </div>
 
-        <!-- 시험 성찰 (시험 직후 첫 차시에 사용) -->
+        <!-- ===== 차시 목록 시작 (scripts/build_alg_sheets.py index 가 쓴다) ===== -->
+        <div class="unit-card mb-6">
+            <h2 class="unit-title"><span>🔢</span> I-1. 지수와 로그</h2>
+            <div class="grid gap-2">
+                <div class="lesson-row" data-lesson="학습지_대수_01_거듭제곱과거듭제곱근.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_01_거듭제곱과거듭제곱근.html" target="aftermath_ws_alg_01" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">01</span><span>거듭제곱과 거듭제곱근 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_01_거듭제곱과거듭제곱근.html?mode=class" target="aftermath_ws_alg_01" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_02_지수의확장_정수지수.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_02_지수의확장_정수지수.html" target="aftermath_ws_alg_02" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">02</span><span>지수의 확장 (1) — 정수 지수 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_02_지수의확장_정수지수.html?mode=class" target="aftermath_ws_alg_02" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_03_지수의확장_유리수와실수지수.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_03_지수의확장_유리수와실수지수.html" target="aftermath_ws_alg_03" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">03</span><span>지수의 확장 (2) — 유리수·실수 지수 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_03_지수의확장_유리수와실수지수.html?mode=class" target="aftermath_ws_alg_03" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_04_로그의뜻과성질.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_04_로그의뜻과성질.html" target="aftermath_ws_alg_04" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">04</span><span>로그의 뜻과 성질 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_04_로그의뜻과성질.html?mode=class" target="aftermath_ws_alg_04" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_05_로그의밑의변환.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_05_로그의밑의변환.html" target="aftermath_ws_alg_05" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">05</span><span>로그의 밑의 변환 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_05_로그의밑의변환.html?mode=class" target="aftermath_ws_alg_05" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_06_상용로그.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_06_상용로그.html" target="aftermath_ws_alg_06" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">06</span><span>상용로그 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_06_상용로그.html?mode=class" target="aftermath_ws_alg_06" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_07_중단원마무리_I_1.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_07_중단원마무리_I_1.html" target="aftermath_ws_alg_07" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">07</span><span>중단원 마무리 I-1 (지수와 로그) <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_07_중단원마무리_I_1.html?mode=class" target="aftermath_ws_alg_07" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit-card mb-6">
+            <h2 class="unit-title"><span>📈</span> I-2. 지수함수와 로그함수 · 대단원 평가 I</h2>
+            <div class="grid gap-2">
+                <div class="lesson-row" data-lesson="학습지_대수_08_지수함수.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_08_지수함수.html" target="aftermath_ws_alg_08" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">08</span><span>지수함수와 그 그래프 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_08_지수함수.html?mode=class" target="aftermath_ws_alg_08" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_09_로그함수.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_09_로그함수.html" target="aftermath_ws_alg_09" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">09</span><span>로그함수와 그 그래프 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_09_로그함수.html?mode=class" target="aftermath_ws_alg_09" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_10_지수함수의활용.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_10_지수함수의활용.html" target="aftermath_ws_alg_10" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">10</span><span>지수함수의 활용 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_10_지수함수의활용.html?mode=class" target="aftermath_ws_alg_10" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_11_로그함수의활용.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_11_로그함수의활용.html" target="aftermath_ws_alg_11" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">11</span><span>로그함수의 활용 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_11_로그함수의활용.html?mode=class" target="aftermath_ws_alg_11" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_12_중단원마무리_I_2.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_12_중단원마무리_I_2.html" target="aftermath_ws_alg_12" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">12</span><span>중단원 마무리 I-2 (지수함수와 로그함수) <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_12_중단원마무리_I_2.html?mode=class" target="aftermath_ws_alg_12" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_13_대단원평가_I.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_13_대단원평가_I.html" target="aftermath_ws_alg_13" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">13</span><span>대단원 평가 (I) <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_13_대단원평가_I.html?mode=class" target="aftermath_ws_alg_13" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="unit-card mb-6">
+            <h2 class="unit-title"><span>🌀</span> II-1. 삼각함수</h2>
+            <div class="grid gap-2">
+                <div class="lesson-row" data-lesson="학습지_대수_14_일반각과호도법.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_14_일반각과호도법.html" target="aftermath_ws_alg_14" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">14</span><span>일반각과 호도법 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_14_일반각과호도법.html?mode=class" target="aftermath_ws_alg_14" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_15_삼각함수.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_15_삼각함수.html" target="aftermath_ws_alg_15" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">15</span><span>삼각함수의 뜻과 값의 부호 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_15_삼각함수.html?mode=class" target="aftermath_ws_alg_15" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_16_삼각함수사이의관계.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_16_삼각함수사이의관계.html" target="aftermath_ws_alg_16" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">16</span><span>삼각함수 사이의 관계 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_16_삼각함수사이의관계.html?mode=class" target="aftermath_ws_alg_16" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_17_사인함수와코사인함수의그래프.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_17_사인함수와코사인함수의그래프.html" target="aftermath_ws_alg_17" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">17</span><span>사인함수와 코사인함수의 그래프 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_17_사인함수와코사인함수의그래프.html?mode=class" target="aftermath_ws_alg_17" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_18_탄젠트함수의그래프.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_18_탄젠트함수의그래프.html" target="aftermath_ws_alg_18" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">18</span><span>탄젠트함수의 그래프 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_18_탄젠트함수의그래프.html?mode=class" target="aftermath_ws_alg_18" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_19_삼각방정식과부등식.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_19_삼각방정식과부등식.html" target="aftermath_ws_alg_19" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">19</span><span>삼각함수가 포함된 방정식과 부등식 <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_19_삼각방정식과부등식.html?mode=class" target="aftermath_ws_alg_19" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+                <div class="lesson-row" data-lesson="학습지_대수_20_중단원마무리_II_1.html">
+                    <button class="progress-check" title="진도 체크">✓</button>
+                    <a class="lesson-link" href="학습지_대수_20_중단원마무리_II_1.html" target="aftermath_ws_alg_20" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">20</span><span>중단원 마무리 II-1 (삼각함수) <span class="ext-icon">↗</span></span></span>
+                        <span class="text-slate-400 text-sm">→</span>
+                    </a>
+                    <a class="lm-pill" href="학습지_대수_20_중단원마무리_II_1.html?mode=class" target="aftermath_ws_alg_20" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 시험 성찰 (중간고사 직후 첫 차시 — 21차시 앞) -->
         <div class="unit-card mb-6 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200">
             <h2 class="unit-title"><span>📝</span> 시험 성찰 <span class="text-xs font-normal text-amber-700 ml-2">— 중간고사 직후 첫 차시</span></h2>
             <div class="grid gap-2">
@@ -322,159 +504,175 @@
             </div>
         </div>
 
-        <!-- II-2 -->
         <div class="unit-card mb-6">
-            <h2 class="unit-title"><span>📐</span> II-2. 삼각함수의 활용</h2>
+            <h2 class="unit-title"><span>📐</span> II-2. 사인법칙과 코사인법칙 · 대단원 평가 II</h2>
             <div class="grid gap-2">
-                <div class="lesson-row" data-lesson="학습지_01_사인법칙.html">
+                <div class="lesson-row" data-lesson="학습지_대수_21_사인법칙.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_01_사인법칙.html" target="aftermath_ws_01" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">01</span><span>사인법칙 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_21_사인법칙.html" target="aftermath_ws_alg_21" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">21</span><span>사인법칙 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_21_사인법칙.html?mode=class" target="aftermath_ws_alg_21" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_02_코사인법칙.html">
+                <div class="lesson-row" data-lesson="학습지_대수_22_코사인법칙.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_02_코사인법칙.html" target="aftermath_ws_02" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">02</span><span>코사인법칙 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_22_코사인법칙.html" target="aftermath_ws_alg_22" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">22</span><span>코사인법칙 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_22_코사인법칙.html?mode=class" target="aftermath_ws_alg_22" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_03_삼각형의넓이.html">
+                <div class="lesson-row" data-lesson="학습지_대수_23_삼각형의넓이.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_03_삼각형의넓이.html" target="aftermath_ws_03" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">03</span><span>삼각형의 넓이 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_23_삼각형의넓이.html" target="aftermath_ws_alg_23" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">23</span><span>삼각형의 넓이 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_23_삼각형의넓이.html?mode=class" target="aftermath_ws_alg_23" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_04_중단원마무리.html">
+                <div class="lesson-row" data-lesson="학습지_대수_24_중단원마무리_II_2.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_04_중단원마무리.html" target="aftermath_ws_04" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">04</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_24_중단원마무리_II_2.html" target="aftermath_ws_alg_24" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">24</span><span>중단원 마무리 II-2 (사인법칙과 코사인법칙) <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_24_중단원마무리_II_2.html?mode=class" target="aftermath_ws_alg_24" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_05_대단원평가.html">
+                <div class="lesson-row" data-lesson="학습지_대수_25_대단원평가_II.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_05_대단원평가.html" target="aftermath_ws_05" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">05</span><span>대단원 평가 (II) <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_25_대단원평가_II.html" target="aftermath_ws_alg_25" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">25</span><span>대단원 평가 (II) <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_25_대단원평가_II.html?mode=class" target="aftermath_ws_alg_25" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
             </div>
         </div>
 
-        <!-- III-1 -->
         <div class="unit-card mb-6">
             <h2 class="unit-title"><span>📊</span> III-1. 등차수열과 등비수열</h2>
             <div class="grid gap-2">
-                <div class="lesson-row" data-lesson="학습지_06_등차수열.html">
+                <div class="lesson-row" data-lesson="학습지_대수_26_등차수열.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_06_등차수열.html" target="aftermath_ws_06" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">06</span><span>등차수열 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_26_등차수열.html" target="aftermath_ws_alg_26" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">26</span><span>등차수열 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_26_등차수열.html?mode=class" target="aftermath_ws_alg_26" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_07_등차수열의합.html">
+                <div class="lesson-row" data-lesson="학습지_대수_27_등차수열의합.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_07_등차수열의합.html" target="aftermath_ws_07" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">07</span><span>등차수열의 합 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_27_등차수열의합.html" target="aftermath_ws_alg_27" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">27</span><span>등차수열의 합 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_27_등차수열의합.html?mode=class" target="aftermath_ws_alg_27" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_08_등비수열.html">
+                <div class="lesson-row" data-lesson="학습지_대수_28_등비수열.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_08_등비수열.html" target="aftermath_ws_08" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">08</span><span>등비수열 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_28_등비수열.html" target="aftermath_ws_alg_28" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">28</span><span>등비수열 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_28_등비수열.html?mode=class" target="aftermath_ws_alg_28" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_09_등비수열의합.html">
+                <div class="lesson-row" data-lesson="학습지_대수_29_등비수열의합.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_09_등비수열의합.html" target="aftermath_ws_09" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">09</span><span>등비수열의 합 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_29_등비수열의합.html" target="aftermath_ws_alg_29" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">29</span><span>등비수열의 합 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_29_등비수열의합.html?mode=class" target="aftermath_ws_alg_29" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_10_중단원마무리_III_1.html">
+                <div class="lesson-row" data-lesson="학습지_대수_30_중단원마무리_III_1.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_10_중단원마무리_III_1.html" target="aftermath_ws_10" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">10</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_30_중단원마무리_III_1.html" target="aftermath_ws_alg_30" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">30</span><span>중단원 마무리 III-1 (등차수열과 등비수열) <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_30_중단원마무리_III_1.html?mode=class" target="aftermath_ws_alg_30" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
             </div>
         </div>
 
-        <!-- III-2 -->
         <div class="unit-card mb-6">
             <h2 class="unit-title"><span>∑</span> III-2. 수열의 합</h2>
             <div class="grid gap-2">
-                <div class="lesson-row" data-lesson="학습지_11_합의기호.html">
+                <div class="lesson-row" data-lesson="학습지_대수_31_합의기호.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_11_합의기호.html" target="aftermath_ws_11" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">11</span><span>합의 기호 Σ <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_31_합의기호.html" target="aftermath_ws_alg_31" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">31</span><span>합의 기호 \(\Sigma\) <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_31_합의기호.html?mode=class" target="aftermath_ws_alg_31" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_12_자연수의거듭제곱의합.html">
+                <div class="lesson-row" data-lesson="학습지_대수_32_자연수의거듭제곱의합.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_12_자연수의거듭제곱의합.html" target="aftermath_ws_12" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">12</span><span>자연수의 거듭제곱의 합 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_32_자연수의거듭제곱의합.html" target="aftermath_ws_alg_32" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">32</span><span>자연수의 거듭제곱의 합 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_32_자연수의거듭제곱의합.html?mode=class" target="aftermath_ws_alg_32" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_13_여러가지수열의합.html">
+                <div class="lesson-row" data-lesson="학습지_대수_33_여러가지수열의합.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_13_여러가지수열의합.html" target="aftermath_ws_13" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">13</span><span>여러 가지 수열의 합 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_33_여러가지수열의합.html" target="aftermath_ws_alg_33" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">33</span><span>여러 가지 수열의 합 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_33_여러가지수열의합.html?mode=class" target="aftermath_ws_alg_33" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_14_중단원마무리_III_2.html">
+                <div class="lesson-row" data-lesson="학습지_대수_34_중단원마무리_III_2.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_14_중단원마무리_III_2.html" target="aftermath_ws_14" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">14</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_34_중단원마무리_III_2.html" target="aftermath_ws_alg_34" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">34</span><span>중단원 마무리 III-2 (수열의 합) <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_34_중단원마무리_III_2.html?mode=class" target="aftermath_ws_alg_34" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
             </div>
         </div>
 
-        <!-- III-3 -->
         <div class="unit-card mb-6">
-            <h2 class="unit-title"><span>🔁</span> III-3. 수학적 귀납법</h2>
+            <h2 class="unit-title"><span>🔁</span> III-3. 수학적 귀납법 · 대단원 평가 III</h2>
             <div class="grid gap-2">
-                <div class="lesson-row" data-lesson="학습지_15_수열의귀납적정의.html">
+                <div class="lesson-row" data-lesson="학습지_대수_35_수열의귀납적정의.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_15_수열의귀납적정의.html" target="aftermath_ws_15" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">15</span><span>수열의 귀납적 정의 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_35_수열의귀납적정의.html" target="aftermath_ws_alg_35" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">35</span><span>수열의 귀납적 정의 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_35_수열의귀납적정의.html?mode=class" target="aftermath_ws_alg_35" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_16_수학적귀납법.html">
+                <div class="lesson-row" data-lesson="학습지_대수_36_수학적귀납법.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_16_수학적귀납법.html" target="aftermath_ws_16" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">16</span><span>수학적 귀납법 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_36_수학적귀납법.html" target="aftermath_ws_alg_36" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">36</span><span>수학적 귀납법 <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_36_수학적귀납법.html?mode=class" target="aftermath_ws_alg_36" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_17_중단원마무리_III_3.html">
+                <div class="lesson-row" data-lesson="학습지_대수_37_중단원마무리_III_3.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_17_중단원마무리_III_3.html" target="aftermath_ws_17" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">17</span><span>중단원 마무리 <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_37_중단원마무리_III_3.html" target="aftermath_ws_alg_37" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">37</span><span>중단원 마무리 III-3 (수학적 귀납법) <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_37_중단원마무리_III_3.html?mode=class" target="aftermath_ws_alg_37" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
-                <div class="lesson-row" data-lesson="학습지_18_대단원평가_III.html">
+                <div class="lesson-row" data-lesson="학습지_대수_38_대단원평가_III.html">
                     <button class="progress-check" title="진도 체크">✓</button>
-                    <a class="lesson-link" href="학습지_18_대단원평가_III.html" target="aftermath_ws_18" rel="noopener noreferrer">
-                        <span class="flex items-center gap-3"><span class="lesson-num">18</span><span>대단원 평가 (III) <span class="ext-icon">↗</span></span></span>
+                    <a class="lesson-link" href="학습지_대수_38_대단원평가_III.html" target="aftermath_ws_alg_38" rel="noopener noreferrer">
+                        <span class="flex items-center gap-3"><span class="lesson-num">38</span><span>대단원 평가 (III) <span class="ext-icon">↗</span></span></span>
                         <span class="text-slate-400 text-sm">→</span>
                     </a>
+                    <a class="lm-pill" href="학습지_대수_38_대단원평가_III.html?mode=class" target="aftermath_ws_alg_38" title="전자칠판 수업 화면 (왼쪽 본문 · 오른쪽 판서)">수업 모드</a>
                 </div>
             </div>
         </div>
+
+        <!-- ===== 차시 목록 끝 ===== -->
 
         <!-- 수능특강 (수학 I) -->
         <div class="unit-card mb-6 bg-gradient-to-br from-rose-50 to-purple-50 border border-purple-200">

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 III-3. 수학적 귀납법 · 차시 37 중단원 마무리 III-3 (수학적 귀납법) · 교과서(미래엔) ~쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 중단원 마무리 III-3 (수학적 귀납법)</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "37차시 중단원 마무리 III-3 (수학적 귀납법)";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-3. 수학적 귀납법</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">37차시: 중단원 마무리 III-3 (수학적 귀납법)</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_36_수학적귀납법.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_38_대단원평가_III.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 핵심 개념 구조화 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 단원 개념 구조화 (Concept Mapping)</h2><span class="src-chip src-chip--block" data-src-label="교과서 163쪽 · 중단원 마무리 개념 정리" data-src-rel="">교과서 163쪽 · 중단원 마무리 개념 정리</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-6">이번 중단원에서 배운 핵심 개념과 절차들을 다시 한 번 기억 속에서 꺼내어 완성해 보자.</p>
+
+                <div class="space-y-6">
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 flex flex-col gap-3">
+                        <div class="font-bold text-blue-800 text-xl border-b border-indigo-50 pb-2">수열의 귀납적 정의</div>
+                        <p>① 첫째항 \(a_1\) ② 두 항 \(a_n\) 과 \(a_{n+1}\) 사이의 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">관계식(점화식)</span></span></p>
+                        <p>등차수열: \(a_{n+1}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a_n+d\)</span></span> &nbsp;|&nbsp; 등비수열: \(a_{n+1}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(r\,a_n\)</span></span></p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 flex flex-col gap-3">
+                        <div class="font-bold text-blue-800 text-xl border-b border-indigo-50 pb-2">수학적 귀납법 (모든 자연수 \(n\))</div>
+                        <p>(ⅰ) \(n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1\)</span></span> 일 때 \(p(n)\) 성립</p>
+                        <p>(ⅱ) \(n=k\) 일 때 \(p(n)\) 성립 가정 \(\Rightarrow\) \(n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(k+1\)</span></span> 일 때도 \(p(n)\) 성립</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 flex flex-col gap-3">
+                        <div class="font-bold text-blue-800 text-xl border-b border-indigo-50 pb-2">\(m\) 이상의 모든 자연수에 대한 증명</div>
+                        <p>(ⅰ) \(n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(m\)</span></span> 일 때 성립 (출발점 이동) &nbsp;|&nbsp; (ⅱ) \(n=k\,(k \geq m)\) 가정 \(\Rightarrow\) \(n=k+1\) 성립</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01. 실전 훈련 -->
+        <section class="card border-l-[8px] border-blue-500" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
+            <h2 class="section-title">01. 실전 훈련 (Textbook Training)</h2>
+            <p class="mb-8 text-slate-600 font-bold">미래엔 교과서 163~164쪽 중단원 마무리 문제 전부 (기본 → 표준 → 발전 순)</p>
+            <div class="grid grid-cols-1 gap-12">
+
+                <div>
+                    <span class="badge badge-l1">[기초-귀납적으로 정의된 수열의 항]</span> <span class="src-chip" data-src-label="교과서 163쪽 · 중단원 마무리 문제 1" data-src-rel="그대로">교과서 163쪽 · 중단원 마무리 문제 1 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">1. 다음과 같이 정의된 수열 \(\{a_n\}\) 에서 \(a_5\) 를 구하시오. (단, \(n=1, 2, 3, \dots\))
+                        <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(a_1=-2,\ a_{n+1}=a_n+4\)</span><span class="sub-q">(2) \(a_1=24,\ a_{n+1}=-\dfrac{1}{2}a_n\)</span></span>
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">(3) \(a_1=1,\ a_{n+1}=a_n-n+1\)</span><span class="sub-q">(4) \(a_1=2,\ a_{n+1}=2a_n+3\)</span></span>
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> (1)(2)는 등차·등비수열, (3)(4)는 \(n=1,2,3,4\) 를 차례로 대입.
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(-2, 2, 6, 10, 14\) → \(a_5=14\)</span><span class="sub-q">(2) \(24, -12, 6, -3, \dfrac32\) → \(a_5=\dfrac32\)</span><span class="sub-q">(3) \(1, 1, 0, -2, -5\) → \(a_5=-5\)</span><span class="sub-q">(4) \(2, 7, 17, 37, 77\) → \(a_5=77\)</span></span>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l1">[기초-수학적 귀납법 빈칸 채우기]</span> <span class="src-chip" data-src-label="교과서 163쪽 · 중단원 마무리 문제 2" data-src-rel="그대로">교과서 163쪽 · 중단원 마무리 문제 2 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">2. 다음은 모든 자연수 \(n\) 에 대하여 등식 \(1^3+2^3+3^3+\dots+n^3=\left\{\dfrac{n(n+1)}{2}\right\}^2\) …… ① 이 성립함을 수학적 귀납법으로 증명한 것이다. (가)~(라)에 알맞은 것을 구하시오.</div>
+                    <div class="ml-6 bg-slate-50 p-5 rounded-xl border border-slate-200 text-base space-y-2">
+                        <p>(ⅰ) \(n=1\) 일 때 (좌변) \(=\) <strong class="text-blue-700">(가)</strong>, (우변) \(=\) <strong class="text-blue-700">(나)</strong> 따라서 \(n=1\) 일 때 ①이 성립한다.</p>
+                        <p>(ⅱ) \(n=\) <strong class="text-blue-700">(다)</strong> 일 때 ①이 성립한다고 가정하면 \(\ 1^3+2^3+\dots+k^3=\left\{\dfrac{k(k+1)}{2}\right\}^2\)</p>
+                        <p>\(n=k+1\) 일 때 \(\ 1^3+2^3+\dots+k^3+(k+1)^3=\) <strong class="text-blue-700">(라)</strong> \(+(k+1)^3=\left\{\dfrac{(k+1)(k+2)}{2}\right\}^2\)</p>
+                        <p>따라서 \(n=k+1\) 일 때도 ①이 성립한다. (ⅰ)과 (ⅱ)에 의하여 모든 자연수 \(n\) 에 대하여 ①이 성립한다.</p>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> (라) 자리는 가정식의 우변. \(\left\{\dfrac{k(k+1)}{2}\right\}^2+(k+1)^3=\dfrac{(k+1)^2(k^2+4k+4)}{4}\).<br>
+                        답: (가) \(1\) &nbsp; (나) \(1\) &nbsp; (다) \(k\) &nbsp; (라) \(\left\{\dfrac{k(k+1)}{2}\right\}^2\)
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-비율을 모두 곱하기]</span> <span class="src-chip" data-src-label="교과서 164쪽 · 중단원 마무리 문제 3" data-src-rel="그대로">교과서 164쪽 · 중단원 마무리 문제 3 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">3. \(a_1=1,\ a_{n+1}=\dfrac{n}{n+1}a_n\,(n=1,2,3,\dots)\) 과 같이 정의된 수열 \(\{a_n\}\) 에서 \(a_{10}\) 을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(a_{10}=a_1\times\dfrac12\times\dfrac23\times\dots\times\dfrac{9}{10}\) — 가운데가 모두 약분된다.<br>
+                        답: \(a_{10}=\dfrac{1}{10}\)
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-조건으로 첫째항 정하기]</span> <span class="src-chip" data-src-label="교과서 164쪽 · 중단원 마무리 문제 4" data-src-rel="그대로">교과서 164쪽 · 중단원 마무리 문제 4 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">4. 수열 \(\{a_n\}\) 이 다음을 모두 만족시킨다. 수열 \(\{a_n\}\) 에서 처음으로 \(200\) 이상이 되는 항은 제몇 항인지 구하시오.</div>
+                    <div class="ml-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-base">
+                        <p>(가) \(a_3=a_1+3\)</p>
+                        <p>(나) \(a_{n+1}=2a_n\,(n=1,2,3,\dots)\)</p>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> (나) → 공비 \(2\) → \(a_3=4a_1\). (가)에서 \(4a_1=a_1+3\), \(a_1=1\) → \(a_n=2^{n-1}\).<br>
+                        \(2^7=128\lt200\le2^8=256\) → \(n-1=8\).<br>
+                        답: <strong>제9항</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-등차중항 꼴의 관계식과 합]</span> <span class="src-chip" data-src-label="교과서 164쪽 · 중단원 마무리 문제 5" data-src-rel="그대로">교과서 164쪽 · 중단원 마무리 문제 5 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">5. 수열 \(\{a_n\}\) 이 모든 자연수 \(n\) 에 대하여 \(2a_{n+1}=a_n+a_{n+2}\) 를 만족시킨다. \(a_2=-4\) 이고 \(a_4=2\) 일 때, \(\displaystyle\sum_{k=1}^{15}a_k\) 의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> 등차수열이다. \(a_4-a_2=2d=6\) → \(d=3,\ a_1=-7\).<br>
+                        \(\displaystyle\sum_{k=1}^{15}a_k=\dfrac{15\{2\times(-7)+14\times3\}}{2}=\dfrac{15\times28}{2}\)<br>
+                        답: \(210\)
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l3">[발전-조건에 따라 바뀌는 관계식 · 서술형]</span> <span class="src-chip" data-src-label="교과서 164쪽 · 중단원 마무리 문제 6" data-src-rel="그대로">교과서 164쪽 · 중단원 마무리 문제 6 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">6. \(a_1=1\) 인 수열 \(\{a_n\}\) 이 모든 자연수 \(n\) 에 대하여
+                        \[a_{n+1}=\begin{cases} 2a_n & (a_n \lt 15) \\ a_n-15 & (a_n \ge 15) \end{cases}\]
+                        를 만족시킨다. \(\displaystyle\sum_{k=1}^{m}a_k=325\) 일 때, 자연수 \(m\) 의 값을 구하는 풀이 과정과 답을 쓰시오.</div>
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                        <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">⚠️ 함정 주의 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                        <div class="trap-body px-5 pb-5">
+                            <p class="text-slate-700 text-sm font-medium leading-relaxed">\(a_n\) 의 크기를 매 단계 확인하라. \(16\ge15\) 이므로 \(16\) 다음은 \(32\) 가 아니라 \(1\) 이다. 반복되는 묶음을 찾은 뒤 묶음의 합으로 나누어 생각한다.</p>
+                        </div>
+                    </details>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 풀이:</strong> \(1, 2, 4, 8, 16, 1, 2, \dots\) — 다섯 항씩 반복, 한 묶음의 합 \(31\).<br>
+                        \(325=31\times10+15\) 이고 \(1+2+4+8=15\) 이므로 \(\displaystyle\sum_{k=1}^{m}a_k=\sum_{k=1}^{50}a_k+a_{51}+a_{52}+a_{53}+a_{54}\).<br>
+                        답: \(m=54\)
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l3">[발전-배수와 부등식의 증명]</span> <span class="src-chip" data-src-label="교과서 164쪽 · 중단원 마무리 문제 7" data-src-rel="그대로">교과서 164쪽 · 중단원 마무리 문제 7 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">7. 다음을 수학적 귀납법으로 증명하시오.
+                        <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 모든 자연수 \(n\) 에 대하여 \(3^{2n}-1\) 은 \(8\) 의 배수이다.</span><span class="sub-q">(2) \(n \ge 2\) 인 모든 자연수 \(n\) 에 대하여 \(1+\dfrac{1}{2}+\dfrac{1}{3}+\dots+\dfrac{1}{n} \gt \dfrac{2n}{n+1}\) 이다.</span></span>
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">(1) (ⅰ) \(n=1\): \(9-1=8\). (ⅱ) \(3^{2k}-1=8m\) 이라 가정하면 \(3^{2(k+1)}-1=9\times3^{2k}-1=9(8m+1)-1=8(9m+1)\). ∎</span><span class="sub-q">(2) (ⅰ) \(n=2\): \(\dfrac32\gt\dfrac43\). (ⅱ) \(n=k\ (k\ge2)\) 일 때 성립한다고 가정하고 양변에 \(\dfrac{1}{k+1}\) 을 더하면 좌변 \(\gt\dfrac{2k}{k+1}+\dfrac{1}{k+1}=\dfrac{2k+1}{k+1}\).<br>\(\dfrac{2k+1}{k+1}-\dfrac{2(k+1)}{k+2}=\dfrac{(2k+1)(k+2)-2(k+1)^2}{(k+1)(k+2)}=\dfrac{k}{(k+1)(k+2)}\gt0\) 이므로 좌변 \(\gt\dfrac{2(k+1)}{k+2}\). ∎</span></span>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 고난도 도전 -->
+        <section class="card border-l-[8px] border-purple-400" data-aft-problem-level="l3" data-aft-problem-title="02. 고난도 도전">
+            <h2 class="section-title">02. 고난도 도전 (Advanced)</h2>
+            <p class="mb-8 text-slate-600 font-bold">단원 전체를 엮는 수능형 문항</p>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- ⭐ 도전 문제 8 (수능특강 수열의 합 유제 6) — 종합 융합형 -->
+                <div class="bg-purple-50 p-8 rounded-2xl border-2 border-purple-200 relative"
+                     data-aft-problem-level="challenge"
+                     data-aft-source="suneung_수열의합귀납법"
+                     data-aft-source-id="s6-ex6"
+                     data-aft-source-label="수능특강 수열의 합·귀납법 유제 6">
+                    <div class="absolute -top-4 -right-4 bg-purple-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">⭐ 종합 융합</div>
+                    <span class="badge badge-l3" style="color:#6b21a8;background:#f3e8ff;border-color:#e9d5ff">[발전-역수로 바꾸는 관계식 · 수능형]</span> <span class="src-chip" data-src-label="수능특강 수학Ⅰ · 수열의 합·귀납법 유제 6" data-src-rel="그대로">수능특강 수학Ⅰ · 수열의 합·귀납법 유제 6 <span class="src-rel">그대로</span></span>
+
+                    <div class="bg-purple-100/70 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                        <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 수열의 합·귀납법 · 유제 6</p>
+                        <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+1, 12분) · 핵심: 점화식 역수 변환 + 부분분수 망원합 4중 융합 (수능 28~29번급)</p>
+                    </div>
+
+                    <div class="text-xl font-bold text-slate-900 mb-4 overflow-x-auto overflow-y-hidden">
+                        8. 수열 \(\{a_n\}\)이 모든 자연수 \(n\)에 대하여 \(2 a_{n+1} = a_n(2 - a_n)\)을 만족시킨다. \(21 a_1 + a_4 = 0\), \(\displaystyle\sum_{k=1}^{3}\frac{1}{a_k - 2} = \frac{11}{42}\)일 때, \(a_1\)의 값을 구하시오.
+                    </div>
+
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-purple-400 bg-purple-50"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                        <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                        <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                            <li><strong>점화식 → 역수 변환 (망원형 발견)</strong>:
+                                <ul class="ml-4 mt-1 list-disc text-sm">
+                                    <li>\(2 a_{n+1} = a_n (2 - a_n)\) ⇒ 양변 역수: \(\dfrac{1}{a_{n+1}} = \dfrac{2}{a_n(2 - a_n)}\)</li>
+                                    <li>\(\dfrac{2}{a_n(2 - a_n)} = \dfrac{1}{a_n} + \dfrac{1}{2 - a_n} = \dfrac{1}{a_n} - \dfrac{1}{a_n - 2}\) (부분분수 분해)</li>
+                                    <li>⇒ <strong>\(\dfrac{1}{a_n - 2} = \dfrac{1}{a_n} - \dfrac{1}{a_{n+1}}\)</strong> (망원형!)</li>
+                                </ul>
+                            </li>
+                            <li><strong>망원합 + 조건 결합</strong>:
+                                <ul class="ml-4 mt-1 list-disc text-sm">
+                                    <li>\(\displaystyle\sum_{k=1}^{3}\dfrac{1}{a_k - 2} = \dfrac{1}{a_1} - \dfrac{1}{a_4} = \dfrac{11}{42}\)</li>
+                                    <li>\(21 a_1 + a_4 = 0\) ⇒ \(a_4 = -21 a_1\) 대입:</li>
+                                    <li>\(\dfrac{1}{a_1} - \dfrac{1}{-21 a_1} = \dfrac{1}{a_1} + \dfrac{1}{21 a_1} = \dfrac{21 + 1}{21 a_1} = \dfrac{22}{21 a_1} = \dfrac{11}{42}\)</li>
+                                </ul>
+                            </li>
+                            <li><strong>\(a_1\) 결정</strong>:
+                                <ul class="ml-4 mt-1 list-disc text-sm">
+                                    <li>\(21 a_1 \cdot 11 = 22 \cdot 42\) ⇒ \(a_1 = \dfrac{22 \cdot 42}{21 \cdot 11} = \dfrac{2 \cdot 42}{21} = \boxed{4}\)</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 본 단원의 모든 핵심 도구를 한 문제에 융합 — 비선형 점화식 → 역수 변환으로 망원형 발견 → 부분분수 망원합. 실전 6번(분기 점화식 주기)·7번(증명)과 다른 사고 경로(역수+부분분수)로 종합 단원의 마지막 과제. 수능 28~29번급.</p>
+                    </div></details>
+
+                    <div class="mt-4 text-sm text-slate-500 italic">
+                        ※ 자세한 풀이는 <a href="../수능특강_수학I_수열의합귀납법_해설.html#s6-ex6" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 6</a> 참조.
+                    </div>
+
+                    <div class="thinking-space bg-white"></div>
+                </div>
+
+                <div class="bg-purple-50 p-8 rounded-2xl border-2 border-purple-200 relative">
+                    <span class="badge badge-l3" style="color:#6b21a8;background:#f3e8ff;border-color:#e9d5ff">[발전-주기가 있는 귀납적 정의 · 수능형]</span> <span class="src-chip" data-src-label="자체 출제 · 주기를 갖는 분수 꼴 관계식의 합" data-src-rel="유형">자체 출제 · 주기를 갖는 분수 꼴 관계식의 합 <span class="src-rel">유형</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-4">9. 수열 \(\{a_n\}\) 이 \(a_1=2,\ a_{n+1}=\dfrac{1}{1-a_n}\ (n=1,2,3,\dots)\) 으로 정의될 때, \(\displaystyle\sum_{k=1}^{31}a_k\) 의 값을 구하시오.</div>
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                        <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">⚠️ 함정 주의 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                        <div class="trap-body px-5 pb-5">
+                            <p class="text-slate-700 text-sm font-medium leading-relaxed">일반항을 구하려 하지 말고 몇 항을 직접 써서 반복 주기를 찾는다. \(31\) 을 주기로 나눈 <strong>나머지 항</strong>을 빠뜨리지 말 것.</p>
+                        </div>
+                    </details>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-purple-400 bg-purple-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 풀이:</strong> \(a_1=2,\ a_2=\dfrac{1}{1-2}=-1,\ a_3=\dfrac{1}{2},\ a_4=\dfrac{1}{1-\frac12}=2,\ \dots\) — 주기 \(3\), 한 묶음의 합 \(2-1+\dfrac12=\dfrac32\).<br>
+                        \(31=3\times10+1\) 이므로 \(\displaystyle\sum_{k=1}^{31}a_k=10\times\dfrac32+a_{31}=15+2\).<br>
+                        답: \(17\)
+                    </div></details>
+                    <div class="thinking-space bg-white"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 오답 분석 및 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">03. 중단원 오답 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다. (특히 <span class="text-orange-400">유형 2</span> 중심 작성 권장)</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (단원 통합)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">"점화식으로 항을 결정하는 능력"과 "수학적 귀납법으로 명제를 증명하는 능력"이 어떻게 연결되는지를 자기만의 언어로 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"점화식이 '다음 항을 만드는 도구'라면 수학적 귀납법은 '다음 항이 어떤 성질을 유지하는지를 증명하는 도구'임을 깨달음. 두 개념이 동일한 자연수의 연쇄 구조 위에서 작동한다는 점에서 통합적 사고를 정착시킴."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border-2 border-orange-500/40 hover:border-orange-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">⭐ 유형 2: 결정적 실수와 극복 (중점 작성)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">중단원 마무리 문제 중 <strong>가장 막혔던 한 문항</strong>을 골라, 어디서 어떻게 막혔고, 답지를 보고 무엇을 깨달았는지, 다음에 같은 유형을 만나면 어떻게 풀 것인지를 정리하시오.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"6번 조건 분기 점화식 문제에서 항의 변화를 추적하며 일정 주기로 반복되는 패턴을 발견하지 못해 시간이 오래 걸림. 이후 점화식의 분기 조건이 있을 때는 먼저 \(a_n\) 의 값을 \(8\sim 10\) 항까지 직접 나열하여 주기를 확인하는 절차를 정착시킴."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (확장적 사고)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">수학적 귀납법은 자연수에 대한 명제 증명에 쓰인다. 그렇다면 컴퓨터과학의 <strong>재귀 함수</strong>나 알고리즘의 <strong>정확성 증명</strong>에 이 원리가 어떻게 활용될 수 있을지 추론해 보자.</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_36_수학적귀납법.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_38_대단원평가_III.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 37차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → 교사용_index-alg.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_index-alg.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="../뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="../뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_37.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

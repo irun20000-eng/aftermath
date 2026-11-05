@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 III-1. 등차수열과 등비수열 · 차시 27 등차수열의 합 · 교과서(미래엔) 129~132쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 등차수열의 합</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_27';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "27차시 등차수열의 합";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: III-1. 등차수열과 등비수열</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">27차시: 등차수열의 합</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_26_등차수열.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_28_등비수열.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2>
+            <div class="text-lg text-slate-700 font-medium">
+
+                <p class="mb-4">10살의 어린 가우스는 선생님이 낸 "1부터 100까지의 자연수를 모두 더하라"는 문제를 단숨에 풀어냈다.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 일일이 더하지 않고 순식간에 답을 구한 가우스의 아이디어를 상상해 적어 보자. 이 아이디어가 \(1+2+\cdots+99\)처럼 항의 개수가 홀수일 때도 통할까?<br><span class="text-base text-slate-500">\(1+100=2+99=\cdots\) → 합 = <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{100\times101}{2}=5050\)</span></span></span></p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 앞뒤의 수를 짝지으면 합이 일정하다. 이 규칙은 <strong>등차수열</strong>이면 언제나 성립한다. 오늘은 ① 순서를 거꾸로 한 합을 더하는 방법으로 <strong>등차수열의 합</strong> \(S_n\) 공식을 만들고, ② 합에서 거꾸로 <strong>일반항</strong>을 구하는 \(a_n=S_n-S_{n-1}\)을 배운다.</p>
+            </div>
+        </section>
+
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        합 \(S_n\)을 구하는 아이디어 — 거꾸로 더해 짝짓기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 129쪽 · 등차수열의 합 · 함께하기" data-src-rel="">교과서 129쪽 · 등차수열의 합 · 함께하기</span>
+
+                    <p class="mb-3 text-slate-700">수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n=a_1+a_2+\cdots+a_n\)으로 나타낸다. 첫째항 \(a\), 공차 \(d\), 제\(n\)항 \(l\)인 등차수열에서</p>
+                    <div class="bg-white p-5 rounded-xl border border-blue-100 text-base md:text-lg overflow-x-auto">
+                        <p>\(S_n=a+(a+d)+(a+2d)+\cdots+(l-d)+l\) ⋯ ①</p>
+                        <p>\(S_n=l+(\)<span class="inline-block"><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(l-d\)</span></span></span>\()+(l-2d)+\cdots+(\)<span class="inline-block"><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a+d\)</span></span></span>\()+a\) ⋯ ②</p>
+                        <p class="mt-2">①+②: \(2S_n=\underbrace{(a+l)+(a+l)+\cdots+(a+l)}_{n\text{개}}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(n(a+l)\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 위아래로 짝지은 두 항의 합이 모두 \(a+l\)로 같다 — 앞에서 \(d\)씩 커지고 뒤에서 \(d\)씩 작아지기 때문. 가우스의 짝짓기를 식으로 쓴 것이다.</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        등차수열의 합 공식 두 가지
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 130쪽 · 등차수열의 합 · 보기" data-src-rel="">교과서 130쪽 · 등차수열의 합 · 보기</span>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-200 text-center"><p class="font-bold mb-2">① 첫째항 \(a\), 제\(n\)항 \(l\)</p><p class="text-xl">\(S_n=\) <span class="reveal-box min-w-[120px]" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{n(a+l)}{2}\)</span></span></p></div>
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-200 text-center"><p class="font-bold mb-2">② 첫째항 \(a\), 공차 \(d\)</p><p class="text-xl">\(S_n=\) <span class="reveal-box min-w-[150px]" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{n\{2a+(n-1)d\}}{2}\)</span></span></p></div>
+                    </div>
+                    <p class="mt-3 text-slate-700 text-base">②는 ①에 \(l=a+(n-1)d\)를 대입한 것. <strong>끝항을 알면 ①, 공차를 알면 ②</strong>.</p>
+                    <div class="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+                        <p class="text-sm font-bold text-indigo-900 mb-1">🎯 보기</p>
+                        <div class="text-base text-indigo-900 space-y-1"><p>① 첫째항 \(5\), 제10항 \(35\): \(S_{10}=\dfrac{10(5+35)}{2}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(200\)</span></span></p><p>② 첫째항 \(-1\), 공차 \(2\): \(S_{12}=\dfrac{12\{2\times(-1)+11\times2\}}{2}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(120\)</span></span></p></div>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>참고:</strong> ②를 전개하면 \(S_n=\dfrac d2n^2+\left(a-\dfrac d2\right)n\) — 공차가 \(0\)이 아니면 \(S_n\)은 상수항이 없는 \(n\)에 대한 이차식이다.</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        조건에 맞는 수를 등차수열로 보기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 130쪽 · 예제 3" data-src-rel="">교과서 130쪽 · 예제 3</span>
+
+                    <p class="mb-3 text-slate-700"><strong>예제 3</strong> \(100\) 이하의 자연수 중에서 \(3\)으로 나누었을 때의 나머지가 \(1\)인 수의 합을 구하시오.</p>
+                    <div class="bg-white p-5 rounded-xl border border-blue-100 text-base space-y-1">
+                        <p>① 나열: \(1, 4, 7, \dots, 100\) → 첫째항 \(1\), 공차 \(3\)인 등차수열</p>
+                        <p>② 항의 개수: \(a_n=3n-2=100\) → \(n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(34\)</span></span></p>
+                        <p>③ 합: \(S_{34}=\dfrac{34(1+100)}{2}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1717\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 자연수를 \(d\)로 나눈 나머지가 \(a\)인 수는 첫째항 \(a\), 공차 \(d\)인 등차수열. <strong>항의 개수 \(n\)을 일반항으로 정확히</strong> 세는 것이 관건.</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        합이 주어질 때 첫째항과 공차 찾기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 131쪽 · 예제 4" data-src-rel="">교과서 131쪽 · 예제 4</span>
+
+                    <p class="mb-3 text-slate-700"><strong>예제 4</strong> 첫째항부터 제6항까지의 합이 \(30\), 제10항까지의 합이 \(130\)인 등차수열의 첫째항과 공차를 구하시오.</p>
+                    <div class="bg-white p-5 rounded-xl border border-blue-100 text-base space-y-1">
+                        <p>\(S_6=\dfrac{6(2a+5d)}{2}=30\) → \(2a+5d=10\) ⋯ ①</p>
+                        <p>\(S_{10}=\dfrac{10(2a+9d)}{2}=130\) → \(2a+9d=26\) ⋯ ②</p>
+                        <p>②−①: \(4d=16\) → \(d=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(4\)</span></span>, \(a=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-5\)</span></span></p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        합 \(S_n\)과 일반항 \(a_n\)의 관계
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 131쪽 · 생각 넓히기" data-src-rel="">교과서 131쪽 · 생각 넓히기</span>
+
+                    <div class="grid md:grid-cols-2 gap-4 items-center">
+                        <div class="bg-white p-5 rounded-xl border border-blue-100 text-base">
+                            <p>\(S_n=a_1+a_2+\cdots+a_{n-1}+a_n\)</p>
+                            <p>\(S_{n-1}=a_1+a_2+\cdots+a_{n-1}\)</p>
+                            <p class="mt-1">빼면 마지막 항 \(a_n\)만 남는다.</p>
+                        </div>
+                                            <div class="flex flex-wrap items-center justify-center gap-3 bg-blue-50 p-5 rounded-xl border border-blue-200 font-bold text-lg text-slate-800">\(a_1=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(S_1\)</span></span>, &nbsp; \(a_n=\) <span class="reveal-box min-w-[120px]" onclick="toggleReveal(this)"><span class="ans">\(S_n-S_{n-1}\)</span></span> \((n\ge2)\)</div>
+                    </div>
+                    <div class="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+                        <p class="text-sm font-bold text-indigo-900 mb-1">🎯 활동 1·2</p>
+                        <div class="text-base text-indigo-900 space-y-1"><p>\(S_n=-n^2+3n\)일 때: \(n\ge2\)에서 \(a_n=(-n^2+3n)-\{-(n-1)^2+3(n-1)\}=-2n+4\), \(a_1=S_1=2\)도 이 식을 만족 → \(a_n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-2n+4\)</span></span>, 공차 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-2\)</span></span>인 등차수열</p></div>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> \(S_{n-1}\)은 \(n\ge2\)일 때만 뜻이 있다. 그래서 \(a_1=S_1\)은 <strong>따로</strong> 구해 맞는지 확인한다. (활동 3: \(S_n=pn^2+qn\)이면 \(a_n=2pn-p+q\), 공차 \(2p\)인 등차수열)</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">합 공식의 두 꼴에 익숙해지는 단계</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-l1">기초-합 공식에 대입</span> <span class="src-chip" data-src-label="교과서 130쪽 · 문제 6" data-src-rel="그대로">교과서 130쪽 · 문제 6 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 등차수열의 첫째항부터 제15항까지의 합 \(S_{15}\)를 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium"><span class="sub-qs sub-qs--row"><span class="sub-q">(1) 첫째항이 \(-10\), 제15항이 \(116\)</span><span class="sub-q">(2) 첫째항이 \(3\), 공차가 \(-2\)</span></span></div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 끝항을 알면 \(\dfrac{n(a+l)}{2}\), 공차를 알면 \(\dfrac{n\{2a+(n-1)d\}}{2}\).<span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\dfrac{15(-10+116)}{2}=795\)</span><span class="sub-q">(2) \(\dfrac{15\{6+14\times(-2)\}}{2}=\dfrac{15\times(-22)}{2}=-165\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-항의 개수부터</span> <span class="src-chip" data-src-label="교과서 130쪽 · 문제 7" data-src-rel="그대로">교과서 130쪽 · 문제 7 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 등차수열의 합 \(40+34+28+\cdots+(-80)\)을 구하시오.
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 첫째항 \(40\), 공차 \(-6\) → \(a_n=-6n+46=-80\)에서 \(n=21\). \(S_{21}=\dfrac{21(40-80)}{2}=-420\). 답: \(-420\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                </div>
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">항의 개수를 세고 조건을 연립하는 단계</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-l2">응용-나머지가 같은 수의 합</span> <span class="src-chip" data-src-label="교과서 130쪽 · 문제 8" data-src-rel="그대로">교과서 130쪽 · 문제 8 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. \(100\) 이상 \(200\) 이하의 자연수 중에서 \(5\)로 나누었을 때의 나머지가 \(2\)인 수의 합을 구하시오.
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(102, 107, \dots, 197\): 첫째항 \(102\), 공차 \(5\), \(a_n=5n+97=197\) → \(n=20\). \(S_{20}=\dfrac{20(102+197)}{2}=2990\). 답: \(2990\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-배수의 합</span> <span class="src-chip" data-src-label="자체 출제 · 두 자리 3의 배수의 합" data-src-rel="유형">자체 출제 · 두 자리 3의 배수의 합 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 두 자리의 자연수 중에서 \(3\)의 배수의 총합을 구하시오.
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(12, 15, \dots, 99\): \(a_n=3n+9=99\) → \(n=30\). \(S_{30}=\dfrac{30(12+99)}{2}=1665\). 답: \(1665\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-두 합의 연립</span> <span class="src-chip" data-src-label="교과서 131쪽 · 문제 9" data-src-rel="그대로">교과서 131쪽 · 문제 9 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 첫째항부터 제5항까지의 합이 \(70\)이고 첫째항부터 제12항까지의 합이 \(42\)인 등차수열의 첫째항과 공차를 구하시오.
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(S_5=\dfrac{5(2a+4d)}{2}=70\) → \(a+2d=14\). \(S_{12}=6(2a+11d)=42\) → \(2a+11d=7\). 연립하면 \(7d=-21\). 답: 첫째항 \(20\), 공차 \(-3\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-이차방정식으로 항의 개수</span> <span class="src-chip" data-src-label="교과서 131쪽 · 문제 10" data-src-rel="그대로">교과서 131쪽 · 문제 10 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(900\)석의 객석을 갖춘 공연장을 지으려고 한다. 1열의 좌석 수가 \(42\)이고, 2열부터 좌석 수는 그 앞 열의 좌석 수보다 \(6\)씩 늘어나도록 할 때, 몇 열까지 지어야 하는지 구하시오.
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\dfrac{n\{84+6(n-1)\}}{2}=900\) → \(n^2+13n-300=0\) → \((n-12)(n+25)=0\). \(n\)은 자연수이므로 \(n=12\). 답: \(12\)열
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-옛 수학책의 등차수열</span> <span class="src-chip" data-src-label="교과서 132쪽 · 수학 이야기" data-src-rel="그대로">교과서 132쪽 · 수학 이야기 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">7. 최석정의 『구수략』 문제: 동지부터 베를 짜는데 매일 하루에 \(6\)치씩 더 짰다. 모두 \(1352\)치를 짰는데, 마지막 날에는 첫날보다 \(72\)치를 더 짰다면 첫날과 마지막 날에 얼마를 짠 셈인가?
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 공차 \(6\): \(a_n-a_1=6(n-1)=72\) → \(n=13\). \(S_{13}=\dfrac{13(2a_1+72)}{2}=1352\) → \(a_1+36=104\) → \(a_1=68\), \(a_{13}=140\). 답: 첫날 \(68\)치, 마지막 날 \(140\)치
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                </div>
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" \(a_1\)을 따로 확인하는 단계</p>
+                    </div>
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <span class="badge badge-l3">심화-\(S_n\)에서 일반항 구하기</span> <span class="src-chip" data-src-label="교과서 131쪽 · 생각 넓히기" data-src-rel="변형">교과서 131쪽 · 생각 넓히기 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">8. 수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합 \(S_n\)이 \(S_n=n^2+3n+1\)일 때, \(a_{10}\)과 \(a_1\)의 값을 구하고, 이 수열이 첫째항부터 등차수열인지 판단하시오.
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5"><p class="text-slate-700 text-sm font-medium leading-relaxed">\(a_n=S_n-S_{n-1}\)은 <strong>\(n\ge2\)</strong>일 때만 성립한다. 구한 식에 \(n=1\)을 넣은 값과 \(S_1\)을 반드시 비교하자. <br>\(S_n\)에 <strong>상수항이 있으면</strong> 첫째항만 어긋난다.</p></div>
+                        </details>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-400 bg-red-50/60"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(n\ge2\): \(a_n=S_n-S_{n-1}=2n+2\). \(a_{10}=22\). \(a_1=S_1=5\)인데 식 \(2n+2\)에 \(n=1\)을 넣으면 \(4\) → 다르다.<span class="sub-qs sub-qs--list"><span class="sub-q">\(a_{10}=22\), \(a_1=5\)</span><span class="sub-q">수열은 \(5, 6, 8, 10, \dots\) → 둘째항부터 공차 \(2\)인 등차수열이고, 첫째항부터는 등차수열이 아니다 (상수항 \(1\) 때문)</span></span>
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="자체 출제 · 등차수열의 합의 최댓값" data-src-rel="유형">자체 출제 · 등차수열의 합의 최댓값 <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">9. 첫째항이 \(30\), 공차가 \(-4\)인 등차수열에 대하여 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. \(S_n\)이 최대가 될 때의 \(n\)의 값과 그 최댓값을 구하시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① 합이 최대 = 양수인 항까지만 더할 때. <br>② \(a_n=-4n+34\gt0\) → \(n\lt8.5\) → \(a_8=2\gt0\), \(a_9=-2\lt0\). <br>③ \(S_8=\dfrac{8(30+2)}{2}=128\). <br>④ 답: \(n=8\)일 때 최댓값 \(128\)
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 등차·등비 기본 7) — Q6 심화 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-s7"
+                 data-aft-source-label="수능특강 등차·등비 기본 7">
+            <h2 class="section-title">⭐ 도전 문제 1 — Q6 심화 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 기본 7</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+3, 14분) · 핵심: 합 최댓값 조건 + 절댓값 + 부등식 (Q6 → 수능 29·30번급)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                등차수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. \(S_n\)이 다음 조건을 만족시킬 때, \(S_{33}\)의 최댓값과 최솟값의 합을 구하시오.
+            </div>
+
+            <div class="bg-slate-100 p-6 rounded-2xl mb-6 border-2 border-slate-200">
+                <div class="text-lg leading-loose">
+                    (가) 모든 자연수 \(n\)에 대하여 \(S_n \geq S_{13}\) <br>
+                    (나) \(|S_6 - S_3| = 36\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>(가) 부호 분석</strong>: \(S_{13}\)이 모든 \(S_n\)의 최솟값 → \(a_{13} \leq 0 \leq a_{14}\) (Q6 인사이트와 동일)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(d \gt  0\) (수열이 증가, 음수→양수 전환)</li>
+                            <li>\(a_1 + 12d \leq 0\) 그리고 \(a_1 + 13d \geq 0\) → \(-13d \leq a_1 \leq -12d\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>(나)와 결합</strong>: \(S_6 - S_3 = a_4 + a_5 + a_6 = 3a_5 = 3(a_1+4d)\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>(가)에서 \(a_1 + 4d \in [-9d, -8d]\) (음수)</li>
+                            <li>\(|3(a_1+4d)| = -3(a_1+4d) = 36 \Rightarrow a_1 = -12 - 4d\)</li>
+                            <li>이를 \(-13d \leq a_1 \leq -12d\)에 대입 → \(\dfrac{4}{3} \leq d \leq \dfrac{3}{2}\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(S_{33}\) 범위</strong>: \(S_{33} = 33(a_1+16d) = 33(-12+12d) = 396(d-1)\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>최댓값 (\(d = 3/2\)): \(396 \cdot 1/2 = 198\)</li>
+                            <li>최솟값 (\(d = 4/3\)): \(396 \cdot 1/3 = 132\)</li>
+                            <li>합: \(198 + 132 = \boxed{330}\)</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> Q6의 'aₙ 부호 변환점 = Sₙ 극값 위치' 인사이트를 부등식·절댓값 분기·d 범위 탐색으로 확장. 수능 29·30번 고정 골격.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-s7" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 7</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+        <!-- ⭐ 도전 문제 2 (수능특강 등차·등비 기본 2) — Q5 심화 확장 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_등차수열등비수열"
+                 data-aft-source-id="s5-s2"
+                 data-aft-source-label="수능특강 등차·등비 기본 2">
+            <h2 class="section-title">⭐ 도전 문제 2 — Q5 심화 확장</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 등차·등비 · 기본 2</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (학습지 max+2, 10분) · 핵심: 첫째항 분리 함정 심화 (Q5의 r≠0 버전)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. 모든 자연수 \(n\)에 대하여 \(S_n = pn^2 + qn + r\), \(a_{2n+1} - a_{2n} = 6\)이 성립한다. \(a_1 = a_3 = 11\)일 때, \(S_{10}\)의 값은? (단, \(p, q, r\)은 상수이다.)
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>\(n \geq 2\) 일반항 추출</strong>: \(a_n = S_n - S_{n-1} = p(2n-1) + q\) (Q5 핵심 절차)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>이로부터 \(a_{2n+1} - a_{2n} = 2p = 6 \Rightarrow p = 3\)</li>
+                            <li>(\(a_n\)은 \(n \geq 2\)에서 공차 \(2p\)인 등차)</li>
+                        </ul>
+                    </li>
+                    <li><strong>상수 결정</strong> (Q5 함정 직접 응용 — \(a_1\)은 식 대입값과 다름):
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(a_3 = p(5) + q = 15 + q = 11 \Rightarrow q = -4\)</li>
+                            <li><span class="text-red-600 font-bold">\(a_1 = S_1 = p + q + r = 3 - 4 + r = -1 + r\)</span> (식 \(p(2n-1)+q\)에 \(n=1\) 대입한 \(p+q=-1\)이 아님!)</li>
+                            <li>\(a_1 = 11 \Rightarrow -1 + r = 11 \Rightarrow r = 12\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>\(S_{10}\) 계산</strong>: \(S_{10} = 3(100) + (-4)(10) + 12 = 300 - 40 + 12 = \boxed{272}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> Q5의 함정(첫째항 분리)이 \(r \neq 0\) 케이스에서 본질적으로 강화된 형태. 'Sₙ 식의 상수항 r이 곧 \(a_1\)과 식 대입값의 차이'라는 직관 형성.</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 자세한 풀이는 <a href="수능특강_수학I_등차수열등비수열_해설.html#s5-s2" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 2</a> 참조.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">가우스의 합 아이디어(대칭성)가 등차수열의 합 공식에 어떻게 반영되어 있는지 수학적 기호로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"등차수열의 합 공식에서 '첫째항+끝항'의 합이 일정하게 유지되는 대칭적 성질을 이해하고, 이를 통해 공식이 단순히 암기할 대상이 아니라 가우스의 직관적 아이디어가 수식화된 것임을 내면화함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">수열의 합(\(S_n\))에서 일반항(\(a_n\))을 구할 때 범하기 쉬운 치명적인 실수는 무엇이며, 이를 피하기 위한 나만의 점검 방법은 무엇인가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"Sn 식을 미분하듯 기계적으로 an을 도출하다가 a1의 값을 틀리는 실수를 겪음. 이후 반드시 S1 값을 직접 구해 an에 n=1을 대입한 값과 비교 검증하는 습관을 형성하여 오류를 극복함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심이나 등차수열의 합 공식을 실생활에 적용해 볼 수 있는 사례가 있다면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"단순 예금을 넘어 매월 일정한 금액씩 저축을 늘려가는 상황에서 원금의 총합을 등차수열의 합으로 모델링할 수 있음을 깨닫고 금융 수학 분야로의 흥미를 확장함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_26_등차수열.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_28_등비수열.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 27차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_27.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

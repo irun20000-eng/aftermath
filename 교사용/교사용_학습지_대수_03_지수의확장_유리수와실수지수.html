@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 I-1. 지수와 로그 · 차시 03 지수의 확장 (2) — 유리수·실수 지수 · 교과서(미래엔) 21~25쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 지수의 확장 (2) — 유리수·실수 지수</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "03차시 지수의 확장 (2) — 유리수·실수 지수";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I-1. 지수와 로그</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">03차시: 지수의 확장 (2) — 유리수·실수 지수</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_02_지수의확장_정수지수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_04_로그의뜻과성질.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 25쪽 · 탐구&amp;융합" data-src-rel="">교과서 25쪽 · 탐구&amp;융합</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">육상 10종 경기는 종목마다 기록을 점수로 바꾸어 더한다. 트랙 경기 점수는 \(A\times(B-t)^{C}\) 꼴로 매기는데, \(100\,\mathrm{m}\) 달리기는 \(A=25.4347,\ B=18,\ C=1.81\)이다. 기록이 \(t=10\)(초)이면 \[25.4347\times(18-10)^{1.81}=25.4347\times8^{1.81}=1096.5\cdots\] 이므로 \(1096\)점이다.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> \(8^{2}\)은 "\(8\)을 두 번 곱한 수"이다. 그렇다면 \(8^{1.81}\)은 "\(8\)을 \(1.81\)번 곱한 수"라고 말할 수 있을까? 지수가 \(\dfrac12,\ \dfrac{181}{100},\ \sqrt2\)일 때 \(a^{x}\)은 어떤 뜻이어야 할까?</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 지난 차시에는 <strong>지수법칙이 깨지지 않도록</strong> \(a^0=1,\ a^{-n}=\frac{1}{a^n}\)을 정했다. 오늘도 같은 방법으로 ① 유리수 지수 \(a^{\frac mn}=\sqrt[n]{a^m}\)을 정의하고 ② 지수법칙을 확인한 뒤 ③ 실수 지수 \(3^{\sqrt2}\)까지 확장한다. 이때 <strong>밑이 양수</strong>라는 조건이 왜 필요한지 꼭 짚는다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 유리수 지수의 정의 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        유리수 지수의 정의 — \((a^m)^n=a^{mn}\)이 성립하도록
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 21쪽 · 지수가 유리수인 경우" data-src-rel="">교과서 21쪽 · 지수가 유리수인 경우</span>
+                    <p class="mb-3 text-slate-700">\(a\gt0\)일 때 지수가 유리수인 경우에도 \((a^m)^n=a^{mn}\)이 성립한다고 하면 \(\left(a^{\frac1n}\right)^n=a^{\frac1n\times n}=a\). 또 \(\sqrt[n]{a}\)는 \(n\)제곱하여 \(a\)가 되는 양수이므로 \((\sqrt[n]{a})^n=a\). 따라서 \(a^{\frac1n}=\sqrt[n]{a}\)로 정의할 수 있다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-center">
+                        <p class="text-base mb-2">\(a\gt0\)이고 \(m\)과 \(n\ (n\ge2)\)이 정수일 때,</p>
+                        <p class="text-lg font-bold">\(a^{\frac1n}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{a}\)</span></span>, &nbsp;&nbsp; \(a^{\frac mn}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{a^m}=(\sqrt[n]{a})^m\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>보기:</strong> \(a^{\frac14}=\sqrt[4]{a}\), \(a^{\frac43}=\sqrt[3]{a^4}=(\sqrt[3]{a})^4\), \((\sqrt[4]{a})^8=a^{\frac84}=a^2\), \(\sqrt{a^{-7}}=a^{-\frac72}\). 특히 \(\sqrt{a}=a^{\frac12}\).</p>
+                    <p class="mt-2 text-sm text-red-700"><strong>왜 \(a\gt0\)?</strong> \(a\lt0\)이면 \(n\)이 짝수일 때 \(\sqrt[n]{a}\)가 실수로 정해지지 않으므로 \(a^{\frac mn}\)도 정의할 수 없다.</p>
+                </div>
+
+                <!-- 2. 유리수 지수법칙 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        지수가 유리수일 때도 지수법칙이 성립한다
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 22쪽 · 지수법칙 확인 · 함께하기" data-src-rel="">교과서 22쪽 · 지수법칙 확인 · 함께하기</span>
+                    <p class="mb-3 text-slate-700">\(r=\dfrac mn,\ s=\dfrac pq\) (\(m,n,p,q\)는 정수, \(n\ge2,\ q\ge2\))로 놓고 <strong>통분</strong>하여 거듭제곱근의 성질로 계산한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base">① \(a^ra^s=a^{\frac{mq}{nq}}a^{\frac{np}{nq}}=\sqrt[nq]{a^{mq}}\sqrt[nq]{a^{np}}=\sqrt[nq]{a^{mq+np}}=a^{\frac{mq+np}{nq}}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{r+s}\)</span></span></p>
+                        <p class="text-base mt-2">② (함께하기) \((a^r)^s=\left(\sqrt[n]{a^m}\right)^{\frac pq}=\sqrt[q]{(\sqrt[n]{a^m})^p}=\sqrt[q]{\sqrt[n]{a^{mp}}}=\sqrt[nq]{a^{mp}}=a^{\frac{mp}{nq}}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{rs}\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>흐름:</strong> 유리수 지수 → 거듭제곱근으로 바꾸기 → 거듭제곱근의 성질 → 다시 유리수 지수로. 새 법칙을 <strong>이미 아는 성질</strong>로만 확인한다.</p>
+                </div>
+
+                <!-- 3. 유리수 지수법칙 정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        지수가 유리수일 때의 지수법칙
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 23쪽 · 지수가 유리수일 때의 지수법칙" data-src-rel="">교과서 23쪽 · 지수가 유리수일 때의 지수법칙</span>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base mb-2">\(a\gt0,\ b\gt0\)이고 \(r,\,s\)가 유리수일 때,</p>
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① \(a^ra^s=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{r+s}\)</span></span> &nbsp;&nbsp; ② \(a^r\div a^s=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{r-s}\)</span></span></li>
+                            <li>③ \((a^r)^s=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{rs}\)</span></span> &nbsp;&nbsp; ④ \((ab)^r=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^rb^r\)</span></span></li>
+                        </ol>
+                    </div>
+                    <div class="mt-3 bg-white p-4 rounded-xl border border-indigo-100 text-base">
+                        <strong>보기</strong> ① \(7^{\frac12}\times7^{\frac32}=7^{2}=49\) &nbsp; ② \(2^{\frac72}\div2^3=2^{\frac12}=\sqrt2\) &nbsp; ③ \(\left(a^{\frac32}\right)^4=a^{6}\) &nbsp; ④ \(\left(a^{-\frac13}b^{\frac12}\right)^6=a^{-2}b^{3}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{b^3}{a^2}\)</span></span>
+                    </div>
+                </div>
+
+                <!-- 4. 실수 지수 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        지수가 실수인 경우 — \(3^{\sqrt2}\)는 어떤 수?
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 24쪽 · 지수가 실수인 경우" data-src-rel="">교과서 24쪽 · 지수가 실수인 경우</span>
+                    <p class="mb-3 text-slate-700">\(\sqrt2=1.4142135\cdots\)에 한없이 가까워지는 유리수 \(1,\ 1.4,\ 1.41,\ 1.414,\ \cdots\)를 지수로 갖는 수 \(3^{1},\ 3^{1.4},\ 3^{1.41},\ 3^{1.414},\ \cdots\)은 어떤 일정한 수에 가까워진다. 이 수를 \(3^{\sqrt2}\)으로 정의한다. 같은 방법으로 \(a\gt0\)이고 \(x\)가 실수일 때 \(a^x\)을 정의할 수 있다.</p>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100 overflow-x-auto">
+                        <table class="w-full text-center text-base">
+                            <tr class="bg-indigo-50"><th class="p-1">\(x\)</th><td>\(1\)</td><td>\(1.4\)</td><td>\(1.41\)</td><td>\(1.414\)</td><td>\(1.4142\)</td><td>\(\cdots\to\sqrt2\)</td></tr>
+                            <tr><th class="p-1">\(3^x\)</th><td>\(3\)</td><td>\(4.6555\cdots\)</td><td>\(4.7069\cdots\)</td><td>\(4.7276\cdots\)</td><td>\(4.7287\cdots\)</td><td>\(\cdots\to3^{\sqrt2}\)</td></tr>
+                        </table>
+                    </div>
+                    <div class="mt-3 bg-white p-4 rounded-xl border border-indigo-100">
+                        <p class="text-base mb-1">\(a\gt0,\ b\gt0\)이고 \(x,\,y\)가 실수일 때,</p>
+                        <p class="text-lg font-medium">\(a^xa^y=a^{x+y}\), \(a^x\div a^y=a^{x-y}\), \((a^x)^y=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{xy}\)</span></span>, \((ab)^x=a^xb^x\)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>정리:</strong> 자연수 → 정수 → 유리수 → 실수로 지수가 넓어져도 지수법칙의 <strong>모양은 그대로</strong>다. 대신 유리수·실수 지수에서는 <strong>밑이 양수</strong>여야 한다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">지수 ↔ 근호 바꾸기와 유리수 지수법칙을 바로 쓰는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-지수와 근호 바꾸기</span> <span class="src-chip" data-src-label="교과서 22쪽 · 문제 5" data-src-rel="그대로">교과서 22쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음에서 지수를 사용하여 나타낸 것은 근호를 사용하여 나타내고, 근호를 사용하여 나타낸 것은 지수를 사용하여 나타내시오. (단, \(a\gt0\))
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(a^{\frac53}\)</span><span class="sub-q">(2) \(a^{-0.1}\)</span><span class="sub-q">(3) \(\sqrt[4]{a^3}\)</span><span class="sub-q">(4) \(\sqrt[5]{a^{-2}}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(a^{\frac mn}=\sqrt[n]{a^m}\) — 분모가 근호의 지수, 분자가 근호 안의 지수. 소수는 분수로.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\sqrt[3]{a^5}\)</span><span class="sub-q">(2) \(a^{-\frac{1}{10}}=\sqrt[10]{a^{-1}}\)</span><span class="sub-q">(3) \(a^{\frac34}\)</span><span class="sub-q">(4) \(a^{-\frac25}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-밑이 같은 수의 계산</span> <span class="src-chip" data-src-label="교과서 23쪽 · 문제 7" data-src-rel="그대로">교과서 23쪽 · 문제 7 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 식을 간단히 하시오. (단, \(a\gt0,\ b\gt0\))
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(3^{-\frac32}\times3^{0.5}\)</span><span class="sub-q">(2) \(6^{\frac43}\div6^{\frac13}\)</span></span>
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(3) \(\left(a^{\frac13}b^{\frac54}\right)^{\frac35}\)</span><span class="sub-q">(4) \(a^{-\frac34}b^{\frac56}\times\left(a^{-\frac34}b^{\frac12}\right)^{\frac13}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 지수끼리 분수 계산. \(0.5=\dfrac12\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(3^{-\frac32+\frac12}=3^{-1}=\dfrac13\)</span><span class="sub-q">(2) \(6^{\frac43-\frac13}=6^{1}=6\)</span><span class="sub-q">(3) \(a^{\frac13\times\frac35}b^{\frac54\times\frac35}=a^{\frac15}b^{\frac34}\)</span><span class="sub-q">(4) \(a^{-\frac34}b^{\frac56}\times a^{-\frac14}b^{\frac16}=a^{-1}b^{1}=\dfrac ba\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-실수 지수 계산</span> <span class="src-chip" data-src-label="교과서 24쪽 · 문제 9" data-src-rel="그대로">교과서 24쪽 · 문제 9 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 식을 간단히 하시오. (단, \(a\gt0,\ b\gt0\))
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(5^{2\sqrt3}\times5^{2-2\sqrt3}\)</span><span class="sub-q">(2) \(a^{\sqrt3+1}\div a^{\sqrt3-2}\)</span></span>
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(3) \(\left\{(\sqrt3)^{\sqrt2}\right\}^{\sqrt8}\)</span><span class="sub-q">(4) \(\left(a^{\frac{\sqrt2}{2}}b^{-\sqrt2}\right)^{-\sqrt2}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 무리수 지수도 법칙은 같다. \(\sqrt2\times\sqrt8=4\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(5^{2\sqrt3+2-2\sqrt3}=5^2=25\)</span><span class="sub-q">(2) \(a^{(\sqrt3+1)-(\sqrt3-2)}=a^{3}\)</span><span class="sub-q">(3) \(3^{\frac12\times\sqrt2\times\sqrt8}=3^{2}=9\)</span><span class="sub-q">(4) \(a^{\frac{\sqrt2}{2}\times(-\sqrt2)}b^{(-\sqrt2)(-\sqrt2)}=a^{-1}b^{2}=\dfrac{b^2}{a}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">지수법칙을 증명하고 실생활 상황에 쓰는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-유리수 지수법칙 증명</span> <span class="src-chip" data-src-label="교과서 23쪽 · 문제 6" data-src-rel="그대로">교과서 23쪽 · 문제 6 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. \(a\gt0,\ b\gt0\)이고 \(r\)과 \(s\)가 유리수일 때, 다음 지수법칙이 성립함을 보이시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(a^r\div a^s=a^{r-s}\)</span><span class="sub-q">(2) \((ab)^r=a^rb^r\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(r=\dfrac mn,\ s=\dfrac pq\) (\(m,n,p,q\)는 정수, \(n\ge2,\ q\ge2\))라 하자.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(a^r\div a^s=a^{\frac{mq}{nq}}\div a^{\frac{np}{nq}}=\dfrac{\sqrt[nq]{a^{mq}}}{\sqrt[nq]{a^{np}}}=\sqrt[nq]{a^{mq-np}}=a^{\frac{mq-np}{nq}}=a^{\frac mn-\frac pq}=a^{r-s}\)</span><span class="sub-q">(2) \((ab)^r=(ab)^{\frac mn}=\sqrt[n]{(ab)^m}=\sqrt[n]{a^mb^m}=\sqrt[n]{a^m}\sqrt[n]{b^m}=a^{\frac mn}b^{\frac mn}=a^rb^r\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-피아노 건반의 진동수</span> <span class="src-chip" data-src-label="교과서 23쪽 · 문제 8" data-src-rel="그대로">교과서 23쪽 · 문제 8 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 피아노 건반의 진동수는 건반의 상대 위치에 따라 유리수 지수로 나타낼 수 있다. 건반 ①의 진동수를 \(H\)라 하면 건반 ⓝ의 진동수는 \(2^{\frac{n-1}{12}}\times H\)라고 한다. 건반 ⑩의 진동수는 건반 ④의 진동수의 몇 배인지 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 건반 ⑩: \(2^{\frac{9}{12}}H\), 건반 ④: \(2^{\frac{3}{12}}H\). 나누면 \(2^{\frac{9}{12}-\frac{3}{12}}=2^{\frac12}=\sqrt2\). 답: \(\sqrt2\)배. — 한 옥타브(12음) 차이면 \(2^{\frac{12}{12}}=2\)배.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-근호를 지수로 통일</span> <span class="src-chip" data-src-label="자체 출제 · 거듭제곱근을 유리수 지수로" data-src-rel="유형">자체 출제 · 거듭제곱근을 유리수 지수로 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(a\gt0\)일 때, \(\sqrt{a\sqrt[3]{a}}\div\sqrt[3]{a^2}\)을 \(a^{k}\) 꼴로 나타내시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 안쪽부터 지수로: \(a\sqrt[3]{a}=a^{1+\frac13}=a^{\frac43}\) → \(\sqrt{a^{\frac43}}=a^{\frac23}\). \(\sqrt[3]{a^2}=a^{\frac23}\). 답: \(a^{\frac23-\frac23}=a^{0}\) (값은 \(1\)).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 밑이 음수일 때 지수법칙을 쓰면?</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-잘못된 계산 찾기</span> <span class="src-chip" data-src-label="교과서 24쪽 · 생각 넓히기" data-src-rel="그대로">교과서 24쪽 · 생각 넓히기 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 다음 계산에서 잘못된 부분을 찾고, 그 이유를 말하시오. <div class="text-lg mt-3">\[5\underset{❶}{=}(5^2)^{\frac12}\underset{❷}{=}\{(-5)^2\}^{\frac12}\underset{❸}{=}(-5)^{2\times\frac12}\underset{❹}{=}-5\]</div></div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                \((a^r)^s=a^{rs}\)을 "언제나" 쓸 수 있다고 생각하기 쉽다. 그러나 유리수 지수의 지수법칙은 <strong>\(a\gt0\)일 때만</strong> 정의·증명되었다. 밑 \(-5\)는 음수이다.
+                                </p>
+                            </div>
+                        </details>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-white"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 각 등호마다 밑의 부호를 확인한다. ❶ \(5^2=25\), \(25^{\frac12}=\sqrt{25}=5\) (옳음). ❷ \(5^2=(-5)^2\) (옳음). <strong>❸ 잘못</strong>: 밑 \(-5\)가 음수이므로 유리수 지수의 지수법칙 \((a^r)^s=a^{rs}\)을 쓸 수 없다. 실제로 \(\{(-5)^2\}^{\frac12}=25^{\frac12}=5\)이지만 \((-5)^{2\times\frac12}=(-5)^1=-5\)이므로 \(\{(-5)^2\}^{\frac12}\ne(-5)^{2\times\frac12}\). 답: ❸.
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="자체 출제 · 유리수 지수로 바꿔 계산하기" data-src-rel="유형">자체 출제 · 유리수 지수로 바꿔 계산하기 <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 다음 값을 구하시오. \[\left(\sqrt[3]{4}\times8^{-\frac12}\right)^{6}\]</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① 밑을 \(2\)로: \(\sqrt[3]{4}=2^{\frac23}\), \(8^{-\frac12}=2^{-\frac32}\). <br>
+                ② 괄호 안: \(2^{\frac23-\frac32}=2^{-\frac56}\). <br>
+                ③ \(\left(2^{-\frac56}\right)^6=2^{-5}=\dfrac{1}{32}\). 답: \(\dfrac1{32}\).
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (교과서 25쪽 탐구&융합 2) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="교과서 25쪽 · 탐구&amp;융합 탐구 2">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 교과서 25쪽 · 탐구&amp;융합 탐구 2 (변형 — 계산기 대신 근삿값 제공)</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ · 핵심: 실수 지수가 있는 식으로 부등식 세우기</p>
+            </div>
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                10종 경기의 필드 경기 점수는 \(A\times(d-B)^{C}\) (\(d\): 기록 거리, 단위 \(\mathrm{m}\))로 매긴다. 원반던지기는 \(A=12.91,\ B=4,\ C=1.1\)이다. 원반던지기에서 \(900\)점 이상을 얻으려면 \(k\,\mathrm{m}\) 이상 던져야 한다. 자연수 \(k\)의 최솟값을 구하시오.
+                <div class="text-lg font-medium mt-3">(단, \(47^{1.1}\approx69.07\), \(48^{1.1}\approx70.70\)으로 계산한다.)</div>
+            </div>
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 식 세우기</strong>: \(12.91\times(d-4)^{1.1}\ge900\).</li>
+                    <li><strong>STEP 2 — 근삿값 대입</strong>: \(d=51\)이면 \(12.91\times47^{1.1}\approx12.91\times69.07\approx891.7\lt900\). \(d=52\)이면 \(12.91\times48^{1.1}\approx12.91\times70.70\approx912.7\ge900\).</li>
+                    <li><strong>STEP 3 — 결론</strong>: \(x\gt0\)에서 \(x^{1.1}\)은 \(x\)가 커질수록 커지므로 \(d\ge52\)이면 \(900\)점 이상. <span class="text-red-600 font-bold">답: \(k=52\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>참고:</strong> 교과서 탐구 1의 답은 \(400\,\mathrm{m}\) 50초 → \(1.53775\times32^{1.81}\approx815\)점, 높이뛰기 110 cm → \(0.8456\times35^{1.42}\approx131\)점이다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · a^½+a^-½의 값으로 식의 값 구하기">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 자체 출제 · a^½+a^-½의 값으로 식의 값 구하기 (유형)</p>
+                <p class="text-xs text-amber-700">난이도 ★★★★ · 핵심: \(a^{\frac12}\cdot a^{-\frac12}=1\)과 곱셈 공식</p>
+            </div>
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(a\gt0\)이고 \(a^{\frac12}+a^{-\frac12}=3\)일 때, \(a^{\frac32}+a^{-\frac32}\)의 값은?
+            </div>
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">① \(15\) &nbsp;&nbsp; ② \(16\) &nbsp;&nbsp; ③ \(17\) &nbsp;&nbsp; ④ \(18\) &nbsp;&nbsp; ⑤ \(19\)</div>
+            </div>
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 치환</strong>: \(x=a^{\frac12}\)이라 하면 \(a^{-\frac12}=x^{-1}\), \(a^{\frac32}=x^3\), \(a^{-\frac32}=x^{-3}\).</li>
+                    <li><strong>STEP 2 — 세제곱 공식</strong>: \(x^3+x^{-3}=(x+x^{-1})^3-3\,x\cdot x^{-1}(x+x^{-1})\).</li>
+                    <li><strong>STEP 3 — 대입</strong>: \(3^3-3\times1\times3=27-9=18\). <span class="text-red-600 font-bold">정답: ④</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>함정:</strong> \((x+x^{-1})^3=x^3+x^{-3}\)으로 보면 \(27\)이 나오는데, 이것은 보기에 없다. 가운데 항 \(3x\cdot x^{-1}(x+x^{-1})\)을 빼야 한다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 우리는 지수를 유리수, 실수까지 넓히며 \(a^{\frac mn}=\sqrt[n]{a^m}\)을 정의했다. 자연수 → 정수 → 유리수 → 실수로 확장되는 과정에서 무엇이 그대로이고 무엇이 새로 필요해졌는가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"지수의 범위가 정수에서 유리수, 실수로 확장될 때 지수법칙의 형태는 유지되지만 밑이 양수라는 조건이 새로 필요함을 거듭제곱근의 정의와 연결하여 논리적으로 설명함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 결정적 실수(예: 밑이 음수인데 지수법칙 사용, 분수 지수 계산 실수)와 그것을 바로잡은 사고 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\{(-5)^2\}^{\frac12}=(-5)^{1}\)로 계산하는 오류의 원인이 밑의 조건임을 찾아내고, 지수법칙을 쓰기 전 밑의 부호를 확인하는 습관을 형성함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심(예: \(3^{\sqrt2}\)을 계산기로 어떻게 구할까?)이나 나만의 문제 풀이 Tip이 있다면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"10종 경기 채점 공식에 실수 지수가 쓰이는 것에 흥미를 갖고, 기록과 점수의 관계를 표로 정리하여 지수가 1보다 클 때 점수가 기록보다 빠르게 증가함을 탐구함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_02_지수의확장_정수지수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_04_로그의뜻과성질.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 03차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → 교사용_index-alg.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_index-alg.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="../뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="../뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_03.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

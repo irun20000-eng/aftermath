@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 I-1. 지수와 로그 · 차시 01 거듭제곱과 거듭제곱근 · 교과서(미래엔) 11~17쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 거듭제곱과 거듭제곱근</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_01';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "01차시 거듭제곱과 거듭제곱근";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I-1. 지수와 로그</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">01차시: 거듭제곱과 거듭제곱근</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_02_지수의확장_정수지수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 12쪽 · 생각 열기" data-src-rel="">교과서 12쪽 · 생각 열기</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">2022년 국제단위계(SI)에 새로 추가된 접두어에 <strong>론나(ronna)</strong>와 <strong>퀘타(quetta)</strong>가 있다. \(1\) 론나그램은 \(1\,\mathrm{Rg}\), \(1\) 퀘타그램은 \(1\,\mathrm{Qg}\)이라 쓰고 \[1\,\mathrm{Rg}=10^{27}\,\mathrm{g},\qquad 1\,\mathrm{Qg}=1000\,\mathrm{Rg}\] 이다.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 목성의 질량은 약 \(2\,\mathrm{Qg}\)이다. 이것을 \(\mathrm{g}\) 단위로 나타내 보자. 0을 30개 쓰지 않고 짧게 쓰는 방법은 무엇일까?</p>
+                    <p class="text-base">\(2\,\mathrm{Qg}=(2\times10^{\square})\,\mathrm{Rg}=(2\times10^{\square}\times10^{\square})\,\mathrm{g}=(2\times10^{\square})\,\mathrm{g}\)</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 빈칸은 차례로 \(3,\,3,\,27,\,30\). \(10^{3}\times10^{27}=10^{30}\)처럼 <strong>지수끼리 더하는</strong> 중학교 지수법칙이 큰 수를 다루는 도구다. 오늘은 ① 거듭제곱과 지수법칙을 다시 정리하고, ② 거꾸로 "\(n\)제곱하여 \(a\)가 되는 수"인 <strong>거듭제곱근</strong>을 정의한 뒤, ③ 그중 실수인 것과 ④ 거듭제곱근의 성질을 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 거듭제곱과 지수법칙 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        거듭제곱과 지수법칙 (자연수 지수)
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 12쪽 · 거듭제곱" data-src-rel="">교과서 12쪽 · 거듭제곱</span>
+                    <p class="mb-3 text-slate-700">실수 \(a\)를 \(n\)번 곱한 것을 \(a\)의 \(n\)제곱이라 하고 \(a^n\)으로 나타낸다. \(a,\,a^2,\,a^3,\,\cdots\)을 통틀어 \(a\)의 <strong>거듭제곱</strong>이라 하고, \(a^n\)에서 \(a\)를 <strong>밑</strong>, \(n\)을 <strong>지수</strong>라 한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base mb-2">\(a,\,b\)가 실수이고 \(m,\,n\)이 자연수일 때,</p>
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① \(a^m a^n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{m+n}\)</span></span> &nbsp;&nbsp; ② \((a^m)^n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^{mn}\)</span></span> &nbsp;&nbsp; ③ \((ab)^n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a^n b^n\)</span></span></li>
+                            <li>④ \(\left(\dfrac{a}{b}\right)^n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{a^n}{b^n}\)</span></span> (단, \(b\ne0\))</li>
+                            <li>⑤ \(a^m\div a^n=\) \(a^{m-n}\ (m\gt n)\), \(\;1\ (m=n)\), \(\;\dfrac{1}{a^{n-m}}\ (m\lt n)\) (단, \(a\ne0\))</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> \(a^m a^n\)은 지수를 <strong>더하고</strong>, \((a^m)^n\)은 지수를 <strong>곱한다</strong>. \(a^2\times a^3=a^6\)은 틀린 계산이다.</p>
+                </div>
+
+                <!-- 2. 거듭제곱근의 뜻 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        거듭제곱근의 뜻 — 방정식 \(x^n=a\)의 근
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 13쪽 · 거듭제곱근 · 예제 1" data-src-rel="">교과서 13쪽 · 거듭제곱근 · 예제 1</span>
+                    <p class="mb-3 text-slate-700">실수 \(a\)와 자연수 \(n\ (n\ge2)\)에 대하여 \(n\)제곱하여 \(a\)가 되는 수, 즉 방정식 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x^n=a\)</span></span> 의 근 \(x\)를 \(a\)의 <strong>\(n\)제곱근</strong>이라 한다. \(a\)의 제곱근, 세제곱근, 네제곱근, \(\cdots\)을 통틀어 \(a\)의 <strong>거듭제곱근</strong>이라 한다. 여기서는 거듭제곱근 중 <strong>실수인 것</strong>만 다룬다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base font-bold mb-2">예제 1 — 실수인 것을 모두 구하기</p>
+                        <p class="text-base">(1) \(-8\)의 세제곱근: \(x^3+8=(x+2)(x^2-2x+4)=0\). \(x^2-2x+4=0\)은 실근이 없으므로 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-2\)</span></span></p>
+                        <p class="text-base mt-1">(2) \(81\)의 네제곱근: \(x^4-81=(x-3)(x+3)(x^2+9)=0\)이므로 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-3,\;3\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>오개념:</strong> "\(x\)의 \(n\)제곱은 \(a\)"와 "\(a\)의 \(n\)제곱근은 \(x\)"를 혼동하지 않는다. \(-2\)의 네제곱은 \(16\)이지만, \(16\)의 네제곱근 중 실수는 \(\pm2\)이다.</p>
+                </div>
+
+                <!-- 3. 실수인 n제곱근 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        \(a\)의 실수인 \(n\)제곱근 — \(y=x^n\)과 \(y=a\)의 교점
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 14~15쪽 · a의 실수인 n제곱근" data-src-rel="">교과서 14~15쪽 · a의 실수인 n제곱근</span>
+                    <p class="mb-3 text-slate-700">\(a\)의 \(n\)제곱근 중 실수인 것은 \(y=x^n\)의 그래프와 직선 \(y=a\)의 교점의 \(x\)좌표이다.</p>
+                    <div class="flex flex-wrap gap-4 justify-center mb-3">
+                        <svg viewBox="0 0 200 150" width="200" height="150" role="img" aria-label="n이 짝수일 때 y=x^n 그래프와 직선 y=a">
+                            <line x1="10" y1="110" x2="190" y2="110" stroke="#64748b"/><line x1="100" y1="10" x2="100" y2="145" stroke="#64748b"/>
+                            <path d="M45 15 Q100 205 155 15" fill="none" stroke="#e11d48" stroke-width="2"/>
+                            <line x1="10" y1="60" x2="190" y2="60" stroke="#16a34a"/><line x1="10" y1="135" x2="190" y2="135" stroke="#d97706"/>
+                            <text x="160" y="55" font-size="10" fill="#16a34a">a&gt;0</text><text x="160" y="131" font-size="10" fill="#d97706">a&lt;0</text>
+                            <text x="14" y="25" font-size="11">n 짝수</text>
+                        </svg>
+                        <svg viewBox="0 0 200 150" width="200" height="150" role="img" aria-label="n이 홀수일 때 y=x^n 그래프와 직선 y=a">
+                            <line x1="10" y1="75" x2="190" y2="75" stroke="#64748b"/><line x1="100" y1="10" x2="100" y2="145" stroke="#64748b"/>
+                            <path d="M60 145 C90 75, 110 75, 140 5" fill="none" stroke="#e11d48" stroke-width="2"/>
+                            <line x1="10" y1="40" x2="190" y2="40" stroke="#16a34a"/><line x1="10" y1="115" x2="190" y2="115" stroke="#d97706"/>
+                            <text x="160" y="35" font-size="10" fill="#16a34a">a&gt;0</text><text x="160" y="111" font-size="10" fill="#d97706">a&lt;0</text>
+                            <text x="14" y="25" font-size="11">n 홀수</text>
+                        </svg>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100 overflow-x-auto">
+                        <table class="w-full text-center text-base">
+                            <tr class="bg-indigo-50"><th class="p-1"></th><th>\(a\gt0\)</th><th>\(a=0\)</th><th>\(a\lt0\)</th></tr>
+                            <tr><th class="p-1">\(n\) 짝수</th><td><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{a},\;-\sqrt[n]{a}\)</span></span></td><td>\(0\)</td><td><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">없다</span></span></td></tr>
+                            <tr><th class="p-1">\(n\) 홀수</th><td>\(\sqrt[n]{a}\)</td><td>\(0\)</td><td><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{a}\)</span></span></td></tr>
+                        </table>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>보기:</strong> \(\sqrt[4]{16}=2,\ -\sqrt[4]{16}=-2\) · \(-16\)의 네제곱근 중 실수는 없다 · \(\sqrt[3]{-64}=-4\). \(\sqrt[n]{a}\)는 '\(n\)제곱근 \(a\)'라 읽고 \(\sqrt[2]{a}\)는 \(\sqrt{a}\)로 쓴다. \(n\)이 홀수이면 \(\sqrt[n]{a}\)의 부호는 \(a\)의 부호와 같다.</p>
+                </div>
+
+                <!-- 4. 거듭제곱근의 성질 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        거듭제곱근의 성질 — 지수법칙에서 나온다
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 15~16쪽 · 거듭제곱근의 성질" data-src-rel="">교과서 15~16쪽 · 거듭제곱근의 성질</span>
+                    <p class="mb-3 text-slate-700">\(a\gt0\)이면 \(\sqrt[n]{a}\)는 \(n\)제곱하여 \(a\)가 되는 양수이므로 \((\sqrt[n]{a})^n=a\). 그러면 \((\sqrt[n]{a}\sqrt[n]{b})^n=(\sqrt[n]{a})^n(\sqrt[n]{b})^n=ab\)이고 \(\sqrt[n]{a}\sqrt[n]{b}\gt0\)이므로 \(\sqrt[n]{a}\sqrt[n]{b}\)는 \(ab\)의 양의 \(n\)제곱근이다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base mb-2">\(a\gt0,\ b\gt0\)이고 \(m,\,n\)이 \(2\) 이상인 자연수일 때,</p>
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① \(\sqrt[n]{a}\sqrt[n]{b}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{ab}\)</span></span> &nbsp;&nbsp; ② \(\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{\dfrac{a}{b}}\)</span></span></li>
+                            <li>③ \((\sqrt[n]{a})^m=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{a^m}\)</span></span> &nbsp;&nbsp; ④ \(\sqrt[m]{\sqrt[n]{a}}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[mn]{a}\)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>함께하기(③의 확인):</strong> \(\{(\sqrt[n]{a})^m\}^n=(\sqrt[n]{a})^{mn}=\{(\sqrt[n]{a})^n\}^m=a^m\)이고 \((\sqrt[n]{a})^m\gt0\)이므로 \((\sqrt[n]{a})^m=\sqrt[n]{a^m}\). <strong>보기:</strong> \(\sqrt[4]{3}\times\sqrt[4]{27}=\sqrt[4]{81}=3\), \(\dfrac{\sqrt[3]{16}}{\sqrt[3]{2}}=\sqrt[3]{8}=2\), \((\sqrt[4]{25})^2=\sqrt[4]{5^4}=5\), \(\sqrt{\sqrt[3]{64}}=\sqrt[6]{2^6}=2\).<br><strong>생각 톡톡:</strong> \(\sqrt[n]{a^m}\)과 \(\sqrt[m]{a^n}\)은 일반적으로 같지 않다. 성질은 <strong>\(a\gt0,\ b\gt0\)일 때만</strong> 쓴다.</p>
+                </div>
+
+                <!-- 5. 예제 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        성질로 식 간단히 하기 — 같은 거듭제곱근끼리 모으기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 17쪽 · 예제 2" data-src-rel="">교과서 17쪽 · 예제 2</span>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base">(1) \(\sqrt[3]{40}-7\sqrt[3]{5}=\sqrt[3]{2^3\times5}-7\sqrt[3]{5}=2\sqrt[3]{5}-7\sqrt[3]{5}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-5\sqrt[3]{5}\)</span></span></p>
+                        <p class="text-base mt-2">(2) \(\sqrt{\sqrt[4]{36}}+4\sqrt[4]{6}=\sqrt[8]{6^2}+4\sqrt[4]{6}=\sqrt[4]{6}+4\sqrt[4]{6}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(5\sqrt[4]{6}\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>요령:</strong> 근호 안을 소인수분해 → \(\sqrt[n]{p^n q}=p\sqrt[n]{q}\)로 꺼내기 → \(\sqrt[np]{a^{mp}}=\sqrt[n]{a^m}\)으로 지수 약분 → 같은 거듭제곱근끼리 동류항처럼 계산.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">지수법칙과 거듭제곱근의 뜻을 바로 쓰는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-자연수 지수법칙</span> <span class="src-chip" data-src-label="교과서 11쪽 · 준비 학습 1" data-src-rel="그대로">교과서 11쪽 · 준비 학습 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 식을 간단히 하시오. (단, \(a\ne0,\ b\ne0\))
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(a^3\times a^4\)</span><span class="sub-q">(2) \(a^2\times(a^3)^2\)</span><span class="sub-q">(3) \((a^2b)^3\)</span><span class="sub-q">(4) \(a^7\div a^2\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 곱은 지수 더하기, 거듭제곱의 거듭제곱은 지수 곱하기.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(a^{7}\)</span><span class="sub-q">(2) \(a^2\times a^6=a^{8}\)</span><span class="sub-q">(3) \(a^{6}b^{3}\)</span><span class="sub-q">(4) \(a^{5}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-지수법칙으로 간단히</span> <span class="src-chip" data-src-label="교과서 12쪽 · 문제 1" data-src-rel="그대로">교과서 12쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 식을 간단히 하시오. (단, \(a\ne0,\ b\ne0\))
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(a^3b\times a^4b^2\)</span><span class="sub-q">(2) \((ab^8)^3\)</span><span class="sub-q">(3) \(a^2b^5\div\left(\dfrac{b^3}{a}\right)^5\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 밑이 같은 것끼리 모은다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(a^{7}b^{3}\)</span><span class="sub-q">(2) \(a^{3}b^{24}\)</span><span class="sub-q">(3) \(a^2b^5\times\dfrac{a^5}{b^{15}}=\dfrac{a^{7}}{b^{10}}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-실수인 거듭제곱근 찾기</span> <span class="src-chip" data-src-label="교과서 13쪽 · 문제 2" data-src-rel="그대로">교과서 13쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 거듭제곱근 중에서 실수인 것을 모두 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(-1\)의 세제곱근</span><span class="sub-q">(2) \(16\)의 네제곱근</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 방정식 \(x^n=a\)를 인수분해한다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(x^3+1=(x+1)(x^2-x+1)=0\), \(x^2-x+1=0\)은 실근이 없다 → \(-1\)</span><span class="sub-q">(2) \(x^4-16=(x-2)(x+2)(x^2+4)=0\) → \(-2,\ 2\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-거듭제곱근의 값</span> <span class="src-chip" data-src-label="교과서 15쪽 · 문제 3" data-src-rel="그대로">교과서 15쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\sqrt[3]{27}\)</span><span class="sub-q">(2) \(-\sqrt[4]{81}\)</span><span class="sub-q">(3) \(\sqrt[5]{-32}\)</span><span class="sub-q">(4) \(\sqrt[8]{\dfrac{1}{256}}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 근호 안을 \(p^n\) 꼴로. \(n\)이 홀수면 음수도 그대로 꺼낸다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\sqrt[3]{3^3}=3\)</span><span class="sub-q">(2) \(-\sqrt[4]{3^4}=-3\)</span><span class="sub-q">(3) \(\sqrt[5]{(-2)^5}=-2\)</span><span class="sub-q">(4) \(\sqrt[8]{(1/2)^8}=\dfrac{1}{2}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">거듭제곱근의 성질 네 가지로 식을 간단히 하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-성질 하나씩 쓰기</span> <span class="src-chip" data-src-label="교과서 17쪽 · 문제 5" data-src-rel="그대로">교과서 17쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 다음 식을 간단히 하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\sqrt[3]{25}\times\sqrt[3]{5}\)</span><span class="sub-q">(2) \(\dfrac{\sqrt[4]{243}}{\sqrt[4]{3}}\)</span><span class="sub-q">(3) \((\sqrt[6]{49})^3\)</span><span class="sub-q">(4) \(\sqrt[5]{\sqrt{1024}}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> ①~④ 성질을 차례로.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\sqrt[3]{125}=5\)</span><span class="sub-q">(2) \(\sqrt[4]{81}=3\)</span><span class="sub-q">(3) \(\sqrt[6]{49^3}=\sqrt[6]{7^6}=7\)</span><span class="sub-q">(4) \(\sqrt[10]{1024}=\sqrt[10]{2^{10}}=2\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-꺼내고 모아 계산</span> <span class="src-chip" data-src-label="교과서 17쪽 · 문제 6" data-src-rel="그대로">교과서 17쪽 · 문제 6 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 식을 간단히 하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\sqrt[3]{54}+6\sqrt[3]{2}\)</span><span class="sub-q">(2) \(2\sqrt[4]{32}-\sqrt[4]{2}\)</span></span>
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(3) \(\sqrt[3]{\sqrt[4]{27}}+2\sqrt[4]{3}\)</span><span class="sub-q">(4) \(\sqrt[3]{4}\times\sqrt[3]{14}-\sqrt{\sqrt[3]{49}}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 예제 2처럼 꺼내기 → 지수 약분 → 동류항.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(3\sqrt[3]{2}+6\sqrt[3]{2}=9\sqrt[3]{2}\)</span><span class="sub-q">(2) \(\sqrt[4]{32}=2\sqrt[4]{2}\)이므로 \(4\sqrt[4]{2}-\sqrt[4]{2}=3\sqrt[4]{2}\)</span><span class="sub-q">(3) \(\sqrt[12]{3^3}=\sqrt[4]{3}\)이므로 \(\sqrt[4]{3}+2\sqrt[4]{3}=3\sqrt[4]{3}\)</span><span class="sub-q">(4) \(\sqrt[3]{56}-\sqrt[6]{7^2}=2\sqrt[3]{7}-\sqrt[3]{7}=\sqrt[3]{7}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 성질을 지수법칙과 양수 조건으로 증명하기</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">증명의 빈틈!</div>
+                        <span class="badge badge-l3">심화-거듭제곱근의 성질 증명</span> <span class="src-chip" data-src-label="교과서 16쪽 · 문제 4" data-src-rel="그대로">교과서 16쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. \(a\gt0,\ b\gt0\)이고 \(m\)과 \(n\)이 \(2\) 이상인 자연수일 때, 다음이 성립함을 보이시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}=\sqrt[n]{\dfrac{a}{b}}\)</span><span class="sub-q">(2) \(\sqrt[m]{\sqrt[n]{a}}=\sqrt[mn]{a}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "\(n\)제곱하면 \(\dfrac ab\)가 된다"만 쓰고 멈추면 증명이 아니다. \(n\)이 짝수이면 \(\dfrac ab\)의 실수인 \(n\)제곱근은 <strong>두 개</strong>이므로, 그중 <strong>양수</strong>임을 반드시 밝힌다.
+                                </p>
+                            </div>
+                        </details>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-white"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> ① 좌변을 거듭제곱해 지수법칙으로 정리 → ② 좌변이 양수임을 확인 → ③ "양의 \(n\)제곱근"의 정의로 결론.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\left(\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}\right)^n=\dfrac{(\sqrt[n]{a})^n}{(\sqrt[n]{b})^n}=\dfrac ab\)이고 \(\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}\gt0\)이므로 \(\dfrac ab\)의 양의 \(n\)제곱근, 즉 \(\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}=\sqrt[n]{\dfrac ab}\)</span><span class="sub-q">(2) \(\left(\sqrt[m]{\sqrt[n]{a}}\right)^{mn}=\left\{\left(\sqrt[m]{\sqrt[n]{a}}\right)^m\right\}^n=(\sqrt[n]{a})^n=a\)이고 \(\sqrt[m]{\sqrt[n]{a}}\gt0\)이므로 \(a\)의 양의 \(mn\)제곱근, 즉 \(\sqrt[m]{\sqrt[n]{a}}=\sqrt[mn]{a}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 17쪽 · 예제 2" data-src-rel="변형">교과서 17쪽 · 예제 2 <span class="src-rel">변형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 다음 식을 간단히 하시오. \[\sqrt[3]{24}+\sqrt[3]{81}-\sqrt[3]{\sqrt{64}}\]</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① \(\sqrt[3]{24}=\sqrt[3]{2^3\times3}=2\sqrt[3]{3}\), \(\sqrt[3]{81}=\sqrt[3]{3^3\times3}=3\sqrt[3]{3}\). <br>
+                ② \(\sqrt[3]{\sqrt{64}}=\sqrt[6]{64}=\sqrt[6]{2^6}=2\). <br>
+                ③ 답: \(2\sqrt[3]{3}+3\sqrt[3]{3}-2=5\sqrt[3]{3}-2\).
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (교과서 17쪽 생각 넓히기) -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="교과서 17쪽 · 생각 넓히기">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 교과서 17쪽 · 생각 넓히기 (그대로)</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ · 핵심: 같은 등식을 두 가지 길(성질 ③, 성질 ④)로 증명하기</p>
+            </div>
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(a\gt0\)이고 \(m,\,n,\,p\)가 \(2\) 이상인 자연수일 때, \[\sqrt[n]{a^m}=\sqrt[np]{a^{mp}}\] 임을 두 방법으로 확인하시오.
+                <div class="text-lg font-medium mt-3">[지원의 방법] \(a^m\)이 \(a^{mp}\)의 \(p\)제곱근인 것을 이용 &nbsp;/&nbsp; [소민의 방법] \(\sqrt[n]{a^m}\)의 \(p\)제곱이 \(\sqrt[n]{a^{mp}}\)인 것을 이용</div>
+            </div>
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 지원의 방법</strong>: \(a^m\gt0\)이고 \((a^m)^p=a^{mp}\)이므로 \(a^m=\sqrt[p]{a^{mp}}\). 따라서 \(\sqrt[n]{a^m}=\sqrt[n]{\sqrt[p]{a^{mp}}}=\sqrt[np]{a^{mp}}\) (성질 ④).</li>
+                    <li><strong>STEP 2 — 소민의 방법</strong>: \((\sqrt[n]{a^m})^p=\sqrt[n]{a^{mp}}\) (성질 ③). 이때 \(\sqrt[n]{a^m}\gt0\)이므로 \(\sqrt[n]{a^m}\)은 \(\sqrt[n]{a^{mp}}\)의 양의 \(p\)제곱근, 즉 \(\sqrt[n]{a^m}=\sqrt[p]{\sqrt[n]{a^{mp}}}=\sqrt[np]{a^{mp}}\).</li>
+                    <li><strong>STEP 3 — 활용</strong>: 근호의 지수와 근호 안의 지수를 같은 수로 약분할 수 있다. 예: \(\sqrt[6]{49}=\sqrt[6]{7^2}=\sqrt[3]{7}\).</li>
+                </ol>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (자체 출제) -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 실수인 n제곱근의 개수">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 자체 출제 · 실수인 n제곱근의 개수 (유형)</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ · 핵심: \(n\)의 홀짝과 \(a\)의 부호로 경우 나누기</p>
+            </div>
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(2\) 이상 \(10\) 이하인 자연수 \(n\)에 대하여 \(n-6\)의 \(n\)제곱근 중에서 실수인 것의 개수를 \(f(n)\)이라 하자. \(f(2)+f(3)+\cdots+f(10)\)의 값은?
+            </div>
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">① \(7\) &nbsp;&nbsp; ② \(8\) &nbsp;&nbsp; ③ \(9\) &nbsp;&nbsp; ④ \(10\) &nbsp;&nbsp; ⑤ \(11\)</div>
+            </div>
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — \(n\)이 홀수</strong> (\(3,5,7,9\)): \(n-6\)의 부호와 관계없이 실수인 \(n\)제곱근은 1개씩. 합 \(4\).</li>
+                    <li><strong>STEP 2 — \(n\)이 짝수</strong>: \(n=2,4\)이면 \(n-6\lt0\) → \(0\)개. \(n=6\)이면 \(n-6=0\) → \(1\)개. \(n=8,10\)이면 \(n-6\gt0\) → \(2\)개씩.</li>
+                    <li><strong>STEP 3 — 합</strong>: \(4+(0+0+1+2+2)=9\). <span class="text-red-600 font-bold">정답: ③</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>함정:</strong> \(a=0\)일 때 실수인 \(n\)제곱근은 \(0\) 하나뿐이다 (2개가 아니다).</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 우리는 "\(n\)제곱하여 \(a\)가 되는 수"를 방정식 \(x^n=a\)의 근으로 보고, 그래프의 교점으로 실수인 \(n\)제곱근의 개수를 판단했다. 식과 그래프를 연결해 본 경험이 개념 이해에 어떤 도움이 되었는가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"거듭제곱근을 방정식 \(x^n=a\)의 실근과 \(y=x^n\), \(y=a\)의 교점으로 연결하여, \(n\)의 홀짝과 \(a\)의 부호에 따라 실수인 \(n\)제곱근의 개수가 달라지는 이유를 그래프로 설명함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 결정적 실수(예: 16의 네제곱근과 \(\sqrt[4]{16}\)의 혼동, 양수 조건 빠뜨림)와 그것을 바로잡은 사고 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"16의 네제곱근과 \(\sqrt[4]{16}\)을 같은 것으로 보는 오류를 범했으나, 정의를 다시 확인하여 \(\pm2\)와 \(2\)를 구분하고 이후 문제에서 기호의 뜻을 먼저 확인하는 습관을 기름."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심이나 나만의 거듭제곱근 계산 Tip이 있다면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\sqrt[n]{a^m}=\sqrt[np]{a^{mp}}\)를 두 가지 방법으로 증명하고, 이를 '근호 지수의 약분'으로 정리하여 복잡한 거듭제곱근 계산을 간단히 하는 데 활용함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_02_지수의확장_정수지수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 01차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_01.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -34,13 +34,16 @@
     { re: /수준별/, key: 'level', name: '수준별 훈련', split: 'problems' },
     { re: /형성평가/, key: 'check', name: '형성평가', split: 'none' },
     { re: /도전\s*문제/, key: 'challenge', name: '도전', split: 'none', merge: true },
-    { re: /실전/, key: 'practice', name: '실전 훈련', split: 'problems' }
+    { re: /실전/, key: 'practice', name: '실전 훈련', split: 'problems' },
+    // 대수 마무리 차시: '00. 단원 개념 구조화' · '02. 고난도 도전'
+    { re: /구조화/, key: 'summary', name: '개념 정리', split: 'none' },
+    { re: /고난도/, key: 'advanced', name: '고난도', split: 'problems' }
   ];
   var ZONE_NUM = ['①', '②', '③', '④', '⑤', '⑥'];
   var BOARD_DEFAULT = { bg: 'blank', zones: true, wide: true };
   var SCOPES = [['screen', '이 화면', '지금 화면에만 (수업 중에만 기억)'],
                 ['lesson', '이 차시', '이 차시의 모든 화면에 (이 브라우저에 기억)'],
-                ['all', '모든 차시', '1~31차시 전체에 — 차시마다 따로 정한 같은 항목은 지운다']];
+                ['all', '모든 차시', '모든 학습지 차시에 (미적분 I · 대수 공통) — 차시마다 따로 정한 같은 항목은 지운다']];
   var FROM = { 'default': '기본', all: '모든 차시', lesson: '이 차시', screen: '이 화면' };
   var LS_ALL = 'lm:board:all', LS_LESSON = 'lm:board:lesson:';
 
@@ -175,7 +178,12 @@
   }
   function openPicker(fn) {
     var fab = document.getElementById('aft-picker-fab');
-    if (!fab) { window.open('뽑기_미적분I.html#class=' + (state.cls || ''), 'aftermath_picker_calc'); return; }
+    if (!fab) {
+      // 뽑기 파일은 과목마다 다르다 — 학습지의 data-picker-src (대수: 뽑기.html) 를 따른다
+      var srcEl = document.querySelector('[data-picker-src]');
+      var src = window.LM_PICKER || (srcEl && srcEl.getAttribute('data-picker-src')) || '뽑기_미적분I.html';
+      window.open(src + '#class=' + (state.cls || ''), 'aftermath_picker_calc'); return;
+    }
     var modal = document.getElementById('aft-picker-modal');
     if (!modal || !modal.classList.contains('is-open')) fab.click();
     withPicker(fn);
@@ -534,8 +542,9 @@
   // 판서 계획의 bg 는 쓰지 않는다 — 선생님이 정한 기본(빈칸)이 화면마다 모눈으로 돌아가던 문제.
   function lessonId() {
     var f = decodeURIComponent(location.pathname.split('/').pop() || '');
-    var m = /미적분I_(\d\d)_/.exec(f);
-    return m ? 'calc-' + m[1] : f.replace(/^교사용_/, '');   // 학생용·교사용 사본이 같은 차시 설정을 쓴다
+    var m = /(미적분I|대수)_(\d\d)_/.exec(f);
+    // 학생용·교사용 사본이 같은 차시 설정을 쓴다 (미적분 I: calc-NN · 대수: alg-NN)
+    return m ? (m[1] === '대수' ? 'alg-' : 'calc-') + m[2] : f.replace(/^교사용_/, '');
   }
   function lsGet(k) { try { return JSON.parse(localStorage.getItem(k) || 'null') || {}; } catch (e) { return {}; } }
   function lsSet(k, v) {

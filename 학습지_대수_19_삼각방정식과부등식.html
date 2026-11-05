@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 II-1. 삼각함수 · 차시 19 삼각함수가 포함된 방정식과 부등식 · 교과서(미래엔) 93~94쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 삼각함수가 포함된 방정식과 부등식</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_19';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "19차시 삼각함수가 포함된 방정식과 부등식";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II-1. 삼각함수</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">19차시: 삼각함수가 포함된 방정식과 부등식</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_18_탄젠트함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_20_중단원마무리_II_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 94쪽 · 공학 도구 삼각함수의 그래프의 변화" data-src-rel="">교과서 94쪽 · 공학 도구 삼각함수의 그래프의 변화</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">공학 도구(알지오매스)에 \(y=a\sin bx\)를 입력하고 슬라이더로 \(a, b\)를 바꾸면 그래프가 위아래로 늘어나거나(진폭 \(|a|\)) 좌우로 촘촘해진다(주기 \(\dfrac{2\pi}{|b|}\)). 이번에는 같은 화면에 <strong>가로 직선</strong> \(y=\dfrac{1}{2}\)을 하나 더 그려 보자.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 곡선 \(y=\sin x\)와 직선 \(y=\dfrac{1}{2}\)은 \(x\)축 전체에서 몇 번 만날까? 범위를 \(0\le x\lt 2\pi\)로 줄이면 몇 번일까? 또 직선을 \(y=1\), \(y=2\)로 올리면 만나는 점의 개수는 어떻게 바뀔까?</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> \(\sin x=\dfrac{1}{2}\)은 \(x\)에 대한 일차식·이차식처럼 이항해서 풀 수 없다. 대신 <span class="font-bold text-indigo-700">두 그래프의 교점의 \(x\)좌표</span>를 읽으면 된다. 오늘은 ① 삼각방정식을 그래프의 교점으로 풀기, ② 삼각부등식을 그래프의 위·아래로 풀기, ③ 치환으로 익숙한 꼴로 바꾸기를 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 삼각방정식 = 교점의 x좌표 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        삼각방정식 — 그래프의 교점의 \(x\)좌표
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 93쪽 · 예제 5" data-src-rel="">교과서 93쪽 · 예제 5</span>
+                    <p class="mb-3 text-slate-700">방정식 \(f(x)=g(x)\)의 실근은 두 함수 \(y=f(x)\), \(y=g(x)\)의 그래프의 <strong>교점의 \(x\)좌표</strong>와 같다. 따라서 \(\sin x=k\)는 곡선 \(y=\sin x\)와 직선 \(y=k\)의 교점을 찾는 문제이다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base font-medium mb-2"><strong>예제</strong> \(0\le x\lt 2\pi\)일 때, 방정식 \(\sin x=\dfrac{\sqrt3}{2}\)을 푸시오.</p>
+                        <div class="text-center my-2"><img src="data:image/png;base64,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" alt="교과서 93쪽 · 예제 5 그림" style="max-width:min(100%,420px)"></div>
+                        <p class="text-base">곡선 \(y=\sin x\)와 직선 \(y=\dfrac{\sqrt3}{2}\)은 두 번 만난다. \(\sin\dfrac{\pi}{3}=\dfrac{\sqrt3}{2}\)이고, 그래프는 \(x=\dfrac{\pi}{2}\)에 대하여 대칭이므로 다른 해는 \(\pi-\dfrac{\pi}{3}\). 따라서 \(x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{\pi}{3}\) 또는 \(\dfrac{2}{3}\pi\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 해는 <strong>주어진 범위</strong> 안에서만 센다. 범위가 없으면 해가 무수히 많다(주기 \(2\pi\)).</p>
+                </div>
+
+                <!-- 2. 대칭으로 두 번째 해 찾기 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        \(\sin\)·\(\cos\)·\(\tan\) 방정식 — 하나 찾고 대칭으로 하나 더
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 93쪽 · 삼각함수가 포함된 방정식" data-src-rel="">교과서 93쪽 · 삼각함수가 포함된 방정식</span>
+                    <p class="mb-3 text-slate-700">\(0\le x\lt 2\pi\)에서 기준 해 \(\alpha\) 하나를 찾으면 그래프의 대칭성으로 나머지 해를 얻는다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \(\sin x=k\) : 그래프가 \(x=\dfrac{\pi}{2}\)에 대칭 → 두 해 \(\alpha\), <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\pi-\alpha\)</span></span></li>
+                            <li>② \(\cos x=k\) : 그래프가 \(x=\pi\)에 대칭 → 두 해 \(\alpha\), <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(2\pi-\alpha\)</span></span></li>
+                            <li>③ \(\tan x=k\) : 주기가 \(\pi\) → 두 해 \(\alpha\), <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\pi+\alpha\)</span></span></li>
+                        </ol>
+                    </div>
+                    <div class="mt-4 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <p class="text-sm font-bold text-cyan-900 mb-1">🎯 바로 확인</p>
+                        <p class="text-sm text-cyan-800">\(0\le x\lt 2\pi\)에서 \(\cos x=\dfrac12\)의 해는 \(x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{\pi}{3}\) 또는 \(\dfrac{5}{3}\pi\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> \(k=\pm1\)이면 \(\sin x=k\), \(\cos x=k\)의 해는 하나뿐이고, \(|k|\gt 1\)이면 해가 없다. \(\tan x=k\)는 모든 실수 \(k\)에 대해 해가 두 개다.</p>
+                </div>
+
+                <!-- 3. 삼각부등식 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        삼각부등식 — 그래프가 직선보다 위? 아래?
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 93쪽 · 예제 6" data-src-rel="">교과서 93쪽 · 예제 6</span>
+                    <p class="mb-3 text-slate-700">부등식 \(f(x)\lt g(x)\)의 해는 \(y=f(x)\)의 그래프가 \(y=g(x)\)의 그래프보다 <strong>아래쪽</strong>에 있는 \(x\)의 값의 범위이다. 먼저 등호를 넣은 방정식으로 경계를 찾고, 그래프에서 위·아래를 읽는다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base font-medium mb-2"><strong>예제</strong> \(0\le x\lt 2\pi\)일 때, 부등식 \(\cos x\lt\dfrac12\)을 푸시오.</p>
+                        <div class="text-center my-2"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxAAAAFnCAIAAAC5Izj6AAAACXBIWXMAAC4jAAAuIwF4pT92AABh7klEQVR4nOzdh1/T2v8/8N9/8kW2A3GgorivXi5O3IqKeyAiKCiKW0Rxb6/3Km4BJ4oTF+LAhSgIKrMMAUH2bKHU3xvy+fQT09IymqTj9Xzk4QOTNjmE9uSV5OSc//cLAAAAADT6f2IXAAAAAEDfITABAAAAaIHABAAAAKAFAhMAAACAFghMAAAAAFogMAEAAABogcAEAAAAoAUCEwAAAIAWCEwAAAAAWiAwAQAAAGiBwAQAAACgBQITAAAAgBYITAAAAABaIDABAAAAaIHABAAAAKAFAhMAAACAFghMAAAAAFogMAEAAABogcAEAAAAoAUCEwAAAIAWCEwAAAAAWiAwAQAAAGiBwAQAAACgBQITAAAAgBYITAAAAABaIDABAAAAaIHABAAAAKAFAhMAAACAFghMAAAAAFogMAEAAABooXeBqbKy0n/16l729osXLpRKpZyljY2NTo6OttbW8+bMUX2vTCZL+fZNiFICAACAKdGvwJSbm/vnH3/Mc3d37NPH/P/+7/y5c5wXvH3zhubTdDsyUvXtN65fX7F8uSAlBQAAABOiR4GpuLh46KBBa9esoZ8D1q2jVLR92zbOa7Zs2kTze9nbq158IhNdXW0sLYuKioQoLgAAAJgMfQlM9fX1kydO9FiyRC6X039nzphBwSj66VP2axQKxYB+/Wj+1i1bVNeQ8OkTc/HpyOHDAhUaAAAATIO+BKa4uLg5s2fLZDL6+XturoWZWV8HByY8KcXHxzOR6OuXL6pr8F25klnq5OjY0NAgULkBAADABOhLYCLKeLRvzx7KPTuDgjgvYO7HjRs9WvW9JSUlttbWTGCi6cH9+7wXFwAAAEyGHgUmRkNDQz8HBwo9KSkp7Pn19fUOPXuqbQlOjh09qkxLNLlNny5UeQEAAMD46V1gunP7dtNlpDFjOPPv3b1L822trMrLyzmLKGM59e/PDkw0paamClVkAAAAMHJ6F5gmT5hAcefc2bOc+W7Tp9N8L09P1bdEPXjASUs0bdm0SZDyAgAAgPHTr8D06eNHyjo2lpalpaXs+UlJSUwMevbsmeq7ZkybphqYunftWl1dLVTBAQAAwJjpV2Dy9PCgrLN08WLOfC9PT5o/oF+/xsZGzqLU1FTVtMRMFy9cEKrgAAAAYMz0KDCVlpZaW1hQ0Hn08CF7/revXy3MzGj+nl27VN+1ISCAFjn06kVLu3XpQj8fP3rUeeRI+sF5xAihyg4AAADGTI8CE+Uk5spQZUWFcqZcLp8yaRIzX5KZyXlLRUXFLDe3iBs3mI6/u3frRi/L+/6dfo6NjV26ePG7t2+F/BUAAADAKOlRYHr54gUTjKKjo5k5NTU1q3x8mF4GJk+YoPoWzh06dmBS+wIAAACAdtCjwCSXy2fPnEmJp7O1tbeXl9+qVU6OjkcOH54zezbNDAsN1boG1cAEAAAA0HF6FJh+NV8QevH8+cl//923d+/l8PDi4mJJZiZloG6dO1dVVWl9OwITAAAA8EG/ApOqdf7+TZ0qbd7cmhcjMAEAAAAf9DowSSQSK3Pzrra2RUVFrXk9AhMAAADwQfzApFAoli1dOqBfv/j4eM78mTNmUAC6cP58K1eFwAQAAAB8ED8wFRYWMg/H+a9ezZ5/6uRJmrna17f1q0JgAgAAAD6IH5jkcjnTcYCyNwESFhpq2anTtq1b29QvAAITAAAA8EH8wESSk5NnTJvWxcZm1F9/zZwxg/51nzUr9tWrtq4HgQkAAAD4oBeBiSGVSvPI9+9yubx9a0BgAgAAAD7oUWDqOAQmAAAA4AMCEwAAAIAWCEwAAAAAWiAwAQAAAGiBwAQAAACgBQITAAAAgBYITAAAAABaIDABAAAAaIHABAAAAKAFAhMAAACAFghMAAAAAFogMAEAAABogcAEAAAAoAUCEwAAAIAWCEwAAAAAWiAwAQAAAGiBwAQAAACgBQITAAAAgBYITAAAAABaIDABAAAAaIHABAAAAKAFAhMAAACAFghMAAAAAFogMAEAAABogcAEAAAAoAUCEwAAAIAWCEwAAAAAWiAwAQAAAGiBwAQAAACgBQITAAAAgBYITAAAAABaIDABAAAAaIHABAAAAKAFAhMAAACAFghMAAAAAFogMAEAAABogcAEAAAAoAUCEwAAAIAWCEwAAAAAWiAwAQAAAGiBwAQAAACgBQITAAAAgBYITAAAAABaIDABAAAAaKG/gSkvL2/v7t3BO3e2/i0ITAAAAMAH/QpMUqk0MSHh+LFjkydMsDAzo/Tj5+vb+rcjMAEAAAAf9CUw1dTUOI8caWVuTomHPSEwAQAAgOj0JTD9ar68RLGppKTk29ev27dtQ2ACAAAAPaFHgYmt+OdPBCYAAADQE3oamCorKhCYAAAAQE8YT2AqLS3tYmtLb4n/8IHXsgEAAHRcUlLSnl275s+dO9fdfcumTc9jYhQKhdiFghYZQ2DKzs5etGCBZadOyqbi48aMefP6tQDlBAAAaKuampo1fn50tHIdN27zxo3btm6d5eZmbWExferUnJwcsUsH6hl8YPr65YtDz56cZ+tosjI3j7x1S5jSAgAAtJJMJpsxbZpT//5x79+z59PJ/9TJkwf065efny9W2UADww5MFNIHOTmppiVmsrG0TE1NFazMAAAAWu3ZtYvO8wsLC1UXUZaizDR96lThSwVaGXZgCg8LayktMZOXp6fyxc9jYk4cP86eHj96pFxaXFzMWUqTVCpVvuBmRARnaXx8vHIpJTPO0tMhIeyi0n85L2CHuTevX3OW0uaUS6kYqmWjAitfQL8IZyn9ssqldLKi+nZ22a5cvsxZmpSUpFxKP3OW0uvZb1ddOfv0CLsdux27Hbsdu539q3Xv2vXa1au/WpCVlWVhZvahuTEudjsfn/Z2M+zAtHTxYs2BybJTp8kTJixeuDBg7dqxo0dzlnp7eSlX9e3rV9W3UzGUL5gyaRJn6d+sj+atmzc5S7t368YuKvMEH3uityiX7goO5iylzanuDfZEBVa+gH4RztINAQHKpe/fvVN9O7tsf/35J2fpxQsXlEvpZ85Sej377aorpy0ql1JJsNux27HbsdtNcLeXl5ev9PHhLLW1sqIDU01Nza+WTZsyZe/u3djtPH3a282wA9PkiRNV/yStmegjO3jgwPlz516/du1LcnJDQ0NZWVnopUucSSaTKbf16OFDztLk5GTlUolEwlnKOYGg/3JeQG9RLv308SNnKW1OuZSKoVo2KrDyBbGvXnGWsj/WRUVFqm9nl+3e3bucpeyoTj9zltLr2W9XXTltUbmUSsJZSqVVLsVux27HbsduN47dfv7s2aDt2yk0eC1fPsbFpU/v3i0dgAYOGPBLI1rJKh8f7HaePu3tZtiBiRJP+wITN7p27UqJ/vDBg3FxcRSeBPs1AQDAcNFBOiw0dLWvr/PIkewntTVPvXr00Lxailz+q1cL8ytA6xl2YPrnxAnNn8uRw4cH79y5YvnyKZMmDRsyxMbSUutH2a5Ll8ULF549c0aSmSnY7wsAAAahpKTkZkTESm/v/n37tiYeWZmbO/bpM2H8+AXz5tERzXflSpqZlZXV0voVCoVT//4Xzp8X8peC1jDswFRUVNS9a1cNn9TY2Fj26+vr6/O+f3/65MnxY8fo4z7qr780nxP89eef+/bsSfj0iedfFwAA9FpKSsrhgwcp91iYmWk+5XYdN85/9epTJ08+j4lJTU1l34di0KEnYN26ljZ06+ZNW2vr4p8/ef6FoM0MOzCRh1FRLV032h0crHVDtbW1ce/fnzh+fP7cuWr7c2KmYYMH01cF15wAAEwKVftU+bs4O7d0dKD8NNrFZfPGjdeuXqVQ1Zp1vnzxgt6l9kE5Oj/v3q3bkcOHdf17gA4YfGAiL54//2PYMPYnuHePHufPnWvrRhsbGxMTEo4fOzZtypSWQtgkV1dac3V1dbt+LQAAMAAlJSWnTp4cP3ZsSznJecSIoMDA6KdPS0tL27H+0EuXrMzNV/v6fvlvS+fc3Nx9e/faWlmt8fPDACn6yRgCE5HL5a9evrS1tqa3hIeGdjzQVFVV3bl928vTs1vnzqpfFZoZsHZtYmJiB7cCAAD6g06b6Qzc08ODgotqzU8z58+dS1knLy+v49uKe//eddw4ZrWdmw9eQwYOxAAV+sxIAhOD6Zgh7/t3HZaEslfUgwdLFi1S+/2ZPGHC7chIims63CIAAAiMDjpnQkKGDhqkNifRIYAOBHzcW6AD1tbNm2krgdu26XzloFt6GpjKysqYTyrTF0Ur8RGY2EU6d/Ysc0LAmRz79Dl29Ci7Sy4AADAI33Nz1wcEMNd4OI2TZkybdvXKFb7rdqYDyb9/76Qb9JCeBqanT54wH9kRw4fX1ta28l28Bialr1++BKxdq9rNaC97+wP79+PRBgAAg/DhwwdPDw8rc3NOZd7XwWF3cDDfhxIlBCZDoS+BqbGx8fGjR7cjI//9558lixaxn/Z3cnTcvm0bxfzop08/f/6sYSXCBCZGTU1NyKlTnMbmNNFpSuDWrezuUAEAQK+8ffPGfdYs1dsFUyZNun/vXn19vZCFQWAyFPoSmOgDutLbW+t07OhRDSsRMjAxFArFw6go1RFaunXuvG/PHvbAAgAAILr3797NmDaN20rJ2tp/9eq0tDRRioTA1D7tez6xI/QlMOmE8IFJKS4ubuH8+ZwvoV2XLkePHNE8yCIAAAjg65cvSxYt4tTSPbt337t7t7j3BOLj44N37nz9+rWIZTAglZWVV69cGTd69HrWOMTCQGDSpaSkpAXz5nG+kP0cHK5cvtzY2ChWqQAATFl+fv7yZcs44zr07tHjwP79FXhYxxBQon327NnxY8dmubkpe0lEYOoQ0QMTI+Xbt7nu7qq9nNHfW9yCAQCYlKqqqr27d3e1teVEpSOHD6P/YUNRWVExeeLEia6uo/76iz0gBwJTh+hJYGK8f/dOtW3TkkWLJBKJ2EUDADByCoXi+rVrlI3YNXAXG5ugwEBcVTJotyMjEZh0QK8CE+PB/fvDBg9mf2NtLC13Bwfj5AYAgCdJSUkTXV3ZFa+VufnG9et/6uXzy1lZWXfv3ElPTxe7IIahsLAQgUkH9DAwEZlMdvLff+3t7Njf3v59+z55/FjsogEAGJWSkpItmzZZmJmx61v3WbNSU1PFLlqL8JRcm1DqRWDSAf0MTAz6GtP5DaeHtHnu7rm5uWIXDQDAGNy5fbufgwO7jh06aBDNFLtcWiAwtQkCk27oc2BifElOnjp5MqfrgdMhIRiNDgCg3fLz8xctWMDpQ/jE8eMymUzsommHwNQmCEy6of+B6VdzU8RrV6/2/f00aKKra0pKithFAwAwMFSjhoeFccaqmufurucHAjYEpjZBYNINgwhMjLKyMt+VK9nfcGsLi0MHDuBSEwBAK33PzeWMcNLPwSHy1i2xy9U2CExtYuqBqbKyUidj9xhQYGK8e/t22JAh7G/75AkT9LlxIgCAnrgdGcm5sERnoeXl5WKXq82uXL7cw87udEiI2AUxDKYbmD5//rwhIKBb5846edrT4AITqaur275tG/uZDlsrK/rmoGdwAAC1Kisqli9bxnnuOPrpU7HLBUIwocBUX1+fnJx87erVgHXrBg4YoPy4m2xgYnz48MF5xAjOc7AFBQVilwsAQL+8ffNmQL9+7NpyxfLlJSUlYpcLBGJCgSnk1KlJrq7jx44dNmSIckQYBKZfzd01Be/cyb7U1L1r17t37ohdLgAAvUDn25xKsq+DQ1RUlNjlAkGZUGBiq6mpGTd6NAITW9z795yewVf7+qJbcAAwcZLMzDEuLuy60WPJkuLiYrHLBUIz0cBEAtauRWDiqKyspJDErhdGDB/++fNnscsFACCOu3fudO/a9X8NPa2tL128KHahdOZmRMSQgQON6TfilekGJvqFEZjUunP7di97e3ZL8HNnz4pdKAAAQUml0s0bN7JPIEe7uKSlpYldLl1CtwJtgsCEwKQG/SKTfh8/0tPDo7KyUuxyAQAIoaCgYPzYsew6cMumTRShxC6XjiEwtQkCEwKTenK5/MihQ5adOinri2GDB3+Mjxe7XAAA/HoeE+PQs6cpPASDwNQmCEwITJrExsayh1KxtrAIDwsTu1AAALygE8V9e/eyn4YbN2aMRCIRu1x8QWBqEwQmBCYtioqK3KZNY1+a9vP1ra2tFbtcAAC6VFVVxRlGd/PGjcZ3G44NgalNCgoKlI+QC7xpBCaDoXrWNdrFxVh/WQAwQampqSOGD1dWcV1sbK5dvSp2oXiXlZV1986d9PR0sQtiAOrr63cFBzMfD4devZKSkoTcOgKTgXkeE9Oze3dlhdLL3j46OlrsQgEAdFT006fsseGcHB2Tk5PFLhSITyaTbdm8ee2aNe6zZtnb2bGvPtLk4uzss2JF4Natl8PD+S4JApPhkUgko1kduFmYmR05fFihUIhdLgCA9qDq6+S//7KfbpkxbZpODgpgBBoaGkIvXtQ6PXn8mO+SIDAZJKlU6vd755YUsdGkCQAMDtVmK7292bXZxvXr6+vrxS4XABcCkwG7eOGCrZUVu0lTfn6+2IUCAGit4p8/2b3NUYVmCo2WOJKSkk4cPx4vVH8xlZWV/qtX97K3X7xwoWpr+sbGRidHR1tr63lz5rDny+Xyp0+e6Goy0MM0ApNhe//uXe8ePZTVjWOfPomJiWIXCgBAO4lEMtjJSVl9UVVGFZrYhRKBkE/J5ebm/vnHH/Pc3elgQRs9f+4c5wVv37xh/hy3IyPZ82tqajiNhzoyhRrmODAITAavoKBAOYYxTV1tbZUf9C/JyVevXKFzl0cPHxahQQAAiCHu/fvjx44FrF27Z9eux48eyWQymhkdHc1uwOs8YkROTo7YJRWHYIGpuLh46KBBa9esoZ8D1q2jjW7fto3zmi2bNjGPE3EuPikUiu+5ubqaDHREeQQmY0DZ39vLi53fPT08Jk2YQD8McnIa7eLSw87O2sJinb9/WVmZ2IUFAFORnp4+0dXVwsxs3JgxHkuWTJ86tbO1tVP//ls2b2Y38Z7n7m7Kgz4JE5jq6+snT5xIfwW5XE7/nTljBm00+ulT9msoFQ3o14/mb92yhdfCGCgEJuNB53DKCogqI69lyySZmcyixsZG+mL8+ccfdHqBdk4AIIAvycndu3ad6+6elZWlnFleXr5j+3Z2f3Ib169nDuEmS5jAFBcXN2f2bOby3vfcXPoT9HVw4Oz5+Ph45o/y9csXXgtjoBCYjMq9u3dtLC2tLSz2792rurS2tnbyhAmu48ZRfhK+bABgOqRS6bDBg708PdWGocvh4XRSR8fsC+fPC182fSPYLTnl32Lfnj20xZ1BQZwXMPfjxo0ezXdJOJ48fnzt6lXOFHrx4rGjR1Xna54uXbyodn7krVsdL6fIgWntmjVMYNJJykFgIvPmzJnk6tpSt0xFRUXdOnemXCVwqQDApNDRroednYamKgvmzp3o6ipkkfTW40ePZrm5cRpZ86ehoaFf8+CkKSkp7Pn19fXMaMeqLcH5tmL58imTJnEmym3DhwxRna95ch07Vu38mTNmdLyvCjEDU2pqqpOjo7nuRgtCYKJvQhcbG81jevv5+np6eAhWJAAwQXNmz960YYOGFzx98sTG0pK5QwRCunP7tnnzeMac+XQizfTsUF5eLkrB9J/QgYmi9Mb1672WL3dxduY8Z0hxZ567+4aAgJ1BQd9zc9uxciYwOfXvP2TgQNOcmPZ6BQUFGvbS2TNnunXuLHpRMWHCZMQTnblduXxZQ0WUm5tLlRVVWaIX1VinRw8fqt3zk5ufBzp39ixnvtv06TTfy9NT7bvobPxmRISuJmX7WsMidGCKj49vTR/n7XsGnj0OkSlPmhuEnT93ztbaWvRCYsKEyYgnWyur0EuXNFRE2dnZohfSuKdbN2+q7vZPHz/SIhtLy9LSUvb8pKQk5l3Pnj1T+/dCP0y/RG/DpFu4JSeVSq3MzZ/HxGh4zZZNm+a6uwtWJAAwQYsXLvRv7u+nJQ/u3+/WubOJPx/HoHq7vLy8441SWsPTw4OOkksXL+bM9/L0NG++4KfhkaAa3WloaOD5F+UFApOxmT93rseSJS0tra6uduje/cTiZY1oOgAAvLl6/O+uNjbFxcVqlyoUimlTpqzy8RG4VPpJsKfkSktLrS0saFucu3Xfvn5lOnrYs2sX32UwaAhMxiY+Pt7K3Fxtu2+qpFauWOHUrVvyAs/cXQfk1TXCFw8AjF7l+w9fF68YYd/D3c1N7aDg+/ft62JjY6ANWXROsMBEOYm5I1ZZUaGcKZfLp0yaxMzHX0QzBCYjFHLqFJ1GHD1yhH2NNy8vb/H8+XZWVg+mz0lbvIKmrM1B9T/Vn/8BALRP2ZNnaUu8qYZ5Nmt+vy5dxo8a9ZE1rGx+fv4aPz+qoFpqkmyCBAtML1+8YIJRdHQ0M6empmaVjw/Ty8DkCRP4LkAHpaen7929e+aMGWNcXKZNmRKwdu2D+/eFvKuLwGScbt286dCrV8/u3ee6u3ssWULfBKqhxvQf8HDGXCYtMVPm6g3SPHT8DQC6UXLnAbuGee2+aK7TYAszM6qO/ho5clDzULt0tIt7/17skuoRITuunD1zJm2rs7W1t5eX36pVTo6ORw4fnjN7Ns0MCw3luwDtVlVV5b96dZ/evYMCAx9GRb16+fLC+fP0QaJiDx006O2bN8IUA4HJaNXV1VFsGtXcfQN9N6iGamxoKDh1jl2d0ZTh7V+XKRG7sABg2BQKxc/rtzjVS7rX6tqUtIKCgu3btlFFRAfmL8nJYpdU7wgWmH41D5P14vnzk//+u2/v3svh4cXFxZLMTNp6t86dKZQIUIB2KCsrG+3iMtHVldMkjvLfiuXLqfDWFhbKa2a80nFgys/PV9sr+cEDB9rawXlTz+ihoWrnp6amqt06ApOqDc2Dzzx98oT5r6Kx8eeVG9xKbblfTfJXccsJAIaL0tKPs5c4FUvmmo3S3P/UxlQFUUW0KzhY3HLqJyEDk6p1/v609S2bN4uy9dZYMG8elTBGXX8HFPKY475Dz57shlk80XFgevnihdpeyQcNGDB54sS29nHe0kSZSe3WEZhUhYeFeXp4fP78mT2z9P4jTtWWttSn8g0ukgNAmykaGvJPnOZUKRL/TbLC/3UIl5WVdeL48TevX4tYTr1VWVmZnZ1dwf/xXpVEIrEyN+9qa9u+vg8FQAcvpt3VoQMH1L5g+bJlgvXthFtyJqri1RsKSb/VcUu8y2Neil0uADAkjfX1eYdPcNJS1qaghjIMr6EvFArFsqVLB/TrF89qfc/MnzljBh009XkI5LDQUCYPdba2VttVVfDOncwLAtau5bswCEymqzoxOc1jJaemK76FcXkBoFUapdLv+45w6pCcwN1yfW0NY5oKCwuZSOG/ejV7/qmTJ2nmal9fsQrWGszNXGYqKytTfcGO7duZpev8/fkuDAKTSatNSUv3Ws2p74ou36AzD7GLBgB6TV5bm7vnEKf2yN19UF6DDt70i1wuZzoOYLeMDgsNtezUadvWrRq69tYHVLz1AQEjhw8/f+6c2hcwLZxoOhMSwndhEJiMHO2NxMREDa3hpNm5mb4BnFqv8HyYQr+/RQAgInlVdU7gbk698f3AMUW9+iEvqCIKvXTp08ePApfTIDyPifH08IiKiuJvE8nJyTOmTetiYzPqr79mzphB/7rPmhX76hV/WxQGHdrolzJvHrvwx48ffG8OgcnIcZ6SU6u+6GfWhkBO3Vfwz5mW6j4AMGXy6ursrcGcGiPvyD8aBlzCU3IaCPaUnFQqzSPfvxvNEH779+1jLi/t27NHgM0hMBm51gQm0lBalrVxu5oasL5emHICgEFoKK/I3sZNSwWnzmm+Jo3ApIG43QoYroRPn2wsLZn+vYQZzVecwCSTyW5GRHh7eU0YP3782LEL5s07dvRoTk5OB1eLwKSqlYHpV/NZY86OvaotEjBMLwAw6ot+StZu5tQSP05f0HoHH4FJAwSmdigvLx/c3HH8lEmT1I5XyAcRAtPzmBin/v1nzpgRevHiq5cvo6KiNm3YYGttbdmp08b16+vq6tq9ZgQmVa0PTKSxrk5NK87g/fKqar7LCQB6rv5nceaajZz64eeVVj0jgsCkAQJTW8lkshnTptFOm+fuXiPgQwZCB6bwsDAKRqo9TyYmJDBNt9ymT5e195IGApOqNgUm0iiT5R06zqkTs7fskFfiOWEA0yUr+KEmLV2NaOUTtQhMGiAwtQl95FZ6e9Me8/P1FeZOnJKggeljfLyVuflEV1e1S48cOsS03jp+7Fj71o/ApCooMLCHnd3zmJjWv6Wp397jJ1Uy0876klL+ygkAekv2ozDTdz23z7abd1q/hvfv3o0bPfrc2bP8FdJwxcfHB+/c+RrdoLfOzh076EC/W4zwLWhgWjh/Pv2ePbt3V9v9VFpaGhOYHPv0aV8/QAhMuqJobFQdpjdr/baGUjV/OAAwYrK8gky/Ddy0dCNS7HKBKTodEkJH+VMnT4qydUEDEyUhJhIdPnhQdalUKlV26FlYWNiO9SMw6RBlpsIL4dzxodZtkRXw3tcFAOgJaXZuxsp1nHqg7HG02OUCU/QwKsqyU6dL/I8Z1xJBA9O4MWOYPKR2YOSamhplYGpfD1QITLqlUCh+Xong1JUZq9YhMwGYAmlOboa3PzctPWnD/X0AXUlNTe3etWtLI+xWVlZOmzKF7zIIGpji4uLGjR49e+bMgoIC1aWJiYlMWuplb9++ztoRmPhQfOsup8bM9A2Qfs8Xu1zAOzpvefXyZcyzZ+wpOjr60cOH9+/di7x1K+LGjfCwsF3BwV7Ll1dX41FKo1InycrwWfvbd3+Jd/nzdvYNXVtbm52drbYxBuTn57988SI3N1fsgugvykPDBg/W0L75nxMnVnp7810MPeq4cu/u3f+5/rRpU/vWgMCkqq1PyalVGvWYm5n81lN9qqtCgh46dfKkZadOyou+mqfBTk5G03cwkLpMSfoK7iiT5S9i271CPCWnAZ6S02qdv7+GPESJk47+V69c4bsY+hKYSktLe9jZ0Yemd48eP4uK2rcSBCZVOglMpPT+I+69uRVr6iTZOikk6JsXz5+3MirRZGFm9uTxY7GLDDqj5k7cEu+K2LcdWScCkwYITJq9evmyn4NDVZX6rm3y8vJGu7jQDhTgEp2+BKYlixbRL2xjafnyxYt2rwSBSZWuAhMpf/5KNTPVpmV0fM2gb6ZOnmxlbh4UGPg8Jub9u3f2dnarfHy+JCcz0yw3t9kzZ9IPSUlJ796+TUlJEbu8oDNq7sR5rKx8H9/B1SIwaYDApEFjY+OI4cP7OjhQtcOZ3KZNGztqFDM6ypCBAwUojF4EpjPNDwpaduoU9eBBR9aDwKRKh4GJVLx8Teea7Mo0fblfbXqmTlYO+mP40KHXr11jfk5MSKCPUGpqKvPf2trarra2l8PDxSsd8IXOf7h34pZ4dzwt/UJg0giBSYPo6OjWXOdeu2aNAIURPzDR7qCo1MXGpuNX9RGYVOk2MJHKt3FpS31+y0xefrUpabpaP+gD9lMX27dtm8TqbPbB/fv0iVL73AYYtJov39I9fXV7J04JgUkDBCYNPsbHnz93Tuv09csXAQojcmBKSkrq1rlz7x49aKd0fG0ITKp0HphI9afENI+Vv2WmFatrvuC+jBGqr6/v6+DAHstopbe384gRIhYJ+EDnPKppqfLNe12tH4FJgyuXL/ewszsdEiJ2QUALMQNTTk5On969Bzk5ZWboph0MApOqkpKS7OxsnQ/mXBWfwM1Mnr41yV91uxUQ3c2ICHs7O+WQ2JSf6L9q+1EDw6XmTtxSn8q3cTrcBH1yysvLOzK2OoDoRAtMxcXFw4YMGTl8uA6v7SMwCanqI/c6E/2XZopdLtAZhUIx2sVl29atyjmxsbH0FYuKihKxVKBbau7ENX2RE8QuF4DeEScwyWSySa6uLs7OFJt0uFoEJoFVJ3xOX7aKc2KKqtZo3I6MtDAzy8r6X4dbO7Zvp69YaSmGYTYS1YnJnK8whafqz0I0BwEwOOIEpjV+fs4jR7ZU7R4+eLB9j8shMAmv5mtK+nI/7ulp3EexywUdVV1d7eToOG/OHPbMP//4Aw2YjEbTl1fl2lL152SxywWgp0QITBcvXBg4YEBRC71TUjXt0KsX+6S29RCYVJ09fXqWm5tO2tS3pOZbqppL+vG4zmTY1vn707fpduT/BqUvLCykOX6+viKWCnRF4Dtx79+9Gzd69LmzZ3lav0G7GRExZOBAEceUhVYSOjBJJJJe9vbfvrbYOnjH9u10Xtu+lSMwqeLjKTlVtanp3Mp3qQ8yk+G6cvky07sJe/AvpkOBvbt3i1gw0AnVm+l834nDU3IaoFsBQyFoYFIoFNOmTPnnxImWltL5R0dOYRGYVAkTmEjtt9R0Lz9uZorj8coW8CQ2NpbpPHf82LHs+VSh08w5s2eLVTDQCTXdgnj60veX140iMGmAwGQoBA1Mkbdu0cdi8oQJnA7OZ86YMXniRCdHR+ak9sb16+1bPwKTKsEC0y8mM6m2Z/qA9kyGRCKR2DeP6kjT+XPn2IvOnj7NzF+8cOGB/fvZT8+BoVD7cGt1wme+t4vApAECk6EQNDC5jhvXmj7O8/Pz27d+BCZVQgamX0yHLmq6v3snzNah4xYtWMB8DceOGiWTydiLcnNzu3XurPyeTmR1/w0GofJ9PLebfqGeiUNg0gCByVAIF5gaGxsvnD+vtYPz8LCwdm8CgUmVwIHpF9NlsJfKcFQ67QQP+BO4dSt9YNymTVP7WMb7d+/Gjx1rb2fn6eHR0nMboJ+q4uK5d+K8/Pi+E6eEwKQBApOhEH8sOR1CYFJFR7jQS5cE3id1mZKMFWv4G2YBeFVZWSl2EUDHqj584g6b7ekr5LDZVAVRRfTpI27Qq5Gamko7JzkZHTroOwQm4AXVxWoyE64zAQiu8t0H7p24FatrU9PFLheAgUFgAr7UZUq4A1R5rKz+xHvzUgBQqnj1hnNtKcPHvy6zPR3dAeinUydP5uTkCLAhBCbgUZ0ki3udCePNAQilIvbtb98+Sksr1khzcsUuF4AuHTl82MLMbMG8eTHPnikUCv42hMBk5J7HxJw4frx9PafrRF2GJMPbX6WvgU9ilQfARJQ/f8W9trRybV2WECfiqqgKoorozevXomxdzyUlJdHOiedzPAbjVlhYyHQdR9OwIUNOh4RUVlTwsSEEJiMn/FNyqtS3AX//QcQiARi3sifPONeWMn3XS7/niVUePCWnAZ6S67iV3t7szom62toGrFunYUyR9tEemGJfvQq9dMkgps7W1k0fu2PHRC+J/kzTp0yhfbJ50yZxi3H+yNHD4yYdchn3v2nU+DNBO0XfP5gwGd8UsmHTb981l3GHXadc+PtvEYtEVVBTN/Hu7qLvHD2cfFasoJ2zdPFi0UtiuNOunTvVdus4ferUu3fu1NfXCxSYvL28WtPbJCZMmDBhwoQJk75N/fv2ffXypRCB6ezp054eHgYxWVlY0K6ZP3eu6CXBpHbymDN3bn+nOX37s6cl06aLXjBMmifmZvfihQtFLwkmzRN9mzjfr5n9nTzmzRe9YJgw8TrRcd/CzEw1KjXdm1u79usX3XRnjzZMIKja1HRuXwNLfdA/k577688/6ZvFUztK0JXqhM+cvrwzVq2TfPyExjFg9HYFB3Oi0rAhQ0JOnarQaa2FwARCq03PTPfyQxtwA7LO33+Wm1tNTY3YBYEW1XxN4aYlH/+67KZn4oYNHnwzIkLsAgLwpa6urnePHkxOsjAzmz937rNnzxobG3W+IQQmEIHafsArYt+KXS4Ag9Q06PXy305C0j196zIlzNLArVu72Njo6q4EgL65dvUqHfp72Nnt2L49Ozubvw0hMIE4qIrnZqbFK5CZANpKmp3L+So1jRPHGlU3KiqKKsYB/frl5+eLWE4Anqz29b0cHl5XV8f3hvQuMNFX+tbNm4cOHAgKDNy3Z094WFjru1JAYDIsdRmSdK/V3OtML2LFLheAwZDmfM9YuY6Tlmq+pLBfU1lRYWtlRXXjX3/+KWRDtC/JyVonjPQMBkSPAtOb169nTJtG3+ouNjYTXV29PD2XLl48dtQoy06dhg0ZEnrxotZbkghMBqepT0sff25meonugPULHdXKy8t5HXMA2kH6PS9j1W9pqXm4RjVDD01r7o+NpoXz50ulUgHKJpfLtT7s3btHDwQmMCB6EZhqa2u3NHdr1r1r11MnT3KatVMA2rJ5My2d5OqalpamYT0ITIZI9YZC0725V2/ELhf8D56S00P1RT8z12zkPjzx5r3aF+/ft08ZU6giLf75k+/iURLSGphOh4TwXQwAHRI/MFEtPH7s2KaHAAcPTk9Pb+ll9+/ds7G0pEQVF9fiI+gITAaqLjsnY+Va7nUmZCa9gcCkbygtSfw3cU8zWr40++D+fXZSGezklJKS0tKLdaKwsJA29PLFi4z09JYmXfW/rLcUCsXr168P7N8fsHYtnfaHnDqVnJwsdqGg/UQOTNXV1RNdXZlrS5kZGZpffPb0aXqlXZcuH1sYpBCByXDVSbIzfLiZqTz6udjlgiYITHql/mexJGArJy2VP3+l4S0Jnz5xru70sLPTSd/HLcnKyqKtlJSU8LcJPfc8Jmbk8OHOI0YEBQb+8/ffWzZtGtCvH+0TOuR9/vxZ7NIZm++5uZ8+flR7uzk3N5cyA4WNjm9F5MC0zt+f+fZevXKlNa+fPGECc3qk9pdHYDJo0pzvmb4BnMNA2ZMYscsFCEx6pKG0TLJuC/drou3Ugrnew5msLSzCw8J4KufXL19oEzKZjKf167njx451tbWNvHWLPZMO5yuWL2f2/ONHj8Qqm5EpKytbtnQp85Hu6+CQmJCgXJSXl+c2fTqzyN7O7vXrjraOFTMwUQD/T4+cgwfL5fLWvIU+ZMxbNq5fr7oUgcnQNTVi/f2Rn6ZTZ1xnEhsCk55oqKjM2hzE+YKU3Huo9Y2NjY3WzSNH0WTZqdOeXbu2bN7su3LlogULeLrO9OHDB1traz7WrP9uRkTQft4VHKy6iDLTwAEDaGm3zp3Ry0PH0ZnAsCFDFsybl0gSEpxHjKAYwFzXjI+P79m9u4uz87Nnz25HRtI+Hzl8eAc3J2ZgGu3i0tamfwqFope9Pb3Fytxc9dOGwBQXF3fi+PFDBw6wpwP79+/bs4e+vUGBgVu3bKGsSR+vIQMH8ndZmI6sdOZ65NAhTkn279tHNfXOHTsCt26l+tpv1apxY8b4rFjBfq8sr4D74A+dQD/FdSYxITDpA3llVfbmHdy0dOdBK98+2MmJ/ogzpk6lypPXm3EM2oRDr158b0UPNTQ0OPbpQ7t6Q0CA2hfs3b2bOfAF79wpcNmMTEVFhfPIkTuDgpQP8H7Pze1sbb1v796Ub9962NmNGz26qqqK5p8JCWH2eQfvEYsWmF6/fq28Mtymrjm9PD1b+rSZeGA6dvSo1sdSlFM/B4fa2lo+ikGRnzmFauUUcuoUZw3S73mZvuu5menRUz5KC62RmppK52+tvAwMfGhKS1uDuWnp9v3Wr2Hq5Mm2VlaZGRljXFxO8D+63KOHD4cNHsz3VvRQSkoKU7NRMFV7aGOudjCNmYQvnjF5+uTJlk2bODNpr9In3Kl/f8oDlJ+YmUyPRbbW1h086okWmLy9vJT349r0RmVUpEM+Z5EpB6a4uDjVLELfWGZihnGmHyw7dWr63FhZ8XcHfc7s2Zxi0NaVJVH+l1k0fepUtU/KNGcmbnum0qgnPJUZQJ/Jq6qyt3HTUtHlG21ayYrly/ft2UM/rPLxWentzU9J/yfy1q2xo0bRD9FPn9Lmhg8dam9n59Cz52gXlx3bt2e0/EC0oaNIqqz66Iiu+gLlE4vOI0eqXcOPHz9evXwZ8+wZe4qOjqYMev/ePdqxETduhIeF7QoO9lq+XCdtmY0JcyWVprNnzihnxr1/v87f/9mzZx1cuWiBqU/v3sxvtWTRoja9kT6Cyo8j51tnyoGJAijFoLOnT5eWljY0NLiOG+exZIlyKdVQTOVFZDIZf6OoSjIz6U9A57JJSUlSqZT5Yyn7ai8rK2NntcqKCg19IcryCzJXb+BmpvtoKQmmRV5bm71tF+eLUBxxu63rCb14kXmG6PDBgwJc27gcHk6BYJabm4uz8/lz596/e0fVdWxsrO/KlczJ297du421K1SmDTJFQ7V3sZXn/Avnz1ddeurkSea0tjUThQNc92UrKChg9oxT//58dFohTmBKT09X/sl3q2sZp4HygidNVAWwF5lyYArcuvV2ZCTzM/OhobqJ+S/VSgP69Tuwf78AxaCzq0ULFjC3jUnA2rXTpkxRLqWzos7W1q0f8Uf2oyjTj3tvDteZwHTIq2tytu/mXlsKvdqRddLXcNiQIToqYIsollEtdOTwYdVUdPLff5kKfNOGDXwXQyx0ctjS0BTz5sxhfv1rV7l/xxfPn7e+MYOFmdmTx4/5/1UMydUrV5idQ58xPtYvTmB69PCh8q9+po2dvebl5Snfu2fXLvYiUw5MbP/+88+QgQOV9dTH+HjaLfEtdF7FH5lM1rN79+vXrinnzHV3nzN7dttW8qNQtYO+0geoJgRFBz/KvgKMbQls8hr1aamDF2aiHjzo3aOHrgrZkrDQUKqIWlo6Yfx4pg6P6fBdEsNCJ/xMA4nhQ4eqXgKZOnmylbl5UGDg85iY9+/e2dvZrfLxUY67N8vNbfbMmfRDUlLSu7dv+e561BAxTZxpH/LUl704gelyeLgy9Fy5fLlN76XkrnzvOn9/9iIEJsbI4cPZjTqDd+6kL57wV25vR0b2sLNT9iRWWVlpY2l56uTJtq6n/mcxdwiIxSuKb0Qa6/V8PYSn5IQnr6rOCdrD+dj/OBfa8Y/90ydPqKrUSSHbTXkIcJs2TdySCKmhoWHyxInmzeOlJiaqGfKPUpTyDDMxIYFemZqayvy3tra2q60t7TfhimtoaPfSEYd2mvusWTxtQpzAREdNZei5GRHRpveWlpYq3+vt5cVehMD0q7l3K8ol7Hz9x7BhbW0ophOTXF23bd2q/C/zbMiXdo0M0NS1sUpnfUVh17S/E3QBgUlgTe2WtuzkfOALz4fp5CThwf37Dj17dnw9HUE5wPy/nUKZzvi7u4ODmWduXr54ofYF7Lt427dtm8RqasY0FS8oKOC9lAZL2bPjhfPnedqEOIFJeaOxqR3SpUttem92drbyvVs2b2YvQmD61fz8JLtnI4lE0o77nh33prnbCPZwN1Qqiv8t3dfXqmnwrLWbVTMTrjMJAIFJSJSWcoP3c9PSxcu6+qhfu3rVqX9/nayq3eizpKzG1V5rMT6Rt27RL9vV1rY1z2rV19f3dXBgN3Ja6e3tPGIEnwU0eMqBQ+iox9MmxAlM7Cfd/jlxok3vpW+X8r1HjxxhL0Jgio6Opj2Q8OmTcg4zAJ/AIz5SzT7R1XXenDnKOZSTetnbL164sCOrrS8uyVq/TU1mam8Ig1ZCYBJM0524Hfu4d+JOX9Dhh/zIoUMTxo/X1drah6oIpikPTRrGUzcab9+8sbWycujViz1whwY3IyLs7eyUrQYpP9F/ORcIgE0mkzGdWtO//G1FnMCUk5OjDD1qBznR4Pq1a8r3Uj5gLzLxwCSVSocOGqTsPoAx1929e9eu7b6u0z7hYWH0h2B39cQ0PNfQCLSVmgbSUhl2tODkWQWereUTApMw5NXV2YHcHgR0eG2J4bNihd+qVTpcoVop375F3LhRWFiodim7ZYXR19i0KyjuDBk4sJVXPujPPdrFhd2eITY2lnZUVFQUX0U0KPShCgoM5Nx3U3YHOkmlywyKm3SuruzEsiNE64eJDu3Mrzd18uQ2vZE+RswbrS0sOH12mXhgCli3rumK3d9/K+fQB6WrrW1b93AHSTIz7bp0ob8F+xkQphfy2FeaBlRvJXllVU4g99Ghgn/PIDPxh6onTw8PnrqGB0ZDRYXqB1tX7ZbYxo8d29br+m31JTmZ6ZzWsU8ftU2UmKF5afpj2DBeSyI6Oh7179vXeeTIoqKiVr6Fjv0WZmZZWVnKOTu2b6d9RSmTnzIaGKYrL5pePP/PMKONjY3jRo9memZ2mz6d/WL6+qzx8xv111866ZZJtMC0ZfNm5nemI7ryQarWcHF2Zt6o2hLelANTWGgos1uSkpKUM6naMm+hezSeUOU4cvhw2uiiBQvY85csWkQzdTV6nbymRrUrv7xDxxUNDTpZP4DA1I6q++PsJZ3fbq6rq7O1snoew+/gjExLAGZS9lvLdvHCBWYpvZLXkoiL6sM///hj3JgxZWVlrXxLdXW1k6Mjuz0DoZWgAZPSlEmTOB+tPbt2mTd3+jVi+PB+Dg4N/z0Q0Dneal9fh5492emzI0QLTNnZ2cr+TFvf+xa713nO/bhfJhyYKGgrz+fY56NMf1c9u3cvLi4WoBgU4We5ualtyz+meaDlfXv36mpbTR367dirkpn+bpTJdLUJAGE0lJerjqrblJZ4eKAh5tkzAR5Me/vmjfJ8WLVDE+aWEy2l8/4G4z3JaWxsnD937vixY1u6l031YXl5OWcm03JZ2Qvxr+Y7UDTHz9eXx7IalMDmu0wBa9fSBykxIWHxwoX032NHj9KinUFB9PMqH5/op08vnD8/fOhQOvx9+vhRV5sWLTD9am72z3yp2IN4aMZcmaTprz//VK1NTDMwUfS0b+58gqbDBw+yF8U3txyiyaFXLzplGTtqVOsvC7fDlk2bmM31sLOr+L2OUA4wN3niRLfp03WSnBpr63L3HOIcZnJ27JPjzhEYjobSMjWPMly6wtOjDJs2bGhr57Hts3TxYvq+DxwwQLWiPrB/Py1ycnTMy8sToCRi2R0c7DxihGokYmRlZfV1cODsnCuXLzP1JPuKFNOhwN7du/ktruGggwvTnRVzzWWiq+vr16+ZRTU1NcwiZqJDXk5Ojg43LWZgKi4u7ufgwPxiremeh4J2Z2tr8+Z+PNU+a2CagUl5c5NCJKeVCZ3isD899AL+uq8sLS1VPvZy4/p1ztLo6GjlUs75U0c0ymTfDx5XyUx7G9A8Wafy8/Mplwv86IApaHrwc4O6Bz/56SyDvv5U5XJGlOKJVCpdvmwZfdkXL1z49csX+o3o8/Pt61fmPJnOmn7yefImumfPnjn07KnhYESB0svTkz0nNjbWxtKSds74sWPZ8/8+fpxmChNzDQV9lpKSkh5GRaWrjOJMn7Q3r1+Hh4W9eP5c51WWmIHpV/NHxNrCgj4N48aM0dySiX7zee7uansTUDLNwEQfi0FOTp4eHmrvu1VVVe0MCnKfNSt4505en3KiP9CSRYuGDx166+bNlspJL/BYskS3gyEoGhryj/3LOeRkbdxOJ+463IqJw1NyfJDlFWT6Bqh2Yc95mUQi2bplCx1EBzs5jfrrL79Vqx4/etS+IwG9kQ7JJSUluih+q1BumD93Lp3o2lpb04muvZ0dpQSjHw6Fal3HPn00PNR2unn8XXa7BforK28UnD93jv1iZYMwip4H9u9nPz0HAhM5MP1q/kZ1tbWlTwOdjrSUmSgzBv734bidO3a0tCrTDEygkMsLTp7lHHgk67bUF/EynJAJQmDSuea0xB1YuvjWXfZr6urqAtato1PKld7eTx4//vz589MnT+jUiDnDbEc71jmzZ6/y8dHdL9FaVIGXlpbW1NTocJ0/fvx49fIlZS/2FB0d/ejhw/v37kXeuhVx40Z4WNiu4GCv5cs5z1PzjTZq16XLkcOH6dyePR05dIhOXN2mTzdX6V9x0YIFyrtIst8bYubm5nbr3Fl5eX6iymPzIBjxA9Ov5kFznEeMYD4rqu2zvufmMh+mLjY2mnusRmAyWYrGxsJzoZzDT+bqDbJ8jCSgAwhMuiXNzs3wWcv5uJbc/e2CBIWMuc3X1DcEBHDeznQg0r9v35Z6OVLrS3KyhZkZ+ylaw3Xq5EnlM0Nap8FOTkKOpEnhjNKS1lIN6NeP/S7mioDbtGlqm5m+f/du/Nix9nZ2FJd5bYcKmulFYPrVPGwefQf6NjdpGuPisj4g4NjRoxTGF8ybR18M+p4vXbxYa+stBCZTRgeYovBrnINQxqp1dZm6eaDUlCEw6VBtWka612rOB7U0ivukMDOShtqHiCknMS0CVyxf3vrtLpw/f567e0dLrwdePH/eyqhEE+2o1j+FrRNMOy2tk2p/CqYzpp7h0pfAxKivr3/18uX+ffu8li+ns6tFCxYErF0bevFiKx+mQGCCknsPOYei9OV+temZYpfLsCEw6UpN8td0T1/OR7TscbTqKykMMYf8s2fOqC4dPnQoLbKxtGzlUfbd27cUHQQeIoknUydPtjI3DwoMfB4T8/7dO3s7u1U+Pl+Sk5lplpvb7Jkz6YekpCT6rVNSUsQuLxgP/QpMHYTABKT0/iNuZvL0rYpv1RBOoBYCk05Uvv+Qtmzlbx/OJd4VL1+rffHG9euZwBRx44bqUgoNzNLWZCA6EXVxdvZfvbqjv4B+oLB4/do15ufEhATaCampqcx/a2tru9raXg4PF690YMwQmMAIlT9/lbbUh3Nkoplil8tQoVuBjqt49YY+hL99Jj1WVn9KbOn1dXV1N65ff/Xypdql48eOZQJTZkaG1k3v37evl729ML3XCoD9Ody+bRt77DCmy6KCArRcBF4gMBkMOmhdu3pVdbp65Yra+Zqn3cHBaucrz9XaUZKDBw60tRinTp488fffqvMjb93q4O6qik+gA5JKS5EnHVwtQDuURj3mXvVctqo6oZ0jBTU0NPTs3p3quqGDBmlNsUlJSdYWFjcjItq3rZbosBKgKTQ0tB3VUX19fV8HB3qZcs5Kb28MIQL8QWAyGC9fvJgyaZLqNGnChMkTJ6pdpGHq5+Cgdj679mlrSQYNGNDWkjiPHDli+HDV+TNnzOj4WIlN7UVUWtf+vBLBU6+AAGoV34hU064uJa3dK7x/7x5zeSn66VPNrywvLx82eLDPihXt3lZLdFgJaJg0V0eUAu3t7Orq6pj/Uo1B/92yebPOf1kABgITGLO6TEmGjz/ncFVw8qyi3mhHsAL9oba3i4yV6+ok7X9y83turmOfPp2trZXteFoil8vnurvTCUmtMQ4WxAxIx+7FMTY2lup/Dd1FAnQQAhMYOVl+gcR/E+eg9f3g8cY6TT3LA1tQYKCnh4dRHnf501hfX/DPGW5/qms3S3PbXEFJJJKUlJTinz9vXL/ez8Fh4fz5rRkha0NAQM/u3dm9IxqT25GRFmZm7N47mZFGS0tLRSwVGDcEJjB+akfsyg7c1VCmflxM4MBTcm1Fcfz7/iNqep8vbvOwJPX19cz4UTT16d07PCxM8yhSjH1793a2to59ZZwPOlRXVzs5Os6bM4c9888//kADJuAVAhOYBHlVde6uA9wDWMBWWSG6zdUOgalNGioqsrfsVA3o9CFs3wpzcnIkmZmVlZXfc3NPh4Q49e+/ds0aDReZ8vLyetnba23hZLjW+ftzxvAuLCykOX6+viKWCoweAhOYikaZLO/wCdUGJejWUisEptajCC5Zt4V7C3jfEbnuhjNLSUnpYmND043r11t6jRF3G33l8mXmeltZ2f8G2GY6FNi7e7eIBQOjh8AEJkTR2FjwL7dZSbqnb3WiMQywxR8EplaqTcvI9A3gfMDyT4Q0/j6casftCg5mQsOjhw91u2Y9Fxsba2NpSb/4+LFj2fP/Pn6cZs6ZPVusgoEpQGAyQnRyGXrpkreXl9u0aQvmzQveuTMuLk74YshkspsREVSMCePHU+1GJTl29GhrGqvySqFQ/Lx6k3NIS1vqg24tNUBgao3qxGTVYU+KLl1R8NDhZ0pKChOYnBwdhRxZth3i4+N3BgXNmzPHbfr0ld7eoRcvtvuDJJFI7O3smF/8/Llz7EVnT59m5i9euPDA/v3sp+cAdAWBydhQVKL94OLsHHLq1P1798LDwuisixkH+3turmDFeB4T49S//8wZM6h+fPXyZVRU1KYNG2ytrS07ddq4fr2y6xSxlD58ws1Mi1cU34hEF01qHT54MGDtWtH/avqs7NFTbkfei1eU3HnA0+bog2prZcVEhE8fP/K0lQ7Kz8+fPXOmjaUlfeWvXb167+7dvbt397K379a584Xz59uxwkULFjC/8thRo2S/X7TLzc2l1SrH3J3I6v4bQFcQmIzKkcOHaQ9MnjCBc9K5dcsWmj+gX79WDmPcQZTSKBipdjqXmJDQxcamKb1Nny7T9U2KtqqKi09ftorbRdM/pxs73GEmmBTKLsU3bnPzd4eH4vlZVPT+3TsND8Q59OrFhIMnjx93ZEM8+fHjh5OjY1PvmtHR7Pk5OTnMVaID+/e3dZ2BW7cy535FRWqe1aDdNX7sWFq5p4eH2hcAdBACk/H4+uVLS8ObV1dXM0llwbx5fBfjY3y8lbl5S2d4Rw4dYgp5/NgxvkuiVW1aRsbKtZxDXe6uA/KqKrGLBoaB4nX+3yGqHXlrGCSuNejEhqnNKAG0dGqhvMKUmNihbfHEY8kSKlvP7t1VF+3bu5cWWZiZtePamBE3Zgf9h8BkPJhqiKadO3aoLqXTMmZpLs835hbOn89UlOxnWJTS0tKYYjj26aMP979kP4qyNgdxDnhZ67dJ8/LFLhrou4by8pygvarPXUqzO/oVUw5+QhOdgai+oPjnT2XPTA0NetdtPYU8y06dmFRUrfJ44Ns3b5jCr0YvAGBQEJiMx+GDB5lqaMf27apLV3p7C/NYDSUhZkNUHtWlUqlUeSQoLCzktSStpLaLpnSv1TVJX8Qumr5ITU1NTEzU88bFAqNUlLlmIzdqbw6q/1nc8ZVnZ2cz3xErc3O1d+WuXrnCvODkv/92fHM6R2XubG1NxbO1slI9ccrKymIKP8bFRZTiAbQPApPxqK2tDTl16vy5c2prWK/ly/8zYOfvTQp0btyYMcyG1I6CWVNTowxMP3784LUkrdd0Y+XEaTWPzsW8FLtoegFPyXFUf0pUHde56Wau7jpboq8P8zVJ+faNsyg/P79/3760aOH8+XqbYuPi4g7s36/2dmFGejrzq7mOGyd8wQDaDYHJVDA5hk77+B5riSrKcaNHz545s6CgQHUpVaBMXdnL3r6Rh8et262p6e7NO6qPzhVevIyRehGY2EofPFZ9IO7HmYsKnWYX+nbs3LHDwsxsjIvL+3fvysvL6WRDkpl5OiTEoVcvy06dggID6w3zAYWnT578p/FAUJDYZQFoAwQmk5D+31O6o0eOiFuSvbt3/+f606ZN4pZErcq3cWnLVnK7ad57uN2DWhgHBCaGoqGh8Fyomg4pbt7haYtfv3xZ4+fX18GB+dZQTqL8FLxzp0EPqctc7Xbs06e4WAe3LwEEg8Bk/Orq6iZPmEB7ZuuWLeK2sy4tLe3R/ERx7x49furrc79qH50z8WbgCEy/mpp4V3zfxx1PN33Zqso37wXYekVFBX19dHhR9sePH69evox59ow9RUdHP3r48P69e5G3bkXcuBEeFrYrOJjyjWrD7XaLioqiz1L/vn2/ff2qq3UCCAOByThVVVUVFRVRPPoYH+86btzwoUOpchS7UL+WLFpEfyAbS8uXL16IXRZN6n8WZ23crtIM3K8qTk97COQbAlOdJFu1iXem3/q6DInYRWuPUydPMk+xtWYa7OTUwZZSeXl5UqmUMt/fx493trbesnkzegcAQ4TAZJyGDR5Mu8LawsKuSxeqpPShrcOZkBDmnkLUA766P9ahxtq6/GMn1dx8uXWXj5Eu9JyJB6aKF7GqY55kb9tVX8Jvc0CevHj+vJVRiekXoIMdY96MiGDWQ9P0qVO/JCfr6hcBEBgCk3GiWun169dpaWmJiYlHDh8ePnTo5o0bRdwz0dHRFJW62NjoZ6/EalEw+nn9lmpmyjv0tw4fhjIIlZWV5eXl+tBvlsAUDQ0/r0SofgYoTDfWtdgHt56bOnmylbl5UGDg85iY9+/e2dvZrfLxoRqDmWa5uc2eOZN+SEpKevf2bUpKSgc3V1VVRRGNKiKqjh49fDjX3X3yhAm3IzEMERgeBCaTIJFIenbv3tXWVnW4EgFQzdutc+fePXqo7YJPz1V9+JS+gvsAedaGbbICfekTAXjSUFqWu+eQ6pgnTVcZDflgT6dP169dY35OTEigOjM1NZX5b21tLdUSl8PDeS0A02PC9KlT0egbDAsCk6lQjuatrCuFkZOT06d370FOTpkZGUJuV4ek2bmStZu5TZo8fStexIpdNOBLbUpa5uoN3D/6itXVCZ/FLlpHsVuOb9+2bRJrFKMH9+9TFaG2QxAdkkqlTPe2ziNHUkTjdVsAOoTAZCoqKioszMxo/3Tv2rVKqLHS6Axy2JAhI4cP57sK5pu8qvr73sNqemk6F4pemoxPadSTtKU+nL+1JGCrLE9nH+P8/PxrV6+qTgcPHFA7X/MUGhqqdr7y0pFa9fX1fR0c2FedV3p7O48YoavfUQNmGN2WxgMA0E8ITCaEaQlO0907fHUbwyaTyejk1cXZ2TguvDc1aVLXnCUnaI9ORsPQZ+v8/We5udXU1IhdEN7Jq2vyjv6jptHS8ZNynV4LefnixZRJk1SnQQMGTJ44Ue2idkyab8HfjIiwt7Orq6tj/kv5if6rtoN+nWNagtP05x9/CLA5AJ1AYDIeFFAyMzI0PADsOm4cU0mdDgkRoDxr/PycR45sqWNxOrM0iMflOCrfxqk+MJXh418VZ3jNs1rPRJ6Sq8vMkqzbotpoqeTOA+N7NFKhUIx2cdm2datyTmxsLP2Vo6KidLL+Hz9+aDhTio6OZuoiqrR1sjkAASAwGQmpVMoc1VycnVu640Ync0wlRad3fJfn4oULAwcMKGqhd8rq6mqHXr2ysrL4LgYfpN/zsjYFqV6E+HEutFEmE7t0vDD6wETpofTh0zQPbifvmb7ra75wh3IzDrcjIy3MzNjfwR3bt9NfWSdDJ0XcuEErt+zU6eqVK2pfcPfOHaYuGjZ4cMc3ByAMBCYjoRyjTUMesm/uZZsqsvx8fjutlkgkveztNfTkS1Wzk6Mjr2XgVWNtXcGpc6qZKXvzDul3I+wQ3LgDk7y6Ou/ov6p/zdxdBwy0pyWt6IyFvoDz5sxhz6QTKl01YFowb57mPMT0ykZTwNq1OtkigAAQmIxEZWWltYXFf4Y3V9d1CvP8ME0+K1bwWhI6WZ82Zco/J060tPTc2bNUDD9fX16LIYCyJzGqA881PT338rXYRdMxIw5MNV9TMv24T8PR9PNKhG4H09Ur6/z96Q96OzJSOaewsFCH38qdO3Ywtc2ypUvVvmD+3LlMp/8d7+cJQDAITMZDOa7ti+fPOYukUunkiRNp0R/DhunkkrsGkbdu0YYmT5gwy82NPc2cMYPKQOe1TCFvXL/OazGEIc3JzdoQqLZjQ3mlQI8iCsAoA5OivuHnlRuqf7uMlWurPxl83wEaXLl8mfkOlpWVKWcyHQpQHaKTTRQVFfXu0YOpB1SXPn70iCkAnTvpZHMAwkBgMh4KhSJ4586m3k1GjFCOP0BRKfrp03FjxtD8ObNnCzDkrbJpueaJ79uCgmmsk6odwT7Td311YpLYpdON0yEh9NGiz5LYBdGZOkl29rZgk7oNx4iNjbWxtKQv4PixY9nz/z5+nKkidLWhlG/fmMdyTxw/rmxVmZOTs2/vXlsrK6qrBe4QDqDjEJiMTWJCgpenZ1dbWytz8+5du9IO6WVvv2zp0phnzwTYemNj44Xz58+fO6d5Cg8LE6AwQqp8H5/hs1ZNS/AzFxtr68QuHfyPorGx5N5D1W6W/tOFt549DSeTyW5GRHh7eU0YP54izoJ5844dPUqxo31rk0gkTENGmuhryF6k7Nh28cKFB/bvZz891261tbUn//2Xzt9otd06d6agZmFmNuqvv44eOSLAmRuAziEwGSe5XC7JzKSTvB8/fhj0MA4GpL6kNGfnPtXMJFm3peabpv4DQTCyH4U5QXvU/I3Wbq5NSRO7dFzPY2Kc+vefOWNG6MWLr16+jIqK2rRhg621tWWnThvXr1f2n9R6ixYsYFLR2FGjZL8/0Zmbm0uZRnkBeCKr+++OKy0t/frlS1ZWlil05QVGDIEJQGcUcnnJ7ftqrl4sXlF4IVyOo4V46E9T+vCJah9aNBWcOq+HVwHDw8IoGKn2PJmYkNDFxoYqOrfp02Vt7MaC6V/bbdo0tf19vH/3bvzYsfZ2dp4eHi11CAJgyhCYAHSsLjNLbUvwzDUbqxOTxS5dezyPibl75059fb3YBWknaU5uTtBeNe27ffwr3+tjj6Mf4+OtzM1busxz5NAh5jrQ8WPH2rrmysrKDpcOwEQhMAHoXqNMVnjpStoSb7XXM+TV1WIXsG0M9yk5+kMU37it9prf9wPHGkrLtK9CDAvnz6cd3rN7d/aDbEppaWlMYHLs0wc33AEEg8AEwJfab6mSgK3qLmysrXzzXuzStYGBBqaa5K9qL/VlrFhTEftW7NJpQklIw9i0UqlU2diosLBQ+OIBmCYEJgAeNdZJi0Kvqh6zm65w7DsiK/ghdgFbxeACU31Jaf6JELW7Pe/w3/XFJWIXUAumHxCa1A6FW1NTowxMP34YxkcIwAggMAHwrjYtQ+2ljjSPlUVhV/W/MbgBBaZGmazkzgO1jbszfQMMZYzkuLi4caNHz545s6CgQHWpchykXvb2jXrWDwKAEUNgAhCCoqGhpQfo6EBe8eqNvvUAxGYogakqPkHtPVCmQyyj6Xtd2af/lk2bxC4LgAlBYAIQjvR7fu7ug2qP6NmBu/SwKyCG/gcmaV5+3qHjands1oZtertj26G0tLRHc+eTvXv0QPePAEJCYAIQlEKhqHwbl7FynfoWNoeOy/LV3IWBljSUlv04e0ntA4npXn4ld6Ma29hZkZ5bsmgRM2ztyxcvxC4LgGlBYAIQgbyyqvDiZbV36Ghm4blQ4x7RTCfk1TU/r95U21ypKXoe/aehvFzsMurYmZAQquIsO3WKevBA7LIAmBwEJgDRyPIKvu87ovZ4n7ZsZVH4tYYKdDOohrympuT2/YwVa9Tfg9scVP35i9hl1L3o6GiKSl1sbJ48fix2WQBMEQITgMgq38Zlrd+m9tif7uVXdPmG8V0paTd5bW3JnQctRaVMv/Xl0c8VcrnYxdS9pKSkbp079+7R42O8YTzoB2B8EJgAxKdoaCh9+CTTN6Clq02F58PqfxaLVbx57u5DBg6sqhLzKbOGisqf129lePurT5aevsU37zTWSUUsIX9ycnL69O49yMkpMyND7LIAmC4EJgB9Qcd7Ouqne/mpj01LvH+cviDNzhW+YOI+JSfLLyi8GJ6+bJX63bLUp/DSlYZy/X2Cr4OKi4uHDRkycvhwtX0yAYBgDCAw5eXl7d29O3jnTq2vRGACI9BQUVkUfr2ltsw05e45VPXho5A3nkQJTIrGxurEpJY6C2Ci0o8zF0W88CYAmUw2ydXVxdmZYpPYZQEwdXoamKRSaWJCwvFjxyZPmGBhZkaVtZ+vr9Z3ITCB0WgoL9ccmyT+m4pv3hFm+FiBA5O8qqo06nHWBvXtupQPEsp+GP8wamv8/JxHjiwtVf/I5OGDB/G4HIBg9C4w1dTUUAVhZW6uHCyJmRCYwARRbGp6cn7Fag3RIe/w31XxCYqGBv6KIUxgUsjl1Qmf8/8OSVu2sqXflxJk4cXLskKT6LDx4oULAwcMKGqhd8rq6mqHXr2ysrIELhWAydK7wPSr+fISxaaSkpJvX79u37YNgQlMnLyquvT+o8w1G1uMTYtXZHj7F54Pq01JUygUOi8A34GpLjuHcmGm3wYNv2Cmb0DJnQdyURueC0kikfSyt6c6sKUX7Ni+3cnRUcgiAZg4fQxMbMU/fyIwARBFfUNF7NucoL0aUgUTLAovXan5lqrDa0737t4NvXRJptMusxWNjbVpGUXh1yTrtmj+jbI2bi+PedlYX6/Dres5Sr3Tpkz558SJlpaeO3u2lbUiAOiKvgcmOqlFYAJgq5Nk/Th9ocWnxpTXnFasKfj3TOXbOL3q/VJeVVX5/kPBqfMZq9QPDsPuTKHgnzM1X1L4uGam5yJv3aKqbPKECbPc3NjTzBkzJk+c6OToyNSKN65fF7ukACYEgQnAIFHyKHv8LHvzDi2xo3nK3hpcFH6t6mNiQ5kIfWDKK6to00VhV6kYagd9U72kVHr/kV7lPIG5jhvHacSpdsrPzxe7pAAmBIEJwLDVZWYVhV+X+G9qTXJqiiPrtxX8c6bkXlTtt1Q+mgQpFIr6ktKa5K+lDx7nnzituenVb5fEfPwp1dWmZZjgJSW2xsbGC+fPnz93TvMUHhYmdkkBTAsCE4AxaOq16HPyjzMXM1Zqu9Wl0uYpO3DXj5DzxTfvVMS+pZVIs3MbSssU9f9rAqW2DVNjXR29rC4rpybpS8WL2OJbd2klOYG7Kfe0qQAZ3v70xuqEz7w+6AcA0EEITABGpakxdWr6z6s3s7ftalNwaemqD01/dLenb9Znv/US/03MnI6vOWvj9qLw61RUKrDY+wwAQDsjDExPHz9O/K/q6mrlUgpSib/LyclRLq2rq0tUIWd1ppyRns5Zyu4fpaysjLM0OTmZXTb6L+cF9Bbl0oKCAs5S2pxyKRVDtWxUYOUL6BfhLGWnRtoJqm9nly01NZWzlN2tMP3MWUqvZ79ddeXY7Xqy2+NfvHx9Kezpxm335y55MWuBMqwkLfC8N82dM31b5KV8wdOZ89iLBtp2oW/Wp3kezNIP85Zy3vtg+hx2GKL/cl5Ab2m6mrV6Q/7fp1Jv3aGCGfFuZ8OnHbudsxS7XfTd3m5tC0z0296/d09XU3Z2ttYttiMwsaf3794pl24ICOAs9fbyUi799vWraptKdsczUyZN4iz9+/hx5dJbN29yllJhNJeN3qJcuis4mLOUNqe6E9gTu4MW+kU4S+mXVS6lnaD6dnbZmF522NPFCxeUS+lnzlJ6PfvtqivHbtfD3e61cFHFqzeFF8NzgvY+nDlf9e3KPETTWPuenKUDbTt/nr+MWfrP2Imcpd0sLNiBif7LeUHYzl31RT9NcLfj047djt2ub7u93doWmGpqalR3Qbun0IsXtW6xHYFp/ty5nh4ezJTOCpXhYWHK+cx09vRp5VIKy5ylNNXW1ipfsG/vXs7SqKgo5VL6GHGW+q1axS4b/ZfzAvYnj/7SnKW0OeVSKoZq2djnGfSLcJayG4TSTlB9O7tsQYGBnKXPY2KUS+lnzlJ6PfvtqivHbtfz3f49K9tjztzFU6ctHDN2wZ9/zRsybE6/AZ8XLFMmng3DRs7p2589nRs/Rbk0YspMztLF/Qc2LVq2MmtTUN7Rf5dPmkwrX+ru7rlkKXa7cik+7djt2O36sNvbrW2BSaFQ/Cwq0tXEvvDYErRhAhCGvLKqLjOrOjG57Mmz0vuPim9EFp4P+3HmYv6J05yp4NS5wovhP6/fKrn3sCz6efWnz3XZOQ3lgg7NCwAgMCNsw4TABAAAALqFwAQAAACgBQITAAAAgBYITAAAAABaIDABAAAAaIHABAAAAKCFvgemsrIyJjCt8vHR+mIEJgAAAOCDvgemp0+eMIFpxPDh7D6v1EJgAgAAAD7oXWBqbGx8/OjR7cjIf//5Z8miRZadOil7BndydNy+bdvVK1einz79/Pmz6nsRmAAAAIAPeheY6uvrV3p7a52OHT2q+l4EJgAAAOCD3gWmjkBgAgAAAD4gMAEAAABogcAEAAAAoAUCEwAAAIAWCEwAAAAAWiAwAUAbKBSKj/HxFy9cOHrkyNkzZ6KfPq2sqND6roKCgrdv3jx98iQ5OVkmk2l9PX2L/zlxwn/16nX+/qdDQpgvdWNjI2233SWXSqUJnz7l5uaqLqqrq0tMSMjMyGj3ygHA6CEwAegFChMuzs79HByePH6supSCgq21NU0fPnxgz5fL5fRGXU2avzsNDQ2XLl4c0K+fhZmZU//+QwYOZDpIo1JtXL++pdj0+NGjSa6uNpb/v707cYriyuMA/q9EkOEKojjc6rKiHBEEPIIiooAHqEQEChEvQFeJXG5KTsU7Aoorlxshla0BDYeA2RIFS9gsYEBqGAVn0AIEsr/wQu/YAz2DIE05309NWdbr916/7hqdb3W/fr1wrYeH36ZN9jY2VpaWJxMSlErlVDvKSE+n+nQqDuzfH3f8uJ+vr5GBwQYfnxWOjrQ7SjY6ndAPld+7J12yhA04NiaGzhu3ic4t+6+DPqG7d6tvAgDgIDABiC8zI4N+znfv3ElfYKmV1djYGK8ChQa23j2v/O3bt9zKrjP/3Lh+faoRKhSKzeNjiAgP/23iIk1FeTklG9bWzcWFBqPehJJHdFQUbdoZHNzT08MK6dDulpVZWlg42tk9efJEc0eXcnOpSciuXeq9NT99yvZOn2NHjuh8Xv90Pidnkbl5fl5eZ2dn+rlz1EnymTO/j1+yoky2cMGClKSkf//yy5bNm2lTWWnpdPsHAH2AwAQgstwLFxZbWDxraZHL5SwTqFQq9QoUVtiS9/TDz2tL+YPiy2x9BgYGJh0hlbu7utIATsTH8zbFx8VxeYsORH0TZREqDPD3p1zCa9XY2CgxNKSjbmluVi+nkGRhZmYikWher6IjPX3qFHVIrQYHBwXP6AcoJznY2v6nrY0rOXr4sLmJiVKpPHTwIHVYdOcOFfb397NrZh8RyABAHyAwAYjpXz/99KWpaUNDA/29/uFD+gJ7eXry6uTduEHllDAoOYkxxt/3h4XRAFY6Ob1//563qVcut5VKWWCiY+HK/3H7Nhvzb5PNGSJxx45RBRdnZ/X0UymTUeEad/epRpKRnk4V/nn3ro4jp5gVGBCgnpa4vezasYP+TJiIgLU1NewoUpKTdewcAPQKAhOAmHYEBdHvN/s7u4F17epVXp1tW7eyu1RzPro/NNTXsyRBuW3SCu3t7ZR+SoqLuZKhoSE7a2vhMVOI0bwuVVpSQiUOtrYC4zl08GDsoUPTP47/u11YyL2eknul9/DwcEpS0reJibzLewAADAITgJi4KcZKpdLM2NjEyKivr0+9gqK3l92Pm3Qy+BzYGRzM4sWrV690bMJyj0DGYpaPT+J2tLfn5mw1NDSwhomnT2tezWI0J3hNV0x09J9ztr7/foZdAYD+QGACmBeuXrlC3949ISG8cjYJ2kYqnSpAfFLv3r0zlUhoAH9Ztkz3VpEHDrBEwnumj2dHUBCr1vz0KSsZGhqi/MQK/7pixXdnz1KEmtaMJV2wXVhZWs56zwDwGUNgApgXXJydedOAGNdVq6j89KlTooyqrraWxZcAf3/dW7m5uLBWU01gYmJjYjSv9Dy4f9/M2Fj92T0TI6MNPj7fJiY21Nd//JFMaJu4FRh3/PjMewMA/YHABCC++1VV9NW1XrqUdxnpYV0d+3VvbW2dtCHVL7pzZ7Y+//31V17/ZaWlbAB7Q0N1Pxw6ENZK0dsrUC0hPp5V++7sWfXyZy0tW7dsmXThg6/c3GYYm87n5Ohy9QsAgAeBCUB82wMC6Kv7txMneOXsSS4fL6+pGn7qdZiuX7vGNk1ryjmbnESfSZfV5hyJjWXVMjMyNLdSesvOygrctm2Rubn6ICWGhhXl5boPhme9tzfLpjOfCwUAegWBCUBkz58/Z1HgWUuLenlra6suc5Pfzh7NaVLFRUVsDGvXrNH9iLhFJoWv4uwNDWXV2EpIUxkZGXn8+HH6uXPc2uJSKyveIpk66u7uZj2Ef/PNRzQHAH2GwAQgspMJCfS99dBYfGhPSAiVm0okAm8R+dS4NQWMDAze6PDOOCYzI4O1KsjPF6hGh8yqyeVyXbodHh5m54o+som1GKaFux935fLlj2gOAPoMgQlAZCw3JHy4iLZsfHFF0a+FjIyMcK9gu3zxonBl7qGzrq4u9sqUsH37pqqsUqkohFEdfz8/VjI6Ouq6evWPFRUCuxgbG2OnS+AtLkxxUdGJ+HjekpWrV65kx1JVWcmrf++HH1KSkoT7BAB9hsAEILIN69bR93aDjw93R6y6unqlkxPLHPerqsQdXkpyMgsZSxcvFliKqbu722n5cm6WN5ufZGZs/Pr160nrF+Tns27ZKudMVGQkHbXwilPs2brSkhKBOh0dHaxzOqtcIUUx9swd/fmwrk69fktzs6WFBd4iBwACEJgARFYpk7G1jtxdXY8ePrzp66/XenjcunnTYHwpas0Xsc2xwcHBVRMXZtZ5e/f392vWefTo0TIHB/WLZCqVasX41G9KTpr1ua285RKoH3b7r/DWranGExgQsHDBAuG7eD8/eMAGHLp7Nyvp7Ox0sLW1t7G5OL6ulfpy6rU1NdZLl55MSBDoEAAAgQlAfC9fvrxZUJCSnJydmUm/32NjY+zNtWmpqWIP7Q/0b4p78M3R3j4/L49dSVIqlVWVlWF79xp+8cWekBDenPG2tjab8dfM8e7lDQwMsKcC6Rg1p5l/5eZmMLHY99DQEG9rY2MjpaXjR48KD5iGZyKRUPDq6up68+YNxSMrS0uKfR0dHZS0LMzMpFZWlMl+rKiIiY6mwUeEh+OhOQAQhsAEMO+8ePFCYmhoYmSk42zoOdDX1xe2b5/64/2UM7hbdZRIJg0cdCDsiTnfjRspNt0uLEw+c8bO2trM2Dg7K2vSJtQVt4tlDg6UIJuamhQKRU9Pz+VLlyjrBAcGagYpTbQvU4mEDfJLU1PaLzd3vrSkxGT8kh5bpODC+fMzPDkAoA8QmADmnajISPomz8ObRK2trWmpqdu2bvXy9PT38zsSG3u3rEz4BSOUiqoqKyPCw6mJi7NzgL9/Tna2QBCkWLNk0aL4uLhKmexibm7Q9u0Ukli48XB3v1lQoPulIIpZMpns5wcPNNcgoAGUFBdTqOru7taxNwDQcwhMAOKorq62lUqjIiJ45bU1NQbj725TqVSiDEx0vGlSlJB65fKPW3gJAGC2IDABiIN7k5r6RY6+vr7ljo6WFhbc+2gBAGA+QGACEAebrOO9di1XIpfLvTw9KTA1NTWJODAAANCEwAQgjtHR0b+npdlIpXbW1hvXr9/s67vSySktNVX3BbUBAGDOIDABiEyhULS3tyuRkwAA5jEEJgAAAAAtEJgAAAAAtEBgAgAAANACgQkAAABACwQmAAAAAC0QmAAAAAC0QGACAAAA0AKBCQAAAEALBCYAAAAALRCYAAAAALRAYAIAAADQ4rMKTBdzc7MyMpRKpdgDAQAAgM/KZxWYAAAAAD4FBCYAAAAALRCYAAAAALRAYAIAAADQAoEJAAAAQAsEJgAAAAAtEJgAAAAAtEBgAgAAANACgQkAAABAi/8BleCvq8xhfukAAAAASUVORK5CYII=" alt="교과서 93쪽 · 예제 6 그림" style="max-width:min(100%,420px)"></div>
+                        <p class="text-base">경계: \(\cos x=\dfrac12\)에서 \(x=\dfrac{\pi}{3}, \dfrac53\pi\). 곡선이 직선 아래에 있는 부분(빨간 부분)이므로 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{\pi}{3}\lt x\lt\dfrac{5}{3}\pi\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 부등호에 등호가 있으면 경계값을 포함(●), 없으면 제외(○). \(\tan x\)는 점근선 \(x=\dfrac{\pi}{2}, \dfrac32\pi\)를 반드시 뺀다.</p>
+                </div>
+
+                <!-- 4. 치환 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        치환으로 익숙한 꼴 만들기 — 범위도 함께 바꾼다
+                    </h3><span class="src-chip src-chip--block" data-src-label="자체 정리 · 치환을 이용한 삼각방정식과 부등식" data-src-rel="">자체 정리 · 치환을 이용한 삼각방정식과 부등식</span>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <ol class="space-y-3 text-base font-medium">
+                            <li><strong>① 각을 치환</strong> \(\sin\left(x+\dfrac{\pi}{6}\right)=\dfrac12\) → \(t=x+\dfrac{\pi}{6}\). \(0\le x\lt 2\pi\)이면 \(t\)의 범위는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{\pi}{6}\le t\lt\dfrac{13}{6}\pi\)</span></span></li>
+                            <li><strong>② 함수 하나로 통일 후 치환</strong> \(\sin^2x+\cos^2x=1\)로 \(\sin\)이나 \(\cos\) 하나만 남기고 \(t=\sin x\)로 놓으면 이차방정식·이차부등식이 된다. 이때 \(t\)의 범위는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1\le t\le 1\)</span></span></li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 치환하면 <strong>범위도 같이 바꾼다</strong>. \(t\)의 범위를 빼먹으면 해를 놓치거나(①) 없는 해를 만든다(②, \(|t|\gt1\)인 근).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">그래프의 교점과 위·아래를 읽어 기본 방정식·부등식을 푸는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-기본 삼각방정식</span> <span class="src-chip" data-src-label="교과서 93쪽 · 문제 10" data-src-rel="그대로">교과서 93쪽 · 문제 10 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. \(0\le x\lt 2\pi\)일 때, 다음 방정식을 푸시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\cos x=-\dfrac{\sqrt2}{2}\)</span><span class="sub-q">(2) \(\tan x=\dfrac{\sqrt3}{3}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 기준 해 하나를 찾고 대칭(\(\cos\): \(2\pi-\alpha\), \(\tan\): \(\pi+\alpha\))으로 하나 더.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\cos\dfrac34\pi=-\dfrac{\sqrt2}{2}\) → \(x=\dfrac{3}{4}\pi\) 또는 \(x=\dfrac{5}{4}\pi\)</span><span class="sub-q">(2) \(\tan\dfrac{\pi}{6}=\dfrac{\sqrt3}{3}\) → \(x=\dfrac{\pi}{6}\) 또는 \(x=\dfrac{7}{6}\pi\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-기본 삼각부등식</span> <span class="src-chip" data-src-label="교과서 93쪽 · 문제 11" data-src-rel="그대로">교과서 93쪽 · 문제 11 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. \(0\le x\lt 2\pi\)일 때, 다음 부등식을 푸시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\sin x\gt\dfrac12\)</span><span class="sub-q">(2) \(\tan x\le -1\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 경계를 방정식으로 찾고 그래프에서 위·아래를 읽는다. \(\tan\)은 점근선을 뺀다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 경계 \(\dfrac{\pi}{6}, \dfrac56\pi\), 직선 위쪽 → \(\dfrac{\pi}{6}\lt x\lt\dfrac{5}{6}\pi\)</span><span class="sub-q">(2) 경계 \(\dfrac34\pi, \dfrac74\pi\), 점근선 \(\dfrac{\pi}{2}, \dfrac32\pi\) 제외 → \(\dfrac{\pi}{2}\lt x\le\dfrac{3}{4}\pi\) 또는 \(\dfrac{3}{2}\pi\lt x\le\dfrac{7}{4}\pi\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-정리해서 푸는 꼴</span> <span class="src-chip" data-src-label="자체 출제 · 계수를 정리하는 기본 삼각방정식·부등식" data-src-rel="유형">자체 출제 · 계수를 정리하는 기본 삼각방정식·부등식 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. \(0\le x\lt 2\pi\)일 때, 다음을 푸시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(2\sin x+\sqrt3=0\)</span><span class="sub-q">(2) \(2\cos x\ge\sqrt3\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 먼저 \(\sin x=k\), \(\cos x\ge k\) 꼴로 정리.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\sin x=-\dfrac{\sqrt3}{2}\) → \(x=\dfrac{4}{3}\pi\) 또는 \(x=\dfrac{5}{3}\pi\)</span><span class="sub-q">(2) \(\cos x\ge\dfrac{\sqrt3}{2}\), 경계 \(\dfrac{\pi}{6}, \dfrac{11}{6}\pi\) 포함 → \(0\le x\le\dfrac{\pi}{6}\) 또는 \(\dfrac{11}{6}\pi\le x\lt 2\pi\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">치환으로 이차방정식·이차부등식, 각의 평행이동을 다루는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-이차식 꼴 삼각방정식</span> <span class="src-chip" data-src-label="자체 출제 · sin x에 대한 이차방정식" data-src-rel="유형">자체 출제 · sin x에 대한 이차방정식 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. \(0\le x\lt 2\pi\)일 때, 방정식 \(2\sin^2x-\sin x-1=0\)을 푸시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\sin x=t\) (\(-1\le t\le1\))로 놓으면 \(2t^2-t-1=(2t+1)(t-1)=0\), \(t=-\dfrac12\) 또는 \(t=1\).<br>
+                            \(\sin x=1\) → \(x=\dfrac{\pi}{2}\) / \(\sin x=-\dfrac12\) → \(x=\dfrac{7}{6}\pi, \dfrac{11}{6}\pi\).<br>
+                            답: \(x=\dfrac{\pi}{2}\) 또는 \(x=\dfrac{7}{6}\pi\) 또는 \(x=\dfrac{11}{6}\pi\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-각을 치환하는 방정식</span> <span class="src-chip" data-src-label="자체 출제 · 각을 치환하는 삼각방정식" data-src-rel="유형">자체 출제 · 각을 치환하는 삼각방정식 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. \(0\le x\lt 2\pi\)일 때, 방정식 \(\sin\left(x+\dfrac{\pi}{6}\right)=\dfrac12\)을 푸시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(t=x+\dfrac{\pi}{6}\)이면 \(\dfrac{\pi}{6}\le t\lt\dfrac{13}{6}\pi\). 이 범위에서 \(\sin t=\dfrac12\)인 \(t\)는 \(\dfrac{\pi}{6}, \dfrac{5}{6}\pi\) (\(\dfrac{13}{6}\pi\)는 범위 밖).<br>
+                            답: \(x=0\) 또는 \(x=\dfrac{2}{3}\pi\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-이차식 꼴 삼각부등식</span> <span class="src-chip" data-src-label="자체 출제 · 함수 하나로 통일하는 삼각부등식" data-src-rel="유형">자체 출제 · 함수 하나로 통일하는 삼각부등식 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(0\le x\lt 2\pi\)일 때, 부등식 \(2\cos^2x+3\sin x-3\ge0\)을 푸시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\cos^2x=1-\sin^2x\)를 대입하면 \(-2\sin^2x+3\sin x-1\ge0\), 즉 \((2\sin x-1)(\sin x-1)\le0\).<br>
+                            따라서 \(\dfrac12\le\sin x\le1\) → 곡선 \(y=\sin x\)가 직선 \(y=\dfrac12\)과 같거나 위쪽.<br>
+                            답: \(\dfrac{\pi}{6}\le x\le\dfrac{5}{6}\pi\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 치환한 변수의 범위로 실근 조건 따지기</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-실근을 갖는 조건</span> <span class="src-chip" data-src-label="자체 출제 · 삼각방정식이 실근을 갖는 조건" data-src-rel="유형">자체 출제 · 삼각방정식이 실근을 갖는 조건 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. \(0\le x\lt 2\pi\)에서 방정식 \(\cos^2x-\sin x+k=0\)이 실근을 갖도록 하는 실수 \(k\)의 값의 범위를 구하시오.</div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                \(t=\sin x\)로 바꾸면 이차방정식이 되는데, 많은 학생이 <strong>판별식 \(D\ge0\)</strong>만 쓴다. 그러나 \(t\)는 <strong>\(-1\le t\le1\)</strong> 안에서만 의미가 있다. 판별식으로 얻은 근이 이 범위 밖이면 \(x\)는 존재하지 않는다.<br><br>
+                                <strong>바른 길:</strong> \(k\)를 분리해 \(k=g(t)\) 꼴로 만들고, 곡선 \(y=g(t)\) \((-1\le t\le1)\)과 직선 \(y=k\)가 만나는 조건을 그래프로 읽는다.
+                                </p>
+                            </div>
+                        </details>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(1-\sin^2x-\sin x+k=0\) → \(k=t^2+t-1\) \((t=\sin x,\ -1\le t\le1)\).<br>
+                            \(g(t)=t^2+t-1=\left(t+\dfrac12\right)^2-\dfrac54\): 최솟값 \(g\left(-\dfrac12\right)=-\dfrac54\), 최댓값 \(g(1)=1\) (\(g(-1)=-1\)).<br>
+                            답: \(-\dfrac{5}{4}\le k\le1\)
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="자체 출제 · cos x에 대한 이차부등식" data-src-rel="유형">자체 출제 · cos x에 대한 이차부등식 <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. \(0\le x\lt 2\pi\)일 때, 부등식 \(2\sin^2x-3\cos x\lt0\)을 푸시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① \(\sin^2x=1-\cos^2x\) 대입: \(2-2\cos^2x-3\cos x\lt0\) → \(2\cos^2x+3\cos x-2\gt0\).<br>
+                ② 인수분해: \((2\cos x-1)(\cos x+2)\gt0\). \(\cos x+2\gt0\)은 항상 성립하므로 \(\cos x\gt\dfrac12\).<br>
+                ③ 그래프: 곡선 \(y=\cos x\)가 직선 \(y=\dfrac12\)보다 위쪽, 경계 \(\dfrac{\pi}{3}, \dfrac53\pi\) 제외.<br>
+                ④ 답: \(0\le x\lt\dfrac{\pi}{3}\) 또는 \(\dfrac{5}{3}\pi\lt x\lt 2\pi\)
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 주기가 짧아진 삼각방정식의 해의 합">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 자체 출제 (유형) · 주기가 짧아진 삼각방정식의 해의 합</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (5분) · 핵심: \(2x\)로 치환하면 범위가 \(0\le 2x\lt 4\pi\) — 그래프가 두 바퀴 돈다 (공학 도구에서 본 '주기가 짧아지는' 장면)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(0\le x\lt 2\pi\)일 때, 방정식 \(\cos 2x=-\dfrac12\)의 서로 다른 실근의 개수를 \(m\), 모든 실근의 합을 \(S\)라 하자. \(m\)과 \(S\)의 값을 구하시오.
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 치환과 범위</strong>: \(t=2x\)로 놓으면 \(0\le t\lt 4\pi\).</li>
+                    <li><strong>STEP 2 — 두 바퀴에서 해 찾기</strong>: \(\cos t=-\dfrac12\)의 해는 첫 바퀴에서 \(\dfrac23\pi, \dfrac43\pi\), 둘째 바퀴에서 \(\dfrac83\pi, \dfrac{10}{3}\pi\).</li>
+                    <li><strong>STEP 3 — \(x\)로 되돌리기</strong>: \(x=\dfrac{\pi}{3}, \dfrac{2}{3}\pi, \dfrac{4}{3}\pi, \dfrac{5}{3}\pi\). 따라서 \(m=4\), \(S=\dfrac{1+2+4+5}{3}\pi=4\pi\). <span class="text-red-600 font-bold">정답: \(m=4,\ S=4\pi\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \(\cos 2x\)의 주기는 \(\pi\)이므로 \(0\le x\lt2\pi\)에 그래프가 두 번 반복된다. 해도 두 배(4개). 해들은 \(x=\dfrac{\pi}{2}, \dfrac32\pi\)에 대칭으로 짝을 이뤄 합이 \(\pi+3\pi=4\pi\).</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 그래프의 대칭으로 구하는 해의 합">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 자체 출제 (유형) · 그래프의 대칭으로 구하는 해의 합</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (5분) · 핵심: 해의 값을 몰라도 대칭축으로 합을 구한다</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(0\le x\lt 2\pi\)에서 방정식 \(\sin x=\dfrac23\)의 두 실근을 \(\alpha, \beta\), 방정식 \(\cos x=\dfrac23\)의 두 실근을 \(\gamma, \delta\)라 할 때, \(\alpha+\beta+\gamma+\delta\)의 값을 구하시오.
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — \(\sin x=\dfrac23\)</strong>: 곡선 \(y=\sin x\)는 \(x=\dfrac{\pi}{2}\)에 대칭이므로 \(\dfrac{\alpha+\beta}{2}=\dfrac{\pi}{2}\), 즉 \(\alpha+\beta=\pi\).</li>
+                    <li><strong>STEP 2 — \(\cos x=\dfrac23\)</strong>: 곡선 \(y=\cos x\)는 \(x=\pi\)에 대칭이므로 \(\gamma+\delta=2\pi\).</li>
+                    <li><strong>STEP 3 — 합</strong>: \(\alpha+\beta+\gamma+\delta=\pi+2\pi=3\pi\). <span class="text-red-600 font-bold">정답: \(3\pi\)</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \(\sin x=\dfrac23\)을 만족하는 각은 특수각이 아니라 값을 직접 구할 수 없다. 그래도 개념 2의 대칭(\(\alpha, \pi-\alpha\) / \(\alpha, 2\pi-\alpha\))만으로 합은 정확히 정해진다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">삼각방정식은 이항해서 풀 수 없는데 그래프로는 풀린다. '방정식의 해 = 교점의 \(x\)좌표', '부등식의 해 = 위·아래의 범위'라는 관점이 왜 강력한지 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"대수적으로 풀리지 않는 삼각방정식을 두 그래프의 교점 문제로 바꾸어 해석하고, 사인·코사인 그래프의 대칭축을 이용해 두 번째 해를 체계적으로 찾아내는 방법을 스스로 정리함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">치환할 때 범위를 바꾸지 않거나, 경계값 포함 여부·\(\tan\)의 점근선을 놓친 실수가 있었는가? 그 원인과 고친 과정을 적어 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\sin x=t\)로 치환한 뒤 판별식만으로 실근 조건을 구하는 오류를 범했으나, \(t\)의 범위가 \(-1\le t\le1\)로 제한됨을 깨닫고 이차함수의 그래프와 직선의 교점으로 다시 해석하여 스스로 교정함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">공학 도구로 \(y=\sin bx\)의 \(b\)를 바꾸면 \(\sin bx=\dfrac12\)의 해의 개수는 어떻게 변할까? 규칙을 추측하고 확인해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"공학 도구에서 \(b\)의 값을 바꾸며 주기가 \(\dfrac{2\pi}{b}\)로 짧아질 때 한 구간 안의 해의 개수가 \(b\)배로 늘어나는 규칙을 발견하고, 이를 치환한 변수의 범위로 설명함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_18_탄젠트함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_20_중단원마무리_II_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 19차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_19.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

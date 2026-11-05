@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 II-2. 사인법칙과 코사인법칙 · 차시 23 삼각형의 넓이 · 교과서(미래엔) 109~112쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 삼각형의 넓이</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_23';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "23차시 삼각형의 넓이";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II-2. 사인법칙과 코사인법칙</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">23차시: 삼각형의 넓이</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_22_코사인법칙.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_24_중단원마무리_II_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 99쪽 · 준비 학습 · 109쪽 · 생각 열기" data-src-rel="">교과서 99쪽 · 준비 학습 · 109쪽 · 생각 열기</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <div class="bg-white/70 p-4 rounded-xl border border-indigo-100 mb-4 text-base">
+                    <p class="font-bold text-indigo-800 mb-1">준비 학습 — 삼각형의 넓이 (중학교 수학 3)</p>
+                    <p>(1) 두 변이 \(8\,\mathrm{cm}\), \(12\,\mathrm{cm}\)이고 끼인각이 \(60^\circ\)인 삼각형의 넓이: <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(24\sqrt3\,\mathrm{cm}^2\)</span></span></p>
+                    <p>(2) 두 변이 \(6\,\mathrm{cm}\), \(6\,\mathrm{cm}\)이고 끼인각이 \(135^\circ\)인 삼각형의 넓이: <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(9\sqrt2\,\mathrm{cm}^2\)</span></span></p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> \(\overline{AB}=8\,\mathrm{m}\), \(\overline{BC}=10\,\mathrm{m}\), \(B=30^\circ\)인 삼각형 모양의 협소 주택 평면도가 있다. 들판이나 집터에서 정확히 수직인 '높이'를 재기는 어렵다. 높이를 직접 재지 않고 넓이를 구할 수 있을까?<br><span class="text-base text-slate-500">① A에서 BC에 내린 수선의 발 H: \(\overline{AH}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(8\sin30^\circ=4\,\mathrm{m}\)</span></span> &nbsp; ② 넓이 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac12\times10\times4=20\,\mathrm{m}^2\)</span></span></span></p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 높이는 <span class="calc-accent font-bold">변 × 사인값</span>으로 바뀐다. 오늘은 ① 두 변과 끼인각으로 넓이 \(S=\dfrac12ab\sin C\), ② 세 변만 알 때(코사인법칙 → 사인), ③ 한 변과 두 각을 알 때(사인법칙 → 변), ④ 외접원의 반지름으로 나타낸 넓이까지 다룬다.</p>
+            </div>
+        </section>
+
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        높이 \(h=b\sin C\) 와 넓이 공식
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 109~110쪽 · 삼각형의 넓이" data-src-rel="">교과서 109~110쪽 · 삼각형의 넓이</span>
+                    <p class="mb-3 text-slate-700">A에서 변 BC(또는 그 연장선)에 내린 수선의 길이를 \(h\)라 하면</p>
+                    <div class="grid gap-3 text-base text-center">
+                        <div class="bg-white p-4 rounded-xl border border-indigo-100"><p class="font-bold text-indigo-800">(i) \(C\lt90^\circ\)</p><p>\(h=b\sin C\)</p></div>
+                        <div class="bg-white p-4 rounded-xl border border-indigo-100"><p class="font-bold text-indigo-800">(ii) \(C=90^\circ\)</p><p>\(h=b=b\sin C\)</p></div>
+                        <div class="bg-white p-4 rounded-xl border border-indigo-100"><p class="font-bold text-indigo-800">(iii) \(C\gt90^\circ\)</p><p>\(h=b\sin(180^\circ-C)=b\sin C\)</p></div>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-center mt-3">
+                        <p class="text-sm text-slate-500 mb-1">\(\triangle ABC\)의 넓이를 \(S\)라 하면 (두 변과 그 <strong>끼인각</strong>)</p>
+                        <p class="text-2xl font-bold">\(S=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac12ab\sin C=\dfrac12bc\sin A=\dfrac12ca\sin B\)</span></span></p>
+                    </div>
+                    <div class="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+                        <p class="text-sm font-bold text-indigo-900 mb-1">🎯 보기</p>
+                        <p class="text-sm text-indigo-900">\(a=4,\ b=6,\ C=30^\circ\)이면 \(S=\dfrac12\times4\times6\times\sin30^\circ=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(6\)</span></span></p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        세 변만 알 때 — 코사인법칙 → 사인 → 넓이
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 110쪽 · 예제 1" data-src-rel="">교과서 110쪽 · 예제 1</span>
+                    <p class="mb-3 text-slate-700 font-bold">\(\triangle ABC\)에서 \(a=5,\ b=7,\ c=8\)일 때 넓이를 구하시오.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-base space-y-2">
+                        <p>① \(\cos A=\dfrac{7^2+8^2-5^2}{2\times7\times8}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{11}{14}\)</span></span></p>
+                        <p>② \(\sin A\gt0\)이므로 \(\sin A=\sqrt{1-\left(\dfrac{11}{14}\right)^2}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{5\sqrt3}{14}\)</span></span></p>
+                        <p>③ \(S=\dfrac12\times7\times8\times\dfrac{5\sqrt3}{14}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(10\sqrt3\)</span></span></p>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-2">생각 톡톡: 삼각형의 내각은 모두 \(180^\circ\)보다 작으므로 사인값은 항상 양수 — 제곱근의 \(+\)만 택한다. (탐구, 112쪽) 헤론의 공식 \(S=\sqrt{s(s-a)(s-b)(s-c)}\), \(s=\dfrac{a+b+c}{2}\)로도 \(\sqrt{10\times5\times3\times2}=10\sqrt3\).</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        한 변과 두 각을 알 때 — 사인법칙 → 변 → 넓이
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 111쪽 · 예제 2" data-src-rel="">교과서 111쪽 · 예제 2</span>
+                    <p class="mb-3 text-slate-700 font-bold">\(\triangle ABC\)에서 \(a=20,\ B=72^\circ,\ C=78^\circ\)일 때 넓이를 구하시오. (단, \(\sin72^\circ=0.95,\ \sin78^\circ=0.98\)로 계산)</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-base space-y-2">
+                        <p>① \(A=180^\circ-(72^\circ+78^\circ)=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(30^\circ\)</span></span></p>
+                        <p>② 사인법칙 \(\dfrac{20}{\sin30^\circ}=\dfrac{b}{\sin72^\circ}\) → \(b=\dfrac{20\times0.95}{0.5}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(38\)</span></span></p>
+                        <p>③ \(S=\dfrac12ab\sin C=\dfrac12\times20\times38\times0.98=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(372.4\)</span></span></p>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-2">넓이 공식에는 <strong>두 변과 그 끼인각</strong>이 필요하다. 없는 것을 사인법칙·코사인법칙으로 먼저 채운다.</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        외접원의 반지름으로 나타낸 넓이
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 111쪽 · 생각 넓히기" data-src-rel="">교과서 111쪽 · 생각 넓히기</span>
+                    <p class="mb-3 text-slate-700">외접원의 반지름의 길이를 \(R\)이라 하자. 사인법칙 \(\sin A=\dfrac{a}{2R}\), \(a=2R\sin A\) 등을 넓이 공식에 넣으면</p>
+                    <div class="grid gap-4 text-base">
+                        <div class="bg-white p-5 rounded-xl border border-indigo-100"><p class="text-sm font-bold text-slate-500 mb-2">활동 1 — 세 변과 \(R\)</p><p>\(S=\dfrac12bc\sin A=\dfrac12bc\times\dfrac{a}{2R}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{abc}{4R}\)</span></span></p></div>
+                        <div class="bg-white p-5 rounded-xl border border-indigo-100"><p class="text-sm font-bold text-slate-500 mb-2">활동 2 — 세 각과 \(R\)</p><p>\(S=\dfrac{2R\sin A\times2R\sin B\times2R\sin C}{4R}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(2R^2\sin A\sin B\sin C\)</span></span></p></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        사각형으로 넓히기 — 평행사변형과 대각선
+                    </h3><span class="src-chip src-chip--block" data-src-label="자체 출제 · 사각형의 넓이로 확장" data-src-rel="유형">자체 출제 · 사각형의 넓이로 확장 <span class="src-rel">유형</span></span>
+                    <div class="grid gap-4 text-base">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <p class="text-sm font-bold text-slate-500 mb-2">평행사변형</p>
+                            <p>이웃하는 두 변 \(a,b\), 끼인각 \(\theta\): 대각선이 합동인 삼각형 2개로 나누므로</p>
+                            <p class="text-xl font-bold text-center mt-2">\(S=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(ab\sin\theta\)</span></span></p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200">
+                            <p class="text-sm font-bold text-slate-500 mb-2">두 대각선을 아는 사각형</p>
+                            <p>두 대각선 \(p,q\), 이루는 각 \(\theta\): 대각선이 만드는 네 삼각형의 넓이를 더하면</p>
+                            <p class="text-xl font-bold text-center mt-2">\(S=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac12pq\sin\theta\)</span></span></p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-2">일반 다각형은 대각선으로 삼각형을 나누어 넓이를 더한다 (옛 경작지 측량의 원리).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">두 변과 끼인각으로 바로 넓이</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-l1">기초-두 변과 끼인각</span> <span class="src-chip" data-src-label="교과서 110쪽 · 보기" data-src-rel="변형">교과서 110쪽 · 보기 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. \(\triangle ABC\)에서 \(b=8\), \(c=10\), \(A=30^\circ\)일 때, 삼각형의 넓이를 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(S=\dfrac12bc\sin A=\dfrac12\times8\times10\times\dfrac12\). 답: \(20\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l1">기초-둔각인 끼인각</span> <span class="src-chip" data-src-label="교과서 110쪽 · 문제 1" data-src-rel="그대로">교과서 110쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 \(\triangle ABC\)의 넓이를 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium"><span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(b=6,\ c=4\sqrt2,\ A=135^\circ\)</span><span class="sub-q">(2) \(a=10,\ c=12,\ B=120^\circ\)</span></span></div></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\sin135^\circ=\sin45^\circ\), \(\sin120^\circ=\sin60^\circ\) — 둔각이어도 사인값은 양수.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\dfrac12\times6\times4\sqrt2\times\dfrac{\sqrt2}{2}=12\)</span><span class="sub-q">(2) \(\dfrac12\times10\times12\times\dfrac{\sqrt3}{2}=30\sqrt3\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l1">기초-두 대각선과 사이각</span> <span class="src-chip" data-src-label="자체 출제 · 대각선으로 사각형의 넓이" data-src-rel="유형">자체 출제 · 대각선으로 사각형의 넓이 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 두 대각선의 길이가 각각 \(6\), \(8\)이고, 두 대각선이 이루는 예각의 크기가 \(45^\circ\)인 사각형의 넓이를 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(S=\dfrac12pq\sin\theta=\dfrac12\times6\times8\times\dfrac{\sqrt2}{2}\). 답: \(12\sqrt2\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-700 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">사인법칙·코사인법칙과 함께</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-l2">응용-세 변의 길이 → 넓이</span> <span class="src-chip" data-src-label="교과서 111쪽 · 문제 2" data-src-rel="그대로">교과서 111쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 세 변의 길이가 \(4\,\mathrm{m}\), \(6\,\mathrm{m}\), \(8\,\mathrm{m}\)인 삼각형 모양의 텃밭이 있다. 이 텃밭의 넓이를 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 길이 \(8\)인 변의 대각을 \(\theta\)라 하면 \(\cos\theta=\dfrac{16+36-64}{2\times4\times6}=-\dfrac14\), \(\sin\theta=\sqrt{1-\dfrac1{16}}=\dfrac{\sqrt{15}}{4}\). \(S=\dfrac12\times4\times6\times\dfrac{\sqrt{15}}{4}\). 답: \(3\sqrt{15}\,\mathrm{m}^2\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l2">응용-간척지의 넓이</span> <span class="src-chip" data-src-label="교과서 111쪽 · 문제 3" data-src-rel="그대로">교과서 111쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 해안가의 세 지점 A, B, C에서 \(\overline{AC}=600\,\mathrm{m}\), \(\angle ABC=30^\circ\), \(\angle ACB=20^\circ\)이다. 두 지점 A와 B를 연결하는 방조제를 쌓아 간척지를 건설할 때, 간척지가 될 \(\triangle ABC\)의 넓이를 구하시오. (단, \(\sin20^\circ=0.34,\ \sin50^\circ=0.77\)로 계산한다.)</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(A=130^\circ\), \(\sin130^\circ=\sin50^\circ\). 사인법칙 \(\dfrac{\overline{BC}}{\sin130^\circ}=\dfrac{600}{\sin30^\circ}\) → \(\overline{BC}=1200\times0.77=924\). \(S=\dfrac12\times600\times924\times\sin20^\circ=\dfrac12\times600\times924\times0.34\). 답: \(94248\,\mathrm{m}^2\)
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l2">응용-넓이로 외접원의 반지름</span> <span class="src-chip" data-src-label="교과서 111쪽 · 생각 넓히기" data-src-rel="변형">교과서 111쪽 · 생각 넓히기 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 세 변의 길이가 \(5\), \(7\), \(8\)인 삼각형의 넓이가 \(10\sqrt3\)임을 이용하여, 이 삼각형의 외접원의 반지름의 길이 \(R\)을 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(S=\dfrac{abc}{4R}\) → \(R=\dfrac{abc}{4S}=\dfrac{5\times7\times8}{4\times10\sqrt3}=\dfrac{7}{\sqrt3}\). 답: \(R=\dfrac{7\sqrt3}{3}\) (검산: \(\cos B=\dfrac12\)이므로 \(B=60^\circ\), \(2R=\dfrac{7}{\sin60^\circ}\))
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">보조선과 원에 내접하는 사각형</p>
+                    </div>
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-원에 내접하는 사각형의 넓이</span> <span class="src-chip" data-src-label="자체 출제 · 대각선으로 나눈 내접사각형" data-src-rel="유형">자체 출제 · 대각선으로 나눈 내접사각형 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 원에 내접하는 사각형 ABCD에서 \(\overline{AB}=3\), \(\overline{BC}=5\), \(\overline{CD}=4\), \(\angle B=60^\circ\)일 때, 사각형 ABCD의 넓이를 구하시오.</div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">사각형 공식에 바로 넣을 수 없다. 대각선 \(\overline{AC}\)로 삼각형 두 개로 나누고, 원에 내접하는 사각형의 <strong>대각의 합이 \(180^\circ\)</strong>임을 써서 \(\angle D=120^\circ\)를 얻어야 한다.<br><br><strong>STEP 1 — 대각선</strong>: \(\overline{AC}^2=3^2+5^2-2\times3\times5\times\dfrac12=19\)<br><br><strong>STEP 2 — \(\overline{AD}=x\)</strong>: \(\triangle ACD\)에서 \(19=x^2+16-2\times4x\cos120^\circ=x^2+4x+16\) → \(x^2+4x-3=0\) → \(x=-2+\sqrt7\) (\(x\gt0\))<br><br><strong>STEP 3 — 넓이의 합</strong>: \(\triangle ABC=\dfrac12\times3\times5\times\dfrac{\sqrt3}{2}=\dfrac{15\sqrt3}{4}\), \(\triangle ACD=\dfrac12\times4\times(\sqrt7-2)\times\dfrac{\sqrt3}{2}\)<br>\(=\sqrt{21}-2\sqrt3\)<br><br><strong>결론:</strong> \(\dfrac{15\sqrt3}{4}+\sqrt{21}-2\sqrt3=\dfrac{7\sqrt3}{4}+\sqrt{21}\)</p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="자체 출제 · 평행사변형의 넓이에서 각" data-src-rel="유형">자체 출제 · 평행사변형의 넓이에서 각 <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 평행사변형 ABCD에서 \(\overline{AB}=4\), \(\overline{AD}=6\)이고, 이 평행사변형의 넓이가 \(12\sqrt2\)일 때, 예각 \(\angle A\)의 크기를 구하시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① 평행사변형의 넓이 \(S=ab\sin A=4\times6\times\sin A=24\sin A\). <br>② \(24\sin A=12\sqrt2\) → \(\sin A=\dfrac{\sqrt2}{2}\). <br>③ \(\sin A=\dfrac{\sqrt2}{2}\)인 \(A\)는 \(45^\circ\) 또는 \(135^\circ\)인데 예각이므로 답: \(A=45^\circ\). — 삼각형 공식의 \(\dfrac12\)을 붙이면 틀린다.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 (수능특강 사인법칙·코사인법칙 기본 10) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_사인법칙코사인법칙"
+                 data-aft-source-id="s4-s10"
+                 data-aft-source-label="수능특강 사인법칙·코사인법칙 기본 10">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 사인법칙·코사인법칙 · 기본 10</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max+1, 8분) · 핵심: 닮음 발견 + 이등변 + 넓이비 + 코사인법칙 (4단계 종합)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                삼각형 \(ABC\)에서 변 \(\overline{BC}\)를 \(2:1\)로 내분하는 점을 \(D\)라 하자. \(\overline{BC} = 12\)이고, 변 \(\overline{AC}\) 위의 점 \(E\)에 대하여 \(\angle\mathrm{BAE} = \angle\mathrm{BED}\), 삼각형 \(ABE\)의 넓이가 \(9\sqrt{5}\)일 때, 선분 \(\overline{AD}\)의 길이는?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름 (4단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>닮음 발견</strong>: \(\angle\mathrm{BAE} = \angle\mathrm{BED}\), 공통각 \(\angle B\) → \(\triangle ABC \sim \triangle EBD\) (AA). 이로부터 \(\overline{BD}=8,\; \overline{CD}=4\)와 변 비율 도출</li>
+                    <li><strong>이등변 + 변수 도입</strong>: \(\overline{BE}=a,\; \angle\mathrm{DBE}=\theta\) 두면 닮음에서 \(\overline{AC}=\dfrac{3}{2}a,\; \angle\mathrm{BCA}=\theta\). \(\triangle EBC\)에서 \(\angle\mathrm{EBC}=\angle\mathrm{ECB}=\theta\) → 이등변 \(\overline{CE}=\overline{BE}=a\) → \(\overline{AE}=\dfrac{a}{2}\)</li>
+                    <li><strong>넓이비로 \(a\) 결정</strong>: \(\overline{AE}:\overline{EC}=1:2\)이므로 \([\triangle ABE]:[\triangle EBC]=1:2\) → \([\triangle EBC]=18\sqrt{5}\). \(E\)에서 \(\overline{BC}\)에 내린 수선 \(\overline{EH}=3\sqrt{5}\), 이등변이라 \(\overline{CH}=6\) → \(\cos\theta=\dfrac{6}{9}=\dfrac{2}{3},\; a=9\)</li>
+                    <li><strong>코사인법칙</strong>: \(\overline{AC}=\dfrac{27}{2},\; \overline{CD}=4,\; \cos\theta=\dfrac{2}{3}\) → \(\overline{AD}^2 = \overline{AC}^2 + \overline{CD}^2 - 2\cdot\overline{AC}\cdot\overline{CD}\cos\theta\) → \(\overline{AD}\) 결정</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 닮음 발견이 첫 단추. 이후 넓이비(½ab sinC)가 변수 결정의 허브 역할. 배각·반각·덧셈정리 불필요.</p>
+            
+                <p class="mt-2 text-base"><span class="text-red-600 font-bold">정답: ⑤ \(\dfrac{\sqrt{505}}{2}\)</span> (\(\overline{AD}^2=\dfrac{729}{4}+16-72=\dfrac{505}{4}\))</p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 도형 그림과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-s10" class="text-purple-600 underline font-semibold">수능특강 해설지 기본 10</a>에서 확인.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 (수능특강 사인법칙·코사인법칙 유제 8) — problem-curator 추천 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="suneung_사인법칙코사인법칙"
+                 data-aft-source-id="s4-ex8"
+                 data-aft-source-label="수능특강 사인법칙·코사인법칙 유제 8">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 수능특강 수학Ⅰ · 사인법칙·코사인법칙 · 유제 8</p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (학습지 max 동급, 7분) · 핵심: 넓이공식 → sinA 역산 → sin 두 해 분기 → 코사인법칙 → 최댓값</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\overline{AB}=4,\; \overline{BC}=6\)인 평행사변형 \(ABCD\)에서 선분 \(\overline{AD}\)를 \(2:1\)로 내분하는 점을 \(E\)라 하자. 삼각형 \(ABE\)의 넓이가 \(4\sqrt{3}\)일 때, 선분 \(\overline{AC}\)의 길이의 최댓값은?
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 수Ⅰ 단독 풀이 흐름:</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>내분점</strong>: 평행사변형이라 \(\overline{AD} = \overline{BC} = 6\), \(\overline{AE} = \dfrac{2}{3}\cdot 6 = 4\)</li>
+                    <li><strong>넓이공식 역산</strong>: \([\triangle ABE] = \dfrac{1}{2}\cdot\overline{AB}\cdot\overline{AE}\cdot\sin(\angle A) = \dfrac{1}{2}\cdot 4\cdot 4\cdot\sin A = 8\sin A = 4\sqrt{3}\) → \(\sin A = \dfrac{\sqrt{3}}{2}\)</li>
+                    <li><strong>sin 두 해 함정</strong>: \(0 \lt \angle A \lt 180°\)에서 \(\sin A = \dfrac{\sqrt{3}}{2}\) → <span class="text-red-600 font-bold">\(\angle A = 60°\) 또는 \(120°\)</span></li>
+                    <li><strong>평행사변형 인접각 보각</strong>: \(\angle ABC = 180° - \angle A\) → \(\triangle ABC\)에 코사인법칙 \(\overline{AC}^2 = \overline{AB}^2 + \overline{BC}^2 - 2\cdot 4\cdot 6\cdot\cos(\angle ABC)\)
+                        <ul class="ml-4 mt-1 list-disc text-sm">
+                            <li>\(\angle A = 60°\) → \(\angle ABC = 120°,\; \cos = -\dfrac{1}{2}\) → \(\overline{AC}^2 = 16+36+24 = 76\) → \(\overline{AC} = 2\sqrt{19}\)</li>
+                            <li>\(\angle A = 120°\) → \(\angle ABC = 60°,\; \cos = \dfrac{1}{2}\) → \(\overline{AC}^2 = 16+36-24 = 28\) → \(\overline{AC} = 2\sqrt{7}\)</li>
+                        </ul>
+                    </li>
+                    <li><strong>최댓값</strong>: \(\overline{AC} = 2\sqrt{19}\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 학습지 5번(평행사변형 + 넓이 → ∠A 역산)을 한 단계 확장 — sin 두 해를 분기해 각 경우 코사인법칙으로 대각선 길이를 구하고 최댓값을 선택.</p>
+            
+                <p class="mt-2 text-base"><span class="text-red-600 font-bold">정답: \(2\sqrt{19}\)</span></p>
+            </div></details>
+
+            <div class="mt-4 text-sm text-slate-500 italic">
+                ※ 도형과 원 해설은 <a href="수능특강_수학I_사인법칙코사인법칙_해설.html#s4-ex8" class="text-purple-600 underline font-semibold">수능특강 해설지 유제 8</a>에서 확인.
+            </div>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-indigo-500 rounded-full opacity-10 blur-3xl"></div>
+            
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <!-- 좌측: 체크리스트 및 가이드 -->
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 개념을 적용하며 '아, 이거구나!(유레카)' 했던 순간이나 원리는?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"중학교 때 배운 삼각비를 이용해 높이를 유도하는 과정을 떠올리고, 이를 통해 복잡해 보이는 대각선을 이용한 사각형의 넓이 공식이 삼각형 넓이 공식과 완전히 같은 논리임을 깨달음."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 치명적 실수(논리적 오류)와 그것을 바로잡은 사고 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"평행사변형 넓이를 구할 때 무의식적으로 1/2을 곱하는 실수를 범했으나, 평행사변형은 합동인 두 삼각형으로 이루어져 있다는 시각적 구조를 다시 떠올려 오개념을 교정함."</p>
+                            </div>
+                        </label>
+
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심이나 나만의 문제 풀이 Tip이 있다면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"세 변의 길이만으로 코사인, 사인값을 거쳐 넓이를 구하는 과정이 다소 복잡하다고 느껴, 세 변의 길이만 알면 곧바로 넓이가 나오는 공식(헤론의 공식)에 대한 호기심을 갖고 주도적으로 탐구함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- 우측: QR 코드 -->
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200">
+                        <!-- JS가 여기에 이미지를 삽입합니다. -->
+                    </div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg">
+                        성찰지 작성하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_22_코사인법칙.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_24_중단원마무리_II_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 23차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_23.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>
