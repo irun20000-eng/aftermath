@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 II-1. 삼각함수 · 차시 18 탄젠트함수의 그래프 · 교과서(미래엔) 90~92쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 탄젠트함수의 그래프</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_18';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "18차시 탄젠트함수의 그래프";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II-1. 삼각함수</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">18차시: 탄젠트함수의 그래프</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_17_사인함수와코사인함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_19_삼각방정식과부등식.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 90쪽 · 탄젠트함수의 그래프 (도입)" data-src-rel="">교과서 90쪽 · 탄젠트함수의 그래프 (도입)</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">지난 시간에 \(\sin\theta\)는 단위원 위 점 P의 \(y\)좌표, \(\cos\theta\)는 \(x\)좌표로 읽었다. 그렇다면 \(\tan\theta=\dfrac{y}{x}\) 는 단위원 그림의 <strong>어디에서</strong> 읽을 수 있을까?</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 점 \(\mathrm{A}(1,0)\)에서 단위원에 접선 \(l\)을 긋고, 동경 OP(또는 그 연장선)와 \(l\)의 교점을 T라 하자. ① \(\theta\)가 \(0\)에서 \(\dfrac{\pi}{2}\)에 가까워지면 점 T는 어떻게 움직일까? ② \(\theta=\dfrac{\pi}{2}\)이면 어떤 일이 생길까? ③ 사인·코사인 그래프와 무엇이 다를까?</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> T의 \(y\)좌표가 바로 \(\tan\theta\)다. \(\theta\)가 \(\dfrac{\pi}{2}\)에 다가가면 T는 끝없이 올라가고, \(\theta=\dfrac{\pi}{2}\)에서는 동경이 \(l\)과 평행해 만나지 않는다. 그래서 탄젠트 그래프는 <span class="font-bold text-indigo-700">끊어지고</span>, 끊어진 자리에 <span class="font-bold text-indigo-700">점근선</span>이 생긴다. 오늘은 ① 그래프와 정의역·치역, ② 점근선, ③ 대칭과 주기 \(\pi\), ④ \(y=\tan ax\)의 주기·점근선을 다룬다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        \(\tan\theta\) = 접선 위 점 T의 \(y\)좌표
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 90쪽 · 탄젠트함수의 그래프" data-src-rel="">교과서 90쪽 · 탄젠트함수의 그래프</span>
+                    <p class="mb-3 text-slate-700">각 \(\theta\)의 동경과 단위원의 교점을 \(\mathrm{P}(x,y)\)라 하자. \(\theta\ne n\pi+\dfrac{\pi}{2}\) (\(n\)은 정수)일 때, 점 \(\mathrm{A}(1,0)\)에서의 접선 \(l\)과 동경 OP 또는 그 연장선의 교점을 \(\mathrm{T}(1,t)\)라 하면</p>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100 text-center">
+                        <p class="text-xl font-bold">\(\tan\theta=\dfrac{y}{x}=\dfrac{t}{1}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(t\)</span></span> &nbsp;(점 T의 \(y\)좌표)</p>
+                    </div>
+                    <p class="mt-3 text-slate-700">한편 \(\theta=n\pi+\dfrac{\pi}{2}\)이면 동경 OP가 \(y\)축 위에 있어 점 P의 \(x\)좌표가 \(0\)이므로 \(\tan\theta\)의 값은 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">정의되지 않는다</span></span>. 즉 \(\theta=\pm\dfrac{\pi}{2},\ \pm\dfrac32\pi,\ \pm\dfrac52\pi,\ \cdots\) 에서 정의되지 않는다.</p>
+                </div>
+
+                <!-- 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        그래프 · 정의역 · 치역 · 점근선
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 90쪽 · 탄젠트함수의 그래프 · 점근선" data-src-rel="">교과서 90쪽 · 탄젠트함수의 그래프 · 점근선</span>
+                    <div class="bg-white p-3 rounded-xl border border-indigo-100 mb-3"><svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="y=tan x 의 그래프와 점근선" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto;font-family:serif"><style>text{paint-order:stroke;stroke:#fff;stroke-width:3px}</style><line x1="18.0" y1="83.4" x2="498.0" y2="83.4" stroke="#cbd5e1" stroke-dasharray="3 3"/><text x="254.0" y="87.4" font-size="12" text-anchor="end" fill="#334155">1</text><line x1="18.0" y1="146.6" x2="498.0" y2="146.6" stroke="#cbd5e1" stroke-dasharray="3 3"/><text x="254.0" y="150.6" font-size="12" text-anchor="end" fill="#334155">−1</text><line x1="18.0" y1="14" x2="18.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="178.0" y1="14" x2="178.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="338.0" y1="14" x2="338.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="498.0" y1="14" x2="498.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="18.0" y1="115.0" x2="506.0" y2="115.0" stroke="#0f172a" stroke-width="1.2"/><line x1="258.0" y1="220" x2="258.0" y2="8" stroke="#0f172a" stroke-width="1.2"/><text x="508.0" y="119.0" font-size="13" font-style="italic">x</text><text x="263.0" y="12" font-size="13" font-style="italic">y</text><text x="254.0" y="129.0" font-size="12" text-anchor="end">O</text><line x1="18.0" y1="112.0" x2="18.0" y2="118.0" stroke="#0f172a"/><text x="18.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">−3π/2</text><line x1="98.0" y1="112.0" x2="98.0" y2="118.0" stroke="#0f172a"/><text x="98.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">−π</text><line x1="178.0" y1="112.0" x2="178.0" y2="118.0" stroke="#0f172a"/><text x="178.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">−π/2</text><line x1="338.0" y1="112.0" x2="338.0" y2="118.0" stroke="#0f172a"/><text x="338.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">π/2</text><line x1="418.0" y1="112.0" x2="418.0" y2="118.0" stroke="#0f172a"/><text x="418.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">π</text><line x1="498.0" y1="112.0" x2="498.0" y2="118.0" stroke="#0f172a"/><text x="498.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">3π/2</text><polyline points="32.8,220.8 34.6,208.3 36.5,198.2 38.3,189.9 40.2,182.9 42.0,176.9 43.8,171.8 45.7,167.2 47.5,163.2 49.4,159.6 51.2,156.3 53.1,153.3 54.9,150.6 56.8,148.1 58.6,145.8 60.5,143.7 62.3,141.6 64.2,139.7 66.0,137.9 67.8,136.2 69.7,134.6 71.5,133.1 73.4,131.6 75.2,130.1 77.1,128.7 78.9,127.4 80.8,126.1 82.6,124.8 84.5,123.6 86.3,122.4 88.2,121.2 90.0,120.0 91.8,118.8 93.7,117.7 95.5,116.5 97.4,115.4 99.2,114.2 101.1,113.1 102.9,111.9 104.8,110.8 106.6,109.6 108.5,108.4 110.3,107.2 112.2,106.0 114.0,104.7 115.8,103.5 117.7,102.1 119.5,100.8 121.4,99.4 123.2,97.9 125.1,96.4 126.9,94.9 128.8,93.2 130.6,91.5 132.5,89.7 134.3,87.7 136.2,85.6 138.0,83.4 139.8,81.1 141.7,78.5 143.5,75.7 145.4,72.6 147.2,69.3 149.1,65.5 150.9,61.3 152.8,56.6 154.6,51.2 156.5,44.9 158.3,37.5 160.2,28.6 162.0,17.9" fill="none" stroke="#2563eb" stroke-width="2.2"/><polyline points="193.4,216.3 195.2,204.7 197.1,195.3 198.9,187.5 200.8,180.8 202.6,175.1 204.5,170.2 206.3,165.8 208.2,161.9 210.0,158.4 211.8,155.3 213.7,152.4 215.5,149.8 217.4,147.3 219.2,145.1 221.1,143.0 222.9,141.0 224.8,139.1 226.6,137.4 228.5,135.7 230.3,134.1 232.2,132.6 234.0,131.1 235.8,129.7 237.7,128.3 239.5,127.0 241.4,125.7 243.2,124.4 245.1,123.2 246.9,122.0 248.8,120.8 250.6,119.6 252.5,118.4 254.3,117.3 256.2,116.1 258.0,115.0 259.8,113.9 261.7,112.7 263.5,111.6 265.4,110.4 267.2,109.2 269.1,108.0 270.9,106.8 272.8,105.6 274.6,104.3 276.5,103.0 278.3,101.7 280.2,100.3 282.0,98.9 283.8,97.4 285.7,95.9 287.5,94.3 289.4,92.6 291.2,90.9 293.1,89.0 294.9,87.0 296.8,84.9 298.6,82.7 300.5,80.2 302.3,77.6 304.2,74.7 306.0,71.6 307.8,68.1 309.7,64.2 311.5,59.8 313.4,54.9 315.2,49.2 317.1,42.5 318.9,34.7 320.8,25.3 322.6,13.7" fill="none" stroke="#2563eb" stroke-width="2.2"/><polyline points="354.0,212.1 355.8,201.4 357.7,192.5 359.5,185.1 361.4,178.8 363.2,173.4 365.1,168.7 366.9,164.5 368.8,160.7 370.6,157.4 372.5,154.3 374.3,151.5 376.2,148.9 378.0,146.6 379.8,144.4 381.7,142.3 383.5,140.3 385.4,138.5 387.2,136.8 389.1,135.1 390.9,133.6 392.8,132.1 394.6,130.6 396.5,129.2 398.3,127.9 400.2,126.5 402.0,125.3 403.8,124.0 405.7,122.8 407.5,121.6 409.4,120.4 411.2,119.2 413.1,118.1 414.9,116.9 416.8,115.8 418.6,114.6 420.5,113.5 422.3,112.3 424.2,111.2 426.0,110.0 427.8,108.8 429.7,107.6 431.5,106.4 433.4,105.2 435.2,103.9 437.1,102.6 438.9,101.3 440.8,99.9 442.6,98.4 444.5,96.9 446.3,95.4 448.2,93.8 450.0,92.1 451.8,90.3 453.7,88.4 455.5,86.3 457.4,84.2 459.2,81.9 461.1,79.4 462.9,76.7 464.8,73.7 466.6,70.4 468.5,66.8 470.3,62.8 472.2,58.2 474.0,53.1 475.8,47.1 477.7,40.1 479.5,31.8 481.4,21.7 483.2,9.2" fill="none" stroke="#2563eb" stroke-width="2.2"/><text x="306.0" y="65.6" font-size="12" fill="#2563eb" font-style="italic">y=tan x</text></svg></div>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① 정의역: <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(n\pi+\dfrac{\pi}{2}\) (\(n\)은 정수)를 제외한 실수 전체</span></span>의 집합</li>
+                            <li>② 치역: <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">실수 전체의 집합</span></span></li>
+                            <li>③ 점근선: 직선 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x=n\pi+\dfrac{\pi}{2}\)</span></span> (\(n\)은 정수)</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>점근선:</strong> 그래프가 직선 \(x=n\pi+\dfrac{\pi}{2}\)에 한없이 가까워지지만 만나지는 않는다. <strong>생각 톡톡:</strong> \(y=\tan x\)는 최댓값과 최솟값을 <strong>모두 갖지 않는다</strong>.</p>
+                </div>
+
+                <!-- 3 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        원점 대칭과 주기 \(\pi\) — 탄젠트함수의 성질
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 91쪽 · 탄젠트함수 y=tan x의 성질" data-src-rel="">교과서 91쪽 · 탄젠트함수 y=tan x의 성질</span>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① 그래프는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">원점</span></span>에 대하여 대칭 → \(\tan(-x)=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-\tan x\)</span></span></li>
+                            <li>② \(\pi\)의 간격으로 같은 모양 반복: \(\tan(x+n\pi)=\tan x\) (단, \(n\)은 정수) → 주기 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\pi\)</span></span></li>
+                        </ol>
+                    </div>
+                    <div class="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+                        <p class="text-sm font-bold text-indigo-900 mb-1">🎯 보기</p>
+                        <p class="text-sm text-indigo-800">\(\tan\left(-\dfrac{\pi}{6}\right)=-\tan\dfrac{\pi}{6}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-\dfrac{\sqrt3}{3}\)</span></span>, &nbsp; \(\tan\dfrac43\pi=\tan\left(\pi+\dfrac{\pi}{3}\right)=\tan\dfrac{\pi}{3}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt3\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>주의:</strong> 사인·코사인의 주기는 \(2\pi\), 탄젠트의 주기는 \(\pi\). 그래서 \(\tan(\pi+x)=\tan x\) 이고, \(x\) 대신 \(-x\)를 넣으면 \(\tan(\pi-x)=-\tan x\).</p>
+                </div>
+
+                <!-- 4 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        \(y=\tan ax\) 의 주기와 점근선 · 삼각함수표 활용
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 92쪽 · 예제 4 · 삼각함수표" data-src-rel="">교과서 92쪽 · 예제 4 · 삼각함수표</span>
+                    <div class="bg-white p-3 rounded-xl border border-indigo-100 mb-3"><svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="y=tan 2x 의 그래프 (점근선 x=nπ/2+π/4)" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto;font-family:serif"><style>text{paint-order:stroke;stroke:#fff;stroke-width:3px}</style><line x1="18.0" y1="83.4" x2="498.0" y2="83.4" stroke="#cbd5e1" stroke-dasharray="3 3"/><text x="254.0" y="87.4" font-size="12" text-anchor="end" fill="#334155">1</text><line x1="18.0" y1="146.6" x2="498.0" y2="146.6" stroke="#cbd5e1" stroke-dasharray="3 3"/><text x="254.0" y="150.6" font-size="12" text-anchor="end" fill="#334155">−1</text><line x1="78.0" y1="14" x2="78.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="198.0" y1="14" x2="198.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="318.0" y1="14" x2="318.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="438.0" y1="14" x2="438.0" y2="216" stroke="#94a3b8" stroke-dasharray="4 3"/><line x1="18.0" y1="115.0" x2="506.0" y2="115.0" stroke="#0f172a" stroke-width="1.2"/><line x1="258.0" y1="220" x2="258.0" y2="8" stroke="#0f172a" stroke-width="1.2"/><text x="508.0" y="119.0" font-size="13" font-style="italic">x</text><text x="263.0" y="12" font-size="13" font-style="italic">y</text><text x="254.0" y="129.0" font-size="12" text-anchor="end">O</text><line x1="18.0" y1="112.0" x2="18.0" y2="118.0" stroke="#0f172a"/><text x="18.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">−π</text><line x1="78.0" y1="112.0" x2="78.0" y2="118.0" stroke="#0f172a"/><text x="78.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">−3π/4</text><line x1="138.0" y1="112.0" x2="138.0" y2="118.0" stroke="#0f172a"/><text x="138.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">−π/2</text><line x1="198.0" y1="112.0" x2="198.0" y2="118.0" stroke="#0f172a"/><text x="198.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">−π/4</text><line x1="318.0" y1="112.0" x2="318.0" y2="118.0" stroke="#0f172a"/><text x="318.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">π/4</text><line x1="378.0" y1="112.0" x2="378.0" y2="118.0" stroke="#0f172a"/><text x="378.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">π/2</text><line x1="438.0" y1="112.0" x2="438.0" y2="118.0" stroke="#0f172a"/><text x="438.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">3π/4</text><line x1="498.0" y1="112.0" x2="498.0" y2="118.0" stroke="#0f172a"/><text x="498.0" y="130.0" font-size="11" text-anchor="middle" fill="#334155">π</text><polyline points="18.0,115.0 19.8,114.2 21.7,113.5 23.5,112.7 25.4,111.9 27.2,111.2 29.1,110.4 30.9,109.6 32.8,108.8 34.6,108.0 36.5,107.2 38.3,106.4 40.2,105.6 42.0,104.7 43.8,103.9 45.7,103.0 47.5,102.1 49.4,101.3 51.2,100.3 53.1,99.4 54.9,98.4 56.8,97.4 58.6,96.4 60.5,95.4 62.3,94.3 64.2,93.2 66.0,92.1 67.8,90.9 69.7,89.7 71.5,88.4 73.4,87.0 75.2,85.6 77.1,84.2 78.9,82.7 80.8,81.1 82.6,79.4 84.5,77.6 86.3,75.7 88.2,73.7 90.0,71.6 91.8,69.3 93.7,66.8 95.5,64.2 97.4,61.3 99.2,58.2 101.1,54.9 102.9,51.2 104.8,47.1 106.6,42.5 108.5,37.5 110.3,31.8 112.2,25.3 114.0,17.9 115.8,9.2" fill="none" stroke="#94a3b8" stroke-width="1.5"/><polyline points="160.2,220.8 162.0,212.1 163.8,204.7 165.7,198.2 167.5,192.5 169.4,187.5 171.2,182.9 173.1,178.8 174.9,175.1 176.8,171.8 178.6,168.7 180.5,165.8 182.3,163.2 184.2,160.7 186.0,158.4 187.8,156.3 189.7,154.3 191.5,152.4 193.4,150.6 195.2,148.9 197.1,147.3 198.9,145.8 200.8,144.4 202.6,143.0 204.5,141.6 206.3,140.3 208.2,139.1 210.0,137.9 211.8,136.8 213.7,135.7 215.5,134.6 217.4,133.6 219.2,132.6 221.1,131.6 222.9,130.6 224.8,129.7 226.6,128.7 228.5,127.9 230.3,127.0 232.2,126.1 234.0,125.3 235.8,124.4 237.7,123.6 239.5,122.8 241.4,122.0 243.2,121.2 245.1,120.4 246.9,119.6 248.8,118.8 250.6,118.1 252.5,117.3 254.3,116.5 256.2,115.8 258.0,115.0 259.8,114.2 261.7,113.5 263.5,112.7 265.4,111.9 267.2,111.2 269.1,110.4 270.9,109.6 272.8,108.8 274.6,108.0 276.5,107.2 278.3,106.4 280.2,105.6 282.0,104.7 283.8,103.9 285.7,103.0 287.5,102.1 289.4,101.3 291.2,100.3 293.1,99.4 294.9,98.4 296.8,97.4 298.6,96.4 300.5,95.4 302.3,94.3 304.2,93.2 306.0,92.1 307.8,90.9 309.7,89.7 311.5,88.4 313.4,87.0 315.2,85.6 317.1,84.2 318.9,82.7 320.8,81.1 322.6,79.4 324.5,77.6 326.3,75.7 328.2,73.7 330.0,71.6 331.8,69.3 333.7,66.8 335.5,64.2 337.4,61.3 339.2,58.2 341.1,54.9 342.9,51.2 344.8,47.1 346.6,42.5 348.5,37.5 350.3,31.8 352.2,25.3 354.0,17.9 355.8,9.2" fill="none" stroke="#94a3b8" stroke-width="1.5"/><polyline points="400.2,220.8 402.0,212.1 403.8,204.7 405.7,198.2 407.5,192.5 409.4,187.5 411.2,182.9 413.1,178.8 414.9,175.1 416.8,171.8 418.6,168.7 420.5,165.8 422.3,163.2 424.2,160.7 426.0,158.4 427.8,156.3 429.7,154.3 431.5,152.4 433.4,150.6 435.2,148.9 437.1,147.3 438.9,145.8 440.8,144.4 442.6,143.0 444.5,141.6 446.3,140.3 448.2,139.1 450.0,137.9 451.8,136.8 453.7,135.7 455.5,134.6 457.4,133.6 459.2,132.6 461.1,131.6 462.9,130.6 464.8,129.7 466.6,128.7 468.5,127.9 470.3,127.0 472.2,126.1 474.0,125.3 475.8,124.4 477.7,123.6 479.5,122.8 481.4,122.0 483.2,121.2 485.1,120.4 486.9,119.6 488.8,118.8 490.6,118.1 492.5,117.3 494.3,116.5 496.2,115.8 498.0,115.0" fill="none" stroke="#94a3b8" stroke-width="1.5"/><text x="534.0" y="92.9" font-size="12" fill="#94a3b8" font-style="italic">y=tan x</text><polyline points="18.0,115.0 19.8,113.5 21.7,111.9 23.5,110.4 25.4,108.8 27.2,107.2 29.1,105.6 30.9,103.9 32.8,102.1 34.6,100.3 36.5,98.4 38.3,96.4 40.2,94.3 42.0,92.1 43.8,89.7 45.7,87.0 47.5,84.2 49.4,81.1 51.2,77.6 53.1,73.7 54.9,69.3 56.8,64.2 58.6,58.2 60.5,51.2 62.3,42.5 64.2,31.8 66.0,17.9" fill="none" stroke="#2563eb" stroke-width="2.2"/><polyline points="90.0,212.1 91.8,198.2 93.7,187.5 95.5,178.8 97.4,171.8 99.2,165.8 101.1,160.7 102.9,156.3 104.8,152.4 106.6,148.9 108.5,145.8 110.3,143.0 112.2,140.3 114.0,137.9 115.8,135.7 117.7,133.6 119.5,131.6 121.4,129.7 123.2,127.9 125.1,126.1 126.9,124.4 128.8,122.8 130.6,121.2 132.5,119.6 134.3,118.1 136.2,116.5 138.0,115.0 139.8,113.5 141.7,111.9 143.5,110.4 145.4,108.8 147.2,107.2 149.1,105.6 150.9,103.9 152.8,102.1 154.6,100.3 156.5,98.4 158.3,96.4 160.2,94.3 162.0,92.1 163.8,89.7 165.7,87.0 167.5,84.2 169.4,81.1 171.2,77.6 173.1,73.7 174.9,69.3 176.8,64.2 178.6,58.2 180.5,51.2 182.3,42.5 184.2,31.8 186.0,17.9" fill="none" stroke="#2563eb" stroke-width="2.2"/><polyline points="210.0,212.1 211.8,198.2 213.7,187.5 215.5,178.8 217.4,171.8 219.2,165.8 221.1,160.7 222.9,156.3 224.8,152.4 226.6,148.9 228.5,145.8 230.3,143.0 232.2,140.3 234.0,137.9 235.8,135.7 237.7,133.6 239.5,131.6 241.4,129.7 243.2,127.9 245.1,126.1 246.9,124.4 248.8,122.8 250.6,121.2 252.5,119.6 254.3,118.1 256.2,116.5 258.0,115.0 259.8,113.5 261.7,111.9 263.5,110.4 265.4,108.8 267.2,107.2 269.1,105.6 270.9,103.9 272.8,102.1 274.6,100.3 276.5,98.4 278.3,96.4 280.2,94.3 282.0,92.1 283.8,89.7 285.7,87.0 287.5,84.2 289.4,81.1 291.2,77.6 293.1,73.7 294.9,69.3 296.8,64.2 298.6,58.2 300.5,51.2 302.3,42.5 304.2,31.8 306.0,17.9" fill="none" stroke="#2563eb" stroke-width="2.2"/><polyline points="330.0,212.1 331.8,198.2 333.7,187.5 335.5,178.8 337.4,171.8 339.2,165.8 341.1,160.7 342.9,156.3 344.8,152.4 346.6,148.9 348.5,145.8 350.3,143.0 352.2,140.3 354.0,137.9 355.8,135.7 357.7,133.6 359.5,131.6 361.4,129.7 363.2,127.9 365.1,126.1 366.9,124.4 368.8,122.8 370.6,121.2 372.5,119.6 374.3,118.1 376.2,116.5 378.0,115.0 379.8,113.5 381.7,111.9 383.5,110.4 385.4,108.8 387.2,107.2 389.1,105.6 390.9,103.9 392.8,102.1 394.6,100.3 396.5,98.4 398.3,96.4 400.2,94.3 402.0,92.1 403.8,89.7 405.7,87.0 407.5,84.2 409.4,81.1 411.2,77.6 413.1,73.7 414.9,69.3 416.8,64.2 418.6,58.2 420.5,51.2 422.3,42.5 424.2,31.8 426.0,17.9" fill="none" stroke="#2563eb" stroke-width="2.2"/><polyline points="450.0,212.1 451.8,198.2 453.7,187.5 455.5,178.8 457.4,171.8 459.2,165.8 461.1,160.7 462.9,156.3 464.8,152.4 466.6,148.9 468.5,145.8 470.3,143.0 472.2,140.3 474.0,137.9 475.8,135.7 477.7,133.6 479.5,131.6 481.4,129.7 483.2,127.9 485.1,126.1 486.9,124.4 488.8,122.8 490.6,121.2 492.5,119.6 494.3,118.1 496.2,116.5 498.0,115.0" fill="none" stroke="#2563eb" stroke-width="2.2"/><text x="289.2" y="75.4" font-size="12" fill="#2563eb" font-style="italic">y=tan 2x</text></svg></div>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100">
+                        <p class="text-base font-medium"><strong>예제 4</strong> \(y=\tan 2x\): \(\tan 2x=\tan(2x+\pi)=\tan 2\left(x+\dfrac{\pi}{2}\right)\) 이므로 주기 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{\pi}{2}\)</span></span>.<br>\(2x=n\pi+\dfrac{\pi}{2}\) 에서 점근선은 직선 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x=\dfrac{n}{2}\pi+\dfrac{\pi}{4}\)</span></span> (\(n\)은 정수).</p>
+                        <p class="text-lg font-bold text-center mt-2">\(y=\tan ax\) 의 주기 \(=\dfrac{\pi}{|a|}\) (단, \(a\ne 0\))</p>
+                    </div>
+                    <div class="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+                        <p class="text-sm font-bold text-indigo-900 mb-1">🎯 보기 — 일반각을 \(0^\circ\)~\(90^\circ\)로 바꿔 삼각함수표 읽기</p>
+                        <p class="text-sm text-indigo-800">\(\tan 131^\circ=\tan(180^\circ-49^\circ)=\tan(-49^\circ)=-\tan 49^\circ\), 삼각함수표에서 \(\tan 49^\circ=1.1504\) 이므로 \(\tan 131^\circ=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-1.1504\)</span></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">대칭·주기 \(\pi\)로 탄젠트 값을 구하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-탄젠트 값 구하기</span> <span class="src-chip" data-src-label="교과서 91쪽 · 문제 7" data-src-rel="그대로">교과서 91쪽 · 문제 7 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 삼각함수의 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\tan\left(-\dfrac{\pi}{4}\right)\)</span><span class="sub-q">(2) \(\tan\dfrac{13}{6}\pi\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\tan(-x)=-\tan x\), \(\tan(x+n\pi)=\tan x\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(-\tan\dfrac{\pi}{4}=-1\)</span><span class="sub-q">(2) \(\tan\left(2\pi+\dfrac{\pi}{6}\right)=\tan\dfrac{\pi}{6}=\dfrac{\sqrt3}{3}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-주기 π 로 값 구하기</span> <span class="src-chip" data-src-label="교과서 91쪽 · 문제 7" data-src-rel="변형">교과서 91쪽 · 문제 7 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 삼각함수의 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\tan\dfrac54\pi\)</span><span class="sub-q">(2) \(\tan\left(-\dfrac23\pi\right)\)</span><span class="sub-q">(3) \(\tan\dfrac34\pi\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 주기가 \(\pi\)이므로 \(\pi\)를 더하거나 빼서 \(-\dfrac{\pi}{2}\)와 \(\dfrac{\pi}{2}\) 사이의 각으로 옮긴다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\tan\left(\pi+\dfrac{\pi}{4}\right)=\tan\dfrac{\pi}{4}=1\)</span><span class="sub-q">(2) \(\tan\left(-\dfrac23\pi+\pi\right)=\tan\dfrac{\pi}{3}=\sqrt3\)</span><span class="sub-q">(3) \(\tan\left(\dfrac34\pi-\pi\right)=\tan\left(-\dfrac{\pi}{4}\right)=-1\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-y=tan(x/2) 의 주기·점근선</span> <span class="src-chip" data-src-label="교과서 92쪽 · 문제 8 (1)" data-src-rel="그대로">교과서 92쪽 · 문제 8 (1) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 함수 \(y=\tan\dfrac{x}{2}\) 의 주기와 점근선을 구하고, 그래프를 그리시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 주기 \(\dfrac{\pi}{1/2}=2\pi\). \(\dfrac{x}{2}=n\pi+\dfrac{\pi}{2}\) 에서 \(x=2n\pi+\pi\). 답: 주기 \(2\pi\), 점근선 \(x=(2n+1)\pi\) (\(n\)은 정수). 그래프는 \(y=\tan x\)를 \(x\)축의 방향으로 \(2\)배 늘인 것.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">평행이동한 탄젠트의 주기·점근선, 삼각함수표 활용</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-괄호 안 평행이동과 점근선</span> <span class="src-chip" data-src-label="교과서 92쪽 · 문제 8 (2)" data-src-rel="그대로">교과서 92쪽 · 문제 8 (2) <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 함수 \(y=\tan\left(2x-\dfrac{\pi}{2}\right)\) 의 주기와 점근선을 구하고, 그래프를 그리시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(y=\tan 2\left(x-\dfrac{\pi}{4}\right)\) — \(y=\tan 2x\)를 \(x\)축의 방향으로 \(\dfrac{\pi}{4}\)만큼 평행이동. 주기 \(\dfrac{\pi}{2}\). \(2x-\dfrac{\pi}{2}=n\pi+\dfrac{\pi}{2}\) 에서 \(x=\dfrac{n+1}{2}\pi\), 즉 점근선 \(x=\dfrac{n}{2}\pi\) (\(n\)은 정수). 답: 주기 \(\dfrac{\pi}{2}\), 점근선 \(x=\dfrac{n}{2}\pi\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-평행이동한 탄젠트함수</span> <span class="src-chip" data-src-label="자체 출제 · y=tan(x+π/4)+1 의 주기·점근선" data-src-rel="유형">자체 출제 · y=tan(x+π/4)+1 의 주기·점근선 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 함수 \(y=\tan\left(x+\dfrac{\pi}{4}\right)+1\) 의 주기와 점근선을 구하시오. 또 \(x=0\)일 때의 함숫값을 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(y=\tan x\)를 \(x\)축의 방향으로 \(-\dfrac{\pi}{4}\)만큼, \(y\)축의 방향으로 \(1\)만큼 평행이동 → 주기는 그대로 \(\pi\). \(x+\dfrac{\pi}{4}=n\pi+\dfrac{\pi}{2}\) 에서 점근선 \(x=n\pi+\dfrac{\pi}{4}\) (\(n\)은 정수). \(x=0\): \(\tan\dfrac{\pi}{4}+1=2\). 답: 주기 \(\pi\), 점근선 \(x=n\pi+\dfrac{\pi}{4}\), 함숫값 \(2\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-삼각함수표로 값 구하기</span> <span class="src-chip" data-src-label="교과서 92쪽 · 문제 9" data-src-rel="변형">교과서 92쪽 · 문제 9 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 삼각함수표를 이용하여 다음 값을 구하시오. (삼각함수표: \(\sin 32^\circ=0.5299\), \(\cos 3^\circ=0.9986\), \(\tan 75^\circ=3.7321\))
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\sin 752^\circ\)</span><span class="sub-q">(2) \(\cos 177^\circ\)</span><span class="sub-q">(3) \(\tan(-435^\circ)\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 주기와 \(180^\circ\pm x\) 성질로 \(0^\circ\)~\(90^\circ\)의 각으로 바꾼다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\sin(360^\circ\times 2+32^\circ)=\sin 32^\circ=0.5299\)</span><span class="sub-q">(2) \(\cos(180^\circ-3^\circ)=-\cos 3^\circ=-0.9986\)</span><span class="sub-q">(3) \(-\tan 435^\circ=-\tan(360^\circ+75^\circ)=-\tan 75^\circ=-3.7321\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 주기 \(\dfrac{\pi}{|b|}\)와 한 점으로 계수 찾기</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-주기와 한 점으로 계수 결정</span> <span class="src-chip" data-src-label="자체 출제 · y=a tan bx 의 계수 구하기" data-src-rel="유형">자체 출제 · y=a tan bx 의 계수 구하기 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 함수 \(y=a\tan bx\) 의 주기가 \(\dfrac{\pi}{3}\)이고 그래프가 점 \(\left(\dfrac{\pi}{12},\,2\right)\)를 지날 때, 상수 \(a, b\)의 값을 구하시오. (단, \(b\gt 0\))</div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                사인·코사인 습관대로 \(\dfrac{2\pi}{b}=\dfrac{\pi}{3}\)에서 \(b=6\)이라 쓰면 틀린다. 탄젠트의 주기는 \(\dfrac{\pi}{b}\)이다. 또 \(a\)는 최댓값이 아니다 — 탄젠트는 최댓값이 없다.<br><br>
+                                <strong>STEP 1 — 주기</strong>: \(\dfrac{\pi}{b}=\dfrac{\pi}{3}\) 이므로 \(b=3\).<br>
+                                <strong>STEP 2 — 한 점 대입</strong>: \(2=a\tan\left(3\times\dfrac{\pi}{12}\right)=a\tan\dfrac{\pi}{4}=a\).<br><br>
+                                <strong>결론:</strong> \(a=2,\ b=3\) → \(y=2\tan 3x\) (점근선 \(x=\dfrac{n}{3}\pi+\dfrac{\pi}{6}\)).
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="자체 출제 · y=2tan 3x+1 의 주기·점근선" data-src-rel="유형">자체 출제 · y=2tan 3x+1 의 주기·점근선 <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 함수 \(y=2\tan 3x+1\) 의 주기와 점근선의 방정식을 구하시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① \(2\)배와 \(+1\)은 주기·점근선과 무관 (세로 방향 변화). <br>
+                ② 주기: \(\dfrac{\pi}{3}\). <br>
+                ③ 점근선: \(3x=n\pi+\dfrac{\pi}{2}\) 에서 \(x=\dfrac{n}{3}\pi+\dfrac{\pi}{6}\) (\(n\)은 정수). <br>
+                ④ 답: 주기 \(\dfrac{\pi}{3}\), 점근선 \(x=\dfrac{n}{3}\pi+\dfrac{\pi}{6}\).
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 세 삼각함수의 주기 비교">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 자체 출제 · 세 삼각함수의 주기 비교 (유형)</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (5분) · 핵심: 사인·코사인 \(\dfrac{2\pi}{|b|}\) vs 탄젠트 \(\dfrac{\pi}{|b|}\)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                세 함수 \(y=\sin 2x\), \(y=\cos\dfrac{x}{2}\), \(y=\tan 3x\) 의 주기를 각각 \(p_1, p_2, p_3\)이라 할 때, \(p_1+p_2+p_3\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(4\pi\) &nbsp;&nbsp; ② \(5\pi\) &nbsp;&nbsp; ③ \(\dfrac{16}{3}\pi\) &nbsp;&nbsp; ④ \(6\pi\) &nbsp;&nbsp; ⑤ \(\dfrac{13}{2}\pi\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1</strong>: \(p_1=\dfrac{2\pi}{2}=\pi\).</li>
+                    <li><strong>STEP 2</strong>: \(p_2=\dfrac{2\pi}{1/2}=4\pi\).</li>
+                    <li><strong>STEP 3</strong>: \(p_3=\dfrac{\pi}{3}\) (탄젠트!). 합 \(\pi+4\pi+\dfrac{\pi}{3}=\dfrac{16}{3}\pi\). <span class="text-red-600 font-bold">정답: ③</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-purple-700"><strong>함정:</strong> \(p_3=\dfrac{2\pi}{3}\)으로 계산하면 \(\dfrac{17}{3}\pi\)가 되어 보기에 없다 — 탄젠트의 주기는 \(\pi\)가 기준.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 제한된 범위에서 탄젠트의 최대·최소">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 자체 출제 · 제한된 범위에서 탄젠트의 최대·최소 (유형)</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ (6분) · 핵심: 점근선 사이 한 가지(\(-\dfrac{\pi}{2}\lt x\lt\dfrac{\pi}{2}\))에서 \(y=\tan x\)는 계속 증가</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(-\dfrac{\pi}{4}\le x\le\dfrac{\pi}{3}\) 에서 함수 \(y=\tan x\) 의 최댓값을 \(M\), 최솟값을 \(m\)이라 할 때, \(Mm\)의 값은?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(-\sqrt3\) &nbsp;&nbsp; ② \(-1\) &nbsp;&nbsp; ③ \(0\) &nbsp;&nbsp; ④ \(1\) &nbsp;&nbsp; ⑤ \(\sqrt3\)
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 범위 확인</strong>: \(\left[-\dfrac{\pi}{4},\dfrac{\pi}{3}\right]\)은 점근선 \(x=\pm\dfrac{\pi}{2}\) 사이에 있으므로 그래프가 끊기지 않고, \(x\)가 커질수록 \(y\)도 커진다.</li>
+                    <li><strong>STEP 2 — 양 끝값</strong>: \(M=\tan\dfrac{\pi}{3}=\sqrt3\), \(m=\tan\left(-\dfrac{\pi}{4}\right)=-1\).</li>
+                    <li><strong>STEP 3</strong>: \(Mm=\sqrt3\times(-1)=-\sqrt3\). <span class="text-red-600 font-bold">정답: ①</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \(y=\tan x\)는 정의역 전체에서는 최댓값·최솟값이 없지만, 점근선을 포함하지 않는 닫힌 범위로 제한하면 양 끝에서 최댓값·최솟값을 갖는다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">탄젠트 그래프가 끊어지고 점근선이 생기는 이유를 단위원과 접선 위 점 T로 설명할 수 있는가? 사인·코사인 그래프와 무엇이 왜 다른가?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"tan θ를 단위원의 접선 위 점 T의 y좌표로 해석하여, θ가 π/2에 가까워질 때 함숫값이 한없이 커지고 θ=π/2에서 정의되지 않음을 근거로 점근선의 존재를 논리적으로 설명함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 치명적 실수(논리적 오류)와 그것을 바로잡은 사고 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"y=tan 3x의 주기를 사인함수처럼 2π/3으로 구하는 오류를 범했으나, 그래프가 π 간격으로 반복됨을 다시 확인하여 탄젠트의 주기가 π/|b|임을 스스로 정리함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심이나 나만의 문제 풀이 Tip이 있다면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"탄젠트 값이 경사로의 기울기와 같다는 점에 주목하여, 경사각이 90°에 가까워질수록 기울기가 급격히 커지는 현상을 탄젠트 그래프의 점근선과 연결해 탐구함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_17_사인함수와코사인함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_19_삼각방정식과부등식.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 18차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_18.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

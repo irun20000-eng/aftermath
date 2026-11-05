@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 I-1. 지수와 로그 · 차시 06 상용로그 · 교과서(미래엔) 33~36쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 상용로그</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "06차시 상용로그";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I-1. 지수와 로그</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">06차시: 상용로그</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_05_로그의밑의변환.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_07_중단원마무리_I_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 33쪽 · 생각 열기" data-src-rel="">교과서 33쪽 · 생각 열기</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">지름의 길이가 \(1\,\text{m}\)인 어떤 물질을 지름의 길이가 \(x\,\text{m}\)인 작은 크기로 분쇄하는 데 필요한 에너지 \(E\,\text{J}\)(줄)은 \(E=\log_{10}\dfrac1x\) 이다.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 다음 표를 완성해 보자. 지름을 \(\dfrac1{10}\)로 줄일 때마다 에너지는 어떻게 변할까?</p>
+                    <table class="mx-auto text-center border border-slate-300">
+                        <tr class="bg-slate-100"><td class="px-4 py-1 border border-slate-300">\(x\)</td><td class="px-6 py-1 border border-slate-300">\(1\)</td><td class="px-6 py-1 border border-slate-300">\(0.1\)</td><td class="px-6 py-1 border border-slate-300">\(0.01\)</td></tr>
+                        <tr><td class="px-4 py-1 border border-slate-300">\(E\)</td><td class="px-6 py-1 border border-slate-300"><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(0\)</span></span></td><td class="px-6 py-1 border border-slate-300"><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1\)</span></span></td><td class="px-6 py-1 border border-slate-300"><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(2\)</span></span></td></tr>
+                    </table>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 우리가 쓰는 수는 십진법이므로 <span class="alg-accent font-bold">10을 밑으로 하는 로그</span>가 가장 편하다. 지진의 규모, 용액의 pH, 소리의 크기(dB)도 모두 이 로그로 나타낸다. 오늘은 ① 상용로그의 뜻, ② 상용로그표 읽기, ③ \(N=a\times10^n\) 꼴로 바꾸어 표에 없는 수의 상용로그 구하기, ④ 실생활 문제를 다룬다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 상용로그 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        상용로그의 뜻 — 밑 10은 생략한다
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 33쪽 · 상용로그" data-src-rel="">교과서 33쪽 · 상용로그</span>
+                    <p class="mb-3 text-slate-700">\(10\)을 밑으로 하는 로그를 <span class="alg-accent font-bold">상용로그</span>라 하며, 양수 \(N\)에 대하여 상용로그 \(\log_{10}N\)은 보통 밑 \(10\)을 생략하여 \(\log N\) 과 같이 나타낸다. (계산기의 <strong>log</strong> 버튼)</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-center">
+                        <p class="text-xl font-bold">\(n\)이 실수일 때 \(\log 10^n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(n\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-slate-700"><strong>보기</strong> ① \(\log 100=\log_{10}10^2=2\) &nbsp; ② \(\log 0.1=\log_{10}\dfrac1{10}=\log_{10}10^{-1}=-1\)</p>
+                    <p class="mt-2 text-sm text-slate-600"><strong>핵심:</strong> 10의 거듭제곱 꼴의 수는 상용로그의 값이 곧 지수. \(\log 2\)는 \(\log_{10}2\) 를 줄여 쓴 것이다.</p>
+                </div>
+
+                <!-- 2. 상용로그표 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        상용로그표 읽기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 34쪽 · 상용로그표" data-src-rel="">교과서 34쪽 · 상용로그표</span>
+                    <p class="mb-3 text-slate-700">상용로그표는 \(0.01\)의 간격으로 \(1.00\)에서 \(9.99\)까지의 수에 대한 상용로그의 값을 반올림하여 소수점 아래 넷째 자리까지 나타낸 것이다. 표의 \(.3385\)는 \(0.3385\)를 뜻한다.</p>
+                    <table class="mx-auto text-center text-base border border-slate-300 bg-white">
+                        <tr class="bg-slate-100"><td class="px-3 border border-slate-300">수</td><td class="px-3 border border-slate-300">0</td><td class="px-3 border border-slate-300">1</td><td class="px-3 border border-slate-300">…</td><td class="px-3 border border-slate-300">7</td><td class="px-3 border border-slate-300">8</td><td class="px-3 border border-slate-300">9</td></tr>
+                        <tr><td class="px-3 border border-slate-300">2.0</td><td class="px-3 border border-slate-300">.3010</td><td class="px-3 border border-slate-300">.3032</td><td class="px-3 border border-slate-300">…</td><td class="px-3 border border-slate-300">.3160</td><td class="px-3 border border-slate-300">.3181</td><td class="px-3 border border-slate-300">.3201</td></tr>
+                        <tr><td class="px-3 border border-slate-300 font-bold">2.1</td><td class="px-3 border border-slate-300">.3222</td><td class="px-3 border border-slate-300">.3243</td><td class="px-3 border border-slate-300">…</td><td class="px-3 border border-slate-300">.3365</td><td class="px-3 border border-slate-300 bg-blue-100 font-bold">.3385</td><td class="px-3 border border-slate-300">.3404</td></tr>
+                        <tr><td class="px-3 border border-slate-300">2.2</td><td class="px-3 border border-slate-300">.3424</td><td class="px-3 border border-slate-300">.3444</td><td class="px-3 border border-slate-300">…</td><td class="px-3 border border-slate-300">.3560</td><td class="px-3 border border-slate-300">.3579</td><td class="px-3 border border-slate-300">.3598</td></tr>
+                    </table>
+                    <p class="mt-3 text-lg text-slate-700">\(\log 2.18\)의 값은 \(2.1\)의 가로줄과 \(8\)의 세로줄이 만나는 곳의 수이므로 \(\log 2.18=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(0.3385\)</span></span></p>
+                    <p class="mt-2 text-sm text-slate-600"><strong>주의:</strong> 표의 값은 어림한 값이지만 편의상 등호를 사용한다.</p>
+                </div>
+
+                <!-- 3. 예제 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        표에 없는 수 — \(N=a\times10^n\) 꼴로 바꾼다
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 34쪽 · 예제 1" data-src-rel="">교과서 34쪽 · 예제 1</span>
+                    <p class="mb-3 text-slate-700">상용로그표를 이용하여 다음 값을 구하시오. (\(\log 3.16=0.4997,\; \log 7.78=0.8910\))</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 space-y-2 text-lg">
+                        <p>(1) \(\log 316=\log(3.16\times10^2)=\log 3.16+\log 10^2=0.4997+2=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(2.4997\)</span></span></p>
+                        <p>(2) \(\log 0.00778=\log(7.78\times10^{-3})=0.8910+(-3)=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-2.1090\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>정리:</strong> \(\log N\)의 값은 ⅰ) \(N=10^n\) 이면 \(\log N=n\), ⅱ) \(1.00\le N\le9.99\) 이면 상용로그표, ⅲ) 그 밖에는 \(N=a\times10^n\) (\(1\le a \lt 10\)) 꼴로 바꾸어 \(\log a+n\).</p>
+                </div>
+
+                <!-- 4. 예제 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        상용로그로 실생활 문제 풀기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 35쪽 · 예제 2" data-src-rel="">교과서 35쪽 · 예제 2</span>
+                    <p class="mb-3 text-slate-700">광원으로부터 \(d\,\text{m}\) 떨어진 지점에서 사람이 느끼는 감각의 세기는 \(\log\dfrac h{d^2}\) (\(h \gt 0\)인 상수)이다. 감각의 세기가 \(3\)일 때 광원으로부터의 거리는 감각의 세기가 \(1\)일 때의 몇 배인가?</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 space-y-2 text-lg">
+                        <p>거리를 각각 \(d_1,\,d_2\)라 하면 \(3=\log\dfrac h{d_1^{\,2}},\;\; 1=\log\dfrac h{d_2^{\,2}}\)</p>
+                        <p>그러므로 \(\dfrac h{d_1^{\,2}}=10^3,\;\; \dfrac h{d_2^{\,2}}=10\) → \(h=10^3d_1^{\,2}=10d_2^{\,2}\)</p>
+                        <p>\(d_1^{\,2}=\dfrac1{100}d_2^{\,2}\) 이므로 \(d_1=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac1{10}d_2\)</span></span> → \(\dfrac1{10}\)배</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>순서:</strong> ① 두 상황을 식 두 개로 → ② 로그를 지수로 풀기 → ③ 공통인 상수 \(h\)를 소거하여 비를 구한다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">상용로그의 정의와 상용로그표로 값을 구하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-10의 거듭제곱</span> <span class="src-chip" data-src-label="교과서 33쪽 · 문제 1" data-src-rel="그대로">교과서 33쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 상용로그의 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\log\sqrt{10}\)</span><span class="sub-q">(2) \(\log\dfrac1{1000}\)</span><span class="sub-q">(3) \(\log\sqrt[3]{10^5}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(10^n\) 꼴로 고치면 \(\log 10^n=n\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\log 10^{\frac12}=\dfrac12\)</span><span class="sub-q">(2) \(\log 10^{-3}=-3\)</span><span class="sub-q">(3) \(\log 10^{\frac53}=\dfrac53\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-상용로그표 읽기</span> <span class="src-chip" data-src-label="교과서 34쪽 · 문제 2" data-src-rel="그대로">교과서 34쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 상용로그표를 이용하여 다음 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\log 4.7\)</span><span class="sub-q">(2) \(\log 7.39\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 앞 두 자리는 가로줄, 셋째 자리는 세로줄. \(4.7=4.70\) 이므로 \(4.7\)의 가로줄과 \(0\)의 세로줄.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(0.6721\)</span><span class="sub-q">(2) \(0.8686\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-표에 없는 수</span> <span class="src-chip" data-src-label="교과서 34쪽 · 문제 3" data-src-rel="그대로">교과서 34쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 상용로그표를 이용하여 다음 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\log 42.5\)</span><span class="sub-q">(2) \(\log 0.0829\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(N=a\times10^n\) (\(1\le a \lt 10\)) 꼴로. 표에서 \(\log 4.25=0.6284,\; \log 8.29=0.9186\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\log(4.25\times10)=0.6284+1=1.6284\)</span><span class="sub-q">(2) \(\log(8.29\times10^{-2})=0.9186-2=-1.0814\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">로그의 성질과 함께 쓰고 실생활 식을 해석하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-자릿수만 다른 수</span> <span class="src-chip" data-src-label="교과서 34쪽 · 예제 1" data-src-rel="변형">교과서 34쪽 · 예제 1 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. \(\log 2.18=0.3385\) 일 때, 다음 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\log 2180\)</span><span class="sub-q">(2) \(\log 0.0218\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 숫자의 배열이 같으면 소수 부분은 같고 \(10\)의 지수만 다르다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\log(2.18\times10^3)=3.3385\)</span><span class="sub-q">(2) \(\log(2.18\times10^{-2})=0.3385-2=-1.6615\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-악취의 세기</span> <span class="src-chip" data-src-label="교과서 35쪽 · 문제 4" data-src-rel="그대로">교과서 35쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 어느 악취 물질의 농도가 \(x\,\text{ppm}\)일 때 악취의 세기를 \(I\)라 하면 \(I=\dfrac32\log x+\dfrac52\) 인 관계가 성립한다고 한다. 이 물질의 농도가 \(10\,\text{ppm}\)일 때 악취의 세기는 농도가 \(0.1\,\text{ppm}\)일 때 악취의 세기의 몇 배인지 구하시오. (출처: 환경부, 2012)</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(x=10\): \(I=\dfrac32\times1+\dfrac52=4\). \(\;x=0.1\): \(I=\dfrac32\times(-1)+\dfrac52=1\). 따라서 \(4\div1=4\). 답: \(4\)배.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-log 2, log 3으로 계산</span> <span class="src-chip" data-src-label="자체 출제 · log 2와 log 3으로 상용로그 계산" data-src-rel="유형">자체 출제 · log 2와 log 3으로 상용로그 계산 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(\log 2=0.3010,\; \log 3=0.4771\) 일 때, 다음 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\log 12\)</span><span class="sub-q">(2) \(\log 0.18\)</span><span class="sub-q">(3) \(\log 5\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 소인수분해 후 로그의 성질. \(5=\dfrac{10}2\) 이 핵심.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(2\log 2+\log 3=0.6020+0.4771=1.0791\)</span><span class="sub-q">(2) \(\log\dfrac{2\times3^2}{100}=0.3010+0.9542-2=-0.7448\)</span><span class="sub-q">(3) \(\log 10-\log 2=1-0.3010=0.6990\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 음의 지수가 든 실생활 공식 — 소음의 크기</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-층간 소음의 크기</span> <span class="src-chip" data-src-label="교과서 36쪽 · 탐구&amp;융합" data-src-rel="그대로">교과서 36쪽 · 탐구&amp;융합 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 소리의 세기가 \(I\,\text{W/m}^2\)일 때, 소리의 크기 \(D\,\text{dB}\)은 \(D=10\log\dfrac{I}{10^{-12}}\) 이다. 층간 소음 ① 물건 떨어뜨리는 소리, ② 망치질 소리, ③ 운동 기구 소리, ④ 걷거나 뛰는 소리의 세기가 각각 \(10^{-8},\; 10^{-5},\; 10^{-6},\; 10^{-6.5}\) 일 때,
+                            <div class="ml-6 mt-2 text-lg font-medium">(1) ①~④의 소리의 크기를 구하시오.<br>(2) 직접 충격 소음의 최고 소음도 허용 기준이 주간 \(57\,\text{dB}\), 야간 \(52\,\text{dB}\)일 때, 주간과 야간에 허용 가능한 소리를 각각 찾으시오. (출처: 환경부, 2023)</div>
+                        </div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                \(\dfrac{I}{10^{-12}}=I\times10^{12}\) 이다. 분모의 \(10^{-12}\)를 보고 지수를 빼야 할지 더해야 할지 헷갈리면 지수법칙 \(\dfrac{10^m}{10^n}=10^{m-n}\) 으로 확인한다.<br><br>
+                                <strong>STEP 1 — 식 정리</strong>: \(I=10^k\) 이면 \(D=10\log 10^{k+12}=10(k+12)\).<br><br>
+                                <strong>STEP 2 — 대입</strong>: ① \(k=-8\) → \(40\,\text{dB}\), ② \(k=-5\) → \(70\,\text{dB}\), ③ \(k=-6\) → \(60\,\text{dB}\), ④ \(k=-6.5\) → \(55\,\text{dB}\).<br><br>
+                                <strong>STEP 3 — 기준과 비교</strong>: 주간(\(57\,\text{dB}\) 이하) ①, ④ / 야간(\(52\,\text{dB}\) 이하) ①.<br><br>
+                                <strong>답:</strong> (1) ① \(40\,\text{dB}\) ② \(70\,\text{dB}\) ③ \(60\,\text{dB}\) ④ \(55\,\text{dB}\) &nbsp; (2) 주간 ①, ④ · 야간 ①
+                                </p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 35쪽 · 예제 2" data-src-rel="변형">교과서 35쪽 · 예제 2 <span class="src-rel">변형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 광원으로부터 \(d\,\text{m}\) 떨어진 지점에서 사람이 느끼는 감각의 세기는 \(\log\dfrac h{d^2}\) (\(h \gt 0\)인 상수)라고 한다. 감각의 세기가 \(5\)일 때 광원으로부터의 거리는 감각의 세기가 \(1\)일 때 광원으로부터의 거리의 몇 배인지 구하시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① 거리를 \(d_1,\,d_2\)라 하면 \(5=\log\dfrac h{d_1^{\,2}},\; 1=\log\dfrac h{d_2^{\,2}}\). <br>
+                ② \(h=10^5d_1^{\,2}=10d_2^{\,2}\) → \(d_1^{\,2}=\dfrac1{10^4}d_2^{\,2}\). <br>
+                ③ \(d_1 \gt 0,\; d_2 \gt 0\) 이므로 \(d_1=\dfrac1{100}d_2\). <br>
+                <strong>답: \(\dfrac1{100}\)배</strong>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="교과서 35쪽 · 생각 넓히기">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 교과서 35쪽 · 생각 넓히기 (그대로)</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ · 핵심: 매년 일정 비율 감소 → 등비 꼴 식 → 양변에 상용로그</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                어느 산유국에서는 산유량을 매년 \(5\,\%\)씩 감축하려고 한다. (1) 올해 산유량을 \(a\)라 할 때, \(n\)년 후의 산유량을 \(a\)의 식으로 나타내시오. (2) 산유량이 올해 산유량의 \(\dfrac12\)배가 되는 것은 몇 년 후인지 구하시오. (단, \(\log 2=0.30,\; \log 0.95=-0.02\)로 계산한다.)
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 식 세우기</strong>: 1년마다 \(0.95\)배가 되므로 \(n\)년 후 산유량은 \(a\times0.95^n\).</li>
+                    <li><strong>STEP 2 — 조건</strong>: \(a\times0.95^n=\dfrac12a\) → \(0.95^n=\dfrac12\). 양변에 상용로그: \(n\log 0.95=-\log 2\).</li>
+                    <li><strong>STEP 3 — 계산</strong>: \(-0.02n=-0.30\) → \(n=15\). <span class="text-red-600 font-bold">답: (1) \(a\times0.95^n\) (2) \(15\)년 후</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>함정:</strong> "5 % 감축"을 \(0.05^n\)으로 쓰면 틀린다 — 남는 비율은 \(1-0.05=0.95\).</p>
+            </div></details>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 상용로그로 큰 수의 자릿수">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-amber-900 font-bold mb-1">📖 출처: 자체 출제 · 상용로그로 큰 수의 자릿수 (유형)</p>
+                <p class="text-xs text-amber-700">난이도 ★★★ · 핵심: \(N=a\times10^n\;(1\le a \lt 10)\) 이면 \(N\)은 \((n+1)\)자리 수</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(\log 2=0.3010\) 일 때, \(2^{30}\)은 몇 자리 수인가?
+            </div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">
+                    ① \(8\)자리 &nbsp;&nbsp; ② \(9\)자리 &nbsp;&nbsp; ③ \(10\)자리 &nbsp;&nbsp; ④ \(11\)자리 &nbsp;&nbsp; ⑤ \(12\)자리
+                </div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 상용로그</strong>: \(\log 2^{30}=30\log 2=30\times0.3010=9.03\).</li>
+                    <li><strong>STEP 2 — 10의 거듭제곱 사이</strong>: \(9\le9.03 \lt 10\) 이므로 \(10^9\le2^{30} \lt 10^{10}\). (\(2^{30}=10^{0.03}\times10^9\))</li>
+                    <li><strong>STEP 3 — 자릿수</strong>: \(10^9\)은 \(10\)자리 수 중 가장 작은 수이므로 \(2^{30}\)은 \(10\)자리 수. <span class="text-red-600 font-bold">정답: ③</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>검산:</strong> \(2^{30}=1\,073\,741\,824\) — 실제로 10자리. 흔한 오답 ②는 \(9.03\)의 정수 부분 \(9\)를 그대로 자릿수로 쓴 것.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">지진 규모·pH·데시벨처럼 값의 범위가 아주 넓은 양을 왜 상용로그로 나타낼까? 오늘 배운 \(N=a\times10^n\) 과 연결해 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"소리의 세기가 \(10^{-8}\)에서 \(10^{-5}\)까지 1000배 차이 나도 데시벨로는 40에서 70으로 표현됨을 계산하고, 상용로그가 곱의 변화를 차의 변화로 바꾸어 넓은 범위의 양을 다루기 쉽게 만든다는 점을 설명함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 치명적 실수(논리적 오류)와 그것을 바로잡은 사고 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\log 0.0829\)를 구할 때 \(0.0829=8.29\times10^{-2}\)로 바꾸는 과정에서 지수를 잘못 세는 실수를 했으나, 소수점을 옮긴 횟수와 지수의 관계를 다시 정리하여 표에 없는 수의 상용로그를 정확히 구함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">새롭게 생긴 수학적 호기심이나 나만의 문제 풀이 Tip이 있다면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"층간 소음 허용 기준을 데시벨 공식으로 분석한 뒤, 생활 속 소음의 세기를 직접 조사하여 소음을 줄이기 위한 실천 방안을 제안하는 등 수학을 사회 문제 해결에 연결하는 태도를 보임."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_05_로그의밑의변환.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_07_중단원마무리_I_1.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 06차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → 교사용_index-alg.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_index-alg.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="../뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="../뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_06.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

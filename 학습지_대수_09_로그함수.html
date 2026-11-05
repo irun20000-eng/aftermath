@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 I-2. 지수함수와 로그함수 · 차시 09 로그함수와 그 그래프 · 교과서(미래엔) 47~51쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 로그함수와 그 그래프</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_09';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "09차시 로그함수와 그 그래프";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I-2. 지수함수와 로그함수</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">09차시: 로그함수와 그 그래프</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_08_지수함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_10_지수함수의활용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 47쪽 · 생각 열기" data-src-rel="">교과서 47쪽 · 생각 열기</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">두 학생이 지수함수 \(y=2^x\)의 역함수를 두고 이야기한다. "역함수의 그래프는 어떤 모양일까?" — "역함수의 그래프니까 직선 \(y=x\)에 대하여 대칭이동하면 되지 않을까?" — "그럼 \(y=2^x\)의 역함수는 어떻게 구하지?" — "\(y=2^x\)을 \(x\)에 대하여 풀면…"</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> ① 로그의 정의를 이용하여 \(y=2^x\)에서 \(x\)를 \(y\)로 나타내 보자. ② 역함수를 구하려면 무엇이 보장되어야 하는가? (\(y=2^x\)은 일대일대응인가?)</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> \(y=2^x\) \(\Leftrightarrow\) \(x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\log_2 y\)</span></span>. 여기서 \(x\)와 \(y\)를 바꾸면 \(y=\log_2 x\) — 오늘의 주인공 <strong>로그함수</strong>다. 오늘은 ① 로그함수의 뜻, ② 지수함수와 대칭인 그래프, ③ 로그함수의 성질, ④ 평행·대칭이동한 그래프, ⑤ 성질을 이용한 대소 비교와 최대·최소를 익힌다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        로그함수의 뜻 — 지수함수의 역함수
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 47쪽 · 로그함수의 뜻" data-src-rel="">교과서 47쪽 · 로그함수의 뜻</span>
+                    <p class="mb-3 text-slate-700">지수함수 \(y=a^x\ (a\gt0,\ a\ne1)\)은 실수 전체의 집합에서 양의 실수 전체의 집합으로의 <strong>일대일대응</strong>이므로 역함수가 존재한다. \(y=a^x\)에서 로그의 정의에 의하여 \(x=\log_a y\)이고, \(x\)와 \(y\)를 바꾸면</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-center">
+                        <p class="text-xl font-bold">\(y=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\log_a x\)</span></span> &nbsp;(\(a\gt0,\ a\ne1\))</p>
+                    </div>
+                    <p class="mt-3 text-slate-700">이 함수를 \(a\)를 밑으로 하는 <span class="alg-accent font-bold">로그함수</span>라 한다.</p>
+                    <div class="mt-4 bg-blue-50 p-4 rounded-xl border border-blue-200">
+                        <p class="text-sm font-bold text-blue-900 mb-1">🎯 정의역과 치역이 서로 바뀐다</p>
+                        <p class="text-sm text-blue-800">로그함수의 정의역은 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">양의 실수 전체의 집합</span></span>, 치역은 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">실수 전체의 집합</span></span> — 지수함수의 치역이 로그함수의 정의역, 지수함수의 정의역이 로그함수의 치역이다.</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        로그함수의 그래프 — \(y=x\)에 대한 대칭
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 48쪽 · 로그함수의 그래프" data-src-rel="">교과서 48쪽 · 로그함수의 그래프</span>
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                        <div class="flex-1 text-slate-700">
+                            <p class="mb-2">\(y=\log_a x\)는 \(y=a^x\)의 역함수이므로, \(y=\log_a x\)의 그래프는 \(y=a^x\)의 그래프를 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">직선 \(y=x\)에 대하여 대칭이동</span></span>한 것이다.</p>
+                            <p class="mb-2">\(y=2^x\) 위의 점 \((0,1),\ (1,2),\ (2,4)\) → \(y=\log_2 x\) 위의 점 \((1,0),\ (2,1),\ (4,2)\) (좌표를 맞바꿈).</p>
+                            <p class="text-sm text-slate-600"><strong>기억 장치:</strong> \(\log_a 1=0,\ \log_a a=1\)이므로 그래프는 항상 점 \((1,0)\)과 \((a,1)\)을 지난다.</p>
+                        </div>
+                        <figure class="my-3 flex flex-col items-center"><svg viewBox="0 0 260 260" width="260" height="260" style="max-width:100%;height:auto;background:#fff" role="img" aria-label="y=2^x 과 y=log2 x" xmlns="http://www.w3.org/2000/svg"><line x1="14.0" y1="14" x2="14.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="43.0" y1="14" x2="43.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="72.0" y1="14" x2="72.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="101.0" y1="14" x2="101.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="130.0" y1="14" x2="130.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="159.0" y1="14" x2="159.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="188.0" y1="14" x2="188.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="217.0" y1="14" x2="217.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="246.0" y1="14" x2="246.0" y2="246" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="246.0" x2="246" y2="246.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="217.0" x2="246" y2="217.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="188.0" x2="246" y2="188.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="159.0" x2="246" y2="159.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="130.0" x2="246" y2="130.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="101.0" x2="246" y2="101.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="72.0" x2="246" y2="72.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="43.0" x2="246" y2="43.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="14.0" x2="246" y2="14.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="159.0" x2="252" y2="159.0" stroke="#334155" stroke-width="1.4"/><line x1="101.0" y1="246" x2="101.0" y2="8" stroke="#334155" stroke-width="1.4"/><text x="248" y="173.0" font-size="12" font-style="italic" fill="#334155">x</text><text x="106.0" y="14.0" font-size="12" font-style="italic" fill="#334155">y</text><text x="90.0" y="172.0" font-size="11" fill="#334155">O</text><line x1="14.0" y1="246.0" x2="246.0" y2="14.0" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5 4"/><path d="M14.0,155.4 L15.4,155.2 L16.9,155.1 L18.3,155.0 L19.8,154.8 L21.2,154.7 L22.7,154.5 L24.2,154.4 L25.6,154.2 L27.1,154.0 L28.5,153.9 L29.9,153.7 L31.4,153.5 L32.8,153.3 L34.3,153.1 L35.8,152.9 L37.2,152.7 L38.7,152.5 L40.1,152.2 L41.6,152.0 L43.0,151.8 L44.5,151.5 L45.9,151.2 L47.3,151.0 L48.8,150.7 L50.2,150.4 L51.7,150.1 L53.2,149.8 L54.6,149.4 L56.0,149.1 L57.5,148.7 L59.0,148.4 L60.4,148.0 L61.8,147.6 L63.3,147.2 L64.8,146.8 L66.2,146.4 L67.7,145.9 L69.1,145.5 L70.5,145.0 L72.0,144.5 L73.4,144.0 L74.9,143.5 L76.3,142.9 L77.8,142.3 L79.2,141.8 L80.7,141.1 L82.2,140.5 L83.6,139.9 L85.1,139.2 L86.5,138.5 L87.9,137.8 L89.4,137.0 L90.8,136.2 L92.3,135.4 L93.8,134.6 L95.2,133.8 L96.7,132.9 L98.1,131.9 L99.6,131.0 L101.0,130.0 L102.4,129.0 L103.9,127.9 L105.3,126.8 L106.8,125.7 L108.2,124.5 L109.7,123.3 L111.2,122.0 L112.6,120.7 L114.1,119.4 L115.5,118.0 L116.9,116.5 L118.4,115.0 L119.8,113.5 L121.3,111.9 L122.8,110.2 L124.2,108.5 L125.7,106.7 L127.1,104.9 L128.6,103.0 L130.0,101.0 L131.4,99.0 L132.9,96.8 L134.4,94.6 L135.8,92.4 L137.2,90.0 L138.7,87.6 L140.1,85.1 L141.6,82.5 L143.1,79.8 L144.5,77.0 L145.9,74.1 L147.4,71.1 L148.9,68.0 L150.3,64.8 L151.8,61.5 L153.2,58.0 L154.6,54.5 L156.1,50.8 L157.6,47.0 L159.0,43.0 L160.4,38.9 L161.9,34.7 L163.4,30.3 L164.8,25.8 L166.2,21.1 L167.7,16.2 L169.1,11.2 L170.6,5.9 L172.1,0.5" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 4"/><path d="M103.9,255.3 L105.3,238.4 L106.8,226.3 L108.2,217.0 L109.7,209.4 L111.2,202.9 L112.6,197.3 L114.1,192.4 L115.5,188.0 L116.9,184.0 L118.4,180.4 L119.8,177.0 L121.3,173.9 L122.8,171.0 L124.2,168.3 L125.7,165.8 L127.1,163.4 L128.6,161.1 L130.0,159.0 L131.4,157.0 L132.9,155.0 L134.4,153.2 L135.8,151.4 L137.2,149.7 L138.7,148.0 L140.1,146.4 L141.6,144.9 L143.1,143.5 L144.5,142.0 L145.9,140.7 L147.4,139.3 L148.9,138.0 L150.3,136.8 L151.8,135.6 L153.2,134.4 L154.6,133.3 L156.1,132.1 L157.6,131.1 L159.0,130.0 L160.4,129.0 L161.9,128.0 L163.4,127.0 L164.8,126.0 L166.2,125.1 L167.7,124.2 L169.1,123.3 L170.6,122.4 L172.1,121.5 L173.5,120.7 L174.9,119.8 L176.4,119.0 L177.9,118.2 L179.3,117.4 L180.8,116.7 L182.2,115.9 L183.6,115.2 L185.1,114.5 L186.6,113.7 L188.0,113.0 L189.4,112.3 L190.9,111.7 L192.4,111.0 L193.8,110.3 L195.2,109.7 L196.7,109.0 L198.1,108.4 L199.6,107.8 L201.1,107.2 L202.5,106.6 L203.9,106.0 L205.4,105.4 L206.9,104.8 L208.3,104.3 L209.8,103.7 L211.2,103.1 L212.6,102.6 L214.1,102.1 L215.6,101.5 L217.0,101.0 L218.4,100.5 L219.9,100.0 L221.4,99.5 L222.8,99.0 L224.2,98.5 L225.7,98.0 L227.1,97.5 L228.6,97.0 L230.1,96.5 L231.5,96.1 L232.9,95.6 L234.4,95.2 L235.9,94.7 L237.3,94.3 L238.8,93.8 L240.2,93.4 L241.6,92.9 L243.1,92.5 L244.6,92.1 L246.0,91.7" fill="none" stroke="#059669" stroke-width="2.2"/><circle cx="101.0" cy="130.0" r="3" fill="#0f172a"/><circle cx="130.0" cy="159.0" r="3" fill="#0f172a"/><text x="135.0" y="154.0" font-size="11" fill="#0f172a">(1,0)</text><circle cx="159.0" cy="130.0" r="3" fill="#0f172a"/><text x="164.0" y="125.0" font-size="11" fill="#0f172a">(2,1)</text><circle cx="217.0" cy="101.0" r="3" fill="#0f172a"/><text x="222.0" y="96.0" font-size="11" fill="#0f172a">(4,2)</text><text x="112.6" y="28.5" font-size="12" fill="#94a3b8">y=2ˣ</text><text x="188.0" y="80.7" font-size="12" fill="#059669">y=log₂x</text><text x="202.5" y="31.4" font-size="12" fill="#64748b">y=x</text></svg><figcaption class="text-xs text-slate-500 mt-1">y=2ˣ 과 y=log₂x 는 y=x 에 대칭</figcaption></figure>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        로그함수 \(y=\log_a x\)의 성질
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 48쪽 · 로그함수의 성질 · 참고" data-src-rel="">교과서 48쪽 · 로그함수의 성질 · 참고</span>
+                    <div class="flex flex-wrap justify-center gap-4"><figure class="my-3 flex flex-col items-center"><svg viewBox="0 0 200 200" width="200" height="200" style="max-width:100%;height:auto;background:#fff" role="img" aria-label="a>1 로그함수" xmlns="http://www.w3.org/2000/svg"><line x1="14.0" y1="14" x2="14.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="42.7" y1="14" x2="42.7" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="71.3" y1="14" x2="71.3" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="100.0" y1="14" x2="100.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="128.7" y1="14" x2="128.7" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="157.3" y1="14" x2="157.3" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="186.0" y1="14" x2="186.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="186.0" x2="186" y2="186.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="157.3" x2="186" y2="157.3" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="128.7" x2="186" y2="128.7" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="100.0" x2="186" y2="100.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="71.3" x2="186" y2="71.3" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="42.7" x2="186" y2="42.7" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="14.0" x2="186" y2="14.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="100.0" x2="192" y2="100.0" stroke="#334155" stroke-width="1.4"/><line x1="42.7" y1="186" x2="42.7" y2="8" stroke="#334155" stroke-width="1.4"/><text x="188" y="114.0" font-size="12" font-style="italic" fill="#334155">x</text><text x="47.7" y="14.0" font-size="12" font-style="italic" fill="#334155">y</text><text x="31.7" y="113.0" font-size="11" fill="#334155">O</text><path d="M46.2,186.0 L47.3,175.1 L48.4,166.6 L49.5,159.5 L50.5,153.4 L51.6,148.1 L52.7,143.4 L53.8,139.2 L54.9,135.4 L55.9,131.9 L57.0,128.7 L58.1,125.7 L59.1,122.9 L60.2,120.3 L61.3,117.8 L62.4,115.5 L63.5,113.3 L64.5,111.2 L65.6,109.2 L66.7,107.3 L67.8,105.5 L68.8,103.8 L69.9,102.1 L71.0,100.5 L72.0,99.0 L73.1,97.5 L74.2,96.1 L75.3,94.7 L76.3,93.3 L77.4,92.0 L78.5,90.8 L79.6,89.5 L80.7,88.4 L81.7,87.2 L82.8,86.1 L83.9,85.0 L85.0,83.9 L86.0,82.9 L87.1,81.9 L88.2,80.9 L89.2,79.9 L90.3,79.0 L91.4,78.1 L92.5,77.2 L93.5,76.3 L94.6,75.4 L95.7,74.6 L96.8,73.7 L97.8,72.9 L98.9,72.1 L100.0,71.3 L101.1,70.6 L102.2,69.8 L103.2,69.1 L104.3,68.3 L105.4,67.6 L106.5,66.9 L107.5,66.2 L108.6,65.6 L109.7,64.9 L110.8,64.2 L111.8,63.6 L112.9,62.9 L114.0,62.3 L115.0,61.7 L116.1,61.1 L117.2,60.5 L118.3,59.9 L119.3,59.3 L120.4,58.7 L121.5,58.2 L122.6,57.6 L123.7,57.1 L124.7,56.5 L125.8,56.0 L126.9,55.4 L128.0,54.9 L129.0,54.4 L130.1,53.9 L131.2,53.4 L132.2,52.9 L133.3,52.4 L134.4,51.9 L135.5,51.4 L136.6,50.9 L137.6,50.5 L138.7,50.0 L139.8,49.5 L140.8,49.1 L141.9,48.6 L143.0,48.2 L144.1,47.7 L145.2,47.3 L146.2,46.9 L147.3,46.5 L148.4,46.0 L149.4,45.6 L150.5,45.2 L151.6,44.8 L152.7,44.4 L153.8,44.0 L154.8,43.6 L155.9,43.2 L157.0,42.8 L158.1,42.4 L159.1,42.0 L160.2,41.6 L161.3,41.3 L162.3,40.9 L163.4,40.5 L164.5,40.2 L165.6,39.8 L166.7,39.4 L167.7,39.1 L168.8,38.7 L169.9,38.4 L170.9,38.0 L172.0,37.7 L173.1,37.3 L174.2,37.0 L175.2,36.7 L176.3,36.3 L177.4,36.0 L178.5,35.7 L179.6,35.3 L180.6,35.0 L181.7,34.7 L182.8,34.4 L183.8,34.1 L184.9,33.7 L186.0,33.4" fill="none" stroke="#059669" stroke-width="2.2"/><circle cx="71.3" cy="100.0" r="3" fill="#0f172a"/><text x="76.3" y="95.0" font-size="11" fill="#0f172a">(1,0)</text><circle cx="100.0" cy="71.3" r="3" fill="#0f172a"/><text x="105.0" y="66.3" font-size="11" fill="#0f172a">(a,1)</text></svg><figcaption class="text-xs text-slate-500 mt-1">a &gt; 1: 증가</figcaption></figure><figure class="my-3 flex flex-col items-center"><svg viewBox="0 0 200 200" width="200" height="200" style="max-width:100%;height:auto;background:#fff" role="img" aria-label="0&lt;a&lt;1 로그함수" xmlns="http://www.w3.org/2000/svg"><line x1="14.0" y1="14" x2="14.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="42.7" y1="14" x2="42.7" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="71.3" y1="14" x2="71.3" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="100.0" y1="14" x2="100.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="128.7" y1="14" x2="128.7" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="157.3" y1="14" x2="157.3" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="186.0" y1="14" x2="186.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="186.0" x2="186" y2="186.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="157.3" x2="186" y2="157.3" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="128.7" x2="186" y2="128.7" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="100.0" x2="186" y2="100.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="71.3" x2="186" y2="71.3" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="42.7" x2="186" y2="42.7" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="14.0" x2="186" y2="14.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="100.0" x2="192" y2="100.0" stroke="#334155" stroke-width="1.4"/><line x1="42.7" y1="186" x2="42.7" y2="8" stroke="#334155" stroke-width="1.4"/><text x="188" y="114.0" font-size="12" font-style="italic" fill="#334155">x</text><text x="47.7" y="14.0" font-size="12" font-style="italic" fill="#334155">y</text><text x="31.7" y="113.0" font-size="11" fill="#334155">O</text><path d="M46.2,14.0 L47.3,24.9 L48.4,33.4 L49.5,40.5 L50.5,46.6 L51.6,51.9 L52.7,56.6 L53.8,60.8 L54.9,64.6 L55.9,68.1 L57.0,71.3 L58.1,74.3 L59.1,77.1 L60.2,79.7 L61.3,82.2 L62.4,84.5 L63.5,86.7 L64.5,88.8 L65.6,90.8 L66.7,92.7 L67.8,94.5 L68.8,96.2 L69.9,97.9 L71.0,99.5 L72.0,101.0 L73.1,102.5 L74.2,103.9 L75.3,105.3 L76.3,106.7 L77.4,108.0 L78.5,109.2 L79.6,110.5 L80.7,111.6 L81.7,112.8 L82.8,113.9 L83.9,115.0 L85.0,116.1 L86.0,117.1 L87.1,118.1 L88.2,119.1 L89.2,120.1 L90.3,121.0 L91.4,121.9 L92.5,122.8 L93.5,123.7 L94.6,124.6 L95.7,125.4 L96.8,126.3 L97.8,127.1 L98.9,127.9 L100.0,128.7 L101.1,129.4 L102.2,130.2 L103.2,130.9 L104.3,131.7 L105.4,132.4 L106.5,133.1 L107.5,133.8 L108.6,134.4 L109.7,135.1 L110.8,135.8 L111.8,136.4 L112.9,137.1 L114.0,137.7 L115.0,138.3 L116.1,138.9 L117.2,139.5 L118.3,140.1 L119.3,140.7 L120.4,141.3 L121.5,141.8 L122.6,142.4 L123.7,142.9 L124.7,143.5 L125.8,144.0 L126.9,144.6 L128.0,145.1 L129.0,145.6 L130.1,146.1 L131.2,146.6 L132.2,147.1 L133.3,147.6 L134.4,148.1 L135.5,148.6 L136.6,149.1 L137.6,149.5 L138.7,150.0 L139.8,150.5 L140.8,150.9 L141.9,151.4 L143.0,151.8 L144.1,152.3 L145.2,152.7 L146.2,153.1 L147.3,153.5 L148.4,154.0 L149.4,154.4 L150.5,154.8 L151.6,155.2 L152.7,155.6 L153.8,156.0 L154.8,156.4 L155.9,156.8 L157.0,157.2 L158.1,157.6 L159.1,158.0 L160.2,158.4 L161.3,158.7 L162.3,159.1 L163.4,159.5 L164.5,159.8 L165.6,160.2 L166.7,160.6 L167.7,160.9 L168.8,161.3 L169.9,161.6 L170.9,162.0 L172.0,162.3 L173.1,162.7 L174.2,163.0 L175.2,163.3 L176.3,163.7 L177.4,164.0 L178.5,164.3 L179.6,164.7 L180.6,165.0 L181.7,165.3 L182.8,165.6 L183.8,165.9 L184.9,166.3 L186.0,166.6" fill="none" stroke="#d97706" stroke-width="2.2"/><circle cx="71.3" cy="100.0" r="3" fill="#0f172a"/><text x="76.3" y="95.0" font-size="11" fill="#0f172a">(1,0)</text><circle cx="57.0" cy="71.3" r="3" fill="#0f172a"/><text x="62.0" y="66.3" font-size="11" fill="#0f172a">(a,1)</text></svg><figcaption class="text-xs text-slate-500 mt-1">0 &lt; a &lt; 1: 감소</figcaption></figure></div>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100 mt-2">
+                        <ol class="space-y-2 text-lg font-medium">
+                            <li>① 정의역은 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">양의 실수 전체의 집합</span></span>, 치역은 실수 전체의 집합</li>
+                            <li>② 일대일함수이다.</li>
+                            <li>③ \(a\gt1\)이면 \(x\)가 증가할 때 \(y\)도 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">증가</span></span>, \(0\lt a\lt1\)이면 \(y\)는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">감소</span></span></li>
+                            <li>④ 그래프는 점 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\((1,\,0)\)</span></span>을 지나고, <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(y\)축</span></span>을 점근선으로 갖는다.</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>참고:</strong> \(\log_{\frac1a}x=-\log_a x\)이므로 \(y=\log_a x\)와 \(y=\log_{\frac1a}x\)의 그래프는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x\)축</span></span>에 대하여 대칭이다. (지수함수는 \(y\)축 대칭이었다는 것과 비교!)</p>
+                </div>
+
+                <!-- 4 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        평행이동·대칭이동한 그래프와 점근선
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 49쪽 · 예제 1" data-src-rel="">교과서 49쪽 · 예제 1</span>
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                        <div class="flex-1 text-slate-700">
+                            <p class="mb-1"><strong>예제 1</strong> 그래프를 그리고 점근선을 구하시오.</p>
+                            <p class="mb-2">(1) \(y=\log_2(x+2)\): \(y=\log_2 x\)를 \(x\)축 방향으로 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-2\)</span></span>만큼 평행이동. 점근선 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x=-2\)</span></span></p>
+                            <p class="mb-2">(2) \(y=-\log_3 x+1\): \(y=\log_3 x\)를 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x\)축에 대하여 대칭이동</span></span>한 후 \(y\)축 방향으로 \(1\)만큼 평행이동. 점근선 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x=0\)</span></span></p>
+                            <p class="mt-3 text-sm text-red-700"><strong>주의:</strong> 로그함수의 점근선은 세로선 \(x=m\). \(x\)축 방향 이동은 점근선을 움직이지만 \(y\)축 방향 이동은 점근선을 바꾸지 않는다 (지수함수와 반대).</p>
+                        </div>
+                        <figure class="my-3 flex flex-col items-center"><svg viewBox="0 0 260 230" width="260" height="230" style="max-width:100%;height:auto;background:#fff" role="img" aria-label="예제 1 그래프" xmlns="http://www.w3.org/2000/svg"><line x1="14.0" y1="14" x2="14.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="43.0" y1="14" x2="43.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="72.0" y1="14" x2="72.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="101.0" y1="14" x2="101.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="130.0" y1="14" x2="130.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="159.0" y1="14" x2="159.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="188.0" y1="14" x2="188.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="217.0" y1="14" x2="217.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="246.0" y1="14" x2="246.0" y2="216" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="216.0" x2="246" y2="216.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="187.1" x2="246" y2="187.1" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="158.3" x2="246" y2="158.3" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="129.4" x2="246" y2="129.4" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="100.6" x2="246" y2="100.6" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="71.7" x2="246" y2="71.7" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="42.9" x2="246" y2="42.9" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="14.0" x2="246" y2="14.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="129.4" x2="252" y2="129.4" stroke="#334155" stroke-width="1.4"/><line x1="101.0" y1="216" x2="101.0" y2="8" stroke="#334155" stroke-width="1.4"/><text x="248" y="143.4" font-size="12" font-style="italic" fill="#334155">x</text><text x="106.0" y="14.0" font-size="12" font-style="italic" fill="#334155">y</text><text x="90.0" y="142.4" font-size="11" fill="#334155">O</text><line x1="43.0" y1="14" x2="43.0" y2="216" stroke="#db2777" stroke-width="1.2" stroke-dasharray="5 4"/><path d="M103.9,225.3 L105.3,208.4 L106.8,196.4 L108.2,187.1 L109.7,179.6 L111.2,173.1 L112.6,167.6 L114.1,162.7 L115.5,158.3 L116.9,154.3 L118.4,150.7 L119.8,147.4 L121.3,144.3 L122.8,141.4 L124.2,138.7 L125.7,136.2 L127.1,133.8 L128.6,131.6 L130.0,129.4 L131.4,127.4 L132.9,125.5 L134.4,123.6 L135.8,121.8 L137.2,120.1 L138.7,118.5 L140.1,116.9 L141.6,115.4 L143.1,114.0 L144.5,112.5 L145.9,111.2 L147.4,109.9 L148.9,108.6 L150.3,107.3 L151.8,106.1 L153.2,105.0 L154.6,103.8 L156.1,102.7 L157.6,101.6 L159.0,100.6 L160.4,99.5 L161.9,98.5 L163.4,97.6 L164.8,96.6 L166.2,95.7 L167.7,94.8 L169.1,93.9 L170.6,93.0 L172.1,92.1 L173.5,91.3 L174.9,90.5 L176.4,89.6 L177.9,88.9 L179.3,88.1 L180.8,87.3 L182.2,86.6 L183.6,85.8 L185.1,85.1 L186.6,84.4 L188.0,83.7 L189.4,83.0 L190.9,82.3 L192.4,81.7 L193.8,81.0 L195.2,80.4 L196.7,79.7 L198.1,79.1 L199.6,78.5 L201.1,77.9 L202.5,77.3 L203.9,76.7 L205.4,76.1 L206.9,75.5 L208.3,75.0 L209.8,74.4 L211.2,73.8 L212.6,73.3 L214.1,72.8 L215.6,72.2 L217.0,71.7 L218.4,71.2 L219.9,70.7 L221.4,70.2 L222.8,69.7 L224.2,69.2 L225.7,68.7 L227.1,68.2 L228.6,67.7 L230.1,67.3 L231.5,66.8 L232.9,66.4 L234.4,65.9 L235.9,65.4 L237.3,65.0 L238.8,64.6 L240.2,64.1 L241.6,63.7 L243.1,63.3 L244.6,62.8 L246.0,62.4" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 4"/><path d="M45.9,225.3 L47.3,208.4 L48.8,196.4 L50.2,187.1 L51.7,179.6 L53.2,173.1 L54.6,167.6 L56.0,162.7 L57.5,158.3 L59.0,154.3 L60.4,150.7 L61.8,147.4 L63.3,144.3 L64.8,141.4 L66.2,138.7 L67.7,136.2 L69.1,133.8 L70.5,131.6 L72.0,129.4 L73.4,127.4 L74.9,125.5 L76.3,123.6 L77.8,121.8 L79.2,120.1 L80.7,118.5 L82.2,116.9 L83.6,115.4 L85.1,114.0 L86.5,112.5 L87.9,111.2 L89.4,109.9 L90.8,108.6 L92.3,107.3 L93.8,106.1 L95.2,105.0 L96.7,103.8 L98.1,102.7 L99.6,101.6 L101.0,100.6 L102.4,99.5 L103.9,98.5 L105.3,97.6 L106.8,96.6 L108.2,95.7 L109.7,94.8 L111.2,93.9 L112.6,93.0 L114.1,92.1 L115.5,91.3 L116.9,90.5 L118.4,89.6 L119.8,88.9 L121.3,88.1 L122.8,87.3 L124.2,86.6 L125.7,85.8 L127.1,85.1 L128.6,84.4 L130.0,83.7 L131.4,83.0 L132.9,82.3 L134.4,81.7 L135.8,81.0 L137.2,80.4 L138.7,79.7 L140.1,79.1 L141.6,78.5 L143.1,77.9 L144.5,77.3 L145.9,76.7 L147.4,76.1 L148.9,75.5 L150.3,75.0 L151.8,74.4 L153.2,73.8 L154.6,73.3 L156.1,72.8 L157.6,72.2 L159.0,71.7 L160.4,71.2 L161.9,70.7 L163.4,70.2 L164.8,69.7 L166.2,69.2 L167.7,68.7 L169.1,68.2 L170.6,67.7 L172.1,67.3 L173.5,66.8 L174.9,66.4 L176.4,65.9 L177.9,65.4 L179.3,65.0 L180.8,64.6 L182.2,64.1 L183.6,63.7 L185.1,63.3 L186.6,62.8 L188.0,62.4 L189.4,62.0 L190.9,61.6 L192.4,61.2 L193.8,60.8 L195.2,60.4 L196.7,60.0 L198.1,59.6 L199.6,59.2 L201.1,58.8 L202.5,58.5 L203.9,58.1 L205.4,57.7 L206.9,57.3 L208.3,57.0 L209.8,56.6 L211.2,56.2 L212.6,55.9 L214.1,55.5 L215.6,55.2 L217.0,54.8 L218.4,54.5 L219.9,54.1 L221.4,53.8 L222.8,53.5 L224.2,53.1 L225.7,52.8 L227.1,52.5 L228.6,52.1 L230.1,51.8 L231.5,51.5 L232.9,51.2 L234.4,50.9 L235.9,50.6 L237.3,50.2 L238.8,49.9 L240.2,49.6 L241.6,49.3 L243.1,49.0 L244.6,48.7 L246.0,48.4" fill="none" stroke="#059669" stroke-width="2.2"/><path d="M102.4,21.9 L103.9,40.1 L105.3,50.7 L106.8,58.3 L108.2,64.2 L109.7,68.9 L111.2,73.0 L112.6,76.5 L114.1,79.6 L115.5,82.4 L116.9,84.9 L118.4,87.2 L119.8,89.3 L121.3,91.2 L122.8,93.0 L124.2,94.7 L125.7,96.3 L127.1,97.8 L128.6,99.2 L130.0,100.6 L131.4,101.9 L132.9,103.1 L134.4,104.2 L135.8,105.4 L137.2,106.4 L138.7,107.5 L140.1,108.5 L141.6,109.4 L143.1,110.3 L144.5,111.2 L145.9,112.1 L147.4,112.9 L148.9,113.7 L150.3,114.5 L151.8,115.3 L153.2,116.0 L154.6,116.7 L156.1,117.4 L157.6,118.1 L159.0,118.8 L160.4,119.4 L161.9,120.1 L163.4,120.7 L164.8,121.3 L166.2,121.9 L167.7,122.4 L169.1,123.0 L170.6,123.6 L172.1,124.1 L173.5,124.6 L174.9,125.2 L176.4,125.7 L177.9,126.2 L179.3,126.7 L180.8,127.1 L182.2,127.6 L183.6,128.1 L185.1,128.5 L186.6,129.0 L188.0,129.4 L189.4,129.9 L190.9,130.3 L192.4,130.7 L193.8,131.1 L195.2,131.5 L196.7,131.9 L198.1,132.3 L199.6,132.7 L201.1,133.1 L202.5,133.5 L203.9,133.9 L205.4,134.2 L206.9,134.6 L208.3,134.9 L209.8,135.3 L211.2,135.6 L212.6,136.0 L214.1,136.3 L215.6,136.7 L217.0,137.0 L218.4,137.3 L219.9,137.6 L221.4,138.0 L222.8,138.3 L224.2,138.6 L225.7,138.9 L227.1,139.2 L228.6,139.5 L230.1,139.8 L231.5,140.1 L232.9,140.4 L234.4,140.7 L235.9,140.9 L237.3,141.2 L238.8,141.5 L240.2,141.8 L241.6,142.0 L243.1,142.3 L244.6,142.6 L246.0,142.8" fill="none" stroke="#d97706" stroke-width="2.2"/><text x="164.8" y="40.0" font-size="12" fill="#059669">log₂(x+2)</text><text x="176.4" y="166.9" font-size="12" fill="#d97706">−log₃x+1</text><text x="16.9" y="204.5" font-size="12" fill="#db2777">x=−2</text></svg><figcaption class="text-xs text-slate-500 mt-1">초록 (1), 주황 (2), 점선 y=log₂x</figcaption></figure>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+                        성질의 활용 — 대소 비교와 최대·최소
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 50쪽 · 예제 2" data-src-rel="">교과서 50쪽 · 예제 2</span>
+                    <p class="mb-2 text-slate-700"><strong>예제 2</strong> 두 수 \(\frac12\log_{\frac12}100,\ 2\log_{\frac12}3\)의 대소를 비교하시오.</p>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100 text-lg">
+                        <p>\(\frac12\log_{\frac12}100=\log_{\frac12}(10^2)^{\frac12}=\log_{\frac12}10\), \(\ 2\log_{\frac12}3=\log_{\frac12}3^2=\log_{\frac12}9\)</p>
+                        <p class="mt-1">\(y=\log_{\frac12}x\)는 감소하는 함수이고 \(10\gt9\)이므로 \(\ \log_{\frac12}10\lt\log_{\frac12}9\)</p>
+                        <p class="mt-1 font-bold">따라서 \(\frac12\log_{\frac12}100\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\lt\)</span></span> \(2\log_{\frac12}3\)</p>
+                    </div>
+                    <p class="mt-3 text-slate-700"><strong>최대·최소:</strong> 닫힌 구간에서 로그함수도 증가(또는 감소)하므로 양 끝에서 최댓값·최솟값을 갖는다. 진수가 \(a\)의 거듭제곱이 되는 끝값이 계산하기 좋게 주어진다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">역함수·로그 계산을 되살리고 로그함수를 구별하며 그래프를 그리는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-역함수와 로그 계산 복습</span> <span class="src-chip" data-src-label="교과서 41쪽 · 준비 학습 2, 3" data-src-rel="그대로">교과서 41쪽 · 준비 학습 2, 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 물음에 답하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(y=\frac13x-1\)의 역함수</span><span class="sub-q">(2) \(\log_6 2+\log_6 18\)</span><span class="sub-q">(3) \(\log_{27}9\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 역함수는 \(x\)에 대하여 푼 뒤 \(x,y\)를 바꾼다. 로그는 \(\log_a M+\log_a N=\log_a MN\), \(\log_{a^m}b^n=\frac nm\log_a b\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(x=3y+3\) → \(y=3x+3\)</span><span class="sub-q">(2) \(\log_6 36=2\)</span><span class="sub-q">(3) \(\log_{3^3}3^2=\frac23\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-로그함수 구별</span> <span class="src-chip" data-src-label="교과서 47쪽 · 문제 1" data-src-rel="그대로">교과서 47쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 중에서 로그함수인 것을 모두 찾으시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(y=\log_5 x\)</span><span class="sub-q">(2) \(y=\log_3 9\)</span><span class="sub-q">(3) \(y=\log_{\frac12}x\)</span><span class="sub-q">(4) \(y=(\log_2 7)x\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 변수 \(x\)가 <strong>진수</strong>에 있어야 한다. (2)는 \(y=2\)인 상수함수, (4)는 \(\log_2 7\)이 상수이므로 일차함수.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">답: (1), (3)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-대칭을 이용한 그래프 그리기</span> <span class="src-chip" data-src-label="교과서 48쪽 · 문제 2" data-src-rel="그대로">교과서 48쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 두 지수함수 \(y=2^x\)과 \(y=\left(\frac12\right)^x\)의 그래프를 이용하여 다음 로그함수의 그래프를 그리시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(y=\log_2 x\)</span><span class="sub-q">(2) \(y=\log_{\frac12}x\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 각 지수함수의 그래프를 직선 \(y=x\)에 대하여 대칭이동한다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(y=2^x\)을 \(y=x\)에 대하여 대칭이동: 점 \((\frac12,-1),\ (1,0),\ (2,1),\ (4,2)\)를 지나는 증가하는 곡선, 점근선 \(y\)축</span><span class="sub-q">(2) \(y=\left(\frac12\right)^x\)을 \(y=x\)에 대하여 대칭이동: 점 \((\frac12,1),\ (1,0),\ (2,-1),\ (4,-2)\)를 지나는 감소하는 곡선, 점근선 \(y\)축</span></span>
+                            <figure class="my-3 flex flex-col items-center"><svg viewBox="0 0 230 200" width="230" height="200" style="max-width:100%;height:auto;background:#fff" role="img" aria-label="y=log2 x, y=log1/2 x" xmlns="http://www.w3.org/2000/svg"><line x1="14.0" y1="14" x2="14.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="47.7" y1="14" x2="47.7" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="81.3" y1="14" x2="81.3" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="115.0" y1="14" x2="115.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="148.7" y1="14" x2="148.7" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="182.3" y1="14" x2="182.3" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="216.0" y1="14" x2="216.0" y2="186" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="186.0" x2="216" y2="186.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="157.3" x2="216" y2="157.3" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="128.7" x2="216" y2="128.7" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="100.0" x2="216" y2="100.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="71.3" x2="216" y2="71.3" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="42.7" x2="216" y2="42.7" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="14.0" x2="216" y2="14.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="100.0" x2="222" y2="100.0" stroke="#334155" stroke-width="1.4"/><line x1="47.7" y1="186" x2="47.7" y2="8" stroke="#334155" stroke-width="1.4"/><text x="218" y="114.0" font-size="12" font-style="italic" fill="#334155">x</text><text x="52.7" y="14.0" font-size="12" font-style="italic" fill="#334155">y</text><text x="36.7" y="113.0" font-size="11" fill="#334155">O</text><path d="M51.9,186.0 L53.1,175.1 L54.4,166.6 L55.7,159.5 L56.9,153.4 L58.2,148.1 L59.5,143.4 L60.7,139.2 L62.0,135.4 L63.2,131.9 L64.5,128.7 L65.8,125.7 L67.0,122.9 L68.3,120.3 L69.5,117.8 L70.8,115.5 L72.1,113.3 L73.3,111.2 L74.6,109.2 L75.9,107.3 L77.1,105.5 L78.4,103.8 L79.6,102.1 L80.9,100.5 L82.2,99.0 L83.4,97.5 L84.7,96.1 L86.0,94.7 L87.2,93.3 L88.5,92.0 L89.8,90.8 L91.0,89.5 L92.3,88.4 L93.5,87.2 L94.8,86.1 L96.1,85.0 L97.3,83.9 L98.6,82.9 L99.8,81.9 L101.1,80.9 L102.4,79.9 L103.6,79.0 L104.9,78.1 L106.2,77.2 L107.4,76.3 L108.7,75.4 L110.0,74.6 L111.2,73.7 L112.5,72.9 L113.7,72.1 L115.0,71.3 L116.3,70.6 L117.5,69.8 L118.8,69.1 L120.0,68.3 L121.3,67.6 L122.6,66.9 L123.8,66.2 L125.1,65.6 L126.4,64.9 L127.6,64.2 L128.9,63.6 L130.1,62.9 L131.4,62.3 L132.7,61.7 L133.9,61.1 L135.2,60.5 L136.5,59.9 L137.7,59.3 L139.0,58.7 L140.2,58.2 L141.5,57.6 L142.8,57.1 L144.0,56.5 L145.3,56.0 L146.6,55.4 L147.8,54.9 L149.1,54.4 L150.3,53.9 L151.6,53.4 L152.9,52.9 L154.1,52.4 L155.4,51.9 L156.7,51.4 L157.9,50.9 L159.2,50.5 L160.4,50.0 L161.7,49.5 L163.0,49.1 L164.2,48.6 L165.5,48.2 L166.8,47.7 L168.0,47.3 L169.3,46.9 L170.6,46.5 L171.8,46.0 L173.1,45.6 L174.3,45.2 L175.6,44.8 L176.9,44.4 L178.1,44.0 L179.4,43.6 L180.7,43.2 L181.9,42.8 L183.2,42.4 L184.4,42.0 L185.7,41.6 L187.0,41.3 L188.2,40.9 L189.5,40.5 L190.8,40.2 L192.0,39.8 L193.3,39.4 L194.5,39.1 L195.8,38.7 L197.1,38.4 L198.3,38.0 L199.6,37.7 L200.8,37.3 L202.1,37.0 L203.4,36.7 L204.6,36.3 L205.9,36.0 L207.2,35.7 L208.4,35.3 L209.7,35.0 L210.9,34.7 L212.2,34.4 L213.5,34.1 L214.7,33.7 L216.0,33.4" fill="none" stroke="#059669" stroke-width="2.2"/><path d="M51.9,14.0 L53.1,24.9 L54.4,33.4 L55.7,40.5 L56.9,46.6 L58.2,51.9 L59.5,56.6 L60.7,60.8 L62.0,64.6 L63.2,68.1 L64.5,71.3 L65.8,74.3 L67.0,77.1 L68.3,79.7 L69.5,82.2 L70.8,84.5 L72.1,86.7 L73.3,88.8 L74.6,90.8 L75.9,92.7 L77.1,94.5 L78.4,96.2 L79.6,97.9 L80.9,99.5 L82.2,101.0 L83.4,102.5 L84.7,103.9 L86.0,105.3 L87.2,106.7 L88.5,108.0 L89.8,109.2 L91.0,110.5 L92.3,111.6 L93.5,112.8 L94.8,113.9 L96.1,115.0 L97.3,116.1 L98.6,117.1 L99.8,118.1 L101.1,119.1 L102.4,120.1 L103.6,121.0 L104.9,121.9 L106.2,122.8 L107.4,123.7 L108.7,124.6 L110.0,125.4 L111.2,126.3 L112.5,127.1 L113.7,127.9 L115.0,128.7 L116.3,129.4 L117.5,130.2 L118.8,130.9 L120.0,131.7 L121.3,132.4 L122.6,133.1 L123.8,133.8 L125.1,134.4 L126.4,135.1 L127.6,135.8 L128.9,136.4 L130.1,137.1 L131.4,137.7 L132.7,138.3 L133.9,138.9 L135.2,139.5 L136.5,140.1 L137.7,140.7 L139.0,141.3 L140.2,141.8 L141.5,142.4 L142.8,142.9 L144.0,143.5 L145.3,144.0 L146.6,144.6 L147.8,145.1 L149.1,145.6 L150.3,146.1 L151.6,146.6 L152.9,147.1 L154.1,147.6 L155.4,148.1 L156.7,148.6 L157.9,149.1 L159.2,149.5 L160.4,150.0 L161.7,150.5 L163.0,150.9 L164.2,151.4 L165.5,151.8 L166.8,152.3 L168.0,152.7 L169.3,153.1 L170.6,153.5 L171.8,154.0 L173.1,154.4 L174.3,154.8 L175.6,155.2 L176.9,155.6 L178.1,156.0 L179.4,156.4 L180.7,156.8 L181.9,157.2 L183.2,157.6 L184.4,158.0 L185.7,158.4 L187.0,158.7 L188.2,159.1 L189.5,159.5 L190.8,159.8 L192.0,160.2 L193.3,160.6 L194.5,160.9 L195.8,161.3 L197.1,161.6 L198.3,162.0 L199.6,162.3 L200.8,162.7 L202.1,163.0 L203.4,163.3 L204.6,163.7 L205.9,164.0 L207.2,164.3 L208.4,164.7 L209.7,165.0 L210.9,165.3 L212.2,165.6 L213.5,165.9 L214.7,166.3 L216.0,166.6" fill="none" stroke="#d97706" stroke-width="2.2"/><circle cx="81.3" cy="100.0" r="3" fill="#0f172a"/><circle cx="115.0" cy="71.3" r="3" fill="#0f172a"/><text x="120.0" y="66.3" font-size="11" fill="#0f172a">(2,1)</text><circle cx="115.0" cy="128.7" r="3" fill="#0f172a"/><text x="120.0" y="123.7" font-size="11" fill="#0f172a">(2,−1)</text><text x="158.8" y="34.1" font-size="12" fill="#059669">(1)</text><text x="158.8" y="171.7" font-size="12" fill="#d97706">(2)</text></svg><figcaption class="text-xs text-slate-500 mt-1">(1) 초록 · (2) 주황 — x축 대칭</figcaption></figure>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">평행·대칭이동과 증감을 이용해 점근선, 최대·최소, 대소를 판단하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-평행·대칭이동과 점근선</span> <span class="src-chip" data-src-label="교과서 49쪽 · 문제 3" data-src-rel="그대로">교과서 49쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 다음 함수의 그래프를 그리고, 점근선을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(y=\log_{\frac13}(x-2)+1\)</span><span class="sub-q">(2) \(y=-\log_5 x-1\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(y=\log_a(x-m)+n\)의 점근선은 \(x=m\).
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(y=\log_{\frac13}x\)를 \(x\)축 방향으로 \(2\), \(y\)축 방향으로 \(1\)만큼 평행이동. 점 \((3,1)\)을 지남. 점근선 \(x=2\)</span><span class="sub-q">(2) \(y=\log_5 x\)를 \(x\)축에 대하여 대칭이동한 후 \(y\)축 방향으로 \(-1\)만큼 평행이동. 점 \((1,-1)\)을 지남. 점근선 \(x=0\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-닫힌 구간에서 최대·최소</span> <span class="src-chip" data-src-label="교과서 49쪽 · 문제 4" data-src-rel="그대로">교과서 49쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 다음 함수의 최댓값과 최솟값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 정의역이 \(\{x\mid 0\le x\le 3\}\)인 함수 \(y=\log_2(x+1)+3\)</span><span class="sub-q">(2) 정의역이 \(\{x\mid 4\le x\le 10\}\)인 함수 \(y=\log_{\frac13}(x-1)-2\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 밑으로 증감을 먼저 정하고 양 끝값을 대입한다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) 증가: \(x=3\)에서 \(\log_2 4+3=5\), \(x=0\)에서 \(\log_2 1+3=3\). 최댓값 \(5\), 최솟값 \(3\)</span><span class="sub-q">(2) 감소: \(x=4\)에서 \(\log_{\frac13}3-2=-3\), \(x=10\)에서 \(\log_{\frac13}9-2=-4\). 최댓값 \(-3\), 최솟값 \(-4\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-진수를 비교하여 대소 판단</span> <span class="src-chip" data-src-label="교과서 50쪽 · 문제 5" data-src-rel="그대로">교과서 50쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. 다음 두 수의 대소를 비교하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(2\log_3\sqrt{15},\ 4\log_3 2\)</span><span class="sub-q">(2) \(\frac13\log_{\frac15}64,\ 3\log_{\frac15}\sqrt3\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 계수를 진수의 지수로 올려 \(\log_a(\ )\) 하나로 만든 뒤 진수를 비교. 밑이 \(1\)보다 작으면 부등호가 뒤집힌다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(\log_3 15\), \(\log_3 16\). \(15\lt16\), 밑 \(3\gt1\) → \(2\log_3\sqrt{15}\lt4\log_3 2\)</span><span class="sub-q">(2) \(\log_{\frac15}4\), \(\log_{\frac15}3\sqrt3\). \((3\sqrt3)^2=27\gt16=4^2\)이므로 \(4\lt3\sqrt3\), 밑 \(\frac15\lt1\) → \(\frac13\log_{\frac15}64\gt3\log_{\frac15}\sqrt3\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 식이 같아 보여도 정의역이 다르면 다른 함수</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-정의역 비교로 같은 함수 판정</span> <span class="src-chip" data-src-label="교과서 50쪽 · 생각 넓히기" data-src-rel="그대로">교과서 50쪽 · 생각 넓히기 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 세 함수 \(y=\log_2 x^2,\ y=2\log_2 x,\ y=2\log_2|x|\)에 대하여 세 학생이 말했다. 준호: "\(y=\log_2 x^2\)과 \(y=2\log_2 x\)는 같아." 지혜: "그렇지 않아. \(y=\log_2 x^2\)은 \(y=2\log_2|x|\)와 같아." 선우: "아니야. 셋 다 같은 함수야!" 세 함수의 그래프를 그려 누구의 주장이 옳은지 확인하시오.</div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                \(\log_a M^k=k\log_a M\)은 <strong>\(M\gt0\)</strong>일 때만 쓸 수 있다. \(x^2\)은 \(x\lt0\)이어도 양수이므로 \(y=\log_2 x^2\)의 정의역은 \(x\ne0\)인 실수 전체인데, \(y=2\log_2 x\)의 정의역은 \(x\gt0\)뿐이다.
+                                </p>
+                            </div>
+                        </details>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-white"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>STEP 1 — 정의역</strong>: \(y=\log_2 x^2\): \(x\ne0\) / \(y=2\log_2 x\): \(x\gt0\) / \(y=2\log_2|x|\): \(x\ne0\).<br>
+                            <strong>STEP 2 — 식 비교</strong>: \(x\ne0\)이면 \(x^2=|x|^2\)이므로 \(\log_2 x^2=\log_2|x|^2=2\log_2|x|\).<br>
+                            <strong>STEP 3 — 그래프</strong>: \(y=\log_2 x^2\)과 \(y=2\log_2|x|\)는 \(y\)축에 대칭인 두 갈래 곡선으로 일치하고, \(y=2\log_2 x\)는 오른쪽 갈래만 있다.<br>
+                            <strong>답:</strong> 지혜의 주장만 옳다.
+                            <figure class="my-3 flex flex-col items-center"><svg viewBox="0 0 240 220" width="240" height="220" style="max-width:100%;height:auto;background:#fff" role="img" aria-label="세 함수의 그래프" xmlns="http://www.w3.org/2000/svg"><line x1="14.0" y1="14" x2="14.0" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="40.5" y1="14" x2="40.5" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="67.0" y1="14" x2="67.0" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="93.5" y1="14" x2="93.5" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="120.0" y1="14" x2="120.0" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="146.5" y1="14" x2="146.5" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="173.0" y1="14" x2="173.0" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="199.5" y1="14" x2="199.5" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="226.0" y1="14" x2="226.0" y2="206" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="206.0" x2="226" y2="206.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="182.0" x2="226" y2="182.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="158.0" x2="226" y2="158.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="134.0" x2="226" y2="134.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="110.0" x2="226" y2="110.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="86.0" x2="226" y2="86.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="62.0" x2="226" y2="62.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="38.0" x2="226" y2="38.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="14.0" x2="226" y2="14.0" stroke="#e5e7eb" stroke-width="1"/><line x1="14" y1="110.0" x2="232" y2="110.0" stroke="#334155" stroke-width="1.4"/><line x1="120.0" y1="206" x2="120.0" y2="8" stroke="#334155" stroke-width="1.4"/><text x="228" y="124.0" font-size="12" font-style="italic" fill="#334155">x</text><text x="125.0" y="14.0" font-size="12" font-style="italic" fill="#334155">y</text><text x="109.0" y="123.0" font-size="11" fill="#334155">O</text><path d="M14.0,14.0 L15.3,14.9 L16.7,15.8 L18.0,16.6 L19.3,17.6 L20.6,18.5 L21.9,19.4 L23.3,20.3 L24.6,21.3 L25.9,22.3 L27.2,23.2 L28.6,24.2 L29.9,25.3 L31.2,26.3 L32.6,27.3 L33.9,28.4 L35.2,29.5 L36.5,30.5 L37.8,31.7 L39.2,32.8 L40.5,33.9 L41.8,35.1 L43.2,36.3 L44.5,37.5 L45.8,38.7 L47.1,39.9 L48.4,41.2 L49.8,42.5 L51.1,43.8 L52.4,45.2 L53.8,46.5 L55.1,47.9 L56.4,49.4 L57.7,50.8 L59.1,52.3 L60.4,53.8 L61.7,55.4 L63.0,57.0 L64.3,58.6 L65.7,60.3 L67.0,62.0 L68.3,63.8 L69.7,65.6 L71.0,67.4 L72.3,69.3 L73.6,71.2 L74.9,73.3 L76.3,75.3 L77.6,77.5 L78.9,79.7 L80.2,81.9 L81.6,84.3 L82.9,86.7 L84.2,89.2 L85.6,91.8 L86.9,94.5 L88.2,97.4 L89.5,100.3 L90.8,103.4 L92.2,106.6 L93.5,110.0 L94.8,113.6 L96.2,117.3 L97.5,121.3 L98.8,125.5 L100.1,129.9 L101.4,134.7 L102.8,139.8 L104.1,145.4 L105.4,151.4 L106.8,158.0 L108.1,165.3 L109.4,173.5 L110.7,182.7 L112.1,193.4 L113.4,206.0" fill="none" stroke="#db2777" stroke-width="2.2"/><path d="M126.6,206.0 L127.9,193.4 L129.3,182.7 L130.6,173.5 L131.9,165.3 L133.2,158.0 L134.6,151.4 L135.9,145.4 L137.2,139.8 L138.6,134.7 L139.9,129.9 L141.2,125.5 L142.5,121.3 L143.9,117.3 L145.2,113.6 L146.5,110.0 L147.8,106.6 L149.1,103.4 L150.5,100.3 L151.8,97.4 L153.1,94.5 L154.4,91.8 L155.8,89.2 L157.1,86.7 L158.4,84.3 L159.8,81.9 L161.1,79.7 L162.4,77.5 L163.7,75.3 L165.1,73.3 L166.4,71.2 L167.7,69.3 L169.0,67.4 L170.4,65.6 L171.7,63.8 L173.0,62.0 L174.3,60.3 L175.6,58.6 L177.0,57.0 L178.3,55.4 L179.6,53.8 L180.9,52.3 L182.3,50.8 L183.6,49.4 L184.9,47.9 L186.2,46.5 L187.6,45.2 L188.9,43.8 L190.2,42.5 L191.6,41.2 L192.9,39.9 L194.2,38.7 L195.5,37.5 L196.9,36.3 L198.2,35.1 L199.5,33.9 L200.8,32.8 L202.1,31.7 L203.5,30.5 L204.8,29.5 L206.1,28.4 L207.4,27.3 L208.8,26.3 L210.1,25.3 L211.4,24.2 L212.8,23.2 L214.1,22.3 L215.4,21.3 L216.7,20.3 L218.1,19.4 L219.4,18.5 L220.7,17.6 L222.0,16.6 L223.4,15.8 L224.7,14.9 L226.0,14.0" fill="none" stroke="#db2777" stroke-width="2.2"/><path d="M126.6,206.0 L127.9,193.4 L129.3,182.7 L130.6,173.5 L131.9,165.3 L133.2,158.0 L134.6,151.4 L135.9,145.4 L137.2,139.8 L138.6,134.7 L139.9,129.9 L141.2,125.5 L142.5,121.3 L143.9,117.3 L145.2,113.6 L146.5,110.0 L147.8,106.6 L149.1,103.4 L150.5,100.3 L151.8,97.4 L153.1,94.5 L154.4,91.8 L155.8,89.2 L157.1,86.7 L158.4,84.3 L159.8,81.9 L161.1,79.7 L162.4,77.5 L163.7,75.3 L165.1,73.3 L166.4,71.2 L167.7,69.3 L169.0,67.4 L170.4,65.6 L171.7,63.8 L173.0,62.0 L174.3,60.3 L175.6,58.6 L177.0,57.0 L178.3,55.4 L179.6,53.8 L180.9,52.3 L182.3,50.8 L183.6,49.4 L184.9,47.9 L186.2,46.5 L187.6,45.2 L188.9,43.8 L190.2,42.5 L191.6,41.2 L192.9,39.9 L194.2,38.7 L195.5,37.5 L196.9,36.3 L198.2,35.1 L199.5,33.9 L200.8,32.8 L202.1,31.7 L203.5,30.5 L204.8,29.5 L206.1,28.4 L207.4,27.3 L208.8,26.3 L210.1,25.3 L211.4,24.2 L212.8,23.2 L214.1,22.3 L215.4,21.3 L216.7,20.3 L218.1,19.4 L219.4,18.5 L220.7,17.6 L222.0,16.6 L223.4,15.8 L224.7,14.9 L226.0,14.0" fill="none" stroke="#059669" stroke-width="2.2" stroke-dasharray="6 4"/><text x="16.7" y="30.8" font-size="12" fill="#db2777">y=log₂x² = 2log₂|x|</text><text x="167.7" y="189.2" font-size="12" fill="#059669">y=2log₂x (x&gt;0)</text></svg><figcaption class="text-xs text-slate-500 mt-1">분홍: log₂x² = 2log₂|x| · 초록 점선: 2log₂x</figcaption></figure>
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 49쪽 · 문제 4" data-src-rel="변형">교과서 49쪽 · 문제 4 <span class="src-rel">변형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. 정의역이 \(\{x\mid 1\le x\le 7\}\)인 함수 \(y=\log_2(x+1)-1\)의 최댓값과 최솟값을 구하고, 그래프의 점근선을 구하시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① 밑 \(2\gt1\) → 증가하는 함수. <br>
+                ② 최댓값: \(x=7\)에서 \(\log_2 8-1=2\). <br>
+                ③ 최솟값: \(x=1\)에서 \(\log_2 2-1=0\). <br>
+                ④ 점근선: \(x=-1\). &nbsp;답: 최댓값 \(2\), 최솟값 \(0\), 점근선 \(x=-1\)
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="교과서 51쪽 · 공학 도구 확인 2">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 교과서 51쪽 · 공학 도구 '지수함수와 로그함수의 그래프의 이해' 확인 2 (유형)</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (6분) · 핵심: \(y=a^x\)과 \(y=\log_a x\)의 그래프는 직선 \(y=x\)에 대하여 대칭</p>
+            </div>
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                직선 \(y=-x+k\)가 곡선 \(y=2^x\)과 점 \(\mathrm{A}(1,\,2)\)에서 만나고, 곡선 \(y=\log_2 x\)와 점 \(\mathrm{B}\)에서 만난다. 상수 \(k\)의 값, 점 \(\mathrm{B}\)의 좌표, 선분 \(\mathrm{AB}\)의 길이를 구하시오.
+            </div>
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1</strong>: A가 직선 위에 있으므로 \(2=-1+k\), \(k=3\).</li>
+                    <li><strong>STEP 2 — 대칭</strong>: \(y=2^x\)과 \(y=\log_2 x\)는 \(y=x\)에 대하여 대칭이고, 기울기 \(-1\)인 직선 \(y=-x+3\)도 \(y=x\)에 대하여 대칭(\(x,y\)를 바꿔도 같은 식)이다. 따라서 B는 A를 \(y=x\)에 대하여 대칭이동한 점 \((2,\,1)\).</li>
+                    <li><strong>STEP 3 — 확인</strong>: \(\log_2 2=1\), \(-2+3=1\) ✓. (\(y=\log_2 x\)는 증가, 직선은 감소하므로 만나는 점은 하나뿐이다.)</li>
+                    <li><strong>STEP 4</strong>: \(\mathrm{AB}=\sqrt{(2-1)^2+(1-2)^2}=\sqrt2\). <span class="text-red-600 font-bold">정답: \(k=3\), \(\mathrm{B}(2,1)\), \(\mathrm{AB}=\sqrt2\)</span></li>
+                </ol>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 -->
+        <section class="card border-l-[8px] border-amber-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 로그함수의 식 복원과 역함수">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 자체 출제 · 로그함수의 식 복원과 역함수 (유형)</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (6분) · 핵심: 점근선 \(x=-a\), 지나는 점, 역함수 = 지수함수</p>
+            </div>
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                함수 \(f(x)=\log_2(x+a)+b\)의 그래프의 점근선이 직선 \(x=-1\)이고, 그래프가 점 \((3,\,4)\)를 지난다. 상수 \(a,\ b\)의 값과 \(f(x)\)의 역함수 \(g(x)\)를 구하고, \(g(5)\)의 값을 구하시오.
+            </div>
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1</strong>: 점근선 \(x=-a=-1\) → \(a=1\).</li>
+                    <li><strong>STEP 2</strong>: \(f(3)=\log_2 4+b=2+b=4\) → \(b=2\). \(f(x)=\log_2(x+1)+2\).</li>
+                    <li><strong>STEP 3 — 역함수</strong>: \(y-2=\log_2(x+1)\) → \(x+1=2^{y-2}\) → \(x=2^{y-2}-1\). \(x,y\)를 바꾸면 \(g(x)=2^{x-2}-1\).</li>
+                    <li><strong>STEP 4</strong>: \(g(5)=2^3-1=7\). (확인: \(f(7)=\log_2 8+2=5\) ✓) <span class="text-red-600 font-bold">정답: \(a=1,\ b=2\), \(g(x)=2^{x-2}-1\), \(g(5)=7\)</span></li>
+                </ol>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 우리는 지수함수의 역함수로 로그함수를 만들고 \(y=x\)에 대한 대칭으로 그래프를 얻었다. 지수함수와 로그함수의 정의역·치역·점근선이 서로 어떻게 바뀌는지 나만의 말로 정리하면?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"로그함수를 지수함수의 역함수로 이해하고, 직선 \(y=x\)에 대한 대칭을 이용해 정의역과 치역, 점근선이 서로 바뀌는 관계를 표로 정리하여 설명함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 결정적 실수(정의역 무시, 밑이 1보다 작을 때의 부등호 등)와 그것을 바로잡은 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"\(\log_2 x^2=2\log_2 x\)로 성급하게 변형했으나, 세 함수의 그래프를 비교하며 진수 조건에 따라 정의역이 달라짐을 발견하고 로그의 성질을 쓸 때의 조건을 스스로 점검하는 습관을 기름."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">공학 도구로 밑 \(a\)를 움직이며 관찰한 그래프의 변화, 또는 더 탐구하고 싶은 점은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"공학 도구로 밑 \(a\)를 변화시키며 지수함수와 로그함수의 그래프가 \(y=x\)에 대하여 항상 대칭임을 확인하고, 이를 이용해 두 곡선과 직선의 교점 문제를 간결하게 해결함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_08_지수함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_10_지수함수의활용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 09차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_09.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

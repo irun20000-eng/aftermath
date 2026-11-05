@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 II-1. 삼각함수 · 차시 16 삼각함수 사이의 관계 · 교과서(미래엔) 80~82쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 삼각함수 사이의 관계</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "16차시 삼각함수 사이의 관계";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: II-1. 삼각함수</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">16차시: 삼각함수 사이의 관계</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_15_삼각함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_17_사인함수와코사인함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="자체 정리 · 단위원 위의 점과 삼각함수" data-src-rel="">자체 정리 · 단위원 위의 점과 삼각함수</span>
+            <div class="text-lg text-slate-700 font-medium">
+
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <p><strong>[개방형 발문]</strong> 지난 시간에 단위원 위의 점은 \(P(\cos\theta,\ \sin\theta)\)임을 보았다. \(\theta=\dfrac{\pi}{6},\ \dfrac23\pi,\ \dfrac54\pi\)에서 \(\sin^2\theta+\cos^2\theta\)와 \(\dfrac{\sin\theta}{\cos\theta}\)를 계산해 보자. 어떤 규칙이 보이는가? 그 <strong>이유</strong>는?<br><span class="text-base text-slate-500">\(\sin^2\theta+\cos^2\theta\)는 모두 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1\)</span></span>, \(\dfrac{\sin\theta}{\cos\theta}\)는 각각 \(\tan\theta\)와 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">같다</span></span></span></p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> 점 \(P\)가 단위원 \(x^2+y^2=1\) 위에 있다는 한 줄이 규칙의 정체다. 오늘은 ① \(\tan\theta=\dfrac{\sin\theta}{\cos\theta}\), ② \(\sin^2\theta+\cos^2\theta=1\)을 유도하고, ③ 한 삼각함수의 값으로 나머지 값을, ④ \(\sin\theta+\cos\theta\)로 \(\sin\theta\cos\theta\)를 구하는 방법을 익힌다.</p>
+            </div>
+        </section>
+
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        \(\tan\theta=\dfrac{\sin\theta}{\cos\theta}\) — 단위원에서 읽기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 80쪽 · 삼각함수 사이의 관계" data-src-rel="">교과서 80쪽 · 삼각함수 사이의 관계</span>
+                    <p class="mb-3 text-slate-700">각 \(\theta\)를 나타내는 동경과 <strong>단위원</strong>(원점이 중심, 반지름 1)의 교점을 \(P(x,y)\)라 하면 \(r=1\)이므로</p>
+                    <div class="grid md:grid-cols-2 gap-4 items-center">
+                        <div class="bg-white p-5 rounded-xl border border-indigo-100 text-lg font-bold space-y-2">
+                            <p>\(x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\cos\theta\)</span></span>, &nbsp; \(y=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sin\theta\)</span></span></p>
+                            <p>\(\tan\theta=\dfrac yx\) 이므로 \(\tan\theta=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{\sin\theta}{\cos\theta}\)</span></span></p>
+                        </div>
+                        <div class="flex justify-center my-3"><svg viewBox="-110 -100 220 200" width="220" height="200" role="img" aria-label="단위원 위의 점 P(x, y)" style="max-width:100%;font-family:serif"><defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs><line x1="-95" y1="0" x2="95" y2="0" stroke="#334155" marker-end="url(#ah1)"/><line x1="0" y1="85" x2="0" y2="-90" stroke="#334155" marker-end="url(#ah1)"/><text x="87" y="14" font-size="13" font-style="italic">x</text><text x="5" y="-83" font-size="13" font-style="italic">y</text><text x="-13" y="14" font-size="12">O</text><circle cx="0" cy="0" r="70" fill="none" stroke="#64748b"/><line x1="0" y1="0" x2="45.0" y2="-53.6" stroke="#1d4ed8" stroke-width="2"/><line x1="45.0" y1="-53.6" x2="45.0" y2="0" stroke="#64748b" stroke-dasharray="3 3"/><circle cx="45.0" cy="-53.6" r="3" fill="#1d4ed8"/><text x="50.0" y="-59.6" font-size="12" fill="#1d4ed8">P(x, y)</text><polyline points="14.0,-0.0 14.0,-1.0 13.9,-2.0 13.7,-3.0 13.4,-4.0 13.1,-5.0 12.7,-5.9 12.2,-6.8 11.7,-7.7 11.1,-8.5 10.5,-9.3 9.8,-10.0 9.0,-10.7" fill="none" stroke="#dc2626" stroke-width="1.6" marker-end="url(#ar1)"/><text x="72" y="14" font-size="11">1</text><text x="-86" y="14" font-size="11">-1</text></svg></div>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>핵심:</strong> 단위원 위의 점의 좌표가 곧 \((\cos\theta,\ \sin\theta)\). \(\cos\theta=0\)인 각에서는 \(\tan\theta\)가 정의되지 않는다.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        \(\sin^2\theta+\cos^2\theta=1\) — 원의 방정식에서
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 80쪽 · 삼각함수 사이의 관계" data-src-rel="">교과서 80쪽 · 삼각함수 사이의 관계</span>
+                    <p class="mb-3 text-slate-700">점 \(P(x,y)\)가 단위원 위의 점이므로 \(x^2+y^2=1\). 여기에 \(x=\cos\theta,\ y=\sin\theta\)를 대입하면</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-center">
+                        <p class="text-xl font-bold"><span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\cos^2\theta+\sin^2\theta=1\)</span></span></p>
+                        <p class="text-sm text-slate-500 mt-2">기호: \(\sin^2\theta=(\sin\theta)^2,\ \cos^2\theta=(\cos\theta)^2,\ \tan^2\theta=(\tan\theta)^2\)</p>
+                    </div>
+                    <div class="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-200 text-sm text-indigo-900">
+                        <p class="font-bold mb-1">📌 삼각함수 사이의 관계</p>
+                        <p>① \(\tan\theta=\dfrac{\sin\theta}{\cos\theta}\) &nbsp;&nbsp; ② \(\sin^2\theta+\cos^2\theta=1\)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>오개념 주의:</strong> \(\sin^2\theta\)는 \(\sin(\theta^2)\)이 아니다. 또 \(\sin\theta^2\)처럼 쓰지 않는다.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        예제 3 — 한 값과 사분면으로 나머지 값
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 81쪽 · 예제 3" data-src-rel="">교과서 81쪽 · 예제 3</span>
+                    <p class="mb-3 text-slate-700">\(\theta\)가 제2사분면의 각이고 \(\sin\theta=\dfrac45\)일 때, \(\cos\theta\)와 \(\tan\theta\)의 값을 구하시오.</p>
+                    <div class="grid md:grid-cols-2 gap-4 items-center">
+                        <div class="bg-white p-5 rounded-xl border border-indigo-100 text-base space-y-2">
+                            <p>① \(\cos^2\theta=1-\sin^2\theta=1-\left(\dfrac45\right)^2=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\left(\dfrac35\right)^2\)</span></span></p>
+                            <p>② 제2사분면 → \(\cos\theta\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\lt0\)</span></span> → \(\cos\theta=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-\dfrac35\)</span></span></p>
+                            <p>③ \(\tan\theta=\dfrac{\sin\theta}{\cos\theta}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-\dfrac43\)</span></span></p>
+                        </div>
+                        <div class="flex justify-center my-3"><svg viewBox="-110 -100 220 200" width="220" height="200" role="img" aria-label="제2사분면의 각 θ와 단위원 위의 점 P" style="max-width:100%;font-family:serif"><defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs><line x1="-95" y1="0" x2="95" y2="0" stroke="#334155" marker-end="url(#ah2)"/><line x1="0" y1="85" x2="0" y2="-90" stroke="#334155" marker-end="url(#ah2)"/><text x="87" y="14" font-size="13" font-style="italic">x</text><text x="5" y="-83" font-size="13" font-style="italic">y</text><text x="-13" y="14" font-size="12">O</text><circle cx="0" cy="0" r="70" fill="none" stroke="#64748b"/><line x1="0" y1="0" x2="-42.0" y2="-56.0" stroke="#1d4ed8" stroke-width="2"/><line x1="-42.0" y1="-56.0" x2="-42.0" y2="0" stroke="#64748b" stroke-dasharray="3 3"/><circle cx="-42.0" cy="-56.0" r="3" fill="#1d4ed8"/><text x="-102.0" y="-62.0" font-size="12" fill="#1d4ed8">P</text><polyline points="14.0,-0.0 13.9,-1.5 13.7,-2.9 13.3,-4.4 12.8,-5.7 12.1,-7.0 11.3,-8.3 10.4,-9.4 9.3,-10.5 8.2,-11.4 6.9,-12.2 5.6,-12.8 4.2,-13.4 2.8,-13.7 1.3,-13.9 -0.2,-14.0 -1.6,-13.9 -3.1,-13.7 -4.5,-13.3 -5.9,-12.7 -7.2,-12.0 -8.4,-11.2" fill="none" stroke="#dc2626" stroke-width="1.6" marker-end="url(#ar2)"/><text x="72" y="14" font-size="11">1</text><text x="-86" y="14" font-size="11">-1</text></svg></div>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>절차:</strong> 제곱 관계로 크기 → <span class="calc-accent font-bold">사분면으로 부호</span> → 나눗셈 관계로 \(\tan\theta\). 부호를 빠뜨리면 \(\pm\) 두 답이 남는다.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        예제 4 — 합을 제곱하여 곱 구하기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 81쪽 · 예제 4" data-src-rel="">교과서 81쪽 · 예제 4</span>
+                    <p class="mb-3 text-slate-700">\(\sin\theta+\cos\theta=\dfrac12\)일 때, \(\sin\theta\cos\theta\)의 값을 구하시오.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-base space-y-2">
+                        <p>① 양변을 제곱: \(\sin^2\theta+2\sin\theta\cos\theta+\cos^2\theta=\dfrac14\)</p>
+                        <p>② \(\sin^2\theta+\cos^2\theta=1\) 이므로 \(1+2\sin\theta\cos\theta=\dfrac14\)</p>
+                        <p>③ \(\sin\theta\cos\theta=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-\dfrac38\)</span></span></p>
+                    </div>
+                    <div class="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-200 text-sm text-indigo-900">
+                        <p class="font-bold mb-1">🎯 기억할 연결</p>
+                        <p>\((\sin\theta\pm\cos\theta)^2=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(1\pm2\sin\theta\cos\theta\)</span></span> — 합·차를 알면 곱을, 곱을 알면 합·차의 제곱을 안다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">두 관계식으로 삼각함수의 값을 구하고 식을 정리하는 단계</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-l1">기초-cos 값으로 sin·tan</span> <span class="src-chip" data-src-label="교과서 81쪽 · 문제 5" data-src-rel="그대로">교과서 81쪽 · 문제 5 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. \(\theta\)가 제4사분면의 각이고 \(\cos\theta=\dfrac13\)일 때, \(\sin\theta\)와 \(\tan\theta\)의 값을 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\sin^2\theta=1-\dfrac19=\dfrac89\). 제4사분면이므로 \(\sin\theta\lt0\) → \(\sin\theta=-\dfrac{2\sqrt2}{3}\). \(\tan\theta=\dfrac{-2\sqrt2/3}{1/3}=-2\sqrt2\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l1">기초-sin 값으로 cos·tan (제3사분면)</span> <span class="src-chip" data-src-label="교과서 81쪽 · 예제 3" data-src-rel="변형">교과서 81쪽 · 예제 3 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. \(\theta\)가 제3사분면의 각이고 \(\sin\theta=-\dfrac{5}{13}\)일 때, \(\cos\theta\)와 \(\tan\theta\)의 값을 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\cos^2\theta=1-\dfrac{25}{169}=\dfrac{144}{169}\). 제3사분면이므로 \(\cos\theta\lt0\) → \(\cos\theta=-\dfrac{12}{13}\). \(\tan\theta=\dfrac{-5/13}{-12/13}=\dfrac5{12}\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l1">기초-관계식으로 식 간단히</span> <span class="src-chip" data-src-label="자체 출제 · 제곱 관계로 식 정리" data-src-rel="유형">자체 출제 · 제곱 관계로 식 정리 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 다음 식을 간단히 하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium"><span class="sub-qs sub-qs--row"><span class="sub-q">(1) \((\sin\theta+\cos\theta)^2+(\sin\theta-\cos\theta)^2\)</span><span class="sub-q">(2) \(\tan\theta\cos\theta+\dfrac{\cos^2\theta}{\sin\theta}\)</span></span></div></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 전개한 뒤 \(\sin^2\theta+\cos^2\theta=1\)로 묶는다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \((1+2\sin\theta\cos\theta)+(1-2\sin\theta\cos\theta)=2\)</span><span class="sub-q">(2) \(\sin\theta+\dfrac{\cos^2\theta}{\sin\theta}=\dfrac{\sin^2\theta+\cos^2\theta}{\sin\theta}=\dfrac{1}{\sin\theta}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-800 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">합·차·곱과 tan 값을 오가는 단계</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-l2">응용-차의 값으로 곱·합</span> <span class="src-chip" data-src-label="교과서 81쪽 · 문제 6" data-src-rel="그대로">교과서 81쪽 · 문제 6 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. \(\theta\)가 제1사분면의 각이고 \(\sin\theta-\cos\theta=\dfrac{\sqrt3}{3}\)일 때, 다음 식의 값을 구하시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium"><span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(\sin\theta\cos\theta\)</span><span class="sub-q">(2) \(\sin\theta+\cos\theta\)</span></span></div></div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 양변을 제곱하여 곱부터 구한다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(1-2\sin\theta\cos\theta=\dfrac13\) → \(\sin\theta\cos\theta=\dfrac13\)</span><span class="sub-q">(2) \((\sin\theta+\cos\theta)^2=1+\dfrac23=\dfrac53\). 제1사분면이라 양수 → \(\sin\theta+\cos\theta=\dfrac{\sqrt{15}}{3}\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l2">응용-합으로 세제곱의 합</span> <span class="src-chip" data-src-label="교과서 81쪽 · 예제 4" data-src-rel="변형">교과서 81쪽 · 예제 4 <span class="src-rel">변형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. \(\sin\theta+\cos\theta=\dfrac13\)일 때, \(\sin\theta\cos\theta\)와 \(\sin^3\theta+\cos^3\theta\)의 값을 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(1+2\sin\theta\cos\theta=\dfrac19\) → \(\sin\theta\cos\theta=-\dfrac49\). \(\sin^3\theta+\cos^3\theta=(\sin\theta+\cos\theta)^3-3\sin\theta\cos\theta(\sin\theta+\cos\theta)=\dfrac1{27}+\dfrac49=\dfrac{13}{27}\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-l2">응용-tan 값으로 sin·cos</span> <span class="src-chip" data-src-label="자체 출제 · tan 값과 사분면으로 sin·cos" data-src-rel="유형">자체 출제 · tan 값과 사분면으로 sin·cos <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">6. \(\theta\)가 제2사분면의 각이고 \(\tan\theta=-2\)일 때, \(\sin\theta\)와 \(\cos\theta\)의 값을 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(\dfrac{\sin\theta}{\cos\theta}=-2\) → \(\sin\theta=-2\cos\theta\). \(\sin^2\theta+\cos^2\theta=1\)에 대입: \(5\cos^2\theta=1\). 제2사분면이므로 \(\cos\theta=-\dfrac{\sqrt5}5\), \(\sin\theta=\dfrac{2\sqrt5}5\).
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 숨은 조건 \(\sin^2\theta+\cos^2\theta=1\)</p>
+                    </div>
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-이차방정식의 두 근이 sinθ, cosθ</span> <span class="src-chip" data-src-label="자체 출제 · 근과 계수의 관계와 삼각함수" data-src-rel="유형">자체 출제 · 근과 계수의 관계와 삼각함수 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 이차방정식 \(2x^2-x+k=0\)의 두 근이 \(\sin\theta,\ \cos\theta\)일 때, 상수 \(k\)의 값을 구하시오.</div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">두 근의 합·곱만 쓰고 끝내면 \(k\)가 안 나온다. <strong>두 근이 삼각함수라는 조건</strong> \(\sin^2\theta+\cos^2\theta=1\)이 숨은 세 번째 식이다.<br><br><strong>STEP 1 — 근과 계수의 관계</strong>: \(\sin\theta+\cos\theta=\dfrac12,\ \sin\theta\cos\theta=\dfrac k2\).<br><br><strong>STEP 2 — 합을 제곱</strong>: \(1+2\sin\theta\cos\theta=\dfrac14\) → \(\sin\theta\cos\theta=-\dfrac38\).<br><br><strong>STEP 3 — k</strong>: \(\dfrac k2=-\dfrac38\) → \(k=-\dfrac34\). (판별식 \(1-8k=7\gt0\)으로 실근 확인)<br><br><strong>결론:</strong> \(k=-\dfrac34\)</p>
+                            </div>
+                        </details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="자체 출제 · tan 값으로 sin+cos" data-src-rel="유형">자체 출제 · tan 값으로 sin+cos <span class="src-rel">유형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. \(\theta\)가 제3사분면의 각이고 \(\tan\theta=\dfrac34\)일 때, \(\sin\theta+\cos\theta\)의 값을 구하시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① \(\sin\theta=\dfrac34\cos\theta\)를 \(\sin^2\theta+\cos^2\theta=1\)에 대입: \(\dfrac{25}{16}\cos^2\theta=1\) → \(\cos^2\theta=\dfrac{16}{25}\). <br>② 제3사분면이므로 \(\cos\theta=-\dfrac45,\ \sin\theta=-\dfrac35\). <br>③ 답: \(\sin\theta+\cos\theta=-\dfrac75\). — 부호를 빠뜨리면 \(\dfrac75\)가 된다.
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="textbook_대수_삼각함수"
+                 data-aft-source-id="alg16-c1"
+                 data-aft-source-label="교과서 82쪽 · 탐구&amp;융합">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 교과서 82쪽 · 탐구&amp;융합</p>
+                <p class="text-xs text-purple-700">난이도 ★★ · 핵심: 스넬 법칙 \(\dfrac{\sin\theta_1}{\sin\theta_2}=\dfrac{n_2}{n_1}\)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">굴절률이 \(n_1,\ n_2\)인 두 물질 A, B에서 빛이 A에서 B로 입사할 때 입사각을 \(\theta_1\), 굴절각을 \(\theta_2\)라 하면 \(\dfrac{\sin\theta_1}{\sin\theta_2}=\dfrac{n_2}{n_1}\)이 성립한다(스넬 법칙).<br>(1) 공기의 굴절률은 \(1\), 물의 굴절률은 \(\dfrac43\)이다. 빛이 공기에서 물로 입사각 \(\theta_1=\dfrac{\pi}{4}\)로 입사할 때 \(\sin\theta_2\)의 값을 구하시오.<br>(2) 빛이 공기에서 어떤 물질로 입사할 때 입사각이 \(\dfrac{\pi}{3}\), 굴절각이 \(\dfrac{\pi}{6}\)이었다. 이 물질의 굴절률을 구하시오.</div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — (1) 대입</strong>: \(\dfrac{\sin(\pi/4)}{\sin\theta_2}=\dfrac{4/3}{1}\) → \(\sin\theta_2=\dfrac34\times\dfrac{\sqrt2}{2}=\dfrac{3\sqrt2}{8}\).</li>
+                    <li><strong>STEP 2 — (2) 대입</strong>: \(\dfrac{\sin(\pi/3)}{\sin(\pi/6)}=\dfrac{n_2}{1}\) → \(n_2=\dfrac{\sqrt3/2}{1/2}=\sqrt3\).</li>
+                    <li><strong>답</strong>: (1) \(\dfrac{3\sqrt2}{8}\) &nbsp; (2) \(\sqrt3\)</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 라디안으로 주어진 특수각의 사인값을 정확히 쓰는 것이 전부. 물리 법칙이 삼각함수의 비로 쓰인다.</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source="textbook_대수_삼각함수"
+                 data-aft-source-id="alg16-c2"
+                 data-aft-source-label="자체 출제 · tan θ + 1/tan θ">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 자체 출제 · tan θ + 1/tan θ</p>
+                <p class="text-xs text-purple-700">난이도 ★★★ · 핵심: \(\tan\theta+\dfrac1{\tan\theta}=\dfrac{1}{\sin\theta\cos\theta}\)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">\(\theta\)가 제3사분면의 각이고 \(\tan\theta+\dfrac{1}{\tan\theta}=3\)일 때, \(\sin\theta+\cos\theta\)의 값은?</div>
+
+            <div class="bg-white p-4 rounded-xl mb-4 border border-slate-200">
+                <div class="text-base leading-loose">① \(-\dfrac{\sqrt{15}}{3}\) &nbsp;&nbsp; ② \(-\dfrac{\sqrt5}{3}\) &nbsp;&nbsp; ③ \(\dfrac{\sqrt5}{3}\) &nbsp;&nbsp; ④ \(\dfrac{\sqrt{15}}{3}\) &nbsp;&nbsp; ⑤ \(\dfrac53\)</div>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <strong>💡 풀이 흐름 (3단계):</strong>
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 통분</strong>: \(\dfrac{\sin\theta}{\cos\theta}+\dfrac{\cos\theta}{\sin\theta}=\dfrac{\sin^2\theta+\cos^2\theta}{\sin\theta\cos\theta}=\dfrac{1}{\sin\theta\cos\theta}=3\) → \(\sin\theta\cos\theta=\dfrac13\).</li>
+                    <li><strong>STEP 2 — 합의 제곱</strong>: \((\sin\theta+\cos\theta)^2=1+\dfrac23=\dfrac53\).</li>
+                    <li><strong>STEP 3 — 부호</strong>: 제3사분면이라 \(\sin\theta,\cos\theta\lt0\) → \(\sin\theta+\cos\theta=-\sqrt{\dfrac53}=-\dfrac{\sqrt{15}}{3}\). <span class="text-red-600 font-bold">정답: ①</span></li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \(\tan\)를 \(\dfrac{\sin}{\cos}\)로 바꾸고 통분하면 분자가 1이 된다. 마지막 부호 결정에서 사분면을 쓴다(④는 부호 실수).</p>
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (관계식의 근원)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">\(\sin^2\theta+\cos^2\theta=1\)은 어떤 사실에서 나왔는가? 피타고라스 정리·원의 방정식과의 연결을 자신의 말로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"단위원 위의 점의 좌표가 \((\cos\theta,\sin\theta)\)임을 이용해 원의 방정식에서 \(\sin^2\theta+\cos^2\theta=1\)을 유도하고, 이것이 모든 일반각에서 성립하는 피타고라스 정리의 확장임을 설명함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 실수(부호 결정 누락, \(\sin^2\theta\) 표기 혼동, 제곱 후 부호 선택 등)와 그것을 바로잡은 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"한 삼각함수의 값으로 나머지 값을 구할 때 \(\pm\) 중 하나를 고르지 않는 실수를 반복했으나, "크기 → 사분면 부호 → 나눗셈" 3단계 루틴을 세워 정확도를 높임."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">물리의 스넬 법칙처럼 삼각함수의 비가 쓰이는 다른 현상을 찾아보자. 또 \(\theta\)가 변할 때 \(\sin\theta\)의 값은 어떻게 변할지(그래프) 예상해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"스넬 법칙의 탐구를 계기로 굴절률과 사인값의 관계를 조사하고, 입사각이 커질 때 굴절각의 변화를 삼각함수 값의 변화로 설명하려는 탐구 의지를 보임."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="교사용_index-alg.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="교사용_학습지_대수_15_삼각함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="교사용_학습지_대수_17_사인함수와코사인함수의그래프.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 16차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → 교사용_index-alg.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('교사용_index-alg.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="../뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="../뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_16.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 I-2. 지수함수와 로그함수 · 차시 10 지수함수의 활용 · 교과서(미래엔) 52~54쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 지수함수의 활용</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_10';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "10차시 지수함수의 활용";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">단원: I-2. 지수함수와 로그함수</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">10차시: 지수함수의 활용</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_09_로그함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_11_로그함수의활용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 생각 열기 -->
+        <section class="card bg-gradient-to-br from-indigo-50 to-blue-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 생각 열기 (Warm-up &amp; Connection)</h2><span class="src-chip src-chip--block" data-src-label="교과서 52쪽 · 생각 열기" data-src-rel="그대로">교과서 52쪽 · 생각 열기 <span class="src-rel">그대로</span></span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-4">지수함수 \(y=2^x\)의 그래프와 직선 \(y=4\)를 한 좌표평면에 그렸다.</p>
+                <div class="bg-white p-6 rounded-xl border border-indigo-100 mb-6 flex flex-col gap-4">
+                    <svg viewBox="0 0 260 170" style="max-width:min(100%,360px)" class="mx-auto" aria-label="y=2^x 와 y=4 의 그래프">
+                        <line x1="10" y1="150" x2="250" y2="150" stroke="#64748b"/><line x1="100" y1="160" x2="100" y2="8" stroke="#64748b"/>
+                        <text x="242" y="164" font-size="11">x</text><text x="105" y="14" font-size="11">y</text><text x="88" y="163" font-size="10">O</text>
+                        <line x1="10" y1="70" x2="250" y2="70" stroke="#7c3aed" stroke-width="1.5"/><text x="222" y="64" font-size="11" fill="#7c3aed">y=4</text>
+                        <polyline fill="none" stroke="#059669" stroke-width="2" points="10,145.8 20,145.0 30,144.1 40,142.9 50,141.6 60,140.0 70,138.1 80,135.9 90,133.2 100,130.0 110,126.2 120,121.7 130,116.4 140,110.0 150,102.4 160,93.4 170,82.7 180,70.0 190,54.9 200,36.9 210,15.5"/>
+                        <text x="214" y="22" font-size="11" fill="#059669">y=2ˣ</text>
+                        <line x1="180" y1="70" x2="180" y2="150" stroke="#94a3b8" stroke-dasharray="3 3"/><text x="176" y="163" font-size="10">2</text><text x="88" y="74" font-size="10">4</text>
+                    </svg>
+                    <p><strong>[개방형 발문]</strong> ① 그래프 \(y=2^x\)와 직선 \(y=4\)는 몇 번 만나는가? ② 그 교점의 \(x\)좌표는 방정식 \(2^x=4\)와 어떤 관계인가? 교점이 <strong>꼭 하나뿐</strong>인 이유를 지수함수의 성질로 설명해 보자.</p>
+                    <div class="thinking-space bg-indigo-50/30"></div>
+                </div>
+                <p><strong>[연결]</strong> \(y=a^x\)는 <strong>일대일함수</strong>라서 같은 높이에서 딱 한 번만 만난다 — 그래서 \(a^{x_1}=a^{x_2}\)이면 \(x_1=x_2\). 또 증가·감소가 정해져 있어 <strong>크기 비교</strong>도 지수끼리 옮길 수 있다. 오늘은 ① 지수방정식, ② 지수부등식(밑과 1의 크기 비교), ③ 실생활 문제(반감기·약물·기름 증발)를 해결한다.</p>
+            </div>
+        </section>
+
+        <!-- 01. 개념 구성 -->
+        <section class="card border-l-[8px] border-blue-500">
+            <h2 class="section-title">01. 개념 구성 (Conceptual Foundation)</h2>
+            <div class="space-y-8">
+                <!-- 1. 지수방정식 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        지수에 미지수가 있는 방정식 — 밑을 같게
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 52쪽 · 지수함수의 활용 · 예제 1" data-src-rel="">교과서 52쪽 · 지수함수의 활용 · 예제 1</span>
+                    <p class="mb-3 text-slate-700">지수함수 \(y=a^x\)는 일대일함수이므로, 지수에 미지수가 있는 방정식은 <strong>양변의 밑을 같게</strong> 한 뒤 지수끼리 비교한다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100 text-center">
+                        <p class="text-xl font-bold">\(a\gt 0,\ a\ne 1\)일 때, &nbsp; \(a^{x_1}=a^{x_2} \iff\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x_1=x_2 \)</span></span></p>
+                    </div>
+                    <div class="mt-4 bg-blue-50 p-4 rounded-xl border border-blue-200">
+                        <p class="text-sm font-bold text-blue-900 mb-1">예제 1 — 다음 방정식을 푸시오.</p>
+                        <p class="text-base text-blue-900">(1) \(3^x=\dfrac{1}{81}\) : \(\dfrac{1}{81}=3^{-4}\)이므로 \(x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(-4\)</span></span></p>
+                        <p class="text-base text-blue-900 mt-2">(2) \(\left(\dfrac{1}{2}\right)^x=(\sqrt2)^{x-2}\) : 좌변 \(=2^{-x}\), 우변 \(=2^{\frac{x}{2}-1}\) → \(-x=\dfrac{x}{2}-1\) → \(x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac{2}{3}\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>요령:</strong> \(\dfrac{1}{a}=a^{-1}\), \(\sqrt a=a^{\frac12}\), \(4=2^2\), \(27=3^3\)처럼 <strong>가장 작은 공통 밑</strong>으로 바꾼다.</p>
+                </div>
+
+                <!-- 2. 지수부등식 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        지수에 미지수가 있는 부등식 — 밑이 1보다 큰가 작은가
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 53쪽 · 지수부등식 · 예제 2" data-src-rel="">교과서 53쪽 · 지수부등식 · 예제 2</span>
+                    <p class="mb-3 text-slate-700">\(a\gt1\)이면 \(y=a^x\)는 증가, \(0\lt a\lt1\)이면 감소한다. 그래서 지수끼리 비교할 때 부등호 방향이 달라진다.</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <ol class="space-y-3 text-lg font-medium">
+                            <li>① \(a\gt1\)일 때, \(a^{x_1}\lt a^{x_2} \iff\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x_1\lt x_2 \)</span></span> (방향 유지)</li>
+                            <li>② \(0\lt a\lt1\)일 때, \(a^{x_1}\lt a^{x_2} \iff\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x_1\gt x_2 \)</span></span> (방향 반대)</li>
+                        </ol>
+                    </div>
+                    <div class="mt-4 bg-blue-50 p-4 rounded-xl border border-blue-200">
+                        <p class="text-sm font-bold text-blue-900 mb-1">예제 2 — 다음 부등식을 푸시오.</p>
+                        <p class="text-base text-blue-900">(1) \(8^x\gt32\) : \(2^{3x}\gt2^5\), 밑 \(2\gt1\) → \(3x\gt5\) → <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x\gt\dfrac{5}{3}\)</span></span></p>
+                        <p class="text-base text-blue-900 mt-2">(2) \(\left(\dfrac13\right)^{x+7}\le\left(\dfrac19\right)^x\) : 우변 \(=\left(\dfrac13\right)^{2x}\), 밑 \(\dfrac13\lt1\) → \(x+7\ge2x\) → <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x\le7\)</span></span></p>
+                    </div>
+                    <p class="mt-3 text-sm text-red-700 font-bold">⚠ 주의: 밑이 \(1\)보다 작으면 지수로 옮길 때 부등호 방향을 뒤집는다.</p>
+                </div>
+
+                <!-- 3. 실생활 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        실생활 속 지수함수 — 반감기로 화석의 나이 재기
+                    </h3><span class="src-chip src-chip--block" data-src-label="교과서 54쪽 · 예제 3" data-src-rel="">교과서 54쪽 · 예제 3</span>
+                    <p class="mb-3 text-slate-700">\(^{14}\mathrm{C}\)는 \(5730\)년마다 양이 반으로 줄어든다. 처음 양이 \(a\) mg일 때 \(x\)년 후 남은 양은 \(f(x)=a\times\left(\dfrac12\right)^{\frac{x}{5730}}\) (mg).</p>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <p class="text-base font-medium mb-2"><strong>예제 3:</strong> 처음 \(50\) mg이던 \(^{14}\mathrm{C}\)가 \(12.5\) mg 남은 화석은 몇 년 전의 것인가?</p>
+                        <p class="text-base">\(50\times\left(\dfrac12\right)^{\frac{x}{5730}}=12.5\) → \(\left(\dfrac12\right)^{\frac{x}{5730}}=\dfrac{125}{500}=\left(\dfrac12\right)^{2}\) → \(\dfrac{x}{5730}=2\) → \(x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(11460\)</span></span> (년)</p>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>오개념 주의:</strong> 실생활 변수(시간·양)는 <strong>범위</strong>가 있다 — 시간 \(x\ge0\), 양 \(\gt0\). 답을 낸 뒤 단위·범위를 꼭 확인한다.</p>
+                </div>
+
+                <!-- 4. 풀이 전략 정리 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-xl text-indigo-800 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                        풀이 전략 정리 — 치환과 밑의 조건
+                    </h3><span class="src-chip src-chip--block" data-src-label="자체 출제 · 지수방정식·부등식 풀이 전략" data-src-rel="">자체 출제 · 지수방정식·부등식 풀이 전략</span>
+                    <div class="bg-white p-5 rounded-xl border border-indigo-100">
+                        <ol class="space-y-3 text-base font-medium">
+                            <li>① <strong>\(a^x\) 꼴이 반복</strong>되면 \(a^x=t\)로 치환한다. 이때 \(t\)의 범위는 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( t\gt0 \)</span></span> — 이 범위 밖의 근은 버린다.<br><span class="text-sm text-slate-600">예: \(4^x-3\cdot2^x-4=0\) → \(t^2-3t-4=0\) → \(t=4\) 또는 \(t=-1\) → \(t\gt0\)이므로 \(2^x=4\), \(x=2\)</span></li>
+                            <li>② <strong>밑에 미지수</strong>가 있는 \(x^{f(x)}=x^{g(x)}\) (\(x\gt0\)) 꼴은 <strong>두 경우</strong>를 본다: 지수가 같을 때 \(f(x)=g(x)\), 그리고 밑이 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\( x=1 \)</span></span>일 때(양변이 모두 \(1\)).</li>
+                            <li>③ 부등식은 <strong>밑과 \(1\)의 크기</strong>를 먼저 적고 부등호 방향을 정한다.</li>
+                        </ol>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600"><strong>한 줄 요약:</strong> "밑 맞추기 → 밑 확인(1보다 큰가, 미지수인가) → 지수 비교 → 범위 확인".</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. 수준별 훈련 -->
+        <section class="card" data-aft-problem-level="l2" data-aft-problem-title="02. 수준별 훈련">
+            <h2 class="section-title">02. 수준별 훈련 (Level Training)</h2>
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Level 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-green-200 pb-2">
+                        <h3 class="text-2xl font-black text-green-800 mr-4">Level 1</h3>
+                        <p class="text-green-600 font-bold">밑을 같게 만들어 지수방정식·부등식을 푸는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-지수방정식</span> <span class="src-chip" data-src-label="교과서 53쪽 · 문제 1" data-src-rel="그대로">교과서 53쪽 · 문제 1 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 방정식을 푸시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(2^x=64\)</span><span class="sub-q">(2) \(\left(\dfrac13\right)^{x-4}=27\)</span></span>
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(3) \(4^{x+3}=8^{x-1}\)</span><span class="sub-q">(4) \(25^{2-x}=\left(\dfrac{1}{125}\right)^{x-1}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 양변을 같은 밑의 거듭제곱으로 바꾼 뒤 지수를 비교한다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(2^x=2^6\) → \(x=6\)</span><span class="sub-q">(2) \(3^{-(x-4)}=3^3\) → \(-x+4=3\) → \(x=1\)</span><span class="sub-q">(3) \(2^{2x+6}=2^{3x-3}\) → \(x=9\)</span><span class="sub-q">(4) \(5^{4-2x}=5^{-3x+3}\) → \(x=-1\)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l1">기초-지수부등식</span> <span class="src-chip" data-src-label="교과서 53쪽 · 문제 2" data-src-rel="그대로">교과서 53쪽 · 문제 2 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">2. 다음 부등식을 푸시오.
+                            <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                                <span class="sub-qs sub-qs--row"><span class="sub-q">(1) \(3^{x+1}\ge243\)</span><span class="sub-q">(2) \(\left(\dfrac14\right)^{8-x}\lt\left(\dfrac{1}{128}\right)^{x+1}\)</span></span>
+                            </div>
+                        </div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 밑을 같게 한 다음, 밑이 \(1\)보다 큰지 작은지 확인한다.
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(1) \(3^{x+1}\ge3^5\), 밑 \(3\gt1\) → \(x+1\ge5\) → \(x\ge4\)</span><span class="sub-q">(2) \(2^{2x-16}\lt2^{-7x-7}\), 밑 \(2\gt1\) → \(2x-16\lt-7x-7\) → \(x\lt1\) (밑을 \(\frac12\)로 맞춰도 방향을 뒤집으면 같은 답)</span></span>
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="space-y-6">
+                    <div class="flex items-center border-b-2 border-yellow-200 pb-2">
+                        <h3 class="text-2xl font-black text-yellow-700 mr-4">Level 2</h3>
+                        <p class="text-yellow-600 font-bold">실생활 상황을 지수 식으로 세우고 해석하는 단계</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-약물의 양</span> <span class="src-chip" data-src-label="교과서 54쪽 · 문제 3" data-src-rel="그대로">교과서 54쪽 · 문제 3 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">3. 어떤 약을 복용한 후 \(t\)시간이 지났을 때 인체에 남아 있는 약의 양을 \(M(t)\) mg이라 하면 \(M(t)=20\times10^{-0.35t}\)이 성립한다고 한다. 남아 있는 약의 양이 \(0.2\) mg이 되는 데 걸리는 시간을 소수점 아래 첫째 자리에서 반올림하여 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(20\times10^{-0.35t}=0.2\) → \(10^{-0.35t}=10^{-2}\) → \(0.35t=2\) → \(t=\dfrac{200}{35}=5.71\cdots\). 소수점 아래 첫째 자리에서 반올림하면 <strong>6시간</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-기름 증발</span> <span class="src-chip" data-src-label="교과서 54쪽 · 문제 4" data-src-rel="그대로">교과서 54쪽 · 문제 4 <span class="src-rel">그대로</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">4. 바다에 \(400000\) L의 기름이 유출되었는데, 유출된 기름은 매일 \(20\,\%\)씩 자연 증발한다고 한다. 남아 있는 기름의 양이 처음으로 \(204800\) L 이하가 되는 것은 며칠 후인지 구하시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> \(t\)일 후 남은 양 \(=400000\times\left(\dfrac45\right)^t\). \(\left(\dfrac45\right)^t\le\dfrac{204800}{400000}=\dfrac{64}{125}=\left(\dfrac45\right)^3\). 밑 \(\dfrac45\lt1\)이므로 \(t\ge3\). 답: <strong>3일 후</strong>. — "20 % 증발"은 곱하는 수가 \(0.2\)가 아니라 \(0.8\)!
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-l2">응용-지수에 이차식</span> <span class="src-chip" data-src-label="자체 출제 · 지수에 이차식이 있는 부등식" data-src-rel="유형">자체 출제 · 지수에 이차식이 있는 부등식 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-800 mb-2">5. 부등식 \(\left(\dfrac13\right)^{x^2}\ge\left(\dfrac13\right)^{2x+3}\)을 푸시오.</div>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>💡 힌트:</strong> 밑 \(\dfrac13\lt1\)이므로 부등호를 뒤집어 \(x^2\le2x+3\). \(x^2-2x-3\le0\), \((x+1)(x-3)\le0\) → <strong>\(-1\le x\le3\)</strong>.
+                        </div></details>
+                        <div class="thinking-space"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="space-y-6 mt-6">
+                    <div class="flex items-center border-b-2 border-red-200 pb-2">
+                        <h3 class="text-2xl font-black text-red-800 mr-4">Level 3</h3>
+                        <p class="text-red-600 font-bold">"틀려야 는다!" 밑의 조건 · 치환한 문자의 범위</p>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <div class="absolute -top-4 -right-4 bg-red-600 text-white font-black px-4 py-2 rounded-xl transform rotate-3 shadow-lg">오답률 1위 함정!</div>
+                        <span class="badge badge-l3">심화-밑에 미지수</span> <span class="src-chip" data-src-label="자체 출제 · 밑과 지수에 미지수가 있는 방정식" data-src-rel="유형">자체 출제 · 밑과 지수에 미지수가 있는 방정식 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">6. \(x\gt0\)일 때, 방정식 \(x^{x-1}=x^{5-x}\)의 모든 해를 구하시오.</div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                "\(a^{x_1}=a^{x_2}\iff x_1=x_2\)"는 <strong>\(a\gt0,\ a\ne1\)</strong>일 때만 성립한다. 밑이 \(x\)이면 \(x=1\)인 경우를 따로 봐야 한다 — \(1\)은 몇 제곱을 해도 \(1\)이라 지수가 달라도 양변이 같다.
+                                </p>
+                            </div>
+                        </details>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-white"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <strong>STEP 1</strong> 밑이 \(1\)일 때: \(x=1\)이면 양변 \(=1\) → 해이다.<br>
+                            <strong>STEP 2</strong> \(x\ne1\)일 때: 지수가 같아야 하므로 \(x-1=5-x\) → \(x=3\).<br>
+                            <strong>답:</strong> \(x=1\) 또는 \(x=3\). — STEP 1을 빠뜨리면 \(x=3\) 하나만 쓰게 된다.
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+
+                    <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative">
+                        <span class="badge badge-l3">심화-치환형 부등식</span> <span class="src-chip" data-src-label="자체 출제 · 치환형 지수부등식" data-src-rel="유형">자체 출제 · 치환형 지수부등식 <span class="src-rel">유형</span></span>
+                        <div class="text-xl font-bold text-slate-900 mb-4">7. 부등식 \(4^x-6\times2^x+8\lt0\)을 푸시오. 또, 방정식 \(4^x+2^{x+1}-3=0\)을 푸시오.</div>
+                        <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                            <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                            <div class="trap-body px-5 pb-5">
+                                <p class="text-slate-700 text-sm font-medium leading-relaxed">
+                                \(2^x=t\)로 치환하면 <strong>\(t\gt0\)</strong>이라는 조건이 따라온다. 이차방정식의 근 중 음수인 \(t\)는 \(2^x\)가 될 수 없으므로 버려야 한다. 또 \(t\)에 대한 답을 구한 뒤 <strong>\(x\)로 되돌리는 것</strong>을 잊지 말 것.
+                                </p>
+                            </div>
+                        </details>
+                        <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-white"><summary>💡 힌트 보기</summary><div class="hint-content">
+                            <span class="sub-qs sub-qs--list"><span class="sub-q">(부등식) \(t=2^x\ (t\gt0)\): \(t^2-6t+8\lt0\) → \((t-2)(t-4)\lt0\) → \(2\lt t\lt4\) → \(2^1\lt2^x\lt2^2\) → <strong>\(1\lt x\lt2\)</strong></span><span class="sub-q">(방정식) \(t^2+2t-3=0\) → \((t+3)(t-1)=0\) → \(t=1\) (\(t=-3\)은 \(t\gt0\)에 어긋남) → \(2^x=1\) → <strong>\(x=0\)</strong></span></span>
+                        </div></details>
+                        <div class="thinking-space bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. 형성평가 -->
+        <section class="card border-l-[8px] border-emerald-500" data-aft-problem-level="l2" data-aft-problem-title="03. 형성평가">
+            <h2 class="section-title">03. 형성평가 (Final Check)</h2><span class="src-chip src-chip--block" data-src-label="교과서 54쪽 · 예제 3" data-src-rel="변형">교과서 54쪽 · 예제 3 <span class="src-rel">변형</span></span>
+            <div class="text-xl font-bold text-slate-800 mb-4">8. \(^{14}\mathrm{C}\)는 \(5730\)년마다 양이 반으로 줄어들어, 처음 양이 \(a\) mg일 때 \(x\)년 후 남은 양은 \(f(x)=a\times\left(\dfrac12\right)^{\frac{x}{5730}}\) mg이다. 처음 \(^{14}\mathrm{C}\)의 양이 \(50\) mg이었던 화석에 \(6.25\) mg이 남아 있다면, 이 화석은 몇 년 전의 것인지 구하시오.</div>
+            <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-emerald-300 bg-emerald-50/40"><summary>💡 풀이 전략</summary><div class="hint-content">
+                <strong>💡 전략:</strong> ① \(50\times\left(\dfrac12\right)^{\frac{x}{5730}}=6.25\) <br>
+                ② \(\left(\dfrac12\right)^{\frac{x}{5730}}=\dfrac{6.25}{50}=\dfrac18=\left(\dfrac12\right)^3\) <br>
+                ③ 밑이 같으므로 \(\dfrac{x}{5730}=3\) → \(x=17190\). 답: <strong>17190년 전</strong>. — 반감기 3번 = \(\frac12\times\frac12\times\frac12\).
+            </div></details>
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 1 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="교과서 57쪽 · 생각 넓히기 활동 1">
+            <h2 class="section-title">⭐ 도전 문제 1</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 교과서 57쪽 · 생각 넓히기 활동 1 <span class="src-chip" data-src-label="교과서 57쪽 · 생각 넓히기 활동 1" data-src-rel="그대로">교과서 57쪽 · 생각 넓히기 활동 1 <span class="src-rel">그대로</span></span></p>
+                <p class="text-xs text-purple-700">난이도 ★★★ (7분) · 핵심: \(a^x\) 꼴이 반복되면 치환 — 치환한 문자의 범위</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                방정식 \(4^x-3\times2^x-4=0\)을 다음 단계에 따라 풀어 보자.<br>
+                <span class="text-xl">(1) \(2^x=X\ (X\gt0)\)로 놓고 주어진 방정식을 \(X\)에 대한 방정식으로 나타내시오.<br>
+                (2) (1)의 방정식에서 \(X\)의 값을 구하고, 이것을 이용하여 \(x\)의 값을 구하시오.</span>
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 치환</strong>: \(4^x=(2^x)^2=X^2\)이므로 \(X^2-3X-4=0\).</li>
+                    <li><strong>STEP 2 — 인수분해</strong>: \((X-4)(X+1)=0\) → \(X=4\) 또는 \(X=-1\).</li>
+                    <li><strong>STEP 3 — 범위 확인</strong>: \(X=2^x\gt0\)이므로 \(X=4\).</li>
+                    <li><strong>STEP 4 — 되돌리기</strong>: \(2^x=4=2^2\) → <span class="text-red-600 font-bold">\(x=2\)</span>.</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> 답 (1) \(X^2-3X-4=0\) (2) \(X=4\), \(x=2\).</p>
+            </div></details>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- ⭐ 도전 문제 2 -->
+        <section class="card border-l-[8px] border-purple-400"
+                 data-aft-problem-level="challenge"
+                 data-aft-source-label="자체 출제 · 서로 다른 두 실근을 갖는 지수방정식">
+            <h2 class="section-title">⭐ 도전 문제 2</h2>
+
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6 rounded-r-lg">
+                <p class="text-sm text-purple-900 font-bold mb-1">📖 출처: 자체 출제 <span class="src-chip" data-src-label="자체 출제 · 서로 다른 두 실근을 갖는 지수방정식" data-src-rel="유형">자체 출제 · 서로 다른 두 실근을 갖는 지수방정식 <span class="src-rel">유형</span></span></p>
+                <p class="text-xs text-purple-700">난이도 ★★★★ (8분) · 핵심: 치환 후 '양수인 서로 다른 두 근' 조건 (판별식 · 두 근의 합 · 곱)</p>
+            </div>
+
+            <div class="text-2xl font-bold text-slate-800 mb-6 leading-relaxed">
+                \(x\)에 대한 방정식 \(4^x-2^{x+2}+k=0\)이 서로 다른 두 실근을 갖도록 하는 실수 \(k\)의 값의 범위를 구하시오.
+            </div>
+
+            <details class="hint-box mt-0"><summary>📖 풀이 흐름 보기 (직접 풀어본 후 펼치기)</summary><div class="hint-content">
+                <ol class="mt-2 ml-4 space-y-1 list-decimal text-base">
+                    <li><strong>STEP 1 — 치환</strong>: \(2^x=t\ (t\gt0)\)이면 \(t^2-4t+k=0\).</li>
+                    <li><strong>STEP 2 — 조건 번역</strong>: \(t=2^x\)는 일대일이므로 \(x\)가 서로 다른 두 실근 ⇔ \(t\)가 <strong>서로 다른 두 양의 근</strong>.</li>
+                    <li><strong>STEP 3 — 세 조건</strong>: 판별식 \(\dfrac{D}{4}=4-k\gt0\) → \(k\lt4\) / 두 근의 합 \(4\gt0\) / 두 근의 곱 \(k\gt0\).</li>
+                    <li><strong>STEP 4 — 정리</strong>: <span class="text-red-600 font-bold">\(0\lt k\lt4\)</span>.</li>
+                </ol>
+                <p class="mt-2 text-sm text-amber-700"><strong>핵심:</strong> \(k\le0\)이면 \(t\)의 근 하나가 \(0\) 이하가 되어 \(x\)의 근은 하나뿐이다.</p>
+            </div></details>
+
+            <div class="thinking-space"></div>
+        </section>
+
+        <!-- 04. 메타인지 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">04. 메타인지 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <!-- 유형 1 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (나만의 수학적 통찰)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">지수방정식을 '밑을 같게 해서 지수를 비교'하는 방법으로 풀 수 있는 근거는 지수함수의 어떤 성질인가? 그래프로 설명해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"지수방정식의 풀이 원리를 지수함수의 일대일대응 성질과 그래프의 교점으로 연결하여 설명하고, 지수부등식에서 밑의 크기에 따라 부등호 방향이 바뀌는 이유를 함수의 증가·감소로 논리적으로 해석함."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 2 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (결정적 실수와 극복)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">오늘 겪은 치명적 실수(밑이 1보다 작을 때 부등호 방향, 치환한 문자의 범위, 밑이 1인 경우 등)와 그것을 바로잡은 사고 과정은?</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"치환을 이용한 지수방정식에서 치환한 문자가 양수라는 조건을 놓쳐 부적절한 근을 포함하는 오류를 범했으나, 지수함수의 치역을 다시 확인하며 근을 검토하는 습관을 스스로 정착시킴."</p>
+                            </div>
+                        </label>
+
+                        <!-- 유형 3 -->
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (호기심과 확장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">반감기·약물·증발처럼 '일정한 비율로 줄어드는' 현상을 하나 더 찾아 지수함수로 모델링해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-green-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"방사성 탄소 연대 측정의 원리를 반감기 지수 모델로 설명하고, 커피 속 카페인의 체내 감소를 같은 방식으로 모델링하여 섭취 시간에 따른 잔류량을 예측하는 탐구를 수행함."</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_09_로그함수.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_11_로그함수의활용.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 10차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_10.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

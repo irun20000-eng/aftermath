@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<!-- 2026 1학기 대수 · 단원 I. 지수함수와 로그함수 · 차시 13 대단원 평가 (I) · 교과서(미래엔) 62~66쪽 -->
+<!-- 겉틀은 scripts/build_alg_sheets.py 가 쓴다. 본문만 고친다. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 대수 학습지: 대단원 평가 (I)</title>
+    <meta name="robots" content="noindex,nofollow">
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true },
+            options: { ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'mathjax-process' },
+            startup: { pageReady: () => MathJax.startup.defaultPageReady().then(() => document.body.classList.add('mathjax-ready')) }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.name = 'aftermath_ws_alg_13';</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #0f172a; opacity: 0; transition: opacity 0.3s; line-height: 1.7; }
+        body.mathjax-ready { opacity: 1; }
+
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 2.5rem; margin-bottom: 3rem; border: 1px solid #e2e8f0; }
+        .section-title { font-size: 1.875rem; font-weight: 900; color: #1e293b; margin-bottom: 2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.75rem; letter-spacing: -0.025em; }
+
+        .reveal-box {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 80px; min-height: 40px; background: #f1f5f9; border: 2px solid #cbd5e1;
+            border-radius: 0.75rem; cursor: pointer; position: relative; vertical-align: middle; margin: 0 4px; overflow: hidden;
+            transition: all 0.2s;
+        }
+        .reveal-box:hover { border-color: #94a3b8; background: #e2e8f0; }
+        .reveal-box .ans { opacity: 0; pointer-events: none; font-weight: 800; color: #2563eb; transition: opacity 0.3s; padding: 0 10px; }
+        .reveal-box::after { content: '?'; color: #64748b; position: absolute; font-size: 1.25rem; font-weight: 900; }
+        .reveal-box.active { background: #eff6ff; border-color: #3b82f6; }
+        .reveal-box.active .ans { opacity: 1; }
+        .reveal-box.active::after { opacity: 0; }
+
+        .thinking-space { min-height: 120px; border: 2px dashed #cbd5e1; border-radius: 1rem; margin-top: 1.5rem; background-color: #f8fafc; padding: 1.5rem; position: relative; }
+        .thinking-space::before { content: 'Thinking Space'; position: absolute; top: 1rem; left: 1.5rem; color: #94a3b8; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .badge { font-size: 0.875rem; padding: 0.375rem 1rem; border-radius: 0.5rem; font-weight: 800; display: inline-block; margin-bottom: 1rem; letter-spacing: 0.025em; }
+        .badge-l1 { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+        .badge-l2 { color: #854d0e; background: #fef9c3; border: 1px solid #fef08a; }
+        .badge-l3 { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+        .hint-box { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 1.5rem; border-radius: 0 1rem 1rem 0; margin-top: 1.5rem; }
+        .trap-box summary { list-style: none; }
+        .trap-box summary::-webkit-details-marker { display: none; }
+        .trap-hint { font-size: 0.75rem; color: #b91c1c; font-weight: 700; margin-left: 0.5rem; }
+
+        .alg-accent { color: #2563eb; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { opacity: 1; background: white; }
+            .card { box-shadow: none; border: none; padding: 1rem 0; margin-bottom: 1rem; }
+            .thinking-space { min-height: 100px; }
+        }
+    </style>
+    <link rel="stylesheet" href="widgets.css">
+    <link rel="stylesheet" href="lesson-mode.css?v=20261105">
+</head>
+<body class="p-4 md:p-8 lg:p-12 mathjax-process">
+    <script>
+        const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd223-GuArCmhkyhbjsu10qou6tUomqwuw2stc5TYWQ6LZnNQ/viewform?usp=pp_url&entry.234011956=";
+        const LESSON_NAME = "13차시 대단원 평가 (I)";
+        const GOOGLE_FORM_URL = GOOGLE_FORM_BASE_URL ? GOOGLE_FORM_BASE_URL + encodeURIComponent(LESSON_NAME) : "";
+    </script>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-16 border-b-4 border-slate-800 pb-10">
+            <p class="text-slate-500 font-bold text-sm tracking-[0.3em] mb-3 uppercase">2026학년도 1학기 | 대수</p>
+            <h1 class="text-5xl font-black text-slate-900 mb-8 tracking-tight">대수 수업 학습지</h1>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-lg font-bold text-slate-700">
+                <span class="bg-slate-100 px-5 py-2 rounded-lg border border-slate-200 shadow-sm">대단원: I. 지수함수와 로그함수</span>
+                <span class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg border border-blue-200 shadow-sm">13차시: 대단원 평가 (I)</span>
+            </div>
+        </header>
+
+        <nav class="no-print -mt-12 mb-8 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_12_중단원마무리_I_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_14_일반각과호도법.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <!-- ===== 본문 시작 ===== -->
+        <!-- 00. 대단원 개념 구조화 -->
+        <section class="card bg-gradient-to-br from-slate-50 to-indigo-50 border-indigo-100">
+            <h2 class="section-title text-indigo-900 border-indigo-200">00. 대단원 개념 구조화 (Concept Mapping)</h2>
+            <span class="src-chip src-chip--block" data-src-label="교과서 65쪽 · 대단원 평가 자기 평가표" data-src-rel="">교과서 65쪽 · 대단원 평가 자기 평가표</span>
+            <div class="text-lg text-slate-700 font-medium">
+                <p class="mb-6">I. 지수함수와 로그함수 — '지수와 로그'에서 '지수함수와 로그함수'까지 한 장으로 연결해 보자.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl border border-indigo-200 shadow-sm">
+                        <h3 class="text-xl font-black text-indigo-800 mb-4 border-b-2 border-indigo-100 pb-2">① 지수와 로그</h3>
+                        <ul class="space-y-3">
+                            <li>\(a^{\frac mn}=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\sqrt[n]{a^m}\)</span></span>, \(a^{-n}=\dfrac1{a^n}\)</li>
+                            <li>\(a^x=N\iff x=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\log_aN\)</span></span></li>
+                            <li>로그의 조건: 밑 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(a\gt0,\;a\ne1\)</span></span>, 진수 \(N\gt0\)</li>
+                            <li>\(\log_ab=\dfrac{\log_cb}{\log_ca}\), \(\log_{a^m}b^n=\) <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\dfrac nm\log_ab\)</span></span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-indigo-200 shadow-sm">
+                        <h3 class="text-xl font-black text-indigo-800 mb-4 border-b-2 border-indigo-100 pb-2">② 지수함수 \(y=a^x\)</h3>
+                        <ul class="space-y-3">
+                            <li>정의역 실수 전체, 치역 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(\{y\mid y\gt0\}\)</span></span></li>
+                            <li>점 \((0,1)\)을 지나고, 점근선 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(x\)축 (\(y=0\))</span></span></li>
+                            <li>\(a\gt1\): 증가, \(0\lt a\lt1\): <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">감소</span></span></li>
+                            <li>\(y=a^{x-m}+n\): 점근선 \(y=n\)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-indigo-200 shadow-sm">
+                        <h3 class="text-xl font-black text-indigo-800 mb-4 border-b-2 border-indigo-100 pb-2">③ 로그함수 \(y=\log_ax\)</h3>
+                        <ul class="space-y-3">
+                            <li>\(y=a^x\)의 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">역함수</span></span> — 직선 \(y=x\)에 대하여 대칭</li>
+                            <li>정의역 \(\{x\mid x\gt0\}\), 점 \((1,0)\), 점근선 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">\(y\)축 (\(x=0\))</span></span></li>
+                            <li>방정식·부등식: 밑을 같게 → \(a\gt1\)이면 부등호 그대로, \(0\lt a\lt1\)이면 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">반대로</span></span></li>
+                            <li>로그 부등식은 <span class="reveal-box" onclick="toggleReveal(this)"><span class="ans">진수 조건</span></span>과 함께</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01. 실전 훈련 -->
+        <section class="card border-l-[8px] border-blue-500" data-aft-problem-level="l2" data-aft-problem-title="01. 실전 훈련">
+            <h2 class="section-title">01. 실전 훈련 (Textbook Training)</h2>
+            <p class="mb-8 text-slate-600 font-bold">미래엔 교과서 63~65쪽 대단원 평가 문제 1~16</p>
+            <div class="grid grid-cols-1 gap-12">
+
+                <div>
+                    <span class="badge badge-l1">[기초-거듭제곱근의 성질]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 1" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 1 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">1. 다음 중에서 옳은 것은?
+                        <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">① \(\sqrt{(-2)^2}=-2\)</span><span class="sub-q">② \(\sqrt[3]{\sqrt[4]{8}}=\sqrt[12]{2}\)</span><span class="sub-q">③ \(\sqrt[3]{3}\times\sqrt3=\sqrt[6]{3}\)</span><span class="sub-q">④ \(\dfrac{\sqrt[3]{9}}{\sqrt[6]{27}}=\sqrt[6]{3}\)</span><span class="sub-q">⑤ \(\left(\sqrt[3]{7}\times\dfrac{1}{\sqrt[4]{7}}\right)^{12}=\dfrac17\)</span></span>
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> 모두 유리수 지수로 바꿔 확인한다.
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">① \(|-2|=2\) ✗</span><span class="sub-q">② \(\sqrt[12]{8}\) ✗</span><span class="sub-q">③ \(3^{\frac13+\frac12}=3^{\frac56}\) ✗</span><span class="sub-q">④ \(3^{\frac23-\frac12}=3^{\frac16}\) ✓</span><span class="sub-q">⑤ \(7^{(\frac13-\frac14)\times12}=7\) ✗ &nbsp; <strong>답: ④</strong></span></span>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-자연수가 되는 지수]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 2" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 2 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">2. \(\left(\dfrac{1}{64}\right)^{\frac1n}\)이 자연수가 되도록 하는 정수 \(n\)의 값을 모두 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(\left(2^{-6}\right)^{\frac1n}=2^{-\frac6n}\)이 자연수 ⇔ \(-\dfrac6n\)이 0 이상의 정수 ⇔ \(n\)은 6의 음의 약수. <strong>답: \(-1,\,-2,\,-3,\,-6\)</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l3">[발전-곱셈 공식과 지수]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 3" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 3 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">3. \(9^a+9^{-a}=7\)일 때, \(\dfrac{3^{3a}+3^{-3a}}{3^a+3^{-a}}\)의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(s=3^a+3^{-a}\gt0\)이라 하면 \(s^2=9^a+9^{-a}+2=9\) → \(s=3\).
+                        \(3^{3a}+3^{-3a}=s^3-3s=18\) → \(\dfrac{18}{3}\). <strong>답: 6</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-로그가 정의될 조건]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 4" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 4 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">4. 실수 \(a\)의 값에 관계없이 로그가 정의될 수 있는 것을 보기에서 모두 고르시오.
+                        <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">ㄱ. \(\log_{a^2-a+2}(a^2+1)\)</span><span class="sub-q">ㄴ. \(\log_{2|a|+1}(a^2+1)\)</span><span class="sub-q">ㄷ. \(\log_{a^2+2}(a^2-2a+1)\)</span></span>
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> 밑 \(\gt0,\ne1\), 진수 \(\gt0\)이 모든 \(a\)에서 성립하는지.
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">ㄱ. 밑 \(=\left(a-\frac12\right)^2+\frac74\gt0\), 밑 \(=1\) ⇔ \(a^2-a+1=0\) (실근 없음) ✓</span><span class="sub-q">ㄴ. \(a=0\)이면 밑이 1 ✗</span><span class="sub-q">ㄷ. 진수 \((a-1)^2\)은 \(a=1\)에서 0 ✗ &nbsp; <strong>답: ㄱ</strong></span></span>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l3">[발전-공통값을 지수로]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 5" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 5 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">5. \(a^2=b^3=c^6\)을 만족시키는 1이 아닌 세 양수 \(a,\,b,\,c\)에 대하여 \(\log_ab+\log_bc+\log_cab\)의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(b=a^{\frac23},\;c=b^{\frac12},\;ab=a\cdot a^{\frac23}=c^3\cdot c^2=c^5\).
+                        \(\log_ab=\dfrac23,\;\log_bc=\dfrac12,\;\log_cab=5\). <strong>답: \(\dfrac{37}{6}\)</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-밑의 변환]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 6" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 6 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">6. \(\log_25=a\)이고 \(\log_53=b\)일 때, \(\log_524\)를 \(a\)와 \(b\)로 나타내면?
+                        <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">① \(\dfrac1a+b\)</span><span class="sub-q">② \(\dfrac3a+b\)</span><span class="sub-q">③ \(\dfrac1a+3b\)</span><span class="sub-q">④ \(a+\dfrac1b\)</span><span class="sub-q">⑤ \(3a+\dfrac1b\)</span></span>
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(\log_52=\dfrac{1}{\log_25}=\dfrac1a\). \(\log_524=3\log_52+\log_53=\dfrac3a+b\). <strong>답: ②</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-근과 계수의 관계 + 로그]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 7" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 7 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">7. 이차방정식 \(x^2-4x+2=0\)의 두 근이 \(\log a\)와 \(\log b\)일 때, \(\log_ab+\log_ba\)의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(\log a+\log b=4,\;\log a\log b=2\). \(\log_ab+\log_ba=\dfrac{(\log a)^2+(\log b)^2}{\log a\log b}=\dfrac{4^2-2\times2}{2}\). <strong>답: 6</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-지수함수의 밑 결정]</span> <span class="src-chip" data-src-label="교과서 63쪽 · 대단원 평가 문제 8" data-src-rel="그대로">교과서 63쪽 · 대단원 평가 문제 8 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">8. 지수함수 \(f(x)=a^x\)이 \(2f(-1)+f(1)=3\)을 만족시킬 때, \(f(-2)+f(2)\)의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(\dfrac2a+a=3\) → \((a-1)(a-2)=0\). 지수함수의 밑은 \(a\ne1\) → \(a=2\). \(f(-2)+f(2)=\dfrac14+4\). <strong>답: \(\dfrac{17}{4}\)</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-평행이동한 지수함수]</span> <span class="src-chip" data-src-label="교과서 64쪽 · 대단원 평가 문제 9" data-src-rel="그대로">교과서 64쪽 · 대단원 평가 문제 9 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">9. 함수 \(y=3^{x-a}+b\)의 그래프가 오른쪽 그림과 같을 때, 두 상수 \(a\)와 \(b\)의 값을 구하시오.
+                        <div class="mt-3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGJCAIAAAArBPLIAAAACXBIWXMAAC4jAAAuIwF4pT92AAAskUlEQVR4nO3diX9MZ///8e9/8qtEQmK5pYK4VVTVUkursdWNEEGEEtTaWqKxldiXKEVVSOxiFwSxBLEvIUrEEkEkkUWCTJLfh0uvTM9MZs7MdeY6s7yfj/PoQ2fOnLkmmbxyzuQs/1cNAOAi/k/vAQAAqIVgAYDLQLAAwGUgWADgMhAsAHAZCBYAuAwECwBcBoIFAC4DwQIAl4FgAYDLQLAAwGUgWADgMhAsAHAZCBYAuAwECwBcBoIFAC4DwQIAl4FgAYDLQLAAwGUgWADgMhAsAHAZCBYAuAwECwBcBoIFAC4DwQIAl4FgwScnUlI6d+wU1Kx5yvHjpvdujo/38/Wl6eqVK4q7Xr9+betznU9Lmz/vt4TNW9LOnbNzuOCRECz4YHVcXGCTgIihQ73/32fNAj43naHfD33prvZftVPcfuH8+bmz59j6dItiY2lpNHVq38HOEYNHQrCgev26dQGNG2fezczLy2MdeVP6xniGgvwCnzpedPu6tWsVjx0ZGUmle/v2rU3P+NPYseyJwkIHCg4ePAqC5eloS7CRn/+Vy5fp35fS0yki3bt1U8yzNSGRbvf18qZyGd+e+yzXx+tDyHbt2GnTk/YK6cGC9fPkyYLjB4+CYHm6IYMHn05NZf+eNH4CRSR+0ybFPAP7D6DbIyMiFLcvXLCAdce0cZY1bxrIHrhy+XK7Rw4eCMHydJWVlewfpaWlDer71a/ro/gQPT8/n20PKj6Mr6ioaBbwOesOTdevXVf5jO/fv+ePsnXVDDwcggWfxP/1FxVkxPDhitv/3LCBbg8KbGYwGIxv371zF+8OTT+NHavyiR5lZ/NH4a+EYBMECz7p+HV7KsiJlBSzt8+bo/xTYMh33Y2D5V+vXmFBQbUKFCn+qJycHG1GD54BwYIPzpw+Q/lo3jRQsRqVfjGdleX+/fvGt9+4fsO4Vmxas/p3Nc+1c8cONr+fr29VVZWWLwPcHYIFHwwaEEoFmR0zS3H7sPAhdDutTClu5/slGE/Brb5QE6DlS5ex+b9u21azFwCeAcGC6vt//80Kknk381+337/Pbk9MSDC+nTb96tf1MQ0WTcePmdlLXmHShIls5tB+/TR+JeDuECyonhUTQ/no+k1nxe0jhg9nH06VlpYa3x63ciUrzvfdvm1Q34/+ET4ojO2QNbD/AKtPR51iD580foKWLwM8AIIF1ZQqykdM9EzjG1NPnWJZGRsVZXy7wWBo1+bL8ePG3bh+g/73Pw0a0jzPnj17npu7YP785k0DH2VnW346ejhb8pJFizV/LeDeECz4tN95z5AQ/on7+bQ0yko977p0+5nTZ4xnprUt478G8mCx/33//v2L588tPBc9ha+XNwvW9m3btH4p4OYQLKg+nZpK231UkM4dO02bOvWHXr27d+22Y/t2uuWLoJaWP0dXBMuqx48e8Q+8zp45Y/0Bbic/P/9Y8lEe/devXx86ePDJ48eaLJx+nZw8ceLC+fP071s3b2qyTHFFRUWHDx3SZFEIFnxAq0W0vrMoNnbN6t8vXrhAt9CWoJqtNluDZbwT1pMnT0TH7WroazssfMjK5cs7te9AP8ZXr1z5vtu39GVv7N+AQia48F07dkZGRNC2/LatW9lRUxkZGZoM2w7Pc3Ppex23atWgAaG0qq7V55UIFpjx9OlT2nCrX9cnLy/P8py2BovvhEUL50cFeYjCwsLp06axNdbf41ZPnfJz+6/a0a+KEykp9AVhx5/bbdmSpbRqXFFRwf6XFtinZy8NBm2X2TGzFH8+PnXypCZLRrDAjAnjfqI32ayYGKtz2hos7ITFrFi2nL4IB/cfqGZbhQcO8k3vmzdu0LqS1enunbt8afRr4PP/NHnx4gX733uZmbTw5CNH7BjY+/fvFQu3A70WqjNtnLK3B/2Xl1QQguW5zqelBTVrPn7cOMXttNlCb7I2rYMVZ8Uyy9Zgud9OWIUFBTu2b4+Jnvnz5Mm0cUdbZIqjBcyitaG2wcFmPx+kJdAGndWJbbmTnJycRn7+tBnIl0C/FVr/t5V9K7AUGvrurFqxwo7HmmKHx6s/ztQqBMtz0Q8Ya8fz3Fx+I/22D271RZOGje7cuaNmIbYGq2YnrAkT7Rm0M3n37t3c2XP8fH179+ixYP582sobN2YM/W+rFkG0xmThgaWlpbTFTdHRZBj0K4fyxNtH/6DvYNyqVfYtTcNgXb1yRf3uxCohWJ4rftMmtvMnvyUvL697t270dr9965bKhdgaLFqtYG9iWguwecTOhLZxaC3J9IX8fe8e+5r8sWZNbY/dt3cvzXD50iXxYRQXF1P7Fi9cyG/Zs3u3Tx2vly9f2rdADYNFNadFNfZvQJuZ4ktjECzPRb+Kly1ZGhTYjDYMaR2hb+8+7dp8uWTRYvoZUL8Qm4JlqDCwHeJp2rljh70DdwrstPR1P6tjenpo9vkU3WV8jjDacuQ/t8OHRdC9/GMdWsNVsxVpVvKRI/RcbCdeUl5e3rJFC3a8AaXH1lNXV2saLPbLacyo0eKL4hAs+HDK9sePHpWUlNjxWJuClf2w5kxYbF8h10WVZy/E9KQ6Gbdvs7uiRo1it1BHGvr5T/vll+qPq2CBTQJoYnfRw4cMHlxWVmbfMBI2b6Enoo1T9r/r162j78jm+Hj69/Rp0+h5bV2gVsFiH/zb/dl/bRAsEGJTsNhJbNiU+yzX+gOcGAWIvZCsrCzFXUVFReyuNq2D2S20ptOgvh915ERKSpeOna5euUJrH1sTEik333bpev/vv+0eBjvPD/2+ofXlxISEWzdv0ndkb1LSrJgYxaHsKmkVLLaaSV8lO9byLECwQIhNwdqWmMh+kul97OiBOdqRw4dHRAw3e3QRbVOzl9mqRRC/8eyZMxPG/bRy+XK2g+iDBw8mjh8/eeIk8XDTWtWgAaG0PsXOWUbbqiMjIx9mPbRvaVoFix2gOmrESPa/Vy5fXrtmDVUs9dQpkcUiWCDEpmDxi1Z0/Lq9mvlLS0snTZjYtEnAsPAhfKuHo3WKL4Ja+vn6Dh44SHEX/ejSuowmkx3HD9GqDXuZEUOH2vpY3WkSrJycHPYVOHTwIK1hUUCNdyKlvNr9MTyCBUJsChY73IedjsbqzE+fPqWuhYUOZJ8Wxf/1l2KGixcusqUd2LdfcdecWco9re2eggKbqfxScMuWLPX+eFU05zmaTz1NgrVh3XrvjycmotXJ7t260e+b48eOH0s+OiQsjH1V6Rtk35IRLBBiU7C+7/Yte7+yj58tKMgvaBscTFtM9O9fJk8xu9t99PQZdDutf5n+ui4qKsrRiPFOamo8ys5u5Ofv4+W1NynJpgc6CU2C1efjDh+RERE/jR07f95vpnc19m9gusqsBoIFQmwKVpOGjbxVnP3dUGHoFdJjRMRwtq92///9jx5y8sQJxWytWgTR7b9GR9s7du2dT0ujUYV8113Ho44FiQeLXyecvoOjR/6ouHdzfDx7D9h39A+CBULUB6ukpIRvZ1n+U/eVy5cH9h/AdlOidZy6n9Wh7TLFgSbXrl4Ved9riEZLXwRaH2zTOphSZXrZIedBX8PDhw5ZnthphSg0Vues7XP9bVu3sm8NfU1oVVdx79HkZJHd3xEsEKI+WHfu3OHB+vvePcsz8zyxz+nnzlZeZIxtD37bpat9w9ZQfn7+H2vW0E/poQMHV8fF0SbPhHE/8T05nUpZWZlWH+3RtG7tWrPPEj7o0wdVZjeK+eUs7ds/C8ECIeqDdSz5KH+vq9xP0mAwsE/cFYGjbcbAJgFmP4nXHY15zKjR3h9PLW337qCO88oadkWS3+bOszqn2b1Sy968YRcoMb3SEjN/7jz2Hrh27Zod40ewQIj6YK3/Yx17p/KdvK06uP8Azd+9azfF7YcOHvT+eEYt0y0OZ0A/tM2bBtIIe/foQW3Vezi2EfwMi33LLGzxsevv1vOuiw/dQQfqgzV1ys/e/1xrR+XCe4aE0PybNm5U3N6/b19vo50STd2+dStpzx5NJvvO7cv3q7D7rAl6EQzW6JE/0sNbtmhh9sw5JSUl7PN4013nVEKwQIj6YLHKWA6NsevXrrNfxfQjZHw7P1LPwj7T+u6HVW20/ds2ONiOh+tIJFgVFRXs/aDYlYHj55u1fPodCxAsEKI+WG1afzqxTOx8VeeBYrtHR0ZEKG6n3nl/POrFwtUx6CenTCN2HD9cbfRHTFqhUHM1bOchEqzTqansVdd2eiK2PUgRt/vs2AgWCFEZLHqD8qt77dm92+pi6ceGzX/86DHj2zPvZtb9rA7dvmD+fKFxi7l182ZQs+aBTQIUw+PSL6azF9ukYSPJYxMkEqyZM6I/rJM2a272Xv5n4qPJyXYPD8ECISqDRTPwjaxL6elWF0shYDMbn/SGqte7Rw92e/ZDK5drdahJ4yd82mCs5Ydz/759bIbQfv0lj02QSLC6dOzk/XF/UbP3RgwdSvfSirPI8BAsEKIyWOfOnuXBsnylVebsmU8nouFXW6Gts3FjxrC9HHqGhGgwdAHs7H0WRsJ2EzNdQ3R+IsFi3x167aZ30feR7mr/VTubTg9pCsECISqDFf/XX+wHmOZXs1hamWJnf/evV2/MqNHjx437IqjlyuXLB/YfQDduTUjUYuz2e56b29i/QW17G9HaX4P6fmxXLPljEyQSrLDQgWZXKnNycoICm9F38OnTp4LDQ7BAiMpgzYqJYcFSv296VVXVmdNn1q1dS6sz27ZuLcgvYCcsbeTnr+ZyPo6WfjGd7by6e+cufmNFRcXB/QfYisa0qVNd8cKLIsHifxulFWp+4/3799sGB9P3Xc2atVUIFghRGSz2+cWHDziGm/+AQ40pkybREmbOcJajnfPz83+Njg5o3JjK1eWbzh2/bk8xbejnP2rEyKtXrug9OjsJ7of1e9xqXy/vet51Y2b+unHDnxPHj2/aJGD50mVa7UCLYIEQlcGiH2YWrN/mzrPviR5lZ/t4eVEOrF6MWjKDwXDr5s3kI0dST53KyMiw+3ISTkL8bA30Zli/bt2MadNptXrPrt32XSugNggWCFETLON9Gnbt2Gl5gbQK1qpF0LWrVxW3s5PMxG/aJDpisIiCe/nSJac94z6CBULUBEv9Pg0vX75ksykus8qOQ6TtC20GDS4LwQIhaoJ1Pi2NB8vyCTxpXYx9Ys33ZiBbExJ96njFRM90rV3GwREQLBCiJljsEtPeHw8MtBqdjIyMvr37NKjv16VjJ9oMpP+G9uufdu6cpqMGV4VggRA1wfo1OpoF6+u2bVUu9t27d7nPcmmxrrhnADgOggVC1ARraHg4C9aw8CHSBgZuCcECIWqC1f6rdoL7NAAwCBYIsRqsiooKHy8vFqzN8fEyxwbuB8ECIVaD9Sg7m/+J8MrlyzLHBu4HwQIhVoOVeuoUD9arV69kjg3cD4IFQqwGi121XP15GgAsQLBAiNVgsQvNfzh11Pc6n8QK3ACCBUKsBoudwcpFTw4FzgbBAiFWgxXc6gsWrMULF8ocGLglBAuEWA5WWVkZu2YETQf27Zc8NnA/CBYIsRysu3fu8j8RZt7NlDw2cD8IFgixHKzkI0d4sJzhvMbg6hAsEGI5WKtWrPB2zQsgg3NCsECI5WBFjRrFgjVoQKjkgYFbQrBAiOVgsStr0vRrtLNcOQJcGoIFQiwEq7Ky0s/XlwVL9ysJgntAsECIhWBlZWWpPJU7gEoIFgixEKyU48d5sIqKiuSPDdwPggVCLASLH/Yc0Lix/IGBW0KwQIiFYE2aMBGHPYO2ECwQYiFYId91Z8H6efJk+QMDt4RggRALwWrs34AF688NG6SPC9wTggVCagvWkydP+Cfu586e1WVs4H4QLBBSW7COH6v5E2FeXp4uYwP3g2CBkNqCtToujtUqsEmALgMDt4RggZDagjU2KooFq3/fvroMDNwSggVCagtWz+9DcBQhaA7BAiG1BYvdTtO2RBxFCJpBsECI2WDR//JP3K9euaLX2MD9IFggxGywTqSk8GCVlJToNTZwPwgWCDEbLPyJEBwEwQIhZoM1ZtRoFqwfevXWa2DglhAsEGI2WN906MCCNSsmRq+BgVtCsECIabDev3/v6+WNaxGCIyBYIMQ0WBkZGfwT96ysLB3HBu4HwQIhpsHas2s3q5V/vXqVlZU6jg3cD4IFQkyDNWfWLBasb7t01XFg4JYQLBBiGqz+ffuyYE0aP0HHgYFbQrBAiCJYVVVVjfz8cd4+cBAEC4QogvUoO5t/4p527py+YwP3g2CBEEWwDh08yINVWFCg79jA/SBYIEQRrEWxsaxWLVu00Hdg4JYQLBCiCNbQ8HAWrCGDB+s7MHBLCBYIUQSr9X9bsWDFrVyp78DALSFYIMQ4WIWFhfwDrNRTp/QeGrghBAuEGAfr1MmTPFgvX77Ue2jghhAsEGIcrCWLFuM0WOBQCBYIMQ7WsPAhLFhhoQP1Hhe4JwQLhBgHKyiwGQvWimXL9R4XuCcEC4TwYOXk5PAPsE6kpOg9LnBPCBYI4cE6mpzMg/Xi+XO9xwXuCcECITxYixcuZLUKatZc70GB20KwQAgP1pCwMBaskZGReg8K3BaCBUJ4sAKbBLBgrVn9u96DAreFYIEQFqwL58/zD7DSL6brPShwWwgWCGHBWrd2LauVTx2vsrIyvQcFbgvBAiEsWOPGjGHB6vh1e71HBO4MwQIhLFidO3ZiwZo8cZLeIwJ3hmCBEBYsHy8vFqydO3boPSJwZwgWCGHB4tPDrId6jwjcGYIFQoyDRf/Wezjg5hAsEGIcrNB+/fQeDrg5BAuEGAdr2ZKleg8H3ByCBUIa+zfgwTqflqb3cMDNIVggpEF9P1aret51y8vL9R4OuDkEC4RQp1iwen4fovdYwP0hWCCk7md1WLB+mztP77GA+0OwwH5PHj/GWUZBJgQL7Ldrx05WK1rPKi4u1ns44P4QLLDfpPETcMwzyIRggf3aBgezYE0cP17vsYBHQLDATs9zc/kHWFs2b9Z7OOARECyw057du3mw7ty5o/dwwCMgWGCnSRMm8mCxC6kCOBqCBXZq0zoYwQLJECywx+NHj4xPg4VggRwIFthj08aNCBbIh2CBPYYPi/h0mZyPJ0dGsEAOBAtsVlVV1fSfy6b6+foiWCANggU2u3btGt8YbOTnj2CBNAgW2GzZkqX8JO78UvV6Dwo8AoIFNuvdowcLVsTQoQgWyIRggW1ev37tU+fTVQgTExIQLJAJwQLbHDpwkH+A9eTJEwQLZEKwwDaTJ05itWr/Vbvqf66ag2CBHAgW2KCqqiqoWXMWrNkxs6oRLJALwQIbGO/QcOH8+WoEC+RCsMAGi2Jj+e5XhgpDNYIFciFYYIOQ77qzYIUPCmO3IFggE4IFauXl5fGLem1NSGQ3IlggE4IFam1LTOTXyHn58iW7EcECmRAsUCssdCALVq+QHvxGBAtkQrBAlZKSEn5V+jWrf+e3I1ggE4IFqhzYt5/v0PAoO5vfjmCBTAgWqDIyMtLsNVMRLJAJwQLr3r59y857RdOi2FjjuxAskAnBAuuMD3hWXIIQwQKZECywbmh4OKvVNx06KO5CsEAmBAusKC0trV/XhwVr2ZKlinsRLJAJwQIr9u3dy7cH72VmKu5FsEAmBAusGDJ4MKtVl46dTO9FsEAmBAssKSwsZFcepClu1SrTGRAskAnBAksSExJqToj8+LHpDAgWyIRggSX8fDJ9evYyOwOCBTIhWFArWqXiq1cbN/xpdh4EC2RCsKBWK5cvZ7Xy8fJ69eqV2XkQLJAJwYJatWkdzII1NDy8tnkQLJAJwQLzzp09y7cHU44fr202BAtkQrDAvKhRo1itggKbGQyG2mZDsEAmBAvMKC4u5ofjzJ09x8KcCBbIhGCBGZs2buTbg1lZWRbmRLBAJgQLzOj6TWfLu19xCBbIhGCB0sULF/jq1Z5duy3PjGCBTAgWKI2NimK1atKw0du3by3PjGCBTAgW/EtBfgG/Ok709BlW50ewQCYEC/5l7Zo1Zq+OUxsEC2RCsKBGVVXVF0EtWa0G9h+g5iEIFsiEYEGNo8nJfPXqyOHDah6CYIFMCBbU6Nu7D6sVrWdZ2LvdGIIFMiFY8EnG7dtWTyZjCsECmRAs+GTUiJGsVo38/MvKylQ+CsECmRAs+CAnJ4efu13N3gwcggUyIVjwwZxZs/i5+h4/eqT+gQgWyIRgQXVhQQFtBrJgjR75o02PRbBAJgQLqpctWco/bs+4fdumxyJYIBOC5elKSkoCGjdmtQofFGbrwxEskAnB8nS/x63mq1eX0tNtfTiCBTIhWB6tvLw8sEkAq9UPvXrbsQQEC2RCsDzaqhUr+OrV2TNn7FgCggUyIVieq7i4uEnDRqxWof362bcQBAtkQrA8l/EfB9Mv2vzpFYNggUwIlofKy8tjraEpLHSg3ctBsEAmBMtDTZs6la9eXb923e7lIFggE4LliZ4+fcovOzgyMlJkUQgWyIRgeaLIiAhWq3redW06ctAUggUyIVge53xaGt8YnDrlZ8GlIVggE4LlWaqqqjp37MRq1di/QWFBgeACESyQCcHyLNsSE/nq1aoVK8QXiGCBTAiWBykuLuYH4rRr86WhQtVZ2y1DsEAmBMuDzJwRzVevTqSkaLJMBAtkQrA8xb3MTH4SZDtOI1MbBAtkQrA8QmVlZc+QEH4SZIqXVktGsEAmBMsj/LVxI98YXBQbq+GSESyQCcFyf3l5efysDG2Dg8vLyzVcOIIFMiFY7m9oeDhfvTqdelrbhSNYIBOCJVVlZeWx5KOh/fpL+wk/cvgwr5XgYYNmIVggE4Ilw4vnzw8dPDhh3E/NAj5n7cjJyZHwvIUFBXzHq+ZNA/Pz8zV/CgQLZEKwHOvPDRt4MownOcEaPiyCPyMV0xFPgWCBTAiWYxkMhvLy8tLS0txnuadTU78IaiktWEl79vBajRox0kHPgmCBTAiWVNN++UVOsKiP/GqDtIqXl5fnoCdCsEAmBEuqmOiZEoJVWVnZu0cPvnqVeuqU454LwQKZECyp5ARr/tx5vFa/TJ7iuCeqRrBALgRLKgnBunjhgk8dL35Khjelbxz0RAyCBTIhWFI5OljPc3ODmjXnpz/OyMhwxLMYQ7BAJgRLKocGq7Kyst8PffnGYPxff2n+FKYQLJAJwZLKocGaN2cOr9WPDtuPQQHBApk8N1i0PnL40CGtpiePH6t5UscF62hyMq9V+6/aaXuEswUIFsjkucEqKysz3QHd7ilh8xY1T+qgYGXezWzs34BfWiIrK0vDhVuGYIFMnhss8ko7b9++VfOMjgjWy5cvW7UI4uk8uP+AVktWA8ECmTw6WPJpHqyKioqQ77rzWs2bM0eTxaqHYIFMCJZUmgdrbFQUr9XQ8PCqqipNFqseggUyIVhSaRss4z3aO3fsVFJSIr5MWyFYIBOCJZWGwdocH89r1apF0PPcXE1GaCsEC2RCsKTSKlhHk5P58TeUjMy7ml0Fx1YIFsiEYEmlSbDSzp2r512XH39D/6vhCG2FYIFMCJZU0dNnsNCo3NHU1M0bN1gj2JS0Z4+2I7QVggUyIVjyGCoM/GqmO7Zvt2MJGbdvG59weXVcnOaDtBWCBTIhWI6VlZWVfOTItq1bZ8fMCm71hfHO8UPCwtatXXvk8OHTqaeLi4utLupeZqZxrebOlr3LlVkIFsiEYDnWgX37x0ZFWZ0ePHhgeTk0g3Gtpv3yi5zxW4VggUwIlgugdavmTQN5raZMmiR/B9HaIFggE4Ll7BSfW9HqmN4j+hcEC2RCsJxa+sV0fvEbVitDhUHvQf0LggUyIVjOK/XUqQb1/XitJoz7qbKyUu9BKSFYIBOC5aT2JiXxvUNpiomeqfeIzEOwgPwet3rl8uWvXr1y9BMhWM5o7Zo1/MgbmmLnL9B7RLVCsIBkP8xmx12MGTX66pUrjnsiBMu50EbftKlTeaooW5s2btR7UJYgWMAM7D+Av2+/7dJ1+7ZtKs9qaRMEy4m8KX0TPiiMf9fr1/U5dPCg3oOyAsEC5kRKiuK84U2bBMydPefJkycaPos2wbqUnj4yMhKTyDR44CDjgwR9vbz79u6j+6isTjROtte+7iPBpPvUyM/f9HIHdT+rM2Tw4NOpqZqkRptg7U1Kqu3qDJgwYcJELduwbr14arQJ1qPs7MSEBEz2TWOjony8aj5ibxscTN9a3UelcmI7XqyOi9N9JJj0nf7auNF4Lxw+tWvz5cYNf2p1Olx8hqWnsrIy45Oye3/cNfTdu3d6j8sG+AwLmITNW4zfybQlODQ8/HTqaW2fBcHSzf2//+7UvgP/BtNK1p8bNug9KJshWMB0/Lo9eyc3bRIwb86cp0+fOuJZECx97E1Kamj0CWWzgM/Pp6XpPSh7IFhALpw/7/1xb4Yd27c7dBMBwZLtTembiePHG688f9/tWwf9OpIAwQKStGfPtatXJTwRgiXVjes3FKfxo5Xn9+/f6z0u+yFYIBOCJUlVVdXquDjjvwYGNgk4kZKi76ie5+bSxumyJUtnx8xauGDBtsREWy/Ag2CBTAiWDA+zHvKzubOpT89eel1JkLl44ULf3n1oJA3q+4V8133UiJGRERHfdunqU8erXZsvEzZvUXmOQAQLZEKwHMtgMMStWlW/rg9Pla+X95rVv+t4ytDy8nJ28R5qzfo/1ilOJ0/pmTkjmu7t+X3I/fv3rS4NwQLu/fv3N67fMPuB7Nu3b2/euEG/uQWfAsFyoL/v3everZvxilX7r9pdv3ZdxyGVlJSwIbUNDrZwIvnDhw7V865LMbpy+bLlBSJYwCQfOcJPjfvz5MnG527bHB/PDzsbETFc5LRuCJZD0O+TxQsXGp/Qija15s6eo+9OoWVv3tDWH1u3svq7buOGP2nOxv4Nrl27ZmE2BAvIurVr6Z2wLTHxyZMncStXev9zTiTakvhwIEcdr4ULFtCv6v7/+x/ddXD/AbufCMHSXtq5c4o/BdKKlZw/+lo2ZdIkNh6VV0Vkn7vRa6HS1TYPggXUqVYtgrKysvgt06ZObejnX1payt5y7HK/RUVFbVoH0/9OnzbN7udCsLT04vlzWuM1TpWvl/ei2FhnONrmdOppfqyiynXy48eOs4fQ+6+2eRAsCAsdaFyr6g9vtlR6VwwLH+JtdLLcixcusLcT/UTY/VwIljZoG3D50mWKgz+7d+2WkZGh99A+6fJNZzYqmw6ab/rxUwkfL6/a/qaJYIGp3Tt3sTfbF0Ety8vL2Y2GCgNtGM6fO+9Naa0r7FYhWBrYt3cvfWOMUxXYJGD7tm3Oc/VAduQEm548fqz+gaNGjGSP+m3uPLMzIFhgavLETx8+JCYkaLtkBEvItatX2cfYxgep0wZUYUGB3kP7lzGjRvPtQZse+OeGDeyBQc2am50BwQJT7Pc3rZ5rfhQHgmWnR9nZw4dFKE79Q/Fyhg/XTfELR9OYbXqg8XlvFZ9TMAgWKDx48IC9YWbOiNZ84QiWzfLz82dMm268ywJbAdmblKT30MzjbyCa5s/7zabH/n3vHn9swuYtpjMgWKCwbu1a9oZxxOVzECwbUKoWxcYqTlxN/7t86TILf/jX3fGjx/hobT3lVu6zXP7YBfPnm86AYIFCz+8/7A1DK/WOWDiCpUpRURGtm/jXq2ecKlrJopVeZ/u4ytS2rVv5mLdv22bTY1+/fs0fO2XSJNMZECww9jz302+4sVFRjlg+gmUFrVUtXriwScNGik/W6fuh7fWLHGf9H+v4yNkufOoVFhbyx44ZNdp0BgQLjPHtQQddTxPBqtWL58+nT5vm5+ur+GR9SFiY8+xdpcaO7dv54G39M/OTx4/5Y81+hopgeay9SUkxM39V/Cmm/Vft2LvF9GzuRw4fXrhA9BrmCJYZd+7cGT9unOJjdZrCQgfqe+iyfYz/0rd2zRqbHnvr5k3+2FUrVpjOgGB5Jv6brGdICL+RfVrKzk2SfjHdeP67d+7SZorIUYQMgvUvp1NTQ/v1U3TK++NBBvQV13t0dqJNV/5CLBxkYxbfZZmmUydPms6AYHmmc2fPev9z9gV2C73NWrUIatmixYZ16+n2+E2b+MwXL1xo3jRwVkyM+PMiWB8YKgwH9u1X7ALq/fGQlNEjf3StDUCz2gYHe/9z4kCbHhgTPdP7n4Mizf4lFMHyTPn5+X6+vvQDkvsst7i4mPLUtEkAbQ/SmldeXl5j/wbNAj7fuWMHrXNNnjip7md1xo0Zo8nzenqw6Os7Z9Ys+uIqUuVfr1709Bk5OTl6D1Ab7Jx8NDX087fpSOzOHTuxB4b26292BgTLY9HaN/2YUIzYzj2x8xeUlpayu/bv28c//KVfdev/WKfVk3posKqqqmjrb2h4OPtyK3YBXbl8Of0C0XuMWqIu+9T5dDr5lOPHVT7qYdZDy9uD1QiWZyvIL0g9dYo2D8vKyhR30XrWvr17KWrangrc44L14sWL1XFx7dp8afpBFW0S7k1Kos1DvcfoEPwS0/xDB6to3ZM95JsOHWqbB8ECmTwlWLRKdfbMGfpZpRVU5QdVdbxGRkYq/qjhfuiXIa08spd8584dq/O/fPmS7Sjr4+V188aN2mZDsEAm9w/W3Tt3aU1BcfoX739O1kNbf/STqfcYJTmflsZ63b1rN8ufZFHfw0IHWtibgUOwQCa3DdarV682bdzIDmsynQb8739HDh8WORm+i0o9darhx2Mhfxwx0sKpP2Jm/sq+UPPmzLG8QAQLZHK3YJW9ebM3KYnWDvhnzMZT6/+2WhQbK36tIZdG23cdv25PX41vu3Q13Q82JydnaHi498frFao5UhrBApncJFgVFRUnUlLGRkUpTqXAJvrZixo16tTJk85zClB9GQyG9X+sCwpsRl+crt90njrl57iVK3+bO29IWBiFvu5ndSIjIlQeKYlggUyuHSzaqEk5fnz8uHGKg5O9/zlEuW/vPokJCSUlJXqP1BkZKgznzp5dvHDh6JE/DhoQSitWP0+enLB5S+4zG/4OjWCBTC4ZrKKiol07dg4LH2J2fcr742W11qz+/cXz53qP1P0hWCCTKwUrLy9vW2JiWOhA08OS2dQ2OHjB/Pmue9CfK0KwQCZnD1ZVVdXtW7dos4Vfpcp0atfmy/nzfsu4fVvvwXoiBAtkctJgFRcXHz50aOL48YEfr4tX23bfwgUL1OwDCY6DYIFMThQsWpm6cf3GkkWL+/3Q18fLzE4JbK/rPr16x61c+eDBA73HCx8gWCCT/sHKysqK37QpMiLi8/80qW1lqkF9v6Hh4Tt37CgsLNR7vPAvCBbIpE+wioqKko8cmTrl59b/bVVbpNiHUzHRM8+npWl+OUbQCoIFMskL1suXL48fPRYz89eu33Q2PakLnxr5+YcPCqN1Lrc5F5V7Q7BAJscG61F29o7t238aO9bsscfGE1Vs8cKFly9dMhjc8+wu7grBApk0DlZFRcXtW7e2bN48NiqKn8yktqnj1+2nTZ166OBB57+0H9QGwQKZtAnW9WvXaf3oh169FZcarS1S+/bu9ZyTurg3BAtk0iZYSxYtthCpTu07TJ827cC+/a9evdLk6cB5IFggkzbB4tf8YVNDP/++vfvMmTXrWPJR7Ijg3hAskEmbYJWXl7dpHRwZEbFu7dprV6/ig3PPgWCBTPrvOAouDcECmRAsEIJggUwIFghBsEAmBAuEIFggE4IFQhAskAnBAiEIFsiEYIEQBAtkQrBACIIFMiFYIATBApkQLBCCYIFM2gTr+NFjbVoH0xQWOtD4dnaj8XTzxg1+76LYWMW9MdEz+b1ZWVmmD39T+obP8OOIkYp7165ZYzokPnXp2Ml4bL179FDMQA/h927ZvFlxLz0dv5eGYTo2GjCfgV6I4l56sfxe+iJYfmn0ZVTcS+Ox8NLotRi/NHqlihnOp6Xxe+mrpLh30oSJ/N4XL16Yjo1u5DPQzMZ3sXMx8mDRE5k+3PKXPWnPHn4v/VtxL95RjB3vKOOxWX5HmX7ZHfSOqhamTbD2JiWxw56/6dDB+HbTMzdcSk/n90775RfFvWNGjeb3Zt7NNH248TWc6WuquHf+3HmmQ+ITrQsYj830nIL0EH7v6rg4xb3G30IahunYaMB8BnohinvpxfJ76Ytg+aXRl1FxL43Hwkuj12L80thaj/F0IiWF30tfJcW94YPC+L2UHtOxGa9A0cwWZqAnMr3X8pd9c3w8v5f+rbgX7yjGjneU8dgsv6NMv+wOekdVC8MmIQjBJiHIhGCBEAQLZEKwQAiCBTIhWCAEwQKZECwQgmCBTAgWCEGwQCYEC4QgWCATggVCECyQCcECIQgWyIRgwb/kPsuNnb/gN6M9vC1DsEAmBAuq3717d/PGjbhVq3qGhLBjAyeM+0nlYxEskAnB8mhlZWWd2nfw8fJSHAuGYIFzQrA8Ha1eUbYKCwoy72bOiolBsMCZIVhQIz8/H8ECZ4ZgQQ1+khMEC5wTggU1ECxwcggW1ECwwMkhWFADwQInh2BBDQQLnByCBTUQLHByCJbzqqysPHzokFbTk8ePrT4jggVODsFyXmVlZaaXQrF7Sti8xeozIljg5BAsp/ZKO2/fvrX6dAgWODkEC2ogWODkECyogWCBk0OwoAaCBU4OwYIaCBY4OQQLaiBY4OQQLKiBYIGTQ7CgxuvXr1mwxo0Zo/IhCBbIhGBBjRMpKSxY7b9qV15eruYhCBbIhGB5tKqqquPHjh/Yt/+PNWsihg71qVNzcvcvglrOionZsX37yRMnbt+6VdsSECyQCcHyaIYKw9ioKKtT3MqVtS0BwQKZECwQgmCBTAgWCEGwQCYEC4QgWCATggVCECyQCcECIQgWyIRggRAEC2RCsEAIggUyIVggBMECmRAsEIJggUwIFghBsEAmBAuEIFggE4IFQhAskAnBAiEIFsiEYIEQBAtkQrBACIIFMiFYIATBApkQLBCCYIFMCBYIQbBAJgQLhCBYIBOCBUIQLJAJwQIhCBbIhGCBEAQLZEKwQAiCBTIhWCAEwQKZECwQgmCBTAgWCEGwQCYEC4QgWCATggVCECyQCcECIQgWyIRggRAEC2RCsEAIggUyIVggBMECmRAsEIJggUwIFghBsEAmBAuEdOnYqU3r4BcvXug9EPAICBYAuAwECwBcBoIFAC4DwQIAl4FgAYDLQLAAwGUgWADgMhAsAHAZCBYAuAwECwBcBoIFAC4DwQIAl/H/AWS51NT8UuxjAAAAAElFTkSuQmCC" alt="교과서 64쪽 · 문제 9 그림" style="max-width:min(100%,300px)"></div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> 점근선 \(y=-1\) → \(b=-1\). 점 \((-1,0)\)을 지나므로 \(0=3^{-1-a}-1\) → \(-1-a=0\). <strong>답: \(a=-1,\;b=-1\)</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-지수함수의 최댓값]</span> <span class="src-chip" data-src-label="교과서 64쪽 · 대단원 평가 문제 10" data-src-rel="그대로">교과서 64쪽 · 대단원 평가 문제 10 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">10. 정의역이 \(\{x\mid-1\le x\le3\}\)인 함수 \(y=\left(\dfrac12\right)^{1-x}+a\)의 최댓값이 \(-5\)일 때, 상수 \(a\)의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(\left(\dfrac12\right)^{1-x}=2^{x-1}\) → 밑이 1보다 크므로 증가. 최댓값은 \(x=3\): \(2^2+a=-5\). <strong>답: \(a=-9\)</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l1">[기초-로그함수의 함숫값]</span> <span class="src-chip" data-src-label="교과서 64쪽 · 대단원 평가 문제 11" data-src-rel="그대로">교과서 64쪽 · 대단원 평가 문제 11 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">11. 함수 \(f(x)=\log_5x\)에 대하여 \(f(b)-f(a)=3\)일 때, \(\dfrac ba\)의 값을 구하시오. (단, \(a\)와 \(b\)는 상수)</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-green-300 bg-green-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(\log_5b-\log_5a=\log_5\dfrac ba=3\) → \(\dfrac ba=5^3\). <strong>답: 125</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-로그함수 그래프 읽기]</span> <span class="src-chip" data-src-label="교과서 64쪽 · 대단원 평가 문제 12" data-src-rel="그대로">교과서 64쪽 · 대단원 평가 문제 12 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">12. 오른쪽 그림은 함수 \(y=\log_2x\)의 그래프와 직선 \(y=x\)이다. 이때 \(a+b+c\)의 값을 구하시오.
+                        <div class="mt-3"><img src="data:image/png;base64,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" alt="교과서 64쪽 · 문제 12 그림" style="max-width:min(100%,320px)"></div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> 그래프가 \(x\)축과 만나는 점 → \(\log_2a=0\), \(a=1\). 직선 \(y=x\)로 높이를 \(x\)좌표로 옮기면 \(\log_2b=a=1\) → \(b=2\), \(\log_2c=b=2\) → \(c=4\). <strong>답: 7</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-겹쳐지는 로그함수]</span> <span class="src-chip" data-src-label="교과서 64쪽 · 대단원 평가 문제 13" data-src-rel="그대로">교과서 64쪽 · 대단원 평가 문제 13 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">13. 함수 \(y=\log_3x\)의 그래프를 평행이동 또는 대칭이동하여 완전히 겹쳐질 수 있는 그래프의 식을 보기에서 모두 고르시오.
+                        <div class="ml-6 mt-2 space-y-1 text-lg font-medium">
+                            <span class="sub-qs sub-qs--row"><span class="sub-q">ㄱ. \(y=\log_39x\)</span><span class="sub-q">ㄴ. \(y=\log_3x^2\)</span><span class="sub-q">ㄷ. \(y=\log_3\dfrac3x\)</span><span class="sub-q">ㄹ. \(y=\log_{\frac13}(9-x)\)</span></span>
+                        </div>
+                    </div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(\pm\log_3(\pm x+p)+q\) 꼴인지 본다.
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">ㄱ. \(\log_3x+2\): \(y\)축 방향 평행이동 ✓</span><span class="sub-q">ㄴ. \(2\log_3|x|\): 모양이 다름 (정의역도 \(x\ne0\)) ✗</span><span class="sub-q">ㄷ. \(1-\log_3x\): \(x\)축 대칭 후 평행이동 ✓</span><span class="sub-q">ㄹ. \(-\log_3\{-(x-9)\}\): 원점 대칭 후 평행이동 ✓ &nbsp; <strong>답: ㄱ, ㄷ, ㄹ</strong></span></span>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-지수함수 활용 (이익금)]</span> <span class="src-chip" data-src-label="교과서 64쪽 · 대단원 평가 문제 14" data-src-rel="그대로">교과서 64쪽 · 대단원 평가 문제 14 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">14. 어느 금융 상품에 \(A\) 원을 투자할 때, \(t\)년 후의 이익금은 \(A\left(\dfrac43\right)^{\frac t3}\) 원이 된다고 한다. 처음 투자 금액이 90만 원이고 \(t\)년 후의 이익금이 160만 원일 때, \(t\)의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(90\left(\dfrac43\right)^{\frac t3}=160\) → \(\left(\dfrac43\right)^{\frac t3}=\dfrac{16}{9}=\left(\dfrac43\right)^2\) → \(\dfrac t3=2\). <strong>답: \(t=6\)</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l3">[발전-비례식과 로그]</span> <span class="src-chip" data-src-label="교과서 64쪽 · 대단원 평가 문제 15" data-src-rel="그대로">교과서 64쪽 · 대단원 평가 문제 15 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">15. \(1\lt a\lt b\)인 두 실수 \(a\)와 \(b\)에 대하여 \(\dfrac{3a}{\log_ab}=\dfrac{b}{2\log_ba}=\dfrac{3a+b}{3}\) 가 성립할 때, \(\log_ab\)의 값을 구하시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트:</strong> \(k=\log_ab\), 공통값을 \(r\)이라 하면 \(3a=rk\), \(b=\dfrac{2r}{k}\) (\(\log_ba=\frac1k\)).
+                        \(3a+b=3r\)에 대입: \(rk+\dfrac{2r}{k}=3r\) → \(k^2-3k+2=0\) → \(k=1\) 또는 \(2\).
+                        \(1\lt a\lt b\)이면 \(\log_ab\gt1\). <strong>답: 2</strong>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+                <div>
+                    <span class="badge badge-l2">[기본-지수를 같은 밑으로 (서술형)]</span> <span class="src-chip" data-src-label="교과서 65쪽 · 대단원 평가 문제 16" data-src-rel="그대로">교과서 65쪽 · 대단원 평가 문제 16 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-800 mb-2">16. 두 실수 \(x\)와 \(y\)에 대하여 \(45^x=27\)이고 \(5^y=3\)일 때, \(\dfrac3x-\dfrac1y\)의 값을 구하는 풀이 과정과 답을 쓰시오.</div>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-yellow-400 bg-yellow-50"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>💡 힌트 (채점 2단계):</strong>
+                        <span class="sub-qs sub-qs--list"><span class="sub-q">① \(45=27^{\frac1x}=3^{\frac3x}\), \(5=3^{\frac1y}\) (50%)</span><span class="sub-q">② 나누면 \(9=3^{\frac3x-\frac1y}\) → \(\dfrac3x-\dfrac1y=2\) (50%) &nbsp; <strong>답: 2</strong></span></span>
+                    </div></details>
+                    <div class="thinking-space"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 02. 고난도 서술형 -->
+        <section class="card border-l-[8px] border-red-500">
+            <h2 class="section-title text-red-900 border-red-200">02. 고난도 서술형 (Advanced)</h2>
+            <div class="grid grid-cols-1 gap-12">
+
+                <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative" data-aft-problem-level="advanced" data-aft-problem-title="17. 상용로그 활용 (서술형)">
+                    <span class="badge badge-l3">[발전-상용로그 활용 (서술형)]</span> <span class="src-chip" data-src-label="교과서 65쪽 · 대단원 평가 문제 17" data-src-rel="그대로">교과서 65쪽 · 대단원 평가 문제 17 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-4">17. 어떤 미술품의 가격이 매년 2%씩 상승한다면 이 미술품의 가격이 현재 가격의 2배가 되는 것은 몇 년 후인지 구하는 풀이 과정과 답을 쓰시오. (단, \(\log2=0.3010\), \(\log1.02=0.0086\)으로 계산한다.)</div>
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                        <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                        <div class="trap-body px-5 pb-5"><p class="text-slate-700 text-sm font-medium leading-relaxed">매년 2% 상승은 \(1+0.02\times n\)배가 아니라 <strong>\(1.02^n\)배</strong>(복리). 단리로 계산하면 50년이 나와 틀린다.</p></div>
+                    </details>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>STEP 1</strong> 현재 가격 \(P\) → \(n\)년 후 \(P\times1.02^n\) (30%)<br>
+                        <strong>STEP 2</strong> \(1.02^n=2\) → \(n\log1.02=\log2\) → \(n=\dfrac{0.3010}{0.0086}=35\) (50%)<br>
+                        <strong>STEP 3</strong> <strong>답: 35년 후</strong> (20%)
+                    </div></details>
+                    <div class="thinking-space bg-white"></div>
+                </div>
+
+                <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative" data-aft-problem-level="advanced" data-aft-problem-title="18. 역함수 관계로 m 구하기 (서술형)">
+                    <span class="badge badge-l3">[발전-지수·로그 역함수 (서술형)]</span> <span class="src-chip" data-src-label="교과서 65쪽 · 대단원 평가 문제 18" data-src-rel="그대로">교과서 65쪽 · 대단원 평가 문제 18 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-4">18. 함수 \(y=2^x+2\)의 그래프를 \(x\)축의 방향으로 \(m\)만큼 평행이동한 그래프가 함수 \(y=\log_28x\)의 그래프를 \(x\)축의 방향으로 2만큼 평행이동한 그래프와 직선 \(y=x\)에 대하여 대칭일 때, \(m\)의 값을 구하는 풀이 과정과 답을 쓰시오.</div>
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                        <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                        <div class="trap-body px-5 pb-5"><p class="text-slate-700 text-sm font-medium leading-relaxed">\(x\)축 방향 평행이동은 \(x\) 자리에 \(x-2\)를 넣는다: \(\log_28(x-2)\)이지 \(\log_2(8x-2)\)가 아니다. 또 \(\log_28(x-2)=3+\log_2(x-2)\)로 쪼개야 비교가 쉽다.</p></div>
+                    </details>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>STEP 1</strong> \(y=2^{x-m}+2\) (20%)<br>
+                        <strong>STEP 2</strong> \(y=\log_28(x-2)=3+\log_2(x-2)\) (20%)<br>
+                        <strong>STEP 3</strong> 직선 \(y=x\)에 대하여 대칭 ⇔ 서로 역함수 (20%)<br>
+                        <strong>STEP 4</strong> \(y=2^{x-m}+2\)의 역함수: \(x-2=2^{y-m}\) → \(y=m+\log_2(x-2)\) (20%)<br>
+                        <strong>STEP 5</strong> 비교하면 <strong>답: \(m=3\)</strong> (20%)
+                    </div></details>
+                    <div class="thinking-space bg-white"></div>
+                </div>
+
+                <div class="bg-red-50 p-8 rounded-2xl border-2 border-red-100 relative" data-aft-problem-level="advanced" data-aft-problem-title="19. 연립부등식 (서술형)">
+                    <span class="badge badge-l3">[발전-지수·로그 연립부등식 (서술형)]</span> <span class="src-chip" data-src-label="교과서 65쪽 · 대단원 평가 문제 19" data-src-rel="그대로">교과서 65쪽 · 대단원 평가 문제 19 <span class="src-rel">그대로</span></span>
+                    <div class="text-xl font-bold text-slate-900 mb-4">19. 연립부등식 \(\begin{cases}4^{-x^2}\gt\left(\dfrac12\right)^{4x}\\[4pt]\log_2(x^2-2x+3)\lt\log_22x\end{cases}\) 를 푸는 풀이 과정과 답을 쓰시오.</div>
+                    <details class="trap-box mb-4 rounded-r-xl shadow-sm bg-white border-l-8 border-red-500">
+                        <summary class="trap-summary font-black text-red-700 cursor-pointer p-5 select-none">🚨 선생님의 함정 경고 <span class="trap-hint">(클릭하여 펼치기)</span></summary>
+                        <div class="trap-body px-5 pb-5"><p class="text-slate-700 text-sm font-medium leading-relaxed">로그 부등식은 진수 조건 \(2x\gt0\)을 먼저 적는다. 또 지수 부등식은 밑을 2로 통일한 뒤 비교해야 부등호 방향을 실수하지 않는다.</p></div>
+                    </details>
+                    <details class="hint-box mt-2 py-3 px-5 text-sm text-slate-600 border-l-4 border-red-300 bg-red-50/40"><summary>💡 힌트 보기</summary><div class="hint-content">
+                        <strong>STEP 1</strong> \(2^{-2x^2}\gt2^{-4x}\) → \(-2x^2\gt-4x\) → \(x(x-2)\lt0\) → \(0\lt x\lt2\) (20%)<br>
+                        <strong>STEP 2</strong> 진수 조건: \(x^2-2x+3=(x-1)^2+2\gt0\) (항상), \(2x\gt0\) → \(x\gt0\) (30%)<br>
+                        <strong>STEP 3</strong> 밑 \(2\gt1\): \(x^2-2x+3\lt2x\) → \((x-1)(x-3)\lt0\) → \(1\lt x\lt3\) (30%)<br>
+                        <strong>STEP 4</strong> 공통 범위 → <strong>답: \(1\lt x\lt2\)</strong> (20%)
+                    </div></details>
+                    <div class="thinking-space bg-white"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 03. 대단원 오답 성찰 -->
+        <section class="card bg-slate-900 text-white border-none no-print relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <h2 class="text-3xl font-black mb-8 text-blue-400 border-b border-slate-700 pb-4">03. 대단원 오답 성찰 (Exit Ticket)</h2>
+            <div class="flex flex-col lg:flex-row gap-12 items-center justify-between relative z-10">
+                <div class="flex-1 w-full">
+                    <p class="text-lg text-slate-300 font-bold mb-6">스마트폰으로 우측 QR코드를 스캔하여, 아래 3가지 유형 중 <span class="text-yellow-400">하나 이상을 체크</span>하고 통합 서술형으로 작성해 제출한다.</p>
+                    <div class="space-y-4">
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-blue-500 focus:ring-blue-500 pointer-events-none">
+                                <span class="text-blue-400 font-bold text-lg">유형 1: 지식의 내면화 (개념 간 연결성)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">지수함수와 로그함수가 역함수 관계라는 사실이 그래프·방정식·부등식 풀이에 어떻게 쓰였는지 정리해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-blue-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"대단원 평가를 통해 \(y=a^x\)과 \(y=\log_ax\)가 직선 \(y=x\)에 대하여 대칭인 역함수 관계임을 그래프 이동 문제에 적용하고, 점근선·지나는 점이 서로 바뀌는 구조를 스스로 설명함."</p>
+                            </div>
+                        </label>
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-orange-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-orange-500 focus:ring-orange-500 pointer-events-none">
+                                <span class="text-orange-400 font-bold text-lg">유형 2: 문제해결력 (오답 분석과 성장)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">자기 평가표에서 '부족'이 나온 성취기준 하나를 골라, 틀린 문항의 원인과 복습 계획을 서술해 보자.</p>
+                            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/50 ml-8">
+                                <span class="text-xs text-orange-300 font-bold block mb-1">📝 세특 작성 예시</span>
+                                <p class="text-xs text-slate-400 font-normal leading-relaxed">"로그 부등식에서 진수 조건을 빠뜨려 해의 범위를 넓게 구하는 오류를 발견함. 풀이 첫 줄에 진수 조건을 적는 절차를 만들어 연립부등식 문항을 정확히 해결함."</p>
+                            </div>
+                        </label>
+                        <label class="flex flex-col bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-green-500 transition-colors cursor-pointer group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <input type="checkbox" class="w-5 h-5 rounded border-slate-600 bg-slate-700 text-green-500 focus:ring-green-500 pointer-events-none">
+                                <span class="text-green-400 font-bold text-lg">유형 3: 발전 가능성 (확장과 응용)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-3 ml-8">뉴턴의 냉각 법칙(교과서 62쪽 창의 Up 프로젝트)이나 복리 계산처럼 지수함수가 현실을 설명하는 예를 하나 골라 탐구 질문을 적어 보자.</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-3xl shadow-2xl shrink-0 w-full lg:w-auto">
+                    <div id="qr-container" class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center mb-4 border-4 border-slate-200"></div>
+                    <a href="#" id="form-link-btn" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors w-full text-center shadow-lg text-slate-900">
+                        성찰지 제출하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 본문 끝 ===== -->
+
+        <nav class="aft-bottom-nav no-print mt-12 mb-4 flex justify-between items-center gap-2 flex-wrap">
+            <a href="index.html" target="aftermath_main" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm">
+                <span>🏠</span><span>메인</span>
+                <kbd class="ml-1 px-1.5 py-0.5 bg-white border border-slate-300 rounded text-xs text-slate-500 font-mono">H</kbd>
+            </a>
+            <div class="flex gap-2">
+                <a href="학습지_대수_12_중단원마무리_I_2.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-800 rounded-lg text-sm font-bold border border-slate-200 transition-colors shadow-sm"><span>←</span><span>이전 차시</span></a>
+                <a href="학습지_대수_14_일반각과호도법.html" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-900 rounded-lg text-sm font-bold border border-indigo-200 transition-colors shadow-sm"><span>다음 차시</span><span>→</span></a>
+            </div>
+        </nav>
+
+        <footer class="text-center text-slate-400 text-xs py-8 font-bold opacity-60">
+            <p>© 2026 Mathematics Education Engineering · 대수 학습지 13차시</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleReveal(el) {
+            el.classList.add('active');
+            if (typeof MathJax !== 'undefined' && el.classList.contains('active')) {
+                MathJax.typesetPromise([el]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const qrContainer = document.getElementById('qr-container');
+            const formLinkBtn = document.getElementById('form-link-btn');
+            if (!qrContainer || !formLinkBtn) return;
+            if (GOOGLE_FORM_URL && GOOGLE_FORM_URL.includes('http')) {
+                const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(GOOGLE_FORM_URL)}`;
+                qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" class="w-full h-full object-contain">`;
+                formLinkBtn.href = GOOGLE_FORM_URL;
+            } else {
+                qrContainer.innerHTML = `<span class="text-slate-400 text-sm text-center font-bold">구글 폼 URL 확정 후 QR이 활성화됩니다.</span>`;
+            }
+        });
+    </script>
+
+    <script>
+        // 메인 단축키 (H/Esc → index.html)
+        document.addEventListener('keydown', (e) => {
+            if (e.isComposing) return;
+            const t = e.target;
+            if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+            if (e.key === 'h' || e.key === 'H' || e.key === 'Escape') {
+                e.preventDefault();
+                const w = window.open('index.html', 'aftermath_main'); if (w) w.focus();
+            }
+        });
+    </script>
+
+    <!-- floating 타이머 위젯 (widgets.js 자동 마운트) -->
+    <div id="aft-timer-widget" class="aft-widget no-print" data-widget="timer">
+      <div class="aft-widget-head">
+        <span class="aft-widget-title">⏱ 타이머</span>
+        <button type="button" class="aft-widget-collapse" aria-label="접기/펼치기">▾</button>
+      </div>
+      <div class="aft-widget-body">
+        <div id="aft-timer-display" class="aft-timer-display">01:00</div>
+        <div class="aft-timer-presets">
+          <button type="button" class="aft-preset" data-sec="60">1분</button>
+          <button type="button" class="aft-preset" data-sec="180">3분</button>
+          <button type="button" class="aft-preset" data-sec="300">5분</button>
+          <button type="button" class="aft-preset" data-sec="600">10분</button>
+        </div>
+        <div class="aft-timer-controls">
+          <button type="button" id="aft-timer-start">시작</button>
+          <button type="button" id="aft-timer-pause">일시정지</button>
+          <button type="button" id="aft-timer-reset">리셋</button>
+        </div>
+      </div>
+      <div class="aft-widget-resize" aria-hidden="true"></div>
+    </div>
+
+    <!-- 학생 뽑기 — FAB + 모달 (iframe은 열 때 주입해 첫 로딩을 늦추지 않는다) -->
+    <button type="button" id="aft-picker-fab" class="aft-fab no-print" aria-label="학생 뽑기">
+      <span class="aft-fab-icon">🎲</span>
+      <span>학생 뽑기</span>
+    </button>
+
+    <div id="aft-picker-modal" class="aft-picker-modal no-print" role="dialog" aria-modal="true" aria-label="학생 뽑기" aria-hidden="true">
+      <div class="aft-picker-overlay" data-picker-close></div>
+      <div class="aft-picker-panel">
+        <div class="aft-picker-head">
+          <span class="aft-picker-title">🎲 학생 뽑기 — 대수</span>
+          <span class="aft-picker-tools">
+            <a class="aft-picker-btn" href="뽑기.html" target="aftermath_picker">새 창으로 ↗</a>
+            <button type="button" class="aft-picker-btn" data-picker-close>✕ 닫기</button>
+          </span>
+        </div>
+        <div class="aft-picker-body" data-picker-src="뽑기.html"></div>
+      </div>
+    </div>
+
+    <style id="aft-picker-css">
+    .aft-picker-modal { position: fixed; inset: 0; z-index: 10000; display: none; }
+    .aft-picker-modal.is-open { display: block; }
+    .aft-picker-overlay { position: absolute; inset: 0; background: rgba(15,23,42,.55); }
+    .aft-picker-panel { position: absolute; inset: 2vh 2vw; display: flex; flex-direction: column;
+      background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(15,23,42,.35); }
+    .aft-picker-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+      padding: .7rem 1rem; background: #3730a3; color: #fff; flex-wrap: wrap; }
+    .aft-picker-title { font-size: .95rem; font-weight: 800; }
+    .aft-picker-tools { display: flex; gap: .5rem; }
+    .aft-picker-btn { padding: .4rem .8rem; border: 1px solid rgba(255,255,255,.5); border-radius: .5rem;
+      background: transparent; color: #fff; font-size: .8rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; }
+    .aft-picker-btn:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .aft-picker-body { flex: 1; min-height: 0; }
+    .aft-picker-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+    @media print { .aft-picker-modal, #aft-picker-fab { display: none !important; } }
+    </style>
+
+    <script id="aft-picker-js">
+    (function () {
+      var fab = document.getElementById('aft-picker-fab');
+      var modal = document.getElementById('aft-picker-modal');
+      if (!fab || !modal) return;
+      var body = modal.querySelector('.aft-picker-body');
+      var opener = null;
+
+      function open() {
+        if (!body.firstChild) {                       // 처음 열 때만 iframe 생성
+          var f = document.createElement('iframe');
+          f.src = body.getAttribute('data-picker-src');
+          f.title = '학생 뽑기';
+          body.appendChild(f);
+        }
+        opener = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var c = modal.querySelector('button[data-picker-close]');
+        if (c) c.focus();
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (opener && opener.focus) opener.focus();
+      }
+      fab.addEventListener('click', open);
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-picker-close]')) { e.preventDefault(); close(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    })();
+    </script>
+
+    <script src="widgets.js"></script>
+    <script src="boardplans/alg_13.js?v=20261105"></script>
+    <script src="lesson-mode.js?v=20261105"></script>
+
+<script>
+/* named window 일관 처리 — 이미 열린 창 있으면 새 창 없이 focus */
+document.addEventListener('click', function(e) {
+  const a = e.target.closest('a[target^="aftermath_"]');
+  if (!a) return;
+  e.preventDefault();
+  const w = window.open(a.href, a.target);
+  if (w) w.focus();
+});
+</script>
+
+<a href="#" class="aft-top-btn no-print" id="aft-top-btn" aria-label="맨 위로">▲ TOP</a>
+<style id="aft-top-css">
+.aft-top-btn{position:fixed;left:24px;bottom:24px;z-index:9997;display:none;
+  align-items:center;gap:6px;padding:10px 16px;border:none;border-radius:999px;
+  background:#4f46e5;color:#fff;font-size:14px;font-weight:700;font-family:inherit;
+  text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,.38);}
+.aft-top-btn:hover{background:#4338ca;color:#fff;}
+.aft-top-btn.is-on{display:inline-flex;}
+@media (max-width:600px){.aft-top-btn{left:16px;bottom:16px;padding:9px 14px;font-size:13px;}}
+@media print{.aft-top-btn{display:none !important;}}
+</style>
+<script id="aft-top-js">
+(function(){
+  var b=document.getElementById('aft-top-btn'); if(!b) return;
+  function sy(){return window.pageYOffset||document.documentElement.scrollTop||0;}
+  function t(){ if(sy()>400) b.classList.add('is-on'); else b.classList.remove('is-on'); }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t);
+  t();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(_){ window.scrollTo(0,0); }
+  });
+})();
+</script>
+</body>
+</html>

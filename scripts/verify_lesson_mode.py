@@ -25,6 +25,8 @@ RULES = [
     (re.compile(r"형성평가"), "check", "none"),
     (re.compile(r"도전\s*문제"), "challenge", "merge"),
     (re.compile(r"실전"), "practice", "problems"),
+    (re.compile(r"구조화"), "summary", "none"),
+    (re.compile(r"고난도"), "advanced", "problems"),
 ]
 
 fails = []
